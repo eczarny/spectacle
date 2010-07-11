@@ -1,0 +1,2 @@
+#include "Spectacle.xcconfig"
+#include "CommonRelease.xcconfig"

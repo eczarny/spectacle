@@ -1,0 +1,8 @@
+PRODUCT_NAME = Spectacle
+WRAPPER_EXTENSION = prefPane
+INFOPLIST_FILE = Resources/Property Lists/Spectacle-Info.plist
+
+GCC_PREFIX_HEADER = Spectacle.pch
+GCC_ENABLE_OBJC_GC = supported
+
+INSTALL_PATH = $(HOME)/Library/PreferencePanes

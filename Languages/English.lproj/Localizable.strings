@@ -1,0 +1,15 @@
+/* Localized strings for Spectacle. */
+
+/* Spectacle Status */
+"Spectacle is not running" = "Spectacle is not running";
+"Spectacle is running" = "Spectacle is running";
+
+"Start" = "Start";
+"Stop" = "Stop";
+
+/* Alerts */
+"Access for assistive devices disabled" = "Access for assistive devices disabled";
+"Spectacle requires access for assistive devices. Please enable this option in the Universal Access preferences." = "Spectacle requires access for assistive devices. Please enable this option in the Universal Access preferences.";
+
+"OK" = "OK";
+"Quit" = "Quit";

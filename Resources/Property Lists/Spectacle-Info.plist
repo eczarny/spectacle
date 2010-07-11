@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>Spectacle</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>com.divisiblebyzero.Spectacle</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Spectacle</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleSignature</key>
+	<string>ZERO</string>
+	<key>CFBundleVersion</key>
+	<string>100.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0d</string>
+	<key>NSMainNibFile</key>
+	<string>SpectaclePreferencePane</string>
+	<key>NSPrincipalClass</key>
+	<string>SpectaclePreferencePane</string>
+	<key>NSPrefPaneIconFile</key>
+	<string></string>
+	<key>NSPrefPaneIconLabel</key>
+	<string>Spectacle</string>
+    <key>SUFeedURL</key>
+	<string>http://appcasts.divisiblebyzero.com/spectacle/updates.xml</string>
+	<key>SUAllowsAutomaticUpdates</key>
+	<true/>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_public.pem</string>
+</dict>
+</plist>
