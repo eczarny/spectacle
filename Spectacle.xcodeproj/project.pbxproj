@@ -503,7 +503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /usr/bin/ruby;
-			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\n    exit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\n    exit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\n\\t)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z])<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
+			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\n    exit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\n    exit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\W*)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z]?)<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
 		};
 /* End PBXShellScriptBuildPhase section */
 
