@@ -43,6 +43,10 @@
 
 - (void)setUpSparkle;
 
+#pragma mark -
+
+- (NSString *)pathToRelaunchForUpdater: (SUUpdater *)updater;
+
 @end
 
 #pragma mark -
@@ -68,7 +72,7 @@
                                       selector: @selector(terminateHelperApplication)
                                           name: SpectacleHelperShouldTerminateNotification
                                         object: nil
-                            suspensionBehavior: NSNotificationSuspensionBehaviorHold];
+                            suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
     
@@ -103,7 +107,10 @@
     
     [self setUpSparkle];
     
-    [distributedNotificationCenter postNotificationName: SpectacleHelperDidFinishLaunchingNotification object: nil];
+    [distributedNotificationCenter postNotificationName: SpectacleHelperDidFinishLaunchingNotification
+                                                 object: nil
+                                               userInfo: nil
+                                     deliverImmediately: YES];
 }
 
 #pragma mark -
@@ -159,7 +166,10 @@
 #pragma mark -
 
 - (void)applicationWillTerminate: (NSNotification *)notification {
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperWillTerminateNotification object: nil];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperWillTerminateNotification
+                                                                   object: nil
+                                                                 userInfo: nil
+                                                       deliverImmediately: YES];
 }
 
 #pragma mark -
@@ -177,6 +187,8 @@
 @implementation SpectacleHelperApplicationController (SpectacleHelperApplicationControllerPrivate)
 
 - (void)terminateHelperApplication {
+    NSLog(@"terminateHelperApplication");
+    
     [[NSApplication sharedApplication] terminate: self];
 }
 
@@ -215,10 +227,18 @@
     SUUpdater *sparkleUpdater = [SUUpdater updaterForBundle: [SpectacleUtilities preferencePaneBundle]];
     
     if (sparkleUpdater) {
+        [sparkleUpdater setDelegate: self];
+        
         [sparkleUpdater resetUpdateCycle];
     } else {
         NSLog(@"Spectacle could not set up Sparkle.");
     }
+}
+
+#pragma mark -
+
+- (NSString *)pathToRelaunchForUpdater: (SUUpdater *)updater {
+    return [[SpectacleUtilities helperApplicationBundle] bundlePath];
 }
 
 @end

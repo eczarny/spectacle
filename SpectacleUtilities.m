@@ -107,7 +107,10 @@
         return;
     }
     
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperShouldTerminateNotification object: nil];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperShouldTerminateNotification
+                                                                   object: nil
+                                                                 userInfo: nil
+                                                       deliverImmediately: YES];
 }
 
 #pragma mark -

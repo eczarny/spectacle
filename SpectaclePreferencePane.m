@@ -58,13 +58,13 @@
                                       selector: @selector(helperApplicationDidFinishLaunching)
                                           name: SpectacleHelperDidFinishLaunchingNotification
                                         object: nil
-                            suspensionBehavior: NSNotificationSuspensionBehaviorHold];
+                            suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     [distributedNotificationCenter addObserver: self
                                       selector: @selector(helperApplicationWillTerminate)
                                           name: SpectacleHelperWillTerminateNotification
                                         object: nil
-                            suspensionBehavior: NSNotificationSuspensionBehaviorHold];
+                            suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     myHotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
                          myMoveToCenterHotKeyRecorder,     SpectacleWindowActionMoveToCenter,
