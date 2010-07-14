@@ -187,8 +187,6 @@
 @implementation SpectacleHelperApplicationController (SpectacleHelperApplicationControllerPrivate)
 
 - (void)terminateHelperApplication {
-    NSLog(@"terminateHelperApplication");
-    
     [[NSApplication sharedApplication] terminate: self];
 }
 
