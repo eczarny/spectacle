@@ -29,6 +29,10 @@
 
 @interface SpectaclePreferencePane (SpectaclePreferencePanePrivate)
 
+- (void)toggleControlsBasedOnSpectacleRunningState;
+
+#pragma mark -
+
 - (void)helperApplicationDidFinishLaunching;
 
 - (void)helperApplicationWillTerminate;
@@ -78,28 +82,16 @@
                          myMoveToUpperRightHotKeyRecorder, SpectacleWindowActionMoveToUpperRight,
                          myMoveToLowerRightHotKeyRecorder, SpectacleWindowActionMoveToLowerRight,
                          nil];
+    
+    [self toggleControlsBasedOnSpectacleRunningState];
+    
+    [mySpectacleVersionTextField setStringValue: [SpectacleUtilities preferencePaneVersion]];
 }
 
 #pragma mark -
 
 - (void)didSelect {
-    NSInteger loginItemEnabledState = [SpectacleUtilities isLoginItemEnabledForBundle: [SpectacleUtilities helperApplicationBundle]] ? NSOnState : NSOffState;
-    
-    [myLoginItemEnabledButton setState: loginItemEnabledState];
-    
-    if ([SpectacleUtilities isSpectacleRunning]) {
-        [myStatusTextField setStringValue: ZeroKitLocalizedString(@"Spectacle is running")];
-        
-        [myToggleRunningStateButton setTitle: ZeroKitLocalizedString(@"Stop")];
-        
-        [self connectToVendedHelperController];
-    } else {
-        [myCheckForUpdatesButton setEnabled: NO];
-        
-        [self enableHotKeyRecorders: NO];
-    }
-    
-    [mySpectacleVersionTextField setStringValue: [SpectacleUtilities preferencePaneVersion]];
+    [self toggleControlsBasedOnSpectacleRunningState];
 }
 
 #pragma mark -
@@ -158,6 +150,26 @@
 #pragma mark -
 
 @implementation SpectaclePreferencePane (SpectaclePreferencePanePrivate)
+
+- (void)toggleControlsBasedOnSpectacleRunningState {
+    NSInteger loginItemEnabledState = [SpectacleUtilities isLoginItemEnabledForBundle: [SpectacleUtilities helperApplicationBundle]] ? NSOnState : NSOffState;
+    
+    [myLoginItemEnabledButton setState: loginItemEnabledState];
+    
+    if ([SpectacleUtilities isSpectacleRunning]) {
+        [myStatusTextField setStringValue: ZeroKitLocalizedString(@"Spectacle is running")];
+        
+        [myToggleRunningStateButton setTitle: ZeroKitLocalizedString(@"Stop")];
+        
+        [self connectToVendedHelperController];
+    } else {
+        [myCheckForUpdatesButton setEnabled: NO];
+        
+        [self enableHotKeyRecorders: NO];
+    }
+}
+
+#pragma mark -
 
 - (void)helperApplicationDidFinishLaunching {
     [myStatusTextField setStringValue: ZeroKitLocalizedString(@"Spectacle is running")];
