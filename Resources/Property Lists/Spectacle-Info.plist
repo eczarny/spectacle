@@ -31,7 +31,7 @@
 	<key>NSPrefPaneIconLabel</key>
 	<string>Spectacle</string>
 	<key>SUFeedURL</key>
-	<string>http://appcasts.divisiblebyzero.com/spectacle/updates.xml</string>
+	<string>http://appcasts.divisiblebyzero.com/spectacle/appcast.xml</string>
 	<key>SUAllowsAutomaticUpdates</key>
 	<true/>
 	<key>SUScheduledCheckInterval</key>
