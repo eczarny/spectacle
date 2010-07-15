@@ -2,7 +2,7 @@
 
 /* Spectacle Status */
 "Spectacle is not running" = "Spectacle is not running";
-"Spectacle is running" = "Spectacle is running!";
+"Spectacle is running" = "Spectacle is running";
 
 /* Alerts */
 "Spectacle requires that the Accessibility API be enabled" = "Spectacle requires that the Accessibility API be enabled";
