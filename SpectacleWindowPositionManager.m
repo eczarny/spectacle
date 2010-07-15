@@ -134,15 +134,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (CGRect)visibleFrameOfScreenContainingRect: (CGRect)rect {
-    NSArray *screens = [NSScreen screens];
-    
-    for (NSScreen *screen in screens) {
-        CGRect screenFrame = NSRectToCGRect([screen frame]);
-        
-        NSLog(@"Screen: (%f, %f), %fx%f", screenFrame.origin.x, screenFrame.origin.y, screenFrame.size.width, screenFrame.size.height);
-        NSLog(@"Window: (%f, %f), %fx%f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-    }
-    
     return NSRectToCGRect([[NSScreen mainScreen] visibleFrame]);
 }
 
