@@ -151,8 +151,6 @@
             
             [self setHotKey: hotKey];
             
-            NSLog(@"Received new hot key data for %@: %@", [myHotKey hotKeyName], [NSKeyedArchiver archivedDataWithRootObject: hotKey]);
-            
             [myDelegate hotKeyRecorder: myHotKeyRecorder didReceiveNewHotKey: hotKey];
         } else {
             NSBeep();

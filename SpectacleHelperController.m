@@ -56,16 +56,12 @@
     
     [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: name target: myHelperApplicationController]];
     
-    NSLog(@"The Spectacle helper controller is updating the hot key %@.", name);
-    
     [myHotKeyManager registerHotKey: hotKey];
 }
 
 #pragma mark -
 
 - (void)unregisterHotKeyWithName: (NSString *)name {
-    NSLog(@"The Spectacle helper controller is unregistering the hot key %@.", name);
-    
     [myHotKeyManager unregisterHotKeyForName: name];
 }
 

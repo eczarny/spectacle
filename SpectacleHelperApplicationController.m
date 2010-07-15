@@ -199,8 +199,6 @@
         myVendedHelperControllerConnection = nil;
     }
     
-    NSLog(@"Vending the helper controller.");
-    
     myVendedHelperControllerConnection = [NSConnection serviceConnectionWithName: SpectacleHelperControllerServiceName rootObject: myHelperController];
     
     if (!myVendedHelperControllerConnection) {

@@ -107,8 +107,6 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyID.signature = 'ZERO';
     hotKeyID.id = ++myCurrentHotKeyID;
     
-    NSLog(@"Registering hot key %@ with handle %d.", hotKeyName, hotKeyID.id);
-    
     err = RegisterEventHotKey([hotKey keyCode],
                               [hotKey modifiers],
                               hotKeyID,
@@ -152,8 +150,6 @@ static SpectacleHotKeyManager *sharedInstance = nil;
         
         return;
     }
-    
-    NSLog(@"Unregistering hot key %@ with handle %d.", name, [hotKey handle]);
     
     hotKeyRef = [hotKey hotKeyRef];
     
@@ -267,8 +263,6 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
     if (!hotKey) {
         NSLog(@"Unable to handle event for hot key with handle %d, the registered hot key does not exist.", hotKeyID.id);
     }
-    
-    NSLog(@"Handling event for hot key %@ with handle %d.", [hotKey hotKeyName], [hotKey handle]);
     
     switch (GetEventKind(event)) {
         case kEventHotKeyPressed:
