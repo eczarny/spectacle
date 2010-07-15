@@ -446,15 +446,15 @@
     NSColor *foregroundColor = [NSColor blackColor];
     
     if (isRecording && !isMouseAboveBadge) {
-        label = @"Enter hot key";
+        label = ZeroKitLocalizedStringFromCurrentBundle(@"Enter hot key");
     } else if (isRecording && isMouseAboveBadge && !myHotKey) {
-        label = @"Stop recording";
+        label = ZeroKitLocalizedStringFromCurrentBundle(@"Stop recording");
     } else if (isRecording && isMouseAboveBadge) {
-        label = @"Use existing";
+        label = ZeroKitLocalizedStringFromCurrentBundle(@"Use existing");
     } else if (myHotKey) {
         label = [myHotKey displayString];
     } else {
-        label = @"Click to record";
+        label = ZeroKitLocalizedStringFromCurrentBundle(@"Click to record");
     }
     
     // Recording is in progress and modifier flags have already been set, display them.

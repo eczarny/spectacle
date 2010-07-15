@@ -157,9 +157,9 @@
     [myLoginItemEnabledButton setState: loginItemEnabledState];
     
     if ([SpectacleUtilities isSpectacleRunning]) {
-        [myStatusTextField setStringValue: ZeroKitLocalizedString(@"Spectacle is running")];
+        [myStatusTextField setStringValue: ZeroKitLocalizedStringFromCurrentBundle(@"Spectacle is running")];
         
-        [myToggleRunningStateButton setTitle: ZeroKitLocalizedString(@"Stop")];
+        [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Stop")];
         
         [self connectToVendedHelperController];
     } else {
@@ -172,9 +172,9 @@
 #pragma mark -
 
 - (void)helperApplicationDidFinishLaunching {
-    [myStatusTextField setStringValue: ZeroKitLocalizedString(@"Spectacle is running")];
+    [myStatusTextField setStringValue: ZeroKitLocalizedStringFromCurrentBundle(@"Spectacle is running")];
     
-    [myToggleRunningStateButton setTitle: ZeroKitLocalizedString(@"Stop")];
+    [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Stop")];
     [myToggleRunningStateButton setEnabled: YES];
     
     [myCheckForUpdatesButton setEnabled: YES];
@@ -183,9 +183,9 @@
 }
 
 - (void)helperApplicationWillTerminate {
-    [myStatusTextField setStringValue: ZeroKitLocalizedString(@"Spectacle is not running")];
+    [myStatusTextField setStringValue: ZeroKitLocalizedStringFromCurrentBundle(@"Spectacle is not running")];
     
-    [myToggleRunningStateButton setTitle: ZeroKitLocalizedString(@"Start")];
+    [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Start")];
     [myToggleRunningStateButton setEnabled: YES];
     
     [myCheckForUpdatesButton setEnabled: NO];

@@ -83,10 +83,10 @@
         NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"UniversalAccessPref"]];
         
         [alert setAlertStyle: NSWarningAlertStyle];
-        [alert setMessageText: @"Spectacle requires that the Accessibility API be enabled"];
-        [alert setInformativeText: @"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?"];
-        [alert addButtonWithTitle: @"Open Universal Access Preferences"];
-        [alert addButtonWithTitle: @"Quit Spectacle"];
+        [alert setMessageText: ZeroKitLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
+        [alert setInformativeText: ZeroKitLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
+        [alert addButtonWithTitle: ZeroKitLocalizedString(@"Open Universal Access Preferences")];
+        [alert addButtonWithTitle: ZeroKitLocalizedString(@"Stop Spectacle")];
         
         switch ([alert runModal]) {
             case NSAlertFirstButtonReturn:
