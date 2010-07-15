@@ -6,21 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		07BCE38511EE595600FF6F5D /* Create Distribution */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 07BCE38C11EE599900FF6F5D /* Build configuration list for PBXAggregateTarget "Create Distribution" */;
-			buildPhases = (
-				07BCE38411EE595600FF6F5D /* Run Script: Create and sign distribution */,
-			);
-			dependencies = (
-				07BCE38911EE595E00FF6F5D /* PBXTargetDependency */,
-			);
-			name = "Create Distribution";
-			productName = "Build Distribution";
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		0700947B11A5F575000C87DC /* SpecialHotKeyTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */; };
 		07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07088270119A301800EC9426 /* SpectacleHelperController.m */; };
@@ -70,13 +55,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 077938B51184F96A0013BC14;
 			remoteInfo = SpectacleHelper;
-		};
-		07BCE38811EE595E00FF6F5D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8D202CE80486D31800D8A456;
-			remoteInfo = Spectacle;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -482,7 +460,6 @@
 			targets = (
 				8D202CE80486D31800D8A456 /* Spectacle */,
 				077938B51184F96A0013BC14 /* SpectacleHelper */,
-				07BCE38511EE595600FF6F5D /* Create Distribution */,
 			);
 		};
 /* End PBXProject section */
@@ -543,20 +520,6 @@
 			shellPath = /usr/bin/ruby;
 			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\n    exit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\n    exit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\W*)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z]?)<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
 		};
-		07BCE38411EE595600FF6F5D /* Run Script: Create and sign distribution */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script: Create and sign distribution";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "PROJECT_EXTENSION=\"prefPane\"\n\nif [ $BUILD_STYLE != Release ]\nthen\n\techo \"'$PRODUCT_NAME'\" target requires \"'Release'\" build style\n\n\texit 1\nfi\n\nVERSION=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.$PROJECT_EXTENSION/Contents/Info\" CFBundleVersion)\nARCHIVE_FILENAME=\"$PROJECT_NAME $VERSION\".zip\nKEYCHAIN_PRIVATE_KEY_NAME=\"Sparkle Private Key\"\n\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -f \"$PROJECT_NAME\"*.zip\nditto -ck --keepParent \"$PROJECT_NAME.$PROJECT_EXTENSION\" \"$ARCHIVE_FILENAME\"\n\nSIGNATURE=$(\n\topenssl dgst -sha1 -binary < \"$ARCHIVE_FILENAME\" \\\n\t| openssl dgst -dss1 -sign <(security find-generic-password -g -s \"$KEYCHAIN_PRIVATE_KEY_NAME\" 2>&1 1>/dev/null \\\n\t| perl -pe '($_) = /\"(.+)\"/; s/\\\\012/\\n/g' \\\n\t| ruby -r 'xml' -e 'p XML::Document.new(STDIN).find_first(\"//string[preceding-sibling::key[1] = \\\"NOTE\\\"]\")') \\\n\t| openssl enc -base64\n)\n\nif [ ! $SIGNATURE ]\nthen\n\techo Unable to load private key with name \"'$KEYCHAIN_PRIVATE_KEY_NAME'\" from keychain\n\n\texit 1\nfi\n\necho \"$SIGNATURE\" > \"$PROJECT_NAME.signature\"";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -598,11 +561,6 @@
 			isa = PBXTargetDependency;
 			target = 077938B51184F96A0013BC14 /* SpectacleHelper */;
 			targetProxy = 077938BD1184F9780013BC14 /* PBXContainerItemProxy */;
-		};
-		07BCE38911EE595E00FF6F5D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8D202CE80486D31800D8A456 /* Spectacle */;
-			targetProxy = 07BCE38811EE595E00FF6F5D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -658,22 +616,6 @@
 			};
 			name = Release;
 		};
-		07BCE38611EE595600FF6F5D /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */;
-			buildSettings = {
-				PRODUCT_NAME = "Build Distribution";
-			};
-			name = Development;
-		};
-		07BCE38711EE595600FF6F5D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */;
-			buildSettings = {
-				PRODUCT_NAME = "Build Distribution";
-			};
-			name = Release;
-		};
 		1DBD214908BA80EA00186707 /* Development */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAFB1183AC5100F75DD2 /* SpectacleDevelopment.xcconfig */;
@@ -712,15 +654,6 @@
 			buildConfigurations = (
 				077938B91184F96B0013BC14 /* Development */,
 				077938BA1184F96B0013BC14 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		07BCE38C11EE599900FF6F5D /* Build configuration list for PBXAggregateTarget "Create Distribution" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07BCE38611EE595600FF6F5D /* Development */,
-				07BCE38711EE595600FF6F5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
