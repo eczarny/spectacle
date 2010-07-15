@@ -504,7 +504,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PREFPANES_INSTALL_DIR=\"$USER_LIBRARY_DIR/PreferencePanes\"\n\nif [ ! $XCODE_VERSION_ACTUAL ]\nthen\n\techo \"Must be executed from within Xcode.\"\n\n\texit 1\nfi\n\nif [ -d \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\" ]\nthen\n\trm -rf \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\"\nfi\n\nln -s \"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME\" $PREFPANES_INSTALL_DIR";
+			shellScript = "PREFPANES_INSTALL_DIR=\"$USER_LIBRARY_DIR/PreferencePanes\"\n\nif [ ! $XCODE_VERSION_ACTUAL ]\nthen\n\techo \"Must be executed from within Xcode.\"\n\n\texit 1\nfi\n\nif [ -d \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\" ] || [ -L \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\" ]\nthen\n\trm -rf \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\"\nfi\n\nln -s \"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME\" $PREFPANES_INSTALL_DIR";
 		};
 		07B9705011E9764E004DEF19 /* Run Script: Include Git commit hash */ = {
 			isa = PBXShellScriptBuildPhase;
