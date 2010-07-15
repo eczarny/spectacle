@@ -11,8 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 07BCE38C11EE599900FF6F5D /* Build configuration list for PBXAggregateTarget "Build Distribution" */;
 			buildPhases = (
-				07BCE38411EE595600FF6F5D /* Run Script: Create archive */,
-				07BCE38B11EE597A00FF6F5D /* Run Script: Sign distribution */,
+				07BCE38411EE595600FF6F5D /* Run Script: Create archive and update appcast */,
 			);
 			dependencies = (
 				07BCE38911EE595E00FF6F5D /* PBXTargetDependency */,
@@ -544,33 +543,19 @@
 			shellPath = /usr/bin/ruby;
 			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\n    exit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\n    exit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\W*)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z]?)<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
 		};
-		07BCE38411EE595600FF6F5D /* Run Script: Create archive */ = {
+		07BCE38411EE595600FF6F5D /* Run Script: Create archive and update appcast */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script: Create archive";
+			name = "Run Script: Create archive and update appcast";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $BUILD_STYLE != Release ]\nthen\n\techo \"'$PRODUCT_NAME'\" target requires \"'Release'\" build style\n\n\texit 1\nfi\n\nVERSION=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.prefPane/Contents/Info\" CFBundleVersion)\nARCHIVE_FILENAME=\"$PROJECT_NAME $VERSION.zip\"\n\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -f \"$PROJECT_NAME\"*.zip\nditto -ck --keepParent \"$PROJECT_NAME.prefPane\" \"$ARCHIVE_FILENAME\"\n\nSIZE=$(stat -f %z \"$ARCHIVE_FILENAME\")\nPUBDATE=$(LC_TIME=en_US date +\"%a, %d %b %G %T %z\")\n";
-		};
-		07BCE38B11EE597A00FF6F5D /* Run Script: Sign distribution */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script: Sign distribution";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $BUILD_STYLE != Release ]\nthen\n\techo \"'$PRODUCT_NAME'\" target requires \"'Release'\" build style\n\n\texit 1\nfi\n\nVERSION=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.prefPane/Contents/Info\" CFBundleVersion)\nARCHIVE_FILENAME=\"$PROJECT_NAME $VERSION.zip\"\nKEYCHAIN_PRIVATE_KEY_NAME=\"Sparkle Private Key\"\n\ncd \"$BUILT_PRODUCTS_DIR\"\n\nSIGNATURE=$(\n\topenssl dgst -sha1 -binary < \"$ARCHIVE_FILENAME\" \\\n\t| openssl dgst -dss1 -sign <(security find-generic-password -g -s \"$KEYCHAIN_PRIVATE_KEY_NAME\" 2>&1 1>/dev/null | perl -pe '($_) = /\"(.+)\"/; s/\\\\012/\\n/g' | perl -MXML::LibXML -e 'print XML::LibXML->new()->parse_file(\"-\")->findvalue(q(//string[preceding-sibling::key[1] = \"NOTE\"]))') \\\n\t| openssl enc -base64\n)\n\necho \"Signature: $SIGNATURE\"\n\nif [ !$SIGNATURE ]\nthen\n\techo Unable to load signing private key with name \"'$KEYCHAIN_PRIVATE_KEY_NAME'\" from keychain\n\n\texit 1\nfi\n";
+			shellScript = "PROJECT_EXTENSION=\"prefPane\"\n\nif [ $BUILD_STYLE != Release ]\nthen\n\techo \"'$PRODUCT_NAME'\" target requires \"'Release'\" build style\n\n\texit 1\nfi\n\nVERSION=$(defaults read \"$BUILT_PRODUCTS_DIR/$PROJECT_NAME.$PROJECT_EXTENSION/Contents/Info\" CFBundleVersion)\nARCHIVE_FILENAME=\"$PROJECT_NAME-$VERSION.zip\"\nKEYCHAIN_PRIVATE_KEY_NAME=\"Sparkle Private Key\"\n\ncd \"$BUILT_PRODUCTS_DIR\"\nrm -f \"$PROJECT_NAME\"*.zip\nditto -ck --keepParent \"$PROJECT_NAME.$PROJECT_EXTENSION\" \"$ARCHIVE_FILENAME\"\n\nDATE=$(LC_TIME=en_US date +\"%a, %d %b %G %T %z\")\nSIZE=$(stat -f %z \"$ARCHIVE_FILENAME\")\n\nSIGNATURE=$(\n\topenssl dgst -sha1 -binary < \"$ARCHIVE_FILENAME\" \\\n\t| openssl dgst -dss1 -sign \\\n\t| security 2>&1 >/dev/null find-generic-password -gs \"$KEYCHAIN_PRIVATE_KEY_NAME\" \\\n\t| perl -pe '($_) = /\"(.+)\"/; s/\\\\012/\\n/g' \\\n\t| ruby -r 'rexml/document' -e 'p REXML::XPath.first(REXML::Document.new(STDIN.read), \"//string[preceding-sibling::key[1] = \\\"NOTE\\\"])\").text' \\\n\t| openssl enc -base64\n)\n\nif [ !$SIGNATURE ]\nthen\n\techo Unable to load private key with name \"'$KEYCHAIN_PRIVATE_KEY_NAME'\" from keychain\n\n\texit 1\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
