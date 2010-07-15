@@ -26,22 +26,20 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSUserDefaultsController" id="143250807">
-				<array class="NSMutableArray" key="NSDeclaredKeys">
-					<string>SpecacleAutomaticallyChecksForUpdates</string>
-				</array>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 			<object class="NSWindowTemplate" id="660800786">
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{946, 722}, {668, 455}}</string>
+				<string key="NSWindowRect">{{466, 418}, {668, 455}}</string>
 				<int key="NSWTFlags">1081606144</int>
 				<string key="NSWindowTitle">Spectacle</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<object class="NSMutableString" key="NSViewClass">
 					<characters key="NS.bytes">View</characters>
 				</object>
-				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
+				<string key="NSWindowContentMaxSize">{668, 455}</string>
+				<string key="NSWindowContentMinSize">{668, 455}</string>
 				<object class="NSView" key="NSWindowView" id="1037298196">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -487,7 +485,7 @@
 											<object class="NSTextField" id="115449899">
 												<reference key="NSNextResponder" ref="904167290"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{242, 119}, {138, 29}}</string>
+												<string key="NSFrame">{{242, 136}, {138, 25}}</string>
 												<reference key="NSSuperview" ref="904167290"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="268685191">
@@ -495,8 +493,8 @@
 													<int key="NSCellFlags2">138413056</int>
 													<string key="NSContents">Spectacle</string>
 													<object class="NSFont" key="NSSupport">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">24</double>
+														<string key="NSName">LucidaGrande-Bold</string>
+														<double key="NSSize">21</double>
 														<int key="NSfFlags">16</int>
 													</object>
 													<reference key="NSControlView" ref="115449899"/>
@@ -515,7 +513,7 @@
 													<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 													<string>NeXT TIFF v4.0 pasteboard type</string>
 												</set>
-												<string key="NSFrame">{{245, 156}, {132, 132}}</string>
+												<string key="NSFrame">{{245, 169}, {132, 132}}</string>
 												<reference key="NSSuperview" ref="904167290"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSImageCell" key="NSCell" id="274428554">
@@ -535,7 +533,7 @@
 											<object class="NSTextField" id="731444444">
 												<reference key="NSNextResponder" ref="904167290"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{242, 104}, {138, 13}}</string>
+												<string key="NSFrame">{{242, 115}, {138, 13}}</string>
 												<reference key="NSSuperview" ref="904167290"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="651311692">
@@ -547,13 +545,38 @@
 														<double key="NSSize">10</double>
 														<int key="NSfFlags">16</int>
 													</object>
-													<string key="NSPlaceholderString">Version</string>
+													<string key="NSPlaceholderString">0.0 rev. 0000000</string>
 													<reference key="NSControlView" ref="731444444"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
 													<object class="NSColor" key="NSTextColor">
-														<int key="NSColorSpace">1</int>
-														<bytes key="NSRGB">MC40OTgwMzkyMTU4IDAuNDk4MDM5MjE1OCAwLjQ5ODAzOTIxNTgAA</bytes>
+														<int key="NSColorSpace">6</int>
+														<string key="NSCatalogName">System</string>
+														<string key="NSColorName">disabledControlTextColor</string>
+														<object class="NSColor" key="NSColor">
+															<int key="NSColorSpace">3</int>
+															<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+														</object>
 													</object>
+												</object>
+											</object>
+											<object class="NSTextField" id="826793815">
+												<reference key="NSNextResponder" ref="904167290"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{194, 93}, {233, 14}}</string>
+												<reference key="NSSuperview" ref="904167290"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="986511422">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">138413056</int>
+													<string key="NSContents">Copyright © 2010 Divisible by Zero</string>
+													<object class="NSFont" key="NSSupport">
+														<string key="NSName">LucidaGrande</string>
+														<double key="NSSize">11</double>
+														<int key="NSfFlags">16</int>
+													</object>
+													<reference key="NSControlView" ref="826793815"/>
+													<reference key="NSBackgroundColor" ref="296516534"/>
+													<reference key="NSTextColor" ref="953564374"/>
 												</object>
 											</object>
 										</array>
@@ -578,8 +601,9 @@
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
-				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
+				<string key="NSScreenRect">{{0, 0}, {1600, 1178}}</string>
+				<string key="NSMinSize">{668, 477}</string>
+				<string key="NSMaxSize">{668, 477}</string>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -821,6 +845,7 @@
 							<reference ref="115449899"/>
 							<reference ref="649739403"/>
 							<reference ref="731444444"/>
+							<reference ref="826793815"/>
 						</array>
 						<reference key="parent" ref="921915506"/>
 					</object>
@@ -1196,17 +1221,32 @@
 						<reference key="object" ref="143250807"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">266</int>
+						<reference key="object" ref="826793815"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="986511422"/>
+						</array>
+						<reference key="parent" ref="904167290"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">267</int>
+						<reference key="object" ref="986511422"/>
+						<reference key="parent" ref="826793815"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBEditorWindowLastContentRect">{{760, 566}, {668, 455}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{466, 418}, {668, 455}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="12.IBViewEditorWindowController.showingLayoutRectangles"/>
-				<string key="12.IBWindowTemplateEditedContentRect">{{760, 566}, {668, 455}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{466, 418}, {668, 455}}</string>
 				<integer value="1" key="12.ImportedFromIB2"/>
-				<boolean value="NO" key="12.windowTemplate.hasMinSize"/>
-				<string key="12.windowTemplate.minSize">{224.664, 10}</string>
+				<boolean value="YES" key="12.windowTemplate.hasMaxSize"/>
+				<boolean value="YES" key="12.windowTemplate.hasMinSize"/>
+				<string key="12.windowTemplate.maxSize">{668, 455}</string>
+				<string key="12.windowTemplate.minSize">{668, 455}</string>
 				<string key="148.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="149.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="154.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1214,6 +1254,7 @@
 				<string key="159.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="160.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="161.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<reference key="161.IBUserGuides" ref="0"/>
 				<string key="164.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="165.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="167.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1264,6 +1305,9 @@
 				<string key="225.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="229.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="230.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="263.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="266.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="267.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="6.ImportedFromIB2"/>
 			</dictionary>
@@ -1271,7 +1315,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">265</int>
+			<int key="maxID">269</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
