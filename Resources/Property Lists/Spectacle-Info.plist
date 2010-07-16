@@ -33,7 +33,7 @@
 	<key>SUFeedURL</key>
 	<string>http://appcasts.divisiblebyzero.com/spectacle/appcast.xml</string>
 	<key>SUAllowsAutomaticUpdates</key>
-	<true/>
+	<false/>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
 	<key>SUPublicDSAKeyFile</key>

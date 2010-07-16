@@ -225,7 +225,11 @@
     if (sparkleUpdater) {
         [sparkleUpdater setDelegate: self];
         
-        [sparkleUpdater resetUpdateCycle];
+        if ([sparkleUpdater automaticallyChecksForUpdates]) {
+            [sparkleUpdater checkForUpdates: self];
+            
+            [sparkleUpdater resetUpdateCycle];
+        }
     } else {
         NSLog(@"Spectacle could not set up Sparkle.");
     }
