@@ -163,7 +163,7 @@
         
         [self connectToVendedHelperController];
     } else {
-        [myCheckForUpdatesButton setEnabled: NO];
+        [myAutomaticallyChecksForUpdatesButton setEnabled: NO];
         
         [self enableHotKeyRecorders: NO];
     }
@@ -177,7 +177,7 @@
     [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Stop")];
     [myToggleRunningStateButton setEnabled: YES];
     
-    [myCheckForUpdatesButton setEnabled: YES];
+    [myAutomaticallyChecksForUpdatesButton setEnabled: YES];
     
     [self connectToVendedHelperController];
 }
@@ -188,7 +188,7 @@
     [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Start")];
     [myToggleRunningStateButton setEnabled: YES];
     
-    [myCheckForUpdatesButton setEnabled: NO];
+    [myAutomaticallyChecksForUpdatesButton setEnabled: NO];
     
     if (myVendedHelperController) {
         [myVendedHelperController release];
@@ -214,9 +214,9 @@
         [self loadRegisteredHotKeys];
         
         if ([myVendedHelperController automaticallyChecksForUpdates]) {
-            [myCheckForUpdatesButton setState: NSOnState];
+            [myAutomaticallyChecksForUpdatesButton setState: NSOnState];
         } else {
-            [myCheckForUpdatesButton setState: NSOffState];
+            [myAutomaticallyChecksForUpdatesButton setState: NSOffState];
         }
     } else {
         NSLog(@"Connection to vended helper controller failed.");

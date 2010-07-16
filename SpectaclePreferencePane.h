@@ -32,7 +32,7 @@
     IBOutlet NSTextField *myStatusTextField;
     IBOutlet NSButton *myToggleRunningStateButton;
     IBOutlet NSButton *myLoginItemEnabledButton;
-    IBOutlet NSButton *myCheckForUpdatesButton;
+    IBOutlet NSButton *myAutomaticallyChecksForUpdatesButton;
     IBOutlet SpectacleHotKeyRecorder *myMoveToCenterHotKeyRecorder;
     IBOutlet SpectacleHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
     IBOutlet SpectacleHotKeyRecorder *myMoveToLeftHotKeyRecorder;

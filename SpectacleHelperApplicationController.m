@@ -74,7 +74,7 @@
                                         object: nil
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
-    [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
+    [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities helperApplicationBundle]];
     
     [self vendHelperController];
     
@@ -226,7 +226,7 @@
         [sparkleUpdater setDelegate: self];
         
         if ([sparkleUpdater automaticallyChecksForUpdates]) {
-            [sparkleUpdater checkForUpdates: self];
+            [sparkleUpdater checkForUpdatesInBackground];
             
             [sparkleUpdater resetUpdateCycle];
         }

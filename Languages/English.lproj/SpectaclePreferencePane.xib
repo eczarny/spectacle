@@ -25,9 +25,6 @@
 			<object class="NSCustomObject" id="278121016">
 				<string key="NSClassName">NSApplication</string>
 			</object>
-			<object class="NSUserDefaultsController" id="143250807">
-				<bool key="NSSharedInstance">YES</bool>
-			</object>
 			<object class="NSWindowTemplate" id="660800786">
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
@@ -41,7 +38,7 @@
 				<string key="NSWindowContentMaxSize">{668, 455}</string>
 				<string key="NSWindowContentMinSize">{668, 455}</string>
 				<object class="NSView" key="NSWindowView" id="1037298196">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSTabView" id="831456543">
@@ -49,7 +46,6 @@
 							<int key="NSvFlags">36</int>
 							<string key="NSFrame">{{13, 10}, {642, 439}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="680769229">
 									<string key="NSIdentifier">1</string>
@@ -62,7 +58,6 @@
 												<int key="NSvFlags">299</int>
 												<string key="NSFrame">{{313, 186}, {258, 18}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="814170206">
 													<int key="NSCellFlags">67239424</int>
@@ -94,7 +89,6 @@
 												<int key="NSvFlags">302</int>
 												<string key="NSFrame">{{50, 218}, {260, 17}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="143603814">
 													<int key="NSCellFlags">68288064</int>
@@ -127,7 +121,6 @@
 												<int key="NSvFlags">299</int>
 												<string key="NSFrame">{{313, 155}, {258, 18}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="798101798">
 													<int key="NSCellFlags">67239424</int>
@@ -150,7 +143,6 @@
 												<int key="NSvFlags">302</int>
 												<string key="NSFrame">{{50, 156}, {260, 17}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="363561694">
 													<int key="NSCellFlags">68288064</int>
@@ -167,7 +159,6 @@
 												<int key="NSvFlags">302</int>
 												<string key="NSFrame">{{50, 187}, {260, 17}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="247166552">
 													<int key="NSCellFlags">68288064</int>
@@ -184,7 +175,6 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{312, 218}, {168, 17}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="844411936">
 													<int key="NSCellFlags">68288064</int>
@@ -208,7 +198,6 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{479, 208}, {96, 32}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
-												<reference key="NSWindow"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="316946">
 													<int key="NSCellFlags">67239424</int>
@@ -227,7 +216,6 @@
 										</array>
 										<string key="NSFrame">{{10, 33}, {622, 393}}</string>
 										<reference key="NSSuperview" ref="831456543"/>
-										<reference key="NSWindow"/>
 									</object>
 									<string key="NSLabel">General</string>
 									<reference key="NSColor" ref="296516534"/>
@@ -598,8 +586,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{668, 455}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1600, 1178}}</string>
 				<string key="NSMinSize">{668, 477}</string>
@@ -745,14 +731,6 @@
 					<int key="connectionID">254</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myCheckForUpdatesButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="283572674"/>
-					</object>
-					<int key="connectionID">256</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">toggleCheckForUpdates:</string>
 						<reference key="source" ref="294453543"/>
@@ -761,20 +739,12 @@
 					<int key="connectionID">257</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.SpecacleAutomaticallyChecksForUpdates</string>
-						<reference key="source" ref="283572674"/>
-						<reference key="destination" ref="143250807"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="283572674"/>
-							<reference key="NSDestination" ref="143250807"/>
-							<string key="NSLabel">value: values.SpecacleAutomaticallyChecksForUpdates</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.SpecacleAutomaticallyChecksForUpdates</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myAutomaticallyChecksForUpdatesButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="283572674"/>
 					</object>
-					<int key="connectionID">265</int>
+					<int key="connectionID">270</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1217,11 +1187,6 @@
 						<reference key="parent" ref="853783944"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">263</int>
-						<reference key="object" ref="143250807"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">266</int>
 						<reference key="object" ref="826793815"/>
 						<array class="NSMutableArray" key="children">
@@ -1238,10 +1203,10 @@
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBEditorWindowLastContentRect">{{466, 418}, {668, 455}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{762, 431}, {668, 455}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="12.IBViewEditorWindowController.showingLayoutRectangles"/>
-				<string key="12.IBWindowTemplateEditedContentRect">{{466, 418}, {668, 455}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{762, 431}, {668, 455}}</string>
 				<integer value="1" key="12.ImportedFromIB2"/>
 				<boolean value="YES" key="12.windowTemplate.hasMaxSize"/>
 				<boolean value="YES" key="12.windowTemplate.hasMinSize"/>
@@ -1305,7 +1270,6 @@
 				<string key="225.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="229.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="230.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="263.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="266.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="267.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1315,7 +1279,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">269</int>
+			<int key="maxID">276</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1366,7 +1330,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="myCheckForUpdatesButton">NSButton</string>
+						<string key="myAutomaticallyChecksForUpdatesButton">NSButton</string>
 						<string key="myLoginItemEnabledButton">NSButton</string>
 						<string key="myMoveToBottomHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToCenterHotKeyRecorder">SpectacleHotKeyRecorder</string>
@@ -1384,8 +1348,8 @@
 						<string key="myVendedHelperController">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="myCheckForUpdatesButton">
-							<string key="name">myCheckForUpdatesButton</string>
+						<object class="IBToOneOutletInfo" key="myAutomaticallyChecksForUpdatesButton">
+							<string key="name">myAutomaticallyChecksForUpdatesButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myLoginItemEnabledButton">
@@ -1537,14 +1501,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="384837440">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSControl.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1914,14 +1870,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSTextFieldCell.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSUserDefaultsController</string>
-					<string key="superclassName">NSController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSUserDefaultsController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
