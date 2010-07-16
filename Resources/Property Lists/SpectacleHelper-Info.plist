@@ -19,9 +19,9 @@
 	<key>CFBundleSignature</key>
 	<string>ZERO</string>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>0.1.1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.1.1</string>
 	<key>NSMainNibFile</key>
 	<string>SpectacleHelper</string>
 	<key>NSPrincipalClass</key>
