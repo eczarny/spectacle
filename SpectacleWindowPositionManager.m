@@ -254,10 +254,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     if ((location == SpectacleScreenLocationBottomHalf) || (location == SpectacleScreenLocationLowerLeft) || (location == SpectacleScreenLocationLowerRight)) {
-        frontMostWindowRect.origin.y = adjustedVisibleFrameY + floor(visibleFrame.size.height / 2.0f) + [[NSStatusBar systemStatusBar] thickness];
+        frontMostWindowRect.origin.y = adjustedVisibleFrameY + floor(visibleFrame.size.height / 2.0f);
     } else {
         frontMostWindowRect.origin.y = adjustedVisibleFrameY;
     }
+    
+    frontMostWindowRect.origin.y = frontMostWindowRect.origin.y + [[NSStatusBar systemStatusBar] thickness];
     
     if ((location == SpectacleScreenLocationLeftHalf) || (location == SpectacleScreenLocationRightHalf)) {
         frontMostWindowRect.size.width = visibleFrame.size.width / 2.0f;
