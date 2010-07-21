@@ -227,7 +227,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (CGRect)centerFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrame: (CGRect)visibleFrame {
     frontMostWindowRect.origin.x = visibleFrame.origin.x + (visibleFrame.size.width / 2.0f) - (frontMostWindowRect.size.width / 2.0f);
-    frontMostWindowRect.origin.y = (visibleFrame.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f);
+    frontMostWindowRect.origin.y = (visibleFrame.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f) + [[NSStatusBar systemStatusBar] thickness];
     
     return frontMostWindowRect;
 }
@@ -236,7 +236,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     CGFloat adjustedVisibleFrameY = (visibleFrame.origin.y > 0.0f) ? 0.0f : visibleFrame.origin.y;
     
     frontMostWindowRect.origin.x = visibleFrame.origin.x;
-    frontMostWindowRect.origin.y = adjustedVisibleFrameY;
+    frontMostWindowRect.origin.y = adjustedVisibleFrameY + [[NSStatusBar systemStatusBar] thickness];
     
     frontMostWindowRect.size.width = visibleFrame.size.width;
     frontMostWindowRect.size.height = visibleFrame.size.height;
