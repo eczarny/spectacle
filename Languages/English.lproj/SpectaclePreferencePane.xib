@@ -530,16 +530,16 @@
 											<object class="NSTextField" id="731444444">
 												<reference key="NSNextResponder" ref="904167290"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{242, 115}, {138, 13}}</string>
+												<string key="NSFrame">{{242, 114}, {138, 14}}</string>
 												<reference key="NSSuperview" ref="904167290"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="651311692">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">138413056</int>
 													<string key="NSContents">0.0 rev. 0000000</string>
-													<object class="NSFont" key="NSSupport">
+													<object class="NSFont" key="NSSupport" id="662764438">
 														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">10</double>
+														<double key="NSSize">11</double>
 														<int key="NSfFlags">16</int>
 													</object>
 													<reference key="NSControlView" ref="731444444"/>
@@ -550,18 +550,14 @@
 											<object class="NSTextField" id="826793815">
 												<reference key="NSNextResponder" ref="904167290"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{194, 93}, {233, 14}}</string>
+												<string key="NSFrame">{{194, 92}, {233, 14}}</string>
 												<reference key="NSSuperview" ref="904167290"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="986511422">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">138413056</int>
 													<string key="NSContents">Copyright © 2010 Divisible by Zero</string>
-													<object class="NSFont" key="NSSupport">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">11</double>
-														<int key="NSfFlags">16</int>
-													</object>
+													<reference key="NSSupport" ref="662764438"/>
 													<reference key="NSControlView" ref="826793815"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
 													<reference key="NSTextColor" ref="953564374"/>
@@ -1205,10 +1201,10 @@
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBEditorWindowLastContentRect">{{762, 431}, {668, 455}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{528, 385}, {668, 455}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="12.IBViewEditorWindowController.showingLayoutRectangles"/>
-				<string key="12.IBWindowTemplateEditedContentRect">{{762, 431}, {668, 455}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{528, 385}, {668, 455}}</string>
 				<integer value="1" key="12.ImportedFromIB2"/>
 				<boolean value="YES" key="12.windowTemplate.hasMaxSize"/>
 				<boolean value="YES" key="12.windowTemplate.hasMinSize"/>
