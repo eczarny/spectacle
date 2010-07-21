@@ -248,13 +248,13 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     CGFloat adjustedVisibleFrameY = (visibleFrame.origin.y > 0.0f) ? 0.0f : visibleFrame.origin.y;
     
     if ((location >= SpectacleScreenLocationRightHalf) && (location < SpectacleScreenLocationTopHalf)) {
-        frontMostWindowRect.origin.x = visibleFrame.origin.x + (visibleFrame.size.width / 2.0f);
+        frontMostWindowRect.origin.x = visibleFrame.origin.x + floor(visibleFrame.size.width / 2.0f);
     } else {
         frontMostWindowRect.origin.x = visibleFrame.origin.x;
     }
     
     if ((location == SpectacleScreenLocationBottomHalf) || (location == SpectacleScreenLocationLowerLeft) || (location == SpectacleScreenLocationLowerRight)) {
-        frontMostWindowRect.origin.y = adjustedVisibleFrameY + (visibleFrame.size.height / 2.0f) + [[NSStatusBar systemStatusBar] thickness];
+        frontMostWindowRect.origin.y = adjustedVisibleFrameY + floor(visibleFrame.size.height / 2.0f) + [[NSStatusBar systemStatusBar] thickness];
     } else {
         frontMostWindowRect.origin.y = adjustedVisibleFrameY;
     }
