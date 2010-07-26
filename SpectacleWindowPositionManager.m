@@ -23,7 +23,7 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleAccessibilityElement.h"
 
-#define FlipVerticalOriginOfRectInRect(a, b) b.size.height - (a.origin.y + a.size.height)
+#define FlipVerticalOriginOfRectInRect(a, b) b.size.height - (a.origin.y + a.size.height) + abs([[NSScreen mainScreen] frame].size.height - b.size.height)
 
 #pragma mark -
 
@@ -148,7 +148,22 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect {
-    return [NSScreen mainScreen];
+    NSScreen *result = [NSScreen mainScreen];
+    
+    for (NSScreen *screen in [NSScreen screens]) {
+        CGRect frameOfScreen = [screen frame];
+        CGRect flippedRect = rect;
+        
+        flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, frameOfScreen);
+        
+        if (CGRectContainsRect(frameOfScreen, flippedRect)) {
+            result = screen;
+            
+            break;
+        }
+    }
+    
+    return result;
 }
 
 #pragma mark -
@@ -248,7 +263,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (CGRect)centerFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay {
-    frontMostWindowRect.origin.x = (visibleFrameOfDisplay.size.width / 2.0f) - (frontMostWindowRect.size.width / 2.0f);
+    frontMostWindowRect.origin.x = (visibleFrameOfDisplay.size.width / 2.0f) - (frontMostWindowRect.size.width / 2.0f) + visibleFrameOfDisplay.origin.x;
     frontMostWindowRect.origin.y = (visibleFrameOfDisplay.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f) + visibleFrameOfDisplay.origin.y;
     
     return frontMostWindowRect;
