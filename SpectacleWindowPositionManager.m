@@ -27,6 +27,10 @@
 
 #pragma mark -
 
+#define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
+
+#pragma mark -
+
 typedef enum {
     SpectacleScreenLocationNone = -1,
     SpectacleScreenLocationLeftHalf,
@@ -44,6 +48,8 @@ typedef enum {
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect;
+
+- (BOOL)rect: (CGRect)rect withinApproximateFrameOfScreen: (CGRect)screen;
 
 #pragma mark -
 
@@ -156,10 +162,25 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         
         flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, frameOfScreen);
         
-        if (CGRectContainsRect(frameOfScreen, flippedRect)) {
+        if (CGRectContainsRect(frameOfScreen, flippedRect) || [self rect: flippedRect withinApproximateFrameOfScreen: frameOfScreen]) {
             result = screen;
             
             break;
+        }
+    }
+    
+    return result;
+}
+
+- (BOOL)rect: (CGRect)rect withinApproximateFrameOfScreen: (CGRect)frameOfScreen {
+    CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
+    BOOL result = NO;
+    
+    if (!CGRectIsNull(intersectionOfRectAndFrameOfScreen)) {
+        CGFloat percentageOfRectWithinFrameOfScreen = AreaOfRect(intersectionOfRectAndFrameOfScreen) / AreaOfRect(rect);
+        
+        if (percentageOfRectWithinFrameOfScreen >= 0.65f) {
+            result = YES;
         }
     }
     
