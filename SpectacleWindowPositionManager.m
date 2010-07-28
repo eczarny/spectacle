@@ -49,7 +49,7 @@ typedef enum {
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect;
 
-- (BOOL)rect: (CGRect)rect withinApproximateFrameOfScreen: (CGRect)screen;
+- (BOOL)rect: (CGRect)rect isWithinApproximateFrameOfScreen: (CGRect)frameOfScreen;
 
 #pragma mark -
 
@@ -162,7 +162,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         
         flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, frameOfScreen);
         
-        if (CGRectContainsRect(frameOfScreen, flippedRect) || [self rect: flippedRect withinApproximateFrameOfScreen: frameOfScreen]) {
+        if (CGRectContainsRect(frameOfScreen, flippedRect) || [self rect: flippedRect isWithinApproximateFrameOfScreen: frameOfScreen]) {
             result = screen;
             
             break;
@@ -172,7 +172,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     return result;
 }
 
-- (BOOL)rect: (CGRect)rect withinApproximateFrameOfScreen: (CGRect)frameOfScreen {
+- (BOOL)rect: (CGRect)rect isWithinApproximateFrameOfScreen: (CGRect)frameOfScreen {
     CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
     BOOL result = NO;
     
