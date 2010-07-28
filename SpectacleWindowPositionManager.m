@@ -49,7 +49,7 @@ typedef enum {
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect;
 
-- (BOOL)rect: (CGRect)rect isWithinApproximateFrameOfScreen: (CGRect)frameOfScreen;
+- (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
 
 #pragma mark -
 
@@ -154,34 +154,40 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect {
+    CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
     NSScreen *result = [NSScreen mainScreen];
     
     for (NSScreen *screen in [NSScreen screens]) {
         CGRect frameOfScreen = [screen frame];
         CGRect flippedRect = rect;
+        CGFloat percentageOfRectWithinFrameOfScreen = 0.0f;
         
         flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, frameOfScreen);
         
-        if (CGRectContainsRect(frameOfScreen, flippedRect) || [self rect: flippedRect isWithinApproximateFrameOfScreen: frameOfScreen]) {
+        if (CGRectContainsRect(frameOfScreen, flippedRect)) {
             result = screen;
             
             break;
+        }
+        
+        percentageOfRectWithinFrameOfScreen = [self percentageOfRect: flippedRect withinFrameOfScreen: frameOfScreen];
+        
+        if (percentageOfRectWithinFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {
+            largestPercentageOfRectWithinFrameOfScreen = percentageOfRectWithinFrameOfScreen;
+            
+            result = screen;
         }
     }
     
     return result;
 }
 
-- (BOOL)rect: (CGRect)rect isWithinApproximateFrameOfScreen: (CGRect)frameOfScreen {
+- (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen {
     CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
-    BOOL result = NO;
+    CGFloat result = 0.0f;
     
     if (!CGRectIsNull(intersectionOfRectAndFrameOfScreen)) {
-        CGFloat percentageOfRectWithinFrameOfScreen = AreaOfRect(intersectionOfRectAndFrameOfScreen) / AreaOfRect(rect);
-        
-        if (percentageOfRectWithinFrameOfScreen >= 0.65f) {
-            result = YES;
-        }
+        result = AreaOfRect(intersectionOfRectAndFrameOfScreen) / AreaOfRect(rect);
     }
     
     return result;
