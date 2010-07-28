@@ -114,8 +114,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (void)adjustFrontMostWindowWithAction: (SpectacleWindowAction)action {
     CGRect frontMostWindowRect = [self rectOfFrontMostWindow];
     NSScreen *screenOfDisplay = [self screenOfDisplayContainingRect: frontMostWindowRect];
-    CGRect frameOfDisplay = [screenOfDisplay frame];
-    CGRect visibleFrameOfDisplay = [screenOfDisplay visibleFrame];
+    CGRect frameOfDisplay = NSRectToCGRect([screenOfDisplay frame]);
+    CGRect visibleFrameOfDisplay = NSRectToCGRect([screenOfDisplay visibleFrame]);
     
     if (!CGRectIsNull(frontMostWindowRect)) {
         frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfDisplay);
@@ -158,7 +158,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     NSScreen *result = [NSScreen mainScreen];
     
     for (NSScreen *screen in [NSScreen screens]) {
-        CGRect frameOfScreen = [screen frame];
+        CGRect frameOfScreen = NSRectToCGRect([screen frame]);
         CGRect flippedRect = rect;
         CGFloat percentageOfRectWithinFrameOfScreen = 0.0f;
         
