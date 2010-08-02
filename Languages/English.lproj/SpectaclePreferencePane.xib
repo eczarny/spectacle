@@ -239,13 +239,13 @@
 											<object class="NSTextField" id="392790238">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 311}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 311}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="411196531">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Fullscreen:</string>
+													<string key="NSContents">Fullscreen:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="392790238"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -255,20 +255,20 @@
 											<object class="NSCustomView" id="892031372">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 338}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 338}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="1045835021">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 340}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 340}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="363310871">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Center:</string>
+													<string key="NSContents">Center:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="1045835021"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -278,20 +278,112 @@
 											<object class="NSCustomView" id="131333354">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 309}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 309}, {140, 21}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<string key="NSClassName">SpectacleHotKeyRecorder</string>
+											</object>
+											<object class="NSTextField" id="712805000">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{312, 311}, {140, 17}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="512809309">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">71304192</int>
+													<string key="NSContents">Right Display:</string>
+													<reference key="NSSupport" ref="558112443"/>
+													<reference key="NSControlView" ref="712805000"/>
+													<reference key="NSBackgroundColor" ref="296516534"/>
+													<reference key="NSTextColor" ref="953564374"/>
+												</object>
+											</object>
+											<object class="NSCustomView" id="404944051">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{457, 338}, {140, 21}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<string key="NSClassName">SpectacleHotKeyRecorder</string>
+											</object>
+											<object class="NSTextField" id="1010005446">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{312, 340}, {140, 17}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="1011282440">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">71304192</int>
+													<string key="NSContents">Left Display:</string>
+													<reference key="NSSupport" ref="558112443"/>
+													<reference key="NSControlView" ref="1010005446"/>
+													<reference key="NSBackgroundColor" ref="296516534"/>
+													<reference key="NSTextColor" ref="953564374"/>
+												</object>
+											</object>
+											<object class="NSCustomView" id="396327960">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{457, 309}, {140, 21}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<string key="NSClassName">SpectacleHotKeyRecorder</string>
+											</object>
+											<object class="NSTextField" id="968353988">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{312, 253}, {140, 17}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="656160273">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">71304192</int>
+													<string key="NSContents">Bottom Display:</string>
+													<reference key="NSSupport" ref="558112443"/>
+													<reference key="NSControlView" ref="968353988"/>
+													<reference key="NSBackgroundColor" ref="296516534"/>
+													<reference key="NSTextColor" ref="953564374"/>
+												</object>
+											</object>
+											<object class="NSCustomView" id="854395784">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{457, 280}, {140, 21}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<string key="NSClassName">SpectacleHotKeyRecorder</string>
+											</object>
+											<object class="NSTextField" id="1031491520">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{312, 282}, {140, 17}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="85462084">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">71304192</int>
+													<string key="NSContents">Top Display:</string>
+													<reference key="NSSupport" ref="558112443"/>
+													<reference key="NSControlView" ref="1031491520"/>
+													<reference key="NSBackgroundColor" ref="296516534"/>
+													<reference key="NSTextColor" ref="953564374"/>
+												</object>
+											</object>
+											<object class="NSCustomView" id="782487862">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{457, 251}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="418540048">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 93}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 93}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="179727187">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Lower Left:</string>
+													<string key="NSContents">Lower Left Corner:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="418540048"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -301,13 +393,13 @@
 											<object class="NSTextField" id="367713353">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 64}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 64}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="826010600">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Upper Right:</string>
+													<string key="NSContents">Upper Right Corner:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="367713353"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -317,41 +409,41 @@
 											<object class="NSCustomView" id="479496419">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 62}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 62}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="610117253">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 120}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 120}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="212122309">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 33}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 33}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="104939073">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 91}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 91}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="9904289">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 122}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 122}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="501777980">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Upper Left:</string>
+													<string key="NSContents">Upper Left Corner:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="9904289"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -361,13 +453,13 @@
 											<object class="NSTextField" id="1062784998">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 35}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 35}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="1044515279">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Lower Right:</string>
+													<string key="NSContents">Lower Right Corner:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="1062784998"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -377,13 +469,13 @@
 											<object class="NSTextField" id="476498439">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 173}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 173}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="193376">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Bottom:</string>
+													<string key="NSContents">Bottom Half:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="476498439"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -393,13 +485,13 @@
 											<object class="NSTextField" id="30242730">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 260}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 260}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="214629698">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Left:</string>
+													<string key="NSContents">Left Half:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="30242730"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -409,41 +501,41 @@
 											<object class="NSCustomView" id="21634417">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 171}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 171}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="644599605">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 229}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 229}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="829582489">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 258}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 258}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="40111322">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{315, 200}, {150, 21}}</string>
+												<string key="NSFrame">{{167, 200}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="275956972">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 231}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 231}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="558494004">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Right:</string>
+													<string key="NSContents">Right Half:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="275956972"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -453,13 +545,13 @@
 											<object class="NSTextField" id="853783944">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{154, 202}, {156, 17}}</string>
+												<string key="NSFrame">{{22, 202}, {140, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="694766208">
 													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
-													<string key="NSContents">Move to Top:</string>
+													<string key="NSContents">Top Half:</string>
 													<reference key="NSSupport" ref="558112443"/>
 													<reference key="NSControlView" ref="853783944"/>
 													<reference key="NSBackgroundColor" ref="296516534"/>
@@ -744,6 +836,38 @@
 					</object>
 					<int key="connectionID">270</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myMoveToBottomDisplayHotKeyRecorder</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="782487862"/>
+					</object>
+					<int key="connectionID">289</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myMoveToLeftDisplayHotKeyRecorder</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="404944051"/>
+					</object>
+					<int key="connectionID">290</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myMoveToRightDisplayHotKeyRecorder</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="396327960"/>
+					</object>
+					<int key="connectionID">291</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myMoveToTopDisplayHotKeyRecorder</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="854395784"/>
+					</object>
+					<int key="connectionID">292</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -888,6 +1012,14 @@
 							<reference ref="275956972"/>
 							<reference ref="853783944"/>
 							<reference ref="1045835021"/>
+							<reference ref="712805000"/>
+							<reference ref="404944051"/>
+							<reference ref="1010005446"/>
+							<reference ref="396327960"/>
+							<reference ref="968353988"/>
+							<reference ref="854395784"/>
+							<reference ref="1031491520"/>
+							<reference ref="782487862"/>
 						</array>
 						<reference key="parent" ref="563872776"/>
 					</object>
@@ -1197,6 +1329,78 @@
 						<reference key="object" ref="986511422"/>
 						<reference key="parent" ref="826793815"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">277</int>
+						<reference key="object" ref="712805000"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="512809309"/>
+						</array>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">278</int>
+						<reference key="object" ref="404944051"/>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">279</int>
+						<reference key="object" ref="1010005446"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1011282440"/>
+						</array>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">280</int>
+						<reference key="object" ref="396327960"/>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">281</int>
+						<reference key="object" ref="1011282440"/>
+						<reference key="parent" ref="1010005446"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">282</int>
+						<reference key="object" ref="512809309"/>
+						<reference key="parent" ref="712805000"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">283</int>
+						<reference key="object" ref="968353988"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="656160273"/>
+						</array>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">284</int>
+						<reference key="object" ref="854395784"/>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">285</int>
+						<reference key="object" ref="1031491520"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="85462084"/>
+						</array>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">286</int>
+						<reference key="object" ref="782487862"/>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">287</int>
+						<reference key="object" ref="85462084"/>
+						<reference key="parent" ref="1031491520"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">288</int>
+						<reference key="object" ref="656160273"/>
+						<reference key="parent" ref="968353988"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1270,6 +1474,18 @@
 				<string key="230.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="266.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="267.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="277.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="278.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="279.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="280.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="281.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="282.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="283.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="284.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="285.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="286.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="287.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="288.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="6.ImportedFromIB2"/>
 			</dictionary>
@@ -1277,7 +1493,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">276</int>
+			<int key="maxID">292</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1330,13 +1546,17 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="myAutomaticallyChecksForUpdatesButton">NSButton</string>
 						<string key="myLoginItemEnabledButton">NSButton</string>
+						<string key="myMoveToBottomDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToBottomHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToCenterHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToFullscreenHotKeyRecorder">SpectacleHotKeyRecorder</string>
+						<string key="myMoveToLeftDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToLeftHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToLowerLeftHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToLowerRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
+						<string key="myMoveToRightDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
+						<string key="myMoveToTopDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToTopHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToUpperLeftHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myMoveToUpperRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
@@ -1354,6 +1574,10 @@
 							<string key="name">myLoginItemEnabledButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="myMoveToBottomDisplayHotKeyRecorder">
+							<string key="name">myMoveToBottomDisplayHotKeyRecorder</string>
+							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToBottomHotKeyRecorder">
 							<string key="name">myMoveToBottomHotKeyRecorder</string>
 							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
@@ -1364,6 +1588,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToFullscreenHotKeyRecorder">
 							<string key="name">myMoveToFullscreenHotKeyRecorder</string>
+							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="myMoveToLeftDisplayHotKeyRecorder">
+							<string key="name">myMoveToLeftDisplayHotKeyRecorder</string>
 							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLeftHotKeyRecorder">
@@ -1378,8 +1606,16 @@
 							<string key="name">myMoveToLowerRightHotKeyRecorder</string>
 							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="myMoveToRightDisplayHotKeyRecorder">
+							<string key="name">myMoveToRightDisplayHotKeyRecorder</string>
+							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToRightHotKeyRecorder">
 							<string key="name">myMoveToRightHotKeyRecorder</string>
+							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="myMoveToTopDisplayHotKeyRecorder">
+							<string key="name">myMoveToTopDisplayHotKeyRecorder</string>
 							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToTopHotKeyRecorder">
