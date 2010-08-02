@@ -28,8 +28,8 @@
 			<object class="NSWindowTemplate" id="660800786">
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{466, 418}, {668, 455}}</string>
-				<int key="NSWTFlags">1081606144</int>
+				<string key="NSWindowRect">{{162, 183}, {668, 455}}</string>
+				<int key="NSWTFlags">1073741824</int>
 				<string key="NSWindowTitle">Spectacle</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<object class="NSMutableString" key="NSViewClass">
@@ -239,7 +239,7 @@
 											<object class="NSTextField" id="392790238">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 311}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 315}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="411196531">
@@ -255,14 +255,14 @@
 											<object class="NSCustomView" id="892031372">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 338}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 342}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="1045835021">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 340}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 344}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="363310871">
@@ -278,14 +278,14 @@
 											<object class="NSCustomView" id="131333354">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 309}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 313}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="712805000">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{312, 311}, {140, 17}}</string>
+												<string key="NSFrame">{{312, 315}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="512809309">
@@ -301,14 +301,14 @@
 											<object class="NSCustomView" id="404944051">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{457, 338}, {140, 21}}</string>
+												<string key="NSFrame">{{447, 342}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="1010005446">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{312, 340}, {140, 17}}</string>
+												<string key="NSFrame">{{312, 344}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="1011282440">
@@ -324,14 +324,14 @@
 											<object class="NSCustomView" id="396327960">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{457, 309}, {140, 21}}</string>
+												<string key="NSFrame">{{447, 313}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="968353988">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{312, 253}, {140, 17}}</string>
+												<string key="NSFrame">{{312, 257}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="656160273">
@@ -347,14 +347,14 @@
 											<object class="NSCustomView" id="854395784">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{457, 280}, {140, 21}}</string>
+												<string key="NSFrame">{{447, 284}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="1031491520">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{312, 282}, {140, 17}}</string>
+												<string key="NSFrame">{{312, 286}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="85462084">
@@ -370,14 +370,14 @@
 											<object class="NSCustomView" id="782487862">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{457, 251}, {140, 21}}</string>
+												<string key="NSFrame">{{447, 255}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="418540048">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 93}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 90}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="179727187">
@@ -393,7 +393,7 @@
 											<object class="NSTextField" id="367713353">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 64}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 61}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="826010600">
@@ -409,35 +409,35 @@
 											<object class="NSCustomView" id="479496419">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 62}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 59}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="610117253">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 120}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 117}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="212122309">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 33}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 30}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="104939073">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 91}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 88}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="9904289">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 122}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 119}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="501777980">
@@ -453,7 +453,7 @@
 											<object class="NSTextField" id="1062784998">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 35}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 32}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="1044515279">
@@ -469,7 +469,7 @@
 											<object class="NSTextField" id="476498439">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 173}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 170}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="193376">
@@ -485,7 +485,7 @@
 											<object class="NSTextField" id="30242730">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 260}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 257}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="214629698">
@@ -501,35 +501,35 @@
 											<object class="NSCustomView" id="21634417">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 171}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 168}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="644599605">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 229}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 226}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="829582489">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 258}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 255}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="40111322">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{167, 200}, {140, 21}}</string>
+												<string key="NSFrame">{{167, 197}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
 											<object class="NSTextField" id="275956972">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 231}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 228}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="558494004">
@@ -545,7 +545,7 @@
 											<object class="NSTextField" id="853783944">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{22, 202}, {140, 17}}</string>
+												<string key="NSFrame">{{32, 199}, {130, 17}}</string>
 												<reference key="NSSuperview" ref="131596099"/>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="694766208">
@@ -1405,10 +1405,10 @@
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBEditorWindowLastContentRect">{{528, 385}, {668, 455}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{162, 183}, {668, 455}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="12.IBViewEditorWindowController.showingLayoutRectangles"/>
-				<string key="12.IBWindowTemplateEditedContentRect">{{528, 385}, {668, 455}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{162, 183}, {668, 455}}</string>
 				<integer value="1" key="12.ImportedFromIB2"/>
 				<boolean value="YES" key="12.windowTemplate.hasMaxSize"/>
 				<boolean value="YES" key="12.windowTemplate.hasMinSize"/>
@@ -1493,7 +1493,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">292</int>
+			<int key="maxID">293</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
