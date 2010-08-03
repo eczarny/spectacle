@@ -59,4 +59,14 @@
 
 - (void)moveFrontMostWindowToLowerRight: (id)sender;
 
+#pragma mark -
+
+- (void)moveFrontMostWindowToLeftDisplay: (id)sender;
+
+- (void)moveFrontMostWindowToRightDisplay: (id)sender;
+
+- (void)moveFrontMostWindowToTopDisplay: (id)sender;
+
+- (void)moveFrontMostWindowToBottomDisplay: (id)sender;
+
 @end

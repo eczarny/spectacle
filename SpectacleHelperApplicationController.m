@@ -165,6 +165,24 @@
 
 #pragma mark -
 
+- (void)moveFrontMostWindowToLeftDisplay: (id)sender {
+    NSLog(@"moveFrontMostWindowToLeftDisplay:");
+}
+
+- (void)moveFrontMostWindowToRightDisplay: (id)sender {
+    NSLog(@"moveFrontMostWindowToRightDisplay:");
+}
+
+- (void)moveFrontMostWindowToTopDisplay: (id)sender {
+    NSLog(@"moveFrontMostWindowToTopDisplay:");
+}
+
+- (void)moveFrontMostWindowToBottomDisplay: (id)sender {
+    NSLog(@"moveFrontMostWindowToBottomDisplay:");
+}
+
+#pragma mark -
+
 - (void)applicationWillTerminate: (NSNotification *)notification {
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperWillTerminateNotification
                                                                    object: nil
