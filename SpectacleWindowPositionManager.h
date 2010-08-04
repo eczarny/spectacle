@@ -36,7 +36,11 @@ typedef enum {
     SpectacleWindowActionUpperLeft,
     SpectacleWindowActionUpperRight,
     SpectacleWindowActionLowerLeft,
-    SpectacleWindowActionLowerRight
+    SpectacleWindowActionLowerRight,
+    SpectacleWindowActionLeftDisplay,
+    SpectacleWindowActionRightDisplay,
+    SpectacleWindowActionTopDisplay,
+    SpectacleWindowActionBottomDisplay
 } SpectacleWindowAction;
 
 #pragma mark -

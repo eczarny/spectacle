@@ -166,19 +166,19 @@
 #pragma mark -
 
 - (void)moveFrontMostWindowToLeftDisplay: (id)sender {
-    NSLog(@"moveFrontMostWindowToLeftDisplay:");
+    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionLeftDisplay];
 }
 
 - (void)moveFrontMostWindowToRightDisplay: (id)sender {
-    NSLog(@"moveFrontMostWindowToRightDisplay:");
+    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionRightDisplay];
 }
 
 - (void)moveFrontMostWindowToTopDisplay: (id)sender {
-    NSLog(@"moveFrontMostWindowToTopDisplay:");
+    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionTopDisplay];
 }
 
 - (void)moveFrontMostWindowToBottomDisplay: (id)sender {
-    NSLog(@"moveFrontMostWindowToBottomDisplay:");
+    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionBottomDisplay];
 }
 
 #pragma mark -

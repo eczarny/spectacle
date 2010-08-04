@@ -47,6 +47,12 @@ typedef enum {
 
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
+- (NSScreen *)screenOfDisplayWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect;
+
+- (NSScreen *)screenOfDisplayAdjacentToScreen: (NSScreen *)screen withAction: (SpectacleWindowAction)action andRect: (CGRect)rect;
+
+#pragma mark -
+
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect;
 
 - (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
@@ -113,29 +119,36 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)adjustFrontMostWindowWithAction: (SpectacleWindowAction)action {
     CGRect frontMostWindowRect = [self rectOfFrontMostWindow];
-    NSScreen *screenOfDisplay = [self screenOfDisplayContainingRect: frontMostWindowRect];
-    CGRect frameOfDisplay = NSRectToCGRect([screenOfDisplay frame]);
-    CGRect visibleFrameOfDisplay = NSRectToCGRect([screenOfDisplay visibleFrame]);
+    NSScreen *screenOfDisplay = [self screenOfDisplayWithAction: action andRect: frontMostWindowRect];
+    CGRect frameOfDisplay = CGRectNull;
+    CGRect visibleFrameOfDisplay = CGRectNull;
     
-    if (!CGRectIsNull(frontMostWindowRect)) {
-        frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfDisplay);
+    if (screenOfDisplay) {
+        frameOfDisplay = NSRectToCGRect([screenOfDisplay frame]);
+        visibleFrameOfDisplay = NSRectToCGRect([screenOfDisplay visibleFrame]);
         
-        frontMostWindowRect = [self invokeAction: action withFrontMostWindowRect: frontMostWindowRect andVisibleFrameOfDisplay: visibleFrameOfDisplay];
-        
-        if (!CGRectIsNull(frontMostWindowRect)) {
-            AXValueRef frontMostWindowRectPositionRef;
-            AXValueRef frontMostWindowRectWindowSizeRef;
-            
+        if (!CGRectIsNull(frontMostWindowRect) && !CGRectIsNull(frameOfDisplay) && !CGRectIsNull(visibleFrameOfDisplay)) {
             frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfDisplay);
             
-            frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
-            frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
+            frontMostWindowRect = [self invokeAction: action withFrontMostWindowRect: frontMostWindowRect andVisibleFrameOfDisplay: visibleFrameOfDisplay];
             
-            [myFrontMostWindowElement setValue: frontMostWindowRectPositionRef forAttribute: kAXPositionAttribute];
-            [myFrontMostWindowElement setValue: frontMostWindowRectWindowSizeRef forAttribute: kAXSizeAttribute];
+            if (!CGRectIsNull(frontMostWindowRect)) {
+                AXValueRef frontMostWindowRectPositionRef;
+                AXValueRef frontMostWindowRectWindowSizeRef;
+                
+                frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfDisplay);
+                
+                frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
+                frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
+                
+                [myFrontMostWindowElement setValue: frontMostWindowRectPositionRef forAttribute: kAXPositionAttribute];
+                [myFrontMostWindowElement setValue: frontMostWindowRectWindowSizeRef forAttribute: kAXSizeAttribute];
+            }
+        } else {
+            NSLog(@"Spectacle was unable to determine the size and location of the front most window.");
         }
     } else {
-        NSLog(@"Spectacle was unable to determine the size and location of the front most window.");
+        NSBeep();
     }
 }
 
@@ -152,6 +165,22 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
+
+- (NSScreen *)screenOfDisplayWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
+    NSScreen *result = [self screenOfDisplayContainingRect: rect];
+    
+    if (action >= SpectacleWindowActionLeftDisplay) {
+        result = [self screenOfDisplayAdjacentToScreen: result withAction: action andRect: rect];
+    }
+    
+    return result;
+}
+
+- (NSScreen *)screenOfDisplayAdjacentToScreen: (NSScreen *)screen withAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
+    return nil;
+}
+
+#pragma mark -
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect {
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
@@ -233,6 +262,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         NSLog(@"The visible frame of the display containing the front most window is null.");
         
         return result;
+    }
+    
+    if ((action >= SpectacleWindowActionLeftDisplay) && (action <= SpectacleWindowActionBottomDisplay)) {
+        action = SpectacleWindowActionFullScreen;
     }
     
     switch (action) {
