@@ -27,26 +27,26 @@
 
 enum {
     SpectacleHotKeyAlternateGlyph   = 0x2325,
-	SpectacleHotKeyCommandGlyph     = 0x2318,
-	SpectacleHotKeyControlGlyph     = 0x2303,
+    SpectacleHotKeyCommandGlyph     = 0x2318,
+    SpectacleHotKeyControlGlyph     = 0x2303,
     SpectacleHotKeyDeleteLeftGlyph  = 0x232B,
     SpectacleHotKeyDeleteRightGlyph = 0x2326,
     SpectacleHotKeyDownArrowGlyph   = 0x2193,
     SpectacleHotKeyLeftArrowGlyph   = 0x2190,
     SpectacleHotKeyPageDownGlyph    = 0x21DF,
     SpectacleHotKeyPageUpGlyph      = 0x21DE,
-    SpectacleHotKeyReturnGlyph      = 0x2305,
-	SpectacleHotKeyRightArrowGlyph  = 0x2192,
+    SpectacleHotKeyReturnGlyph      = 0x21A9,
+    SpectacleHotKeyRightArrowGlyph  = 0x2192,
     SpectacleHotKeyShiftGlyph       = 0x21E7,
     SpectacleHotKeyTabLeftGlyph     = 0x21E4,
     SpectacleHotKeyTabRightGlyph    = 0x21E5,
-	SpectacleHotKeyUpArrowGlyph     = 0x2191
+    SpectacleHotKeyUpArrowGlyph     = 0x2191
 };
 
 enum {
     SpectacleHotKeyAlternateCarbonKeyMask = 1 << 11,
-	SpectacleHotKeyCommandCarbonKeyMask   = 1 << 8,
-	SpectacleHotKeyControlCarbonKeyMask   = 1 << 12,
+    SpectacleHotKeyCommandCarbonKeyMask   = 1 << 8,
+    SpectacleHotKeyControlCarbonKeyMask   = 1 << 12,
     SpectacleHotKeyShiftCarbonKeyMask     = 1 << 9,
 };
 
