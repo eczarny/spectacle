@@ -307,7 +307,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
         frontMostWindowRect.size.width = visibleFrameOfDisplay.size.width;
         frontMostWindowRect.size.height = floor(visibleFrameOfDisplay.size.height / 2.0f);
-    } else if ((action != SpectacleWindowActionCenter) && (action != SpectacleWindowActionFullScreen)) {
+    } else if ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft) || (action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerLeft)) {
         frontMostWindowRect.size.width = floor(visibleFrameOfDisplay.size.width / 2.0f);
         frontMostWindowRect.size.height = floor(visibleFrameOfDisplay.size.height / 2.0f);
     } else if (action != SpectacleWindowActionCenter) {
