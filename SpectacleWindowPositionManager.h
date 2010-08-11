@@ -30,13 +30,13 @@ typedef enum {
     SpectacleWindowActionCenter,
     SpectacleWindowActionFullScreen,
     SpectacleWindowActionLeftHalf,
+    SpectacleWindowActionUpperLeft,
+    SpectacleWindowActionLowerLeft,
     SpectacleWindowActionRightHalf,
+    SpectacleWindowActionUpperRight,
+    SpectacleWindowActionLowerRight,
     SpectacleWindowActionTopHalf,
     SpectacleWindowActionBottomHalf,
-    SpectacleWindowActionUpperLeft,
-    SpectacleWindowActionUpperRight,
-    SpectacleWindowActionLowerLeft,
-    SpectacleWindowActionLowerRight,
     SpectacleWindowActionLeftDisplay,
     SpectacleWindowActionRightDisplay,
     SpectacleWindowActionTopDisplay,
@@ -53,6 +53,6 @@ typedef enum {
 
 #pragma mark -
 
-- (void)adjustFrontMostWindowWithAction: (SpectacleWindowAction)action;
+- (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action;
 
 @end

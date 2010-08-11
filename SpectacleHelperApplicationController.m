@@ -116,69 +116,69 @@
 #pragma mark -
 
 - (void)moveFrontMostWindowToCenter: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionCenter];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
 - (void)moveFrontMostWindowToFullScreen: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionFullScreen];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionFullScreen];
 }
 
 #pragma mark -
 
 - (void)moveFrontMostWindowToLeftHalf: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionLeftHalf];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftHalf];
 }
 
 - (void)moveFrontMostWindowToRightHalf: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionRightHalf];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightHalf];
 }
 
 - (void)moveFrontMostWindowToTopHalf: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionTopHalf];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopHalf];
 }
 
 - (void)moveFrontMostWindowToBottomHalf: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionBottomHalf];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
 - (void)moveFrontMostWindowToUpperLeft: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionUpperLeft];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperLeft];
 }
 
 - (void)moveFrontMostWindowToLowerLeft: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionLowerLeft];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
 - (void)moveFrontMostWindowToUpperRight: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionUpperRight];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperRight];
 }
 
 - (void)moveFrontMostWindowToLowerRight: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionLowerRight];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerRight];
 }
 
 #pragma mark -
 
 - (void)moveFrontMostWindowToLeftDisplay: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionLeftDisplay];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftDisplay];
 }
 
 - (void)moveFrontMostWindowToRightDisplay: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionRightDisplay];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightDisplay];
 }
 
 - (void)moveFrontMostWindowToTopDisplay: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionTopDisplay];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopDisplay];
 }
 
 - (void)moveFrontMostWindowToBottomDisplay: (id)sender {
-    [myWindowPositionManager adjustFrontMostWindowWithAction: SpectacleWindowActionBottomDisplay];
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomDisplay];
 }
 
 #pragma mark -
