@@ -35,11 +35,11 @@
 
 - (NSScreen *)screenOfDisplayWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect;
 
-- (NSScreen *)screenOfDisplayAdjacentToScreen: (NSScreen *)screen withAction: (SpectacleWindowAction)action;
-
-#pragma mark -
+- (NSScreen *)screenOfDisplayAdjacentToRect: (CGRect)rect withAction: (SpectacleWindowAction)action;
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect;
+
+#pragma mark -
 
 - (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
 
@@ -152,23 +152,63 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     NSScreen *result = [self screenOfDisplayContainingRect: rect];
     
     if ((action >= SpectacleWindowActionLeftDisplay) && (action <= SpectacleWindowActionBottomDisplay)) {
-        result = [self screenOfDisplayAdjacentToScreen: result withAction: action];
+        result = [self screenOfDisplayAdjacentToRect: NSRectToCGRect([result frame]) withAction: action];
     }
     
     return result;
 }
 
-- (NSScreen *)screenOfDisplayAdjacentToScreen: (NSScreen *)screen withAction: (SpectacleWindowAction)action {
+- (NSScreen *)screenOfDisplayAdjacentToRect: (CGRect)rect withAction: (SpectacleWindowAction)action {
     NSScreen *result = nil;
     
     for (NSScreen *screen in [NSScreen screens]) {
+        CGRect frameOfScreen = NSRectToCGRect([screen frame]);
         
+        if (action == SpectacleWindowActionLeftDisplay) {
+            if (frameOfScreen.origin.x < rect.origin.x) {
+                result = screen;
+                
+                break;
+            } else if (frameOfScreen.origin.x > rect.origin.x) {
+                result = screen;
+                
+                continue;
+            }
+        } else if (action == SpectacleWindowActionRightDisplay) {
+            if (frameOfScreen.origin.x < rect.origin.x) {
+                result = screen;
+                
+                continue;
+            } else if (frameOfScreen.origin.x > rect.origin.x) {
+                result = screen;
+                
+                break;
+            }
+        } else if (action == SpectacleWindowActionTopDisplay) {
+            if (frameOfScreen.origin.y > rect.origin.y) {
+                result = screen;
+                
+                break;
+            } else if (frameOfScreen.origin.y < rect.origin.y) {
+                result = screen;
+                
+                continue;
+            }
+        } else if (action == SpectacleWindowActionBottomDisplay) {
+            if (frameOfScreen.origin.y > rect.origin.y) {
+                result = screen;
+                
+                continue;
+            } else if (frameOfScreen.origin.y < rect.origin.y) {
+                result = screen;
+                
+                break;
+            }
+        }
     }
     
     return result;
 }
-
-#pragma mark -
 
 - (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect {
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
@@ -198,6 +238,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     return result;
 }
+
+#pragma mark -
 
 - (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen {
     CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
@@ -265,12 +307,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
         frontMostWindowRect.size.width = visibleFrameOfDisplay.size.width;
         frontMostWindowRect.size.height = floor(visibleFrameOfDisplay.size.height / 2.0f);
-    } else if (action == SpectacleWindowActionFullScreen) {
-        frontMostWindowRect.size.width = visibleFrameOfDisplay.size.width;
-        frontMostWindowRect.size.height = visibleFrameOfDisplay.size.height;
-    } else if (action != SpectacleWindowActionCenter) {
+    } else if ((action != SpectacleWindowActionCenter) && (action != SpectacleWindowActionFullScreen)) {
         frontMostWindowRect.size.width = floor(visibleFrameOfDisplay.size.width / 2.0f);
         frontMostWindowRect.size.height = floor(visibleFrameOfDisplay.size.height / 2.0f);
+    } else if (action != SpectacleWindowActionCenter) {
+        frontMostWindowRect.size.width = visibleFrameOfDisplay.size.width;
+        frontMostWindowRect.size.height = visibleFrameOfDisplay.size.height;
     }
     
     if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft)) {
