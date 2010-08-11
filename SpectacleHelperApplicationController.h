@@ -35,7 +35,7 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullScreen: (id)sender;
+- (void)moveFrontMostWindowToFullscreen: (id)sender;
 
 #pragma mark -
 

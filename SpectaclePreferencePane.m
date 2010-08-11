@@ -72,7 +72,7 @@
     
     myHotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
                          myMoveToCenterHotKeyRecorder,        SpectacleWindowActionMoveToCenter,
-                         myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullScreen,
+                         myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullscreen,
                          myMoveToLeftHotKeyRecorder,          SpectacleWindowActionMoveToLeftHalf,
                          myMoveToRightHotKeyRecorder,         SpectacleWindowActionMoveToRightHalf,
                          myMoveToTopHotKeyRecorder,           SpectacleWindowActionMoveToTopHalf,

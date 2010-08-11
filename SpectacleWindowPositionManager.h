@@ -28,7 +28,7 @@
 typedef enum {
     SpectacleWindowActionNone = -1,
     SpectacleWindowActionCenter,
-    SpectacleWindowActionFullScreen,
+    SpectacleWindowActionFullscreen,
     SpectacleWindowActionLeftHalf,
     SpectacleWindowActionUpperLeft,
     SpectacleWindowActionLowerLeft,

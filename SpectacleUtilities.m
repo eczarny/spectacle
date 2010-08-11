@@ -149,8 +149,8 @@
     
     if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
         selector = @selector(moveFrontMostWindowToCenter:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullScreen]) {
-        selector = @selector(moveFrontMostWindowToFullScreen:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullscreen]) {
+        selector = @selector(moveFrontMostWindowToFullscreen:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftHalf]) {
         selector = @selector(moveFrontMostWindowToLeftHalf:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToRightHalf]) {

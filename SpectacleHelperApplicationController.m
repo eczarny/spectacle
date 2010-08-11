@@ -121,8 +121,8 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullScreen: (id)sender {
-    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionFullScreen];
+- (void)moveFrontMostWindowToFullscreen: (id)sender {
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionFullscreen];
 }
 
 #pragma mark -
