@@ -149,8 +149,8 @@
     
     if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
         selector = @selector(moveFrontMostWindowToCenter:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullScreen]) {
-        selector = @selector(moveFrontMostWindowToFullScreen:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullscreen]) {
+        selector = @selector(moveFrontMostWindowToFullscreen:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftHalf]) {
         selector = @selector(moveFrontMostWindowToLeftHalf:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToRightHalf]) {
@@ -167,6 +167,14 @@
         selector = @selector(moveFrontMostWindowToUpperRight:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
         selector = @selector(moveFrontMostWindowToLowerRight:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftDisplay]) {
+        selector = @selector(moveFrontMostWindowToLeftDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToRightDisplay]) {
+        selector = @selector(moveFrontMostWindowToRightDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToTopDisplay]) {
+        selector = @selector(moveFrontMostWindowToTopDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomDisplay]) {
+        selector = @selector(moveFrontMostWindowToBottomDisplay:);
     }
     
     return [SpectacleHotKeyAction hotKeyActionFromTarget: target selector: selector];

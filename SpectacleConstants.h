@@ -56,7 +56,7 @@
 #pragma mark -
 
 #define SpectacleWindowActionMoveToCenter                @"MoveToCenter"
-#define SpectacleWindowActionMoveToFullScreen            @"MoveToFullScreen"
+#define SpectacleWindowActionMoveToFullscreen            @"MoveToFullscreen"
 #define SpectacleWindowActionMoveToLeftHalf              @"MoveToLeftHalf"
 #define SpectacleWindowActionMoveToRightHalf             @"MoveToRightHalf"
 #define SpectacleWindowActionMoveToTopHalf               @"MoveToTopHalf"
@@ -65,3 +65,7 @@
 #define SpectacleWindowActionMoveToLowerLeft             @"MoveToLowerLeft"
 #define SpectacleWindowActionMoveToUpperRight            @"MoveToUpperRight"
 #define SpectacleWindowActionMoveToLowerRight            @"MoveToLowerRight"
+#define SpectacleWindowActionMoveToLeftDisplay           @"MoveToLeftDisplay"
+#define SpectacleWindowActionMoveToRightDisplay          @"MoveToRightDisplay"
+#define SpectacleWindowActionMoveToTopDisplay            @"MoveToTopDisplay"
+#define SpectacleWindowActionMoveToBottomDisplay         @"MoveToBottomDisplay"

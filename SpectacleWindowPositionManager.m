@@ -31,23 +31,52 @@
 
 #pragma mark -
 
-typedef enum {
-    SpectacleScreenLocationNone = -1,
-    SpectacleScreenLocationLeftHalf,
-    SpectacleScreenLocationUpperLeft,
-    SpectacleScreenLocationLowerLeft,
-    SpectacleScreenLocationRightHalf,
-    SpectacleScreenLocationUpperRight,
-    SpectacleScreenLocationLowerRight,
-    SpectacleScreenLocationTopHalf,
-    SpectacleScreenLocationBottomHalf
-} SpectacleScreenLocation;
+#define RectFitsInRect(a, b) (a.size.width < b.size.width) && (a.size.height < b.size.height)
+
+#pragma mark -
+
+#define MovingToCenterRegionOfDisplay(action) action == SpectacleWindowActionCenter
+#define MovingToLeftRegionOfDisplay(action) (action >= SpectacleWindowActionLeftHalf) && (action <= SpectacleWindowActionLowerLeft)
+#define MovingToRightRegionOfDisplay(action) (action >= SpectacleWindowActionRightHalf) && (action <= SpectacleWindowActionLowerRight)
+#define MovingToTopRegionOfDisplay(action) (action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight)
+
+#pragma mark -
+
+#define MovingToLeftOrRightHalfOfDisplay(action) (action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)
+#define MovingToTopOrBottomHalfOfDisplay(action) (action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)
+
+#pragma mark -
+
+#define MovingToUpperOrLowerLeftOfDisplay(action) (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft)
+#define MovingToUpperOrLowerRightDisplay(action) (action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight)
+#define MovingToCornerOfDisplay(action) MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)
+
+#pragma mark -
+
+#define MovingToDisplay(action) (action >= SpectacleWindowActionLeftDisplay) && (action <= SpectacleWindowActionBottomDisplay)
+#define MovingToLeftDisplay(action) action == SpectacleWindowActionLeftDisplay
+#define MovingToRightDisplay(action) action == SpectacleWindowActionRightDisplay
+#define MovingToTopDisplay(action) action == SpectacleWindowActionTopDisplay
+#define MovingToBottomDisplay(action) action == SpectacleWindowActionBottomDisplay
+
+#pragma mark -
+
+#define RectIsLeftOfRect(a, b) (b.origin.x - a.size.width) == a.origin.x
+#define RectIsRightOfRect(a, b) (b.origin.x + b.size.width) == a.origin.x
+#define RectIsAboveRect(a, b) (b.origin.y + b.size.height) == a.origin.y
+#define RectIsBelowRect(a, b) (b.origin.y - a.size.height) == a.origin.y
 
 #pragma mark -
 
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
-- (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect;
+- (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect;
+
+- (NSScreen *)screenAdjacentToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action;
+
+- (NSScreen *)screenContainingRect: (CGRect)rect;
+
+#pragma mark -
 
 - (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
 
@@ -57,15 +86,7 @@ typedef enum {
 
 #pragma mark -
 
-- (CGRect)invokeAction: (SpectacleWindowAction)action withFrontMostWindowRect: (CGRect)frontMostWindowRect andVisibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay;
-
-#pragma mark -
-
-- (CGRect)centerFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay;
-
-- (CGRect)maximizeFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay;
-
-- (CGRect)moveFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay toLocation: (SpectacleScreenLocation)location;
+- (CGRect)moveFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
 
 @end
 
@@ -111,32 +132,47 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)adjustFrontMostWindowWithAction: (SpectacleWindowAction)action {
+- (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
     CGRect frontMostWindowRect = [self rectOfFrontMostWindow];
-    NSScreen *screenOfDisplay = [self screenOfDisplayContainingRect: frontMostWindowRect];
-    CGRect frameOfDisplay = NSRectToCGRect([screenOfDisplay frame]);
-    CGRect visibleFrameOfDisplay = NSRectToCGRect([screenOfDisplay visibleFrame]);
+    NSScreen *screenOfDisplay = [self screenWithAction: action andRect: frontMostWindowRect];
+    CGRect frameOfScreen = CGRectNull;
+    CGRect visibleFrameOfScreen = CGRectNull;
     
-    if (!CGRectIsNull(frontMostWindowRect)) {
-        frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfDisplay);
-        
-        frontMostWindowRect = [self invokeAction: action withFrontMostWindowRect: frontMostWindowRect andVisibleFrameOfDisplay: visibleFrameOfDisplay];
-        
-        if (!CGRectIsNull(frontMostWindowRect)) {
-            AXValueRef frontMostWindowRectPositionRef;
-            AXValueRef frontMostWindowRectWindowSizeRef;
-            
-            frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfDisplay);
-            
-            frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
-            frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
-            
-            [myFrontMostWindowElement setValue: frontMostWindowRectPositionRef forAttribute: kAXPositionAttribute];
-            [myFrontMostWindowElement setValue: frontMostWindowRectWindowSizeRef forAttribute: kAXSizeAttribute];
-        }
-    } else {
-        NSLog(@"Spectacle was unable to determine the size and location of the front most window.");
+    if (screenOfDisplay) {
+        frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
+        visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
     }
+    
+    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen)) {
+        NSBeep();
+        
+        return;
+    }
+    
+    frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
+    
+    if (MovingToDisplay(action) && RectFitsInRect(frontMostWindowRect, visibleFrameOfScreen)) {
+        action = SpectacleWindowActionCenter;
+    }
+    
+    frontMostWindowRect = [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+    
+    if (CGRectIsNull(frontMostWindowRect)) {
+        NSBeep();
+        
+        return;
+    }
+    
+    AXValueRef frontMostWindowRectPositionRef;
+    AXValueRef frontMostWindowRectWindowSizeRef;
+    
+    frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
+    
+    frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
+    frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
+    
+    [myFrontMostWindowElement setValue: frontMostWindowRectPositionRef forAttribute: kAXPositionAttribute];
+    [myFrontMostWindowElement setValue: frontMostWindowRectWindowSizeRef forAttribute: kAXSizeAttribute];
 }
 
 #pragma mark -
@@ -153,34 +189,70 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
-- (NSScreen *)screenOfDisplayContainingRect: (CGRect)rect {
-    CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
-    NSScreen *result = [NSScreen mainScreen];
+- (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
+    NSScreen *result = [self screenContainingRect: rect];
     
-    for (NSScreen *screen in [NSScreen screens]) {
-        CGRect frameOfScreen = NSRectToCGRect([screen frame]);
-        CGRect flippedRect = rect;
-        CGFloat percentageOfRectWithinFrameOfScreen = 0.0f;
+    if (MovingToDisplay(action)) {
+        result = [self screenAdjacentToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action];
+    }
+    
+    return result;
+}
+
+- (NSScreen *)screenAdjacentToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
+    NSScreen *result = nil;
+    
+    for (NSScreen *currentScreen in [NSScreen screens]) {
+        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
         
-        flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, frameOfScreen);
-        
-        if (CGRectContainsRect(frameOfScreen, flippedRect)) {
-            result = screen;
-            
-            break;
+        if (CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
+            continue;
         }
         
-        percentageOfRectWithinFrameOfScreen = [self percentageOfRect: flippedRect withinFrameOfScreen: frameOfScreen];
-        
-        if (percentageOfRectWithinFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {
-            largestPercentageOfRectWithinFrameOfScreen = percentageOfRectWithinFrameOfScreen;
-            
-            result = screen;
+        if (MovingToLeftDisplay(action) && RectIsLeftOfRect(currentFrameOfScreen, frameOfScreen)) {
+            result = currentScreen;
+        } else if (MovingToRightDisplay(action) && RectIsRightOfRect(currentFrameOfScreen, frameOfScreen)) {
+            result = currentScreen;
+        } else if (MovingToTopDisplay(action) && RectIsAboveRect(currentFrameOfScreen, frameOfScreen)) {
+            result = currentScreen;
+        } else if (MovingToBottomDisplay(action) && RectIsBelowRect(currentFrameOfScreen, frameOfScreen)) {
+            result = currentScreen;
         }
     }
     
     return result;
 }
+
+- (NSScreen *)screenContainingRect: (CGRect)rect {
+    CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
+    NSScreen *result = [NSScreen mainScreen];
+    
+    for (NSScreen *currentScreen in [NSScreen screens]) {
+        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
+        CGRect flippedRect = rect;
+        CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
+        
+        flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, currentFrameOfScreen);
+        
+        if (CGRectContainsRect(currentFrameOfScreen, flippedRect)) {
+            result = currentScreen;
+            
+            break;
+        }
+        
+        percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect: flippedRect withinFrameOfScreen: currentFrameOfScreen];
+        
+        if (percentageOfRectWithinCurrentFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {
+            largestPercentageOfRectWithinFrameOfScreen = percentageOfRectWithinCurrentFrameOfScreen;
+            
+            result = currentScreen;
+        }
+    }
+    
+    return result;
+}
+
+#pragma mark -
 
 - (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen {
     CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
@@ -225,106 +297,38 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (CGRect)invokeAction: (SpectacleWindowAction)action withFrontMostWindowRect: (CGRect)frontMostWindowRect andVisibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay {
-    SpectacleScreenLocation location = SpectacleScreenLocationNone;
-    CGRect result = CGRectNull;
-    
-    if (CGRectIsNull(visibleFrameOfDisplay)) {
-        NSLog(@"The visible frame of the display containing the front most window is null.");
-        
-        return result;
-    }
-    
-    switch (action) {
-        case SpectacleWindowActionCenter:
-            result = [self centerFrontMostWindowRect: frontMostWindowRect visibleFrameOfDisplay: visibleFrameOfDisplay];
-            
-            break;
-        case SpectacleWindowActionFullScreen:
-            result = [self maximizeFrontMostWindowRect: frontMostWindowRect visibleFrameOfDisplay: visibleFrameOfDisplay];
-            
-            break;
-        case SpectacleWindowActionLeftHalf:
-            location = SpectacleScreenLocationLeftHalf;
-            
-            break;
-        case SpectacleWindowActionRightHalf:
-            location = SpectacleScreenLocationRightHalf;
-            
-            break;
-        case SpectacleWindowActionTopHalf:
-            location = SpectacleScreenLocationTopHalf;
-            
-            break;
-        case SpectacleWindowActionBottomHalf:
-            location = SpectacleScreenLocationBottomHalf;
-            
-            break;
-        case SpectacleWindowActionUpperLeft:
-            location = SpectacleScreenLocationUpperLeft;
-            
-            break;
-        case SpectacleWindowActionLowerLeft:
-            location = SpectacleScreenLocationLowerLeft;
-            
-            break;
-        case SpectacleWindowActionUpperRight:
-            location = SpectacleScreenLocationUpperRight;
-            
-            break;
-        case SpectacleWindowActionLowerRight:
-            location = SpectacleScreenLocationLowerRight;
-            
-            break;
-        default:
-            NSLog(@"The desired window action does not exist.");
-    }
-    
-    if (location != SpectacleScreenLocationNone) {
-        result = [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfDisplay: visibleFrameOfDisplay toLocation: location];
-    }
-    
-    return result;
-}
-
-#pragma mark -
-
-- (CGRect)centerFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay {
-    frontMostWindowRect.origin.x = (visibleFrameOfDisplay.size.width / 2.0f) - (frontMostWindowRect.size.width / 2.0f) + visibleFrameOfDisplay.origin.x;
-    frontMostWindowRect.origin.y = (visibleFrameOfDisplay.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f) + visibleFrameOfDisplay.origin.y;
-    
-    return frontMostWindowRect;
-}
-
-- (CGRect)maximizeFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay {
-    return visibleFrameOfDisplay;
-}
-
-- (CGRect)moveFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfDisplay: (CGRect)visibleFrameOfDisplay toLocation: (SpectacleScreenLocation)location {
-    if ((location >= SpectacleScreenLocationRightHalf) && (location < SpectacleScreenLocationTopHalf)) {
-        frontMostWindowRect.origin.x = visibleFrameOfDisplay.origin.x + floor(visibleFrameOfDisplay.size.width / 2.0f);
+- (CGRect)moveFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    if (MovingToRightRegionOfDisplay(action)) {
+        frontMostWindowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
+    } else if (MovingToCenterRegionOfDisplay(action)) {
+        frontMostWindowRect.origin.x = (visibleFrameOfScreen.size.width / 2.0f) - (frontMostWindowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
     } else {
-        frontMostWindowRect.origin.x = visibleFrameOfDisplay.origin.x;
+        frontMostWindowRect.origin.x = visibleFrameOfScreen.origin.x;
     }
     
-    if ((location == SpectacleScreenLocationTopHalf) || (location == SpectacleScreenLocationUpperLeft) || (location == SpectacleScreenLocationUpperRight)) {
-        frontMostWindowRect.origin.y = visibleFrameOfDisplay.origin.y + ceil(visibleFrameOfDisplay.size.height / 2.0f);
+    if (MovingToTopRegionOfDisplay(action)) {
+        frontMostWindowRect.origin.y = visibleFrameOfScreen.origin.y + ceil(visibleFrameOfScreen.size.height / 2.0f);
+    } else if (MovingToCenterRegionOfDisplay(action)) {
+        frontMostWindowRect.origin.y = (visibleFrameOfScreen.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
     } else {
-        frontMostWindowRect.origin.y = visibleFrameOfDisplay.origin.y;
+        frontMostWindowRect.origin.y = visibleFrameOfScreen.origin.y;
     }
     
-    if ((location == SpectacleScreenLocationLeftHalf) || (location == SpectacleScreenLocationRightHalf)) {
-        frontMostWindowRect.size.width = floor(visibleFrameOfDisplay.size.width / 2.0f);
-        frontMostWindowRect.size.height = visibleFrameOfDisplay.size.height;
-    } else if ((location == SpectacleScreenLocationTopHalf) || (location == SpectacleScreenLocationBottomHalf)) {
-        frontMostWindowRect.size.width = visibleFrameOfDisplay.size.width;
-        frontMostWindowRect.size.height = floor(visibleFrameOfDisplay.size.height / 2.0f);
-    } else {
-        frontMostWindowRect.size.width = floor(visibleFrameOfDisplay.size.width / 2.0f);
-        frontMostWindowRect.size.height = floor(visibleFrameOfDisplay.size.height / 2.0f);
+    if (MovingToLeftOrRightHalfOfDisplay(action)) {
+        frontMostWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
+        frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
+    } else if (MovingToTopOrBottomHalfOfDisplay(action)) {
+        frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
+        frontMostWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
+    } else if (MovingToCornerOfDisplay(action)) {
+        frontMostWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
+        frontMostWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
+    } else if (!MovingToCenterRegionOfDisplay(action)) {
+        frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
+        frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
     }
     
-    if ((location == SpectacleScreenLocationLeftHalf) || (location == SpectacleScreenLocationUpperLeft) || (location == SpectacleScreenLocationLowerLeft)) {
+    if (MovingToLeftRegionOfDisplay(action)) {
         frontMostWindowRect.size.width = frontMostWindowRect.size.width - 1.0f;
     }
     

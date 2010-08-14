@@ -71,16 +71,20 @@
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     myHotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
-                         myMoveToCenterHotKeyRecorder,     SpectacleWindowActionMoveToCenter,
-                         myMoveToFullscreenHotKeyRecorder, SpectacleWindowActionMoveToFullScreen,
-                         myMoveToLeftHotKeyRecorder,       SpectacleWindowActionMoveToLeftHalf,
-                         myMoveToRightHotKeyRecorder,      SpectacleWindowActionMoveToRightHalf,
-                         myMoveToTopHotKeyRecorder,        SpectacleWindowActionMoveToTopHalf,
-                         myMoveToBottomHotKeyRecorder,     SpectacleWindowActionMoveToBottomHalf,
-                         myMoveToUpperLeftHotKeyRecorder,  SpectacleWindowActionMoveToUpperLeft,
-                         myMoveToLowerLeftHotKeyRecorder,  SpectacleWindowActionMoveToLowerLeft,
-                         myMoveToUpperRightHotKeyRecorder, SpectacleWindowActionMoveToUpperRight,
-                         myMoveToLowerRightHotKeyRecorder, SpectacleWindowActionMoveToLowerRight,
+                         myMoveToCenterHotKeyRecorder,        SpectacleWindowActionMoveToCenter,
+                         myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullscreen,
+                         myMoveToLeftHotKeyRecorder,          SpectacleWindowActionMoveToLeftHalf,
+                         myMoveToRightHotKeyRecorder,         SpectacleWindowActionMoveToRightHalf,
+                         myMoveToTopHotKeyRecorder,           SpectacleWindowActionMoveToTopHalf,
+                         myMoveToBottomHotKeyRecorder,        SpectacleWindowActionMoveToBottomHalf,
+                         myMoveToUpperLeftHotKeyRecorder,     SpectacleWindowActionMoveToUpperLeft,
+                         myMoveToLowerLeftHotKeyRecorder,     SpectacleWindowActionMoveToLowerLeft,
+                         myMoveToUpperRightHotKeyRecorder,    SpectacleWindowActionMoveToUpperRight,
+                         myMoveToLowerRightHotKeyRecorder,    SpectacleWindowActionMoveToLowerRight,
+                         myMoveToLeftDisplayHotKeyRecorder,   SpectacleWindowActionMoveToLeftDisplay,
+                         myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
+                         myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
+                         myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
                          nil];
     
     [self toggleControlsBasedOnSpectacleRunningState];

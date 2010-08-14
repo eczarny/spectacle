@@ -35,7 +35,7 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullScreen: (id)sender;
+- (void)moveFrontMostWindowToFullscreen: (id)sender;
 
 #pragma mark -
 
@@ -58,5 +58,15 @@
 - (void)moveFrontMostWindowToUpperRight: (id)sender;
 
 - (void)moveFrontMostWindowToLowerRight: (id)sender;
+
+#pragma mark -
+
+- (void)moveFrontMostWindowToLeftDisplay: (id)sender;
+
+- (void)moveFrontMostWindowToRightDisplay: (id)sender;
+
+- (void)moveFrontMostWindowToTopDisplay: (id)sender;
+
+- (void)moveFrontMostWindowToBottomDisplay: (id)sender;
 
 @end
