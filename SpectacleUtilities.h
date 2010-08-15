@@ -50,6 +50,10 @@
 
 #pragma mark -
 
++ (NSArray *)hotKeyNames;
+
+#pragma mark -
+
 + (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target;
 
 #pragma mark -

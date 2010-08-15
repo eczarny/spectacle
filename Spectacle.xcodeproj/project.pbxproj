@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070031B01217712E001D4C46 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
 		0700947B11A5F575000C87DC /* SpecialHotKeyTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */; };
 		07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07088270119A301800EC9426 /* SpectacleHelperController.m */; };
 		07088356119A443E00EC9426 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
@@ -85,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		070031AF1217712E001D4C46 /* HotKeyNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = HotKeyNames.plist; path = "Resources/Property Lists/HotKeyNames.plist"; sourceTree = "<group>"; };
 		0706C0431191092B0068F04B /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
 		0708826F119A301800EC9426 /* SpectacleHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperController.h; sourceTree = "<group>"; };
 		07088270119A301800EC9426 /* SpectacleHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHelperController.m; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				0706C0431191092B0068F04B /* Defaults.plist */,
+				070031AF1217712E001D4C46 /* HotKeyNames.plist */,
 				07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */,
 				8D202CF70486D31800D8A456 /* Spectacle-Info.plist */,
 				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
@@ -470,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				074A8F72119FAF9300940841 /* Defaults.plist in Resources */,
+				070031B01217712E001D4C46 /* HotKeyNames.plist in Resources */,
 				07088356119A443E00EC9426 /* InfoPlist.strings in Resources */,
 				07BB544C11866B090045663F /* Localizable.strings in Resources */,
 				0700947B11A5F575000C87DC /* SpecialHotKeyTranslations.plist in Resources */,

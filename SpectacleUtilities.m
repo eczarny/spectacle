@@ -127,6 +127,16 @@
 
 #pragma mark -
 
++ (NSArray *)hotKeyNames {
+    NSBundle *bundle = [SpectacleUtilities helperApplicationBundle];
+    NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: ZeroKitPropertyListFileExtension];
+    NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
+    
+    return hotKeyNames;
+}
+
+#pragma mark -
+
 + (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target {
     NSMutableArray *hotKeys = [NSMutableArray array];
     
