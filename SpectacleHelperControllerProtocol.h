@@ -26,15 +26,15 @@
 
 @protocol SpectacleHelperControllerProtocol
 
-- (SpectacleHotKey *)registeredHotKeyForName: (in NSString *)name;
+- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
 
 #pragma mark -
 
-- (oneway void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (bycopy in NSString *)name;
+- (oneway void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (NSString *)name;
 
 #pragma mark -
 
-- (oneway void)unregisterHotKeyWithName: (in NSString *)name;
+- (oneway void)unregisterHotKeyWithName: (NSString *)name;
 
 #pragma mark -
 
