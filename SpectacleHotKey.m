@@ -43,9 +43,16 @@
 
 - (id)initWithCoder: (NSCoder *)coder {
     if (self = [super init]) {
-        myHotKeyName = [[coder decodeObjectForKey: @"name"] retain];
-        myKeyCode = [coder decodeIntegerForKey: @"keyCode"];
-        myModifiers = [coder decodeIntegerForKey: @"modifiers"];
+        if ([coder allowsKeyedCoding]) {
+            myHotKeyName = [[coder decodeObjectForKey: @"name"] retain];
+            myKeyCode = [coder decodeIntegerForKey: @"keyCode"];
+            myModifiers = [coder decodeIntegerForKey: @"modifiers"];
+        } else {
+            myHotKeyName = [coder decodeObject];
+            
+            [coder decodeValueOfObjCType: @encode(NSInteger) at: &myKeyCode];
+            [coder decodeValueOfObjCType: @encode(NSInteger) at: &myModifiers];
+        }
     }
     
     return self;
@@ -54,9 +61,21 @@
 #pragma mark -
 
 - (void)encodeWithCoder: (NSCoder *)coder {
-    [coder encodeObject: myHotKeyName forKey: @"name"];
-    [coder encodeInteger: myKeyCode forKey: @"keyCode"];
-    [coder encodeInteger: myModifiers forKey: @"modifiers"];
+    if ([coder allowsKeyedCoding]) {
+        [coder encodeObject: myHotKeyName forKey: @"name"];
+        [coder encodeInteger: myKeyCode forKey: @"keyCode"];
+        [coder encodeInteger: myModifiers forKey: @"modifiers"];
+    } else {
+        [coder encodeObject: myHotKeyName];
+        [coder encodeValueOfObjCType: @encode(NSInteger) at: &myKeyCode];
+        [coder encodeValueOfObjCType: @encode(NSInteger) at: &myModifiers];
+    }
+}
+
+#pragma mark -
+
+- (id)replacementObjectForPortCoder: (NSPortCoder *)encoder {
+    return self;
 }
 
 #pragma mark -
