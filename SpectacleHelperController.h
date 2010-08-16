@@ -21,28 +21,29 @@
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SpectacleHelperControllerProtocol.h"
 
 @class SpectacleHotKeyManager, SpectacleHelperApplicationController, SpectacleHotKey;
 
-@interface SpectacleHelperController : NSObject {
+@interface SpectacleHelperController : NSObject<SpectacleHelperControllerProtocol> {
     SpectacleHotKeyManager *myHotKeyManager;
     IBOutlet SpectacleHelperApplicationController *myHelperApplicationController;
 }
 
-- (SpectacleHotKey *)registeredHotKeyForName: (in NSString *)name;
+- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
 
 #pragma mark -
 
-- (oneway void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (bycopy in NSString *)name;
+- (void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (NSString *)name;
 
 #pragma mark -
 
-- (oneway void)unregisterHotKeyWithName: (in NSString *)name;
+- (void)unregisterHotKeyWithName: (NSString *)name;
 
 #pragma mark -
 
 - (BOOL)automaticallyChecksForUpdates;
 
-- (oneway void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates;
+- (void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates;
 
 @end

@@ -39,13 +39,13 @@
 
 #pragma mark -
 
-- (SpectacleHotKey *)registeredHotKeyForName: (in NSString *)name {
+- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name {
     return [myHotKeyManager registeredHotKeyForName: name];
 }
 
 #pragma mark -
 
-- (oneway void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (bycopy in NSString *)name {
+- (void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (NSString *)name {
     SpectacleHotKey *hotKey = [[[SpectacleHotKey alloc] initWithKeyCode: keyCode modifiers: modifiers] autorelease];
     
     [hotKey setHotKeyName: name];
@@ -57,7 +57,7 @@
 
 #pragma mark -
 
-- (oneway void)unregisterHotKeyWithName: (in NSString *)name {
+- (void)unregisterHotKeyWithName: (NSString *)name {
     [myHotKeyManager unregisterHotKeyForName: name];
 }
 
@@ -67,7 +67,7 @@
     return [[SUUpdater updaterForBundle: [SpectacleUtilities preferencePaneBundle]] automaticallyChecksForUpdates];
 }
 
-- (oneway void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates {
+- (void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates {
     [[SUUpdater updaterForBundle: [SpectacleUtilities preferencePaneBundle]] setAutomaticallyChecksForUpdates: automaticallyChecksForUpdates];
 }
 
