@@ -128,7 +128,7 @@
     @try {
         [myVendedHelperController setAutomaticallyChecksForUpdates: ![myVendedHelperController automaticallyChecksForUpdates]];
     } @catch (NSException *e) {
-        NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+        NSLog(@"Caught an exception while changing the automatically checks for updates flag: %@", e);
     }
 }
 
@@ -138,7 +138,7 @@
     @try {
         [myVendedHelperController updateHotKeyWithKeyCode: [hotKey keyCode] modifiers: [hotKey modifiers] name: [hotKey hotKeyName]];
     } @catch (NSException *e) {
-        NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+        NSLog(@"Caught an exception while updating a hot key: %@", e);
     }
 }
 
@@ -146,7 +146,7 @@
     @try {
         [myVendedHelperController unregisterHotKeyWithName: [hotKey hotKeyName]];
     } @catch (NSException *e) {
-        NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+        NSLog(@"Caught an exception while clearing an existing hot key: %@", e);
     }
 }
 
@@ -236,7 +236,7 @@
                 [myAutomaticallyChecksForUpdatesButton setState: NSOffState];
             }
         } @catch (NSException *e) {
-            NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+            NSLog(@"Caught an exception while fetching the state of the automatically checks for updates flag: %@", e);
         }
     } else {
         NSLog(@"Connection to vended helper controller failed.");
@@ -253,7 +253,7 @@
         @try {
             hotKey = [myVendedHelperController registeredHotKeyForName: hotKeyName];
         } @catch (NSException *e) {
-            NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+            NSLog(@"Caught an exception while fetching a hot key: %@", e);
         }
         
         [hotKeyRecorder setHotKeyName: hotKeyName];
