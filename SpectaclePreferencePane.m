@@ -125,17 +125,29 @@
 #pragma mark -
 
 - (void)toggleCheckForUpdates: (id)sender {
-    [myVendedHelperController setAutomaticallyChecksForUpdates: ![myVendedHelperController automaticallyChecksForUpdates]];
+    @try {
+        [myVendedHelperController setAutomaticallyChecksForUpdates: ![myVendedHelperController automaticallyChecksForUpdates]];
+    } @catch (NSException *e) {
+        NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+    }
 }
 
 #pragma mark -
 
 - (void)hotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (SpectacleHotKey *)hotKey {
-    [myVendedHelperController updateHotKeyWithKeyCode: [hotKey keyCode] modifiers: [hotKey modifiers] name: [hotKey hotKeyName]];
+    @try {
+        [myVendedHelperController updateHotKeyWithKeyCode: [hotKey keyCode] modifiers: [hotKey modifiers] name: [hotKey hotKeyName]];
+    } @catch (NSException *e) {
+        NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+    }
 }
 
 - (void)hotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (SpectacleHotKey *)hotKey {
-    [myVendedHelperController unregisterHotKeyWithName: [hotKey hotKeyName]];
+    @try {
+        [myVendedHelperController unregisterHotKeyWithName: [hotKey hotKeyName]];
+    } @catch (NSException *e) {
+        NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
+    }
 }
 
 #pragma mark -
@@ -217,10 +229,14 @@
         
         [self loadRegisteredHotKeys];
         
-        if ([myVendedHelperController automaticallyChecksForUpdates]) {
-            [myAutomaticallyChecksForUpdatesButton setState: NSOnState];
-        } else {
-            [myAutomaticallyChecksForUpdatesButton setState: NSOffState];
+        @try {
+            if ([myVendedHelperController automaticallyChecksForUpdates]) {
+                [myAutomaticallyChecksForUpdatesButton setState: NSOnState];
+            } else {
+                [myAutomaticallyChecksForUpdatesButton setState: NSOffState];
+            }
+        } @catch (NSException *e) {
+            NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
         }
     } else {
         NSLog(@"Connection to vended helper controller failed.");
@@ -230,24 +246,26 @@
 #pragma mark -
 
 - (void)loadRegisteredHotKeys {
-    if (myVendedHelperController) {
-        for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
-            SpectacleHotKeyRecorder *hotKeyRecorder = [myHotKeyRecorders objectForKey: hotKeyName];
-            SpectacleHotKey *hotKey = [myVendedHelperController registeredHotKeyForName: hotKeyName];
-            
-            [hotKeyRecorder setHotKeyName: hotKeyName];
-            
-            if (hotKey) {
-                [hotKeyRecorder setHotKey: hotKey];
-            }
-            
-            [hotKeyRecorder setDelegate: self];
+    for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
+        SpectacleHotKeyRecorder *hotKeyRecorder = [myHotKeyRecorders objectForKey: hotKeyName];
+        SpectacleHotKey *hotKey = nil;
+        
+        @try {
+            hotKey = [myVendedHelperController registeredHotKeyForName: hotKeyName];
+        } @catch (NSException *e) {
+            NSLog(@"Unable to properly communicate with the vended helper controller: %@", e);
         }
         
-        [self enableHotKeyRecorders: YES];
-    } else {
-        NSLog(@"The vended helper controller is not available, unable to load registered hot keys.");
+        [hotKeyRecorder setHotKeyName: hotKeyName];
+        
+        if (hotKey) {
+            [hotKeyRecorder setHotKey: hotKey];
+        }
+        
+        [hotKeyRecorder setDelegate: self];
     }
+    
+    [self enableHotKeyRecorders: YES];
 }
 
 #pragma mark -

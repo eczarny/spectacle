@@ -29,22 +29,20 @@
     IBOutlet SpectacleHelperApplicationController *myHelperApplicationController;
 }
 
-- (NSArray *)registeredHotKeys;
-
-- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
+- (SpectacleHotKey *)registeredHotKeyForName: (in NSString *)name;
 
 #pragma mark -
 
-- (void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (NSString *)name;
+- (oneway void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (bycopy in NSString *)name;
 
 #pragma mark -
 
-- (void)unregisterHotKeyWithName: (NSString *)name;
+- (oneway void)unregisterHotKeyWithName: (in NSString *)name;
 
 #pragma mark -
 
 - (BOOL)automaticallyChecksForUpdates;
 
-- (void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates;
+- (oneway void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates;
 
 @end
