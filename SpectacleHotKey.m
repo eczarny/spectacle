@@ -114,7 +114,7 @@
 }
 
 - (void)setModifiers: (NSInteger)modifiers {
-    myModifiers = modifiers;
+    myModifiers = [SpectacleHotKeyTranslator convertModifiersToCarbonIfNecessary: modifiers];
 }
 
 #pragma mark -
