@@ -26,6 +26,10 @@
 #import "SpectacleHotKeyRecorderDelegate.h"
 #import "SpectacleUtilities.h"
 
+#define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
+
+#pragma mark -
+
 @interface SpectacleHotKeyRecorderCell (SpectacleHotKeyRecorderCellPrivate)
 
 - (void)drawBorderInRect: (NSRect)rect withRadius: (CGFloat)radius;
@@ -294,10 +298,6 @@
 #pragma mark -
 
 @implementation SpectacleHotKeyRecorderCell (SpectacleHotKeyRecorderCellPrivate)
-
-#define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
-
-#pragma mark -
 
 - (void)drawBorderInRect: (NSRect)rect withRadius: (CGFloat)radius {
     NSBezierPath *roundedPath = [NSBezierPath bezierPathWithRoundedRect: rect xRadius: radius yRadius: radius];
