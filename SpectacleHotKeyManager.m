@@ -99,9 +99,9 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     OSStatus err;
     
     if (existingHotKey) {
-        [self unregisterHotKeyForName: hotKeyName];
-        
         [hotKey setHotKeyAction: [existingHotKey hotKeyAction]];
+        
+        [self unregisterHotKeyForName: hotKeyName];
     }
     
     hotKeyID.signature = 'ZERO';
