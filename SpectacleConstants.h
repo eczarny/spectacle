@@ -39,7 +39,7 @@
 #pragma mark -
 
 #define SpectacleHelperDidFinishLaunchingNotification    @"SpectacleHelperDidFinishLaunchingNotification"
-#define SpectacleHelperWillTerminateNotification         @"SpectacleHelperWillTerminateNotification"
+#define SpectacleHelperDidTerminateNotification          @"SpectacleHelperDidTerminateNotification"
 #define SpectacleHelperShouldTerminateNotification       @"SpectacleHelperShouldTerminateNotification"
 
 #pragma mark -

@@ -184,7 +184,7 @@
 #pragma mark -
 
 - (void)applicationWillTerminate: (NSNotification *)notification {
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperWillTerminateNotification
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperDidTerminateNotification
                                                                    object: nil
                                                                  userInfo: nil
                                                        deliverImmediately: YES];

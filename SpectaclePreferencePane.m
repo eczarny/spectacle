@@ -35,11 +35,15 @@
 
 - (void)helperApplicationDidFinishLaunching;
 
-- (void)helperApplicationWillTerminate;
+- (void)helperApplicationDidTerminate;
 
 #pragma mark -
 
 - (void)connectToVendedHelperController;
+
+#pragma mark -
+
+- (void)handleConnectionException: (NSException *)exception withMessage: (NSString *)message;
 
 #pragma mark -
 
@@ -65,8 +69,8 @@
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     [distributedNotificationCenter addObserver: self
-                                      selector: @selector(helperApplicationWillTerminate)
-                                          name: SpectacleHelperWillTerminateNotification
+                                      selector: @selector(helperApplicationDidTerminate)
+                                          name: SpectacleHelperDidTerminateNotification
                                         object: nil
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
@@ -128,7 +132,8 @@
     @try {
         [myVendedHelperController setAutomaticallyChecksForUpdates: ![myVendedHelperController automaticallyChecksForUpdates]];
     } @catch (NSException *e) {
-        NSLog(@"Caught an exception while changing the automatically checks for updates flag: %@", e);
+        [self handleConnectionException: e
+                            withMessage: @"There was a problem while changing the automatically checks for updates flag."];
     }
 }
 
@@ -138,7 +143,8 @@
     @try {
         [myVendedHelperController updateHotKeyWithKeyCode: [hotKey keyCode] modifiers: [hotKey modifiers] name: [hotKey hotKeyName]];
     } @catch (NSException *e) {
-        NSLog(@"Caught an exception while updating a hot key: %@", e);
+        [self handleConnectionException: e
+                            withMessage: @"There was a problem while updating a hot key."];
     }
 }
 
@@ -146,8 +152,19 @@
     @try {
         [myVendedHelperController unregisterHotKeyWithName: [hotKey hotKeyName]];
     } @catch (NSException *e) {
-        NSLog(@"Caught an exception while clearing an existing hot key: %@", e);
+        [self handleConnectionException: e
+                            withMessage: @"There was a problem while clearing an existing hot key."];
     }
+}
+
+#pragma mark -
+
+- (void)willUnselect {
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver: self];
+    
+    [myVendedHelperController release];
+    
+    myVendedHelperController = nil;
 }
 
 #pragma mark -
@@ -155,8 +172,6 @@
 - (void)dealloc {
     [myVendedHelperController release];
     [myHotKeyRecorders release];
-    
-    [[NSDistributedNotificationCenter defaultCenter] removeObserver: self];
     
     [super dealloc];
 }
@@ -193,12 +208,10 @@
     [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Stop")];
     [myToggleRunningStateButton setEnabled: YES];
     
-    [myAutomaticallyChecksForUpdatesButton setEnabled: YES];
-    
     [self connectToVendedHelperController];
 }
 
-- (void)helperApplicationWillTerminate {
+- (void)helperApplicationDidTerminate {
     [myStatusTextField setStringValue: ZeroKitLocalizedStringFromCurrentBundle(@"Spectacle is not running")];
     
     [myToggleRunningStateButton setTitle: ZeroKitLocalizedStringFromCurrentBundle(@"Start")];
@@ -206,13 +219,11 @@
     
     [myAutomaticallyChecksForUpdatesButton setEnabled: NO];
     
-    if (myVendedHelperController) {
-        [myVendedHelperController release];
-        
-        myVendedHelperController = nil;
-    }
-    
     [self enableHotKeyRecorders: NO];
+    
+    [myVendedHelperController release];
+    
+    myVendedHelperController = nil;
 }
 
 #pragma mark -
@@ -229,6 +240,8 @@
         
         [self loadRegisteredHotKeys];
         
+        [myAutomaticallyChecksForUpdatesButton setEnabled: YES];
+        
         @try {
             if ([myVendedHelperController automaticallyChecksForUpdates]) {
                 [myAutomaticallyChecksForUpdatesButton setState: NSOnState];
@@ -236,10 +249,21 @@
                 [myAutomaticallyChecksForUpdatesButton setState: NSOffState];
             }
         } @catch (NSException *e) {
-            NSLog(@"Caught an exception while fetching the state of the automatically checks for updates flag: %@", e);
+            [self handleConnectionException: e
+                                withMessage: @"There was a problem while fetching the state of the automatically checks for updates flag."];
         }
     } else {
         NSLog(@"Connection to vended helper controller failed.");
+    }
+}
+
+#pragma mark -
+
+- (void)handleConnectionException: (NSException *)exception withMessage: (NSString *)message {
+    NSLog(@"%@ (%@)", message, [exception name]);
+    
+    if (![SpectacleUtilities isSpectacleRunning]) {
+        [self helperApplicationDidTerminate];
     }
 }
 
@@ -253,7 +277,8 @@
         @try {
             hotKey = [myVendedHelperController registeredHotKeyForName: hotKeyName];
         } @catch (NSException *e) {
-            NSLog(@"Caught an exception while fetching a hot key: %@", e);
+            [self handleConnectionException: e
+                                withMessage: @"There was a problem while fetching a hot key."];
         }
         
         [hotKeyRecorder setHotKeyName: hotKeyName];
