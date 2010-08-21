@@ -39,6 +39,7 @@
 #define MovingToLeftRegionOfDisplay(action) (action >= SpectacleWindowActionLeftHalf) && (action <= SpectacleWindowActionLowerLeft)
 #define MovingToRightRegionOfDisplay(action) (action >= SpectacleWindowActionRightHalf) && (action <= SpectacleWindowActionLowerRight)
 #define MovingToTopRegionOfDisplay(action) (action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight)
+#define MovingToBottomRegionOfDisplay(action) (action == SpectacleWindowActionBottomHalf) || (action == SpectacleWindowActionLowerLeft) || (action == SpectacleWindowActionLowerRight)
 
 #pragma mark -
 
@@ -307,7 +308,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     if (MovingToTopRegionOfDisplay(action)) {
-        frontMostWindowRect.origin.y = visibleFrameOfScreen.origin.y + ceil(visibleFrameOfScreen.size.height / 2.0f);
+        frontMostWindowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
         frontMostWindowRect.origin.y = (visibleFrameOfScreen.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
     } else {
@@ -326,6 +327,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     } else if (!MovingToCenterRegionOfDisplay(action)) {
         frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
         frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
+    }
+    
+    if (MovingToTopRegionOfDisplay(action)) {
+        frontMostWindowRect.origin.y = frontMostWindowRect.origin.y + 1.0f;
+        frontMostWindowRect.size.height = frontMostWindowRect.size.height - 1.0f;
     }
     
     if (MovingToLeftRegionOfDisplay(action)) {
