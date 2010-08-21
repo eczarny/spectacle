@@ -94,7 +94,7 @@
         helperApplicationURL = [helperApplicationBundle bundleURL];
         
         [sharedWorkspace launchApplicationAtURL: helperApplicationURL
-                                        options: NSWorkspaceLaunchWithoutAddingToRecents
+                                        options: NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchAsync
                                   configuration: nil
                                           error: nil];
     }
