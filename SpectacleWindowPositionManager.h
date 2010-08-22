@@ -47,6 +47,7 @@ typedef enum {
 
 @interface SpectacleWindowPositionManager : NSObject {
     SpectacleAccessibilityElement *myFrontMostWindowElement;
+    NSMutableArray *myWindowHistory;
 }
 
 + (SpectacleWindowPositionManager *)sharedManager;
@@ -54,5 +55,9 @@ typedef enum {
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action;
+
+#pragma mark -
+
+- (void)undoLastWindowAction;
 
 @end

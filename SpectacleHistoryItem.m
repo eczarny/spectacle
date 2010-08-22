@@ -20,57 +20,55 @@
 // IN THE SOFTWARE.
 // 
 
-#import <Cocoa/Cocoa.h>
+#import "SpectacleHistoryItem.h"
 
-@class SpectacleWindowPositionManager, SpectacleHotKeyManager, SpectacleHelperController;
+@implementation SpectacleHistoryItem
 
-@interface SpectacleHelperApplicationController : NSObject {
-    SpectacleWindowPositionManager *myWindowPositionManager;
-    SpectacleHotKeyManager *myHotKeyManager;
-    NSConnection *myVendedHelperControllerConnection;
-    IBOutlet SpectacleHelperController *myHelperController;
+- (id)initWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+    if (self = [super init]) {
+        myAccessibilityElement = [accessibilityElement retain];
+        myWindowRect = windowRect;
+    }
+    
+    return self;
 }
 
-- (void)moveFrontMostWindowToCenter: (id)sender;
+#pragma mark -
+
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+    return [[[SpectacleHistoryItem alloc] initWithAccessibilityElement: accessibilityElement windowRect: windowRect] autorelease];
+}
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullscreen: (id)sender;
+- (SpectacleAccessibilityElement *)accessibilityElement {
+    return myAccessibilityElement;
+}
+
+- (void)setAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement {
+    if (myAccessibilityElement != accessibilityElement) {
+        [myAccessibilityElement release];
+        
+        myAccessibilityElement = [accessibilityElement retain];
+    }
+}
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToLeftHalf: (id)sender;
+- (CGRect)windowRect {
+    return myWindowRect;
+}
 
-- (void)moveFrontMostWindowToRightHalf: (id)sender;
-
-- (void)moveFrontMostWindowToTopHalf: (id)sender;
-
-- (void)moveFrontMostWindowToBottomHalf: (id)sender;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowToUpperLeft: (id)sender;
-
-- (void)moveFrontMostWindowToLowerLeft: (id)sender;
+- (void)setWindowRect: (CGRect)windowRect {
+    myWindowRect = windowRect;
+}
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToUpperRight: (id)sender;
-
-- (void)moveFrontMostWindowToLowerRight: (id)sender;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowToLeftDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToRightDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToTopDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToBottomDisplay: (id)sender;
-
-#pragma mark -
-
-- (void)undoLastWindowAction: (id)sender;
+- (void)dealloc {
+    [myAccessibilityElement release];
+    
+    [super dealloc];
+}
 
 @end

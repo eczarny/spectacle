@@ -374,6 +374,29 @@
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
+											<object class="NSTextField" id="161834297">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{312, 199}, {130, 17}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSTextFieldCell" key="NSCell" id="938560106">
+													<int key="NSCellFlags">68288064</int>
+													<int key="NSCellFlags2">71304192</int>
+													<string key="NSContents">Undo:</string>
+													<reference key="NSSupport" ref="558112443"/>
+													<reference key="NSControlView" ref="161834297"/>
+													<reference key="NSBackgroundColor" ref="296516534"/>
+													<reference key="NSTextColor" ref="953564374"/>
+												</object>
+											</object>
+											<object class="NSCustomView" id="18761435">
+												<reference key="NSNextResponder" ref="131596099"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{447, 197}, {140, 21}}</string>
+												<reference key="NSSuperview" ref="131596099"/>
+												<string key="NSClassName">SpectacleHotKeyRecorder</string>
+											</object>
 											<object class="NSTextField" id="418540048">
 												<reference key="NSNextResponder" ref="131596099"/>
 												<int key="NSvFlags">268</int>
@@ -868,6 +891,14 @@
 					</object>
 					<int key="connectionID">292</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myUndoLastMoveHotKeyRecorder</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="18761435"/>
+					</object>
+					<int key="connectionID">298</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1020,6 +1051,8 @@
 							<reference ref="854395784"/>
 							<reference ref="1031491520"/>
 							<reference ref="782487862"/>
+							<reference ref="161834297"/>
+							<reference ref="18761435"/>
 						</array>
 						<reference key="parent" ref="563872776"/>
 					</object>
@@ -1401,14 +1434,32 @@
 						<reference key="object" ref="656160273"/>
 						<reference key="parent" ref="968353988"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">294</int>
+						<reference key="object" ref="161834297"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="938560106"/>
+						</array>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">295</int>
+						<reference key="object" ref="18761435"/>
+						<reference key="parent" ref="131596099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">296</int>
+						<reference key="object" ref="938560106"/>
+						<reference key="parent" ref="161834297"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBEditorWindowLastContentRect">{{162, 183}, {668, 455}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{242, 191}, {668, 455}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="12.IBViewEditorWindowController.showingLayoutRectangles"/>
-				<string key="12.IBWindowTemplateEditedContentRect">{{162, 183}, {668, 455}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{242, 191}, {668, 455}}</string>
 				<integer value="1" key="12.ImportedFromIB2"/>
 				<boolean value="YES" key="12.windowTemplate.hasMaxSize"/>
 				<boolean value="YES" key="12.windowTemplate.hasMinSize"/>
@@ -1486,6 +1537,9 @@
 				<string key="286.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="287.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="288.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="294.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="295.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="296.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="6.ImportedFromIB2"/>
 			</dictionary>
@@ -1493,7 +1547,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">293</int>
+			<int key="maxID">298</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1563,6 +1617,7 @@
 						<string key="mySpectacleVersionTextField">NSTextField</string>
 						<string key="myStatusTextField">NSTextField</string>
 						<string key="myToggleRunningStateButton">NSButton</string>
+						<string key="myUndoLastMoveHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myVendedHelperController">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1641,6 +1696,10 @@
 						<object class="IBToOneOutletInfo" key="myToggleRunningStateButton">
 							<string key="name">myToggleRunningStateButton</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="myUndoLastMoveHotKeyRecorder">
+							<string key="name">myUndoLastMoveHotKeyRecorder</string>
+							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myVendedHelperController">
 							<string key="name">myVendedHelperController</string>

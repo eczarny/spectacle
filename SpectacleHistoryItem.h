@@ -22,55 +22,29 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SpectacleWindowPositionManager, SpectacleHotKeyManager, SpectacleHelperController;
+@class SpectacleAccessibilityElement;
 
-@interface SpectacleHelperApplicationController : NSObject {
-    SpectacleWindowPositionManager *myWindowPositionManager;
-    SpectacleHotKeyManager *myHotKeyManager;
-    NSConnection *myVendedHelperControllerConnection;
-    IBOutlet SpectacleHelperController *myHelperController;
+@interface SpectacleHistoryItem : NSObject {
+    SpectacleAccessibilityElement *myAccessibilityElement;
+    CGRect myWindowRect;
 }
 
-- (void)moveFrontMostWindowToCenter: (id)sender;
+- (id)initWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullscreen: (id)sender;
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToLeftHalf: (id)sender;
+- (SpectacleAccessibilityElement *)accessibilityElement;
 
-- (void)moveFrontMostWindowToRightHalf: (id)sender;
-
-- (void)moveFrontMostWindowToTopHalf: (id)sender;
-
-- (void)moveFrontMostWindowToBottomHalf: (id)sender;
+- (void)setAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToUpperLeft: (id)sender;
+- (CGRect)windowRect;
 
-- (void)moveFrontMostWindowToLowerLeft: (id)sender;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowToUpperRight: (id)sender;
-
-- (void)moveFrontMostWindowToLowerRight: (id)sender;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowToLeftDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToRightDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToTopDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToBottomDisplay: (id)sender;
-
-#pragma mark -
-
-- (void)undoLastWindowAction: (id)sender;
+- (void)setWindowRect: (CGRect)windowRect;
 
 @end

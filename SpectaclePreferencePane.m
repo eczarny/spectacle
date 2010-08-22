@@ -89,6 +89,7 @@
                          myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
                          myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
                          myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
+                         myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
                          nil];
     
     [self toggleControlsBasedOnSpectacleRunningState];

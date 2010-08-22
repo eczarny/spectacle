@@ -47,7 +47,7 @@
     IBOutlet SpectacleHotKeyRecorder *myMoveToRightDisplayHotKeyRecorder;
     IBOutlet SpectacleHotKeyRecorder *myMoveToTopDisplayHotKeyRecorder;
     IBOutlet SpectacleHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
-    
+    IBOutlet SpectacleHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
 }
 
 - (void)toggleRunningState: (id)sender;

@@ -22,6 +22,7 @@
 
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleAccessibilityElement.h"
+#import "SpectacleHistoryItem.h"
 
 #define FlipVerticalOriginOfRectInRect(a, b) b.size.height - (a.origin.y + a.size.height) + ([[NSScreen mainScreen] frame].size.height - b.size.height)
 
@@ -100,6 +101,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (id)init {
     if (self = [super init]) {
         myFrontMostWindowElement = nil;
+        myWindowHistory = [[NSMutableArray array] retain];
     }
     
     return self;
@@ -138,6 +140,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     NSScreen *screenOfDisplay = [self screenWithAction: action andRect: frontMostWindowRect];
     CGRect frameOfScreen = CGRectNull;
     CGRect visibleFrameOfScreen = CGRectNull;
+    SpectacleHistoryItem *historyItem = nil;
     
     if (screenOfDisplay) {
         frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
@@ -149,6 +152,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         
         return;
     }
+    
+    historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: myFrontMostWindowElement windowRect: frontMostWindowRect];
     
     frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
     
@@ -164,13 +169,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         return;
     }
     
-    AXValueRef frontMostWindowRectPositionRef;
-    AXValueRef frontMostWindowRectWindowSizeRef;
+    [myWindowHistory addObject: historyItem];
     
     frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
     
-    frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
-    frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
+    AXValueRef frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
+    AXValueRef frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
     
     [myFrontMostWindowElement setValue: frontMostWindowRectPositionRef forAttribute: kAXPositionAttribute];
     [myFrontMostWindowElement setValue: frontMostWindowRectWindowSizeRef forAttribute: kAXSizeAttribute];
@@ -178,8 +182,33 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (void)undoLastWindowAction {
+    SpectacleHistoryItem *historyItem = [myWindowHistory lastObject];
+    SpectacleAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
+    CGRect windowRect = CGRectNull;
+    
+    if (!historyItem || !accessibilityElement) {
+        NSBeep();
+        
+        return;
+    }
+    
+    windowRect = [historyItem windowRect];
+    
+    AXValueRef windowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&windowRect.origin);
+    AXValueRef windowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&windowRect.size);
+    
+    [accessibilityElement setValue: windowRectPositionRef forAttribute: kAXPositionAttribute];
+    [accessibilityElement setValue: windowRectWindowSizeRef forAttribute: kAXSizeAttribute];
+    
+    [myWindowHistory removeLastObject];
+}
+
+#pragma mark -
+
 - (void)dealloc {
     [myFrontMostWindowElement release];
+    [myWindowHistory release];
     
     [super dealloc];
 }

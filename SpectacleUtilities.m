@@ -196,6 +196,8 @@
         selector = @selector(moveFrontMostWindowToTopDisplay:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomDisplay]) {
         selector = @selector(moveFrontMostWindowToBottomDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
+        selector = @selector(undoLastWindowAction:);
     }
     
     return [SpectacleHotKeyAction hotKeyActionFromTarget: target selector: selector];
