@@ -205,8 +205,15 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 @implementation SpectacleHotKeyManager (SpectacleHotKeyManagerPrivate)
 
 - (void)updateUserDefaults {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     for (SpectacleHotKey *hotKey in [myRegisteredHotKeys allValues]) {
-        [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: hotKey] forKey: [hotKey hotKeyName]];
+        NSData *hotKeyData = [NSKeyedArchiver archivedDataWithRootObject: hotKey];
+        NSString *hotKeyName = [hotKey hotKeyName];
+        
+        if (![hotKeyData isEqualToData: [userDefaults dataForKey: hotKeyName]]) {
+            [userDefaults setObject: hotKeyData forKey: hotKeyName];
+        }
     }
 }
 
