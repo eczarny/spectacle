@@ -226,7 +226,7 @@
         return hotKey;
     }
     
-    if (([hotKey keyCode] == [defaultHotKey keyCode]) && ([hotKey modifiers] == 768)) {
+    if (([hotKey hotKeyCode] == [defaultHotKey hotKeyCode]) && ([hotKey hotKeyModifiers] == 768)) {
         return defaultHotKey;
     }
     

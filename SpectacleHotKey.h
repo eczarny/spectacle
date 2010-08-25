@@ -29,12 +29,12 @@
     NSInteger myHandle;
     NSString *myHotKeyName;
     SpectacleHotKeyAction *myHotKeyAction;
-    NSInteger myKeyCode;
-    NSInteger myModifiers;
+    NSInteger myHotKeyCode;
+    NSInteger myHotKeyModifiers;
     EventHotKeyRef myHotKeyRef;
 }
 
-- (id)initWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers;
+- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSInteger)hotKeyModifiers;
 
 #pragma mark -
 
@@ -56,15 +56,15 @@
 
 #pragma mark -
 
-- (NSInteger)keyCode;
+- (NSInteger)hotKeyCode;
 
-- (void)setKeyCode: (NSInteger)keyCode;
+- (void)setHotKeyCode: (NSInteger)hotKeyCode;
 
 #pragma mark -
 
-- (NSInteger)modifiers;
+- (NSInteger)hotKeyModifiers;
 
-- (void)setModifiers: (NSInteger)modifiers;
+- (void)setHotKeyModifiers: (NSInteger)hotKeyModifiers;
 
 #pragma mark -
 

@@ -149,7 +149,7 @@
         NSString *characters = [[event charactersIgnoringModifiers] uppercaseString];
         
         if ([characters length]) {
-            SpectacleHotKey *hotKey = [[[SpectacleHotKey alloc] initWithKeyCode: keyCode modifiers: modifierFlags] autorelease];
+            SpectacleHotKey *hotKey = [[[SpectacleHotKey alloc] initWithHotKeyCode: keyCode hotKeyModifiers: modifierFlags] autorelease];
             
             [hotKey setHotKeyName: myHotKeyName];
             
