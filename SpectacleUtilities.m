@@ -198,6 +198,8 @@
         selector = @selector(moveFrontMostWindowToBottomDisplay:);
     } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
         selector = @selector(undoLastWindowAction:);
+    } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
+        selector = @selector(redoLastWindowAction:);
     }
     
     return [SpectacleHotKeyAction hotKeyActionFromTarget: target selector: selector];

@@ -73,4 +73,6 @@
 
 - (void)undoLastWindowAction: (id)sender;
 
+- (void)redoLastWindowAction: (id)sender;
+
 @end

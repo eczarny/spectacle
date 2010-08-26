@@ -187,6 +187,10 @@
     [myWindowPositionManager undoLastWindowAction];
 }
 
+- (void)redoLastWindowAction: (id)sender {
+    [myWindowPositionManager redoLastWindowAction];
+}
+
 #pragma mark -
 
 - (void)applicationWillTerminate: (NSNotification *)notification {
