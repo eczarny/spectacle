@@ -141,7 +141,7 @@
 
 - (void)hotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (SpectacleHotKey *)hotKey {
     @try {
-        [myVendedHelperController updateHotKeyWithKeyCode: [hotKey keyCode] modifiers: [hotKey modifiers] name: [hotKey hotKeyName]];
+        [myVendedHelperController updateHotKeyWithKeyCode: [hotKey hotKeyCode] modifiers: [hotKey hotKeyModifiers] name: [hotKey hotKeyName]];
     } @catch (NSException *e) {
         [self handleConnectionException: e
                             withMessage: @"There was a problem while updating a hot key."];

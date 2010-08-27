@@ -107,8 +107,8 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyID.signature = 'ZERO';
     hotKeyID.id = ++myCurrentHotKeyID;
     
-    err = RegisterEventHotKey([hotKey keyCode],
-                              [hotKey modifiers],
+    err = RegisterEventHotKey([hotKey hotKeyCode],
+                              [hotKey hotKeyModifiers],
                               hotKeyID,
                               GetEventDispatcherTarget(),
                               0,
@@ -205,8 +205,15 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 @implementation SpectacleHotKeyManager (SpectacleHotKeyManagerPrivate)
 
 - (void)updateUserDefaults {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     for (SpectacleHotKey *hotKey in [myRegisteredHotKeys allValues]) {
-        [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: hotKey] forKey: [hotKey hotKeyName]];
+        NSData *hotKeyData = [NSKeyedArchiver archivedDataWithRootObject: hotKey];
+        NSString *hotKeyName = [hotKey hotKeyName];
+        
+        if (![hotKeyData isEqualToData: [userDefaults dataForKey: hotKeyName]]) {
+            [userDefaults setObject: hotKeyData forKey: hotKeyName];
+        }
     }
 }
 

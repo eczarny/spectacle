@@ -26,13 +26,13 @@
 
 @implementation SpectacleHotKey
 
-- (id)initWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers {
+- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSInteger)hotKeyModifiers {
     if (self = [super init]) {
         myHandle = -1;
         myHotKeyName = nil;
         myHotKeyAction = nil;
-        myKeyCode = keyCode;
-        myModifiers = [SpectacleHotKeyTranslator convertModifiersToCarbonIfNecessary: modifiers];
+        myHotKeyCode = hotKeyCode;
+        myHotKeyModifiers = [SpectacleHotKeyTranslator convertModifiersToCarbonIfNecessary: hotKeyModifiers];
         myHotKeyRef = NULL;
     }
     
@@ -45,13 +45,13 @@
     if (self = [super init]) {
         if ([coder allowsKeyedCoding]) {
             myHotKeyName = [[coder decodeObjectForKey: @"name"] retain];
-            myKeyCode = [coder decodeIntegerForKey: @"keyCode"];
-            myModifiers = [coder decodeIntegerForKey: @"modifiers"];
+            myHotKeyCode = [coder decodeIntegerForKey: @"keyCode"];
+            myHotKeyModifiers = [coder decodeIntegerForKey: @"modifiers"];
         } else {
             myHotKeyName = [[coder decodeObject] retain];
             
-            [coder decodeValueOfObjCType: @encode(NSInteger) at: &myKeyCode];
-            [coder decodeValueOfObjCType: @encode(NSInteger) at: &myModifiers];
+            [coder decodeValueOfObjCType: @encode(NSInteger) at: &myHotKeyCode];
+            [coder decodeValueOfObjCType: @encode(NSInteger) at: &myHotKeyModifiers];
         }
     }
     
@@ -63,12 +63,12 @@
 - (void)encodeWithCoder: (NSCoder *)coder {
     if ([coder allowsKeyedCoding]) {
         [coder encodeObject: myHotKeyName forKey: @"name"];
-        [coder encodeInteger: myKeyCode forKey: @"keyCode"];
-        [coder encodeInteger: myModifiers forKey: @"modifiers"];
+        [coder encodeInteger: myHotKeyCode forKey: @"keyCode"];
+        [coder encodeInteger: myHotKeyModifiers forKey: @"modifiers"];
     } else {
         [coder encodeObject: myHotKeyName];
-        [coder encodeValueOfObjCType: @encode(NSInteger) at: &myKeyCode];
-        [coder encodeValueOfObjCType: @encode(NSInteger) at: &myModifiers];
+        [coder encodeValueOfObjCType: @encode(NSInteger) at: &myHotKeyCode];
+        [coder encodeValueOfObjCType: @encode(NSInteger) at: &myHotKeyModifiers];
     }
 }
 
@@ -122,22 +122,22 @@
 
 #pragma mark -
 
-- (NSInteger)keyCode {
-    return myKeyCode;
+- (NSInteger)hotKeyCode {
+    return myHotKeyCode;
 }
 
-- (void)setKeyCode: (NSInteger)keyCode {
-    myKeyCode = keyCode;
+- (void)setHotKeyCode: (NSInteger)hotKeyCode {
+    myHotKeyCode = hotKeyCode;
 }
 
 #pragma mark -
 
-- (NSInteger)modifiers {
-    return myModifiers;
+- (NSInteger)hotKeyModifiers {
+    return myHotKeyModifiers;
 }
 
-- (void)setModifiers: (NSInteger)modifiers {
-    myModifiers = [SpectacleHotKeyTranslator convertModifiersToCarbonIfNecessary: modifiers];
+- (void)setHotKeyModifiers: (NSInteger)hotKeyModifiers {
+    myHotKeyModifiers = [SpectacleHotKeyTranslator convertModifiersToCarbonIfNecessary: hotKeyModifiers];
 }
 
 #pragma mark -
