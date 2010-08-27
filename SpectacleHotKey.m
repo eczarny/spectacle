@@ -48,7 +48,7 @@
             myKeyCode = [coder decodeIntegerForKey: @"keyCode"];
             myModifiers = [coder decodeIntegerForKey: @"modifiers"];
         } else {
-            myHotKeyName = [coder decodeObject];
+            myHotKeyName = [[coder decodeObject] retain];
             
             [coder decodeValueOfObjCType: @encode(NSInteger) at: &myKeyCode];
             [coder decodeValueOfObjCType: @encode(NSInteger) at: &myModifiers];
@@ -75,7 +75,11 @@
 #pragma mark -
 
 - (id)replacementObjectForPortCoder: (NSPortCoder *)encoder {
-    return self;
+    if ([encoder isBycopy]) {
+        return self;
+    }
+    
+    return [super replacementObjectForPortCoder: encoder];
 }
 
 #pragma mark -

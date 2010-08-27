@@ -26,7 +26,7 @@
 
 @protocol SpectacleHelperControllerProtocol
 
-- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
+- (bycopy SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
 
 #pragma mark -
 
