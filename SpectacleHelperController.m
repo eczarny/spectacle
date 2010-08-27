@@ -46,7 +46,7 @@
 #pragma mark -
 
 - (void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (NSString *)name {
-    SpectacleHotKey *hotKey = [[[SpectacleHotKey alloc] initWithKeyCode: keyCode modifiers: modifiers] autorelease];
+    SpectacleHotKey *hotKey = [[[SpectacleHotKey alloc] initWithHotKeyCode: keyCode hotKeyModifiers: modifiers] autorelease];
     
     [hotKey setHotKeyName: name];
     

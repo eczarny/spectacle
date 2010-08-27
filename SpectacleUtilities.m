@@ -29,6 +29,14 @@
 
 + (NSString *)versionOfBundle: (NSBundle *)bundle;
 
+#pragma mark -
+
++ (void)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey;
+
+#pragma mark -
+
++ (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names;
+
 @end
 
 #pragma mark -
@@ -138,13 +146,16 @@
 #pragma mark -
 
 + (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target {
+    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: [dictionary allKeys]];
     NSMutableArray *hotKeys = [NSMutableArray array];
     
     for (NSData *hotKeyData in [dictionary allValues]) {
         SpectacleHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
-        SpectacleHotKeyAction *hotKeyAction = [SpectacleUtilities actionForHotKeyWithName: [hotKey hotKeyName] target: target];
+        NSString *hotKeyName = [hotKey hotKeyName];
         
-        [hotKey setHotKeyAction: hotKeyAction];
+        [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
+        
+        [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
         
         [hotKeys addObject: hotKey];
     }
@@ -204,6 +215,43 @@
     }
     
     return bundleVersion;
+}
+
+#pragma mark -
+
++ (void)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey {
+    NSString *hotKeyName = [hotKey hotKeyName];
+    NSInteger defaultHotKeyCode;
+    
+    if (![hotKeyName isEqualToString: SpectacleWindowActionMoveToLowerLeft] && ![hotKeyName isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
+        return;
+    }
+    
+    defaultHotKeyCode = [defaultHotKey hotKeyCode];
+    
+    if (([hotKey hotKeyCode] == defaultHotKeyCode) && ([hotKey hotKeyModifiers] == 768)) {
+        [hotKey setHotKeyCode: defaultHotKeyCode];
+        
+        [hotKey setHotKeyModifiers: [defaultHotKey hotKeyModifiers]];
+    }
+}
+
+#pragma mark -
+
++ (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
+    NSBundle *bundle = [SpectacleUtilities helperApplicationBundle];
+    NSString *path = [bundle pathForResource: ZeroKitDefaultPreferencesFile ofType: ZeroKitPropertyListFileExtension];
+    NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
+    NSMutableDictionary *defaultHotKeys = [NSMutableDictionary dictionary];
+    
+    for (NSString *hotKeyName in names) {
+        NSData *defaultHotKeyData = [applicationDefaults objectForKey: hotKeyName];
+        SpectacleHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
+        
+        [defaultHotKeys setObject: defaultHotKey forKey: hotKeyName];
+    }
+    
+    return defaultHotKeys;
 }
 
 @end

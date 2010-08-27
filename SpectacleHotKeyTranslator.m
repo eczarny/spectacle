@@ -189,9 +189,9 @@ static SpectacleHotKeyTranslator *sharedInstance = nil;
 #pragma mark -
 
 - (NSString *)translateHotKey: (SpectacleHotKey *)hotKey {
-    NSInteger modifiers = [SpectacleHotKeyTranslator convertCarbonModifiersToCocoa: [hotKey modifiers]];
+    NSInteger modifiers = [SpectacleHotKeyTranslator convertCarbonModifiersToCocoa: [hotKey hotKeyModifiers]];
     
-    return [NSString stringWithFormat: @"%@%@", [SpectacleHotKeyTranslator translateCocoaModifiers: modifiers], [self translateKeyCode: [hotKey keyCode]]];
+    return [NSString stringWithFormat: @"%@%@", [SpectacleHotKeyTranslator translateCocoaModifiers: modifiers], [self translateKeyCode: [hotKey hotKeyCode]]];
 }
 
 #pragma mark -
