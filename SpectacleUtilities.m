@@ -31,7 +31,7 @@
 
 #pragma mark -
 
-+ (SpectacleHotKey *)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey;
++ (void)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey;
 
 #pragma mark -
 
@@ -155,7 +155,7 @@
         
         [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
         
-        hotKey = [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
+        [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
         
         [hotKeys addObject: hotKey];
     }
@@ -219,18 +219,21 @@
 
 #pragma mark -
 
-+ (SpectacleHotKey *)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey {
++ (void)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey {
     NSString *hotKeyName = [hotKey hotKeyName];
+    NSInteger defaultHotKeyCode;
     
     if (![hotKeyName isEqualToString: SpectacleWindowActionMoveToLowerLeft] && ![hotKeyName isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
-        return hotKey;
+        return;
     }
     
-    if (([hotKey hotKeyCode] == [defaultHotKey hotKeyCode]) && ([hotKey hotKeyModifiers] == 768)) {
-        return defaultHotKey;
-    }
+    defaultHotKeyCode = [defaultHotKey hotKeyCode];
     
-    return hotKey;
+    if (([hotKey hotKeyCode] == defaultHotKeyCode) && ([hotKey hotKeyModifiers] == 768)) {
+        [hotKey setHotKeyCode: defaultHotKeyCode];
+        
+        [hotKey setHotKeyModifiers: [defaultHotKey hotKeyModifiers]];
+    }
 }
 
 #pragma mark -
