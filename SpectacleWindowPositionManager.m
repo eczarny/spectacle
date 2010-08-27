@@ -302,7 +302,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     if (MovingToRightRegionOfDisplay(action)) {
         frontMostWindowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
-        frontMostWindowRect.origin.x = (visibleFrameOfScreen.size.width / 2.0f) - (frontMostWindowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
+        frontMostWindowRect.origin.x = floor(visibleFrameOfScreen.size.width / 2.0f) - floor(frontMostWindowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
     } else {
         frontMostWindowRect.origin.x = visibleFrameOfScreen.origin.x;
     }
@@ -310,7 +310,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     if (MovingToTopRegionOfDisplay(action)) {
         frontMostWindowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
-        frontMostWindowRect.origin.y = (visibleFrameOfScreen.size.height / 2.0f) - (frontMostWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
+        frontMostWindowRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) - floor(frontMostWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
     } else {
         frontMostWindowRect.origin.y = visibleFrameOfScreen.origin.y;
     }
@@ -330,8 +330,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     if (MovingToTopRegionOfDisplay(action)) {
-        frontMostWindowRect.origin.y = frontMostWindowRect.origin.y + 1.0f;
-        frontMostWindowRect.size.height = frontMostWindowRect.size.height - 1.0f;
+        if (((visibleFrameOfScreen.size.height / 2.0f) - frontMostWindowRect.size.height) > 0.0f) {
+            frontMostWindowRect.origin.y = frontMostWindowRect.origin.y + 1.0f;
+        } else {
+            frontMostWindowRect.origin.y = frontMostWindowRect.origin.y + 1.0f;
+            frontMostWindowRect.size.height = frontMostWindowRect.size.height - 1.0f;
+        }
     }
     
     if (MovingToLeftRegionOfDisplay(action)) {
