@@ -27,7 +27,7 @@ make contributions. Simply create a fork and make your changes.
 
 Copyright (c) 2010 Eric Czarny.
 
-Emergence  should  be  accompanied  by  a  LICENSE  file  containing the license
+Spectacle  should  be  accompanied  by  a  LICENSE  file  containing the license
 relevant to this distribution.
 
 If no LICENSE exists please contact Eric Czarny <eczarny@gmail.com>.
