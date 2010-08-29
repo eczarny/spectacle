@@ -137,6 +137,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
     CGRect frontMostWindowRect = [self rectOfFrontMostWindow];
+    CGRect previousFrontMostWindowRect = CGRectNull;
     NSScreen *screenOfDisplay = [self screenWithAction: action andRect: frontMostWindowRect];
     CGRect frameOfScreen = CGRectNull;
     CGRect visibleFrameOfScreen = CGRectNull;
@@ -161,9 +162,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         action = SpectacleWindowActionCenter;
     }
     
+    previousFrontMostWindowRect = frontMostWindowRect;
+    
     frontMostWindowRect = [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     
-    if (CGRectIsNull(frontMostWindowRect)) {
+    if (CGRectIsNull(frontMostWindowRect) || CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
         NSBeep();
         
         return;
