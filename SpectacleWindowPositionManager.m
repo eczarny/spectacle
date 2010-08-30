@@ -23,7 +23,7 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleAccessibilityElement.h"
 
-#define FlipVerticalOriginOfRectInRect(a, b) b.size.height - (a.origin.y + a.size.height) + abs([[NSScreen mainScreen] frame].size.height - b.size.height)
+#define FlipVerticalOriginOfRectInRect(a, b) b.size.height - (a.origin.y + a.size.height) + ([[NSScreen mainScreen] frame].size.height - b.size.height)
 
 #pragma mark -
 
