@@ -163,6 +163,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: myFrontMostWindowElement windowRect: frontMostWindowRect];
     
+    if ([myUndoHistory count] >= 5) {
+        [myUndoHistory removeObjectAtIndex: 0];
+    }
+    
     [myUndoHistory addObject: historyItem];
     
     frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
