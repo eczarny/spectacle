@@ -205,6 +205,31 @@
     return [SpectacleHotKeyAction hotKeyActionFromTarget: target selector: selector];
 }
 
+#pragma mark -
+
++ (NSInteger)currentWorkspace {
+    CGWindowListOption options = kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements;
+    CFArrayRef windows = CGWindowListCreate(options, kCGNullWindowID);
+    CFArrayRef windowDescriptions = CGWindowListCreateDescriptionFromArray(windows);
+    NSInteger currentWorkspace = 0;
+    
+    for (NSInteger i = 0; i < CFArrayGetCount(windowDescriptions); i++) {
+        CFDictionaryRef windowDescription = CFArrayGetValueAtIndex(windowDescriptions, i);
+        NSNumber *workspace = (NSNumber *)CFDictionaryGetValue(windowDescription, kCGWindowWorkspace);
+        
+        if (workspace) {
+            currentWorkspace = [workspace integerValue];
+            
+            break;
+        }
+    }
+    
+    CFRelease(windows);
+    CFRelease(windowDescriptions);
+    
+    return currentWorkspace;
+}
+
 @end
 
 #pragma mark -

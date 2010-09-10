@@ -60,4 +60,8 @@
 
 + (SpectacleHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
 
+#pragma mark -
+
++ (NSInteger)currentWorkspace;
+
 @end

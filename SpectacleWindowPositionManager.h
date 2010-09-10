@@ -47,8 +47,8 @@ typedef enum {
 
 @interface SpectacleWindowPositionManager : NSObject {
     SpectacleAccessibilityElement *myFrontMostWindowElement;
-    NSMutableArray *myUndoHistory;
-    NSMutableArray *myRedoHistory;
+    NSMutableDictionary *myUndoHistory;
+    NSMutableDictionary *myRedoHistory;
 }
 
 + (SpectacleWindowPositionManager *)sharedManager;
