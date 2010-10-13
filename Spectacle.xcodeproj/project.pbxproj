@@ -27,6 +27,7 @@
 		077938E61184FADB0013BC14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		077939041184FB3C0013BC14 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		077939131184FCD20013BC14 /* SpectacleHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077939111184FCD20013BC14 /* SpectacleHelper.xib */; };
+		079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		07BB53DC118655F10045663F /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB53DB118655F10045663F /* ZeroKit.framework */; };
 		07BB53E5118656050045663F /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB53DB118655F10045663F /* ZeroKit.framework */; };
 		07BB53FE1186565B0045663F /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 07BB53DB118655F10045663F /* ZeroKit.framework */; };
@@ -114,6 +115,8 @@
 		0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleHelperRelease.xcconfig; path = Configurations/SpectacleHelperRelease.xcconfig; sourceTree = "<group>"; };
 		077939121184FCD20013BC14 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectacleHelper.xib; sourceTree = "<group>"; };
 		078B0F50118D18CC004EE86C /* SpectacleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleConstants.h; sourceTree = "<group>"; };
+		079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistoryItem.h; sourceTree = "<group>"; };
+		079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistoryItem.m; sourceTree = "<group>"; };
 		07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SpecialHotKeyTranslations.plist; path = "Resources/Property Lists/SpecialHotKeyTranslations.plist"; sourceTree = "<group>"; };
 		07BB53DB118655F10045663F /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = Library/Frameworks/ZeroKit.framework; sourceTree = SDKROOT; };
 		07BB5404118657190045663F /* SpectacleHelperApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperApplicationController.h; sourceTree = "<group>"; };
@@ -227,6 +230,8 @@
 			children = (
 				07EFB4D811890E3E003CBBDB /* SpectacleAccessibilityElement.h */,
 				07EFB4D911890E3E003CBBDB /* SpectacleAccessibilityElement.m */,
+				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
+				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
 				076780B511867BA400614FB5 /* SpectacleHotKey.h */,
 				076780B611867BA400614FB5 /* SpectacleHotKey.m */,
 				07E6320F1187A7D100451374 /* SpectacleHotKeyAction.h */,
@@ -535,6 +540,7 @@
 				07EFB4DA11890E3E003CBBDB /* SpectacleAccessibilityElement.m in Sources */,
 				07BB5406118657190045663F /* SpectacleHelperApplicationController.m in Sources */,
 				07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */,
+				079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */,
 				076780B811867BA400614FB5 /* SpectacleHotKey.m in Sources */,
 				07E632111187A7D100451374 /* SpectacleHotKeyAction.m in Sources */,
 				07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */,

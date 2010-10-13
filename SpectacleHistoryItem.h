@@ -22,46 +22,29 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SpectacleHotKeyAction;
+@class SpectacleAccessibilityElement;
 
-@interface SpectacleUtilities : ZeroKitUtilities {
-    
+@interface SpectacleHistoryItem : NSObject {
+    SpectacleAccessibilityElement *myAccessibilityElement;
+    CGRect myWindowRect;
 }
 
-+ (NSBundle *)preferencePaneBundle;
-
-+ (NSBundle *)helperApplicationBundle;
+- (id)initWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-+ (NSString *)preferencePaneVersion;
-
-+ (NSString *)helperApplicationVersion;
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-+ (void)startSpectacle;
+- (SpectacleAccessibilityElement *)accessibilityElement;
 
-+ (void)stopSpectacle;
-
-#pragma mark -
-
-+ (BOOL)isSpectacleRunning;
+- (void)setAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 
-+ (NSArray *)hotKeyNames;
+- (CGRect)windowRect;
 
-#pragma mark -
-
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target;
-
-#pragma mark -
-
-+ (SpectacleHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
-
-#pragma mark -
-
-+ (NSInteger)currentWorkspace;
+- (void)setWindowRect: (CGRect)windowRect;
 
 @end

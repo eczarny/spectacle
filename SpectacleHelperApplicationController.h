@@ -69,4 +69,10 @@
 
 - (void)moveFrontMostWindowToBottomDisplay: (id)sender;
 
+#pragma mark -
+
+- (void)undoLastWindowAction: (id)sender;
+
+- (void)redoLastWindowAction: (id)sender;
+
 @end

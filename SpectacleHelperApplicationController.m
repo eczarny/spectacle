@@ -183,6 +183,16 @@
 
 #pragma mark -
 
+- (void)undoLastWindowAction: (id)sender {
+    [myWindowPositionManager undoLastWindowAction];
+}
+
+- (void)redoLastWindowAction: (id)sender {
+    [myWindowPositionManager redoLastWindowAction];
+}
+
+#pragma mark -
+
 - (void)applicationWillTerminate: (NSNotification *)notification {
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperDidTerminateNotification
                                                                    object: nil

@@ -20,48 +20,55 @@
 // IN THE SOFTWARE.
 // 
 
-#import <Cocoa/Cocoa.h>
+#import "SpectacleHistoryItem.h"
 
-@class SpectacleHotKeyAction;
+@implementation SpectacleHistoryItem
 
-@interface SpectacleUtilities : ZeroKitUtilities {
+- (id)initWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+    if (self = [super init]) {
+        myAccessibilityElement = [accessibilityElement retain];
+        myWindowRect = windowRect;
+    }
     
+    return self;
 }
 
-+ (NSBundle *)preferencePaneBundle;
+#pragma mark -
 
-+ (NSBundle *)helperApplicationBundle;
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+    return [[[SpectacleHistoryItem alloc] initWithAccessibilityElement: accessibilityElement windowRect: windowRect] autorelease];
+}
 
 #pragma mark -
 
-+ (NSString *)preferencePaneVersion;
+- (SpectacleAccessibilityElement *)accessibilityElement {
+    return myAccessibilityElement;
+}
 
-+ (NSString *)helperApplicationVersion;
-
-#pragma mark -
-
-+ (void)startSpectacle;
-
-+ (void)stopSpectacle;
-
-#pragma mark -
-
-+ (BOOL)isSpectacleRunning;
+- (void)setAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement {
+    if (myAccessibilityElement != accessibilityElement) {
+        [myAccessibilityElement release];
+        
+        myAccessibilityElement = [accessibilityElement retain];
+    }
+}
 
 #pragma mark -
 
-+ (NSArray *)hotKeyNames;
+- (CGRect)windowRect {
+    return myWindowRect;
+}
+
+- (void)setWindowRect: (CGRect)windowRect {
+    myWindowRect = windowRect;
+}
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target;
-
-#pragma mark -
-
-+ (SpectacleHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
-
-#pragma mark -
-
-+ (NSInteger)currentWorkspace;
+- (void)dealloc {
+    [myAccessibilityElement release];
+    
+    [super dealloc];
+}
 
 @end
