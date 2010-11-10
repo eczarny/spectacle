@@ -19,6 +19,10 @@
 		0747DB081183ACD600F75DD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
 		074A8F72119FAF9300940841 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
 		0752C74811E4D6B900AB6A46 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CCF9E811E41E850054483C /* Sparkle.framework */; };
+		0760BB35128B040400FAFC77 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */; };
+		0760BB68128B065D00FAFC77 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */; };
+		0760BB69128B066A00FAFC77 /* BWToolkitFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */; };
+		0760BB6A128B067000FAFC77 /* BWToolkitFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */; };
 		0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766438911A212A800B7BFA3 /* CoreServices.framework */; };
 		076644FB11A212D700B7BFA3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07678096118679C600614FB5 /* SpectacleHotKeyManager.m */; };
@@ -67,6 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0760BB6A128B067000FAFC77 /* BWToolkitFramework.framework in Copy Frameworks */,
 				070D2CD611E4C08D00C8DC0A /* Sparkle.framework in Copy Frameworks */,
 				07BB53FF1186565E0045663F /* ZeroKit.framework in Copy Frameworks */,
 			);
@@ -79,6 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0760BB69128B066A00FAFC77 /* BWToolkitFramework.framework in Copy Frameworks */,
 				07BB53FE1186565B0045663F /* ZeroKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -102,6 +108,7 @@
 		0747DAFC1183AC5100F75DD2 /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
 		0747DB041183ACC600F75DD2 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectaclePreferencePane.xib; sourceTree = "<group>"; };
 		0747DB071183ACD600F75DD2 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWToolkitFramework.framework; path = Library/Frameworks/BWToolkitFramework.framework; sourceTree = SDKROOT; };
 		0766438911A212A800B7BFA3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		07678095118679C600614FB5 /* SpectacleHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyManager.h; sourceTree = "<group>"; };
 		07678096118679C600614FB5 /* SpectacleHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyManager.m; sourceTree = "<group>"; };
@@ -154,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0760BB68128B065D00FAFC77 /* BWToolkitFramework.framework in Frameworks */,
 				07E632161187AAD800451374 /* Carbon.framework in Frameworks */,
 				077939041184FB3C0013BC14 /* Cocoa.framework in Frameworks */,
 				0752C74811E4D6B900AB6A46 /* Sparkle.framework in Frameworks */,
@@ -165,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0760BB35128B040400FAFC77 /* BWToolkitFramework.framework in Frameworks */,
 				076644FB11A212D700B7BFA3 /* Carbon.framework in Frameworks */,
 				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
 				0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */,
@@ -373,6 +382,7 @@
 		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */,
 				07E632151187AAD800451374 /* Carbon.framework */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 				0766438911A212A800B7BFA3 /* CoreServices.framework */,
@@ -461,7 +471,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 089C166AFE841209C02AAC07 /* Spectacle */;
 			projectDirPath = "";
 			projectRoot = "";
