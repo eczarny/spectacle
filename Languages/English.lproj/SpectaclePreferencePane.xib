@@ -461,33 +461,6 @@
 												<reference key="NSSuperview" ref="131596099"/>
 												<string key="NSClassName">SpectacleHotKeyRecorder</string>
 											</object>
-											<object class="NSButton" id="2510387">
-												<reference key="NSNextResponder" ref="131596099"/>
-												<int key="NSvFlags">299</int>
-												<string key="NSFrame">{{200, 15}, {182, 18}}</string>
-												<reference key="NSSuperview" ref="131596099"/>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="814170206">
-													<int key="NSCellFlags">67239424</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Launch Spectacle at login</string>
-													<reference key="NSSupport" ref="558112443"/>
-													<reference key="NSControlView" ref="2510387"/>
-													<int key="NSButtonFlags">1211912703</int>
-													<int key="NSButtonFlags2">2</int>
-													<object class="NSCustomResource" key="NSNormalImage" id="859305503">
-														<string key="NSClassName">NSImage</string>
-														<string key="NSResourceName">NSSwitch</string>
-													</object>
-													<object class="NSButtonImageSource" key="NSAlternateImage" id="1017027799">
-														<string key="NSImageName">NSSwitch</string>
-													</object>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-											</object>
 										</array>
 										<string key="NSFrame">{{10, 33}, {397, 371}}</string>
 									</object>
@@ -624,7 +597,7 @@
 						<object class="NSButton" id="283572674">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">299</int>
-							<string key="NSFrame">{{250, 18}, {258, 18}}</string>
+							<string key="NSFrame">{{243, 16}, {258, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="798101798">
@@ -635,8 +608,13 @@
 								<reference key="NSControlView" ref="283572674"/>
 								<int key="NSButtonFlags">1211912703</int>
 								<int key="NSButtonFlags2">2</int>
-								<reference key="NSNormalImage" ref="859305503"/>
-								<reference key="NSAlternateImage" ref="1017027799"/>
+								<object class="NSCustomResource" key="NSNormalImage" id="513183741">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">NSSwitch</string>
+								</object>
+								<object class="NSButtonImageSource" key="NSAlternateImage" id="1017027799">
+									<string key="NSImageName">NSSwitch</string>
+								</object>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
@@ -646,7 +624,7 @@
 						<object class="NSButton" id="634444019">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{154, 15}, {69, 25}}</string>
+							<string key="NSFrame">{{154, 102}, {69, 25}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="316946">
@@ -665,8 +643,8 @@
 						</object>
 						<object class="BWStyledTextField" id="922368740">
 							<reference key="NSNextResponder" ref="1037298196"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{17, 20}, {133, 14}}</string>
+							<int key="NSvFlags">-2147483380</int>
+							<string key="NSFrame">{{17, 107}, {133, 14}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="BWStyledTextFieldCell" key="NSCell" id="225774741">
@@ -704,6 +682,28 @@
 									<bytes key="NSRGB">MC41NjA2NDczNjY2IDAuNjA1Mzg4OTczNyAwLjY1ODE2MzI2NTMAA</bytes>
 								</object>
 								<reference key="BWSTFCSolidColor" ref="739989265"/>
+							</object>
+						</object>
+						<object class="NSButton" id="2510387">
+							<reference key="NSNextResponder" ref="1037298196"/>
+							<int key="NSvFlags">-2147483349</int>
+							<string key="NSFrame">{{30, 136}, {183, 18}}</string>
+							<reference key="NSSuperview" ref="1037298196"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="814170206">
+								<int key="NSCellFlags">67239424</int>
+								<int key="NSCellFlags2">0</int>
+								<string key="NSContents">Launch Spectacle at login</string>
+								<reference key="NSSupport" ref="558112443"/>
+								<reference key="NSControlView" ref="2510387"/>
+								<int key="NSButtonFlags">1211912703</int>
+								<int key="NSButtonFlags2">2</int>
+								<reference key="NSNormalImage" ref="513183741"/>
+								<reference key="NSAlternateImage" ref="1017027799"/>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
 							</object>
 						</object>
 					</array>
@@ -959,6 +959,7 @@
 							<reference ref="283572674"/>
 							<reference ref="922368740"/>
 							<reference ref="634444019"/>
+							<reference ref="2510387"/>
 						</array>
 						<reference key="parent" ref="660800786"/>
 					</object>
@@ -1001,7 +1002,6 @@
 							<reference ref="18761435"/>
 							<reference ref="773783822"/>
 							<reference ref="984145013"/>
-							<reference ref="2510387"/>
 						</array>
 						<reference key="parent" ref="563872776"/>
 					</object>
@@ -1417,7 +1417,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="814170206"/>
 						</array>
-						<reference key="parent" ref="131596099"/>
+						<reference key="parent" ref="1037298196"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">213</int>
@@ -1537,7 +1537,7 @@
 				<string key="207.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="210.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<object class="NSAffineTransform" key="210.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDSAAAwfgAAA</bytes>
+					<bytes key="NSTransformStruct">P4AAAL+AAABBqAAAwmAAAA</bytes>
 				</object>
 				<string key="213.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="214.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1611,7 +1611,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">352</int>
+			<int key="maxID">354</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
