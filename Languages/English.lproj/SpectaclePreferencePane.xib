@@ -313,7 +313,7 @@
 										<string key="NSFrame">{{10, 33}, {397, 371}}</string>
 										<reference key="NSSuperview" ref="831456543"/>
 									</object>
-									<string key="NSLabel">Page 1</string>
+									<string key="NSLabel">General</string>
 									<reference key="NSColor" ref="296516534"/>
 									<reference key="NSTabView" ref="831456543"/>
 								</object>
@@ -464,7 +464,7 @@
 										</array>
 										<string key="NSFrame">{{10, 33}, {397, 371}}</string>
 									</object>
-									<string key="NSLabel">Page 2</string>
+									<string key="NSLabel">Misc.</string>
 									<reference key="NSColor" ref="296516534"/>
 									<reference key="NSTabView" ref="831456543"/>
 								</object>
@@ -1432,10 +1432,10 @@
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBEditorWindowLastContentRect">{{323, 175}, {668, 455}}</string>
+				<string key="12.IBEditorWindowLastContentRect">{{306, 153}, {668, 455}}</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="12.IBViewEditorWindowController.showingLayoutRectangles"/>
-				<string key="12.IBWindowTemplateEditedContentRect">{{323, 175}, {668, 455}}</string>
+				<string key="12.IBWindowTemplateEditedContentRect">{{306, 153}, {668, 455}}</string>
 				<integer value="1" key="12.ImportedFromIB2"/>
 				<boolean value="YES" key="12.windowTemplate.hasMaxSize"/>
 				<boolean value="YES" key="12.windowTemplate.hasMinSize"/>
