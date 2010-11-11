@@ -81,12 +81,16 @@
     [textShadow setShadowOffset: NSMakeSize(0.0f, -1.0)];
     [textShadow setShadowBlurRadius: 0.0f];
     
+    NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    NSFont *arial = [NSFont fontWithName: @"Arial" size: 18.0f];
+    NSFont *boldArial = [fontManager convertFont: arial toHaveTrait: NSBoldFontMask];
+    
     [attributes setObject: paragraphStyle forKey: NSParagraphStyleAttributeName];
-    [attributes setObject: [NSFont systemFontOfSize: 20.0f] forKey: NSFontAttributeName];
+    [attributes setObject: boldArial forKey: NSFontAttributeName];
     [attributes setObject: foregroundcolor forKey: NSForegroundColorAttributeName];
     [attributes setObject: textShadow forKey: NSShadowAttributeName];
     
-    labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes: attributes].height / 2.0f);
+    labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes: attributes].height / 2.0f) + 1.0f;
     
     [string drawInRect: labelRect withAttributes: attributes];
 }
