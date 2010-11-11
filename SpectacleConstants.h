@@ -72,3 +72,10 @@
 
 #define SpectacleWindowActionUndoLastMove                @"UndoLastMove"
 #define SpectacleWindowActionRedoLastMove                @"RedoLastMove"
+
+#pragma mark -
+
+#define SpectacleSliderWellImage                         @"SliderWell"
+#define SpectacleSliderMaskImage                         @"SliderMask"
+#define SpectacleSliderHandleImage                       @"SliderHandle"
+#define SpectacleSliderHandlePressedImage                @"SliderHandlePressed"

@@ -20,47 +20,15 @@
 // IN THE SOFTWARE.
 // 
 
-#import <Cocoa/Cocoa.h>
+#import "SpectacleToggleSwitch.h"
+#import "SpectacleToggleSwitchCell.h"
 
-@class SpectacleHotKeyAction;
+#define MyCell (SpectacleToggleSwitchCell *)[self cell]
 
-@interface SpectacleUtilities : ZeroKitUtilities {
-    
+@implementation SpectacleToggleSwitch
+
++ (Class)cellClass {
+    return [SpectacleToggleSwitchCell class];
 }
 
-+ (NSBundle *)preferencePaneBundle;
-
-+ (NSBundle *)helperApplicationBundle;
-
-#pragma mark -
-
-+ (NSString *)preferencePaneVersion;
-
-+ (NSString *)helperApplicationVersion;
-
-#pragma mark -
-
-+ (void)startSpectacle;
-
-+ (void)stopSpectacle;
-
-#pragma mark -
-
-+ (BOOL)isSpectacleRunning;
-
-#pragma mark -
-
-+ (NSArray *)hotKeyNames;
-
-#pragma mark -
-
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target;
-
-#pragma mark -
-
-+ (SpectacleHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
-
-#pragma mark -
-
-+ (NSInteger)currentWorkspace;
 @end
