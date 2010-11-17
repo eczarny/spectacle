@@ -23,7 +23,15 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SpectacleToggleSwitchCell : NSCell {
-    
+    NSImage *mySliderWell;
+    NSImage *mySliderMask;
+    NSImage *myHandle;
+    NSImage *myHandlePressed;
+    NSTrackingArea *myTrackingArea;
+    NSPoint myHandlePosition;
+    BOOL isMouseDown;
+    BOOL isMouseDragging;
+    BOOL isMouseAboveHandle;
 }
 
 

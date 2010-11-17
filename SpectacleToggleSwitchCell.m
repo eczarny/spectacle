@@ -26,7 +26,19 @@
 
 @interface SpectacleToggleSwitchCell (SpectacleToggleSwitchCellPrivate)
 
+- (void)drawHandleInRect: (NSRect)rect atPosition: (NSPoint)position;
+
+#pragma mark -
+
+- (void)drawLabelsInRect: (NSRect)rect withSliderSize: (NSSize)sliderSize andHorizontalAdjustment: (CGFloat)horizontalAdjustment;
+
+#pragma mark -
+
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundcolor inRect: (NSRect)rect;
+
+#pragma mark -
+
+- (void)updateTrackingArea;
 
 @end
 
@@ -34,32 +46,106 @@
 
 @implementation SpectacleToggleSwitchCell
 
+- (id)init {
+    if (self = [super init]) {
+        mySliderWell = [SpectacleUtilities imageFromResource: SpectacleSliderWellImage];
+        mySliderMask = [SpectacleUtilities imageFromResource: SpectacleSliderMaskImage];
+        myHandle = [SpectacleUtilities imageFromResource: SpectacleSliderHandleImage];
+        myHandlePressed = [SpectacleUtilities imageFromResource: SpectacleSliderHandlePressedImage];
+        myHandlePosition = NSZeroPoint;
+        isMouseDown = NO;
+        isMouseDragging = NO;
+        isMouseAboveHandle = NO;
+    }
+    
+    return self;
+}
+
+#pragma mark -
+
 - (void)drawWithFrame: (NSRect)frame inView: (NSView *)view {
-    NSBundle *bundle = [SpectacleUtilities preferencePaneBundle];
-    NSImage *sliderWell = [SpectacleUtilities imageFromResource: SpectacleSliderWellImage inBundle: bundle];
-    NSImage *sliderMask = [SpectacleUtilities imageFromResource: SpectacleSliderMaskImage inBundle: bundle];
-    NSImage *sliderHandle = [SpectacleUtilities imageFromResource: SpectacleSliderHandleImage inBundle: bundle];
+    CGSize sliderSize = [mySliderWell size];
+    CGSize handleSize = [myHandle size];
+    CGSize sliderMaskSize = [mySliderMask size];
+    CGFloat x = floor(frame.size.width / 2.0f) - floor(sliderSize.width / 2.0f);
     
     [[NSGraphicsContext currentContext] saveGraphicsState];
     
-    CGSize sliderWellSize = [sliderWell size];
-    CGSize sliderMaskSize = [sliderMask size];
-    CGFloat x = floor(frame.size.width / 2.0f) - floor(sliderWellSize.width / 2.0f);
+    [mySliderWell drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
     
-    [sliderWell drawAtPoint: NSMakePoint(x, 1.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
-    [sliderHandle drawAtPoint: NSMakePoint(x - 2.0f, 1.0f) fromRect: frame operation: NSCompositeSourceOver fraction: 1.0f];
+    if (CGPointEqualToPoint(myHandlePosition, NSZeroPoint) || (myHandlePosition.x <= x)) {
+        myHandlePosition = NSMakePoint(x, 0.0f);
+    } else if (myHandlePosition.x >= (x + sliderSize.width - handleSize.width)) {
+        myHandlePosition = NSMakePoint(x + sliderSize.width - handleSize.width, 0.0f);
+    }
     
-    x = x - floor((sliderMaskSize.width - sliderWellSize.width) / 2.0f);
+    [self drawHandleInRect: frame atPosition: myHandlePosition];
     
-    [sliderMask drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeSourceAtop fraction: 1.0f];
+    x = x - floor((sliderMaskSize.width - sliderSize.width) / 2.0f);
     
-    NSRect offRect = NSMakeRect(x - 46.0f, frame.origin.y, 40.0f, frame.size.height);
-    NSRect onRect = NSMakeRect(x + sliderMaskSize.width + 2.0f, frame.origin.y, 40.0f, frame.size.height);
+    [mySliderMask drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeSourceAtop fraction: 1.0f];
     
-    [self drawString: @"OFF" withForegroundColor: [NSColor disabledControlTextColor] inRect: offRect];
-    [self drawString: @"ON" withForegroundColor: [NSColor disabledControlTextColor] inRect: onRect];
+    [self drawLabelsInRect: frame withSliderSize: sliderSize andHorizontalAdjustment: x];
     
     [[NSGraphicsContext currentContext] restoreGraphicsState];
+}
+
+#pragma mark -
+
+- (BOOL)trackMouse: (NSEvent *)event inRect: (NSRect)rect ofView: (NSView *)view untilMouseUp: (BOOL)untilMouseUp {
+    NSEvent *currentEvent = event;
+    NSPoint previousMouseLocation = NSZeroPoint;
+    
+    do {
+        NSPoint mouseLocation = [view convertPoint: [currentEvent locationInWindow] fromView: nil];
+        
+        switch ([currentEvent type]) {
+            case NSLeftMouseDown:
+                isMouseDown = YES;
+                
+                [view setNeedsDisplay: YES];
+                
+                break;
+            case NSLeftMouseDragged:
+                isMouseDragging = YES;
+                
+                if (isMouseDown && isMouseAboveHandle) {
+                    myHandlePosition.x = myHandlePosition.x + (mouseLocation.x - previousMouseLocation.x);
+                }
+                
+                [view setNeedsDisplay: YES];
+                
+                break;
+            default:
+                isMouseDown = NO;
+                isMouseDragging = NO;
+                
+                [view setNeedsDisplay: YES];
+                
+                return YES;
+        }
+        
+        previousMouseLocation = mouseLocation;
+    } while (currentEvent = [[view window] nextEventMatchingMask: NSLeftMouseDraggedMask | NSLeftMouseUpMask
+                                                       untilDate: [NSDate distantFuture]
+                                                          inMode: NSEventTrackingRunLoopMode
+                                                         dequeue: YES]);
+    
+    return YES;
+}
+
+#pragma mark -
+
+- (void)mouseEntered: (NSEvent *)event {
+    isMouseAboveHandle = YES;
+    
+    [[self controlView] setNeedsDisplay: YES];
+}
+
+- (void)mouseExited: (NSEvent *)event {
+    isMouseAboveHandle = NO;
+    
+    [[self controlView] setNeedsDisplay: YES];
 }
 
 @end
@@ -68,31 +154,65 @@
 
 @implementation SpectacleToggleSwitchCell (SpectacleToggleSwitchCellPrivate)
 
-- (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundcolor inRect: (NSRect)rect {
-    NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-    NSShadow *textShadow = [[[NSShadow alloc] init] autorelease];
-    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+- (void)drawHandleInRect: (NSRect)rect atPosition: (NSPoint)position {
+    if (isMouseDown && isMouseAboveHandle) {
+        [myHandlePressed drawAtPoint: position fromRect: rect operation: NSCompositeSourceOver fraction: 1.0f];
+    } else {
+        [myHandle drawAtPoint: position fromRect: rect operation: NSCompositeSourceOver fraction: 1.0f];
+    }
+    
+    [self updateTrackingArea];
+}
+
+#pragma mark -
+
+- (void)drawLabelsInRect: (NSRect)rect withSliderSize: (NSSize)sliderSize andHorizontalAdjustment: (CGFloat)horizontalAdjustment {
+    NSColor *foregroundColor = [NSColor disabledControlTextColor];
     NSRect labelRect = rect;
     
-    [paragraphStyle setLineBreakMode: NSLineBreakByTruncatingTail];
-    [paragraphStyle setAlignment: NSCenterTextAlignment];
+    labelRect.origin.x = horizontalAdjustment - 46.0f;
+    labelRect.size.width = 40.0f;
     
-    [textShadow setShadowColor: [NSColor whiteColor]];
-    [textShadow setShadowOffset: NSMakeSize(0.0f, -1.0)];
-    [textShadow setShadowBlurRadius: 0.0f];
+    [self drawString: @"OFF" withForegroundColor: foregroundColor inRect: labelRect];
     
+    labelRect.origin.x = horizontalAdjustment + sliderSize.width + 2.0f;
+    
+    [self drawString: @"ON" withForegroundColor: foregroundColor inRect: labelRect];
+}
+
+#pragma mark -
+
+- (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundColor inRect: (NSRect)rect {
+    NSMutableDictionary *attributes = [SpectacleUtilities createStringAttributesWithShadow];
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     NSFont *arial = [NSFont fontWithName: @"Arial" size: 18.0f];
     NSFont *boldArial = [fontManager convertFont: arial toHaveTrait: NSBoldFontMask];
+    NSRect labelRect = rect;
     
-    [attributes setObject: paragraphStyle forKey: NSParagraphStyleAttributeName];
     [attributes setObject: boldArial forKey: NSFontAttributeName];
-    [attributes setObject: foregroundcolor forKey: NSForegroundColorAttributeName];
-    [attributes setObject: textShadow forKey: NSShadowAttributeName];
+    [attributes setObject: foregroundColor forKey: NSForegroundColorAttributeName];
     
     labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes: attributes].height / 2.0f) + 1.0f;
     
     [string drawInRect: labelRect withAttributes: attributes];
+}
+
+#pragma mark -
+
+- (void)updateTrackingArea {
+    CGSize handleSize = [myHandle size];
+    NSRect rect = NSMakeRect(myHandlePosition.x, myHandlePosition.y, handleSize.width, handleSize.height);
+    
+    [[self controlView] removeTrackingArea: myTrackingArea];
+    
+    [myTrackingArea release];
+    
+    myTrackingArea = [[NSTrackingArea alloc] initWithRect: rect
+                                                  options: NSTrackingActiveInKeyWindow | NSTrackingMouseEnteredAndExited
+                                                    owner: self
+                                                 userInfo: nil];
+    
+    [[self controlView] addTrackingArea: myTrackingArea];
 }
 
 @end

@@ -236,7 +236,7 @@
                 
                 return YES;
         }
-    } while (currentEvent = [[view window] nextEventMatchingMask: (NSLeftMouseDraggedMask | NSLeftMouseUpMask)
+    } while (currentEvent = [[view window] nextEventMatchingMask: NSLeftMouseDraggedMask | NSLeftMouseUpMask
                                                        untilDate: [NSDate distantFuture]
                                                           inMode: NSEventTrackingRunLoopMode
                                                          dequeue: YES]);
@@ -247,23 +247,15 @@
 #pragma mark -
 
 - (void)mouseEntered: (NSEvent *)event {
-    NSView *controlView = [self controlView];
+    isMouseAboveBadge = YES;
     
-    if ([[controlView window] isKeyWindow]) {
-        isMouseAboveBadge = YES;
-        
-        [controlView setNeedsDisplay: YES];
-    }
+    [[self controlView] setNeedsDisplay: YES];
 }
 
 - (void)mouseExited: (NSEvent *)event {
-    NSView *controlView = [self controlView];
+    isMouseAboveBadge = NO;
     
-    if ([[controlView window] isKeyWindow]) {
-        isMouseAboveBadge = NO;
-        
-        [controlView setNeedsDisplay: YES];
-    }
+    [[self controlView] setNeedsDisplay: YES];
 }
 
 #pragma mark -
@@ -475,31 +467,13 @@
 
 #pragma mark -
 
-- (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundcolor inRect: (NSRect)rect {
-    NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-    NSShadow *textShadow = [[[NSShadow alloc] init] autorelease];
-    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+- (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundColor inRect: (NSRect)rect {
+    NSMutableDictionary *attributes = [SpectacleUtilities createStringAttributesWithShadow];
     NSRect labelRect = rect;
     
-    [paragraphStyle setLineBreakMode: NSLineBreakByTruncatingTail];
-    [paragraphStyle setAlignment: NSCenterTextAlignment];
-    
-    [textShadow setShadowColor: [NSColor whiteColor]];
-    [textShadow setShadowOffset: NSMakeSize(0.0f, -1.0)];
-    [textShadow setShadowBlurRadius: 0.0f];
-    
-    [attributes setObject: paragraphStyle forKey: NSParagraphStyleAttributeName];
     [attributes setObject: [NSFont systemFontOfSize: [NSFont smallSystemFontSize]] forKey: NSFontAttributeName];
-    [attributes setObject: foregroundcolor forKey: NSForegroundColorAttributeName];
+    [attributes setObject: foregroundColor forKey: NSForegroundColorAttributeName];
     
-    // Display the shadow only if a hot key is not being recorded.
-    if (!isRecording) {
-        [attributes setObject: textShadow forKey: NSShadowAttributeName];
-    }
-    
-    // Draw the string in the center of the control.
-    labelRect.size.width -= 12;
-    labelRect.origin.x += 6;
     labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes: attributes].height / 2.0f);
     
     [string drawInRect: labelRect withAttributes: attributes];
