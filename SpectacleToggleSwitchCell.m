@@ -64,28 +64,26 @@
 #pragma mark -
 
 - (void)drawWithFrame: (NSRect)frame inView: (NSView *)view {
-    CGSize sliderSize = [mySliderWell size];
+    CGSize sliderWellSize = [mySliderWell size];
     CGSize handleSize = [myHandle size];
-    CGSize sliderMaskSize = [mySliderMask size];
-    CGFloat x = floor(frame.size.width / 2.0f) - floor(sliderSize.width / 2.0f);
+    CGFloat x = floor(frame.size.width / 2.0f) - floor(sliderWellSize.width / 2.0f);
+    CGFloat maxX = x + sliderWellSize.width - handleSize.width;
     
     [[NSGraphicsContext currentContext] saveGraphicsState];
     
     [mySliderWell drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
     
-    if (CGPointEqualToPoint(myHandlePosition, NSZeroPoint) || (myHandlePosition.x <= x)) {
+    if (myHandlePosition.x <= x) {
         myHandlePosition = NSMakePoint(x, 0.0f);
-    } else if (myHandlePosition.x >= (x + sliderSize.width - handleSize.width)) {
-        myHandlePosition = NSMakePoint(x + sliderSize.width - handleSize.width, 0.0f);
+    } else if (myHandlePosition.x >= maxX) {
+        myHandlePosition = NSMakePoint(maxX, 0.0f);
     }
     
     [self drawHandleInRect: frame atPosition: myHandlePosition];
     
-    x = x - floor((sliderMaskSize.width - sliderSize.width) / 2.0f);
-    
     [mySliderMask drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeSourceAtop fraction: 1.0f];
     
-    [self drawLabelsInRect: frame withSliderSize: sliderSize andHorizontalAdjustment: x];
+    [self drawLabelsInRect: frame withSliderSize: sliderWellSize andHorizontalAdjustment: x];
     
     [[NSGraphicsContext currentContext] restoreGraphicsState];
 }
