@@ -16,7 +16,7 @@
 		070D2B28128B52A90022D02C /* SliderHandle.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B24128B52A90022D02C /* SliderHandle.png */; };
 		070D2B29128B52A90022D02C /* SliderHandlePressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B25128B52A90022D02C /* SliderHandlePressed.png */; };
 		070D2B2A128B52A90022D02C /* SliderMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B26128B52A90022D02C /* SliderMask.png */; };
-		070D2B2B128B52A90022D02C /* SliderWell.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B27128B52A90022D02C /* SliderWell.png */; };
+		070D2B2B128B52A90022D02C /* SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B27128B52A90022D02C /* SliderBackground.png */; };
 		070D2CD611E4C08D00C8DC0A /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 07CCF9E811E41E850054483C /* Sparkle.framework */; };
 		072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
 		0742996F1192379900C79D03 /* SpectacleHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 076780B611867BA400614FB5 /* SpectacleHotKey.m */; };
@@ -111,7 +111,7 @@
 		070D2B24128B52A90022D02C /* SliderHandle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderHandle.png; path = Resources/Images/SliderHandle.png; sourceTree = "<group>"; };
 		070D2B25128B52A90022D02C /* SliderHandlePressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderHandlePressed.png; path = Resources/Images/SliderHandlePressed.png; sourceTree = "<group>"; };
 		070D2B26128B52A90022D02C /* SliderMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderMask.png; path = Resources/Images/SliderMask.png; sourceTree = "<group>"; };
-		070D2B27128B52A90022D02C /* SliderWell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderWell.png; path = Resources/Images/SliderWell.png; sourceTree = "<group>"; };
+		070D2B27128B52A90022D02C /* SliderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderBackground.png; path = Resources/Images/SliderBackground.png; sourceTree = "<group>"; };
 		072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionManager.h; sourceTree = "<group>"; };
 		072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionManager.m; sourceTree = "<group>"; };
 		0747DAF71183AC5100F75DD2 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 				070D2B24128B52A90022D02C /* SliderHandle.png */,
 				070D2B25128B52A90022D02C /* SliderHandlePressed.png */,
 				070D2B26128B52A90022D02C /* SliderMask.png */,
-				070D2B27128B52A90022D02C /* SliderWell.png */,
+				070D2B27128B52A90022D02C /* SliderBackground.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -532,10 +532,10 @@
 				07C9360B11E7809900735C13 /* dsa_public.pem in Resources */,
 				0747DB081183ACD600F75DD2 /* InfoPlist.strings in Resources */,
 				07BB544D11866B090045663F /* Localizable.strings in Resources */,
+				070D2B2B128B52A90022D02C /* SliderBackground.png in Resources */,
 				070D2B28128B52A90022D02C /* SliderHandle.png in Resources */,
 				070D2B29128B52A90022D02C /* SliderHandlePressed.png in Resources */,
 				070D2B2A128B52A90022D02C /* SliderMask.png in Resources */,
-				070D2B2B128B52A90022D02C /* SliderWell.png in Resources */,
 				077938BF1184F9C10013BC14 /* SpectacleHelper.app in Resources */,
 				0747DB051183ACC600F75DD2 /* SpectaclePreferencePane.xib in Resources */,
 			);

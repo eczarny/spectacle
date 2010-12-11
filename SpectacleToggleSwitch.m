@@ -23,8 +23,6 @@
 #import "SpectacleToggleSwitch.h"
 #import "SpectacleToggleSwitchCell.h"
 
-#define MyCell (SpectacleToggleSwitchCell *)[self cell]
-
 @implementation SpectacleToggleSwitch
 
 + (Class)cellClass {

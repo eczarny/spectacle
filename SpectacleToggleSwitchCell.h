@@ -23,7 +23,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SpectacleToggleSwitchCell : NSCell {
-    NSImage *mySliderWell;
+    NSImage *mySliderBackground;
     NSImage *mySliderMask;
     NSImage *myHandle;
     NSImage *myHandlePressed;

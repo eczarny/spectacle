@@ -48,7 +48,7 @@
 
 - (id)init {
     if (self = [super init]) {
-        mySliderWell = [SpectacleUtilities imageFromResource: SpectacleSliderWellImage];
+        mySliderBackground = [SpectacleUtilities imageFromResource: SpectacleSliderBackgroundImage];
         mySliderMask = [SpectacleUtilities imageFromResource: SpectacleSliderMaskImage];
         myHandle = [SpectacleUtilities imageFromResource: SpectacleSliderHandleImage];
         myHandlePressed = [SpectacleUtilities imageFromResource: SpectacleSliderHandlePressedImage];
@@ -64,14 +64,20 @@
 #pragma mark -
 
 - (void)drawWithFrame: (NSRect)frame inView: (NSView *)view {
-    CGSize sliderWellSize = [mySliderWell size];
+    CGSize sliderWellSize = [mySliderBackground size];
     CGSize handleSize = [myHandle size];
-    CGFloat x = floor(frame.size.width / 2.0f) - floor(sliderWellSize.width / 2.0f);
-    CGFloat maxX = x + sliderWellSize.width - handleSize.width;
+    CGFloat x = NSMidX(frame) - floor(sliderWellSize.width / 2.0f);
+    CGFloat maxX = x + (sliderWellSize.width - handleSize.width);
     
     [[NSGraphicsContext currentContext] saveGraphicsState];
     
-    [mySliderWell drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
+    [mySliderBackground drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
+    
+    if ([self state] == NSOnState) {
+        myHandlePosition = NSMakePoint(maxX, 0.0f);
+    } else if ([self state] == NSOffState) {
+        myHandlePosition = NSMakePoint(x, 0.0f);
+    }
     
     if (myHandlePosition.x <= x) {
         myHandlePosition = NSMakePoint(x, 0.0f);
@@ -105,16 +111,26 @@
                 
                 break;
             case NSLeftMouseDragged:
-                isMouseDragging = YES;
-                
                 if (isMouseDown && isMouseAboveHandle) {
                     myHandlePosition.x = myHandlePosition.x + (mouseLocation.x - previousMouseLocation.x);
+                    
+                    [self setState: NSMixedState];
                 }
+                
+                isMouseDragging = YES;
                 
                 [view setNeedsDisplay: YES];
                 
                 break;
             default:
+                if (!isMouseDragging) {
+                    if ([self state] == NSOnState) {
+                        [self setState: NSOffState];
+                    } else {
+                        [self setState: NSOnState];
+                    }
+                }
+                
                 isMouseDown = NO;
                 isMouseDragging = NO;
                 
@@ -190,7 +206,7 @@
     [attributes setObject: boldArial forKey: NSFontAttributeName];
     [attributes setObject: foregroundColor forKey: NSForegroundColorAttributeName];
     
-    labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes: attributes].height / 2.0f) + 1.0f;
+    labelRect.origin.y = NSMidY(rect) - ([string sizeWithAttributes: attributes].height / 2.0f) - 6.0f;
     
     [string drawInRect: labelRect withAttributes: attributes];
 }

@@ -75,7 +75,7 @@
 
 #pragma mark -
 
-#define SpectacleSliderWellImage                         @"SliderWell"
+#define SpectacleSliderBackgroundImage                   @"SliderBackground"
 #define SpectacleSliderMaskImage                         @"SliderMask"
 #define SpectacleSliderHandleImage                       @"SliderHandle"
 #define SpectacleSliderHandlePressedImage                @"SliderHandlePressed"
