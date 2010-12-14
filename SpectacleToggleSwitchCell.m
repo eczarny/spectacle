@@ -24,6 +24,10 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
+#define HandleBounds NSMakeRect(myHandlePosition.x, myHandlePosition.y, [myHandle size].width, [myHandle size].height)
+
+#pragma mark -
+
 @interface SpectacleToggleSwitchCell (SpectacleToggleSwitchCellPrivate)
 
 - (void)drawHandleInRect: (NSRect)rect atPosition: (NSPoint)position;
@@ -35,10 +39,6 @@
 #pragma mark -
 
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundcolor inRect: (NSRect)rect;
-
-#pragma mark -
-
-- (void)updateTrackingArea;
 
 @end
 
@@ -64,20 +64,14 @@
 #pragma mark -
 
 - (void)drawWithFrame: (NSRect)frame inView: (NSView *)view {
-    CGSize sliderWellSize = [mySliderBackground size];
+    CGSize sliderSize = [mySliderBackground size];
     CGSize handleSize = [myHandle size];
-    CGFloat x = NSMidX(frame) - floor(sliderWellSize.width / 2.0f);
-    CGFloat maxX = x + (sliderWellSize.width - handleSize.width);
+    CGFloat x = NSMidX(frame) - floor(sliderSize.width / 2.0f);
+    CGFloat maxX = x + (sliderSize.width - handleSize.width);
     
     [[NSGraphicsContext currentContext] saveGraphicsState];
     
     [mySliderBackground drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
-    
-    if ([self state] == NSOnState) {
-        myHandlePosition = NSMakePoint(maxX, 0.0f);
-    } else if ([self state] == NSOffState) {
-        myHandlePosition = NSMakePoint(x, 0.0f);
-    }
     
     if (myHandlePosition.x <= x) {
         myHandlePosition = NSMakePoint(x, 0.0f);
@@ -89,7 +83,7 @@
     
     [mySliderMask drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeSourceAtop fraction: 1.0f];
     
-    [self drawLabelsInRect: frame withSliderSize: sliderWellSize andHorizontalAdjustment: x];
+    [self drawLabelsInRect: frame withSliderSize: sliderSize andHorizontalAdjustment: x];
     
     [[NSGraphicsContext currentContext] restoreGraphicsState];
 }
@@ -98,49 +92,43 @@
 
 - (BOOL)trackMouse: (NSEvent *)event inRect: (NSRect)rect ofView: (NSView *)view untilMouseUp: (BOOL)untilMouseUp {
     NSEvent *currentEvent = event;
-    NSPoint previousMouseLocation = NSZeroPoint;
+    NSPoint previousPosition = NSZeroPoint;
     
     do {
-        NSPoint mouseLocation = [view convertPoint: [currentEvent locationInWindow] fromView: nil];
+        NSPoint currentPosition = [view convertPoint: [currentEvent locationInWindow] fromView: nil];
         
         switch ([currentEvent type]) {
             case NSLeftMouseDown:
                 isMouseDown = YES;
                 
-                [view setNeedsDisplay: YES];
+                if (NSPointInRect(currentPosition, HandleBounds)) {
+                    isMouseAboveHandle = YES;
+                } else {
+                    isMouseAboveHandle = NO;
+                }
                 
                 break;
             case NSLeftMouseDragged:
-                if (isMouseDown && isMouseAboveHandle) {
-                    myHandlePosition.x = myHandlePosition.x + (mouseLocation.x - previousMouseLocation.x);
-                    
-                    [self setState: NSMixedState];
+                if (isMouseAboveHandle) {
+                    myHandlePosition.x = myHandlePosition.x + (currentPosition.x - previousPosition.x);
                 }
                 
                 isMouseDragging = YES;
                 
-                [view setNeedsDisplay: YES];
-                
                 break;
             default:
-                if (!isMouseDragging) {
-                    if ([self state] == NSOnState) {
-                        [self setState: NSOffState];
-                    } else {
-                        [self setState: NSOnState];
-                    }
-                }
-                
-                isMouseDown = NO;
                 isMouseDragging = NO;
+                isMouseDown = NO;
                 
                 [view setNeedsDisplay: YES];
                 
                 return YES;
         }
         
-        previousMouseLocation = mouseLocation;
-    } while (currentEvent = [[view window] nextEventMatchingMask: NSLeftMouseDraggedMask | NSLeftMouseUpMask
+        [view setNeedsDisplay: YES];
+        
+        previousPosition = currentPosition;
+    } while (currentEvent = [[view window] nextEventMatchingMask: (NSLeftMouseDraggedMask | NSLeftMouseUpMask)
                                                        untilDate: [NSDate distantFuture]
                                                           inMode: NSEventTrackingRunLoopMode
                                                          dequeue: YES]);
@@ -152,14 +140,10 @@
 
 - (void)mouseEntered: (NSEvent *)event {
     isMouseAboveHandle = YES;
-    
-    [[self controlView] setNeedsDisplay: YES];
 }
 
 - (void)mouseExited: (NSEvent *)event {
     isMouseAboveHandle = NO;
-    
-    [[self controlView] setNeedsDisplay: YES];
 }
 
 @end
@@ -174,8 +158,6 @@
     } else {
         [myHandle drawAtPoint: position fromRect: rect operation: NSCompositeSourceOver fraction: 1.0f];
     }
-    
-    [self updateTrackingArea];
 }
 
 #pragma mark -
@@ -190,6 +172,10 @@
     [self drawString: @"OFF" withForegroundColor: foregroundColor inRect: labelRect];
     
     labelRect.origin.x = horizontalAdjustment + sliderSize.width + 2.0f;
+    
+    if ([self state] == NSOnState) {
+        foregroundColor = [NSColor colorWithCalibratedRed: 0.263 green:0.529 blue: 0.929 alpha: 1.00];
+    }
     
     [self drawString: @"ON" withForegroundColor: foregroundColor inRect: labelRect];
 }
@@ -209,24 +195,6 @@
     labelRect.origin.y = NSMidY(rect) - ([string sizeWithAttributes: attributes].height / 2.0f) - 6.0f;
     
     [string drawInRect: labelRect withAttributes: attributes];
-}
-
-#pragma mark -
-
-- (void)updateTrackingArea {
-    CGSize handleSize = [myHandle size];
-    NSRect rect = NSMakeRect(myHandlePosition.x, myHandlePosition.y, handleSize.width, handleSize.height);
-    
-    [[self controlView] removeTrackingArea: myTrackingArea];
-    
-    [myTrackingArea release];
-    
-    myTrackingArea = [[NSTrackingArea alloc] initWithRect: rect
-                                                  options: NSTrackingActiveInKeyWindow | NSTrackingMouseEnteredAndExited
-                                                    owner: self
-                                                 userInfo: nil];
-    
-    [[self controlView] addTrackingArea: myTrackingArea];
 }
 
 @end

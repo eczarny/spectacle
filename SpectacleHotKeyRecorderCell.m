@@ -236,7 +236,7 @@
                 
                 return YES;
         }
-    } while (currentEvent = [[view window] nextEventMatchingMask: NSLeftMouseDraggedMask | NSLeftMouseUpMask
+    } while (currentEvent = [[view window] nextEventMatchingMask: (NSLeftMouseDraggedMask | NSLeftMouseUpMask)
                                                        untilDate: [NSDate distantFuture]
                                                           inMode: NSEventTrackingRunLoopMode
                                                          dequeue: YES]);
@@ -361,7 +361,7 @@
     
     if (!myTrackingArea) {
         myTrackingArea = [[NSTrackingArea alloc] initWithRect: badgeRect
-                                                      options: NSTrackingActiveInKeyWindow | NSTrackingMouseEnteredAndExited
+                                                      options: (NSTrackingActiveInKeyWindow | NSTrackingMouseEnteredAndExited)
                                                         owner: self
                                                      userInfo: nil];
         
