@@ -127,6 +127,12 @@
         NSPoint currentPosition = [view convertPoint: [currentEvent locationInWindow] fromView: nil];
         NSInteger newState = 0;
         
+        if (![myToggleSwitch isEnabled]) {
+            NSBeep();
+            
+            return YES;
+        }
+        
         switch ([currentEvent type]) {
             case NSLeftMouseDown:
                 isMouseDown = YES;
@@ -199,21 +205,21 @@
 }
 
 - (void)drawLabelsInRect: (NSRect)rect withSliderSize: (NSSize)sliderSize andHorizontalAdjustment: (CGFloat)horizontalAdjustment {
-    NSColor *foregroundColor = [NSColor disabledControlTextColor];
+    NSColor *foregroundColor = [NSColor colorWithCalibratedRed: 0.294 green: 0.294 blue: 0.294 alpha: 1.00];
     NSRect labelRect = rect;
     
     labelRect.origin.x = horizontalAdjustment - 46.0f;
     labelRect.size.width = 40.0f;
     
-    [self drawString: @"OFF" withForegroundColor: foregroundColor inRect: labelRect];
+    [self drawString: ZeroKitLocalizedStringFromCurrentBundle(@"OFF") withForegroundColor: foregroundColor inRect: labelRect];
     
     labelRect.origin.x = horizontalAdjustment + sliderSize.width + 2.0f;
     
     if ([self state] == NSOnState) {
-        foregroundColor = [NSColor colorWithCalibratedRed: 0.263 green:0.529 blue: 0.929 alpha: 1.00];
+        foregroundColor = [NSColor colorWithCalibratedRed: 0.263 green: 0.529 blue: 0.929 alpha: 1.00];
     }
     
-    [self drawString: @"ON" withForegroundColor: foregroundColor inRect: labelRect];
+    [self drawString: ZeroKitLocalizedStringFromCurrentBundle(@"ON") withForegroundColor: foregroundColor inRect: labelRect];
 }
 
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundColor inRect: (NSRect)rect {

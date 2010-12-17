@@ -481,7 +481,7 @@
 						<object class="NSCustomView" id="479120159">
 							<reference key="NSNextResponder" ref="1037298196"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{22, 165}, {200, 28}}</string>
+							<string key="NSFrame">{{22, 182}, {200, 28}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<string key="NSClassName">SpectacleToggleSwitch</string>
 						</object>
@@ -1531,7 +1531,6 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="toggleCheckForUpdates:">id</string>
 						<string key="toggleLoginItem:">id</string>
-						<string key="toggleRunningState:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="toggleCheckForUpdates:">
@@ -1540,10 +1539,6 @@
 						</object>
 						<object class="IBActionInfo" key="toggleLoginItem:">
 							<string key="name">toggleLoginItem:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toggleRunningState:">
-							<string key="name">toggleRunningState:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
