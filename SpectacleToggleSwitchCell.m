@@ -24,7 +24,7 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
-#define HandleBounds NSMakeRect(myHandlePosition.x, myHandlePosition.y, [myHandle size].width, [myHandle size].height)
+#define BoundsOfHandle NSMakeRect(myHandlePosition.x, myHandlePosition.y, [myHandle size].width, [myHandle size].height)
 
 #pragma mark -
 
@@ -32,11 +32,7 @@
 
 - (void)drawHandleInRect: (NSRect)rect atPosition: (NSPoint)position;
 
-#pragma mark -
-
 - (void)drawLabelsInRect: (NSRect)rect withSliderSize: (NSSize)sliderSize andHorizontalAdjustment: (CGFloat)horizontalAdjustment;
-
-#pragma mark -
 
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundcolor inRect: (NSRect)rect;
 
@@ -48,6 +44,8 @@
 
 - (id)init {
     if (self = [super init]) {
+        myToggleSwitch = nil;
+        myDelegate = nil;
         mySliderBackground = [SpectacleUtilities imageFromResource: SpectacleSliderBackgroundImage];
         mySliderMask = [SpectacleUtilities imageFromResource: SpectacleSliderMaskImage];
         myHandle = [SpectacleUtilities imageFromResource: SpectacleSliderHandleImage];
@@ -63,25 +61,55 @@
 
 #pragma mark -
 
+- (void)setToggleSwitch: (SpectacleToggleSwitch *)toggleSwitch {
+    if (myToggleSwitch != toggleSwitch) {
+        [myToggleSwitch release];
+        
+        myToggleSwitch = [toggleSwitch retain];
+    }
+}
+
+#pragma mark -
+
+- (id<SpectacleToggleSwitchDelegate>)delegate {
+    return myDelegate;
+}
+
+- (void)setDelegate: (id<SpectacleToggleSwitchDelegate>)delegate {
+    myDelegate = delegate;
+}
+
+#pragma mark -
+
+- (void)setState: (NSInteger)state {
+    [super setState: state];
+    
+    [[self controlView] setNeedsDisplay: YES];
+}
+
+#pragma mark -
+
 - (void)drawWithFrame: (NSRect)frame inView: (NSView *)view {
     CGSize sliderSize = [mySliderBackground size];
     CGSize handleSize = [myHandle size];
     CGFloat x = NSMidX(frame) - floor(sliderSize.width / 2.0f);
-    CGFloat maxX = x + (sliderSize.width - handleSize.width);
+    CGFloat maximumX = x + (sliderSize.width - handleSize.width);
+    NSPoint startPosition = NSMakePoint(x, 0.0f);
+    NSPoint endPosition = NSMakePoint(maximumX, 0.0f);
     
     [[NSGraphicsContext currentContext] saveGraphicsState];
     
-    [mySliderBackground drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
+    [mySliderBackground drawAtPoint: startPosition fromRect: frame operation: NSCompositeCopy fraction: 1.0f];
     
-    if (myHandlePosition.x <= x) {
-        myHandlePosition = NSMakePoint(x, 0.0f);
-    } else if (myHandlePosition.x >= maxX) {
-        myHandlePosition = NSMakePoint(maxX, 0.0f);
+    if ((isMouseDragging && (myHandlePosition.x < x)) || (!isMouseDragging && ([self state] == NSOffState))) {
+        myHandlePosition = startPosition;
+    } else if ((isMouseDragging && (myHandlePosition.x >= maximumX)) || (!isMouseDragging && ([self state] == NSOnState))) {
+        myHandlePosition = endPosition;
     }
     
     [self drawHandleInRect: frame atPosition: myHandlePosition];
     
-    [mySliderMask drawAtPoint: NSMakePoint(x, 0.0f) fromRect: frame operation: NSCompositeSourceAtop fraction: 1.0f];
+    [mySliderMask drawAtPoint: startPosition fromRect: frame operation: NSCompositeSourceAtop fraction: 1.0f];
     
     [self drawLabelsInRect: frame withSliderSize: sliderSize andHorizontalAdjustment: x];
     
@@ -93,15 +121,17 @@
 - (BOOL)trackMouse: (NSEvent *)event inRect: (NSRect)rect ofView: (NSView *)view untilMouseUp: (BOOL)untilMouseUp {
     NSEvent *currentEvent = event;
     NSPoint previousPosition = NSZeroPoint;
+    NSInteger previousState = [self state];
     
     do {
         NSPoint currentPosition = [view convertPoint: [currentEvent locationInWindow] fromView: nil];
+        NSInteger newState = 0;
         
         switch ([currentEvent type]) {
             case NSLeftMouseDown:
                 isMouseDown = YES;
                 
-                if (NSPointInRect(currentPosition, HandleBounds)) {
+                if (NSPointInRect(currentPosition, BoundsOfHandle)) {
                     isMouseAboveHandle = YES;
                 } else {
                     isMouseAboveHandle = NO;
@@ -109,16 +139,34 @@
                 
                 break;
             case NSLeftMouseDragged:
+                isMouseDragging = YES;
+                
                 if (isMouseAboveHandle) {
                     myHandlePosition.x = myHandlePosition.x + (currentPosition.x - previousPosition.x);
                 }
                 
-                isMouseDragging = YES;
-                
                 break;
             default:
-                isMouseDragging = NO;
                 isMouseDown = NO;
+                
+                if (isMouseDragging) {
+                    CGFloat middleX = NSMidX(rect);
+                    CGFloat distanceA = middleX - myHandlePosition.x;
+                    CGFloat distanceB = (myHandlePosition.x + [myHandle size].width) - middleX;
+                    BOOL isOn = (previousState == NSOnState) ? YES : NO;
+                    
+                    newState = (!isOn && (distanceA < distanceB)) ? NSOnState : NSOffState;
+                } else {
+                    newState = (previousState == NSOnState) ? NSOffState : NSOnState;
+                }
+                
+                if (previousState != newState) {
+                    [self setState: newState];
+                    
+                    [myDelegate toggleSwitchDidChangeState: myToggleSwitch];
+                }
+                
+                isMouseDragging = NO;
                 
                 [view setNeedsDisplay: YES];
                 
@@ -136,16 +184,6 @@
     return YES;
 }
 
-#pragma mark -
-
-- (void)mouseEntered: (NSEvent *)event {
-    isMouseAboveHandle = YES;
-}
-
-- (void)mouseExited: (NSEvent *)event {
-    isMouseAboveHandle = NO;
-}
-
 @end
 
 #pragma mark -
@@ -159,8 +197,6 @@
         [myHandle drawAtPoint: position fromRect: rect operation: NSCompositeSourceOver fraction: 1.0f];
     }
 }
-
-#pragma mark -
 
 - (void)drawLabelsInRect: (NSRect)rect withSliderSize: (NSSize)sliderSize andHorizontalAdjustment: (CGFloat)horizontalAdjustment {
     NSColor *foregroundColor = [NSColor disabledControlTextColor];
@@ -179,8 +215,6 @@
     
     [self drawString: @"ON" withForegroundColor: foregroundColor inRect: labelRect];
 }
-
-#pragma mark -
 
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundColor inRect: (NSRect)rect {
     NSMutableDictionary *attributes = [SpectacleUtilities createStringAttributesWithShadow];

@@ -65,6 +65,7 @@
         myHotKeyRecorder = nil;
         myHotKeyName = nil;
         myHotKey = nil;
+        myDelegate = nil;
         myModifierFlags = 0;
         isRecording = NO;
         myTrackingArea = nil;
@@ -76,10 +77,6 @@
 }
 
 #pragma mark -
-
-- (SpectacleHotKeyRecorder *)hotKeyRecorder {
-    return myHotKeyRecorder;
-}
 
 - (void)setHotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder {
     if (myHotKeyRecorder != hotKeyRecorder) {

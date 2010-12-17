@@ -39,6 +39,12 @@
 
 #pragma mark -
 
++ (Class)cellClass {
+    return [SpectacleHotKeyRecorderCell class];
+}
+
+#pragma mark -
+
 - (NSString *)hotKeyName {
     return [MyCell hotKeyName];
 }
@@ -67,12 +73,6 @@
 
 - (void)setDelegate: (id<SpectacleHotKeyRecorderDelegate>)delegate {
     [MyCell setDelegate: delegate];
-}
-
-#pragma mark -
-
-+ (Class)cellClass {
-    return [SpectacleHotKeyRecorderCell class];
 }
 
 #pragma mark -

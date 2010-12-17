@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
 		<string key="IBDocument.InterfaceBuilderVersion">804</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<dictionary class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="com.apple.InterfaceBuilder.CocoaPlugin">804</string>
@@ -584,7 +584,7 @@
 								<int key="NSCellFlags">68288064</int>
 								<int key="NSCellFlags2">138413056</int>
 								<string key="NSContents">0.0 rev. 0000000</string>
-								<object class="NSFont" key="NSSupport" id="662764438">
+								<object class="NSFont" key="NSSupport">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">11</double>
 									<int key="NSfFlags">16</int>
@@ -622,70 +622,6 @@
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
 								<int key="NSPeriodicInterval">25</int>
-							</object>
-						</object>
-						<object class="NSButton" id="634444019">
-							<reference key="NSNextResponder" ref="1037298196"/>
-							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{20, 10}, {69, 25}}</string>
-							<reference key="NSSuperview" ref="1037298196"/>
-							<bool key="NSEnabled">YES</bool>
-							<object class="NSButtonCell" key="NSCell" id="316946">
-								<int key="NSCellFlags">67239424</int>
-								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Start</string>
-								<reference key="NSSupport" ref="558112443"/>
-								<reference key="NSControlView" ref="634444019"/>
-								<int key="NSButtonFlags">-2034876161</int>
-								<int key="NSButtonFlags2">163</int>
-								<reference key="NSAlternateImage" ref="558112443"/>
-								<string key="NSAlternateContents"/>
-								<string key="NSKeyEquivalent"/>
-								<int key="NSPeriodicDelay">200</int>
-								<int key="NSPeriodicInterval">25</int>
-							</object>
-						</object>
-						<object class="BWStyledTextField" id="922368740">
-							<reference key="NSNextResponder" ref="1037298196"/>
-							<int key="NSvFlags">-2147483380</int>
-							<string key="NSFrame">{{94, 16}, {133, 14}}</string>
-							<reference key="NSSuperview" ref="1037298196"/>
-							<bool key="NSEnabled">YES</bool>
-							<object class="BWStyledTextFieldCell" key="NSCell" id="225774741">
-								<int key="NSCellFlags">68288064</int>
-								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Spectacle is not running</string>
-								<reference key="NSSupport" ref="662764438"/>
-								<reference key="NSControlView" ref="922368740"/>
-								<reference key="NSBackgroundColor" ref="296516534"/>
-								<reference key="NSTextColor" ref="739989265"/>
-								<bool key="BWSTFCShadowIsBelow">YES</bool>
-								<bool key="BWSTFCHasShadow">YES</bool>
-								<bool key="BWSTFCHasGradient">NO</bool>
-								<reference key="BWSTFCShadowColor" ref="988129988"/>
-								<dictionary class="NSMutableDictionary" key="BWSTFCPreviousAttributes">
-									<reference key="NSColor" ref="739989265"/>
-									<reference key="NSFont" ref="662764438"/>
-									<reference key="NSOriginalFont" ref="662764438"/>
-									<object class="NSMutableParagraphStyle" key="NSParagraphStyle">
-										<int key="NSAlignment">4</int>
-										<int key="NSLineBreakMode">2</int>
-										<nil key="NSTabStops"/>
-									</object>
-									<object class="NSShadow" key="NSShadow">
-										<double key="NSShadowVert">-1</double>
-										<reference key="NSShadowColor" ref="988129988"/>
-									</object>
-								</dictionary>
-								<object class="NSColor" key="BWSTFCStartingColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4zMjk3MTQ5MjU1IDAuMzc5MjE3MjcxNSAwLjQzMzY3MzQ2OTQAA</bytes>
-								</object>
-								<object class="NSColor" key="BWSTFCEndingColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC41NjA2NDczNjY2IDAuNjA1Mzg4OTczNyAwLjY1ODE2MzI2NTMAA</bytes>
-								</object>
-								<reference key="BWSTFCSolidColor" ref="739989265"/>
 							</object>
 						</object>
 						<object class="NSButton" id="2510387">
@@ -728,22 +664,6 @@
 						<reference key="destination" ref="660800786"/>
 					</object>
 					<int key="connectionID">26</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleRunningState:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="634444019"/>
-					</object>
-					<int key="connectionID">222</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myToggleRunningStateButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="634444019"/>
-					</object>
-					<int key="connectionID">228</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -915,11 +835,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myStatusTextField</string>
+						<string key="label">myToggleRunningStateSwitch</string>
 						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="922368740"/>
+						<reference key="destination" ref="479120159"/>
 					</object>
-					<int key="connectionID">350</int>
+					<int key="connectionID">357</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -961,8 +881,6 @@
 							<reference ref="364977042"/>
 							<reference ref="894938083"/>
 							<reference ref="2510387"/>
-							<reference ref="634444019"/>
-							<reference ref="922368740"/>
 							<reference ref="283572674"/>
 						</array>
 						<reference key="parent" ref="660800786"/>
@@ -1354,32 +1272,6 @@
 						<reference key="parent" ref="853783944"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">219</int>
-						<reference key="object" ref="634444019"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="316946"/>
-						</array>
-						<reference key="parent" ref="1037298196"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">220</int>
-						<reference key="object" ref="316946"/>
-						<reference key="parent" ref="634444019"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">348</int>
-						<reference key="object" ref="922368740"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="225774741"/>
-						</array>
-						<reference key="parent" ref="1037298196"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">349</int>
-						<reference key="object" ref="225774741"/>
-						<reference key="parent" ref="922368740"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">294</int>
 						<reference key="object" ref="161834297"/>
 						<array class="NSMutableArray" key="children">
@@ -1549,11 +1441,6 @@
 					<bytes key="NSTransformStruct">P4AAAL+AAABCGAAAwxQAAA</bytes>
 				</object>
 				<string key="217.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="219.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSAffineTransform" key="219.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABDGgAAwvoAAA</bytes>
-				</object>
-				<string key="220.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="277.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="278.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="279.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1603,11 +1490,6 @@
 				<string key="342.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="343.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="344.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="348.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
-				<object class="NSAffineTransform" key="348.IBViewBoundsToFrameTransform">
-					<bytes key="NSTransformStruct">P4AAAL+AAABBiAAAwu4AAA</bytes>
-				</object>
-				<string key="349.IBPluginDependency">com.brandonwalkin.BWToolkit</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<integer value="1" key="6.ImportedFromIB2"/>
 			</dictionary>
@@ -1615,7 +1497,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">356</int>
+			<int key="maxID">358</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1684,8 +1566,7 @@
 						<string key="myMoveToUpperRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myRedoLastMoveHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="mySpectacleVersionTextField">NSTextField</string>
-						<string key="myStatusTextField">NSTextField</string>
-						<string key="myToggleRunningStateButton">NSButton</string>
+						<string key="myToggleRunningStateSwitch">SpectacleToggleSwitch</string>
 						<string key="myUndoLastMoveHotKeyRecorder">SpectacleHotKeyRecorder</string>
 						<string key="myVendedHelperController">id</string>
 					</dictionary>
@@ -1762,13 +1643,9 @@
 							<string key="name">mySpectacleVersionTextField</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myStatusTextField">
-							<string key="name">myStatusTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="myToggleRunningStateButton">
-							<string key="name">myToggleRunningStateButton</string>
-							<string key="candidateClassName">NSButton</string>
+						<object class="IBToOneOutletInfo" key="myToggleRunningStateSwitch">
+							<string key="name">myToggleRunningStateSwitch</string>
+							<string key="candidateClassName">SpectacleToggleSwitch</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myUndoLastMoveHotKeyRecorder">
 							<string key="name">myUndoLastMoveHotKeyRecorder</string>

@@ -21,20 +21,11 @@
 // 
 
 #import <Cocoa/Cocoa.h>
-#import "SpectacleToggleSwitchDelegate.h"
 
-@interface SpectacleToggleSwitch : NSControl {
-    
-}
+@class SpectacleToggleSwitch;
 
-- (NSInteger)state;
+@protocol SpectacleToggleSwitchDelegate
 
-- (void)setState: (NSInteger)state;
-
-#pragma mark -
-
-- (id<SpectacleToggleSwitchDelegate>)delegate;
-
-- (void)setDelegate: (id<SpectacleToggleSwitchDelegate>)delegate;
+- (void)toggleSwitchDidChangeState: (SpectacleToggleSwitch *)toggleSwitch;
 
 @end

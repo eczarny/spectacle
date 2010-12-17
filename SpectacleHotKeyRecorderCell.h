@@ -37,8 +37,6 @@
     BOOL isMouseDown;
 }
 
-- (SpectacleHotKeyRecorder *)hotKeyRecorder;
-
 - (void)setHotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder;
 
 #pragma mark -

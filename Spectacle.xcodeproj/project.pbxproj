@@ -114,6 +114,7 @@
 		070D2B27128B52A90022D02C /* SliderBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderBackground.png; path = Resources/Images/SliderBackground.png; sourceTree = "<group>"; };
 		072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionManager.h; sourceTree = "<group>"; };
 		072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionManager.m; sourceTree = "<group>"; };
+		07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleToggleSwitchDelegate.h; sourceTree = "<group>"; };
 		0747DAF71183AC5100F75DD2 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
 		0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDevelopment.xcconfig; path = Configurations/CommonDevelopment.xcconfig; sourceTree = "<group>"; };
 		0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
@@ -351,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				07F3FAF61197449400247AC2 /* SpectacleHotKeyRecorderDelegate.h */,
+				07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";

@@ -21,8 +21,13 @@
 // 
 
 #import <Cocoa/Cocoa.h>
+#import "SpectacleToggleSwitchDelegate.h"
+
+@class SpectacleToggleSwitch;
 
 @interface SpectacleToggleSwitchCell : NSCell {
+    SpectacleToggleSwitch *myToggleSwitch;
+    id<SpectacleToggleSwitchDelegate> myDelegate;
     NSImage *mySliderBackground;
     NSImage *mySliderMask;
     NSImage *myHandle;
@@ -34,6 +39,12 @@
     BOOL isMouseAboveHandle;
 }
 
+- (void)setToggleSwitch: (SpectacleToggleSwitch *)toggleSwitch;
 
+#pragma mark -
+
+- (id<SpectacleToggleSwitchDelegate>)delegate;
+
+- (void)setDelegate: (id<SpectacleToggleSwitchDelegate>)delegate;
 
 @end
