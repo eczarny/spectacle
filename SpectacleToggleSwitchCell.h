@@ -32,7 +32,6 @@
     NSImage *mySliderMask;
     NSImage *myHandle;
     NSImage *myHandlePressed;
-    NSTrackingArea *myTrackingArea;
     NSPoint myHandlePosition;
     BOOL isMouseDown;
     BOOL isMouseDragging;

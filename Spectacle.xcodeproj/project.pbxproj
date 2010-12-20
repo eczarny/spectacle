@@ -24,6 +24,7 @@
 		0747DB051183ACC600F75DD2 /* SpectaclePreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB031183ACC600F75DD2 /* SpectaclePreferencePane.xib */; };
 		0747DB081183ACD600F75DD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
 		074A8F72119FAF9300940841 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
+		074F0B8112BD5E3100A8CF3F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */; };
 		0752C74811E4D6B900AB6A46 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CCF9E811E41E850054483C /* Sparkle.framework */; };
 		0760BB35128B040400FAFC77 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */; };
 		0760BB68128B065D00FAFC77 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */; };
@@ -123,6 +124,7 @@
 		0747DAFC1183AC5100F75DD2 /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
 		0747DB041183ACC600F75DD2 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectaclePreferencePane.xib; sourceTree = "<group>"; };
 		0747DB071183ACD600F75DD2 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0760BB34128B040400FAFC77 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWToolkitFramework.framework; path = Library/Frameworks/BWToolkitFramework.framework; sourceTree = SDKROOT; };
 		0766438911A212A800B7BFA3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		07678095118679C600614FB5 /* SpectacleHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyManager.h; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
 				0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */,
 				8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */,
+				074F0B8112BD5E3100A8CF3F /* QuartzCore.framework in Frameworks */,
 				07BB53DC118655F10045663F /* ZeroKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +414,7 @@
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 				0766438911A212A800B7BFA3 /* CoreServices.framework */,
 				F506C035013D953901CA16C8 /* PreferencePanes.framework */,
+				074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */,
 				07CCF9E811E41E850054483C /* Sparkle.framework */,
 				07BB53DB118655F10045663F /* ZeroKit.framework */,
 			);

@@ -46,10 +46,10 @@
     if (self = [super init]) {
         myToggleSwitch = nil;
         myDelegate = nil;
-        mySliderBackground = [SpectacleUtilities imageFromResource: SpectacleSliderBackgroundImage];
-        mySliderMask = [SpectacleUtilities imageFromResource: SpectacleSliderMaskImage];
-        myHandle = [SpectacleUtilities imageFromResource: SpectacleSliderHandleImage];
-        myHandlePressed = [SpectacleUtilities imageFromResource: SpectacleSliderHandlePressedImage];
+        mySliderBackground = [[SpectacleUtilities imageFromResource: SpectacleSliderBackgroundImage] retain];
+        mySliderMask = [[SpectacleUtilities imageFromResource: SpectacleSliderMaskImage] retain];
+        myHandle = [[SpectacleUtilities imageFromResource: SpectacleSliderHandleImage] retain];
+        myHandlePressed = [[SpectacleUtilities imageFromResource: SpectacleSliderHandlePressedImage] retain];
         myHandlePosition = NSZeroPoint;
         isMouseDown = NO;
         isMouseDragging = NO;
@@ -190,6 +190,17 @@
     return YES;
 }
 
+#pragma mark -
+
+- (void)dealloc {
+    [mySliderBackground release];
+    [mySliderMask release];
+    [myHandle release];
+    [myHandlePressed release];
+    
+    [super dealloc];
+}
+
 @end
 
 #pragma mark -
@@ -197,15 +208,19 @@
 @implementation SpectacleToggleSwitchCell (SpectacleToggleSwitchCellPrivate)
 
 - (void)drawHandleInRect: (NSRect)rect atPosition: (NSPoint)position {
+    NSImage *handleImage = nil;
+    
     if (isMouseDown && isMouseAboveHandle) {
-        [myHandlePressed drawAtPoint: position fromRect: rect operation: NSCompositeSourceOver fraction: 1.0f];
+        handleImage = myHandlePressed;
     } else {
-        [myHandle drawAtPoint: position fromRect: rect operation: NSCompositeSourceOver fraction: 1.0f];
+        handleImage = myHandle;
     }
+    
+    [handleImage drawAtPoint: position fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0f];
 }
 
 - (void)drawLabelsInRect: (NSRect)rect withSliderSize: (NSSize)sliderSize andHorizontalAdjustment: (CGFloat)horizontalAdjustment {
-    NSColor *foregroundColor = [NSColor colorWithCalibratedRed: 0.294 green: 0.294 blue: 0.294 alpha: 1.00];
+    NSColor *foregroundColor = [NSColor colorWithCalibratedRed: 0.294f green: 0.294f blue: 0.294f alpha: 1.00f];
     NSRect labelRect = rect;
     
     labelRect.origin.x = horizontalAdjustment - 46.0f;
@@ -216,7 +231,7 @@
     labelRect.origin.x = horizontalAdjustment + sliderSize.width + 2.0f;
     
     if ([self state] == NSOnState) {
-        foregroundColor = [NSColor colorWithCalibratedRed: 0.263 green: 0.529 blue: 0.929 alpha: 1.00];
+        foregroundColor = [NSColor colorWithCalibratedRed: 0.263f green: 0.529f blue: 0.929f alpha: 1.00f];
     }
     
     [self drawString: ZeroKitLocalizedStringFromCurrentBundle(@"ON") withForegroundColor: foregroundColor inRect: labelRect];
