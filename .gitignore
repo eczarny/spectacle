@@ -4,3 +4,5 @@
 *.mode1
 *.mode2
 *.pbxuser
+*.xcworkspace
+xcuserdata/
