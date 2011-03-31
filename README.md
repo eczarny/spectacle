@@ -20,7 +20,7 @@ Those wishing to contribute to the project should begin by obtaining the latest 
 
 # License
 
-Copyright (c) 2010 Eric Czarny.
+Copyright (c) 2011 Eric Czarny.
 
 Spectacle should be accompanied by a LICENSE file containing the license relevant to this distribution.
 
