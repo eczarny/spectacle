@@ -22,15 +22,15 @@
 
 #import <PreferencePanes/PreferencePanes.h>
 #import "SpectacleHotKeyRecorderDelegate.h"
+#import "SpectacleToggleSwitchDelegate.h"
 
-@class SpectacleHotKeyRecorder;
+@class SpectacleHotKeyRecorder, SpectacleToggleSwitch;
 
-@interface SpectaclePreferencePane : NSPreferencePane<SpectacleHotKeyRecorderDelegate> {
+@interface SpectaclePreferencePane : NSPreferencePane<SpectacleHotKeyRecorderDelegate, SpectacleToggleSwitchDelegate> {
     id myVendedHelperController;
     NSDictionary *myHotKeyRecorders;
     IBOutlet NSTextField *mySpectacleVersionTextField;
-    IBOutlet NSTextField *myStatusTextField;
-    IBOutlet NSButton *myToggleRunningStateButton;
+    IBOutlet SpectacleToggleSwitch *myToggleRunningStateSwitch;
     IBOutlet NSButton *myLoginItemEnabledButton;
     IBOutlet NSButton *myAutomaticallyChecksForUpdatesButton;
     IBOutlet SpectacleHotKeyRecorder *myMoveToCenterHotKeyRecorder;
@@ -50,10 +50,6 @@
     IBOutlet SpectacleHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
     IBOutlet SpectacleHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
 }
-
-- (void)toggleRunningState: (id)sender;
-
-#pragma mark -
 
 - (void)toggleLoginItem: (id)sender;
 

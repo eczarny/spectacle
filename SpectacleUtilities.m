@@ -230,6 +230,32 @@
     return currentWorkspace;
 }
 
+#pragma mark -
+
++ (NSImage *)imageFromResource: (NSString *)resource {
+    return [SpectacleUtilities imageFromResource: resource inBundle: [SpectacleUtilities preferencePaneBundle]];
+}
+
+#pragma mark -
+
++ (NSMutableDictionary *)createStringAttributesWithShadow {
+    NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+    NSShadow *textShadow = [[[NSShadow alloc] init] autorelease];
+    NSMutableDictionary *stringAttributes = [NSMutableDictionary dictionary];
+    
+    [paragraphStyle setLineBreakMode: NSLineBreakByTruncatingTail];
+    [paragraphStyle setAlignment: NSCenterTextAlignment];
+    
+    [textShadow setShadowColor: [NSColor whiteColor]];
+    [textShadow setShadowOffset: NSMakeSize(0.0f, -1.0)];
+    [textShadow setShadowBlurRadius: 0.0f];
+    
+    [stringAttributes setObject: paragraphStyle forKey: NSParagraphStyleAttributeName];
+    [stringAttributes setObject: textShadow forKey: NSShadowAttributeName];
+    
+    return stringAttributes;
+}
+
 @end
 
 #pragma mark -
