@@ -90,8 +90,8 @@
 #pragma mark -
 
 - (void)drawWithFrame: (NSRect)frame inView: (NSView *)view {
-    CGSize sliderSize = [mySliderBackground size];
-    CGSize handleSize = [myHandle size];
+    NSSize sliderSize = [mySliderBackground size];
+    NSSize handleSize = [myHandle size];
     CGFloat x = NSMidX(frame) - floor(sliderSize.width / 2.0f);
     CGFloat maximumX = x + (sliderSize.width - handleSize.width);
     NSPoint startPosition = NSMakePoint(x, 0.0f);
