@@ -16,29 +16,29 @@
 	<string>Spectacle</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.5</string>
 	<key>CFBundleSignature</key>
 	<string>ZERO</string>
 	<key>CFBundleVersion</key>
-	<string>0.4</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.4</string>
+	<string>0.5</string>
 	<key>NSMainNibFile</key>
-	<string>SpectaclePreferencePane</string>
-	<key>NSPrincipalClass</key>
 	<string>SpectaclePreferencePane</string>
 	<key>NSPrefPaneIconFile</key>
 	<string></string>
 	<key>NSPrefPaneIconLabel</key>
 	<string>Spectacle</string>
-	<key>SUFeedURL</key>
-	<string>http://appcasts.divisiblebyzero.com/spectacle/appcast.xml</string>
+	<key>NSPrincipalClass</key>
+	<string>SpectaclePreferencePane</string>
 	<key>SUAllowsAutomaticUpdates</key>
 	<false/>
 	<key>SUEnableAutomaticChecks</key>
 	<false/>
-	<key>SUScheduledCheckInterval</key>
-	<integer>86400</integer>
+	<key>SUFeedURL</key>
+	<string>http://appcasts.divisiblebyzero.com/spectacle/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_public.pem</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 </dict>
 </plist>
