@@ -20,51 +20,47 @@
 // IN THE SOFTWARE.
 // 
 
-#import <Cocoa/Cocoa.h>
-#import "SpectacleHotKeyRecorderDelegate.h"
+#import "SpectacleToggleSwitch.h"
+#import "SpectacleToggleSwitchCell.h"
 
-@class SpectacleHotKeyRecorder, SpectacleHotKey;
+#define MyCell (SpectacleToggleSwitchCell *)[self cell]
 
-@interface SpectacleHotKeyRecorderCell : NSCell {
-    SpectacleHotKeyRecorder *myHotKeyRecorder;
-    NSString *myHotKeyName;
-    SpectacleHotKey *myHotKey;
-    id<SpectacleHotKeyRecorderDelegate> myDelegate;
-    NSInteger myModifierFlags;
-    BOOL isRecording;
-    NSTrackingArea *myTrackingArea;
-    BOOL isMouseAboveBadge;
-    BOOL isMouseDown;
+#pragma mark -
+
+@implementation SpectacleToggleSwitch
+
+- (id)initWithFrame: (NSRect)frame {
+    if (self = [super initWithFrame: frame]) {
+        [MyCell setToggleSwitch: self];
+    }
+    
+    return self;
 }
 
-- (void)setHotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder;
+#pragma mark -
+
++ (Class)cellClass {
+    return [SpectacleToggleSwitchCell class];
+}
 
 #pragma mark -
 
-- (NSString *)hotKeyName;
+- (NSInteger)state {
+    return [MyCell state];
+}
 
-- (void)setHotKeyName: (NSString *)hotKeyName;
-
-#pragma mark -
-
-- (SpectacleHotKey *)hotKey;
-
-- (void)setHotKey: (SpectacleHotKey *)hotKey;
+- (void)setState: (NSInteger)state {
+    [MyCell setState: state];
+}
 
 #pragma mark -
 
-- (id<SpectacleHotKeyRecorderDelegate>)delegate;
+- (id<SpectacleToggleSwitchDelegate>)delegate {
+    return [MyCell delegate];
+}
 
-- (void)setDelegate: (id<SpectacleHotKeyRecorderDelegate>)delegate;
-
-#pragma mark -
-
-- (BOOL)resignFirstResponder;
-
-#pragma mark -
-
-- (BOOL)performKeyEquivalent: (NSEvent *)event;
-
-- (void)flagsChanged: (NSEvent *)event;
+- (void)setDelegate: (id<SpectacleToggleSwitchDelegate>)delegate {
+    [MyCell setDelegate: delegate];
+}
 
 @end

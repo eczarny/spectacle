@@ -21,8 +21,8 @@
 // 
 
 #ifdef __OBJC__
-    #import <AppKit/AppKit.h>
-    #import <Foundation/Foundation.h>
+    #import <Cocoa/Cocoa.h>
+    #import <QuartzCore/QuartzCore.h>
     #import <Sparkle/Sparkle.h>
     #import <ZeroKit/ZeroKit.h>
 #endif

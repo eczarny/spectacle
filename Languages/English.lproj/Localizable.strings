@@ -1,19 +1,18 @@
 /* Localized strings for Spectacle. */
 
-/* Spectacle Status */
-"Spectacle is not running" = "Spectacle is not running";
-"Spectacle is running" = "Spectacle is running";
-
 /* Alerts */
 "Spectacle requires that the Accessibility API be enabled" = "Spectacle requires that the Accessibility API be enabled";
 "Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?" = "Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?";
 
 /* Buttons */
-"Start" = "Start";
-"Stop" = "Stop";
 "Open Universal Access Preferences" = "Open Universal Access Preferences";
-"Stop Spectacle" = "Stop Spectacle";
+
+/* Hot Key Recorders */
 "Enter hot key" = "Enter hot key";
 "Stop recording" = "Stop recording";
 "Use existing" = "Use existing";
 "Click to record" = "Click to record";
+
+/* Toggle Switch */
+"ON" = "ON";
+"OFF" = "OFF";

@@ -64,4 +64,12 @@
 
 + (NSInteger)currentWorkspace;
 
+#pragma mark -
+
++ (NSImage *)imageFromResource: (NSString *)resource;
+
+#pragma mark -
+
++ (NSMutableDictionary *)createStringAttributesWithShadow;
+
 @end
