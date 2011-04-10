@@ -99,7 +99,7 @@
 
 #pragma mark -
 
-- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage;
 
 @end
 
@@ -182,7 +182,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     frontMostWindowRect = [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     
     if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
-        frontMostWindowRect = [self resizeCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen];
+        frontMostWindowRect = [self resizeCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
     }
     
     if (CGRectIsNull(frontMostWindowRect) || CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
@@ -470,17 +470,34 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
     CGRect previousFrontMostWindowRect = frontMostWindowRect;
+    SpectacleWindowAction action = SpectacleWindowActionCenter;
     
-    frontMostWindowRect.size.width = frontMostWindowRect.size.width + floor(frontMostWindowRect.size.width * 0.10);
-    frontMostWindowRect.size.height = frontMostWindowRect.size.height + floor(frontMostWindowRect.size.height * 0.10);
+    frontMostWindowRect.size.width = floor(frontMostWindowRect.size.width + (frontMostWindowRect.size.width * percentage));
+    frontMostWindowRect.size.height = floor(frontMostWindowRect.size.height + (frontMostWindowRect.size.height * percentage));
     
-    if (!CGRectContainsRect(visibleFrameOfScreen, frontMostWindowRect)) {
-        return previousFrontMostWindowRect;
+    if (frontMostWindowRect.size.width >= visibleFrameOfScreen.size.width) {
+        frontMostWindowRect.size.width = previousFrontMostWindowRect.size.width;
     }
     
-    return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: SpectacleWindowActionCenter];
+    if (frontMostWindowRect.size.width == previousFrontMostWindowRect.size.width) {
+        frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
+    }
+    
+    if (frontMostWindowRect.size.height >= visibleFrameOfScreen.size.height) {
+        frontMostWindowRect.size.height = previousFrontMostWindowRect.size.height;
+    }
+    
+    if (frontMostWindowRect.size.height == previousFrontMostWindowRect.size.height) {
+        frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
+    }
+    
+    if (CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
+        action = SpectacleWindowActionFullscreen;
+    }
+    
+    return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
 }
 
 @end
