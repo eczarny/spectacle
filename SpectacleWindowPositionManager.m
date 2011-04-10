@@ -97,6 +97,10 @@
 
 - (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem;
 
+#pragma mark -
+
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
+
 @end
 
 #pragma mark -
@@ -106,7 +110,7 @@
 static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (id)init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         myFrontMostWindowElement = nil;
         myUndoHistory = [[NSMutableDictionary dictionary] retain];
         myRedoHistory = [[NSMutableDictionary dictionary] retain];
@@ -176,6 +180,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     previousFrontMostWindowRect = frontMostWindowRect;
     
     frontMostWindowRect = [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+    
+    if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
+        frontMostWindowRect = [self resizeCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen];
+    }
     
     if (CGRectIsNull(frontMostWindowRect) || CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
         NSBeep();
@@ -458,6 +466,19 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     [CurrentRedoHistory addObject: historyItem];
+}
+
+#pragma mark -
+
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
+    if (!CGRectContainsRect(visibleFrameOfScreen, frontMostWindowRect)) {
+        return frontMostWindowRect;
+    }
+    
+    frontMostWindowRect.size.width = frontMostWindowRect.size.width + floor(frontMostWindowRect.size.width * 0.10);
+    frontMostWindowRect.size.height = frontMostWindowRect.size.height + floor(frontMostWindowRect.size.height * 0.10);
+    
+    return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: SpectacleWindowActionCenter];
 }
 
 @end
