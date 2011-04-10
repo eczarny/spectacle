@@ -471,12 +471,14 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
-    if (!CGRectContainsRect(visibleFrameOfScreen, frontMostWindowRect)) {
-        return frontMostWindowRect;
-    }
+    CGRect previousFrontMostWindowRect = frontMostWindowRect;
     
     frontMostWindowRect.size.width = frontMostWindowRect.size.width + floor(frontMostWindowRect.size.width * 0.10);
     frontMostWindowRect.size.height = frontMostWindowRect.size.height + floor(frontMostWindowRect.size.height * 0.10);
+    
+    if (!CGRectContainsRect(visibleFrameOfScreen, frontMostWindowRect)) {
+        return previousFrontMostWindowRect;
+    }
     
     return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: SpectacleWindowActionCenter];
 }
