@@ -54,7 +54,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 static SpectacleHotKeyManager *sharedInstance = nil;
 
 - (id)init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         myRegisteredHotKeys = [[NSMutableDictionary alloc] init];
         myCurrentHotKeyID = 0;
         isHotKeyHandlerInstalled = NO;

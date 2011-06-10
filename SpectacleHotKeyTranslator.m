@@ -69,7 +69,7 @@ enum {
 static SpectacleHotKeyTranslator *sharedInstance = nil;
 
 - (id)init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         mySpecialHotKeyTranslations = nil;
     }
     
