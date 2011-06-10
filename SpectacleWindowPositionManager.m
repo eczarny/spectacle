@@ -97,6 +97,10 @@
 
 - (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem;
 
+#pragma mark -
+
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage;
+
 @end
 
 #pragma mark -
@@ -106,7 +110,7 @@
 static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (id)init {
-    if (self = [super init]) {
+    if ((self = [super init])) {
         myFrontMostWindowElement = nil;
         myUndoHistory = [[NSMutableDictionary dictionary] retain];
         myRedoHistory = [[NSMutableDictionary dictionary] retain];
@@ -176,6 +180,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     previousFrontMostWindowRect = frontMostWindowRect;
     
     frontMostWindowRect = [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+    
+    if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
+        frontMostWindowRect = [self resizeCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
+    }
     
     if (CGRectIsNull(frontMostWindowRect) || CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
         NSBeep();
@@ -458,6 +466,38 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     [CurrentRedoHistory addObject: historyItem];
+}
+
+#pragma mark -
+
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
+    CGRect previousFrontMostWindowRect = frontMostWindowRect;
+    SpectacleWindowAction action = SpectacleWindowActionCenter;
+    
+    frontMostWindowRect.size.width = floor(frontMostWindowRect.size.width + (frontMostWindowRect.size.width * percentage));
+    frontMostWindowRect.size.height = floor(frontMostWindowRect.size.height + (frontMostWindowRect.size.height * percentage));
+    
+    if (frontMostWindowRect.size.width >= visibleFrameOfScreen.size.width) {
+        frontMostWindowRect.size.width = previousFrontMostWindowRect.size.width;
+    }
+    
+    if (frontMostWindowRect.size.width == previousFrontMostWindowRect.size.width) {
+        frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
+    }
+    
+    if (frontMostWindowRect.size.height >= visibleFrameOfScreen.size.height) {
+        frontMostWindowRect.size.height = previousFrontMostWindowRect.size.height;
+    }
+    
+    if (frontMostWindowRect.size.height == previousFrontMostWindowRect.size.height) {
+        frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
+    }
+    
+    if (CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
+        action = SpectacleWindowActionFullscreen;
+    }
+    
+    return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
 }
 
 @end
