@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5</string>
+	<string>0.5.1</string>
 	<key>CFBundleSignature</key>
 	<string>ZERO</string>
 	<key>CFBundleVersion</key>
-	<string>0.5</string>
+	<string>0.5.1</string>
 	<key>NSMainNibFile</key>
 	<string>SpectaclePreferencePane</string>
 	<key>NSPrefPaneIconFile</key>
