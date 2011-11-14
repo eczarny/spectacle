@@ -156,12 +156,20 @@ static SpectacleHotKeyTranslator *sharedInstance = nil;
     } else {
         TISInputSourceRef inputSource = TISCopyCurrentKeyboardInputSource();
         CFDataRef layoutData = (CFDataRef)TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData);
-        const UCKeyboardLayout *keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
+        const UCKeyboardLayout *keyboardLayout = nil;
         UInt32 keysDown = 0;
         UniCharCount length = 4;
         UniCharCount actualLength = 0;
         UniChar chars[4];
         OSStatus err;
+        
+        if (layoutData == NULL) {
+            NSLog(@"Unable to determine keyboard layout.");
+            
+            return @"?";
+        }
+        
+        keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
         
         err = UCKeyTranslate(keyboardLayout,
                              keyCode,
