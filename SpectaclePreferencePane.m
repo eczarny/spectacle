@@ -76,23 +76,23 @@
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     myHotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
-                         myMoveToCenterHotKeyRecorder,        SpectacleWindowActionMoveToCenter,
-                         myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullscreen,
-                         myMoveToLeftHotKeyRecorder,          SpectacleWindowActionMoveToLeftHalf,
-                         myMoveToRightHotKeyRecorder,         SpectacleWindowActionMoveToRightHalf,
-                         myMoveToTopHotKeyRecorder,           SpectacleWindowActionMoveToTopHalf,
-                         myMoveToBottomHotKeyRecorder,        SpectacleWindowActionMoveToBottomHalf,
-                         myMoveToUpperLeftHotKeyRecorder,     SpectacleWindowActionMoveToUpperLeft,
-                         myMoveToLowerLeftHotKeyRecorder,     SpectacleWindowActionMoveToLowerLeft,
-                         myMoveToUpperRightHotKeyRecorder,    SpectacleWindowActionMoveToUpperRight,
-                         myMoveToLowerRightHotKeyRecorder,    SpectacleWindowActionMoveToLowerRight,
-                         myMoveToLeftDisplayHotKeyRecorder,   SpectacleWindowActionMoveToLeftDisplay,
-                         myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
-                         myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
-                         myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
-                         myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
-                         myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove,
-                         nil];
+                            myMoveToCenterHotKeyRecorder,        SpectacleWindowActionMoveToCenter,
+                            myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullscreen,
+                            myMoveToLeftHotKeyRecorder,          SpectacleWindowActionMoveToLeftHalf,
+                            myMoveToRightHotKeyRecorder,         SpectacleWindowActionMoveToRightHalf,
+                            myMoveToTopHotKeyRecorder,           SpectacleWindowActionMoveToTopHalf,
+                            myMoveToBottomHotKeyRecorder,        SpectacleWindowActionMoveToBottomHalf,
+                            myMoveToUpperLeftHotKeyRecorder,     SpectacleWindowActionMoveToUpperLeft,
+                            myMoveToLowerLeftHotKeyRecorder,     SpectacleWindowActionMoveToLowerLeft,
+                            myMoveToUpperRightHotKeyRecorder,    SpectacleWindowActionMoveToUpperRight,
+                            myMoveToLowerRightHotKeyRecorder,    SpectacleWindowActionMoveToLowerRight,
+                            myMoveToLeftDisplayHotKeyRecorder,   SpectacleWindowActionMoveToLeftDisplay,
+                            myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
+                            myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
+                            myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
+                            myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
+                            myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove,
+                            nil];
     
     [myToggleRunningStateSwitch setDelegate: self];
     
@@ -164,17 +164,9 @@
 
 #pragma mark -
 
-- (void)willUnselect {
+- (void)dealloc {
     [[NSDistributedNotificationCenter defaultCenter] removeObserver: self];
     
-    [myVendedHelperController release];
-    
-    myVendedHelperController = nil;
-}
-
-#pragma mark -
-
-- (void)dealloc {
     [myVendedHelperController release];
     [myHotKeyRecorders release];
     
