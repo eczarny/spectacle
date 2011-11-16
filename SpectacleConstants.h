@@ -44,13 +44,6 @@
 
 #pragma mark -
 
-#define SpectacleHotKeyTranslationsPropertyListFile      @"SpecialHotKeyTranslations"
-
-#define SpectacleHotKeyTranslationsKey                   @"SpecialHotKeyTranslations"
-#define SpectacleHotKeyGlyphTranslationsKey              @"SpecialHotKeyGlyphTranslations"
-
-#pragma mark -
-
 #define SpectacleHotKeyNamesPropertyListFile             @"HotKeyNames"
 
 #pragma mark -

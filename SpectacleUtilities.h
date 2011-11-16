@@ -22,7 +22,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SpectacleHotKeyAction;
+@class ZeroKitHotKeyAction;
 
 @interface SpectacleUtilities : ZeroKitUtilities {
     
@@ -58,7 +58,7 @@
 
 #pragma mark -
 
-+ (SpectacleHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
++ (ZeroKitHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
 
 #pragma mark -
 
@@ -67,9 +67,5 @@
 #pragma mark -
 
 + (NSImage *)imageFromResource: (NSString *)resource;
-
-#pragma mark -
-
-+ (NSMutableDictionary *)createStringAttributesWithShadow;
 
 @end

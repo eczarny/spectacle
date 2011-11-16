@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		070031B01217712E001D4C46 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
-		0700947B11A5F575000C87DC /* SpecialHotKeyTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */; };
 		07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07088270119A301800EC9426 /* SpectacleHelperController.m */; };
 		07088356119A443E00EC9426 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
 		070D2B10128B43080022D02C /* SpectacleToggleSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */; };
@@ -19,8 +18,6 @@
 		070D2B2B128B52A90022D02C /* SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B27128B52A90022D02C /* SliderBackground.png */; };
 		070D2CD611E4C08D00C8DC0A /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 07CCF9E811E41E850054483C /* Sparkle.framework */; };
 		072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
-		0742996F1192379900C79D03 /* SpectacleHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 076780B611867BA400614FB5 /* SpectacleHotKey.m */; };
-		074299701192379900C79D03 /* SpectacleHotKeyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E632101187A7D100451374 /* SpectacleHotKeyAction.m */; };
 		0747DB051183ACC600F75DD2 /* SpectaclePreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB031183ACC600F75DD2 /* SpectaclePreferencePane.xib */; };
 		0747DB081183ACD600F75DD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
 		074A8F72119FAF9300940841 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
@@ -29,7 +26,6 @@
 		0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766438911A212A800B7BFA3 /* CoreServices.framework */; };
 		076644FB11A212D700B7BFA3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07678096118679C600614FB5 /* SpectacleHotKeyManager.m */; };
-		076780B811867BA400614FB5 /* SpectacleHotKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 076780B611867BA400614FB5 /* SpectacleHotKey.m */; };
 		077938BF1184F9C10013BC14 /* SpectacleHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 077938B61184F96A0013BC14 /* SpectacleHelper.app */; };
 		077938E61184FADB0013BC14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		077939041184FB3C0013BC14 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
@@ -45,13 +41,7 @@
 		07BB544C11866B090045663F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07BB544A11866B090045663F /* Localizable.strings */; };
 		07BB544D11866B090045663F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07BB544A11866B090045663F /* Localizable.strings */; };
 		07C9360B11E7809900735C13 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 07CCF9F911E41F2B0054483C /* dsa_public.pem */; };
-		07CFE2AA1198D75F004C39BD /* SpectacleHotKeyTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CFE2A91198D75F004C39BD /* SpectacleHotKeyTranslator.m */; };
-		07CFE2C41198E92E004C39BD /* SpectacleHotKeyTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CFE2A91198D75F004C39BD /* SpectacleHotKeyTranslator.m */; };
-		07E632111187A7D100451374 /* SpectacleHotKeyAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E632101187A7D100451374 /* SpectacleHotKeyAction.m */; };
 		07E632161187AAD800451374 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
-		07EE10FF11937F7200D6F536 /* SpectacleHotKeyRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EE10FE11937F7200D6F536 /* SpectacleHotKeyRecorder.m */; };
-		07EE11021193806300D6F536 /* SpectacleHotKeyRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EE11011193806300D6F536 /* SpectacleHotKeyRecorderCell.m */; };
-		07EFB4DA11890E3E003CBBDB /* SpectacleAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EFB4D911890E3E003CBBDB /* SpectacleAccessibilityElement.m */; };
 		8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
@@ -122,8 +112,6 @@
 		0766438911A212A800B7BFA3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		07678095118679C600614FB5 /* SpectacleHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyManager.h; sourceTree = "<group>"; };
 		07678096118679C600614FB5 /* SpectacleHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyManager.m; sourceTree = "<group>"; };
-		076780B511867BA400614FB5 /* SpectacleHotKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKey.h; sourceTree = "<group>"; };
-		076780B611867BA400614FB5 /* SpectacleHotKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKey.m; sourceTree = "<group>"; };
 		077938B61184F96A0013BC14 /* SpectacleHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectacleHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleHelper-Info.plist"; path = "Resources/Property Lists/SpectacleHelper-Info.plist"; sourceTree = "<group>"; };
 		077938E51184FADB0013BC14 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -134,7 +122,6 @@
 		078B0F50118D18CC004EE86C /* SpectacleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleConstants.h; sourceTree = "<group>"; };
 		079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistoryItem.h; sourceTree = "<group>"; };
 		079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistoryItem.m; sourceTree = "<group>"; };
-		07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SpecialHotKeyTranslations.plist; path = "Resources/Property Lists/SpecialHotKeyTranslations.plist"; sourceTree = "<group>"; };
 		07BB53DB118655F10045663F /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = Library/Frameworks/ZeroKit.framework; sourceTree = SDKROOT; };
 		07BB5404118657190045663F /* SpectacleHelperApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperApplicationController.h; sourceTree = "<group>"; };
 		07BB5405118657190045663F /* SpectacleHelperApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHelperApplicationController.m; sourceTree = "<group>"; };
@@ -143,18 +130,7 @@
 		07BB544B11866B090045663F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07CCF9E811E41E850054483C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Library/Frameworks/Sparkle.framework; sourceTree = SDKROOT; };
 		07CCF9F911E41F2B0054483C /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Resources/Sparkle/dsa_public.pem; sourceTree = "<group>"; };
-		07CFE2A81198D75F004C39BD /* SpectacleHotKeyTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyTranslator.h; sourceTree = "<group>"; };
-		07CFE2A91198D75F004C39BD /* SpectacleHotKeyTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyTranslator.m; sourceTree = "<group>"; };
-		07E6320F1187A7D100451374 /* SpectacleHotKeyAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyAction.h; sourceTree = "<group>"; };
-		07E632101187A7D100451374 /* SpectacleHotKeyAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyAction.m; sourceTree = "<group>"; };
 		07E632151187AAD800451374 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		07EE10FD11937F7200D6F536 /* SpectacleHotKeyRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyRecorder.h; sourceTree = "<group>"; };
-		07EE10FE11937F7200D6F536 /* SpectacleHotKeyRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyRecorder.m; sourceTree = "<group>"; };
-		07EE11001193806300D6F536 /* SpectacleHotKeyRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyRecorderCell.h; sourceTree = "<group>"; };
-		07EE11011193806300D6F536 /* SpectacleHotKeyRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyRecorderCell.m; sourceTree = "<group>"; };
-		07EFB4D811890E3E003CBBDB /* SpectacleAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleAccessibilityElement.h; sourceTree = "<group>"; };
-		07EFB4D911890E3E003CBBDB /* SpectacleAccessibilityElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleAccessibilityElement.m; sourceTree = "<group>"; };
-		07F3FAF61197449400247AC2 /* SpectacleHotKeyRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyRecorderDelegate.h; sourceTree = "<group>"; };
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -206,10 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				07F3FAF51197447200247AC2 /* Delegates */,
-				07EE10FD11937F7200D6F536 /* SpectacleHotKeyRecorder.h */,
-				07EE10FE11937F7200D6F536 /* SpectacleHotKeyRecorder.m */,
-				07EE11001193806300D6F536 /* SpectacleHotKeyRecorderCell.h */,
-				07EE11011193806300D6F536 /* SpectacleHotKeyRecorderCell.m */,
 				070D2B0E128B43080022D02C /* SpectacleToggleSwitch.h */,
 				070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */,
 				070D2B11128B431C0022D02C /* SpectacleToggleSwitchCell.h */,
@@ -223,8 +195,6 @@
 			children = (
 				07678095118679C600614FB5 /* SpectacleHotKeyManager.h */,
 				07678096118679C600614FB5 /* SpectacleHotKeyManager.m */,
-				07CFE2A81198D75F004C39BD /* SpectacleHotKeyTranslator.h */,
-				07CFE2A91198D75F004C39BD /* SpectacleHotKeyTranslator.m */,
 				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
 				07BB542C1186662F0045663F /* SpectacleUtilities.m */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
@@ -250,14 +220,8 @@
 		0747DAE91183AAC100F75DD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				07EFB4D811890E3E003CBBDB /* SpectacleAccessibilityElement.h */,
-				07EFB4D911890E3E003CBBDB /* SpectacleAccessibilityElement.m */,
 				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
 				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
-				076780B511867BA400614FB5 /* SpectacleHotKey.h */,
-				076780B611867BA400614FB5 /* SpectacleHotKey.m */,
-				07E6320F1187A7D100451374 /* SpectacleHotKeyAction.h */,
-				07E632101187A7D100451374 /* SpectacleHotKeyAction.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -274,7 +238,6 @@
 			children = (
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				070031AF1217712E001D4C46 /* HotKeyNames.plist */,
-				07BB4DFA11A3686F0021B27A /* SpecialHotKeyTranslations.plist */,
 				8D202CF70486D31800D8A456 /* Spectacle-Info.plist */,
 				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
 			);
@@ -345,7 +308,6 @@
 		07F3FAF51197447200247AC2 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				07F3FAF61197449400247AC2 /* SpectacleHotKeyRecorderDelegate.h */,
 				07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */,
 			);
 			name = Delegates;
@@ -488,7 +450,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -519,7 +481,6 @@
 				070031B01217712E001D4C46 /* HotKeyNames.plist in Resources */,
 				07088356119A443E00EC9426 /* InfoPlist.strings in Resources */,
 				07BB544C11866B090045663F /* Localizable.strings in Resources */,
-				0700947B11A5F575000C87DC /* SpecialHotKeyTranslations.plist in Resources */,
 				077939131184FCD20013BC14 /* SpectacleHelper.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,14 +540,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				077938E61184FADB0013BC14 /* main.m in Sources */,
-				07EFB4DA11890E3E003CBBDB /* SpectacleAccessibilityElement.m in Sources */,
 				07BB5406118657190045663F /* SpectacleHelperApplicationController.m in Sources */,
 				07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */,
 				079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */,
-				076780B811867BA400614FB5 /* SpectacleHotKey.m in Sources */,
-				07E632111187A7D100451374 /* SpectacleHotKeyAction.m in Sources */,
 				07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */,
-				07CFE2C41198E92E004C39BD /* SpectacleHotKeyTranslator.m in Sources */,
 				07BB542D1186662F0045663F /* SpectacleUtilities.m in Sources */,
 				072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */,
 			);
@@ -596,11 +553,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0742996F1192379900C79D03 /* SpectacleHotKey.m in Sources */,
-				074299701192379900C79D03 /* SpectacleHotKeyAction.m in Sources */,
-				07EE10FF11937F7200D6F536 /* SpectacleHotKeyRecorder.m in Sources */,
-				07EE11021193806300D6F536 /* SpectacleHotKeyRecorderCell.m in Sources */,
-				07CFE2AA1198D75F004C39BD /* SpectacleHotKeyTranslator.m in Sources */,
 				8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */,
 				07BB542E1186662F0045663F /* SpectacleUtilities.m in Sources */,
 				070D2B10128B43080022D02C /* SpectacleToggleSwitch.m in Sources */,

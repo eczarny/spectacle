@@ -23,14 +23,14 @@
 #import <Cocoa/Cocoa.h>
 #import "SpectacleHelperControllerProtocol.h"
 
-@class SpectacleHotKeyManager, SpectacleHelperApplicationController, SpectacleHotKey;
+@class SpectacleHotKeyManager, SpectacleHelperApplicationController, ZeroKitHotKey;
 
 @interface SpectacleHelperController : NSObject<SpectacleHelperControllerProtocol> {
     SpectacleHotKeyManager *myHotKeyManager;
     IBOutlet SpectacleHelperApplicationController *myHelperApplicationController;
 }
 
-- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
+- (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name;
 
 #pragma mark -
 
