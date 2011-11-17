@@ -147,6 +147,8 @@
     NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: [dictionary allKeys]];
     NSMutableArray *hotKeys = [NSMutableArray array];
     
+    [NSKeyedUnarchiver setClass: [ZeroKitHotKey class] forClassName: @"SpectacleHotKey"];
+    
     for (NSData *hotKeyData in [dictionary allValues]) {
         ZeroKitHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
         NSString *hotKeyName = [hotKey hotKeyName];
