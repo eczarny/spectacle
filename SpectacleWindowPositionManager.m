@@ -21,7 +21,6 @@
 // 
 
 #import "SpectacleWindowPositionManager.h"
-#import "SpectacleAccessibilityElement.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 
@@ -81,7 +80,7 @@
 
 - (CGRect)rectOfFrontMostWindow;
 
-- (CGRect)rectOfWindowWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement;
+- (CGRect)rectOfWindowWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 
@@ -204,7 +203,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)undoLastWindowAction {
     SpectacleHistoryItem *historyItem = [CurrentUndoHistory lastObject];
-    SpectacleAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
+    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
     
     if (!CGRectIsNull(windowRect)) {
@@ -223,7 +222,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)redoLastWindowAction {
     SpectacleHistoryItem *historyItem = [CurrentRedoHistory lastObject];
-    SpectacleAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
+    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
     
     if (!CGRectIsNull(windowRect)) {
@@ -335,8 +334,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (CGRect)rectOfFrontMostWindow {
-    SpectacleAccessibilityElement *systemWideElement = [SpectacleAccessibilityElement systemWideElement];
-    SpectacleAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];
+    ZeroKitAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
     CGRect result = CGRectNull;
     
     if (applicationWithFocusElement) {
@@ -354,7 +353,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     return result;
 }
 
-- (CGRect)rectOfWindowWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement {
+- (CGRect)rectOfWindowWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement {
     CGRect result = CGRectNull;
     
     if (accessibilityElement) {
@@ -424,7 +423,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem {
-    SpectacleAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
+    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = CGRectNull;
     
     if (!historyItem || !accessibilityElement) {

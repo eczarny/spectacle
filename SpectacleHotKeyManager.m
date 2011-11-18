@@ -21,8 +21,6 @@
 // 
 
 #import "SpectacleHotKeyManager.h"
-#import "SpectacleHotKey.h"
-#import "SpectacleHotKeyAction.h"
 #import "SpectacleConstants.h"
 
 static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data);
@@ -39,7 +37,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 #pragma mark -
 
-- (SpectacleHotKey *)registeredHotKeyForHandle: (NSInteger)handle;
+- (ZeroKitHotKey *)registeredHotKeyForHandle: (NSInteger)handle;
 
 #pragma mark -
 
@@ -91,9 +89,9 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (NSInteger)registerHotKey: (SpectacleHotKey *)hotKey {
+- (NSInteger)registerHotKey: (ZeroKitHotKey *)hotKey {
     NSString *hotKeyName = [hotKey hotKeyName];
-    SpectacleHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
+    ZeroKitHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
     EventHotKeyID hotKeyID;
     EventHotKeyRef hotKeyRef;
     OSStatus err;
@@ -133,7 +131,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 }
 
 - (void)registerHotKeys: (NSArray *)hotKeys {
-    for (SpectacleHotKey *hotKey in hotKeys) {
+    for (ZeroKitHotKey *hotKey in hotKeys) {
         [self registerHotKey: hotKey];
     }
 }
@@ -141,7 +139,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)unregisterHotKeyForName: (NSString *)name {
-    SpectacleHotKey *hotKey = [self registeredHotKeyForName: name];
+    ZeroKitHotKey *hotKey = [self registeredHotKeyForName: name];
     EventHotKeyRef hotKeyRef;
     OSStatus err;
     
@@ -169,7 +167,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 }
 
 - (void)unregisterHotKeys {
-    for (SpectacleHotKey *hotKey in [myRegisteredHotKeys allValues]) {
+    for (ZeroKitHotKey *hotKey in [myRegisteredHotKeys allValues]) {
         [self unregisterHotKeyForName: [hotKey hotKeyName]];
     }
 }
@@ -180,7 +178,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     return [myRegisteredHotKeys allValues];
 }
 
-- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name {
+- (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name {
     return [myRegisteredHotKeys objectForKey: name];
 }
 
@@ -207,7 +205,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 - (void)updateUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    for (SpectacleHotKey *hotKey in [myRegisteredHotKeys allValues]) {
+    for (ZeroKitHotKey *hotKey in [myRegisteredHotKeys allValues]) {
         NSData *hotKeyData = [NSKeyedArchiver archivedDataWithRootObject: hotKey];
         NSString *hotKeyName = [hotKey hotKeyName];
         
@@ -234,8 +232,8 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 #pragma mark -
 
-- (SpectacleHotKey *)registeredHotKeyForHandle: (NSInteger)handle {
-    for (SpectacleHotKey *hotKey in [myRegisteredHotKeys allValues]) {
+- (ZeroKitHotKey *)registeredHotKeyForHandle: (NSInteger)handle {
+    for (ZeroKitHotKey *hotKey in [myRegisteredHotKeys allValues]) {
         if ([hotKey handle] == handle) {
             return hotKey;
         }
@@ -247,7 +245,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 #pragma mark -
 
 - (OSStatus)handleHotKeyEvent: (EventRef)event {
-    SpectacleHotKey *hotKey;
+    ZeroKitHotKey *hotKey;
     EventHotKeyID hotKeyID;
     OSStatus err = GetEventParameter(event,
                             kEventParamDirectObject,

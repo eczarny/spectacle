@@ -6,9 +6,14 @@ Spectacle allows you to easily organize your windows without using a mouse.
 
 Spectacle has been built, and designed, for Mac OS X 10.6 or later.
 
-In order to build Spectacle you will need to install [Sparkle] [1] and [ZeroKit] [2]. Please download and install these frameworks to:
+In order to build Spectacle you will need to install [Sparkle] [1]. Please download and install Sparkle to:
 
     /Library/Frameworks/
+
+Next, pull down [ZeroKit] [2] as a submodule with the following commands:
+
+    $ git submodule init
+    $ git submodule update
 
 If everything is in its proper place the Xcode build should succeed.
 

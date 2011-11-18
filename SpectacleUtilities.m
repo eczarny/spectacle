@@ -21,8 +21,6 @@
 // 
 
 #import "SpectacleUtilities.h"
-#import "SpectacleHotKey.h"
-#import "SpectacleHotKeyAction.h"
 #import "SpectacleConstants.h"
 
 @interface SpectacleUtilities (SpectacleUtilitiesPrivate)
@@ -31,7 +29,7 @@
 
 #pragma mark -
 
-+ (void)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey;
++ (void)updateHotKey: (ZeroKitHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZeroKitHotKey *)defaultHotKey;
 
 #pragma mark -
 
@@ -149,8 +147,10 @@
     NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: [dictionary allKeys]];
     NSMutableArray *hotKeys = [NSMutableArray array];
     
+    [NSKeyedUnarchiver setClass: [ZeroKitHotKey class] forClassName: @"SpectacleHotKey"];
+    
     for (NSData *hotKeyData in [dictionary allValues]) {
-        SpectacleHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
+        ZeroKitHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
         NSString *hotKeyName = [hotKey hotKeyName];
         
         [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
@@ -165,7 +165,7 @@
 
 #pragma mark -
 
-+ (SpectacleHotKeyAction *)actionForHotKeyWithName: (NSString *)name target: (id)target {
++ (ZeroKitHotKeyAction *)actionForHotKeyWithName: (NSString *)name target: (id)target {
     SEL selector = NULL;
     
     if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
@@ -202,7 +202,7 @@
         selector = @selector(redoLastWindowAction:);
     }
     
-    return [SpectacleHotKeyAction hotKeyActionFromTarget: target selector: selector];
+    return [ZeroKitHotKeyAction hotKeyActionFromTarget: target selector: selector];
 }
 
 #pragma mark -
@@ -236,26 +236,6 @@
     return [SpectacleUtilities imageFromResource: resource inBundle: [SpectacleUtilities preferencePaneBundle]];
 }
 
-#pragma mark -
-
-+ (NSMutableDictionary *)createStringAttributesWithShadow {
-    NSMutableParagraphStyle *paragraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-    NSShadow *textShadow = [[[NSShadow alloc] init] autorelease];
-    NSMutableDictionary *stringAttributes = [NSMutableDictionary dictionary];
-    
-    [paragraphStyle setLineBreakMode: NSLineBreakByTruncatingTail];
-    [paragraphStyle setAlignment: NSCenterTextAlignment];
-    
-    [textShadow setShadowColor: [NSColor whiteColor]];
-    [textShadow setShadowOffset: NSMakeSize(0.0f, -1.0)];
-    [textShadow setShadowBlurRadius: 0.0f];
-    
-    [stringAttributes setObject: paragraphStyle forKey: NSParagraphStyleAttributeName];
-    [stringAttributes setObject: textShadow forKey: NSShadowAttributeName];
-    
-    return stringAttributes;
-}
-
 @end
 
 #pragma mark -
@@ -274,7 +254,7 @@
 
 #pragma mark -
 
-+ (void)updateHotKey: (SpectacleHotKey *)hotKey withPotentiallyNewDefaultHotKey: (SpectacleHotKey *)defaultHotKey {
++ (void)updateHotKey: (ZeroKitHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZeroKitHotKey *)defaultHotKey {
     NSString *hotKeyName = [hotKey hotKeyName];
     NSInteger defaultHotKeyCode;
     
@@ -301,7 +281,7 @@
     
     for (NSString *hotKeyName in names) {
         NSData *defaultHotKeyData = [applicationDefaults objectForKey: hotKeyName];
-        SpectacleHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
+        ZeroKitHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
         
         [defaultHotKeys setObject: defaultHotKey forKey: hotKeyName];
     }

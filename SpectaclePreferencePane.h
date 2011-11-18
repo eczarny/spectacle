@@ -21,34 +21,33 @@
 // 
 
 #import <PreferencePanes/PreferencePanes.h>
-#import "SpectacleHotKeyRecorderDelegate.h"
 #import "SpectacleToggleSwitchDelegate.h"
 
-@class SpectacleHotKeyRecorder, SpectacleToggleSwitch;
+@class SpectacleToggleSwitch;
 
-@interface SpectaclePreferencePane : NSPreferencePane<SpectacleHotKeyRecorderDelegate, SpectacleToggleSwitchDelegate> {
+@interface SpectaclePreferencePane : NSPreferencePane<ZeroKitHotKeyRecorderDelegate, SpectacleToggleSwitchDelegate> {
     id myVendedHelperController;
     NSDictionary *myHotKeyRecorders;
     IBOutlet NSTextField *mySpectacleVersionTextField;
     IBOutlet SpectacleToggleSwitch *myToggleRunningStateSwitch;
     IBOutlet NSButton *myLoginItemEnabledButton;
     IBOutlet NSButton *myAutomaticallyChecksForUpdatesButton;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToCenterHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToLeftHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToRightHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToTopHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToBottomHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToUpperLeftHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToLowerLeftHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToUpperRightHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToLowerRightHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToLeftDisplayHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToRightDisplayHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToTopDisplayHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
-    IBOutlet SpectacleHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToCenterHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToRightHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToTopHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToUpperLeftHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToLowerLeftHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToUpperRightHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToLowerRightHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToRightDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToTopDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
 }
 
 - (void)toggleLoginItem: (id)sender;

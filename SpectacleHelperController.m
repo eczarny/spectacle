@@ -23,8 +23,6 @@
 #import "SpectacleHelperController.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectacleHelperApplicationController.h"
-#import "SpectacleHotKey.h"
-#import "SpectacleHotKeyAction.h"
 #import "SpectacleUtilities.h"
 
 @implementation SpectacleHelperController
@@ -39,14 +37,14 @@
 
 #pragma mark -
 
-- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name {
+- (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name {
     return [myHotKeyManager registeredHotKeyForName: name];
 }
 
 #pragma mark -
 
 - (void)updateHotKeyWithKeyCode: (NSInteger)keyCode modifiers: (NSInteger)modifiers name: (NSString *)name {
-    SpectacleHotKey *hotKey = [[[SpectacleHotKey alloc] initWithHotKeyCode: keyCode hotKeyModifiers: modifiers] autorelease];
+    ZeroKitHotKey *hotKey = [[[ZeroKitHotKey alloc] initWithHotKeyCode: keyCode hotKeyModifiers: modifiers] autorelease];
     
     [hotKey setHotKeyName: name];
     
