@@ -36,6 +36,7 @@
 		07BB544D11866B090045663F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07BB544A11866B090045663F /* Localizable.strings */; };
 		07C9360B11E7809900735C13 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 07CCF9F911E41F2B0054483C /* dsa_public.pem */; };
 		07E632161187AAD800451374 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
+		2D2412271475FA830063085D /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
 		2D6540741475EB90000133CA /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
 		2D6540751475EBF4000133CA /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
 		2D65407B1475ECCA000133CA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407A1475ECCA000133CA /* Sparkle.framework */; };
@@ -82,6 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2D2412271475FA830063085D /* ZeroKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
