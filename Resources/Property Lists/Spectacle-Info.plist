@@ -33,7 +33,7 @@
 	<key>SUAllowsAutomaticUpdates</key>
 	<false/>
 	<key>SUEnableAutomaticChecks</key>
-	<false/>
+	<true/>
 	<key>SUFeedURL</key>
 	<string>http://appcasts.divisiblebyzero.com/spectacle/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
