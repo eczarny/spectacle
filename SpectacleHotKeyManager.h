@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
-@class SpectacleHotKey;
+@class ZeroKitHotKey;
 
 @interface SpectacleHotKeyManager : NSObject {
     NSMutableDictionary *myRegisteredHotKeys;
@@ -13,7 +13,7 @@
 
 #pragma mark -
 
-- (NSInteger)registerHotKey: (SpectacleHotKey *)hotKey;
+- (NSInteger)registerHotKey: (ZeroKitHotKey *)hotKey;
 
 - (void)registerHotKeys: (NSArray *)hotKeys;
 
@@ -27,6 +27,6 @@
 
 - (NSArray *)registeredHotKeys;
 
-- (SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
+- (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name;
 
 @end

@@ -1,10 +1,10 @@
 #import <Cocoa/Cocoa.h>
 
-@class SpectacleHotKey;
+@class ZeroKitHotKey;
 
 @protocol SpectacleHelperControllerProtocol
 
-- (bycopy SpectacleHotKey *)registeredHotKeyForName: (NSString *)name;
+- (bycopy ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name;
 
 #pragma mark -
 

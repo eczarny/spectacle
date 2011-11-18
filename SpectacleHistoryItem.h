@@ -1,23 +1,23 @@
 #import <Cocoa/Cocoa.h>
 
-@class SpectacleAccessibilityElement;
+@class ZeroKitAccessibilityElement;
 
 @interface SpectacleHistoryItem : NSObject {
-    SpectacleAccessibilityElement *myAccessibilityElement;
+    ZeroKitAccessibilityElement *myAccessibilityElement;
     CGRect myWindowRect;
 }
 
-- (id)initWithAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
+- (id)initWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-+ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-- (SpectacleAccessibilityElement *)accessibilityElement;
+- (ZeroKitAccessibilityElement *)accessibilityElement;
 
-- (void)setAccessibilityElement: (SpectacleAccessibilityElement *)accessibilityElement;
+- (void)setAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 

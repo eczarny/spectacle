@@ -160,10 +160,10 @@
         [view setNeedsDisplay: YES];
         
         previousPosition = currentPosition;
-    } while (currentEvent = [[view window] nextEventMatchingMask: (NSLeftMouseDraggedMask | NSLeftMouseUpMask)
-                                                       untilDate: [NSDate distantFuture]
-                                                          inMode: NSEventTrackingRunLoopMode
-                                                         dequeue: YES]);
+    } while ((currentEvent = [[view window] nextEventMatchingMask: (NSLeftMouseDraggedMask | NSLeftMouseUpMask)
+                                                        untilDate: [NSDate distantFuture]
+                                                           inMode: NSEventTrackingRunLoopMode
+                                                          dequeue: YES]));
     
     return YES;
 }

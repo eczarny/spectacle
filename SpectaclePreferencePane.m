@@ -1,7 +1,5 @@
 #import "SpectaclePreferencePane.h"
 #import "SpectacleHelperControllerProtocol.h"
-#import "SpectacleHotKey.h"
-#import "SpectacleHotKeyRecorder.h"
 #import "SpectacleToggleSwitch.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
@@ -54,23 +52,23 @@
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
     myHotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
-                         myMoveToCenterHotKeyRecorder,        SpectacleWindowActionMoveToCenter,
-                         myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullscreen,
-                         myMoveToLeftHotKeyRecorder,          SpectacleWindowActionMoveToLeftHalf,
-                         myMoveToRightHotKeyRecorder,         SpectacleWindowActionMoveToRightHalf,
-                         myMoveToTopHotKeyRecorder,           SpectacleWindowActionMoveToTopHalf,
-                         myMoveToBottomHotKeyRecorder,        SpectacleWindowActionMoveToBottomHalf,
-                         myMoveToUpperLeftHotKeyRecorder,     SpectacleWindowActionMoveToUpperLeft,
-                         myMoveToLowerLeftHotKeyRecorder,     SpectacleWindowActionMoveToLowerLeft,
-                         myMoveToUpperRightHotKeyRecorder,    SpectacleWindowActionMoveToUpperRight,
-                         myMoveToLowerRightHotKeyRecorder,    SpectacleWindowActionMoveToLowerRight,
-                         myMoveToLeftDisplayHotKeyRecorder,   SpectacleWindowActionMoveToLeftDisplay,
-                         myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
-                         myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
-                         myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
-                         myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
-                         myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove,
-                         nil];
+                            myMoveToCenterHotKeyRecorder,        SpectacleWindowActionMoveToCenter,
+                            myMoveToFullscreenHotKeyRecorder,    SpectacleWindowActionMoveToFullscreen,
+                            myMoveToLeftHotKeyRecorder,          SpectacleWindowActionMoveToLeftHalf,
+                            myMoveToRightHotKeyRecorder,         SpectacleWindowActionMoveToRightHalf,
+                            myMoveToTopHotKeyRecorder,           SpectacleWindowActionMoveToTopHalf,
+                            myMoveToBottomHotKeyRecorder,        SpectacleWindowActionMoveToBottomHalf,
+                            myMoveToUpperLeftHotKeyRecorder,     SpectacleWindowActionMoveToUpperLeft,
+                            myMoveToLowerLeftHotKeyRecorder,     SpectacleWindowActionMoveToLowerLeft,
+                            myMoveToUpperRightHotKeyRecorder,    SpectacleWindowActionMoveToUpperRight,
+                            myMoveToLowerRightHotKeyRecorder,    SpectacleWindowActionMoveToLowerRight,
+                            myMoveToLeftDisplayHotKeyRecorder,   SpectacleWindowActionMoveToLeftDisplay,
+                            myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
+                            myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
+                            myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
+                            myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
+                            myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove,
+                            nil];
     
     [myToggleRunningStateSwitch setDelegate: self];
     
@@ -110,7 +108,7 @@
 
 #pragma mark -
 
-- (void)hotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (SpectacleHotKey *)hotKey {
+- (void)hotKeyRecorder: (ZeroKitHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (ZeroKitHotKey *)hotKey {
     @try {
         [myVendedHelperController updateHotKeyWithKeyCode: [hotKey hotKeyCode] modifiers: [hotKey hotKeyModifiers] name: [hotKey hotKeyName]];
     } @catch (NSException *e) {
@@ -119,7 +117,7 @@
     }
 }
 
-- (void)hotKeyRecorder: (SpectacleHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (SpectacleHotKey *)hotKey {
+- (void)hotKeyRecorder: (ZeroKitHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZeroKitHotKey *)hotKey {
     @try {
         [myVendedHelperController unregisterHotKeyWithName: [hotKey hotKeyName]];
     } @catch (NSException *e) {
@@ -142,17 +140,9 @@
 
 #pragma mark -
 
-- (void)willUnselect {
+- (void)dealloc {
     [[NSDistributedNotificationCenter defaultCenter] removeObserver: self];
     
-    [myVendedHelperController release];
-    
-    myVendedHelperController = nil;
-}
-
-#pragma mark -
-
-- (void)dealloc {
     [myVendedHelperController release];
     [myHotKeyRecorders release];
     
@@ -248,8 +238,8 @@
 
 - (void)loadRegisteredHotKeys {
     for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
-        SpectacleHotKeyRecorder *hotKeyRecorder = [myHotKeyRecorders objectForKey: hotKeyName];
-        SpectacleHotKey *hotKey = nil;
+        ZeroKitHotKeyRecorder *hotKeyRecorder = [myHotKeyRecorders objectForKey: hotKeyName];
+        ZeroKitHotKey *hotKey = nil;
         
         @try {
             hotKey = [myVendedHelperController registeredHotKeyForName: hotKeyName];
@@ -273,7 +263,7 @@
 #pragma mark -
 
 - (void)enableHotKeyRecorders: (BOOL)enabled {
-    for (SpectacleHotKeyRecorder *hotKeyRecorder in [myHotKeyRecorders allValues]) {
+    for (ZeroKitHotKeyRecorder *hotKeyRecorder in [myHotKeyRecorders allValues]) {
         if (!enabled) {
             [hotKeyRecorder setHotKey: nil];
         }

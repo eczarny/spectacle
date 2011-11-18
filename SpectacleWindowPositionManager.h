@@ -1,8 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
 
-@class SpectacleAccessibilityElement;
-
 typedef enum {
     SpectacleWindowActionNone = -1,
     SpectacleWindowActionCenter,
@@ -24,7 +22,7 @@ typedef enum {
 #pragma mark -
 
 @interface SpectacleWindowPositionManager : NSObject {
-    SpectacleAccessibilityElement *myFrontMostWindowElement;
+    ZeroKitAccessibilityElement *myFrontMostWindowElement;
     NSMutableDictionary *myUndoHistory;
     NSMutableDictionary *myRedoHistory;
 }
