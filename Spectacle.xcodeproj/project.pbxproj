@@ -55,6 +55,20 @@
 			remoteGlobalIDString = 077938B51184F96A0013BC14;
 			remoteInfo = SpectacleHelper;
 		};
+		2D2412281475FB0E0063085D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = ZeroKit;
+		};
+		2D24122A1475FB160063085D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = ZeroKit;
+		};
 		2D6540711475EAE1000133CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
@@ -433,6 +447,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2D2412291475FB0E0063085D /* PBXTargetDependency */,
 			);
 			name = SpectacleHelper;
 			productName = SpectacleHelper;
@@ -454,6 +469,7 @@
 			);
 			dependencies = (
 				077938BE1184F9780013BC14 /* PBXTargetDependency */,
+				2D24122B1475FB160063085D /* PBXTargetDependency */,
 			);
 			name = Spectacle;
 			productInstallPath = "$(HOME)/Library/PreferencePanes";
@@ -601,6 +617,16 @@
 			target = 077938B51184F96A0013BC14 /* SpectacleHelper */;
 			targetProxy = 077938BD1184F9780013BC14 /* PBXContainerItemProxy */;
 		};
+		2D2412291475FB0E0063085D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZeroKit;
+			targetProxy = 2D2412281475FB0E0063085D /* PBXContainerItemProxy */;
+		};
+		2D24122B1475FB160063085D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZeroKit;
+			targetProxy = 2D24122A1475FB160063085D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -643,10 +669,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				VERSION_INFO_FILE = "";
 			};
 			name = Development;
@@ -655,10 +678,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				VERSION_INFO_FILE = "";
 			};
 			name = Release;
@@ -667,10 +687,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAFB1183AC5100F75DD2 /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = macosx;
 				VERSION_INFO_FILE = "";
 			};
@@ -680,10 +697,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAFC1183AC5100F75DD2 /* SpectacleRelease.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = macosx;
 				VERSION_INFO_FILE = "";
 			};
@@ -693,6 +707,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				SDKROOT = macosx;
 			};
 			name = Development;
@@ -701,6 +716,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 				SDKROOT = macosx;
 			};
 			name = Release;
