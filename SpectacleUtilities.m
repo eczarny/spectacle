@@ -129,13 +129,16 @@
     
     for (NSData *hotKeyData in [dictionary allValues]) {
         ZeroKitHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
-        NSString *hotKeyName = [hotKey hotKeyName];
         
-        [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
-        
-        [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
-        
-        [hotKeys addObject: hotKey];
+        if (![hotKey isClearedHotKey]) {
+            NSString *hotKeyName = [hotKey hotKeyName];
+            
+            [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
+            
+            [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
+            
+            [hotKeys addObject: hotKey];
+        }
     }
     
     return hotKeys;
