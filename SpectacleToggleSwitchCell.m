@@ -222,7 +222,12 @@
     NSFont *boldArial = [fontManager convertFont: arial toHaveTrait: NSBoldFontMask];
     NSRect labelRect = rect;
     
-    [attributes setObject: boldArial forKey: NSFontAttributeName];
+    if (boldArial) {
+        [attributes setObject: boldArial forKey: NSFontAttributeName];
+    } else {
+        [attributes setObject: [NSFont boldSystemFontOfSize: 18.0f] forKey: NSFontAttributeName];
+    }
+    
     [attributes setObject: foregroundColor forKey: NSForegroundColorAttributeName];
     
     labelRect.origin.y = NSMidY(rect) - ([string sizeWithAttributes: attributes].height / 2.0f) - 6.0f;

@@ -136,7 +136,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
             NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, err);
         }
         
-        [myRegisteredHotKeys removeObjectForKey: name];
+        [myRegisteredHotKeys setObject: [ZeroKitHotKey clearedHotKeyWithName: name] forKey: name];
         
         [self updateUserDefaults];
     } else {
@@ -157,7 +157,13 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 }
 
 - (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name {
-    return [myRegisteredHotKeys objectForKey: name];
+    ZeroKitHotKey *hotKey = [myRegisteredHotKeys objectForKey: name];
+    
+    if ([hotKey isClearedHotKey]) {
+        hotKey = nil;
+    }
+    
+    return hotKey;
 }
 
 #pragma mark -
