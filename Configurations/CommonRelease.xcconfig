@@ -1,3 +1,5 @@
 #include "Common.xcconfig"
 
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym
+
+COPY_PHASE_STRIP = YES
