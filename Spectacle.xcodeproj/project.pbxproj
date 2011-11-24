@@ -50,6 +50,16 @@
 		2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
 		2D8DA04F147E0FB1003BE1D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
 		2D8DA050147E0FB7003BE1D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07BB544A11866B090045663F /* Localizable.strings */; };
+		2D8DA055147E1101003BE1D3 /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
+		2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07678096118679C600614FB5 /* SpectacleHotKeyManager.m */; };
+		2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
+		2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
+		2D8DA059147E113D003BE1D3 /* SpectacleHelperApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB5405118657190045663F /* SpectacleHelperApplicationController.m */; };
+		2D8DA05A147E113D003BE1D3 /* SpectacleHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07088270119A301800EC9426 /* SpectacleHelperController.m */; };
+		2D8DA05B147E113D003BE1D3 /* SpectacleToggleSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */; };
+		2D8DA05C147E113D003BE1D3 /* SpectacleToggleSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070D2B12128B431C0022D02C /* SpectacleToggleSwitchCell.m */; };
+		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
+		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
@@ -84,6 +94,13 @@
 			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = ZeroKit;
 		};
+		2D8DA051147E1074003BE1D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = ZeroKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -106,6 +123,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2D2412271475FA830063085D /* ZeroKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8DA054147E10EE003BE1D3 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D8DA055147E1101003BE1D3 /* ZeroKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,10 +497,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 077938BB1184F96B0013BC14 /* Build configuration list for PBXNativeTarget "SpectacleHelper" */;
 			buildPhases = (
-				077938B21184F96A0013BC14 /* Resources */,
-				07BB53EE118656250045663F /* Copy Frameworks */,
 				077938B31184F96A0013BC14 /* Sources */,
 				077938B41184F96A0013BC14 /* Frameworks */,
+				077938B21184F96A0013BC14 /* Resources */,
+				07BB53EE118656250045663F /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -491,10 +519,13 @@
 				2D1E1AAC147E06AD0021D73D /* Sources */,
 				2D1E1AAD147E06AD0021D73D /* Frameworks */,
 				2D1E1AAE147E06AD0021D73D /* Resources */,
+				2D8DA054147E10EE003BE1D3 /* Copy Frameworks */,
+				2D8DA053147E10C7003BE1D3 /* Run Script: Include Git commit hash */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2D8DA052147E1074003BE1D3 /* PBXTargetDependency */,
 			);
 			name = Spectacle;
 			productName = Spectacle;
@@ -505,10 +536,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "SpectaclePreferencePane" */;
 			buildPhases = (
-				8D202CEC0486D31800D8A456 /* Resources */,
-				07BB54031186567C0045663F /* Copy Frameworks */,
 				8D202CF00486D31800D8A456 /* Sources */,
 				8D202CF20486D31800D8A456 /* Frameworks */,
+				8D202CEC0486D31800D8A456 /* Resources */,
+				07BB54031186567C0045663F /* Copy Frameworks */,
 				07B9705011E9764E004DEF19 /* Run Script: Include Git commit hash */,
 				074DF3A711ED4D410040CA39 /* Run Script: Create symbolic link for System Preferences */,
 			);
@@ -642,6 +673,20 @@
 			shellPath = /usr/bin/ruby;
 			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\n    exit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\n    exit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\W*)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z]?)<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
 		};
+		2D8DA053147E10C7003BE1D3 /* Run Script: Include Git commit hash */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: Include Git commit hash";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\nexit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\nexit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\W*)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z]?)<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -663,6 +708,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
+				2D8DA059147E113D003BE1D3 /* SpectacleHelperApplicationController.m in Sources */,
+				2D8DA05A147E113D003BE1D3 /* SpectacleHelperController.m in Sources */,
+				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
+				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,
+				2D8DA05B147E113D003BE1D3 /* SpectacleToggleSwitch.m in Sources */,
+				2D8DA05C147E113D003BE1D3 /* SpectacleToggleSwitchCell.m in Sources */,
+				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
+				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +748,11 @@
 			isa = PBXTargetDependency;
 			name = ZeroKit;
 			targetProxy = 2D24122A1475FB160063085D /* PBXContainerItemProxy */;
+		};
+		2D8DA052147E1074003BE1D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZeroKit;
+			targetProxy = 2D8DA051147E1074003BE1D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
