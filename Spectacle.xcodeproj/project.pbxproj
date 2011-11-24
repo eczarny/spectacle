@@ -60,6 +60,8 @@
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7C8F9147E12E00072D576 /* Spectacle.xib */; };
+		2DD84039147E15BC0081B6B1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407A1475ECCA000133CA /* Sparkle.framework */; };
+		2DD8403A147E15D90081B6B1 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407A1475ECCA000133CA /* Sparkle.framework */; };
 		8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
@@ -133,6 +135,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2DD8403A147E15D90081B6B1 /* Sparkle.framework in Copy Frameworks */,
 				2D8DA055147E1101003BE1D3 /* ZeroKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -224,6 +227,7 @@
 			files = (
 				2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */,
 				2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */,
+				2DD84039147E15BC0081B6B1 /* Sparkle.framework in Frameworks */,
 				2D1E1AD1147E07980021D73D /* ZeroKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
