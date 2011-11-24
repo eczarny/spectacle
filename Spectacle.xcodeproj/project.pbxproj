@@ -62,6 +62,10 @@
 		2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7C8F9147E12E00072D576 /* Spectacle.xib */; };
 		2DD84039147E15BC0081B6B1 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407A1475ECCA000133CA /* Sparkle.framework */; };
 		2DD8403A147E15D90081B6B1 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407A1475ECCA000133CA /* Sparkle.framework */; };
+		2DD8403B147E166A0081B6B1 /* SliderHandle.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B24128B52A90022D02C /* SliderHandle.png */; };
+		2DD8403C147E166A0081B6B1 /* SliderHandlePressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B25128B52A90022D02C /* SliderHandlePressed.png */; };
+		2DD8403D147E166A0081B6B1 /* SliderMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B26128B52A90022D02C /* SliderMask.png */; };
+		2DD8403E147E166A0081B6B1 /* SliderBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B27128B52A90022D02C /* SliderBackground.png */; };
 		8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */; };
 		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
@@ -626,6 +630,10 @@
 				2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */,
 				2D8DA04F147E0FB1003BE1D3 /* InfoPlist.strings in Resources */,
 				2D8DA050147E0FB7003BE1D3 /* Localizable.strings in Resources */,
+				2DD8403E147E166A0081B6B1 /* SliderBackground.png in Resources */,
+				2DD8403B147E166A0081B6B1 /* SliderHandle.png in Resources */,
+				2DD8403C147E166A0081B6B1 /* SliderHandlePressed.png in Resources */,
+				2DD8403D147E166A0081B6B1 /* SliderMask.png in Resources */,
 				2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
