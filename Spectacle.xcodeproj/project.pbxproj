@@ -124,9 +124,9 @@
 		0747DAF71183AC5100F75DD2 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
 		0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDevelopment.xcconfig; path = Configurations/CommonDevelopment.xcconfig; sourceTree = "<group>"; };
 		0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
-		0747DAFA1183AC5100F75DD2 /* Spectacle.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Spectacle.xcconfig; path = Configurations/Spectacle.xcconfig; sourceTree = "<group>"; };
-		0747DAFB1183AC5100F75DD2 /* SpectacleDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleDevelopment.xcconfig; path = Configurations/SpectacleDevelopment.xcconfig; sourceTree = "<group>"; };
-		0747DAFC1183AC5100F75DD2 /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
+		0747DAFA1183AC5100F75DD2 /* SpectaclePreferencePane.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePane.xcconfig; path = Configurations/SpectaclePreferencePane.xcconfig; sourceTree = "<group>"; };
+		0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePaneDevelopment.xcconfig; path = Configurations/SpectaclePreferencePaneDevelopment.xcconfig; sourceTree = "<group>"; };
+		0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePaneRelease.xcconfig; path = Configurations/SpectaclePreferencePaneRelease.xcconfig; sourceTree = "<group>"; };
 		0747DB041183ACC600F75DD2 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectaclePreferencePane.xib; sourceTree = "<group>"; };
 		0747DB071183ACD600F75DD2 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -157,7 +157,7 @@
 		2D65407A1475ECCA000133CA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../../../../../Library/Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		2D65407E1475ECF1000133CA /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development/ZeroKit.framework"; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spectacle.pch; sourceTree = "<group>"; };
-		8D202CF70486D31800D8A456 /* Spectacle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Spectacle-Info.plist"; path = "Resources/Property Lists/Spectacle-Info.plist"; sourceTree = "<group>"; };
+		8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SpectaclePreferencePane-Info.plist"; path = "Resources/Property Lists/SpectaclePreferencePane-Info.plist"; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* Spectacle.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Spectacle.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
 		F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaclePreferencePane.h; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 			children = (
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				070031AF1217712E001D4C46 /* HotKeyNames.plist */,
-				8D202CF70486D31800D8A456 /* Spectacle-Info.plist */,
+				8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */,
 				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
 			);
 			name = "Property Lists";
@@ -302,12 +302,12 @@
 				0747DAF71183AC5100F75DD2 /* Common.xcconfig */,
 				0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */,
 				0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */,
-				0747DAFA1183AC5100F75DD2 /* Spectacle.xcconfig */,
-				0747DAFB1183AC5100F75DD2 /* SpectacleDevelopment.xcconfig */,
+				0747DAFA1183AC5100F75DD2 /* SpectaclePreferencePane.xcconfig */,
+				0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */,
+				0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */,
 				0779390B1184FBC00013BC14 /* SpectacleHelper.xcconfig */,
 				0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */,
 				0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */,
-				0747DAFC1183AC5100F75DD2 /* SpectacleRelease.xcconfig */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -454,9 +454,9 @@
 			productReference = 077938B61184F96A0013BC14 /* SpectacleHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8D202CE80486D31800D8A456 /* Spectacle */ = {
+		8D202CE80486D31800D8A456 /* SpectaclePreferencePane */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "Spectacle" */;
+			buildConfigurationList = 1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "SpectaclePreferencePane" */;
 			buildPhases = (
 				8D202CEC0486D31800D8A456 /* Resources */,
 				07BB54031186567C0045663F /* Copy Frameworks */,
@@ -471,7 +471,7 @@
 				077938BE1184F9780013BC14 /* PBXTargetDependency */,
 				2D24122B1475FB160063085D /* PBXTargetDependency */,
 			);
-			name = Spectacle;
+			name = SpectaclePreferencePane;
 			productInstallPath = "$(HOME)/Library/PreferencePanes";
 			productName = Spectacle;
 			productReference = 8D202CF80486D31800D8A456 /* Spectacle.prefPane */;
@@ -505,7 +505,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				8D202CE80486D31800D8A456 /* Spectacle */,
+				8D202CE80486D31800D8A456 /* SpectaclePreferencePane */,
 				077938B51184F96A0013BC14 /* SpectacleHelper */,
 			);
 		};
@@ -685,7 +685,7 @@
 		};
 		1DBD214908BA80EA00186707 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0747DAFB1183AC5100F75DD2 /* SpectacleDevelopment.xcconfig */;
+			baseConfigurationReference = 0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = macosx;
@@ -695,7 +695,7 @@
 		};
 		1DBD214A08BA80EA00186707 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0747DAFC1183AC5100F75DD2 /* SpectacleRelease.xcconfig */;
+			baseConfigurationReference = 0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				SDKROOT = macosx;
@@ -733,7 +733,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "Spectacle" */ = {
+		1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "SpectaclePreferencePane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DBD214908BA80EA00186707 /* Development */,
