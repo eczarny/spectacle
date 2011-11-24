@@ -465,9 +465,9 @@
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				2D1E1AB0147E06AD0021D73D /* Spectacle.app */,
 				8D202CF80486D31800D8A456 /* Spectacle.prefPane */,
 				077938B61184F96A0013BC14 /* SpectacleHelper.app */,
-				2D1E1AB0147E06AD0021D73D /* Spectacle.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
