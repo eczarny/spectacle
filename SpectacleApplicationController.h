@@ -3,6 +3,6 @@
 
 @interface SpectacleApplicationController : SpectacleWindowActionController
 
-
+- (IBAction)togglePreferencesWindow: (id)sender;
 
 @end

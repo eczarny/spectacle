@@ -34,4 +34,10 @@
     [self registerHotKeys];
 }
 
+#pragma mark -
+
+- (IBAction)togglePreferencesWindow: (id)sender {
+    [[ZeroKitPreferencesWindowController sharedController] togglePreferencesWindow: sender];
+}
+
 @end
