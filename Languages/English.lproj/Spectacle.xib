@@ -38,9 +38,6 @@
 			<object class="NSCustomObject" id="870737599">
 				<string key="NSClassName">SpectacleHelperApplicationController</string>
 			</object>
-			<object class="NSCustomObject" id="225848907">
-				<string key="NSClassName">SpectacleHelperController</string>
-			</object>
 			<object class="NSMenu" id="649796088">
 				<string key="NSTitle">Main Menu</string>
 				<array class="NSMutableArray" key="NSMenuItems">
@@ -1935,22 +1932,6 @@
 					</object>
 					<int key="connectionID">422</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myHelperController</string>
-						<reference key="source" ref="870737599"/>
-						<reference key="destination" ref="225848907"/>
-					</object>
-					<int key="connectionID">797</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myHelperApplicationController</string>
-						<reference key="source" ref="225848907"/>
-						<reference key="destination" ref="870737599"/>
-					</object>
-					<int key="connectionID">798</int>
-				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2943,11 +2924,6 @@
 						<reference key="object" ref="870737599"/>
 						<reference key="parent" ref="0"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">795</int>
-						<reference key="object" ref="225848907"/>
-						<reference key="parent" ref="0"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3098,7 +3074,6 @@
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="791.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="794.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="795.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
