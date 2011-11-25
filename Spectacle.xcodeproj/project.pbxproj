@@ -735,9 +735,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */,
-				07BB542E1186662F0045663F /* SpectacleUtilities.m in Sources */,
 				070D2B10128B43080022D02C /* SpectacleToggleSwitch.m in Sources */,
 				070D2B13128B431C0022D02C /* SpectacleToggleSwitchCell.m in Sources */,
+				07BB542E1186662F0045663F /* SpectacleUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

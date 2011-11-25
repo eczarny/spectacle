@@ -35,8 +35,8 @@
 			<object class="NSCustomObject" id="903638069">
 				<string key="NSClassName">NSFontManager</string>
 			</object>
-			<object class="NSCustomObject" id="870737599">
-				<string key="NSClassName">SpectacleHelperApplicationController</string>
+			<object class="NSCustomObject" id="606044648">
+				<string key="NSClassName">SpectacleApplicationController</string>
 			</object>
 			<object class="NSMenu" id="649796088">
 				<string key="NSTitle">Main Menu</string>
@@ -1272,9 +1272,9 @@
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1050"/>
-						<reference key="destination" ref="870737599"/>
+						<reference key="destination" ref="606044648"/>
 					</object>
-					<int key="connectionID">796</int>
+					<int key="connectionID">868</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -2920,8 +2920,8 @@
 						<reference key="parent" ref="1070663324"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">794</int>
-						<reference key="object" ref="870737599"/>
+						<int key="objectID">867</int>
+						<reference key="object" ref="606044648"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -3073,17 +3073,17 @@
 				<string key="784.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="791.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="794.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="867.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="92.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">864</int>
+			<int key="maxID">868</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3129,41 +3129,19 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">SpectacleHelperApplicationController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">myHelperController</string>
-						<string key="NS.object.0">SpectacleHelperController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">myHelperController</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">myHelperController</string>
-							<string key="candidateClassName">SpectacleHelperController</string>
-						</object>
-					</object>
+					<string key="className">SpectacleApplicationController</string>
+					<string key="superclassName">SpectacleWindowActionController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SpectacleHelperApplicationController.h</string>
+						<string key="minorKey">./Classes/SpectacleApplicationController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">SpectacleHelperController</string>
+					<string key="className">SpectacleWindowActionController</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">myHelperApplicationController</string>
-						<string key="NS.object.0">SpectacleHelperApplicationController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">myHelperApplicationController</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">myHelperApplicationController</string>
-							<string key="candidateClassName">SpectacleHelperApplicationController</string>
-						</object>
-					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SpectacleHelperController.h</string>
+						<string key="minorKey">./Classes/SpectacleWindowActionController.h</string>
 					</object>
 				</object>
 			</array>
