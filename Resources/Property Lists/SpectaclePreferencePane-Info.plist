@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Spectacle</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>SpectaclePreferencePane.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.divisiblebyzero.SpectaclePreferencePane</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -25,7 +25,7 @@
 	<key>NSMainNibFile</key>
 	<string>SpectaclePreferencePane</string>
 	<key>NSPrefPaneIconFile</key>
-	<string></string>
+	<string>Spectacle.icns</string>
 	<key>NSPrefPaneIconLabel</key>
 	<string>Spectacle</string>
 	<key>NSPrincipalClass</key>

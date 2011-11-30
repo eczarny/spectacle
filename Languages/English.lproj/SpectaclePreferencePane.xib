@@ -206,7 +206,7 @@
 												<string key="NSFrame">{{194, 15}, {140, 21}}</string>
 												<reference key="NSSuperview" ref="740980774"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="831456543"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 											</object>
 											<object class="NSCustomView" id="104939073">
@@ -576,10 +576,10 @@
 								<int key="NSCellFlags2">33554432</int>
 								<object class="NSCustomResource" key="NSContents">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">NSApplicationIcon</string>
+									<string key="NSResourceName">Spectacle</string>
 								</object>
 								<int key="NSAlign">0</int>
-								<int key="NSScale">2</int>
+								<int key="NSScale">3</int>
 								<int key="NSStyle">0</int>
 								<bool key="NSAnimates">NO</bool>
 							</object>
@@ -649,6 +649,7 @@
 							<string key="NSFrame">{{481, 14}, {169, 18}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="798101798">
 								<int key="NSCellFlags">67239424</int>
@@ -1493,24 +1494,24 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="myAutomaticallyChecksForUpdatesButton">NSButton</string>
 						<string key="myLoginItemEnabledButton">NSButton</string>
-						<string key="myMoveToBottomDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToBottomHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToCenterHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToFullscreenHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToLeftDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToLeftHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToLowerLeftHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToLowerRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToRightDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToTopDisplayHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToTopHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToUpperLeftHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myMoveToUpperRightHotKeyRecorder">SpectacleHotKeyRecorder</string>
-						<string key="myRedoLastMoveHotKeyRecorder">SpectacleHotKeyRecorder</string>
+						<string key="myMoveToBottomDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToBottomHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToCenterHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToFullscreenHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToLeftDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToLowerLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToLowerRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToRightDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToTopDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToTopHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToUpperLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToUpperRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myRedoLastMoveHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="mySpectacleVersionTextField">NSTextField</string>
 						<string key="myToggleRunningStateSwitch">SpectacleToggleSwitch</string>
-						<string key="myUndoLastMoveHotKeyRecorder">SpectacleHotKeyRecorder</string>
+						<string key="myUndoLastMoveHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="myAutomaticallyChecksForUpdatesButton">
@@ -1523,63 +1524,63 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToBottomDisplayHotKeyRecorder">
 							<string key="name">myMoveToBottomDisplayHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToBottomHotKeyRecorder">
 							<string key="name">myMoveToBottomHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToCenterHotKeyRecorder">
 							<string key="name">myMoveToCenterHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToFullscreenHotKeyRecorder">
 							<string key="name">myMoveToFullscreenHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLeftDisplayHotKeyRecorder">
 							<string key="name">myMoveToLeftDisplayHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLeftHotKeyRecorder">
 							<string key="name">myMoveToLeftHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLowerLeftHotKeyRecorder">
 							<string key="name">myMoveToLowerLeftHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLowerRightHotKeyRecorder">
 							<string key="name">myMoveToLowerRightHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToRightDisplayHotKeyRecorder">
 							<string key="name">myMoveToRightDisplayHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToRightHotKeyRecorder">
 							<string key="name">myMoveToRightHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToTopDisplayHotKeyRecorder">
 							<string key="name">myMoveToTopDisplayHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToTopHotKeyRecorder">
 							<string key="name">myMoveToTopHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToUpperLeftHotKeyRecorder">
 							<string key="name">myMoveToUpperLeftHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToUpperRightHotKeyRecorder">
 							<string key="name">myMoveToUpperRightHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myRedoLastMoveHotKeyRecorder">
 							<string key="name">myRedoLastMoveHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="mySpectacleVersionTextField">
 							<string key="name">mySpectacleVersionTextField</string>
@@ -1591,7 +1592,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="myUndoLastMoveHotKeyRecorder">
 							<string key="name">myUndoLastMoveHotKeyRecorder</string>
-							<string key="candidateClassName">SpectacleHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -1622,8 +1623,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSApplicationIcon">{128, 128}</string>
 			<string key="NSSwitch">{15, 15}</string>
+			<string key="Spectacle">{512, 512}</string>
 		</dictionary>
 	</data>
 </archive>
