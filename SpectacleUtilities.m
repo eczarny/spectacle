@@ -49,6 +49,10 @@
     return helperApplicationBundle;
 }
 
++ (NSString *)standaloneApplicationVersion {
+    return [SpectacleUtilities versionOfBundle: [NSBundle mainBundle]];
+}
+
 #pragma mark -
 
 + (NSString *)preferencePaneVersion {

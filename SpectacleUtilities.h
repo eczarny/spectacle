@@ -16,6 +16,8 @@
 
 + (NSString *)helperApplicationVersion;
 
++ (NSString *)standaloneApplicationVersion;
+
 #pragma mark -
 
 + (void)startSpectacle;
