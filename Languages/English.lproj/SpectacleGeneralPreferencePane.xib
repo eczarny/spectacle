@@ -71,18 +71,18 @@
 							<string key="NSKeyEquivalent"/>
 							<int key="NSPeriodicDelay">400</int>
 							<int key="NSPeriodicInterval">75</int>
-							<object class="NSMenuItem" key="NSMenuItem" id="245285453">
+							<object class="NSMenuItem" key="NSMenuItem" id="108774987">
 								<reference key="NSMenu" ref="922635655"/>
-								<string key="NSTitle">An application in the Dock</string>
+								<string key="NSTitle">In the status menu</string>
 								<string key="NSKeyEquiv"/>
 								<int key="NSKeyEquivModMask">1048576</int>
 								<int key="NSMnemonicLoc">2147483647</int>
 								<int key="NSState">1</int>
-								<object class="NSCustomResource" key="NSOnImage" id="1071625758">
+								<object class="NSCustomResource" key="NSOnImage" id="346706134">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSMenuCheckmark</string>
 								</object>
-								<object class="NSCustomResource" key="NSMixedImage" id="891779914">
+								<object class="NSCustomResource" key="NSMixedImage" id="655832592">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">NSMenuMixedState</string>
 								</object>
@@ -94,33 +94,21 @@
 								<string key="NSTitle">OtherViews</string>
 								<object class="NSMutableArray" key="NSMenuItems">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<reference ref="245285453"/>
+									<reference ref="108774987"/>
 									<object class="NSMenuItem" id="403586351">
 										<reference key="NSMenu" ref="922635655"/>
-										<string key="NSTitle">A background application</string>
+										<string key="NSTitle">As a background application</string>
 										<string key="NSKeyEquiv"/>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
-										<reference key="NSOnImage" ref="1071625758"/>
-										<reference key="NSMixedImage" ref="891779914"/>
-										<string key="NSAction">_popUpItemAction:</string>
-										<reference key="NSTarget" ref="537007511"/>
-									</object>
-									<object class="NSMenuItem" id="108774987">
-										<reference key="NSMenu" ref="922635655"/>
-										<string key="NSTitle">A status menu item</string>
-										<string key="NSKeyEquiv"/>
-										<int key="NSKeyEquivModMask">1048576</int>
-										<int key="NSMnemonicLoc">2147483647</int>
-										<reference key="NSOnImage" ref="1071625758"/>
-										<reference key="NSMixedImage" ref="891779914"/>
+										<reference key="NSOnImage" ref="346706134"/>
+										<reference key="NSMixedImage" ref="655832592"/>
 										<string key="NSAction">_popUpItemAction:</string>
 										<reference key="NSTarget" ref="537007511"/>
 									</object>
 								</object>
 								<reference key="NSMenuFont" ref="198479595"/>
 							</object>
-							<int key="NSSelectedIndex">-1</int>
 							<int key="NSPreferredEdge">1</int>
 							<bool key="NSUsesItemFromMenu">YES</bool>
 							<bool key="NSAltersState">YES</bool>
@@ -138,7 +126,7 @@
 						<object class="NSTextFieldCell" key="NSCell" id="827133391">
 							<int key="NSCellFlags">68288064</int>
 							<int key="NSCellFlags2">71304192</int>
-							<string key="NSContents">Access Spectale as:</string>
+							<string key="NSContents">Run Spectacle:</string>
 							<reference key="NSSupport" ref="198479595"/>
 							<reference key="NSControlView" ref="800657249"/>
 							<object class="NSColor" key="NSBackgroundColor" id="907947648">
@@ -351,16 +339,10 @@
 						<reference key="object" ref="922635655"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="245285453"/>
 							<reference ref="403586351"/>
 							<reference ref="108774987"/>
 						</object>
 						<reference key="parent" ref="537007511"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">18</int>
-						<reference key="object" ref="245285453"/>
-						<reference key="parent" ref="922635655"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
@@ -386,7 +368,6 @@
 					<string>15.IBPluginDependency</string>
 					<string>16.IBPluginDependency</string>
 					<string>17.IBPluginDependency</string>
-					<string>18.IBPluginDependency</string>
 					<string>19.IBPluginDependency</string>
 					<string>2.IBPluginDependency</string>
 					<string>20.IBPluginDependency</string>
@@ -397,7 +378,6 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
