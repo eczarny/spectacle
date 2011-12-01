@@ -2,6 +2,7 @@
 
 @interface SpectacleGeneralPreferencePane : NSObject<ZeroKitPreferencePaneProtocol> {
     IBOutlet NSView *myView;
+    IBOutlet NSTextField *mySpectacleVersionTextField;
     IBOutlet NSButton *myLoginItemEnabled;
 }
 

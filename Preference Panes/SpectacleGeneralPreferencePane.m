@@ -11,6 +11,8 @@
     }
     
     [myLoginItemEnabled setState: loginItemEnabledState];
+    
+    [mySpectacleVersionTextField setStringValue: [SpectacleUtilities standaloneApplicationVersion]];
 }
 
 #pragma mark -
