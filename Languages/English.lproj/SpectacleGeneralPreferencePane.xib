@@ -61,7 +61,7 @@
 						<object class="NSTextFieldCell" key="NSCell" id="825354073">
 							<int key="NSCellFlags">68288064</int>
 							<int key="NSCellFlags2">138413056</int>
-							<string key="NSContents">Application icon and artwork: Iiro Jäppinen</string>
+							<string key="NSContents">Artwork: Iiro Jäppinen</string>
 							<object class="NSFont" key="NSSupport" id="905090270">
 								<string key="NSName">LucidaGrande</string>
 								<double key="NSSize">11</double>
@@ -78,14 +78,9 @@
 									<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 								</object>
 							</object>
-							<object class="NSColor" key="NSTextColor" id="1048344464">
-								<int key="NSColorSpace">6</int>
-								<string key="NSCatalogName">System</string>
-								<string key="NSColorName">controlTextColor</string>
-								<object class="NSColor" key="NSColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-								</object>
+							<object class="NSColor" key="NSTextColor" id="807819267">
+								<int key="NSColorSpace">1</int>
+								<bytes key="NSRGB">MC4wOTgwMzkyMTcyOSAwLjA5ODAzOTIxNzI5IDAuMDk4MDM5MjE3MjkAA</bytes>
 							</object>
 						</object>
 					</object>
@@ -105,7 +100,7 @@
 							<string key="NSCellIdentifier">_NS:3944</string>
 							<reference key="NSControlView" ref="824424231"/>
 							<reference key="NSBackgroundColor" ref="709329770"/>
-							<reference key="NSTextColor" ref="1048344464"/>
+							<reference key="NSTextColor" ref="807819267"/>
 						</object>
 					</object>
 					<object class="NSImageView" id="608739053">
@@ -126,7 +121,6 @@
 						<string key="NSFrame">{{159, 0}, {512, 512}}</string>
 						<reference key="NSSuperview" ref="798115490"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="4509381">
 							<int key="NSCellFlags">130560</int>
