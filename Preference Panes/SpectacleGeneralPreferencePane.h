@@ -4,6 +4,7 @@
     IBOutlet NSView *myView;
     IBOutlet NSTextField *mySpectacleVersionTextField;
     IBOutlet NSButton *myLoginItemEnabled;
+    IBOutlet NSPopUpButton *myStatusItemEnabled;
 }
 
 - (NSString *)name;
@@ -23,5 +24,7 @@
 #pragma mark -
 
 - (IBAction)toggleLoginItem: (id)sender;
+
+- (IBAction)toggleStatusItem: (id)sender;
 
 @end

@@ -22,6 +22,8 @@
 	<string>ZERO</string>
 	<key>CFBundleVersion</key>
 	<string>0.5.4</string>
+	<key>LSUIElement</key>
+	<true/>
 	<key>NSMainNibFile</key>
 	<string>Spectacle</string>
 	<key>NSPrincipalClass</key>

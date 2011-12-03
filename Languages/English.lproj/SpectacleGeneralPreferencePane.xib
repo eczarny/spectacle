@@ -56,6 +56,7 @@
 						<string key="NSFrame">{{46, 133}, {238, 17}}</string>
 						<reference key="NSSuperview" ref="798115490"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="66152414"/>
 						<string key="NSReuseIdentifierKey">_NS:3944</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="825354073">
@@ -90,6 +91,7 @@
 						<string key="NSFrame">{{46, 151}, {238, 17}}</string>
 						<reference key="NSSuperview" ref="798115490"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="31263085"/>
 						<string key="NSReuseIdentifierKey">_NS:3944</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="110200108">
@@ -215,7 +217,7 @@
 										<string key="NSReuseIdentifierKey">_NS:868</string>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSPopUpButtonCell" key="NSCell" id="1059771214">
-											<int key="NSCellFlags">-1539178944</int>
+											<int key="NSCellFlags">-2076049856</int>
 											<int key="NSCellFlags2">2048</int>
 											<reference key="NSSupport" ref="198479595"/>
 											<string key="NSCellIdentifier">_NS:868</string>
@@ -230,14 +232,13 @@
 												<reference key="NSMenu" ref="174723122"/>
 												<string key="NSTitle">In the status menu</string>
 												<string key="NSKeyEquiv"/>
-												<int key="NSKeyEquivModMask">1048576</int>
 												<int key="NSMnemonicLoc">2147483647</int>
 												<int key="NSState">1</int>
-												<object class="NSCustomResource" key="NSOnImage" id="2619116">
+												<object class="NSCustomResource" key="NSOnImage" id="1008660729">
 													<string key="NSClassName">NSImage</string>
 													<string key="NSResourceName">NSMenuCheckmark</string>
 												</object>
-												<object class="NSCustomResource" key="NSMixedImage" id="902793511">
+												<object class="NSCustomResource" key="NSMixedImage" id="368913834">
 													<string key="NSClassName">NSImage</string>
 													<string key="NSResourceName">NSMenuMixedState</string>
 												</object>
@@ -254,11 +255,11 @@
 														<reference key="NSMenu" ref="174723122"/>
 														<string key="NSTitle">As a background application</string>
 														<string key="NSKeyEquiv"/>
-														<int key="NSKeyEquivModMask">1048576</int>
 														<int key="NSMnemonicLoc">2147483647</int>
-														<reference key="NSOnImage" ref="2619116"/>
-														<reference key="NSMixedImage" ref="902793511"/>
+														<reference key="NSOnImage" ref="1008660729"/>
+														<reference key="NSMixedImage" ref="368913834"/>
 														<string key="NSAction">_popUpItemAction:</string>
+														<int key="NSTag">1</int>
 														<reference key="NSTarget" ref="1059771214"/>
 													</object>
 												</object>
@@ -319,7 +320,7 @@
 						<string key="NSFrame">{{46, 183}, {238, 14}}</string>
 						<reference key="NSSuperview" ref="798115490"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="66152414"/>
+						<reference key="NSNextKeyView" ref="824424231"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="757987837">
 							<int key="NSCellFlags">68288064</int>
@@ -402,6 +403,22 @@
 						<reference key="destination" ref="258801849"/>
 					</object>
 					<int key="connectionID">73</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myStatusItemEnabled</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="237117407"/>
+					</object>
+					<int key="connectionID">79</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleStatusItem:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="237117407"/>
+					</object>
+					<int key="connectionID">80</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -672,7 +689,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">77</int>
+			<int key="maxID">80</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -681,14 +698,35 @@
 					<string key="className">SpectacleGeneralPreferencePane</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">toggleLoginItem:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>toggleLoginItem:</string>
+							<string>toggleStatusItem:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">toggleLoginItem:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">toggleLoginItem:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>toggleLoginItem:</string>
+							<string>toggleStatusItem:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">toggleLoginItem:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleStatusItem:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -697,12 +735,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>myLoginItemEnabled</string>
 							<string>mySpectacleVersionTextField</string>
+							<string>myStatusItemEnabled</string>
 							<string>myView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSButton</string>
 							<string>NSTextField</string>
+							<string>NSPopUpButton</string>
 							<string>NSView</string>
 						</object>
 					</object>
@@ -712,6 +752,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>myLoginItemEnabled</string>
 							<string>mySpectacleVersionTextField</string>
+							<string>myStatusItemEnabled</string>
 							<string>myView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -723,6 +764,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">mySpectacleVersionTextField</string>
 								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">myStatusItemEnabled</string>
+								<string key="candidateClassName">NSPopUpButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">myView</string>

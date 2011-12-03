@@ -22,6 +22,11 @@
 
 #pragma mark -
 
+#define SpectacleStatusItemEnabledNotification        @"SpectacleStatusItemEnabledNotification"
+#define SpectacleStatusItemDisabledNotification       @"SpectacleStatusItemDisabledNotification"
+
+#pragma mark -
+
 #define SpectacleHotKeyNamesPropertyListFile          @"HotKeyNames"
 
 #pragma mark -
@@ -50,3 +55,7 @@
 #define SpectacleSliderMaskImage                      @"SliderMask"
 #define SpectacleSliderHandleImage                    @"SliderHandle"
 #define SpectacleSliderHandlePressedImage             @"SliderHandlePressed"
+
+#pragma mark -
+
+#define SpectacleStatusItemEnabledPreference          @"StatusItemEnabled"
