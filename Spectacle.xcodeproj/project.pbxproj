@@ -68,7 +68,7 @@
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7C8F9147E12E00072D576 /* Spectacle.xib */; };
-		2DD111AC1487301C00C552FA /* Large Spectacles.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD111AB1487301C00C552FA /* Large Spectacles.png */; };
+		2DD111AC1487301C00C552FA /* Preference Pane Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD111AB1487301C00C552FA /* Preference Pane Background.png */; };
 		2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
 		2DF03CEF148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
 		2DF03CF0148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
@@ -226,7 +226,7 @@
 		2D768EA2147F4CD400901E76 /* SpectacleHotKeyPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHotKeyPreferencePane.m; path = "Preference Panes/SpectacleHotKeyPreferencePane.m"; sourceTree = "<group>"; };
 		2D768EA4147F4FE000901E76 /* Hot Key Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Hot Key Preferences.tiff"; path = "Resources/Images/Icons/Toolbar Icons/Hot Key Preferences.tiff"; sourceTree = "<group>"; };
 		2DB7C8FA147E12E00072D576 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/Spectacle.xib; sourceTree = "<group>"; };
-		2DD111AB1487301C00C552FA /* Large Spectacles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Large Spectacles.png"; path = "Resources/Images/Large Spectacles.png"; sourceTree = "<group>"; };
+		2DD111AB1487301C00C552FA /* Preference Pane Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preference Pane Background.png"; path = "Resources/Images/Preference Pane Background.png"; sourceTree = "<group>"; };
 		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
 		2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Spectacle Preference Pane.icns"; path = "Resources/Images/Icons/Spectacle Preference Pane.icns"; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spectacle.pch; sourceTree = "<group>"; };
@@ -373,7 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				0747DAF21183AB1B00F75DD2 /* Icons */,
-				2DD111AB1487301C00C552FA /* Large Spectacles.png */,
+				2DD111AB1487301C00C552FA /* Preference Pane Background.png */,
 				070D2B27128B52A90022D02C /* Slider Background.png */,
 				070D2B24128B52A90022D02C /* Slider Handle.png */,
 				070D2B26128B52A90022D02C /* Slider Mask.png */,
@@ -705,8 +705,8 @@
 				2D768EA5147F4FE000901E76 /* Hot Key Preferences.tiff in Resources */,
 				2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */,
 				2D8DA04F147E0FB1003BE1D3 /* InfoPlist.strings in Resources */,
-				2DD111AC1487301C00C552FA /* Large Spectacles.png in Resources */,
 				2D8DA050147E0FB7003BE1D3 /* Localizable.strings in Resources */,
+				2DD111AC1487301C00C552FA /* Preference Pane Background.png in Resources */,
 				2D768E97147F475F00901E76 /* PreferencePanes.plist in Resources */,
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */,
