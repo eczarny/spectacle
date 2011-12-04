@@ -27,7 +27,7 @@
         mySliderBackground = [[SpectacleUtilities imageFromResource: SpectacleSliderBackgroundImage] retain];
         mySliderMask = [[SpectacleUtilities imageFromResource: SpectacleSliderMaskImage] retain];
         myHandle = [[SpectacleUtilities imageFromResource: SpectacleSliderHandleImage] retain];
-        myHandlePressed = [[SpectacleUtilities imageFromResource: SpectacleSliderHandlePressedImage] retain];
+        myHandlePressed = [[SpectacleUtilities imageFromResource: SpectacleSliderPressedHandleImage] retain];
         myHandlePosition = NSZeroPoint;
         isMouseDown = NO;
         isMouseDragging = NO;

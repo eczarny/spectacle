@@ -84,7 +84,7 @@
     
     myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength] retain];
     
-    [myStatusItem setTitle: @"sP"];
+    [myStatusItem setImage: [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
     [myStatusItem setHighlightMode: YES];
     
     if (applicationVersion) {

@@ -51,10 +51,12 @@
 
 #pragma mark -
 
-#define SpectacleSliderBackgroundImage                @"SliderBackground"
-#define SpectacleSliderMaskImage                      @"SliderMask"
-#define SpectacleSliderHandleImage                    @"SliderHandle"
-#define SpectacleSliderHandlePressedImage             @"SliderHandlePressed"
+#define SpectacleSliderBackgroundImage                @"Slider Background"
+#define SpectacleSliderMaskImage                      @"Slider Mask"
+#define SpectacleSliderHandleImage                    @"Slider Handle"
+#define SpectacleSliderPressedHandleImage             @"Slider Pressed Handle"
+
+#define SpectacleStatusItemIcon                       @"Spectacle Status Item"
 
 #pragma mark -
 

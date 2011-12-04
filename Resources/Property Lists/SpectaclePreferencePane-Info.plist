@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Spectacle</string>
 	<key>CFBundleIconFile</key>
-	<string>SpectaclePreferencePane.icns</string>
+	<string>Spectacle Preference Pane.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.divisiblebyzero.SpectaclePreferencePane</string>
 	<key>CFBundleInfoDictionaryVersion</key>
