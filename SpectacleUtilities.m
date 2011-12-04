@@ -60,7 +60,7 @@
 }
 
 + (NSString *)standaloneApplicationVersion {
-    return [SpectacleUtilities versionOfBundle: [NSBundle mainBundle]];
+    return [SpectacleUtilities versionOfBundle: [SpectacleUtilities applicationBundle]];
 }
 
 #pragma mark -

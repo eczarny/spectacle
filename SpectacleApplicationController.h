@@ -2,6 +2,7 @@
 #import "SpectacleWindowActionController.h"
 
 @interface SpectacleApplicationController : SpectacleWindowActionController {
+    IBOutlet NSMenu *myStatusItemMenu;
     NSStatusItem *myStatusItem;
 }
 

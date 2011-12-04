@@ -4,14 +4,6 @@
 
 @interface SpectacleApplicationController (SpectacleApplicationControllerPrivate)
 
-- (NSMenu *)statusItemMenu;
-
-#pragma mark -
-
-- (void)refreshStatusMenu;
-
-#pragma mark -
-
 - (void)createStatusItem;
 
 - (void)destroyStatusItem;
@@ -33,22 +25,7 @@
 @implementation SpectacleApplicationController
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    
-    [notificationCenter addObserver: self
-                           selector: @selector(enableStatusItem:)
-                               name: SpectacleStatusItemEnabledNotification
-                             object: nil];
-    
-    [notificationCenter addObserver: self
-                           selector: @selector(disableStatusItem:)
-                               name: SpectacleStatusItemDisabledNotification
-                             object: nil];
-    
-    [notificationCenter addObserver: self
-                           selector: @selector(menuDidSendAction:)
-                               name: NSMenuDidSendActionNotification
-                             object: nil];
+    [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
     
     if (!AXAPIEnabled()) {
         [SpectacleUtilities displayAccessibilityAPIAlert];
@@ -58,11 +35,26 @@
         return;
     }
     
-    [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
-    
     [self registerHotKeys];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference]) {
+        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+        
+        [notificationCenter addObserver: self
+                               selector: @selector(enableStatusItem:)
+                                   name: SpectacleStatusItemEnabledNotification
+                                 object: nil];
+        
+        [notificationCenter addObserver: self
+                               selector: @selector(disableStatusItem:)
+                                   name: SpectacleStatusItemDisabledNotification
+                                 object: nil];
+        
+        [notificationCenter addObserver: self
+                               selector: @selector(menuDidSendAction:)
+                                   name: NSMenuDidSendActionNotification
+                                 object: nil];
+        
         [self createStatusItem];
     }
 }
@@ -79,22 +71,13 @@
 
 @implementation SpectacleApplicationController (SpectacleApplicationControllerPrivate)
 
-- (NSMenu *)statusItemMenu {
-    NSMenu *statusItemMenu = [[[NSMenu alloc] init] autorelease];
-    
-    [statusItemMenu addItemWithTitle: ZeroKitLocalizedString(@"Preferences...") action: @selector(togglePreferencesWindow:) keyEquivalent: @""];
-    
-    [statusItemMenu addItem: [NSMenuItem separatorItem]];
-    
-    [statusItemMenu addItemWithTitle: ZeroKitLocalizedString(@"Quit Spectacle") action: @selector(terminate:) keyEquivalent: @""];
-    
-    return statusItemMenu;
-}
-
-#pragma mark -
-
-- (void)refreshStatusMenu {
+- (void)createStatusItem {
     NSString *applicationVersion = [SpectacleUtilities standaloneApplicationVersion];
+    
+    myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength] retain];
+    
+    [myStatusItem setTitle: @"sP"];
+    [myStatusItem setHighlightMode: YES];
     
     if (applicationVersion) {
         [myStatusItem setToolTip: [NSString stringWithFormat: @"Spectacle %@", applicationVersion]];
@@ -102,18 +85,7 @@
         [myStatusItem setToolTip: @"Spectacle"];
     }
     
-    [myStatusItem setMenu: [self statusItemMenu]];
-}
-
-#pragma mark -
-
-- (void)createStatusItem {
-    myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength] retain];
-    
-    [myStatusItem setTitle: @"sP"];
-    [myStatusItem setHighlightMode: YES];
-    
-    [self refreshStatusMenu];
+    [myStatusItem setMenu: myStatusItemMenu];
 }
 
 - (void)destroyStatusItem {
