@@ -61,6 +61,14 @@
 
 #pragma mark -
 
+- (BOOL)applicationShouldHandleReopen: (NSApplication *)application hasVisibleWindows: (BOOL)visibleWindows {
+    [self togglePreferencesWindow: self];
+    
+    return YES;
+}
+
+#pragma mark -
+
 - (IBAction)togglePreferencesWindow: (id)sender {
     [[ZeroKitPreferencesWindowController sharedController] togglePreferencesWindow: sender];
 }
