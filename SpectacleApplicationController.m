@@ -51,24 +51,7 @@
                              object: nil];
     
     if (!AXAPIEnabled()) {
-        NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-        NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"UniversalAccessPref"]];
-        
-        [alert setAlertStyle: NSWarningAlertStyle];
-        [alert setMessageText: ZeroKitLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
-        [alert setInformativeText: ZeroKitLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
-        [alert addButtonWithTitle: ZeroKitLocalizedString(@"Open Universal Access Preferences")];
-        [alert addButtonWithTitle: ZeroKitLocalizedString(@"Stop Spectacle")];
-        
-        switch ([alert runModal]) {
-            case NSAlertFirstButtonReturn:
-                [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
-                
-                break;
-            case NSAlertSecondButtonReturn:
-            default:
-                break;
-        }
+        [SpectacleUtilities displayAccessibilityAPIAlert];
         
         [[NSApplication sharedApplication] terminate: self];
         
@@ -152,7 +135,7 @@
 #pragma mark -
 
 - (void)menuDidSendAction: (NSNotification *)notification {
-    [NSApp activateIgnoringOtherApps: YES];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps: YES];
 }
 
 @end

@@ -20,6 +20,12 @@
 
 #pragma mark -
 
++ (void)displayAccessibilityAPIAlert;
+
++ (void)displayRunningInBackgroundAlertWithCallback: (void ( ^ )(BOOL, BOOL))callback;
+
+#pragma mark -
+
 + (void)startSpectacle;
 
 + (void)stopSpectacle;

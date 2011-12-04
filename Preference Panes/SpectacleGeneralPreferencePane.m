@@ -57,13 +57,36 @@
 
 - (IBAction)toggleStatusItem: (id)sender {
     NSString *notificationName = SpectacleStatusItemEnabledNotification;
+    BOOL isStatusItemEnabled = YES;
+    __block BOOL statusItemStateChanged = YES;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([userDefaults boolForKey: SpectacleStatusItemEnabledPreference] == ([[sender selectedItem] tag] == 0)) {
+        return;
+    }
     
     if ([[sender selectedItem] tag] != 0) {
         notificationName = SpectacleStatusItemDisabledNotification;
+        isStatusItemEnabled = NO;
+        
+        if (![userDefaults boolForKey: SpectacleBackgroundAlertSuppressedPreference]) {
+            [SpectacleUtilities displayRunningInBackgroundAlertWithCallback: ^(BOOL isConfirmed, BOOL isSuppressed) {
+                if (!isConfirmed) {
+                    statusItemStateChanged = NO;
+                    
+                    [sender selectItemWithTag: 0];
+                }
+                
+                [userDefaults setBool: isSuppressed forKey: SpectacleBackgroundAlertSuppressedPreference];
+            }];
+        }
     }
     
-    [[NSUserDefaults standardUserDefaults] setBool: ([[sender selectedItem] tag] == 0) forKey: SpectacleStatusItemEnabledPreference];
-    [[NSNotificationCenter defaultCenter] postNotificationName: notificationName object: self];
+    if (statusItemStateChanged) {
+        [[NSNotificationCenter defaultCenter] postNotificationName: notificationName object: self];
+            
+        [userDefaults setBool: isStatusItemEnabled forKey: SpectacleStatusItemEnabledPreference];
+    }
 }
 
 @end

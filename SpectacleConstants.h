@@ -59,3 +59,4 @@
 #pragma mark -
 
 #define SpectacleStatusItemEnabledPreference          @"StatusItemEnabled"
+#define SpectacleBackgroundAlertSuppressedPreference  @"BackgroundAlertSuppressed"
