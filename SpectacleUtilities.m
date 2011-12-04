@@ -166,7 +166,7 @@
 #pragma mark -
 
 + (NSArray *)hotKeyNames {
-    NSBundle *bundle = [SpectacleUtilities helperApplicationBundle];
+    NSBundle *bundle = [SpectacleUtilities applicationBundle];
     NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: ZeroKitPropertyListFileExtension];
     NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
     
@@ -309,7 +309,7 @@
 #pragma mark -
 
 + (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
-    NSBundle *bundle = [SpectacleUtilities helperApplicationBundle];
+    NSBundle *bundle = [SpectacleUtilities applicationBundle];
     NSString *path = [bundle pathForResource: ZeroKitDefaultPreferencesFile ofType: ZeroKitPropertyListFileExtension];
     NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary dictionary];
