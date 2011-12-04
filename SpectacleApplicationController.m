@@ -85,6 +85,7 @@
     myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength] retain];
     
     [myStatusItem setImage: [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
+    [myStatusItem setAlternateImage: [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
     [myStatusItem setHighlightMode: YES];
     
     if (applicationVersion) {

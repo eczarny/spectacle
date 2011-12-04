@@ -57,6 +57,7 @@
 #define SpectacleSliderPressedHandleImage             @"Slider Pressed Handle"
 
 #define SpectacleStatusItemIcon                       @"Spectacle Status Item"
+#define SpectacleAlternateStatusItemIcon              @"Spectacle Alternate Status Item"
 
 #pragma mark -
 

@@ -30,6 +30,7 @@
 		077939131184FCD20013BC14 /* SpectacleHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077939111184FCD20013BC14 /* SpectacleHelper.xib */; };
 		079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6B752148B12A0003F924A /* Spectacle Status Item.png */; };
+		07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */; };
 		07BB5406118657190045663F /* SpectacleHelperApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB5405118657190045663F /* SpectacleHelperApplicationController.m */; };
 		07BB542D1186662F0045663F /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
 		07BB542E1186662F0045663F /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
@@ -192,6 +193,7 @@
 		079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistoryItem.h; sourceTree = "<group>"; };
 		079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistoryItem.m; sourceTree = "<group>"; };
 		07B6B752148B12A0003F924A /* Spectacle Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item.png"; path = "Resources/Images/Spectacle Status Item.png"; sourceTree = "<group>"; };
+		07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Alternate Status Item.png"; path = "Resources/Images/Spectacle Alternate Status Item.png"; sourceTree = "<group>"; };
 		07BB5404118657190045663F /* SpectacleHelperApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperApplicationController.h; sourceTree = "<group>"; };
 		07BB5405118657190045663F /* SpectacleHelperApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHelperApplicationController.m; sourceTree = "<group>"; };
 		07BB542B1186662F0045663F /* SpectacleUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleUtilities.h; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			children = (
 				2D768E9E147F49C600901E76 /* Toolbar Icons */,
 				2DF03CED148684E000D09E90 /* Spectacle.icns */,
+				07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */,
 				2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */,
 				07B6B752148B12A0003F924A /* Spectacle Status Item.png */,
 			);
@@ -707,6 +710,7 @@
 				2D768E97147F475F00901E76 /* PreferencePanes.plist in Resources */,
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */,
+				07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */,
 				07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */,
 				2D768E9A147F47D800901E76 /* SpectacleGeneralPreferencePane.xib in Resources */,
 				2D768E9D147F48D400901E76 /* SpectacleHotKeyPreferencePane.xib in Resources */,
@@ -725,8 +729,8 @@
 				070D2B2A128B52A90022D02C /* Slider Mask.png in Resources */,
 				070D2B29128B52A90022D02C /* Slider Pressed Handle.png in Resources */,
 				2DF03CF0148684E000D09E90 /* Spectacle.icns in Resources */,
-				077938BF1184F9C10013BC14 /* SpectacleHelper.app in Resources */,
 				2DF03CF214868E2000D09E90 /* Spectacle Preference Pane.icns in Resources */,
+				077938BF1184F9C10013BC14 /* SpectacleHelper.app in Resources */,
 				0747DB051183ACC600F75DD2 /* SpectaclePreferencePane.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
