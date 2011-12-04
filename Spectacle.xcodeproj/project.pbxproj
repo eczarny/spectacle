@@ -28,6 +28,8 @@
 		077938E61184FADB0013BC14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		077939041184FB3C0013BC14 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		077939131184FCD20013BC14 /* SpectacleHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077939111184FCD20013BC14 /* SpectacleHelper.xib */; };
+		07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */; };
+		0783860B148C1CA1001E7BD7 /* SpectaclePreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07838609148C1CA1001E7BD7 /* SpectaclePreferencesWindow.xib */; };
 		078F2E9F148B2D1400AEBA3A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 078F2E9E148B2D1400AEBA3A /* Credits.rtf */; };
 		079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6B752148B12A0003F924A /* Spectacle Status Item.png */; };
@@ -51,13 +53,6 @@
 		2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */; };
 		2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */; };
 		2D768E91147ED57600901E76 /* SpectacleWindowActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */; };
-		2D768E95147F457A00901E76 /* SpectacleGeneralPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E94147F457A00901E76 /* SpectacleGeneralPreferencePane.m */; };
-		2D768E97147F475F00901E76 /* PreferencePanes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D768E96147F475F00901E76 /* PreferencePanes.plist */; };
-		2D768E9A147F47D800901E76 /* SpectacleGeneralPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D768E98147F47D800901E76 /* SpectacleGeneralPreferencePane.xib */; };
-		2D768E9D147F48D400901E76 /* SpectacleHotKeyPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D768E9B147F48D400901E76 /* SpectacleHotKeyPreferencePane.xib */; };
-		2D768EA0147F49DD00901E76 /* General Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D768E9F147F49DD00901E76 /* General Preferences.tiff */; };
-		2D768EA3147F4CD400901E76 /* SpectacleHotKeyPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768EA2147F4CD400901E76 /* SpectacleHotKeyPreferencePane.m */; };
-		2D768EA5147F4FE000901E76 /* Hot Key Preferences.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2D768EA4147F4FE000901E76 /* Hot Key Preferences.tiff */; };
 		2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
 		2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
 		2D8DA04F147E0FB1003BE1D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0747DB061183ACD600F75DD2 /* InfoPlist.strings */; };
@@ -190,6 +185,9 @@
 		0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleHelperDevelopment.xcconfig; path = Configurations/SpectacleHelperDevelopment.xcconfig; sourceTree = "<group>"; };
 		0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleHelperRelease.xcconfig; path = Configurations/SpectacleHelperRelease.xcconfig; sourceTree = "<group>"; };
 		077939121184FCD20013BC14 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectacleHelper.xib; sourceTree = "<group>"; };
+		07838601148BD517001E7BD7 /* SpectaclePreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaclePreferencesController.h; sourceTree = "<group>"; };
+		07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectaclePreferencesController.m; sourceTree = "<group>"; };
+		0783860A148C1CA1001E7BD7 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectaclePreferencesWindow.xib; sourceTree = "<group>"; };
 		078B0F50118D18CC004EE86C /* SpectacleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleConstants.h; sourceTree = "<group>"; };
 		078F2E9E148B2D1400AEBA3A /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistoryItem.h; sourceTree = "<group>"; };
@@ -218,15 +216,6 @@
 		2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleApplicationController.m; sourceTree = "<group>"; };
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowActionController.h; sourceTree = "<group>"; };
 		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowActionController.m; sourceTree = "<group>"; };
-		2D768E93147F457A00901E76 /* SpectacleGeneralPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleGeneralPreferencePane.h; path = "Preference Panes/SpectacleGeneralPreferencePane.h"; sourceTree = "<group>"; };
-		2D768E94147F457A00901E76 /* SpectacleGeneralPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleGeneralPreferencePane.m; path = "Preference Panes/SpectacleGeneralPreferencePane.m"; sourceTree = "<group>"; };
-		2D768E96147F475F00901E76 /* PreferencePanes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PreferencePanes.plist; path = "Resources/Property Lists/PreferencePanes.plist"; sourceTree = "<group>"; };
-		2D768E99147F47D800901E76 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectacleGeneralPreferencePane.xib; sourceTree = "<group>"; };
-		2D768E9C147F48D400901E76 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/SpectacleHotKeyPreferencePane.xib; sourceTree = "<group>"; };
-		2D768E9F147F49DD00901E76 /* General Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "General Preferences.tiff"; path = "Resources/Images/Icons/Toolbar Icons/General Preferences.tiff"; sourceTree = "<group>"; };
-		2D768EA1147F4CD400901E76 /* SpectacleHotKeyPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHotKeyPreferencePane.h; path = "Preference Panes/SpectacleHotKeyPreferencePane.h"; sourceTree = "<group>"; };
-		2D768EA2147F4CD400901E76 /* SpectacleHotKeyPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHotKeyPreferencePane.m; path = "Preference Panes/SpectacleHotKeyPreferencePane.m"; sourceTree = "<group>"; };
-		2D768EA4147F4FE000901E76 /* Hot Key Preferences.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = "Hot Key Preferences.tiff"; path = "Resources/Images/Icons/Toolbar Icons/Hot Key Preferences.tiff"; sourceTree = "<group>"; };
 		2DB7C8FA147E12E00072D576 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Languages/English.lproj/Spectacle.xib; sourceTree = "<group>"; };
 		2DD111AB1487301C00C552FA /* Preference Pane Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preference Pane Background.png"; path = "Resources/Images/Preference Pane Background.png"; sourceTree = "<group>"; };
 		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
@@ -322,6 +311,8 @@
 				07088270119A301800EC9426 /* SpectacleHelperController.m */,
 				F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */,
 				F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */,
+				07838601148BD517001E7BD7 /* SpectaclePreferencesController.h */,
+				07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */,
 				2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */,
 				2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */,
 			);
@@ -342,7 +333,6 @@
 			children = (
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				070031AF1217712E001D4C46 /* HotKeyNames.plist */,
-				2D768E96147F475F00901E76 /* PreferencePanes.plist */,
 				2D1E1AD2147E07E50021D73D /* Spectacle-Info.plist */,
 				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
 				8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */,
@@ -363,10 +353,9 @@
 			isa = PBXGroup;
 			children = (
 				2DB7C8F9147E12E00072D576 /* Spectacle.xib */,
-				2D768E98147F47D800901E76 /* SpectacleGeneralPreferencePane.xib */,
 				077939111184FCD20013BC14 /* SpectacleHelper.xib */,
-				2D768E9B147F48D400901E76 /* SpectacleHotKeyPreferencePane.xib */,
 				0747DB031183ACC600F75DD2 /* SpectaclePreferencePane.xib */,
+				07838609148C1CA1001E7BD7 /* SpectaclePreferencesWindow.xib */,
 			);
 			name = "Interface Builder";
 			sourceTree = "<group>";
@@ -400,7 +389,6 @@
 		0747DAF21183AB1B00F75DD2 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				2D768E9E147F49C600901E76 /* Toolbar Icons */,
 				2DF03CED148684E000D09E90 /* Spectacle.icns */,
 				07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */,
 				2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */,
@@ -468,7 +456,6 @@
 				0747DAE81183AABB00F75DD2 /* Controllers */,
 				070882A5119A387900EC9426 /* Controls */,
 				0747DAE91183AAC100F75DD2 /* Models */,
-				2D768E92147F453A00901E76 /* Preference Panes */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -512,26 +499,6 @@
 				2D6540721475EAE1000133CA /* ZeroKit.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2D768E92147F453A00901E76 /* Preference Panes */ = {
-			isa = PBXGroup;
-			children = (
-				2D768E93147F457A00901E76 /* SpectacleGeneralPreferencePane.h */,
-				2D768E94147F457A00901E76 /* SpectacleGeneralPreferencePane.m */,
-				2D768EA1147F4CD400901E76 /* SpectacleHotKeyPreferencePane.h */,
-				2D768EA2147F4CD400901E76 /* SpectacleHotKeyPreferencePane.m */,
-			);
-			name = "Preference Panes";
-			sourceTree = "<group>";
-		};
-		2D768E9E147F49C600901E76 /* Toolbar Icons */ = {
-			isa = PBXGroup;
-			children = (
-				2D768E9F147F49DD00901E76 /* General Preferences.tiff */,
-				2D768EA4147F4FE000901E76 /* Hot Key Preferences.tiff */,
-			);
-			name = "Toolbar Icons";
 			sourceTree = "<group>";
 		};
 		2D768EB0147F59D000901E76 /* Spectacle */ = {
@@ -704,19 +671,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */,
-				2D768EA0147F49DD00901E76 /* General Preferences.tiff in Resources */,
-				2D768EA5147F4FE000901E76 /* Hot Key Preferences.tiff in Resources */,
 				2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */,
 				2D8DA04F147E0FB1003BE1D3 /* InfoPlist.strings in Resources */,
 				2D8DA050147E0FB7003BE1D3 /* Localizable.strings in Resources */,
 				2DD111AC1487301C00C552FA /* Preference Pane Background.png in Resources */,
-				2D768E97147F475F00901E76 /* PreferencePanes.plist in Resources */,
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2DB7C8FB147E13160072D576 /* Spectacle.xib in Resources */,
+				0783860B148C1CA1001E7BD7 /* SpectaclePreferencesWindow.xib in Resources */,
 				07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */,
 				07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */,
-				2D768E9A147F47D800901E76 /* SpectacleGeneralPreferencePane.xib in Resources */,
-				2D768E9D147F48D400901E76 /* SpectacleHotKeyPreferencePane.xib in Resources */,
 				078F2E9F148B2D1400AEBA3A /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,13 +771,12 @@
 			files = (
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
-				2D768E95147F457A00901E76 /* SpectacleGeneralPreferencePane.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,
-				2D768EA3147F4CD400901E76 /* SpectacleHotKeyPreferencePane.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
 				2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
+				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,28 +841,20 @@
 			name = SpectacleHelper.xib;
 			sourceTree = "<group>";
 		};
+		07838609148C1CA1001E7BD7 /* SpectaclePreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0783860A148C1CA1001E7BD7 /* English */,
+			);
+			name = SpectaclePreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
 		07BB544A11866B090045663F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				07BB544B11866B090045663F /* English */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		2D768E98147F47D800901E76 /* SpectacleGeneralPreferencePane.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D768E99147F47D800901E76 /* English */,
-			);
-			name = SpectacleGeneralPreferencePane.xib;
-			sourceTree = "<group>";
-		};
-		2D768E9B147F48D400901E76 /* SpectacleHotKeyPreferencePane.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D768E9C147F48D400901E76 /* English */,
-			);
-			name = SpectacleHotKeyPreferencePane.xib;
 			sourceTree = "<group>";
 		};
 		2DB7C8F9147E12E00072D576 /* Spectacle.xib */ = {

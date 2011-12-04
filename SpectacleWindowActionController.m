@@ -29,79 +29,79 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToCenter: (id)sender {
+- (IBAction)moveFrontMostWindowToCenter: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullscreen: (id)sender {
+- (IBAction)moveFrontMostWindowToFullscreen: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionFullscreen];
 }
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToLeftHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToLeftHalf: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftHalf];
 }
 
-- (void)moveFrontMostWindowToRightHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToRightHalf: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightHalf];
 }
 
-- (void)moveFrontMostWindowToTopHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToTopHalf: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopHalf];
 }
 
-- (void)moveFrontMostWindowToBottomHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToBottomHalf: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToUpperLeft: (id)sender {
+- (IBAction)moveFrontMostWindowToUpperLeft: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperLeft];
 }
 
-- (void)moveFrontMostWindowToLowerLeft: (id)sender {
+- (IBAction)moveFrontMostWindowToLowerLeft: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToUpperRight: (id)sender {
+- (IBAction)moveFrontMostWindowToUpperRight: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperRight];
 }
 
-- (void)moveFrontMostWindowToLowerRight: (id)sender {
+- (IBAction)moveFrontMostWindowToLowerRight: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerRight];
 }
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToLeftDisplay: (id)sender {
+- (IBAction)moveFrontMostWindowToLeftDisplay: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftDisplay];
 }
 
-- (void)moveFrontMostWindowToRightDisplay: (id)sender {
+- (IBAction)moveFrontMostWindowToRightDisplay: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightDisplay];
 }
 
-- (void)moveFrontMostWindowToTopDisplay: (id)sender {
+- (IBAction)moveFrontMostWindowToTopDisplay: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopDisplay];
 }
 
-- (void)moveFrontMostWindowToBottomDisplay: (id)sender {
+- (IBAction)moveFrontMostWindowToBottomDisplay: (id)sender {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomDisplay];
 }
 
 #pragma mark -
 
-- (void)undoLastWindowAction: (id)sender {
+- (IBAction)undoLastWindowAction: (id)sender {
     [myWindowPositionManager undoLastWindowAction];
 }
 
-- (void)redoLastWindowAction: (id)sender {
+- (IBAction)redoLastWindowAction: (id)sender {
     [myWindowPositionManager redoLastWindowAction];
 }
 

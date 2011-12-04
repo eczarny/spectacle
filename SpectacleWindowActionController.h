@@ -11,48 +11,48 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToCenter: (id)sender;
+- (IBAction)moveFrontMostWindowToCenter: (id)sender;
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToFullscreen: (id)sender;
+- (IBAction)moveFrontMostWindowToFullscreen: (id)sender;
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToLeftHalf: (id)sender;
+- (IBAction)moveFrontMostWindowToLeftHalf: (id)sender;
 
-- (void)moveFrontMostWindowToRightHalf: (id)sender;
+- (IBAction)moveFrontMostWindowToRightHalf: (id)sender;
 
-- (void)moveFrontMostWindowToTopHalf: (id)sender;
+- (IBAction)moveFrontMostWindowToTopHalf: (id)sender;
 
-- (void)moveFrontMostWindowToBottomHalf: (id)sender;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowToUpperLeft: (id)sender;
-
-- (void)moveFrontMostWindowToLowerLeft: (id)sender;
+- (IBAction)moveFrontMostWindowToBottomHalf: (id)sender;
 
 #pragma mark -
 
-- (void)moveFrontMostWindowToUpperRight: (id)sender;
+- (IBAction)moveFrontMostWindowToUpperLeft: (id)sender;
 
-- (void)moveFrontMostWindowToLowerRight: (id)sender;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowToLeftDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToRightDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToTopDisplay: (id)sender;
-
-- (void)moveFrontMostWindowToBottomDisplay: (id)sender;
+- (IBAction)moveFrontMostWindowToLowerLeft: (id)sender;
 
 #pragma mark -
 
-- (void)undoLastWindowAction: (id)sender;
+- (IBAction)moveFrontMostWindowToUpperRight: (id)sender;
 
-- (void)redoLastWindowAction: (id)sender;
+- (IBAction)moveFrontMostWindowToLowerRight: (id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToLeftDisplay: (id)sender;
+
+- (IBAction)moveFrontMostWindowToRightDisplay: (id)sender;
+
+- (IBAction)moveFrontMostWindowToTopDisplay: (id)sender;
+
+- (IBAction)moveFrontMostWindowToBottomDisplay: (id)sender;
+
+#pragma mark -
+
+- (IBAction)undoLastWindowAction: (id)sender;
+
+- (IBAction)redoLastWindowAction: (id)sender;
 
 @end

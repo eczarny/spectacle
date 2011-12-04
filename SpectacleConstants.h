@@ -9,6 +9,7 @@
 
 #define SpectacleNibName                              @"Spectacle"
 #define SpectaclePreferencePaneNibName                @"SpectaclePreferencePane"
+#define SpectaclePreferencesWindowNibName             @"SpectaclePreferencesWindow"
 
 #pragma mark -
 

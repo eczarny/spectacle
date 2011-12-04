@@ -1,12 +1,11 @@
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @class SpectacleHotKeyManager, SpectacleApplicationController;
 
-@interface SpectacleHotKeyPreferencePane : NSObject<ZeroKitPreferencePaneProtocol, ZeroKitHotKeyRecorderDelegate> {
+@interface SpectaclePreferencesController : NSWindowController<ZeroKitHotKeyRecorderDelegate> {
+    SpectacleApplicationController *myApplicationController;
     SpectacleHotKeyManager *myHotKeyManager;
     NSDictionary *myHotKeyRecorders;
-    IBOutlet SpectacleApplicationController *myApplicationController;
-    IBOutlet NSView *myView;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToCenterHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftHotKeyRecorder;
@@ -23,20 +22,24 @@
     IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
+    IBOutlet NSButton *myLoginItemEnabled;
+    IBOutlet NSPopUpButton *myStatusItemEnabled;
 }
 
-- (NSString *)name;
+- (id)initWithApplicationController: (SpectacleApplicationController *)applicationController;
 
 #pragma mark -
 
-- (NSImage *)icon;
+- (IBAction)toggleWindow: (id)sender;
 
 #pragma mark -
 
-- (NSString *)toolTip;
+- (IBAction)hideWindow: (id)sender;
 
 #pragma mark -
 
-- (NSView *)view;
+- (IBAction)toggleLoginItem: (id)sender;
+
+- (IBAction)toggleStatusItem: (id)sender;
 
 @end

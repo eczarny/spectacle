@@ -1,4 +1,5 @@
 #import "SpectacleApplicationController.h"
+#import "SpectaclePreferencesController.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
@@ -26,6 +27,8 @@
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
     [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
+    
+    myPreferencesController = [[SpectaclePreferencesController alloc] initWithApplicationController: self];
     
     if (!AXAPIEnabled()) {
         [SpectacleUtilities displayAccessibilityAPIAlert];
@@ -62,15 +65,15 @@
 #pragma mark -
 
 - (BOOL)applicationShouldHandleReopen: (NSApplication *)application hasVisibleWindows: (BOOL)visibleWindows {
-    [self togglePreferencesWindow: self];
+    [self showPreferencesWindow: self];
     
     return YES;
 }
 
 #pragma mark -
 
-- (IBAction)togglePreferencesWindow: (id)sender {
-    [[ZeroKitPreferencesWindowController sharedController] togglePreferencesWindow: sender];
+- (IBAction)showPreferencesWindow: (id)sender {
+    [myPreferencesController showWindow: sender];
 }
 
 @end
@@ -116,7 +119,11 @@
 #pragma mark -
 
 - (void)menuDidSendAction: (NSNotification *)notification {
-    [[NSApplication sharedApplication] activateIgnoringOtherApps: YES];
+    NSMenuItem *menuItem = [[notification userInfo] objectForKey: @"MenuItem"];
+    
+    if ([menuItem tag] > 0) {
+        [[NSApplication sharedApplication] activateIgnoringOtherApps: YES];
+    }
 }
 
 @end
