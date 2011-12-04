@@ -5,7 +5,7 @@
 "Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?" = "Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?";
 
 "This will cause Spectacle to run in the background" = "This will cause Spectacle to run in the background";
-"Running Spectacle in the background, without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder." = "Running Spectacle in the background, without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.";
+"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder." = "Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.";
 
 /* Buttons */
 "Open Universal Access Preferences" = "Open Universal Access Preferences";

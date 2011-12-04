@@ -92,7 +92,7 @@
     [alert setAlertStyle: NSInformationalAlertStyle];
     [alert setShowsSuppressionButton: YES];
     [alert setMessageText: ZeroKitLocalizedString(@"This will cause Spectacle to run in the background")];
-    [alert setInformativeText: ZeroKitLocalizedString(@"Running Spectacle in the background, without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.")];
+    [alert setInformativeText: ZeroKitLocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.")];
     [alert addButtonWithTitle: ZeroKitLocalizedString(@"OK")];
     [alert addButtonWithTitle: ZeroKitLocalizedString(@"Cancel")];
     
