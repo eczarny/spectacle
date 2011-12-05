@@ -845,22 +845,6 @@
 					<int key="connectionID">253</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleLoginItem:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="2510387"/>
-					</object>
-					<int key="connectionID">254</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleCheckForUpdates:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="283572674"/>
-					</object>
-					<int key="connectionID">257</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">myAutomaticallyChecksForUpdatesButton</string>
 						<reference key="source" ref="294453543"/>
