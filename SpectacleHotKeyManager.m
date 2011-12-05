@@ -232,12 +232,12 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
     ZeroKitHotKey *hotKey;
     EventHotKeyID hotKeyID;
     OSStatus err = GetEventParameter(event,
-                            kEventParamDirectObject,
-                            typeEventHotKeyID,
-                            NULL,
-                            sizeof(EventHotKeyID),
-                            NULL,
-                            &hotKeyID);
+                                     kEventParamDirectObject,
+                                     typeEventHotKeyID,
+                                     NULL,
+                                     sizeof(EventHotKeyID),
+                                     NULL,
+                                     &hotKeyID);
     
     if (err) {
         return err;

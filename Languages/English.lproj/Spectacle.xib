@@ -1294,25 +1294,6 @@
 						<reference key="NSOnImage" ref="229763992"/>
 						<reference key="NSMixedImage" ref="909111550"/>
 					</object>
-					<object class="NSMenuItem" id="667200671">
-						<reference key="NSMenu" ref="257670533"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<string key="NSTitle">Disable Spectacle</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="229763992"/>
-						<reference key="NSMixedImage" ref="909111550"/>
-					</object>
-					<object class="NSMenuItem" id="899333103">
-						<reference key="NSMenu" ref="257670533"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<bool key="NSIsSeparator">YES</bool>
-						<string key="NSTitle"/>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="229763992"/>
-						<reference key="NSMixedImage" ref="909111550"/>
-					</object>
 					<object class="NSMenuItem" id="808944297">
 						<reference key="NSMenu" ref="257670533"/>
 						<string key="NSTitle">Quit Spectacle</string>
@@ -3030,8 +3011,6 @@
 							<reference ref="808944297"/>
 							<reference ref="625913344"/>
 							<reference ref="43273263"/>
-							<reference ref="899333103"/>
-							<reference ref="667200671"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -3055,16 +3034,6 @@
 						<reference key="object" ref="43273263"/>
 						<reference key="parent" ref="257670533"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1105</int>
-						<reference key="object" ref="899333103"/>
-						<reference key="parent" ref="257670533"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1163</int>
-						<reference key="object" ref="667200671"/>
-						<reference key="parent" ref="257670533"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3073,10 +3042,8 @@
 				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="103.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="106.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1105.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="111.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="112.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1163.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="124.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="125.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="126.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
