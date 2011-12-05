@@ -8,8 +8,8 @@
     NSDictionary *myHotKeyRecorders;
     IBOutlet NSTextField *mySpectacleVersionTextField;
     IBOutlet SpectacleToggleSwitch *myToggleRunningStateSwitch;
+    IBOutlet NSTextField *myArtworkCreditTextField;
     IBOutlet NSButton *myLoginItemEnabledButton;
-    IBOutlet NSButton *myAutomaticallyChecksForUpdatesButton;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToCenterHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftHotKeyRecorder;

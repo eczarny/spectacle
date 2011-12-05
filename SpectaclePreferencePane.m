@@ -75,6 +75,17 @@
     [self toggleControlsBasedOnSpectacleRunningState];
     
     [mySpectacleVersionTextField setStringValue: [SpectacleUtilities preferencePaneVersion]];
+    
+    NSMutableAttributedString *link = [[[NSMutableAttributedString alloc] init] autorelease];
+    
+    [link appendAttributedString: [NSAttributedString linkFromString: @"Iiro Jäppinen"
+                                                             withURL: [NSURL URLWithString: @"http://iiro.eu/"]
+                                                                font: [myArtworkCreditTextField font]]];
+    
+    [myArtworkCreditTextField setAllowsEditingTextAttributes: YES];
+    [myArtworkCreditTextField setSelectable: YES];
+    
+    [myArtworkCreditTextField setAttributedStringValue: link];
 }
 
 #pragma mark -
@@ -167,8 +178,6 @@
     } else {
         [myToggleRunningStateSwitch setState: NSOffState];
         
-        [myAutomaticallyChecksForUpdatesButton setEnabled: NO];
-        
         [self enableHotKeyRecorders: NO];
     }
 }
@@ -183,8 +192,6 @@
 
 - (void)helperApplicationDidTerminate {
     [myToggleRunningStateSwitch setEnabled: YES];
-    
-    [myAutomaticallyChecksForUpdatesButton setEnabled: NO];
     
     [self enableHotKeyRecorders: NO];
     
@@ -206,19 +213,6 @@
         [myVendedHelperController setProtocolForProxy: @protocol(SpectacleHelperControllerProtocol)];
         
         [self loadRegisteredHotKeys];
-        
-        [myAutomaticallyChecksForUpdatesButton setEnabled: YES];
-        
-        @try {
-            if ([myVendedHelperController automaticallyChecksForUpdates]) {
-                [myAutomaticallyChecksForUpdatesButton setState: NSOnState];
-            } else {
-                [myAutomaticallyChecksForUpdatesButton setState: NSOffState];
-            }
-        } @catch (NSException *e) {
-            [self handleConnectionException: e
-                                withMessage: @"There was a problem while fetching the state of the automatically checks for updates flag."];
-        }
     } else {
         NSLog(@"Connection to vended helper controller failed.");
     }
