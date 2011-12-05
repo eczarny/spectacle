@@ -1,15 +1,11 @@
-#import <PreferencePanes/PreferencePanes.h>
-#import "SpectacleToggleSwitchDelegate.h"
+#import <Cocoa/Cocoa.h>
 
-@class SpectacleToggleSwitch;
+@class SpectacleHotKeyManager, SpectacleApplicationController;
 
-@interface SpectaclePreferencePane : NSPreferencePane<ZeroKitHotKeyRecorderDelegate, SpectacleToggleSwitchDelegate> {
-    id myVendedHelperController;
+@interface SpectaclePreferencesController : NSWindowController<ZeroKitHotKeyRecorderDelegate> {
+    SpectacleApplicationController *myApplicationController;
+    SpectacleHotKeyManager *myHotKeyManager;
     NSDictionary *myHotKeyRecorders;
-    IBOutlet NSTextField *mySpectacleVersionTextField;
-    IBOutlet SpectacleToggleSwitch *myToggleRunningStateSwitch;
-    IBOutlet NSTextField *myArtworkCreditTextField;
-    IBOutlet NSButton *myLoginItemEnabledButton;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToCenterHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftHotKeyRecorder;
@@ -26,12 +22,24 @@
     IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
+    IBOutlet NSButton *myLoginItemEnabled;
+    IBOutlet NSPopUpButton *myStatusItemEnabled;
 }
 
-- (void)toggleLoginItem: (id)sender;
+- (id)initWithApplicationController: (SpectacleApplicationController *)applicationController;
 
 #pragma mark -
 
-- (void)toggleCheckForUpdates: (id)sender;
+- (IBAction)toggleWindow: (id)sender;
+
+#pragma mark -
+
+- (IBAction)hideWindow: (id)sender;
+
+#pragma mark -
+
+- (IBAction)toggleLoginItem: (id)sender;
+
+- (IBAction)toggleStatusItem: (id)sender;
 
 @end

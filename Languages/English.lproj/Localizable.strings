@@ -4,14 +4,14 @@
 "Spectacle requires that the Accessibility API be enabled" = "Spectacle requires that the Accessibility API be enabled";
 "Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?" = "Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?";
 
+"This will cause Spectacle to run in the background" = "This will cause Spectacle to run in the background";
+"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder." = "Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.";
+
 /* Buttons */
 "Open Universal Access Preferences" = "Open Universal Access Preferences";
-
-/* Hot Key Recorders */
-"Enter hot key" = "Enter hot key";
-"Stop recording" = "Stop recording";
-"Use existing" = "Use existing";
-"Click to record" = "Click to record";
+"Stop Spectacle" = "Stop Spectacle";
+"OK" = "OK";
+"Cancel" = "Cancel";
 
 /* Toggle Switch */
 "ON" = "ON";

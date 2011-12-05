@@ -4,12 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>SpectacleHelper</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>Spectacle.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.divisiblebyzero.SpectacleHelper</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -22,8 +20,6 @@
 	<string>0.5.4</string>
 	<key>CFBundleSignature</key>
 	<string>ZERO</string>
-	<key>CFBundleURLTypes</key>
-	<array/>
 	<key>CFBundleVersion</key>
 	<string>0.5.4</string>
 	<key>LSUIElement</key>
@@ -32,11 +28,5 @@
 	<string>SpectacleHelper</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>NSServices</key>
-	<array/>
-	<key>UTExportedTypeDeclarations</key>
-	<array/>
-	<key>UTImportedTypeDeclarations</key>
-	<array/>
 </dict>
 </plist>

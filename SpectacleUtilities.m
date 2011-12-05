@@ -59,6 +59,60 @@
     return [SpectacleUtilities versionOfBundle: [SpectacleUtilities helperApplicationBundle]];
 }
 
++ (NSString *)standaloneApplicationVersion {
+    return [SpectacleUtilities versionOfBundle: [SpectacleUtilities applicationBundle]];
+}
+
+#pragma mark -
+
++ (void)displayAccessibilityAPIAlert {
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"UniversalAccessPref"]];
+    
+    [alert setAlertStyle: NSWarningAlertStyle];
+    [alert setMessageText: ZeroKitLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
+    [alert setInformativeText: ZeroKitLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Open Universal Access Preferences")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Stop Spectacle")];
+    
+    switch ([alert runModal]) {
+        case NSAlertFirstButtonReturn:
+            [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
+            
+            break;
+        case NSAlertSecondButtonReturn:
+        default:
+            break;
+    }
+}
+
++ (void)displayRunningInBackgroundAlertWithCallback: (void ( ^ )(BOOL, BOOL))callback {
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    
+    [alert setAlertStyle: NSInformationalAlertStyle];
+    [alert setShowsSuppressionButton: YES];
+    [alert setMessageText: ZeroKitLocalizedString(@"This will cause Spectacle to run in the background")];
+    [alert setInformativeText: ZeroKitLocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"OK")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Cancel")];
+    
+    NSInteger response = [alert runModal];
+    BOOL isAlertSuppressed = [[alert suppressionButton] state] == NSOnState;
+    
+    switch (response) {
+        case NSAlertFirstButtonReturn:
+            callback(YES, isAlertSuppressed);
+            
+            break;
+        case NSAlertSecondButtonReturn:
+            callback(NO, isAlertSuppressed);
+
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark -
 
 + (void)startSpectacle {
@@ -112,7 +166,7 @@
 #pragma mark -
 
 + (NSArray *)hotKeyNames {
-    NSBundle *bundle = [SpectacleUtilities helperApplicationBundle];
+    NSBundle *bundle = [SpectacleUtilities applicationBundle];
     NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: ZeroKitPropertyListFileExtension];
     NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
     
@@ -255,7 +309,7 @@
 #pragma mark -
 
 + (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
-    NSBundle *bundle = [SpectacleUtilities helperApplicationBundle];
+    NSBundle *bundle = [SpectacleUtilities applicationBundle];
     NSString *path = [bundle pathForResource: ZeroKitDefaultPreferencesFile ofType: ZeroKitPropertyListFileExtension];
     NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary dictionary];

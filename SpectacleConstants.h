@@ -9,6 +9,7 @@
 
 #define SpectacleNibName                              @"Spectacle"
 #define SpectaclePreferencePaneNibName                @"SpectaclePreferencePane"
+#define SpectaclePreferencesWindowNibName             @"SpectaclePreferencesWindow"
 
 #pragma mark -
 
@@ -19,6 +20,11 @@
 #define SpectacleHelperDidFinishLaunchingNotification @"SpectacleHelperDidFinishLaunchingNotification"
 #define SpectacleHelperDidTerminateNotification       @"SpectacleHelperDidTerminateNotification"
 #define SpectacleHelperShouldTerminateNotification    @"SpectacleHelperShouldTerminateNotification"
+
+#pragma mark -
+
+#define SpectacleStatusItemEnabledNotification        @"SpectacleStatusItemEnabledNotification"
+#define SpectacleStatusItemDisabledNotification       @"SpectacleStatusItemDisabledNotification"
 
 #pragma mark -
 
@@ -46,7 +52,15 @@
 
 #pragma mark -
 
-#define SpectacleSliderBackgroundImage                @"SliderBackground"
-#define SpectacleSliderMaskImage                      @"SliderMask"
-#define SpectacleSliderHandleImage                    @"SliderHandle"
-#define SpectacleSliderHandlePressedImage             @"SliderHandlePressed"
+#define SpectacleSliderBackgroundImage                @"Slider Background"
+#define SpectacleSliderMaskImage                      @"Slider Mask"
+#define SpectacleSliderHandleImage                    @"Slider Handle"
+#define SpectacleSliderPressedHandleImage             @"Slider Pressed Handle"
+
+#define SpectacleStatusItemIcon                       @"Spectacle Status Item"
+#define SpectacleAlternateStatusItemIcon              @"Spectacle Alternate Status Item"
+
+#pragma mark -
+
+#define SpectacleStatusItemEnabledPreference          @"StatusItemEnabled"
+#define SpectacleBackgroundAlertSuppressedPreference  @"BackgroundAlertSuppressed"
