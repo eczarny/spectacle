@@ -928,7 +928,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer: Eric Czarny (BZBL6437G2)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PROVISIONING_PROFILE = "3CC58A3D-6545-412D-9F0B-6A93B41FDC1E";
 				SDKROOT = macosx;
 			};
 			name = Development;
@@ -937,7 +940,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
