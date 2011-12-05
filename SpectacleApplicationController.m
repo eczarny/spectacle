@@ -119,11 +119,7 @@
 #pragma mark -
 
 - (void)menuDidSendAction: (NSNotification *)notification {
-    NSMenuItem *menuItem = [[notification userInfo] objectForKey: @"MenuItem"];
-    
-    if ([menuItem tag] > 0) {
-        [[NSApplication sharedApplication] activateIgnoringOtherApps: YES];
-    }
+    [[NSApplication sharedApplication] activateIgnoringOtherApps: YES];
 }
 
 @end
