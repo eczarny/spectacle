@@ -414,8 +414,7 @@
 											<object class="NSMenuItem" id="522935145">
 												<reference key="NSMenu" ref="1070663324"/>
 												<string key="NSTitle">Find and Replace…</string>
-												<string key="NSKeyEquiv">f</string>
-												<int key="NSKeyEquivModMask">1572864</int>
+												<string key="NSKeyEquiv"/>
 												<int key="NSMnemonicLoc">2147483647</int>
 												<reference key="NSOnImage" ref="229763992"/>
 												<reference key="NSMixedImage" ref="909111550"/>
@@ -950,8 +949,7 @@
 											<object class="NSMenuItem" id="54748189">
 												<reference key="NSMenu" ref="463947016"/>
 												<string key="NSTitle">Copy Style</string>
-												<string key="NSKeyEquiv">c</string>
-												<int key="NSKeyEquivModMask">1572864</int>
+												<string key="NSKeyEquiv"/>
 												<int key="NSMnemonicLoc">2147483647</int>
 												<reference key="NSOnImage" ref="229763992"/>
 												<reference key="NSMixedImage" ref="909111550"/>
