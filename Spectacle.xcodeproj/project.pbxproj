@@ -858,6 +858,7 @@
 			baseConfigurationReference = 0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SDKROOT = macosx;
 				VERSION_INFO_FILE = "";
 			};
 			name = Development;
@@ -867,6 +868,7 @@
 			baseConfigurationReference = 0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SDKROOT = macosx;
 				VERSION_INFO_FILE = "";
 			};
 			name = Release;
@@ -914,10 +916,12 @@
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer: Eric Czarny (BZBL6437G2)";
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PROVISIONING_PROFILE = "76BF6002-A2E3-4488-A89A-703C0E9BC39B";
 				SDKROOT = macosx;
+				VERSION_INFO_FILE = "";
 			};
 			name = Development;
 		};
@@ -926,10 +930,13 @@
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = YES;
+				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};
