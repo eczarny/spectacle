@@ -152,20 +152,20 @@
 /* Begin PBXFileReference section */
 		070031AF1217712E001D4C46 /* HotKeyNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = HotKeyNames.plist; path = "Resources/Property Lists/HotKeyNames.plist"; sourceTree = "<group>"; };
 		0706C0431191092B0068F04B /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
-		0708826F119A301800EC9426 /* SpectacleHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperController.h; sourceTree = "<group>"; };
-		07088270119A301800EC9426 /* SpectacleHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHelperController.m; sourceTree = "<group>"; };
-		0708828E119A34FE00EC9426 /* SpectacleHelperControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperControllerProtocol.h; sourceTree = "<group>"; };
-		070D2B0E128B43080022D02C /* SpectacleToggleSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleToggleSwitch.h; sourceTree = "<group>"; };
-		070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleToggleSwitch.m; sourceTree = "<group>"; };
-		070D2B11128B431C0022D02C /* SpectacleToggleSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleToggleSwitchCell.h; sourceTree = "<group>"; };
-		070D2B12128B431C0022D02C /* SpectacleToggleSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleToggleSwitchCell.m; sourceTree = "<group>"; };
+		0708826F119A301800EC9426 /* SpectacleHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHelperController.h; path = "Preference Pane/SpectacleHelperController.h"; sourceTree = "<group>"; };
+		07088270119A301800EC9426 /* SpectacleHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHelperController.m; path = "Preference Pane/SpectacleHelperController.m"; sourceTree = "<group>"; };
+		0708828E119A34FE00EC9426 /* SpectacleHelperControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHelperControllerProtocol.h; path = "Preference Pane/SpectacleHelperControllerProtocol.h"; sourceTree = "<group>"; };
+		070D2B0E128B43080022D02C /* SpectacleToggleSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleToggleSwitch.h; path = "Preference Pane/SpectacleToggleSwitch.h"; sourceTree = "<group>"; };
+		070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleToggleSwitch.m; path = "Preference Pane/SpectacleToggleSwitch.m"; sourceTree = "<group>"; };
+		070D2B11128B431C0022D02C /* SpectacleToggleSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleToggleSwitchCell.h; path = "Preference Pane/SpectacleToggleSwitchCell.h"; sourceTree = "<group>"; };
+		070D2B12128B431C0022D02C /* SpectacleToggleSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleToggleSwitchCell.m; path = "Preference Pane/SpectacleToggleSwitchCell.m"; sourceTree = "<group>"; };
 		070D2B24128B52A90022D02C /* Slider Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Handle.png"; path = "Resources/Images/Slider Handle.png"; sourceTree = "<group>"; };
 		070D2B25128B52A90022D02C /* Slider Pressed Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Pressed Handle.png"; path = "Resources/Images/Slider Pressed Handle.png"; sourceTree = "<group>"; };
 		070D2B26128B52A90022D02C /* Slider Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Mask.png"; path = "Resources/Images/Slider Mask.png"; sourceTree = "<group>"; };
 		070D2B27128B52A90022D02C /* Slider Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Background.png"; path = "Resources/Images/Slider Background.png"; sourceTree = "<group>"; };
 		072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionManager.h; sourceTree = "<group>"; };
 		072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionManager.m; sourceTree = "<group>"; };
-		07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleToggleSwitchDelegate.h; sourceTree = "<group>"; };
+		07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleToggleSwitchDelegate.h; path = "Preference Pane/SpectacleToggleSwitchDelegate.h"; sourceTree = "<group>"; };
 		0747DAF71183AC5100F75DD2 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
 		0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDevelopment.xcconfig; path = Configurations/CommonDevelopment.xcconfig; sourceTree = "<group>"; };
 		0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 		079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistoryItem.m; sourceTree = "<group>"; };
 		07B6B752148B12A0003F924A /* Spectacle Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item.png"; path = "Resources/Images/Spectacle Status Item.png"; sourceTree = "<group>"; };
 		07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Alternate Status Item.png"; path = "Resources/Images/Spectacle Alternate Status Item.png"; sourceTree = "<group>"; };
-		07BB5404118657190045663F /* SpectacleHelperApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHelperApplicationController.h; sourceTree = "<group>"; };
-		07BB5405118657190045663F /* SpectacleHelperApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHelperApplicationController.m; sourceTree = "<group>"; };
+		07BB5404118657190045663F /* SpectacleHelperApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHelperApplicationController.h; path = "Preference Pane/SpectacleHelperApplicationController.h"; sourceTree = "<group>"; };
+		07BB5405118657190045663F /* SpectacleHelperApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHelperApplicationController.m; path = "Preference Pane/SpectacleHelperApplicationController.m"; sourceTree = "<group>"; };
 		07BB542B1186662F0045663F /* SpectacleUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleUtilities.h; sourceTree = "<group>"; };
 		07BB542C1186662F0045663F /* SpectacleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleUtilities.m; sourceTree = "<group>"; };
 		07BB544B11866B090045663F /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Languages/English.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -224,8 +224,8 @@
 		8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SpectaclePreferencePane-Info.plist"; path = "Resources/Property Lists/SpectaclePreferencePane-Info.plist"; sourceTree = "<group>"; };
 		8D202CF80486D31800D8A456 /* Spectacle.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Spectacle.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
-		F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaclePreferencePane.h; sourceTree = "<group>"; };
-		F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectaclePreferencePane.m; sourceTree = "<group>"; };
+		F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectaclePreferencePane.h; path = "Preference Pane/SpectaclePreferencePane.h"; sourceTree = "<group>"; };
+		F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectaclePreferencePane.m; path = "Preference Pane/SpectaclePreferencePane.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,15 +302,8 @@
 		0747DAE81183AABB00F75DD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0708828F119A352700EC9426 /* Protocols */,
 				2D768E8B147ED51A00901E76 /* SpectacleApplicationController.h */,
 				2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */,
-				07BB5404118657190045663F /* SpectacleHelperApplicationController.h */,
-				07BB5405118657190045663F /* SpectacleHelperApplicationController.m */,
-				0708826F119A301800EC9426 /* SpectacleHelperController.h */,
-				07088270119A301800EC9426 /* SpectacleHelperController.m */,
-				F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */,
-				F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */,
 				07838601148BD517001E7BD7 /* SpectaclePreferencesController.h */,
 				07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */,
 				2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */,
@@ -454,7 +447,6 @@
 			children = (
 				0747DAE71183AAB600F75DD2 /* Common */,
 				0747DAE81183AABB00F75DD2 /* Controllers */,
-				070882A5119A387900EC9426 /* Controls */,
 				0747DAE91183AAC100F75DD2 /* Models */,
 			);
 			name = Classes;
@@ -531,9 +523,33 @@
 			name = "Spectacle Preference Pane";
 			sourceTree = "<group>";
 		};
+		2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */ = {
+			isa = PBXGroup;
+			children = (
+				2DB46B0F1491202C00FDF5A0 /* Controllers */,
+				070882A5119A387900EC9426 /* Controls */,
+			);
+			name = "Preference Pane [DEPRECATED]";
+			sourceTree = "<group>";
+		};
+		2DB46B0F1491202C00FDF5A0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0708828F119A352700EC9426 /* Protocols */,
+				07BB5404118657190045663F /* SpectacleHelperApplicationController.h */,
+				07BB5405118657190045663F /* SpectacleHelperApplicationController.m */,
+				0708826F119A301800EC9426 /* SpectacleHelperController.h */,
+				07088270119A301800EC9426 /* SpectacleHelperController.m */,
+				F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */,
+				F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		32DBCFA10370C40200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */,
 				077938E51184FADB0013BC14 /* main.m */,
 				32DBCFA20370C41700C91783 /* Spectacle.pch */,
 				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
