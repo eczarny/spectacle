@@ -332,8 +332,6 @@
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				070031AF1217712E001D4C46 /* HotKeyNames.plist */,
 				2D1E1AD2147E07E50021D73D /* Spectacle-Info.plist */,
-				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
-				8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */,
 			);
 			name = "Property Lists";
 			sourceTree = "<group>";
@@ -505,6 +503,7 @@
 				2D02F7A514926C910058D232 /* Configurations */,
 				2D02F7A314926C660058D232 /* Images */,
 				2D02F7A214926C510058D232 /* Interface Builder */,
+				2D02F7A614926F3B0058D232 /* Property Lists */,
 				07CCF9F811E41F0F0054483C /* Sparkle */,
 			);
 			name = Resources;
@@ -546,6 +545,15 @@
 				2D768EB2147F5A0E00901E76 /* Spectacle Preference Pane */,
 			);
 			name = Configurations;
+			sourceTree = "<group>";
+		};
+		2D02F7A614926F3B0058D232 /* Property Lists */ = {
+			isa = PBXGroup;
+			children = (
+				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
+				8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */,
+			);
+			name = "Property Lists";
 			sourceTree = "<group>";
 		};
 		2D0710181492605F002C1EE7 /* Common */ = {
