@@ -78,7 +78,7 @@
 								<int key="NSCellFlags2">33554432</int>
 								<object class="NSCustomResource" key="NSContents">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Preference Pane Background</string>
+									<string key="NSResourceName">Preferences Window Background</string>
 								</object>
 								<int key="NSAlign">0</int>
 								<int key="NSScale">3</int>
@@ -608,7 +608,6 @@
 											<string key="NSFrame">{{378, 10}, {227, 26}}</string>
 											<reference key="NSSuperview" ref="730268159"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<string key="NSReuseIdentifierKey">_NS:868</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="662458338">
@@ -1562,7 +1561,7 @@
 			<string key="NSMenuCheckmark">{9, 8}</string>
 			<string key="NSMenuMixedState">{7, 2}</string>
 			<string key="NSSwitch">{15, 15}</string>
-			<string key="Preference Pane Background">{1024, 1024}</string>
+			<string key="Preferences Window Background">{1024, 1024}</string>
 		</dictionary>
 	</data>
 </archive>
