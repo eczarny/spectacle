@@ -351,8 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				2DB7C8F9147E12E00072D576 /* Spectacle.xib */,
-				2D07101D1492610A002C1EE7 /* SpectacleHelper.xib */,
-				2D07102014926114002C1EE7 /* SpectaclePreferencePane.xib */,
 				07838609148C1CA1001E7BD7 /* SpectaclePreferencesWindow.xib */,
 			);
 			name = "Interface Builder";
@@ -363,10 +361,6 @@
 			children = (
 				0747DAF21183AB1B00F75DD2 /* Icons */,
 				2DD111AB1487301C00C552FA /* Preferences Window Background.png */,
-				070D2B27128B52A90022D02C /* Slider Background.png */,
-				070D2B24128B52A90022D02C /* Slider Handle.png */,
-				070D2B26128B52A90022D02C /* Slider Mask.png */,
-				070D2B25128B52A90022D02C /* Slider Pressed Handle.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -375,8 +369,6 @@
 			isa = PBXGroup;
 			children = (
 				2D768EB0147F59D000901E76 /* Spectacle */,
-				2D768EB1147F59EE00901E76 /* Spectacle Helper */,
-				2D768EB2147F5A0E00901E76 /* Spectacle Preference Pane */,
 				0747DAF71183AC5100F75DD2 /* Common.xcconfig */,
 				0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */,
 				0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */,
@@ -389,7 +381,6 @@
 			children = (
 				2DF03CED148684E000D09E90 /* Spectacle.icns */,
 				07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */,
-				2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */,
 				07B6B752148B12A0003F924A /* Spectacle Status Item.png */,
 			);
 			name = Icons;
@@ -418,6 +409,7 @@
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32DBCFA10370C40200C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
+				2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -441,7 +433,6 @@
 				0747DAED1183AAF600F75DD2 /* Interface Builder */,
 				0747DAEC1183AAEE00F75DD2 /* Localized Strings */,
 				0747DAEB1183AAE700F75DD2 /* Property Lists */,
-				07CCF9F811E41F0F0054483C /* Sparkle */,
 				078F2E9E148B2D1400AEBA3A /* Credits.rtf */,
 			);
 			name = Resources;
@@ -488,6 +479,73 @@
 				077938B61184F96A0013BC14 /* SpectacleHelper.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2D02F79E14926C050058D232 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2D0710181492605F002C1EE7 /* Common */,
+				2DB46B0F1491202C00FDF5A0 /* Controllers */,
+				070882A5119A387900EC9426 /* Controls */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2D02F79F14926C170058D232 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2D3C3C481492652E000FD140 /* SpectaclePreferencePane.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2D02F7A014926C310058D232 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2D02F7A514926C910058D232 /* Configurations */,
+				2D02F7A314926C660058D232 /* Images */,
+				2D02F7A214926C510058D232 /* Interface Builder */,
+				07CCF9F811E41F0F0054483C /* Sparkle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2D02F7A214926C510058D232 /* Interface Builder */ = {
+			isa = PBXGroup;
+			children = (
+				2D07101D1492610A002C1EE7 /* SpectacleHelper.xib */,
+				2D07102014926114002C1EE7 /* SpectaclePreferencePane.xib */,
+			);
+			name = "Interface Builder";
+			sourceTree = "<group>";
+		};
+		2D02F7A314926C660058D232 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2D02F7A414926C7B0058D232 /* Icons */,
+				070D2B27128B52A90022D02C /* Slider Background.png */,
+				070D2B24128B52A90022D02C /* Slider Handle.png */,
+				070D2B26128B52A90022D02C /* Slider Mask.png */,
+				070D2B25128B52A90022D02C /* Slider Pressed Handle.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		2D02F7A414926C7B0058D232 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		2D02F7A514926C910058D232 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				2D768EB1147F59EE00901E76 /* Spectacle Helper */,
+				2D768EB2147F5A0E00901E76 /* Spectacle Preference Pane */,
+			);
+			name = Configurations;
 			sourceTree = "<group>";
 		};
 		2D0710181492605F002C1EE7 /* Common */ = {
@@ -540,9 +598,9 @@
 		2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */ = {
 			isa = PBXGroup;
 			children = (
-				2D0710181492605F002C1EE7 /* Common */,
-				2DB46B0F1491202C00FDF5A0 /* Controllers */,
-				070882A5119A387900EC9426 /* Controls */,
+				2D02F79E14926C050058D232 /* Classes */,
+				2D02F79F14926C170058D232 /* Other Sources */,
+				2D02F7A014926C310058D232 /* Resources */,
 			);
 			name = "Preference Pane [DEPRECATED]";
 			sourceTree = "<group>";
@@ -564,11 +622,9 @@
 		32DBCFA10370C40200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */,
 				077938E51184FADB0013BC14 /* main.m */,
 				32DBCFA20370C41700C91783 /* Spectacle.pch */,
 				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
-				2D3C3C481492652E000FD140 /* SpectaclePreferencePane.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
