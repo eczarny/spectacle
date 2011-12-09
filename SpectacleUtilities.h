@@ -2,37 +2,11 @@
 
 @class ZeroKitHotKeyAction;
 
-@interface SpectacleUtilities : ZeroKitUtilities {
-    
-}
-
-+ (NSBundle *)preferencePaneBundle;
-
-+ (NSBundle *)helperApplicationBundle;
-
-#pragma mark -
-
-+ (NSString *)preferencePaneVersion;
-
-+ (NSString *)helperApplicationVersion;
-
-+ (NSString *)standaloneApplicationVersion;
-
-#pragma mark -
+@interface SpectacleUtilities : ZeroKitUtilities
 
 + (void)displayAccessibilityAPIAlert;
 
 + (void)displayRunningInBackgroundAlertWithCallback: (void ( ^ )(BOOL, BOOL))callback;
-
-#pragma mark -
-
-+ (void)startSpectacle;
-
-+ (void)stopSpectacle;
-
-#pragma mark -
-
-+ (BOOL)isSpectacleRunning;
 
 #pragma mark -
 
@@ -49,9 +23,5 @@
 #pragma mark -
 
 + (NSInteger)currentWorkspace;
-
-#pragma mark -
-
-+ (NSImage *)imageFromResource: (NSString *)resource;
 
 @end

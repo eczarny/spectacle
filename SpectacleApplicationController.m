@@ -83,7 +83,7 @@
 @implementation SpectacleApplicationController (SpectacleApplicationControllerPrivate)
 
 - (void)createStatusItem {
-    NSString *applicationVersion = [SpectacleUtilities standaloneApplicationVersion];
+    NSString *applicationVersion = [SpectacleUtilities applicationVersion];
     
     myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength] retain];
     

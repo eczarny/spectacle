@@ -1,4 +1,4 @@
 PRODUCT_NAME = SpectacleHelper
-INFOPLIST_FILE = Resources/Property Lists/SpectacleHelper-Info.plist
+INFOPLIST_FILE = Preference Pane/Resources/Property Lists/SpectacleHelper-Info.plist
 
-GCC_PREFIX_HEADER = Spectacle.pch
+GCC_PREFIX_HEADER = Preference Pane/SpectaclePreferencePane.pch

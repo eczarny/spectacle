@@ -3,10 +3,6 @@
 
 @interface SpectacleUtilities (SpectacleUtilitiesPrivate)
 
-+ (NSString *)versionOfBundle: (NSBundle *)bundle;
-
-#pragma mark -
-
 + (void)updateHotKey: (ZeroKitHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZeroKitHotKey *)defaultHotKey;
 
 #pragma mark -
@@ -18,52 +14,6 @@
 #pragma mark -
 
 @implementation SpectacleUtilities
-
-+ (NSBundle *)preferencePaneBundle {
-    NSString *preferencePanePath = [SpectacleUtilities pathForPreferencePaneNamed: SpectaclePreferencePaneName];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSBundle *preferencePaneBundle = nil;
-    
-    if (preferencePanePath && [fileManager fileExistsAtPath: preferencePanePath isDirectory: nil]) {
-        preferencePaneBundle = [NSBundle bundleWithPath: preferencePanePath];
-    }
-    
-    if (!preferencePaneBundle) {
-        NSLog(@"The preference pane does not exist at path: %@", preferencePanePath);
-    }
-    
-    return preferencePaneBundle;
-}
-
-+ (NSBundle *)helperApplicationBundle {
-    NSBundle *preferencePaneBundle = [SpectacleUtilities preferencePaneBundle];
-    NSURL *bundleURL = [preferencePaneBundle URLForResource: SpectacleHelperApplicationName withExtension: SpectacleApplicationBundleExtension];
-    NSBundle *helperApplicationBundle = nil;
-    
-    if (preferencePaneBundle && bundleURL) {
-        helperApplicationBundle = [NSBundle bundleWithURL: bundleURL];
-    } else {
-        helperApplicationBundle = [NSBundle mainBundle];
-    }
-    
-    return helperApplicationBundle;
-}
-
-#pragma mark -
-
-+ (NSString *)preferencePaneVersion {
-    return [SpectacleUtilities versionOfBundle: [SpectacleUtilities preferencePaneBundle]];
-}
-
-+ (NSString *)helperApplicationVersion {
-    return [SpectacleUtilities versionOfBundle: [SpectacleUtilities helperApplicationBundle]];
-}
-
-+ (NSString *)standaloneApplicationVersion {
-    return [SpectacleUtilities versionOfBundle: [SpectacleUtilities applicationBundle]];
-}
-
-#pragma mark -
 
 + (void)displayAccessibilityAPIAlert {
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
@@ -106,64 +56,12 @@
             break;
         case NSAlertSecondButtonReturn:
             callback(NO, isAlertSuppressed);
-
+            
             break;
         default:
             break;
     }
 }
-
-#pragma mark -
-
-+ (void)startSpectacle {
-    NSWorkspace *sharedWorkspace = [NSWorkspace sharedWorkspace];
-    NSBundle *helperApplicationBundle = [SpectacleUtilities helperApplicationBundle];
-    NSURL *helperApplicationURL = nil;
-    
-    if ([SpectacleUtilities isSpectacleRunning]) {
-        NSLog(@"Unable to start the Spectacle helper application as it is already running.");
-        
-        return;
-    }
-    
-    if (!helperApplicationBundle) {
-        NSLog(@"Unable to locate the Spectacle helper application bundle.");
-    } else {
-        helperApplicationURL = [helperApplicationBundle bundleURL];
-        
-        [sharedWorkspace launchApplicationAtURL: helperApplicationURL
-                                        options: NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchAsync
-                                  configuration: nil
-                                          error: nil];
-    }
-}
-
-+ (void)stopSpectacle {
-    if (![SpectacleUtilities isSpectacleRunning]) {
-        NSLog(@"Unable to stop the Spectacle helper application as it is not running.");
-        
-        return;
-    }
-    
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName: SpectacleHelperShouldTerminateNotification
-                                                                   object: nil
-                                                                 userInfo: nil
-                                                       deliverImmediately: YES];
-}
-
-#pragma mark -
-
-+ (BOOL)isSpectacleRunning {
-    NSArray *runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier: SpectacleHelperBundleIdentifier];
-    
-    if (runningApplications && ([runningApplications count] > 0)) {
-        return YES;
-    }
-    
-    return NO;
-}
-
-#pragma mark -
 
 + (NSArray *)hotKeyNames {
     NSBundle *bundle = [SpectacleUtilities applicationBundle];
@@ -265,29 +163,11 @@
     return currentWorkspace;
 }
 
-#pragma mark -
-
-+ (NSImage *)imageFromResource: (NSString *)resource {
-    return [SpectacleUtilities imageFromResource: resource inBundle: [SpectacleUtilities preferencePaneBundle]];
-}
-
 @end
 
 #pragma mark -
 
 @implementation SpectacleUtilities (SpectacleUtilitiesPrivate)
-
-+ (NSString *)versionOfBundle: (NSBundle *)bundle {
-    NSString *bundleVersion = [bundle objectForInfoDictionaryKey: ZeroKitApplicationBundleShortVersionString];
-    
-    if (!bundleVersion) {
-        bundleVersion = [bundle objectForInfoDictionaryKey: ZeroKitApplicationBundleVersion];
-    }
-    
-    return bundleVersion;
-}
-
-#pragma mark -
 
 + (void)updateHotKey: (ZeroKitHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZeroKitHotKey *)defaultHotKey {
     NSString *hotKeyName = [hotKey hotKeyName];

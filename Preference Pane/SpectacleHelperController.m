@@ -1,7 +1,7 @@
 #import "SpectacleHelperController.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectacleHelperApplicationController.h"
-#import "SpectacleUtilities.h"
+#import "SpectaclePreferencePaneUtilities.h"
 
 @implementation SpectacleHelperController
 
@@ -26,7 +26,7 @@
     
     [hotKey setHotKeyName: name];
     
-    [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: name target: myHelperApplicationController]];
+    [hotKey setHotKeyAction: [SpectaclePreferencePaneUtilities actionForHotKeyWithName: name target: myHelperApplicationController]];
     
     [myHotKeyManager registerHotKey: hotKey];
 }
@@ -40,11 +40,11 @@
 #pragma mark -
 
 - (BOOL)automaticallyChecksForUpdates {
-    return [[SUUpdater updaterForBundle: [SpectacleUtilities preferencePaneBundle]] automaticallyChecksForUpdates];
+    return [[SUUpdater updaterForBundle: [SpectaclePreferencePaneUtilities preferencePaneBundle]] automaticallyChecksForUpdates];
 }
 
 - (void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates {
-    [[SUUpdater updaterForBundle: [SpectacleUtilities preferencePaneBundle]] setAutomaticallyChecksForUpdates: automaticallyChecksForUpdates];
+    [[SUUpdater updaterForBundle: [SpectaclePreferencePaneUtilities preferencePaneBundle]] setAutomaticallyChecksForUpdates: automaticallyChecksForUpdates];
 }
 
 @end

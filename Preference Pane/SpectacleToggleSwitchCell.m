@@ -1,5 +1,5 @@
 #import "SpectacleToggleSwitchCell.h"
-#import "SpectacleUtilities.h"
+#import "SpectaclePreferencePaneUtilities.h"
 #import "SpectacleConstants.h"
 
 #define BoundsOfHandle NSMakeRect(myHandlePosition.x, myHandlePosition.y, [myHandle size].width, [myHandle size].height)
@@ -24,10 +24,10 @@
     if (self = [super init]) {
         myToggleSwitch = nil;
         myDelegate = nil;
-        mySliderBackground = [[SpectacleUtilities imageFromResource: SpectacleSliderBackgroundImage] retain];
-        mySliderMask = [[SpectacleUtilities imageFromResource: SpectacleSliderMaskImage] retain];
-        myHandle = [[SpectacleUtilities imageFromResource: SpectacleSliderHandleImage] retain];
-        myHandlePressed = [[SpectacleUtilities imageFromResource: SpectacleSliderPressedHandleImage] retain];
+        mySliderBackground = [[SpectaclePreferencePaneUtilities imageFromResource: SpectacleSliderBackgroundImage] retain];
+        mySliderMask = [[SpectaclePreferencePaneUtilities imageFromResource: SpectacleSliderMaskImage] retain];
+        myHandle = [[SpectaclePreferencePaneUtilities imageFromResource: SpectacleSliderHandleImage] retain];
+        myHandlePressed = [[SpectaclePreferencePaneUtilities imageFromResource: SpectacleSliderPressedHandleImage] retain];
         myHandlePosition = NSZeroPoint;
         isMouseDown = NO;
         isMouseDragging = NO;
@@ -216,7 +216,7 @@
 }
 
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundColor inRect: (NSRect)rect {
-    NSMutableDictionary *attributes = [SpectacleUtilities createStringAttributesWithShadow];
+    NSMutableDictionary *attributes = [SpectaclePreferencePaneUtilities createStringAttributesWithShadow];
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     NSFont *arial = [NSFont fontWithName: @"Arial" size: 18.0f];
     NSFont *boldArial = [fontManager convertFont: arial toHaveTrait: NSBoldFontMask];

@@ -1,7 +1,7 @@
 #import "SpectaclePreferencePane.h"
 #import "SpectacleHelperControllerProtocol.h"
 #import "SpectacleToggleSwitch.h"
-#import "SpectacleUtilities.h"
+#import "SpectaclePreferencePaneUtilities.h"
 #import "SpectacleConstants.h"
 
 @interface SpectaclePreferencePane (SpectaclePreferencePanePrivate)
@@ -74,7 +74,7 @@
     
     [self toggleControlsBasedOnSpectacleRunningState];
     
-    [mySpectacleVersionTextField setStringValue: [SpectacleUtilities preferencePaneVersion]];
+    [mySpectacleVersionTextField setStringValue: [SpectaclePreferencePaneUtilities preferencePaneVersion]];
     
     NSMutableAttributedString *link = [[[NSMutableAttributedString alloc] init] autorelease];
     
@@ -97,12 +97,12 @@
 #pragma mark -
 
 - (void)toggleLoginItem: (id)sender {
-    NSBundle *helperApplicationBundle = [SpectacleUtilities helperApplicationBundle];
+    NSBundle *helperApplicationBundle = [SpectaclePreferencePaneUtilities helperApplicationBundle];
     
     if ([myLoginItemEnabledButton state] == NSOnState) {
-        [SpectacleUtilities enableLoginItemForBundle: helperApplicationBundle];
+        [SpectaclePreferencePaneUtilities enableLoginItemForBundle: helperApplicationBundle];
     } else{
-        [SpectacleUtilities disableLoginItemForBundle: helperApplicationBundle];
+        [SpectaclePreferencePaneUtilities disableLoginItemForBundle: helperApplicationBundle];
     }
 }
 
@@ -141,9 +141,9 @@
 
 - (void)toggleSwitchDidChangeState: (SpectacleToggleSwitch *)toggleSwitch {
     if ([toggleSwitch state] == NSOnState) {
-        [SpectacleUtilities startSpectacle];
+        [SpectaclePreferencePaneUtilities startSpectacle];
     } else {
-        [SpectacleUtilities stopSpectacle];
+        [SpectaclePreferencePaneUtilities stopSpectacle];
     }
     
     [myToggleRunningStateSwitch setEnabled: NO];
@@ -167,11 +167,11 @@
 @implementation SpectaclePreferencePane (SpectaclePreferencePanePrivate)
 
 - (void)toggleControlsBasedOnSpectacleRunningState {
-    NSInteger loginItemEnabledState = [SpectacleUtilities isLoginItemEnabledForBundle: [SpectacleUtilities helperApplicationBundle]] ? NSOnState : NSOffState;
+    NSInteger loginItemEnabledState = [SpectaclePreferencePaneUtilities isLoginItemEnabledForBundle: [SpectaclePreferencePaneUtilities helperApplicationBundle]] ? NSOnState : NSOffState;
     
     [myLoginItemEnabledButton setState: loginItemEnabledState];
     
-    if ([SpectacleUtilities isSpectacleRunning]) {
+    if ([SpectaclePreferencePaneUtilities isSpectacleRunning]) {
         [myToggleRunningStateSwitch setState: NSOnState];
         
         [self connectToVendedHelperController];
@@ -223,7 +223,7 @@
 - (void)handleConnectionException: (NSException *)exception withMessage: (NSString *)message {
     NSLog(@"%@ (%@)", message, [exception name]);
     
-    if (![SpectacleUtilities isSpectacleRunning]) {
+    if (![SpectaclePreferencePaneUtilities isSpectacleRunning]) {
         [self helperApplicationDidTerminate];
     }
 }

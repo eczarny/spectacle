@@ -1,6 +1,6 @@
 #import "SpectacleHelperApplicationController.h"
 #import "SpectacleHelperController.h"
-#import "SpectacleUtilities.h"
+#import "SpectaclePreferencePaneUtilities.h"
 #import "SpectacleConstants.h"
 
 @interface SpectacleHelperApplicationController (SpectacleHelperApplicationControllerPrivate)
@@ -44,12 +44,12 @@
                                         object: nil
                             suspensionBehavior: NSNotificationSuspensionBehaviorDeliverImmediately];
     
-    [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities helperApplicationBundle]];
+    [SpectaclePreferencePaneUtilities registerDefaultsForBundle: [SpectaclePreferencePaneUtilities helperApplicationBundle]];
     
     [self vendHelperController];
     
     if (!AXAPIEnabled()) {
-        [SpectacleUtilities displayAccessibilityAPIAlert];
+        [SpectaclePreferencePaneUtilities displayAccessibilityAPIAlert];
         
         [[NSApplication sharedApplication] terminate: self];
         
@@ -114,7 +114,7 @@
 #pragma mark -
 
 - (void)setUpSparkle {
-    SUUpdater *sparkleUpdater = [SUUpdater updaterForBundle: [SpectacleUtilities preferencePaneBundle]];
+    SUUpdater *sparkleUpdater = [SUUpdater updaterForBundle: [SpectaclePreferencePaneUtilities preferencePaneBundle]];
     
     if (sparkleUpdater) {
         [sparkleUpdater setDelegate: self];
@@ -132,7 +132,7 @@
 #pragma mark -
 
 - (NSString *)pathToRelaunchForUpdater: (SUUpdater *)updater {
-    return [[SpectacleUtilities helperApplicationBundle] bundlePath];
+    return [[SpectaclePreferencePaneUtilities helperApplicationBundle] bundlePath];
 }
 
 @end
