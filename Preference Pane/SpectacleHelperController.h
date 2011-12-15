@@ -18,10 +18,4 @@
 
 - (void)unregisterHotKeyWithName: (NSString *)name;
 
-#pragma mark -
-
-- (BOOL)automaticallyChecksForUpdates;
-
-- (void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates;
-
 @end

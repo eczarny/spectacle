@@ -11,14 +11,6 @@
 
 - (void)vendHelperController;
 
-#pragma mark -
-
-- (void)setUpSparkle;
-
-#pragma mark -
-
-- (NSString *)pathToRelaunchForUpdater: (SUUpdater *)updater;
-
 @end
 
 #pragma mark -
@@ -57,8 +49,6 @@
     }
     
     [self registerHotKeys];
-    
-    [self setUpSparkle];
     
     [distributedNotificationCenter postNotificationName: SpectacleHelperDidFinishLaunchingNotification
                                                  object: nil
@@ -109,30 +99,6 @@
     } else {
         [myVendedHelperControllerConnection retain];
     }
-}
-
-#pragma mark -
-
-- (void)setUpSparkle {
-    SUUpdater *sparkleUpdater = [SUUpdater updaterForBundle: [SpectaclePreferencePaneUtilities preferencePaneBundle]];
-    
-    if (sparkleUpdater) {
-        [sparkleUpdater setDelegate: self];
-        
-        if ([sparkleUpdater automaticallyChecksForUpdates]) {
-            [sparkleUpdater checkForUpdatesInBackground];
-            
-            [sparkleUpdater resetUpdateCycle];
-        }
-    } else {
-        NSLog(@"Spectacle could not set up Sparkle.");
-    }
-}
-
-#pragma mark -
-
-- (NSString *)pathToRelaunchForUpdater: (SUUpdater *)updater {
-    return [[SpectaclePreferencePaneUtilities helperApplicationBundle] bundlePath];
 }
 
 @end

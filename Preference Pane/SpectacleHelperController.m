@@ -37,14 +37,4 @@
     [myHotKeyManager unregisterHotKeyForName: name];
 }
 
-#pragma mark -
-
-- (BOOL)automaticallyChecksForUpdates {
-    return [[SUUpdater updaterForBundle: [SpectaclePreferencePaneUtilities preferencePaneBundle]] automaticallyChecksForUpdates];
-}
-
-- (void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates {
-    [[SUUpdater updaterForBundle: [SpectaclePreferencePaneUtilities preferencePaneBundle]] setAutomaticallyChecksForUpdates: automaticallyChecksForUpdates];
-}
-
 @end

@@ -30,8 +30,4 @@
 
 - (void)toggleLoginItem: (id)sender;
 
-#pragma mark -
-
-- (void)toggleCheckForUpdates: (id)sender;
-
 @end

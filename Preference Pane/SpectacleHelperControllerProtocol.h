@@ -14,10 +14,4 @@
 
 - (oneway void)unregisterHotKeyWithName: (NSString *)name;
 
-#pragma mark -
-
-- (BOOL)automaticallyChecksForUpdates;
-
-- (oneway void)setAutomaticallyChecksForUpdates: (BOOL)automaticallyChecksForUpdates;
-
 @end

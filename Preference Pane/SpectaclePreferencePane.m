@@ -108,17 +108,6 @@
 
 #pragma mark -
 
-- (void)toggleCheckForUpdates: (id)sender {
-    @try {
-        [myVendedHelperController setAutomaticallyChecksForUpdates: ![myVendedHelperController automaticallyChecksForUpdates]];
-    } @catch (NSException *e) {
-        [self handleConnectionException: e
-                            withMessage: @"There was a problem while changing the automatically checks for updates flag."];
-    }
-}
-
-#pragma mark -
-
 - (void)hotKeyRecorder: (ZeroKitHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (ZeroKitHotKey *)hotKey {
     @try {
         [myVendedHelperController updateHotKeyWithKeyCode: [hotKey hotKeyCode] modifiers: [hotKey hotKeyModifiers] name: [hotKey hotKeyName]];
