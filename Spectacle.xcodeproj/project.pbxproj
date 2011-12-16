@@ -356,10 +356,12 @@
 		0747DAEF1183AB0400F75DD2 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				2D768EB0147F59D000901E76 /* Spectacle */,
 				0747DAF71183AC5100F75DD2 /* Common.xcconfig */,
 				0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */,
 				0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */,
+				2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */,
+				2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */,
+				2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -542,16 +544,6 @@
 				2D6540721475EAE1000133CA /* ZeroKit.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2D768EB0147F59D000901E76 /* Spectacle */ = {
-			isa = PBXGroup;
-			children = (
-				2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */,
-				2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */,
-				2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */,
-			);
-			name = Spectacle;
 			sourceTree = "<group>";
 		};
 		2D768EB1147F59EE00901E76 /* Spectacle Helper */ = {
