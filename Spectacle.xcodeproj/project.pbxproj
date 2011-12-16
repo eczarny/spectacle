@@ -17,7 +17,6 @@
 		070D2B2B128B52A90022D02C /* Slider Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B27128B52A90022D02C /* Slider Background.png */; };
 		072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
 		074A8F72119FAF9300940841 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
-		074F0B8112BD5E3100A8CF3F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */; };
 		0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766438911A212A800B7BFA3 /* CoreServices.framework */; };
 		076644FB11A212D700B7BFA3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07678096118679C600614FB5 /* SpectacleHotKeyManager.m */; };
@@ -170,7 +169,6 @@
 		0747DAFA1183AC5100F75DD2 /* SpectaclePreferencePane.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePane.xcconfig; path = Configurations/SpectaclePreferencePane.xcconfig; sourceTree = "<group>"; };
 		0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePaneDevelopment.xcconfig; path = Configurations/SpectaclePreferencePaneDevelopment.xcconfig; sourceTree = "<group>"; };
 		0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePaneRelease.xcconfig; path = Configurations/SpectaclePreferencePaneRelease.xcconfig; sourceTree = "<group>"; };
-		074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0766438911A212A800B7BFA3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		07678095118679C600614FB5 /* SpectacleHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyManager.h; sourceTree = "<group>"; };
 		07678096118679C600614FB5 /* SpectacleHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyManager.m; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
 				0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */,
 				8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */,
-				074F0B8112BD5E3100A8CF3F /* QuartzCore.framework in Frameworks */,
 				2D65407F1475ECF1000133CA /* ZeroKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,19 +390,19 @@
 				32DBCFA10370C40200C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */,
-				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				089C1671FE841209C02AAC07 /* Frameworks */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
 			name = Spectacle;
 			sourceTree = "<group>";
 		};
-		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */,
+				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
 				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
 			);
-			name = "Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		089C167CFE841241C02AAC07 /* Resources */ = {
@@ -431,24 +428,15 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		1058C7ACFEA557BF11CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				07E632151187AAD800451374 /* Carbon.framework */,
-				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
-				0766438911A212A800B7BFA3 /* CoreServices.framework */,
-				F506C035013D953901CA16C8 /* PreferencePanes.framework */,
-				074F0B8012BD5E3100A8CF3F /* QuartzCore.framework */,
-				2D65407E1475ECF1000133CA /* ZeroKit.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
 		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				089C167FFE841241C02AAC07 /* AppKit.framework */,
+				07E632151187AAD800451374 /* Carbon.framework */,
+				0766438911A212A800B7BFA3 /* CoreServices.framework */,
 				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				F506C035013D953901CA16C8 /* PreferencePanes.framework */,
+				2D65407E1475ECF1000133CA /* ZeroKit.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
