@@ -30,15 +30,5 @@
 	<string>Spectacle</string>
 	<key>NSPrincipalClass</key>
 	<string>SpectaclePreferencePane</string>
-	<key>SUAllowsAutomaticUpdates</key>
-	<false/>
-	<key>SUEnableAutomaticChecks</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>http://appcasts.divisiblebyzero.com/spectacle/appcast.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_public.pem</string>
-	<key>SUScheduledCheckInterval</key>
-	<integer>86400</integer>
 </dict>
 </plist>
