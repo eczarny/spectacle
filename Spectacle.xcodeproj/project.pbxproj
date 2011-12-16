@@ -988,9 +988,7 @@
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer: Eric Czarny (BZBL6437G2)";
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PROVISIONING_PROFILE = "76BF6002-A2E3-4488-A89A-703C0E9BC39B";
 				VERSION_INFO_FILE = "";
 			};
@@ -1001,11 +999,8 @@
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
-				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PROVISIONING_PROFILE = "";
-				STRIP_INSTALLED_PRODUCT = YES;
 				VERSION_INFO_FILE = "";
 			};
 			name = Release;
