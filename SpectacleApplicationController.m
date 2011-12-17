@@ -26,6 +26,8 @@
 @implementation SpectacleApplicationController
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    
     [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
     
     myPreferencesController = [[SpectaclePreferencesController alloc] initWithApplicationController: self];
@@ -40,24 +42,23 @@
     
     [self registerHotKeys];
     
+    
+    [notificationCenter addObserver: self
+                           selector: @selector(enableStatusItem:)
+                               name: SpectacleStatusItemEnabledNotification
+                             object: nil];
+    
+    [notificationCenter addObserver: self
+                           selector: @selector(disableStatusItem:)
+                               name: SpectacleStatusItemDisabledNotification
+                             object: nil];
+    
+    [notificationCenter addObserver: self
+                           selector: @selector(menuDidSendAction:)
+                               name: NSMenuDidSendActionNotification
+                             object: nil];
+    
     if ([[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference]) {
-        NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-        
-        [notificationCenter addObserver: self
-                               selector: @selector(enableStatusItem:)
-                                   name: SpectacleStatusItemEnabledNotification
-                                 object: nil];
-        
-        [notificationCenter addObserver: self
-                               selector: @selector(disableStatusItem:)
-                                   name: SpectacleStatusItemDisabledNotification
-                                 object: nil];
-        
-        [notificationCenter addObserver: self
-                               selector: @selector(menuDidSendAction:)
-                                   name: NSMenuDidSendActionNotification
-                                 object: nil];
-        
         [self createStatusItem];
     }
 }
