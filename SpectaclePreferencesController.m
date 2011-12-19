@@ -48,6 +48,8 @@
         myMoveToRightDisplayHotKeyRecorder,  SpectacleWindowActionMoveToRightDisplay,
         myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
         myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
+        myMoveToNextThirdHotKeyRecorder,     SpectacleWindowActionMoveToNextThird,
+        myMoveToPreviousThirdHotKeyRecorder, SpectacleWindowActionMoveToPreviousThird,
         myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
         myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove, nil];
     

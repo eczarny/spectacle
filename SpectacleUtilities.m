@@ -131,6 +131,10 @@
         selector = @selector(moveFrontMostWindowToTopDisplay:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomDisplay]) {
         selector = @selector(moveFrontMostWindowToBottomDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextThird]) {
+        selector = @selector(moveFrontMostWindowToNextThird:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {
+        selector = @selector(moveFrontMostWindowToPreviousThird:);
     } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
         selector = @selector(undoLastWindowAction:);
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {

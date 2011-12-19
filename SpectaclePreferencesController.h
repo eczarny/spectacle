@@ -20,6 +20,8 @@
     IBOutlet ZeroKitHotKeyRecorder *myMoveToRightDisplayHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToTopDisplayHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToNextThirdHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToPreviousThirdHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
     IBOutlet NSButton *myLoginItemEnabled;

@@ -34,18 +34,24 @@
 
 #define SpectacleWindowActionMoveToCenter             @"MoveToCenter"
 #define SpectacleWindowActionMoveToFullscreen         @"MoveToFullscreen"
+
 #define SpectacleWindowActionMoveToLeftHalf           @"MoveToLeftHalf"
 #define SpectacleWindowActionMoveToRightHalf          @"MoveToRightHalf"
 #define SpectacleWindowActionMoveToTopHalf            @"MoveToTopHalf"
 #define SpectacleWindowActionMoveToBottomHalf         @"MoveToBottomHalf"
+
 #define SpectacleWindowActionMoveToUpperLeft          @"MoveToUpperLeft"
 #define SpectacleWindowActionMoveToLowerLeft          @"MoveToLowerLeft"
 #define SpectacleWindowActionMoveToUpperRight         @"MoveToUpperRight"
 #define SpectacleWindowActionMoveToLowerRight         @"MoveToLowerRight"
+
 #define SpectacleWindowActionMoveToLeftDisplay        @"MoveToLeftDisplay"
 #define SpectacleWindowActionMoveToRightDisplay       @"MoveToRightDisplay"
 #define SpectacleWindowActionMoveToTopDisplay         @"MoveToTopDisplay"
 #define SpectacleWindowActionMoveToBottomDisplay      @"MoveToBottomDisplay"
+
+#define SpectacleWindowActionMoveToNextThird          @"MoveToNextThird"
+#define SpectacleWindowActionMoveToPreviousThird      @"MoveToPreviousThird"
 
 #define SpectacleWindowActionUndoLastMove             @"UndoLastMove"
 #define SpectacleWindowActionRedoLastMove             @"RedoLastMove"
