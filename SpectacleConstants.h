@@ -52,6 +52,10 @@
 
 #pragma mark -
 
+#define SpectacleWindowActionHistorySize              10
+
+#pragma mark -
+
 #define SpectacleSliderBackgroundImage                @"Slider Background"
 #define SpectacleSliderMaskImage                      @"Slider Mask"
 #define SpectacleSliderHandleImage                    @"Slider Handle"
