@@ -37,6 +37,8 @@
 		2D2412271475FA830063085D /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
 		2D3C3C4A14926849000FD140 /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
 		2D3C3C4B1492685E000FD140 /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
+		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
+		2D4F3ED114A27EC300C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
 		2D6540741475EB90000133CA /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
 		2D6540751475EBF4000133CA /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
 		2D65407F1475ECF1000133CA /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407E1475ECF1000133CA /* ZeroKit.framework */; };
@@ -201,6 +203,8 @@
 		2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleDevelopment.xcconfig; path = Configurations/SpectacleDevelopment.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
 		2D3C3C481492652E000FD140 /* SpectaclePreferencePane.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectaclePreferencePane.pch; path = "Preference Pane/SpectaclePreferencePane.pch"; sourceTree = "<group>"; };
+		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleScreenDetection.h; sourceTree = "<group>"; };
+		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleScreenDetection.m; sourceTree = "<group>"; };
 		2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZeroKit.xcodeproj; path = Frameworks/ZeroKit/ZeroKit.xcodeproj; sourceTree = "<group>"; };
 		2D65407E1475ECF1000133CA /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development/ZeroKit.framework"; sourceTree = "<group>"; };
 		2D736755149ADB2C00837D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Languages/en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -286,6 +290,8 @@
 			children = (
 				07678095118679C600614FB5 /* SpectacleHotKeyManager.h */,
 				07678096118679C600614FB5 /* SpectacleHotKeyManager.m */,
+				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */,
+				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */,
 				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
 				07BB542C1186662F0045663F /* SpectacleUtilities.m */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
@@ -803,6 +809,7 @@
 				079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */,
 				07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */,
 				2D07101B14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m in Sources */,
+				2D4F3ED114A27EC300C29D11 /* SpectacleScreenDetection.m in Sources */,
 				2D3C3C4A14926849000FD140 /* SpectacleUtilities.m in Sources */,
 				2D768E91147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
 				072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */,
@@ -817,10 +824,11 @@
 				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,
+				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
+				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
 				2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
-				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

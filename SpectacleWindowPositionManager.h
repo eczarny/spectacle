@@ -1,5 +1,4 @@
 #import <Cocoa/Cocoa.h>
-#import <Carbon/Carbon.h>
 
 typedef enum {
     SpectacleWindowActionUndo = -3,
@@ -20,8 +19,6 @@ typedef enum {
     SpectacleWindowActionTopDisplay,
     SpectacleWindowActionBottomDisplay
 } SpectacleWindowAction;
-
-#pragma mark -
 
 @interface SpectacleWindowPositionManager : NSObject {
     ZeroKitAccessibilityElement *myFrontMostWindowElement;

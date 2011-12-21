@@ -1,34 +1,12 @@
 #import "SpectacleWindowPositionManager.h"
+#import "SpectacleScreenDetection.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 
-#define FlipVerticalOriginOfRectInRect(a, b) b.size.height - (a.origin.y + a.size.height) + ([[NSScreen mainScreen] frame].size.height - b.size.height)
-
-#pragma mark -
-
-#define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
-
-#pragma mark -
-
-#define RectFitsInRect(a, b) (a.size.width < b.size.width) && (a.size.height < b.size.height)
-
-#pragma mark -
-
-#define MovingToCenterRegionOfDisplay(action) action == SpectacleWindowActionCenter
-#define MovingToTopRegionOfDisplay(action) (action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight)
-#define MovingToUpperOrLowerLeftOfDisplay(action) (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft)
-#define MovingToUpperOrLowerRightDisplay(action) (action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight)
-
-#pragma mark -
-
-#define MovingToDisplay(action) (action >= SpectacleWindowActionLeftDisplay) && (action <= SpectacleWindowActionBottomDisplay)
-
-#pragma mark -
-
-#define RectIsLeftOfRect(a, b) (b.origin.x - a.size.width) == a.origin.x
-#define RectIsRightOfRect(a, b) (b.origin.x + b.size.width) == a.origin.x
-#define RectIsAboveRect(a, b) (b.origin.y + b.size.height) == a.origin.y
-#define RectIsBelowRect(a, b) (b.origin.y - a.size.height) == a.origin.y
+#define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
+#define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
+#define MovingToUpperOrLowerLeftOfDisplay(action) ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft))
+#define MovingToUpperOrLowerRightDisplay(action) ((action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight))
 
 #pragma mark -
 
@@ -44,18 +22,6 @@
 
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
-- (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect;
-
-- (NSScreen *)screenAdjacentToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action;
-
-- (NSScreen *)screenContainingRect: (CGRect)rect;
-
-#pragma mark -
-
-- (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
-
-#pragma mark -
-
 - (CGRect)rectOfFrontMostWindow;
 
 - (CGRect)rectOfWindowWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement;
@@ -68,6 +34,14 @@
 
 #pragma mark -
 
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage;
+
+@end
+
+#pragma mark -
+
+@interface SpectacleWindowPositionManager (WindowHistory)
+
 - (void)moveWithHistory: (NSMutableArray *)history withAction: (SpectacleWindowAction)action;
 
 - (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
@@ -77,10 +51,6 @@
 - (void)addHistoryItemToUndoHistory: (SpectacleHistoryItem *)historyItem;
 
 - (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem;
-
-#pragma mark -
-
-- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage;
 
 @end
 
@@ -131,7 +101,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
     CGRect frontMostWindowRect = [self rectOfFrontMostWindow];
     CGRect previousFrontMostWindowRect = CGRectNull;
-    NSScreen *screenOfDisplay = [self screenWithAction: action andRect: frontMostWindowRect];
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
     CGRect frameOfScreen = CGRectNull;
     CGRect visibleFrameOfScreen = CGRectNull;
     SpectacleHistoryItem *historyItem = nil;
@@ -202,84 +172,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
-
-- (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
-    NSScreen *result = [self screenContainingRect: rect];
-    
-    if (MovingToDisplay(action)) {
-        result = [self screenAdjacentToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action];
-    }
-    
-    return result;
-}
-
-- (NSScreen *)screenAdjacentToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
-    NSScreen *result = nil;
-    
-    for (NSScreen *currentScreen in [NSScreen screens]) {
-        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
-        
-        if (CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
-            continue;
-        }
-        
-        if ((action == SpectacleWindowActionLeftDisplay) && RectIsLeftOfRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        } else if ((action == SpectacleWindowActionRightDisplay) && RectIsRightOfRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        } else if ((action == SpectacleWindowActionTopDisplay) && RectIsAboveRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        } else if ((action == SpectacleWindowActionBottomDisplay) && RectIsBelowRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        }
-    }
-    
-    return result;
-}
-
-- (NSScreen *)screenContainingRect: (CGRect)rect {
-    CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
-    NSScreen *result = [NSScreen mainScreen];
-    
-    for (NSScreen *currentScreen in [NSScreen screens]) {
-        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
-        CGRect flippedRect = rect;
-        CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
-        
-        flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, currentFrameOfScreen);
-        
-        if (CGRectContainsRect(currentFrameOfScreen, flippedRect)) {
-            result = currentScreen;
-            
-            break;
-        }
-        
-        percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect: flippedRect withinFrameOfScreen: currentFrameOfScreen];
-        
-        if (percentageOfRectWithinCurrentFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {
-            largestPercentageOfRectWithinFrameOfScreen = percentageOfRectWithinCurrentFrameOfScreen;
-            
-            result = currentScreen;
-        }
-    }
-    
-    return result;
-}
-
-#pragma mark -
-
-- (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen {
-    CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
-    CGFloat result = 0.0f;
-    
-    if (!CGRectIsNull(intersectionOfRectAndFrameOfScreen)) {
-        result = AreaOfRect(intersectionOfRectAndFrameOfScreen) / AreaOfRect(rect);
-    }
-    
-    return result;
-}
-
-#pragma mark -
 
 - (CGRect)rectOfFrontMostWindow {
     ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];
@@ -379,11 +271,47 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
+    CGRect previousFrontMostWindowRect = frontMostWindowRect;
+    SpectacleWindowAction action = SpectacleWindowActionCenter;
+    
+    frontMostWindowRect.size.width = floor(frontMostWindowRect.size.width + (frontMostWindowRect.size.width * percentage));
+    frontMostWindowRect.size.height = floor(frontMostWindowRect.size.height + (frontMostWindowRect.size.height * percentage));
+    
+    if (frontMostWindowRect.size.width >= visibleFrameOfScreen.size.width) {
+        frontMostWindowRect.size.width = previousFrontMostWindowRect.size.width;
+    }
+    
+    if (frontMostWindowRect.size.width == previousFrontMostWindowRect.size.width) {
+        frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
+    }
+    
+    if (frontMostWindowRect.size.height >= visibleFrameOfScreen.size.height) {
+        frontMostWindowRect.size.height = previousFrontMostWindowRect.size.height;
+    }
+    
+    if (frontMostWindowRect.size.height == previousFrontMostWindowRect.size.height) {
+        frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
+    }
+    
+    if (CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
+        action = SpectacleWindowActionFullscreen;
+    }
+    
+    return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+}
+
+@end
+
+#pragma mark -
+
+@implementation SpectacleWindowPositionManager (WindowHistory)
+
 - (void)moveWithHistory: (NSMutableArray *)history withAction: (SpectacleWindowAction)action {
     SpectacleHistoryItem *historyItem = [history lastObject];
     ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
-    NSScreen *screenOfDisplay = [self screenWithAction: action andRect: windowRect];
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: windowRect];
     CGRect visibleFrameOfScreen = CGRectNull;
     
     if (screenOfDisplay) {
@@ -446,38 +374,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     [CurrentRedoHistory addObject: historyItem];
-}
-
-#pragma mark -
-
-- (CGRect)resizeCenteredWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
-    CGRect previousFrontMostWindowRect = frontMostWindowRect;
-    SpectacleWindowAction action = SpectacleWindowActionCenter;
-    
-    frontMostWindowRect.size.width = floor(frontMostWindowRect.size.width + (frontMostWindowRect.size.width * percentage));
-    frontMostWindowRect.size.height = floor(frontMostWindowRect.size.height + (frontMostWindowRect.size.height * percentage));
-    
-    if (frontMostWindowRect.size.width >= visibleFrameOfScreen.size.width) {
-        frontMostWindowRect.size.width = previousFrontMostWindowRect.size.width;
-    }
-    
-    if (frontMostWindowRect.size.width == previousFrontMostWindowRect.size.width) {
-        frontMostWindowRect.size.width = visibleFrameOfScreen.size.width;
-    }
-    
-    if (frontMostWindowRect.size.height >= visibleFrameOfScreen.size.height) {
-        frontMostWindowRect.size.height = previousFrontMostWindowRect.size.height;
-    }
-    
-    if (frontMostWindowRect.size.height == previousFrontMostWindowRect.size.height) {
-        frontMostWindowRect.size.height = visibleFrameOfScreen.size.height;
-    }
-    
-    if (CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
-        action = SpectacleWindowActionFullscreen;
-    }
-    
-    return [self moveFrontMostWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
 }
 
 @end
