@@ -2,7 +2,9 @@
 #import <Carbon/Carbon.h>
 
 typedef enum {
-    SpectacleWindowActionNone = -1,
+    SpectacleWindowActionUndo = -3,
+    SpectacleWindowActionRedo,
+    SpectacleWindowActionNone,
     SpectacleWindowActionCenter,
     SpectacleWindowActionFullscreen,
     SpectacleWindowActionLeftHalf,

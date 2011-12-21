@@ -64,9 +64,13 @@
 
 - (CGRect)moveFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
 
+- (void)moveWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
+
 #pragma mark -
 
-- (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem;
+- (void)moveWithHistory: (NSMutableArray *)history withAction: (SpectacleWindowAction)action;
+
+- (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
 
 #pragma mark -
 
@@ -170,51 +174,17 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
     
-    AXValueRef frontMostWindowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&frontMostWindowRect.origin);
-    AXValueRef frontMostWindowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&frontMostWindowRect.size);
-    
-    [myFrontMostWindowElement setValue: frontMostWindowRectPositionRef forAttribute: kAXPositionAttribute];
-    [myFrontMostWindowElement setValue: frontMostWindowRectWindowSizeRef forAttribute: kAXSizeAttribute];
+    [self moveWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
 }
 
 #pragma mark -
 
 - (void)undoLastWindowAction {
-    SpectacleHistoryItem *historyItem = [CurrentUndoHistory lastObject];
-    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
-    CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
-    
-    if (!CGRectIsNull(windowRect)) {
-        [self addHistoryItemToRedoHistory: [SpectacleHistoryItem historyItemFromAccessibilityElement: accessibilityElement
-                                                                                          windowRect: windowRect]];
-    }
-    
-    if (![self moveWithHistoryItem: historyItem]) {
-        NSBeep();
-        
-        return;
-    }
-    
-    [CurrentUndoHistory removeLastObject];
+    [self moveWithHistory: CurrentUndoHistory withAction: SpectacleWindowActionUndo];
 }
 
 - (void)redoLastWindowAction {
-    SpectacleHistoryItem *historyItem = [CurrentRedoHistory lastObject];
-    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
-    CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
-    
-    if (!CGRectIsNull(windowRect)) {
-        [self addHistoryItemToUndoHistory: [SpectacleHistoryItem historyItemFromAccessibilityElement: accessibilityElement
-                                                                                          windowRect: windowRect]];
-    }
-    
-    if (![self moveWithHistoryItem: historyItem]) {
-        NSBeep();
-        
-        return;
-    }
-    
-    [CurrentRedoHistory removeLastObject];
+    [self moveWithHistory: CurrentRedoHistory withAction: SpectacleWindowActionRedo];
 }
 
 #pragma mark -
@@ -398,23 +368,56 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     return frontMostWindowRect;
 }
 
+- (void)moveWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    AXValueRef windowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&windowRect.origin);
+    AXValueRef windowRectSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&windowRect.size);
+    
+    [myFrontMostWindowElement setValue: windowRectSizeRef forAttribute: kAXSizeAttribute];
+    [myFrontMostWindowElement setValue: windowRectPositionRef forAttribute: kAXPositionAttribute];
+    [myFrontMostWindowElement setValue: windowRectSizeRef forAttribute: kAXSizeAttribute];
+}
+
 #pragma mark -
 
-- (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem {
+- (void)moveWithHistory: (NSMutableArray *)history withAction: (SpectacleWindowAction)action {
+    SpectacleHistoryItem *historyItem = [history lastObject];
     ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
-    CGRect windowRect = CGRectNull;
+    CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
+    NSScreen *screenOfDisplay = [self screenWithAction: action andRect: windowRect];
+    CGRect visibleFrameOfScreen = CGRectNull;
+    
+    if (screenOfDisplay) {
+        visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
+    }
+    
+    if (!CGRectIsNull(windowRect)) {
+        SpectacleHistoryItem *nextHistoryItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: accessibilityElement
+                                                                                               windowRect: windowRect];
+        
+        if (action == SpectacleWindowActionUndo) {
+            [self addHistoryItemToRedoHistory: nextHistoryItem];
+        } else if (action == SpectacleWindowActionRedo) {
+            [self addHistoryItemToUndoHistory: nextHistoryItem];
+        }
+    }
+    
+    if (![self moveWithHistoryItem: historyItem visibleFrameOfScreen: visibleFrameOfScreen withAction: action]) {
+        NSBeep();
+        
+        return;
+    }
+    
+    [history removeLastObject];
+}
+
+- (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     
     if (!historyItem || !accessibilityElement) {
         return NO;
     }
     
-    windowRect = [historyItem windowRect];
-    
-    AXValueRef windowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&windowRect.origin);
-    AXValueRef windowRectWindowSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&windowRect.size);
-    
-    [accessibilityElement setValue: windowRectPositionRef forAttribute: kAXPositionAttribute];
-    [accessibilityElement setValue: windowRectWindowSizeRef forAttribute: kAXSizeAttribute];
+    [self moveWindowRect: [historyItem windowRect] visibleFrameOfScreen: visibleFrameOfScreen withAction: SpectacleWindowActionNone];
     
     return YES;
 }
