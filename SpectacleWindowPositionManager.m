@@ -345,7 +345,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         return NO;
     }
     
-    [self moveWindowRect: [historyItem windowRect] visibleFrameOfScreen: visibleFrameOfScreen withAction: SpectacleWindowActionNone];
+    [self moveWindowRect: [historyItem windowRect] visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     
     return YES;
 }
