@@ -21,7 +21,6 @@ typedef enum {
 } SpectacleWindowAction;
 
 @interface SpectacleWindowPositionManager : NSObject {
-    ZeroKitAccessibilityElement *myFrontMostWindowElement;
     NSMutableDictionary *myUndoHistory;
     NSMutableDictionary *myRedoHistory;
 }
