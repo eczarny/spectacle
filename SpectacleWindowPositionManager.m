@@ -2,6 +2,7 @@
 #import "SpectacleScreenDetection.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
+#import "SpectacleConstants.h"
 
 #define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
 #define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
@@ -386,7 +387,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         [myUndoHistory setObject: [NSMutableArray array] forKey: CurrentWorkspaceKey];
     }
     
-    if ([CurrentUndoHistory count] >= 5) {
+    if ([CurrentUndoHistory count] >= SpectacleWindowActionHistorySize) {
         [CurrentUndoHistory removeObjectAtIndex: 0];
     }
     
@@ -398,7 +399,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         [myRedoHistory setObject: [NSMutableArray array] forKey: CurrentWorkspaceKey];
     }
     
-    if ([CurrentRedoHistory count] >= 5) {
+    if ([CurrentRedoHistory count] >= SpectacleWindowActionHistorySize) {
         [CurrentRedoHistory removeObjectAtIndex: 0];
     }
     
