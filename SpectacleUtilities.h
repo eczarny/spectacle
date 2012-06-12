@@ -15,7 +15,7 @@
 
 #pragma mark -
 
-#define RectFitsInRect(a, b) ((a.size.width < b.size.width) && (a.size.height < b.size.height))
+#define RectFitsInRect(a, b) ((a.size.width <= b.size.width) && (a.size.height <= b.size.height))
 
 #pragma mark -
 
