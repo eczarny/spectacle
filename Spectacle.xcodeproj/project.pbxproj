@@ -676,7 +676,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -933,6 +933,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				VERSION_INFO_FILE = "";
 			};
@@ -942,6 +943,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				VERSION_INFO_FILE = "";
 			};
@@ -951,6 +953,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				VERSION_INFO_FILE = "";
 			};
@@ -960,6 +963,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				VERSION_INFO_FILE = "";
 			};
@@ -988,6 +992,7 @@
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer: Eric Czarny (BZBL6437G2)";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				PROVISIONING_PROFILE = "76BF6002-A2E3-4488-A89A-703C0E9BC39B";
 				VERSION_INFO_FILE = "";
@@ -999,6 +1004,7 @@
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				PROVISIONING_PROFILE = "";
 				VERSION_INFO_FILE = "";
