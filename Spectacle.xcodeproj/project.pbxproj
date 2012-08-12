@@ -7,55 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		070031B01217712E001D4C46 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
-		07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07088270119A301800EC9426 /* SpectacleHelperController.m */; };
-		070D2B10128B43080022D02C /* SpectacleToggleSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */; };
-		070D2B13128B431C0022D02C /* SpectacleToggleSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 070D2B12128B431C0022D02C /* SpectacleToggleSwitchCell.m */; };
-		070D2B28128B52A90022D02C /* Slider Handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B24128B52A90022D02C /* Slider Handle.png */; };
-		070D2B29128B52A90022D02C /* Slider Pressed Handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B25128B52A90022D02C /* Slider Pressed Handle.png */; };
-		070D2B2A128B52A90022D02C /* Slider Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B26128B52A90022D02C /* Slider Mask.png */; };
-		070D2B2B128B52A90022D02C /* Slider Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 070D2B27128B52A90022D02C /* Slider Background.png */; };
-		072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
-		074A8F72119FAF9300940841 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
-		0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0766438911A212A800B7BFA3 /* CoreServices.framework */; };
-		076644FB11A212D700B7BFA3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
-		07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07678096118679C600614FB5 /* SpectacleHotKeyManager.m */; };
-		077938BF1184F9C10013BC14 /* SpectacleHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 077938B61184F96A0013BC14 /* SpectacleHelper.app */; };
-		077938E61184FADB0013BC14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
-		077939041184FB3C0013BC14 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */; };
-		079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6B752148B12A0003F924A /* Spectacle Status Item.png */; };
 		07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */; };
-		07BB5406118657190045663F /* SpectacleHelperApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB5405118657190045663F /* SpectacleHelperApplicationController.m */; };
-		07E632161187AAD800451374 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
-		2D07101B14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07101A14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m */; };
-		2D07101C14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07101A14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m */; };
+		2D1AE52515D715F400EAC5BD /* SpectacleHotKeyValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AE52415D715F400EAC5BD /* SpectacleHotKeyValidator.m */; };
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D1E1AD1147E07980021D73D /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407E1475ECF1000133CA /* ZeroKit.framework */; };
-		2D2412271475FA830063085D /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
-		2D3C3C4A14926849000FD140 /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
-		2D3C3C4B1492685E000FD140 /* SpectacleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07BB542C1186662F0045663F /* SpectacleUtilities.m */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
-		2D4F3ED114A27EC300C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
-		2D6540741475EB90000133CA /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
-		2D6540751475EBF4000133CA /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
-		2D65407F1475ECF1000133CA /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407E1475ECF1000133CA /* ZeroKit.framework */; };
 		2D736756149ADB2C00837D7D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2D736754149ADB2C00837D7D /* Credits.rtf */; };
 		2D73675B149ADB4500837D7D /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736757149ADB4500837D7D /* Spectacle.xib */; };
 		2D73675C149ADB4500837D7D /* SpectaclePreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736759149ADB4500837D7D /* SpectaclePreferencesWindow.xib */; };
 		2D73677B149ADB7400837D7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736777149ADB7400837D7D /* InfoPlist.strings */; };
-		2D73677C149ADB7400837D7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736777149ADB7400837D7D /* InfoPlist.strings */; };
-		2D73677D149ADB7400837D7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736777149ADB7400837D7D /* InfoPlist.strings */; };
 		2D73677E149ADB7400837D7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736779149ADB7400837D7D /* Localizable.strings */; };
-		2D73677F149ADB7400837D7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736779149ADB7400837D7D /* Localizable.strings */; };
-		2D736780149ADB7400837D7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736779149ADB7400837D7D /* Localizable.strings */; };
-		2D736783149ADC3600837D7D /* SpectacleHelper.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736781149ADC3600837D7D /* SpectacleHelper.xib */; };
-		2D736786149ADC3F00837D7D /* SpectaclePreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736784149ADC3F00837D7D /* SpectaclePreferencePane.xib */; };
 		2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */; };
 		2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */; };
-		2D768E91147ED57600901E76 /* SpectacleWindowActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */; };
 		2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
 		2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
 		2D8DA055147E1101003BE1D3 /* ZeroKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6540721475EAE1000133CA /* ZeroKit.framework */; };
@@ -66,36 +32,9 @@
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2DD111AC1487301C00C552FA /* Preferences Window Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD111AB1487301C00C552FA /* Preferences Window Background.png */; };
 		2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
-		2DF03CEF148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
-		2DF03CF0148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
-		2DF03CF214868E2000D09E90 /* Spectacle Preference Pane.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */; };
-		8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */; };
-		8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
-		8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F506C035013D953901CA16C8 /* PreferencePanes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		077938BD1184F9780013BC14 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 077938B51184F96A0013BC14;
-			remoteInfo = SpectacleHelper;
-		};
-		2D2412281475FB0E0063085D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = ZeroKit;
-		};
-		2D24122A1475FB160063085D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = ZeroKit;
-		};
 		2D6540711475EAE1000133CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
@@ -113,28 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		07BB53EE118656250045663F /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2D6540751475EBF4000133CA /* ZeroKit.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07BB54031186567C0045663F /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2D2412271475FA830063085D /* ZeroKit.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D8DA054147E10EE003BE1D3 /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,35 +68,15 @@
 /* Begin PBXFileReference section */
 		070031AF1217712E001D4C46 /* HotKeyNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = HotKeyNames.plist; path = "Resources/Property Lists/HotKeyNames.plist"; sourceTree = "<group>"; };
 		0706C0431191092B0068F04B /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
-		0708826F119A301800EC9426 /* SpectacleHelperController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHelperController.h; path = "Preference Pane/SpectacleHelperController.h"; sourceTree = "<group>"; };
-		07088270119A301800EC9426 /* SpectacleHelperController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHelperController.m; path = "Preference Pane/SpectacleHelperController.m"; sourceTree = "<group>"; };
-		0708828E119A34FE00EC9426 /* SpectacleHelperControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHelperControllerProtocol.h; path = "Preference Pane/SpectacleHelperControllerProtocol.h"; sourceTree = "<group>"; };
-		070D2B0E128B43080022D02C /* SpectacleToggleSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleToggleSwitch.h; path = "Preference Pane/SpectacleToggleSwitch.h"; sourceTree = "<group>"; };
-		070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleToggleSwitch.m; path = "Preference Pane/SpectacleToggleSwitch.m"; sourceTree = "<group>"; };
-		070D2B11128B431C0022D02C /* SpectacleToggleSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleToggleSwitchCell.h; path = "Preference Pane/SpectacleToggleSwitchCell.h"; sourceTree = "<group>"; };
-		070D2B12128B431C0022D02C /* SpectacleToggleSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleToggleSwitchCell.m; path = "Preference Pane/SpectacleToggleSwitchCell.m"; sourceTree = "<group>"; };
-		070D2B24128B52A90022D02C /* Slider Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Handle.png"; path = "Preference Pane/Resources/Images/Slider Handle.png"; sourceTree = "<group>"; };
-		070D2B25128B52A90022D02C /* Slider Pressed Handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Pressed Handle.png"; path = "Preference Pane/Resources/Images/Slider Pressed Handle.png"; sourceTree = "<group>"; };
-		070D2B26128B52A90022D02C /* Slider Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Mask.png"; path = "Preference Pane/Resources/Images/Slider Mask.png"; sourceTree = "<group>"; };
-		070D2B27128B52A90022D02C /* Slider Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slider Background.png"; path = "Preference Pane/Resources/Images/Slider Background.png"; sourceTree = "<group>"; };
 		072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionManager.h; sourceTree = "<group>"; };
 		072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionManager.m; sourceTree = "<group>"; };
-		07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleToggleSwitchDelegate.h; path = "Preference Pane/SpectacleToggleSwitchDelegate.h"; sourceTree = "<group>"; };
 		0747DAF71183AC5100F75DD2 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
 		0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDevelopment.xcconfig; path = Configurations/CommonDevelopment.xcconfig; sourceTree = "<group>"; };
 		0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
-		0747DAFA1183AC5100F75DD2 /* SpectaclePreferencePane.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePane.xcconfig; path = Configurations/SpectaclePreferencePane.xcconfig; sourceTree = "<group>"; };
-		0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePaneDevelopment.xcconfig; path = Configurations/SpectaclePreferencePaneDevelopment.xcconfig; sourceTree = "<group>"; };
-		0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectaclePreferencePaneRelease.xcconfig; path = Configurations/SpectaclePreferencePaneRelease.xcconfig; sourceTree = "<group>"; };
 		0766438911A212A800B7BFA3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		07678095118679C600614FB5 /* SpectacleHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyManager.h; sourceTree = "<group>"; };
 		07678096118679C600614FB5 /* SpectacleHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyManager.m; sourceTree = "<group>"; };
-		077938B61184F96A0013BC14 /* SpectacleHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpectacleHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleHelper-Info.plist"; path = "Preference Pane/Resources/Property Lists/SpectacleHelper-Info.plist"; sourceTree = "<group>"; };
 		077938E51184FADB0013BC14 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0779390B1184FBC00013BC14 /* SpectacleHelper.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleHelper.xcconfig; path = Configurations/SpectacleHelper.xcconfig; sourceTree = "<group>"; };
-		0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleHelperDevelopment.xcconfig; path = Configurations/SpectacleHelperDevelopment.xcconfig; sourceTree = "<group>"; };
-		0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleHelperRelease.xcconfig; path = Configurations/SpectacleHelperRelease.xcconfig; sourceTree = "<group>"; };
 		07838601148BD517001E7BD7 /* SpectaclePreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectaclePreferencesController.h; sourceTree = "<group>"; };
 		07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectaclePreferencesController.m; sourceTree = "<group>"; };
 		078B0F50118D18CC004EE86C /* SpectacleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleConstants.h; sourceTree = "<group>"; };
@@ -187,22 +84,19 @@
 		079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistoryItem.m; sourceTree = "<group>"; };
 		07B6B752148B12A0003F924A /* Spectacle Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item.png"; path = "Resources/Images/Spectacle Status Item.png"; sourceTree = "<group>"; };
 		07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Alternate Status Item.png"; path = "Resources/Images/Spectacle Alternate Status Item.png"; sourceTree = "<group>"; };
-		07BB5404118657190045663F /* SpectacleHelperApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHelperApplicationController.h; path = "Preference Pane/SpectacleHelperApplicationController.h"; sourceTree = "<group>"; };
-		07BB5405118657190045663F /* SpectacleHelperApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHelperApplicationController.m; path = "Preference Pane/SpectacleHelperApplicationController.m"; sourceTree = "<group>"; };
 		07BB542B1186662F0045663F /* SpectacleUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleUtilities.h; sourceTree = "<group>"; };
 		07BB542C1186662F0045663F /* SpectacleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleUtilities.m; sourceTree = "<group>"; };
 		07E632151187AAD800451374 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		2D07101914926075002C1EE7 /* SpectaclePreferencePaneUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectaclePreferencePaneUtilities.h; path = "Preference Pane/SpectaclePreferencePaneUtilities.h"; sourceTree = "<group>"; };
-		2D07101A14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectaclePreferencePaneUtilities.m; path = "Preference Pane/SpectaclePreferencePaneUtilities.m"; sourceTree = "<group>"; };
+		2D1AE52315D715F400EAC5BD /* SpectacleHotKeyValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyValidator.h; sourceTree = "<group>"; };
+		2D1AE52415D715F400EAC5BD /* SpectacleHotKeyValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyValidator.m; sourceTree = "<group>"; };
 		2D1E1AB0147E06AD0021D73D /* Spectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1E1AD2147E07E50021D73D /* Spectacle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Spectacle-Info.plist"; path = "Resources/Property Lists/Spectacle-Info.plist"; sourceTree = "<group>"; };
 		2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Spectacle.xcconfig; path = Configurations/Spectacle.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleDevelopment.xcconfig; path = Configurations/SpectacleDevelopment.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
-		2D3C3C481492652E000FD140 /* SpectaclePreferencePane.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectaclePreferencePane.pch; path = "Preference Pane/SpectaclePreferencePane.pch"; sourceTree = "<group>"; };
 		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleScreenDetection.h; sourceTree = "<group>"; };
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleScreenDetection.m; sourceTree = "<group>"; };
 		2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZeroKit.xcodeproj; path = Frameworks/ZeroKit/ZeroKit.xcodeproj; sourceTree = "<group>"; };
@@ -212,34 +106,17 @@
 		2D73675A149ADB4500837D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Languages/en.lproj/SpectaclePreferencesWindow.xib; sourceTree = "<group>"; };
 		2D736778149ADB7400837D7D /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Languages/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D73677A149ADB7400837D7D /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Languages/en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2D736782149ADC3600837D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Preference Pane/Languages/en.lproj/SpectacleHelper.xib"; sourceTree = "<group>"; };
-		2D736785149ADC3F00837D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "Preference Pane/Languages/en.lproj/SpectaclePreferencePane.xib"; sourceTree = "<group>"; };
 		2D768E8B147ED51A00901E76 /* SpectacleApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleApplicationController.h; sourceTree = "<group>"; };
 		2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleApplicationController.m; sourceTree = "<group>"; };
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowActionController.h; sourceTree = "<group>"; };
 		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowActionController.m; sourceTree = "<group>"; };
 		2DD111AB1487301C00C552FA /* Preferences Window Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preferences Window Background.png"; path = "Resources/Images/Preferences Window Background.png"; sourceTree = "<group>"; };
 		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
-		2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Spectacle Preference Pane.icns"; path = "Preference Pane/Resources/Images/Icons/Spectacle Preference Pane.icns"; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spectacle.pch; sourceTree = "<group>"; };
-		8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SpectaclePreferencePane-Info.plist"; path = "Preference Pane/Resources/Property Lists/SpectaclePreferencePane-Info.plist"; sourceTree = "<group>"; };
-		8D202CF80486D31800D8A456 /* Spectacle.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Spectacle.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
-		F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectaclePreferencePane.h; path = "Preference Pane/SpectaclePreferencePane.h"; sourceTree = "<group>"; };
-		F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectaclePreferencePane.m; path = "Preference Pane/SpectaclePreferencePane.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		077938B41184F96A0013BC14 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07E632161187AAD800451374 /* Carbon.framework in Frameworks */,
-				077939041184FB3C0013BC14 /* Cocoa.framework in Frameworks */,
-				2D6540741475EB90000133CA /* ZeroKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D1E1AAD147E06AD0021D73D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,46 +127,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D202CF20486D31800D8A456 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				076644FB11A212D700B7BFA3 /* Carbon.framework in Frameworks */,
-				8D202CF30486D31800D8A456 /* Cocoa.framework in Frameworks */,
-				0766438A11A212A800B7BFA3 /* CoreServices.framework in Frameworks */,
-				8D202CF40486D31800D8A456 /* PreferencePanes.framework in Frameworks */,
-				2D65407F1475ECF1000133CA /* ZeroKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0708828F119A352700EC9426 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				0708828E119A34FE00EC9426 /* SpectacleHelperControllerProtocol.h */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
-		070882A5119A387900EC9426 /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				07F3FAF51197447200247AC2 /* Delegates */,
-				070D2B0E128B43080022D02C /* SpectacleToggleSwitch.h */,
-				070D2B0F128B43080022D02C /* SpectacleToggleSwitch.m */,
-				070D2B11128B431C0022D02C /* SpectacleToggleSwitchCell.h */,
-				070D2B12128B431C0022D02C /* SpectacleToggleSwitchCell.m */,
-			);
-			name = Controls;
-			sourceTree = "<group>";
-		};
 		0747DAE71183AAB600F75DD2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				07678095118679C600614FB5 /* SpectacleHotKeyManager.h */,
 				07678096118679C600614FB5 /* SpectacleHotKeyManager.m */,
+				2D1AE52315D715F400EAC5BD /* SpectacleHotKeyValidator.h */,
+				2D1AE52415D715F400EAC5BD /* SpectacleHotKeyValidator.m */,
 				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */,
 				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */,
 				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
@@ -382,14 +229,6 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
-		07F3FAF51197447200247AC2 /* Delegates */ = {
-			isa = PBXGroup;
-			children = (
-				07415BF712B86B3600BD0B7C /* SpectacleToggleSwitchDelegate.h */,
-			);
-			name = Delegates;
-			sourceTree = "<group>";
-		};
 		089C166AFE841209C02AAC07 /* Spectacle */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,7 +236,6 @@
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32DBCFA10370C40200C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
-				2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
@@ -453,95 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				2D1E1AB0147E06AD0021D73D /* Spectacle.app */,
-				8D202CF80486D31800D8A456 /* Spectacle.prefPane */,
-				077938B61184F96A0013BC14 /* SpectacleHelper.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2D02F79E14926C050058D232 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				2D0710181492605F002C1EE7 /* Common */,
-				2DB46B0F1491202C00FDF5A0 /* Controllers */,
-				070882A5119A387900EC9426 /* Controls */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		2D02F79F14926C170058D232 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				2D3C3C481492652E000FD140 /* SpectaclePreferencePane.pch */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		2D02F7A014926C310058D232 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				2D02F7A514926C910058D232 /* Configurations */,
-				2D02F7A314926C660058D232 /* Images */,
-				2D02F7A214926C510058D232 /* Interface Builder */,
-				2D02F7A614926F3B0058D232 /* Property Lists */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		2D02F7A214926C510058D232 /* Interface Builder */ = {
-			isa = PBXGroup;
-			children = (
-				2D736781149ADC3600837D7D /* SpectacleHelper.xib */,
-				2D736784149ADC3F00837D7D /* SpectaclePreferencePane.xib */,
-			);
-			name = "Interface Builder";
-			sourceTree = "<group>";
-		};
-		2D02F7A314926C660058D232 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				2D02F7A414926C7B0058D232 /* Icons */,
-				070D2B27128B52A90022D02C /* Slider Background.png */,
-				070D2B24128B52A90022D02C /* Slider Handle.png */,
-				070D2B26128B52A90022D02C /* Slider Mask.png */,
-				070D2B25128B52A90022D02C /* Slider Pressed Handle.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
-		2D02F7A414926C7B0058D232 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				2DF03CF114868E2000D09E90 /* Spectacle Preference Pane.icns */,
-			);
-			name = Icons;
-			sourceTree = "<group>";
-		};
-		2D02F7A514926C910058D232 /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				2D768EB1147F59EE00901E76 /* Spectacle Helper */,
-				2D768EB2147F5A0E00901E76 /* Spectacle Preference Pane */,
-			);
-			name = Configurations;
-			sourceTree = "<group>";
-		};
-		2D02F7A614926F3B0058D232 /* Property Lists */ = {
-			isa = PBXGroup;
-			children = (
-				077938B81184F96A0013BC14 /* SpectacleHelper-Info.plist */,
-				8D202CF70486D31800D8A456 /* SpectaclePreferencePane-Info.plist */,
-			);
-			name = "Property Lists";
-			sourceTree = "<group>";
-		};
-		2D0710181492605F002C1EE7 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				2D07101914926075002C1EE7 /* SpectaclePreferencePaneUtilities.h */,
-				2D07101A14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m */,
-			);
-			name = Common;
 			sourceTree = "<group>";
 		};
 		2D65406B1475EAE1000133CA /* Products */ = {
@@ -550,50 +301,6 @@
 				2D6540721475EAE1000133CA /* ZeroKit.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2D768EB1147F59EE00901E76 /* Spectacle Helper */ = {
-			isa = PBXGroup;
-			children = (
-				0779390B1184FBC00013BC14 /* SpectacleHelper.xcconfig */,
-				0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */,
-				0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */,
-			);
-			name = "Spectacle Helper";
-			sourceTree = "<group>";
-		};
-		2D768EB2147F5A0E00901E76 /* Spectacle Preference Pane */ = {
-			isa = PBXGroup;
-			children = (
-				0747DAFA1183AC5100F75DD2 /* SpectaclePreferencePane.xcconfig */,
-				0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */,
-				0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */,
-			);
-			name = "Spectacle Preference Pane";
-			sourceTree = "<group>";
-		};
-		2DB46B0E1491200700FDF5A0 /* Preference Pane [DEPRECATED] */ = {
-			isa = PBXGroup;
-			children = (
-				2D02F79E14926C050058D232 /* Classes */,
-				2D02F79F14926C170058D232 /* Other Sources */,
-				2D02F7A014926C310058D232 /* Resources */,
-			);
-			name = "Preference Pane [DEPRECATED]";
-			sourceTree = "<group>";
-		};
-		2DB46B0F1491202C00FDF5A0 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0708828F119A352700EC9426 /* Protocols */,
-				07BB5404118657190045663F /* SpectacleHelperApplicationController.h */,
-				07BB5405118657190045663F /* SpectacleHelperApplicationController.m */,
-				0708826F119A301800EC9426 /* SpectacleHelperController.h */,
-				07088270119A301800EC9426 /* SpectacleHelperController.m */,
-				F506C03C013D9D7901CA16C8 /* SpectaclePreferencePane.h */,
-				F506C03D013D9D7901CA16C8 /* SpectaclePreferencePane.m */,
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		32DBCFA10370C40200C91783 /* Other Sources */ = {
@@ -609,25 +316,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		077938B51184F96A0013BC14 /* SpectacleHelper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 077938BB1184F96B0013BC14 /* Build configuration list for PBXNativeTarget "SpectacleHelper" */;
-			buildPhases = (
-				077938B31184F96A0013BC14 /* Sources */,
-				077938B41184F96A0013BC14 /* Frameworks */,
-				077938B21184F96A0013BC14 /* Resources */,
-				07BB53EE118656250045663F /* Copy Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2D2412291475FB0E0063085D /* PBXTargetDependency */,
-			);
-			name = SpectacleHelper;
-			productName = SpectacleHelper;
-			productReference = 077938B61184F96A0013BC14 /* SpectacleHelper.app */;
-			productType = "com.apple.product-type.application";
-		};
 		2D1E1AAF147E06AD0021D73D /* Spectacle */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D1E1ACB147E06AD0021D73D /* Build configuration list for PBXNativeTarget "Spectacle" */;
@@ -646,29 +334,6 @@
 			productName = Spectacle;
 			productReference = 2D1E1AB0147E06AD0021D73D /* Spectacle.app */;
 			productType = "com.apple.product-type.application";
-		};
-		8D202CE80486D31800D8A456 /* SpectaclePreferencePane */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "SpectaclePreferencePane" */;
-			buildPhases = (
-				8D202CF00486D31800D8A456 /* Sources */,
-				8D202CF20486D31800D8A456 /* Frameworks */,
-				8D202CEC0486D31800D8A456 /* Resources */,
-				07BB54031186567C0045663F /* Copy Frameworks */,
-				07B9705011E9764E004DEF19 /* Run Script: Include Git commit hash */,
-				074DF3A711ED4D410040CA39 /* Run Script: Create symbolic link for System Preferences */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				077938BE1184F9780013BC14 /* PBXTargetDependency */,
-				2D24122B1475FB160063085D /* PBXTargetDependency */,
-			);
-			name = SpectaclePreferencePane;
-			productInstallPath = "$(HOME)/Library/PreferencePanes";
-			productName = Spectacle;
-			productReference = 8D202CF80486D31800D8A456 /* Spectacle.prefPane */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -700,8 +365,6 @@
 			projectRoot = "";
 			targets = (
 				2D1E1AAF147E06AD0021D73D /* Spectacle */,
-				077938B51184F96A0013BC14 /* SpectacleHelper */,
-				8D202CE80486D31800D8A456 /* SpectaclePreferencePane */,
 			);
 		};
 /* End PBXProject section */
@@ -717,19 +380,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		077938B21184F96A0013BC14 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				074A8F72119FAF9300940841 /* Defaults.plist in Resources */,
-				070031B01217712E001D4C46 /* HotKeyNames.plist in Resources */,
-				2D73677C149ADB7400837D7D /* InfoPlist.strings in Resources */,
-				2D73677F149ADB7400837D7D /* Localizable.strings in Resources */,
-				2DF03CEF148684E000D09E90 /* Spectacle.icns in Resources */,
-				2D736783149ADC3600837D7D /* SpectacleHelper.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D1E1AAE147E06AD0021D73D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -748,74 +398,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D202CEC0486D31800D8A456 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D73677D149ADB7400837D7D /* InfoPlist.strings in Resources */,
-				2D736780149ADB7400837D7D /* Localizable.strings in Resources */,
-				070D2B2B128B52A90022D02C /* Slider Background.png in Resources */,
-				070D2B28128B52A90022D02C /* Slider Handle.png in Resources */,
-				070D2B2A128B52A90022D02C /* Slider Mask.png in Resources */,
-				070D2B29128B52A90022D02C /* Slider Pressed Handle.png in Resources */,
-				2DF03CF0148684E000D09E90 /* Spectacle.icns in Resources */,
-				2D736786149ADC3F00837D7D /* SpectaclePreferencePane.xib in Resources */,
-				2DF03CF214868E2000D09E90 /* Spectacle Preference Pane.icns in Resources */,
-				077938BF1184F9C10013BC14 /* SpectacleHelper.app in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		074DF3A711ED4D410040CA39 /* Run Script: Create symbolic link for System Preferences */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script: Create symbolic link for System Preferences";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "PREFPANES_INSTALL_DIR=\"$USER_LIBRARY_DIR/PreferencePanes\"\n\nif [ ! $XCODE_VERSION_ACTUAL ]\nthen\n\techo \"Must be executed from within Xcode.\"\n\n\texit 1\nfi\n\nif [ -d \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\" ] || [ -L \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\" ]\nthen\n\trm -rf \"$PREFPANES_INSTALL_DIR/$WRAPPER_NAME\"\nfi\n\nif [ $CONFIGURATION != 'Release' ]\nthen\n\tln -s \"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME\" $PREFPANES_INSTALL_DIR\nfi";
-		};
-		07B9705011E9764E004DEF19 /* Run Script: Include Git commit hash */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script: Include Git commit hash";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/ruby;
-			shellScript = "raise \"Must be executed from within Xcode.\" unless ENV['XCODE_VERSION_ACTUAL']\n\ninfo_plist = \"#{ENV['BUILT_PRODUCTS_DIR']}/#{ENV['WRAPPER_NAME']}/Contents/Info.plist\"\n\nif !File.exist?('/usr/local/bin/git')\n    exit\nend\n\ncommit = `/usr/local/bin/git rev-parse --short HEAD`.chomp!\n\nif commit.nil? or commit.empty?\n    exit\nend\n\nlines = IO.readlines(info_plist).join\n\nlines.gsub! /(<key>CFBundleShortVersionString<\\/key>\\W*)<string>(\\d+\\.\\d+(?:\\.\\d)*[a-z]?)<\\/string>/, \"\\\\1<string>\\\\2 rev. #{commit}</string>\"\n\nFile.open(info_plist, 'w') { |f| f.puts lines }";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		077938B31184F96A0013BC14 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				077938E61184FADB0013BC14 /* main.m in Sources */,
-				07BB5406118657190045663F /* SpectacleHelperApplicationController.m in Sources */,
-				07088271119A301800EC9426 /* SpectacleHelperController.m in Sources */,
-				079CDA0F1221BAFF0099612C /* SpectacleHistoryItem.m in Sources */,
-				07678097118679C600614FB5 /* SpectacleHotKeyManager.m in Sources */,
-				2D07101B14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m in Sources */,
-				2D4F3ED114A27EC300C29D11 /* SpectacleScreenDetection.m in Sources */,
-				2D3C3C4A14926849000FD140 /* SpectacleUtilities.m in Sources */,
-				2D768E91147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
-				072EAD00118A4D5A0015FC8A /* SpectacleWindowPositionManager.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D1E1AAC147E06AD0021D73D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -824,6 +409,7 @@
 				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,
+				2D1AE52515D715F400EAC5BD /* SpectacleHotKeyValidator.m in Sources */,
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
@@ -832,36 +418,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8D202CF00486D31800D8A456 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8D202CF10486D31800D8A456 /* SpectaclePreferencePane.m in Sources */,
-				2D07101C14926075002C1EE7 /* SpectaclePreferencePaneUtilities.m in Sources */,
-				070D2B10128B43080022D02C /* SpectacleToggleSwitch.m in Sources */,
-				070D2B13128B431C0022D02C /* SpectacleToggleSwitchCell.m in Sources */,
-				2D3C3C4B1492685E000FD140 /* SpectacleUtilities.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		077938BE1184F9780013BC14 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 077938B51184F96A0013BC14 /* SpectacleHelper */;
-			targetProxy = 077938BD1184F9780013BC14 /* PBXContainerItemProxy */;
-		};
-		2D2412291475FB0E0063085D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ZeroKit;
-			targetProxy = 2D2412281475FB0E0063085D /* PBXContainerItemProxy */;
-		};
-		2D24122B1475FB160063085D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ZeroKit;
-			targetProxy = 2D24122A1475FB160063085D /* PBXContainerItemProxy */;
-		};
 		2D8DA052147E1074003BE1D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ZeroKit;
@@ -910,65 +469,9 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		2D736781149ADC3600837D7D /* SpectacleHelper.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D736782149ADC3600837D7D /* en */,
-			);
-			name = SpectacleHelper.xib;
-			sourceTree = "<group>";
-		};
-		2D736784149ADC3F00837D7D /* SpectaclePreferencePane.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D736785149ADC3F00837D7D /* en */,
-			);
-			name = SpectaclePreferencePane.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		077938B91184F96B0013BC14 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0779390C1184FBC00013BC14 /* SpectacleHelperDevelopment.xcconfig */;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
-			};
-			name = Development;
-		};
-		077938BA1184F96B0013BC14 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0779390D1184FBC00013BC14 /* SpectacleHelperRelease.xcconfig */;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
-			};
-			name = Release;
-		};
-		1DBD214908BA80EA00186707 /* Development */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0747DAFB1183AC5100F75DD2 /* SpectaclePreferencePaneDevelopment.xcconfig */;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
-			};
-			name = Development;
-		};
-		1DBD214A08BA80EA00186707 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0747DAFC1183AC5100F75DD2 /* SpectaclePreferencePaneRelease.xcconfig */;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
-			};
-			name = Release;
-		};
 		1DBD214D08BA80EA00186707 /* Development */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */;
@@ -1014,24 +517,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		077938BB1184F96B0013BC14 /* Build configuration list for PBXNativeTarget "SpectacleHelper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				077938B91184F96B0013BC14 /* Development */,
-				077938BA1184F96B0013BC14 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1DBD214808BA80EA00186707 /* Build configuration list for PBXNativeTarget "SpectaclePreferencePane" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DBD214908BA80EA00186707 /* Development */,
-				1DBD214A08BA80EA00186707 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

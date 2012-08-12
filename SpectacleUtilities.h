@@ -1,4 +1,4 @@
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 #define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[NSScreen mainScreen] frame].size.height - b.size.height))
 
@@ -29,7 +29,7 @@
 
 + (void)displayAccessibilityAPIAlert;
 
-+ (void)displayRunningInBackgroundAlertWithCallback: (void ( ^ )(BOOL, BOOL))callback;
++ (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback;
 
 #pragma mark -
 

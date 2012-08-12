@@ -1,5 +1,6 @@
 #import "SpectaclePreferencesController.h"
 #import "SpectacleHotKeyManager.h"
+#import "SpectacleHotKeyValidator.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
@@ -142,6 +143,8 @@
 @implementation SpectaclePreferencesController (SpectaclePreferencesControllerPrivate)
 
 - (void)loadRegisteredHotKeys {
+    SpectacleHotKeyValidator *hotKeyValidator = [[SpectacleHotKeyValidator alloc] init];
+    
     for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
         ZeroKitHotKeyRecorder *hotKeyRecorder = [myHotKeyRecorders objectForKey: hotKeyName];
         ZeroKitHotKey *hotKey = [myHotKeyManager registeredHotKeyForName: hotKeyName];
@@ -153,7 +156,11 @@
         }
         
         [hotKeyRecorder setDelegate: self];
+        
+        [hotKeyRecorder setAdditionalHotKeyValidators: [NSArray arrayWithObject: hotKeyValidator]];
     }
+    
+    [hotKeyValidator release];
     
     [self enableHotKeyRecorders: YES];
 }
