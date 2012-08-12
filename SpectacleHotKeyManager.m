@@ -168,6 +168,18 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (BOOL)isHotKeyRegistered: (ZeroKitHotKey *)hotKey {
+    for (ZeroKitHotKey *registeredHotKey in [myRegisteredHotKeys allValues]) {
+        if ([registeredHotKey isEqualToHotKey: hotKey]) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
+#pragma mark -
+
 - (void)dealloc {
     [myRegisteredHotKeys release];
     

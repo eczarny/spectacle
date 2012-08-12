@@ -1,4 +1,4 @@
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 @class ZeroKitHotKey;
 
@@ -27,5 +27,9 @@
 - (NSArray *)registeredHotKeys;
 
 - (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name;
+
+#pragma mark -
+
+- (BOOL)isHotKeyRegistered: (ZeroKitHotKey *)hotKey;
 
 @end
