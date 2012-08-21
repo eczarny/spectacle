@@ -24,6 +24,8 @@
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (ZeroKitAccessibilityElement *)frontMostWindowElement;
+- (ZeroKitAccessibilityElement *)frontMostApplicationElement;
+
 
 #pragma mark -
 
@@ -164,6 +166,64 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (void)saveLocationAction {
+    NSString *appTitle = nil;
+    appTitle = (NSString*)[[self frontMostApplicationElement] valueOfAttribute:kAXTitleAttribute  type:(AXValueType)appTitle];
+    
+    // don't save if there is no title, or it's this preference window (as restoring it is causing an exception)
+    if (!appTitle || [appTitle isEqualToString:@"Spectacle"]) {
+        NSBeep();
+        return;
+    }
+    
+    ZeroKitAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
+    CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
+    
+    NSMutableDictionary *savedLocations = [[[NSUserDefaults standardUserDefaults] objectForKey:@"SavedLocations"] mutableCopy];
+    
+    if (!savedLocations)
+        savedLocations = [[NSMutableDictionary dictionary] retain];
+    
+    [savedLocations setObject:NSStringFromRect(NSRectFromCGRect(frontMostWindowRect)) forKey:appTitle];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:savedLocations forKey:@"SavedLocations"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [savedLocations release];
+}
+
+- (void)restoreLocationAction {
+    NSString *appTitle = nil;
+    appTitle = (NSString*)[[self frontMostApplicationElement] valueOfAttribute:kAXTitleAttribute  type:(AXValueType)appTitle];
+    
+    if (!appTitle) {
+        NSBeep();
+        return;
+    }
+
+    NSDictionary *savedLocations = [[NSUserDefaults standardUserDefaults] objectForKey:@"SavedLocations"];
+    NSString *stringRect = [savedLocations objectForKey:appTitle];
+    
+    if (!stringRect) {
+        NSBeep();
+        return;
+    }
+    
+    CGRect newRect = NSRectToCGRect(NSRectFromString(stringRect));
+    
+    ZeroKitAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
+    CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
+    SpectacleHistoryItem *historyItem = nil;
+    historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: frontMostWindowElement
+                                                                     windowRect: frontMostWindowRect];
+    [self addHistoryItemToUndoHistory: historyItem];
+    
+    [self moveWindowRect:newRect frontMostWindowElement:frontMostWindowElement];
+}
+
+
+#pragma mark -
+
 - (void)dealloc {
     [myUndoHistory release];
     [myRedoHistory release];
@@ -193,6 +253,13 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     return frontMostWindowElement;
+}
+
+- (ZeroKitAccessibilityElement *)frontMostApplicationElement {
+    ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];
+    ZeroKitAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    
+    return applicationWithFocusElement;
 }
 
 #pragma mark -

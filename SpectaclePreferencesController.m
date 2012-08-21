@@ -49,7 +49,10 @@
         myMoveToTopDisplayHotKeyRecorder,    SpectacleWindowActionMoveToTopDisplay,
         myMoveToBottomDisplayHotKeyRecorder, SpectacleWindowActionMoveToBottomDisplay,
         myUndoLastMoveHotKeyRecorder,        SpectacleWindowActionUndoLastMove,
-        myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove, nil];
+        myRedoLastMoveHotKeyRecorder,        SpectacleWindowActionRedoLastMove,
+        mySaveLocationHotKeyRecorder,        SpectacleWindowActionSaveLocation,
+        myRestoreLocationHotKeyRecorder,     SpectacleWindowActionRestoreLocation,
+                         nil];
     
     [self loadRegisteredHotKeys];
     

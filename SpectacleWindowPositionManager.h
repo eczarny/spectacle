@@ -37,4 +37,10 @@ typedef enum {
 
 - (void)redoLastWindowAction;
 
+#pragma mark -
+
+- (void)saveLocationAction;
+- (void)restoreLocationAction;
+
+
 @end

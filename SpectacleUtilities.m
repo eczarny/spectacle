@@ -133,6 +133,10 @@
         selector = @selector(undoLastWindowAction:);
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
         selector = @selector(redoLastWindowAction:);
+    } else if ([name isEqualToString: SpectacleWindowActionSaveLocation]) {
+        selector = @selector(saveLocationAction:);
+    } else if ([name isEqualToString: SpectacleWindowActionRestoreLocation]) {
+        selector = @selector(restoreLocationAction:);
     }
     
     return [ZeroKitHotKeyAction hotKeyActionFromTarget: target selector: selector];

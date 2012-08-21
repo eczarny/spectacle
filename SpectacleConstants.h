@@ -50,6 +50,10 @@
 #define SpectacleWindowActionUndoLastMove             @"UndoLastMove"
 #define SpectacleWindowActionRedoLastMove             @"RedoLastMove"
 
+#define SpectacleWindowActionSaveLocation             @"SaveLocation"
+#define SpectacleWindowActionRestoreLocation          @"RestoreLocation"
+
+
 #pragma mark -
 
 #define SpectacleWindowActionHistorySize              10
