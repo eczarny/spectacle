@@ -105,4 +105,15 @@
     [myWindowPositionManager redoLastWindowAction];
 }
 
+#pragma mark -
+
+- (IBAction)saveLocationAction: (id)sender {
+    [myWindowPositionManager saveLocationAction];
+}
+
+- (IBAction)restoreLocationAction: (id)sender {
+    [myWindowPositionManager restoreLocationAction];
+}
+
+
 @end

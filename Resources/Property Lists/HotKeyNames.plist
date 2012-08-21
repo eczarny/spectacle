@@ -18,5 +18,7 @@
 	<string>MoveToBottomDisplay</string>
 	<string>UndoLastMove</string>
 	<string>RedoLastMove</string>
+	<string>SaveLocation</string>
+	<string>RestoreLocation</string>
 </array>
 </plist>

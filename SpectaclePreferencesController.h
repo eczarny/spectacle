@@ -22,6 +22,8 @@
     IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *mySaveLocationHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myRestoreLocationHotKeyRecorder;
     IBOutlet NSButton *myLoginItemEnabled;
     IBOutlet NSPopUpButton *myStatusItemEnabled;
 }
