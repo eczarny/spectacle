@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <ZeroKit/ZeroKit.h>
 
 #define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[NSScreen mainScreen] frame].size.height - b.size.height))
 
@@ -22,8 +23,6 @@
 #define MovingToDisplay(action) ((action >= SpectacleWindowActionLeftDisplay) && (action <= SpectacleWindowActionBottomDisplay))
 
 #pragma mark -
-
-@class ZeroKitHotKeyAction;
 
 @interface SpectacleUtilities : ZeroKitUtilities
 

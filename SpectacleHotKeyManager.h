@@ -1,6 +1,5 @@
 #import <Foundation/Foundation.h>
-
-@class ZeroKitHotKey;
+#import <ZeroKit/ZeroKit.h>
 
 @interface SpectacleHotKeyManager : NSObject {
     NSMutableDictionary *myRegisteredHotKeys;

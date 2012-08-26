@@ -1,5 +1,4 @@
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
     #import <QuartzCore/QuartzCore.h>
-    #import <ZeroKit/ZeroKit.h>
 #endif

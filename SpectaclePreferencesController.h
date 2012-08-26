@@ -1,4 +1,5 @@
 #import <Cocoa/Cocoa.h>
+#import <ZeroKit/ZeroKit.h>
 
 @class SpectacleHotKeyManager, SpectacleApplicationController;
 

@@ -1,25 +1,4 @@
-#define SpectaclePreferencePaneName                   @"Spectacle"
-#define SpectacleHelperApplicationName                @"SpectacleHelper"
-#define SpectacleBundleIdentifier                     @"com.divisiblebyzero.Spectacle"
-#define SpectacleHelperBundleIdentifier               @"com.divisiblebyzero.SpectacleHelper"
-
-#define SpectacleApplicationBundleExtension           @"app"
-
-#pragma mark -
-
-#define SpectacleNibName                              @"Spectacle"
-#define SpectaclePreferencePaneNibName                @"SpectaclePreferencePane"
 #define SpectaclePreferencesWindowNibName             @"SpectaclePreferencesWindow"
-
-#pragma mark -
-
-#define SpectacleHelperControllerServiceName          @"SpectacleHelperControllerServiceName"
-
-#pragma mark -
-
-#define SpectacleHelperDidFinishLaunchingNotification @"SpectacleHelperDidFinishLaunchingNotification"
-#define SpectacleHelperDidTerminateNotification       @"SpectacleHelperDidTerminateNotification"
-#define SpectacleHelperShouldTerminateNotification    @"SpectacleHelperShouldTerminateNotification"
 
 #pragma mark -
 
@@ -61,11 +40,6 @@
 #define SpectacleWindowActionHistorySize              10
 
 #pragma mark -
-
-#define SpectacleSliderBackgroundImage                @"Slider Background"
-#define SpectacleSliderMaskImage                      @"Slider Mask"
-#define SpectacleSliderHandleImage                    @"Slider Handle"
-#define SpectacleSliderPressedHandleImage             @"Slider Pressed Handle"
 
 #define SpectacleStatusItemIcon                       @"Spectacle Status Item"
 #define SpectacleAlternateStatusItemIcon              @"Spectacle Alternate Status Item"

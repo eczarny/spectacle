@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <ZeroKit/ZeroKit.h>
 
 typedef enum {
     SpectacleWindowActionUndo = -3,
