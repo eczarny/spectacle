@@ -1277,9 +1277,9 @@
 						<reference key="NSOnImage" ref="229763992"/>
 						<reference key="NSMixedImage" ref="909111550"/>
 					</object>
-					<object class="NSMenuItem" id="249248216">
+					<object class="NSMenuItem" id="1067260792">
 						<reference key="NSMenu" ref="257670533"/>
-						<string key="NSTitle">Preferences...</string>
+						<string key="NSTitle">Check for Updates...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="229763992"/>
@@ -1295,9 +1295,9 @@
 						<reference key="NSOnImage" ref="229763992"/>
 						<reference key="NSMixedImage" ref="909111550"/>
 					</object>
-					<object class="NSMenuItem" id="1067260792">
+					<object class="NSMenuItem" id="249248216">
 						<reference key="NSMenu" ref="257670533"/>
-						<string key="NSTitle">Check for Updates...</string>
+						<string key="NSTitle">Preferences...</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="229763992"/>
@@ -3034,11 +3034,11 @@
 						<int key="objectID">870</int>
 						<reference key="object" ref="257670533"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="249248216"/>
 							<reference ref="808944297"/>
 							<reference ref="625913344"/>
 							<reference ref="43273263"/>
 							<reference ref="378643675"/>
+							<reference ref="249248216"/>
 							<reference ref="1067260792"/>
 						</array>
 						<reference key="parent" ref="0"/>
