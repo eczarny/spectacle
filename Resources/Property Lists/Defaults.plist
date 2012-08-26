@@ -38,5 +38,7 @@
 	<true/>
 	<key>BackgroundAlertSuppressed</key>
 	<false/>
+	<key>AppStoreAlertSuppressed</key>
+	<false/>
 </dict>
 </plist>

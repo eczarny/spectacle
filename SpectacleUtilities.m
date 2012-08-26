@@ -36,7 +36,7 @@
     }
 }
 
-+ (void)displayRunningInBackgroundAlertWithCallback: (void ( ^ )(BOOL, BOOL))callback {
++ (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback {
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     
     [alert setAlertStyle: NSInformationalAlertStyle];
@@ -62,6 +62,39 @@
             break;
     }
 }
+
++ (void)displayAppStoreAlert {
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ([userDefaults boolForKey: SpectacleAppStoreAlertSuppressedPreference]) {
+        return;
+    }
+    
+    [alert setAlertStyle: NSInformationalAlertStyle];
+    [alert setShowsSuppressionButton: YES];
+    [alert setMessageText: ZeroKitLocalizedString(@"App Store releases of are unsupported")];
+    [alert setInformativeText: ZeroKitLocalizedString(@"Due to policy changes Spectacle will no longer be released through the App Store.\n\nTo to remain up to date please download Spectacle and replace your current install.")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Download Spectacle")];
+    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Cancel")];
+    
+    NSInteger response = [alert runModal];
+    BOOL isAlertSuppressed = [[alert suppressionButton] state] == NSOnState;
+    
+    [userDefaults setBool: isAlertSuppressed forKey: SpectacleAppStoreAlertSuppressedPreference];
+    
+    switch (response) {
+        case NSAlertFirstButtonReturn:
+            [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: @"http://spectacleapp.com/"]];
+            
+            break;
+        case NSAlertSecondButtonReturn:
+        default:
+            break;
+    }
+}
+
+#pragma mark -
 
 + (NSArray *)hotKeyNames {
     NSBundle *bundle = [SpectacleUtilities applicationBundle];

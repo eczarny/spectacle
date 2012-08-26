@@ -494,10 +494,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer: Eric Czarny (BZBL6437G2)";
+				CODE_SIGN_IDENTITY = "Developer ID Application: Eric Czarny";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				PROVISIONING_PROFILE = "76BF6002-A2E3-4488-A89A-703C0E9BC39B";
+				PROVISIONING_PROFILE = "";
 				VERSION_INFO_FILE = "";
 			};
 			name = Development;
@@ -506,7 +506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "Developer ID Application: Eric Czarny";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				PROVISIONING_PROFILE = "";

@@ -68,3 +68,4 @@
 
 #define SpectacleStatusItemEnabledPreference          @"StatusItemEnabled"
 #define SpectacleBackgroundAlertSuppressedPreference  @"BackgroundAlertSuppressed"
+#define SpectacleAppStoreAlertSuppressedPreference    @"AppStoreAlertSuppressed"

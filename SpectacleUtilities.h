@@ -31,6 +31,8 @@
 
 + (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback;
 
++ (void)displayAppStoreAlert;
+
 #pragma mark -
 
 + (NSArray *)hotKeyNames;
