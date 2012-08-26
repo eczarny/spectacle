@@ -12,10 +12,8 @@
 	<string>MoveToLowerLeft</string>
 	<string>MoveToUpperRight</string>
 	<string>MoveToLowerRight</string>
-	<string>MoveToLeftDisplay</string>
-	<string>MoveToRightDisplay</string>
-	<string>MoveToTopDisplay</string>
-	<string>MoveToBottomDisplay</string>
+	<string>MoveToNextDisplay</string>
+	<string>MoveToPreviousDisplay</string>
 	<string>MoveToNextThird</string>
 	<string>MoveToPreviousThird</string>
 	<string>UndoLastMove</string>

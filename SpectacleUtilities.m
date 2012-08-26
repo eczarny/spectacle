@@ -123,14 +123,10 @@
         selector = @selector(moveFrontMostWindowToUpperRight:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
         selector = @selector(moveFrontMostWindowToLowerRight:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftDisplay]) {
-        selector = @selector(moveFrontMostWindowToLeftDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToRightDisplay]) {
-        selector = @selector(moveFrontMostWindowToRightDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToTopDisplay]) {
-        selector = @selector(moveFrontMostWindowToTopDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomDisplay]) {
-        selector = @selector(moveFrontMostWindowToBottomDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextDisplay]) {
+        selector = @selector(moveFrontMostWindowToNextDisplay:);
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousDisplay]) {
+        selector = @selector(moveFrontMostWindowToPreviousDisplay:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToNextThird]) {
         selector = @selector(moveFrontMostWindowToNextThird:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {

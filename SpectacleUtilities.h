@@ -20,7 +20,7 @@
 
 #pragma mark -
 
-#define MovingToDisplay(action) ((action >= SpectacleWindowActionLeftDisplay) && (action <= SpectacleWindowActionBottomDisplay))
+#define MovingToNextOrPreviousDisplay(action) ((action == SpectacleWindowActionNextDisplay) || (action == SpectacleWindowActionPreviousDisplay))
 
 #pragma mark -
 

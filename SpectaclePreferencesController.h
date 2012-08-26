@@ -17,10 +17,8 @@
     IBOutlet ZeroKitHotKeyRecorder *myMoveToLowerLeftHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToUpperRightHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToLowerRightHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftDisplayHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToRightDisplayHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToTopDisplayHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToNextDisplayHotKeyRecorder;
+    IBOutlet ZeroKitHotKeyRecorder *myMoveToPreviousDisplayHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToNextThirdHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myMoveToPreviousThirdHotKeyRecorder;
     IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;

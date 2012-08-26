@@ -3,13 +3,15 @@
 
 @interface SpectacleScreenDetection (SpectacleScreenDetectionPrivate)
 
-+ (NSScreen *)screenAdjacentToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action;
-
 + (NSScreen *)screenContainingRect: (CGRect)rect;
 
 #pragma mark -
 
 + (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
+
+#pragma mark -
+
++ (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action;
 
 @end
 
@@ -20,8 +22,8 @@
 + (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
     NSScreen *result = [self screenContainingRect: rect];
     
-    if (MovingToDisplay(action)) {
-        result = [self screenAdjacentToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action];
+    if (MovingToNextOrPreviousDisplay(action)) {
+        result = [self nextOrPreviousScreenToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action];
     }
     
     return result;
@@ -32,30 +34,6 @@
 #pragma mark -
 
 @implementation SpectacleScreenDetection (SpectacleScreenDetectionPrivate)
-
-+ (NSScreen *)screenAdjacentToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
-    NSScreen *result = nil;
-    
-    for (NSScreen *currentScreen in [NSScreen screens]) {
-        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
-        
-        if (CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
-            continue;
-        }
-        
-        if ((action == SpectacleWindowActionLeftDisplay) && RectIsLeftOfRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        } else if ((action == SpectacleWindowActionRightDisplay) && RectIsRightOfRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        } else if ((action == SpectacleWindowActionTopDisplay) && RectIsAboveRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        } else if ((action == SpectacleWindowActionBottomDisplay) && RectIsBelowRect(currentFrameOfScreen, frameOfScreen)) {
-            result = currentScreen;
-        }
-    }
-    
-    return result;
-}
 
 + (NSScreen *)screenContainingRect: (CGRect)rect {
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
@@ -94,6 +72,45 @@
     
     if (!CGRectIsNull(intersectionOfRectAndFrameOfScreen)) {
         result = AreaOfRect(intersectionOfRectAndFrameOfScreen) / AreaOfRect(rect);
+    }
+    
+    return result;
+}
+
+#pragma mark -
+
++ (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
+    NSArray *screens = [NSScreen screens];
+    NSScreen *result = nil;
+    
+    if ([screens count] <= 1) {
+        return result;
+    }
+    
+    for (NSInteger i = 0; i < [screens count]; i++) {
+        NSScreen *currentScreen = [screens objectAtIndex: i];
+        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
+        NSInteger nextOrPreviousIndex = i;
+        
+        if (!CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
+            continue;
+        }
+        
+        if (action == SpectacleWindowActionNextDisplay) {
+            nextOrPreviousIndex++;
+        } else if (action == SpectacleWindowActionPreviousDisplay) {
+            nextOrPreviousIndex--;
+        }
+        
+        if (nextOrPreviousIndex < 0) {
+            nextOrPreviousIndex = [screens count] - 1;
+        } else if (nextOrPreviousIndex >= [screens count]) {
+            nextOrPreviousIndex = 0;
+        }
+        
+        result = [screens objectAtIndex: nextOrPreviousIndex];
+        
+        break;
     }
     
     return result;

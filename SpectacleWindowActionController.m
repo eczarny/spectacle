@@ -79,20 +79,12 @@
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToLeftDisplay: (id)sender {
-    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftDisplay];
+- (IBAction)moveFrontMostWindowToNextDisplay: (id)sender {
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionNextDisplay];
 }
 
-- (IBAction)moveFrontMostWindowToRightDisplay: (id)sender {
-    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightDisplay];
-}
-
-- (IBAction)moveFrontMostWindowToTopDisplay: (id)sender {
-    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopDisplay];
-}
-
-- (IBAction)moveFrontMostWindowToBottomDisplay: (id)sender {
-    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomDisplay];
+- (IBAction)moveFrontMostWindowToPreviousDisplay: (id)sender {
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionPreviousDisplay];
 }
 
 #pragma mark -

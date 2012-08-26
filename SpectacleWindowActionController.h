@@ -41,13 +41,9 @@
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToLeftDisplay: (id)sender;
+- (IBAction)moveFrontMostWindowToNextDisplay: (id)sender;
 
-- (IBAction)moveFrontMostWindowToRightDisplay: (id)sender;
-
-- (IBAction)moveFrontMostWindowToTopDisplay: (id)sender;
-
-- (IBAction)moveFrontMostWindowToBottomDisplay: (id)sender;
+- (IBAction)moveFrontMostWindowToPreviousDisplay: (id)sender;
 
 #pragma mark -
 
