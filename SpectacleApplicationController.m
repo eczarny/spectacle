@@ -61,8 +61,6 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference]) {
         [self createStatusItem];
     }
-    
-    [SpectacleUtilities displayAppStoreAlert];
 }
 
 #pragma mark -
