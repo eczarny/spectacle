@@ -228,9 +228,19 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZeroKitAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
+    CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: [self frontMostWindowElement]];
+    
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
 
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: [self frontMostWindowElement]];
+    
+    if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
+        NSBeep();
+        
+        [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
+        
+        return;
+    }
     
     movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
     
