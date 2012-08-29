@@ -24,6 +24,10 @@
 
 #pragma mark -
 
+#define WindowRectToString(windowRect) [NSString stringWithFormat: @"(%f, %f) %fx%f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
+
+#pragma mark -
+
 @interface SpectacleUtilities : ZeroKitUtilities
 
 + (void)displayAccessibilityAPIAlert;

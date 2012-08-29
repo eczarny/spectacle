@@ -24,6 +24,7 @@ typedef enum {
 @interface SpectacleWindowPositionManager : NSObject {
     NSMutableDictionary *myUndoHistory;
     NSMutableDictionary *myRedoHistory;
+    NSMutableSet *myBlacklistedWindowRects;
 }
 
 + (SpectacleWindowPositionManager *)sharedManager;

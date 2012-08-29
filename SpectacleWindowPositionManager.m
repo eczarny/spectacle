@@ -25,9 +25,17 @@
 
 #pragma mark -
 
+#define BlacklistedWindowRect(applicationName, windowRect) [NSString stringWithFormat: @"%@ - %@", applicationName, WindowRectToString(windowRect)]
+
+#pragma mark -
+
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (ZeroKitAccessibilityElement *)frontMostWindowElement;
+
+#pragma mark -
+
+- (NSString *)frontMostApplicationName;
 
 #pragma mark -
 
@@ -79,6 +87,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     if ((self = [super init])) {
         myUndoHistory = [[NSMutableDictionary dictionary] retain];
         myRedoHistory = [[NSMutableDictionary dictionary] retain];
+        myBlacklistedWindowRects = [[NSMutableSet set] retain];
     }
     
     return self;
@@ -177,6 +186,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (void)dealloc {
     [myUndoHistory release];
     [myRedoHistory release];
+    [myBlacklistedWindowRects release];
     
     [super dealloc];
 }
@@ -207,6 +217,15 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
+- (NSString *)frontMostApplicationName {
+    ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];
+    ZeroKitAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    
+    return [applicationWithFocusElement stringValueOfAttribute: kAXTitleAttribute];
+}
+
+#pragma mark -
+
 - (CGRect)rectOfWindowWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement {
     CGRect result = CGRectNull;
     
@@ -228,6 +247,15 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZeroKitAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
+    NSString *frontMostApplicationName = [self frontMostApplicationName];
+    NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
+    
+    if ([myBlacklistedWindowRects containsObject: blacklistedWindowRect]) {
+        NSBeep();
+        
+        return;
+    }
+    
     CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: [self frontMostWindowElement]];
     
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
@@ -236,6 +264,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
         NSBeep();
+        
+        [myBlacklistedWindowRects addObject: blacklistedWindowRect];
         
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         
