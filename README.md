@@ -4,9 +4,9 @@ Spectacle allows you to easily organize your windows without using a mouse.
 
 # Requirements
 
-Spectacle has been built, and designed, for Mac OS X 10.6 or later.
+Spectacle has been built, and designed, for OS X 10.7 or later. Xcode 4.4.1 is recommended for building the project.
 
-Those building the standalone application only need [ZeroKit] [2], which can be pulled down as a submodule with the following commands:
+Those building Spectacle only need [ZeroKit] [2], which can be pulled down as a submodule with the following commands:
 
     $ git submodule init
     $ git submodule update
