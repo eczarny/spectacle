@@ -46,3 +46,7 @@
 
 #define SpectacleStatusItemEnabledPreference          @"StatusItemEnabled"
 #define SpectacleBackgroundAlertSuppressedPreference  @"BackgroundAlertSuppressed"
+
+#pragma mark -
+
+#define SpectacleApplicationBlacklistPreference       @"ApplicationBlacklist"

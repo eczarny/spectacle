@@ -85,9 +85,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (id)init {
     if ((self = [super init])) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
         myUndoHistory = [[NSMutableDictionary dictionary] retain];
         myRedoHistory = [[NSMutableDictionary dictionary] retain];
-        myBlacklistedWindowRects = [[NSMutableSet set] retain];
+        myBlacklistedWindowRects = [[NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleApplicationBlacklistPreference]] retain];
     }
     
     return self;
@@ -263,9 +265,13 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: [self frontMostWindowElement]];
     
     if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        
         NSBeep();
         
         [myBlacklistedWindowRects addObject: blacklistedWindowRect];
+        
+        [userDefaults setObject: [myBlacklistedWindowRects allObjects] forKey: SpectacleApplicationBlacklistPreference];
         
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         
