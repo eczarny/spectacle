@@ -62,6 +62,7 @@
 + (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
     NSArray *screens = NSScreen.screens;
     NSScreen *result = nil;
+    NSInteger lastDelta = 0;
     
     if (screens.count <= 1) {
         return result;
@@ -70,27 +71,19 @@
     for (NSInteger i = 0; i < screens.count; i++) {
         NSScreen *currentScreen = screens[i];
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
-        NSInteger nextOrPreviousIndex = i;
         
-        if (!CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
+        if (CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
             continue;
         }
-        
-        if (action == SpectacleWindowActionNextDisplay) {
-            nextOrPreviousIndex++;
-        } else if (action == SpectacleWindowActionPreviousDisplay) {
-            nextOrPreviousIndex--;
+
+        NSInteger screenDelta = (frameOfScreen.origin.x - currentFrameOfScreen.origin.x) ;
+        NSInteger dir = (action == SpectacleWindowActionNextDisplay) ? -1 : 1;
+
+        if (screenDelta * dir > 0 &&
+            (result == nil || (screenDelta * dir) < lastDelta)) {
+            result = [screens objectAtIndex: i];
+            lastDelta = screenDelta * dir;
         }
-        
-        if (nextOrPreviousIndex < 0) {
-            nextOrPreviousIndex = screens.count - 1;
-        } else if (nextOrPreviousIndex >= screens.count) {
-            nextOrPreviousIndex = 0;
-        }
-        
-        result = screens[nextOrPreviousIndex];
-        
-        break;
     }
     
     return result;
