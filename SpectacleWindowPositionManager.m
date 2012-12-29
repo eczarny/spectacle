@@ -12,6 +12,7 @@
 #pragma mark -
 
 #define MovingToThirdOfDisplay(action) ((action == SpectacleWindowActionNextThird) || (action == SpectacleWindowActionPreviousThird))
+#define MovingToTwoThirdsOfDisplay(action) ((action == SpectacleWindowActionNextTwoThirds) || (action == SpectacleWindowActionPreviousTwoThirds))
 
 #pragma mark -
 
@@ -315,7 +316,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         windowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
         windowRect.origin.x = floor(visibleFrameOfScreen.size.width / 2.0f) - floor(windowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
-    } else if (!MovingToThirdOfDisplay(action)) {
+    } else if (!MovingToThirdOfDisplay(action) && !MovingToTwoThirdsOfDisplay(action)) {
         windowRect.origin.x = visibleFrameOfScreen.origin.x;
     }
     
@@ -323,7 +324,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         windowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
         windowRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) - floor(windowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
-    } else if (!MovingToThirdOfDisplay(action)) {
+    } else if (!MovingToThirdOfDisplay(action) && !MovingToTwoThirdsOfDisplay(action)) {
         windowRect.origin.y = visibleFrameOfScreen.origin.y;
     }
     
@@ -336,13 +337,17 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)) {
         windowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
         windowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
-    } else if (!MovingToCenterRegionOfDisplay(action) && !MovingToThirdOfDisplay(action)) {
+    } else if (!MovingToCenterRegionOfDisplay(action) && !MovingToThirdOfDisplay(action) && !MovingToTwoThirdsOfDisplay(action)) {
         windowRect.size.width = visibleFrameOfScreen.size.width;
         windowRect.size.height = visibleFrameOfScreen.size.height;
     }
     
     if (MovingToThirdOfDisplay(action)) {
         windowRect = [self findThirdForFrontMostWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+    }
+    
+    if (MovingToTwoThirdsOfDisplay(action)) {
+        windowRect = [self findTwoThirdForFrontMostWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     }
     
     if (MovingToTopRegionOfDisplay(action)) {
@@ -420,6 +425,69 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         }
         
         [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement: nil windowRect: thirdOfScreen]];
+    }
+    
+    return result;
+}
+
+- (NSArray *)twoThirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
+    NSMutableArray *result = [NSMutableArray array];
+    NSInteger i = 0;
+    
+    for (i = 0; i < 2; i++) {
+        CGRect twoThirdsOfScreen = visibleFrameOfScreen;
+        
+        twoThirdsOfScreen.origin.x = visibleFrameOfScreen.origin.x + (floor(visibleFrameOfScreen.size.width / 3.0f) * i);
+        twoThirdsOfScreen.size.width = floor(visibleFrameOfScreen.size.width / 3.0f * 2.0f);
+        
+        if(i == 0) {
+            twoThirdsOfScreen.size.width -= 1.0f;
+        }
+        
+        [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement:nil windowRect:twoThirdsOfScreen]];
+    }
+    
+    for (i = 0;  i < 2;  i++) {
+        CGRect twoThirdsOfScreen = visibleFrameOfScreen;
+        
+        twoThirdsOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - (floor(visibleFrameOfScreen.size.height / 3.0f) * (i + 1));
+        twoThirdsOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f * 2.0f);
+        
+        if (i == 1) {
+            twoThirdsOfScreen.origin.y = twoThirdsOfScreen.origin.y - 1.0f;
+            twoThirdsOfScreen.size.height = twoThirdsOfScreen.size.height + 1.0f;
+        }
+
+        [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement:nil windowRect:twoThirdsOfScreen]];
+    }
+    return result;
+}
+
+- (CGRect)findTwoThirdForFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    NSArray *thirds = [self twoThirdsFromVisibleFrameOfScreen: visibleFrameOfScreen];
+    CGRect result = [[thirds objectAtIndex: 0] windowRect];
+    NSInteger i = 0;
+    
+    for (i = 0; i < [thirds count]; i++) {
+        CGRect currentWindowRect = [[thirds objectAtIndex: i] windowRect];
+        
+        if (CGRectEqualToRect(currentWindowRect, frontMostWindowRect)) {
+            NSInteger j = i;
+            
+            if (action == SpectacleWindowActionNextTwoThirds) {
+                if (++j >= [thirds count]) {
+                    j = 0;
+                }
+            } else if (action == SpectacleWindowActionPreviousTwoThirds) {
+                if (--j < 0) {
+                    j = [thirds count] - 1;
+                }
+            }
+            
+            result = [[thirds objectAtIndex: j] windowRect];
+            
+            break;
+        }
     }
     
     return result;
