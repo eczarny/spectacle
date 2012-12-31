@@ -438,11 +438,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         CGRect twoThirdsOfScreen = visibleFrameOfScreen;
         
         twoThirdsOfScreen.origin.x = visibleFrameOfScreen.origin.x + (floor(visibleFrameOfScreen.size.width / 3.0f) * i);
-        twoThirdsOfScreen.size.width = floor(visibleFrameOfScreen.size.width / 3.0f * 2.0f);
-        
-        if(i == 0) {
-            twoThirdsOfScreen.size.width -= 1.0f;
-        }
+        twoThirdsOfScreen.size.width = floor(visibleFrameOfScreen.size.width / 3.0f) * 2.0f;
         
         [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement:nil windowRect:twoThirdsOfScreen]];
     }
@@ -450,8 +446,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     for (i = 0;  i < 2;  i++) {
         CGRect twoThirdsOfScreen = visibleFrameOfScreen;
         
-        twoThirdsOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - (floor(visibleFrameOfScreen.size.height / 3.0f) * (i + 1));
-        twoThirdsOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f * 2.0f);
+        twoThirdsOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - ((floor(visibleFrameOfScreen.size.height / 3.0f) * 2) * (i + 1));
+        twoThirdsOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f) * 2.0f;
         
         if (i == 1) {
             twoThirdsOfScreen.origin.y = twoThirdsOfScreen.origin.y - 1.0f;
