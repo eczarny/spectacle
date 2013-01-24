@@ -99,6 +99,16 @@
 
 #pragma mark -
 
+- (IBAction)moveFrontMostWindowToNextTwoThirds:(id)sender {
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionNextTwoThirds];
+}
+
+- (IBAction)moveFrontMostWindowToPreviousTwoThirds:(id)sender {
+    [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionPreviousTwoThirds];
+}
+
+#pragma mark -
+
 - (IBAction)undoLastWindowAction: (id)sender {
     [myWindowPositionManager undoLastWindowAction];
 }

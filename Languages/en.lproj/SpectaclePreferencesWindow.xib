@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.SystemVersion">12C3012</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2549</string>
+			<string key="NS.object.0">2844</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSBox</string>
@@ -74,7 +74,7 @@
 							<reference key="NSNextKeyView" ref="334450674"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="24816078">
-								<int key="NSCellFlags">134348288</int>
+								<int key="NSCellFlags">134217728</int>
 								<int key="NSCellFlags2">33554432</int>
 								<object class="NSCustomResource" key="NSContents">
 									<string key="NSClassName">NSImage</string>
@@ -85,6 +85,7 @@
 								<int key="NSStyle">0</int>
 								<bool key="NSAnimates">NO</bool>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 							<bool key="NSEditable">YES</bool>
 						</object>
 						<object class="NSTextField" id="334450674">
@@ -96,7 +97,7 @@
 							<reference key="NSNextKeyView" ref="629140152"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="778056148">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Center:</string>
 								<object class="NSFont" key="NSSupport" id="451733591">
@@ -124,6 +125,7 @@
 									</object>
 								</object>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="629140152">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -143,7 +145,7 @@
 							<reference key="NSNextKeyView" ref="559645078"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="931172033">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Fullscreen:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -151,6 +153,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="559645078">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -170,7 +173,7 @@
 							<reference key="NSNextKeyView" ref="216237081"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="509993905">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Left Half:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -178,6 +181,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="216237081">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -197,7 +201,7 @@
 							<reference key="NSNextKeyView" ref="854798695"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="230938934">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Right Half:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -205,6 +209,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="854798695">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -224,7 +229,7 @@
 							<reference key="NSNextKeyView" ref="665817787"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="470196759">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Top Half:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -232,6 +237,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="665817787">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -239,7 +245,7 @@
 							<string key="NSFrame">{{140, 258}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="363827317"/>
+							<reference key="NSNextKeyView" ref="969835109"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="363827317">
@@ -251,7 +257,7 @@
 							<reference key="NSNextKeyView" ref="4001916"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="981851082">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Bottom Half:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -259,6 +265,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="4001916">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -266,7 +273,7 @@
 							<string key="NSFrame">{{140, 229}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="986017371"/>
+							<reference key="NSNextKeyView" ref="661727928"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="835040599">
@@ -278,7 +285,7 @@
 							<reference key="NSNextKeyView" ref="54016738"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="655515204">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Upper Left:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -286,6 +293,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="54016738">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -293,7 +301,7 @@
 							<string key="NSFrame">{{140, 171}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="951202879"/>
+							<reference key="NSNextKeyView" ref="986017371"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="951202879">
@@ -305,7 +313,7 @@
 							<reference key="NSNextKeyView" ref="415483681"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="78831816">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Lower Left:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -313,6 +321,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="415483681">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -320,7 +329,7 @@
 							<string key="NSFrame">{{140, 142}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="289383272"/>
+							<reference key="NSNextKeyView" ref="329619471"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="289383272">
@@ -332,7 +341,7 @@
 							<reference key="NSNextKeyView" ref="928222524"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="692468810">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Upper Right:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -340,6 +349,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="928222524">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -359,7 +369,7 @@
 							<reference key="NSNextKeyView" ref="562089500"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="494314497">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Lower Right:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -367,6 +377,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="562089500">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -386,7 +397,7 @@
 							<reference key="NSNextKeyView" ref="1063450049"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="220645160">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Next Display:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -394,6 +405,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="1063450049">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -413,7 +425,7 @@
 							<reference key="NSNextKeyView" ref="292546697"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="835616882">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Previous Display:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -421,6 +433,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="292546697">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -440,7 +453,7 @@
 							<reference key="NSNextKeyView" ref="145974905"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="839488541">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Next Third:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -448,6 +461,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="145974905">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -467,7 +481,7 @@
 							<reference key="NSNextKeyView" ref="1070576972"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="870934576">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Previous Third:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -475,6 +489,7 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="1070576972">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -485,16 +500,72 @@
 							<reference key="NSNextKeyView" ref="432102645"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
+						<object class="NSTextField" id="969835109">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{304, 258}, {113, 17}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="206194805"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="930977472">
+								<int key="NSCellFlags">68157504</int>
+								<int key="NSCellFlags2">71304192</int>
+								<string key="NSContents">Next Two Thirds:</string>
+								<reference key="NSSupport" ref="451733591"/>
+								<reference key="NSControlView" ref="969835109"/>
+								<reference key="NSBackgroundColor" ref="832006892"/>
+								<reference key="NSTextColor" ref="1049168080"/>
+							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						</object>
+						<object class="NSCustomView" id="206194805">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{422, 256}, {140, 21}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="363827317"/>
+							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+						</object>
+						<object class="NSTextField" id="661727928">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{281, 229}, {136, 17}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="300732959"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="362261872">
+								<int key="NSCellFlags">68157504</int>
+								<int key="NSCellFlags2">71304192</int>
+								<string key="NSContents">Previous Two Thirds:</string>
+								<reference key="NSSupport" ref="451733591"/>
+								<reference key="NSControlView" ref="661727928"/>
+								<reference key="NSBackgroundColor" ref="832006892"/>
+								<reference key="NSTextColor" ref="1049168080"/>
+							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+						</object>
+						<object class="NSCustomView" id="300732959">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{422, 227}, {140, 21}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="835040599"/>
+							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+						</object>
 						<object class="NSTextField" id="986017371">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{313, 231}, {104, 17}}</string>
+							<string key="NSFrame">{{313, 171}, {104, 17}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="396480327"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="209913434">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Undo:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -502,26 +573,27 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="396480327">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{422, 229}, {140, 21}}</string>
+							<string key="NSFrame">{{422, 169}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="329619471"/>
+							<reference key="NSNextKeyView" ref="951202879"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="329619471">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{313, 202}, {104, 17}}</string>
+							<string key="NSFrame">{{313, 142}, {104, 17}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="703184041"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="958195486">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">71304192</int>
 								<string key="NSContents">Redo:</string>
 								<reference key="NSSupport" ref="451733591"/>
@@ -529,14 +601,16 @@
 								<reference key="NSBackgroundColor" ref="832006892"/>
 								<reference key="NSTextColor" ref="1049168080"/>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 						<object class="NSCustomView" id="703184041">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{422, 200}, {140, 21}}</string>
+							<array class="NSMutableArray" key="NSSubviews"/>
+							<string key="NSFrame">{{422, 140}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="835040599"/>
+							<reference key="NSNextKeyView" ref="289383272"/>
 							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="NSBox" id="325623976">
@@ -556,12 +630,12 @@
 											<reference key="NSNextKeyView" ref="977980798"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="567920615">
-												<int key="NSCellFlags">67239424</int>
+												<int key="NSCellFlags">67108864</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents">Launch Spectacle at login</string>
 												<reference key="NSSupport" ref="451733591"/>
 												<reference key="NSControlView" ref="1046001229"/>
-												<int key="NSButtonFlags">1211912703</int>
+												<int key="NSButtonFlags">1211912448</int>
 												<int key="NSButtonFlags2">2</int>
 												<object class="NSCustomResource" key="NSNormalImage">
 													<string key="NSClassName">NSImage</string>
@@ -575,6 +649,7 @@
 												<int key="NSPeriodicDelay">200</int>
 												<int key="NSPeriodicInterval">25</int>
 											</object>
+											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 										</object>
 										<object class="NSTextField" id="977980798">
 											<reference key="NSNextResponder" ref="730268159"/>
@@ -585,7 +660,7 @@
 											<reference key="NSNextKeyView" ref="275860819"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="836323688">
-												<int key="NSCellFlags">68288064</int>
+												<int key="NSCellFlags">68157504</int>
 												<int key="NSCellFlags2">71304192</int>
 												<string key="NSContents">Run...</string>
 												<reference key="NSSupport" ref="451733591"/>
@@ -601,6 +676,7 @@
 													</object>
 												</object>
 											</object>
+											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 										</object>
 										<object class="NSPopUpButton" id="275860819">
 											<reference key="NSNextResponder" ref="730268159"/>
@@ -612,12 +688,12 @@
 											<string key="NSReuseIdentifierKey">_NS:868</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="662458338">
-												<int key="NSCellFlags">-2076049856</int>
+												<int key="NSCellFlags">-2076180416</int>
 												<int key="NSCellFlags2">2048</int>
 												<reference key="NSSupport" ref="451733591"/>
 												<string key="NSCellIdentifier">_NS:868</string>
 												<reference key="NSControlView" ref="275860819"/>
-												<int key="NSButtonFlags">109199615</int>
+												<int key="NSButtonFlags">109199360</int>
 												<int key="NSButtonFlags2">129</int>
 												<string key="NSAlternateContents"/>
 												<string key="NSKeyEquivalent"/>
@@ -664,6 +740,7 @@
 												<bool key="NSAltersState">YES</bool>
 												<int key="NSArrowPosition">2</int>
 											</object>
+											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 										</object>
 									</array>
 									<string key="NSFrame">{{1, 1}, {626, 48}}</string>
@@ -680,7 +757,7 @@
 							<string key="NSReuseIdentifierKey">_NS:18</string>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
-								<int key="NSCellFlags">67239424</int>
+								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents"/>
 								<object class="NSFont" key="NSSupport">
@@ -715,7 +792,7 @@
 					<reference key="NSNextKeyView" ref="567345716"/>
 					<string key="NSReuseIdentifierKey">_NS:224</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -890,6 +967,22 @@
 					</object>
 					<int key="connectionID">124</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myMoveToNextTwoThirdsHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="206194805"/>
+					</object>
+					<int key="connectionID">132</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">myMoveToPreviousTwoThirdsHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="300732959"/>
+					</object>
+					<int key="connectionID">133</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -963,16 +1056,12 @@
 							<reference ref="396480327"/>
 							<reference ref="329619471"/>
 							<reference ref="703184041"/>
+							<reference ref="969835109"/>
+							<reference ref="206194805"/>
+							<reference ref="661727928"/>
+							<reference ref="300732959"/>
 						</array>
 						<reference key="parent" ref="533468141"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="567345716"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="24816078"/>
-						</array>
-						<reference key="parent" ref="253082788"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
@@ -1298,11 +1387,6 @@
 						<reference key="parent" ref="622074041"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">64</int>
-						<reference key="object" ref="24816078"/>
-						<reference key="parent" ref="567345716"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">113</int>
 						<reference key="object" ref="986017371"/>
 						<array class="NSMutableArray" key="children">
@@ -1326,6 +1410,7 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">116</int>
 						<reference key="object" ref="703184041"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="253082788"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -1337,6 +1422,55 @@
 						<int key="objectID">118</int>
 						<reference key="object" ref="209913434"/>
 						<reference key="parent" ref="986017371"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">5</int>
+						<reference key="object" ref="567345716"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="24816078"/>
+						</array>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">64</int>
+						<reference key="object" ref="24816078"/>
+						<reference key="parent" ref="567345716"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">125</int>
+						<reference key="object" ref="969835109"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="930977472"/>
+						</array>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">126</int>
+						<reference key="object" ref="206194805"/>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">127</int>
+						<reference key="object" ref="661727928"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="362261872"/>
+						</array>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">128</int>
+						<reference key="object" ref="300732959"/>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">129</int>
+						<reference key="object" ref="362261872"/>
+						<reference key="parent" ref="661727928"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">130</int>
+						<reference key="object" ref="930977472"/>
+						<reference key="parent" ref="969835109"/>
 					</object>
 				</array>
 			</object>
@@ -1353,7 +1487,13 @@
 				<string key="117.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="118.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="125.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="126.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="127.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="128.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="129.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="130.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1414,7 +1554,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">124</int>
+			<int key="maxID">133</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1455,8 +1595,10 @@
 						<string key="myMoveToLowerRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToNextDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToNextThirdHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToNextTwoThirdsHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToPreviousDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToPreviousThirdHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToPreviousTwoThirdsHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToTopHotKeyRecorder">ZeroKitHotKeyRecorder</string>
 						<string key="myMoveToUpperLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
@@ -1502,12 +1644,20 @@
 							<string key="name">myMoveToNextThirdHotKeyRecorder</string>
 							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="myMoveToNextTwoThirdsHotKeyRecorder">
+							<string key="name">myMoveToNextTwoThirdsHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToPreviousDisplayHotKeyRecorder">
 							<string key="name">myMoveToPreviousDisplayHotKeyRecorder</string>
 							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToPreviousThirdHotKeyRecorder">
 							<string key="name">myMoveToPreviousThirdHotKeyRecorder</string>
+							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="myMoveToPreviousTwoThirdsHotKeyRecorder">
+							<string key="name">myMoveToPreviousTwoThirdsHotKeyRecorder</string>
 							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToRightHotKeyRecorder">

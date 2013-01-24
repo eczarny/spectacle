@@ -30,6 +30,9 @@
 #define SpectacleWindowActionMoveToNextThird          @"MoveToNextThird"
 #define SpectacleWindowActionMoveToPreviousThird      @"MoveToPreviousThird"
 
+#define SpectacleWindowActionMoveToNextTwoThirds     @"MoveToNextTwoThirds"
+#define SpectacleWindowActionMoveToPreviousTwoThirds @"MoveToPreviousTwoThirds"
+
 #define SpectacleWindowActionUndoLastMove             @"UndoLastMove"
 #define SpectacleWindowActionRedoLastMove             @"RedoLastMove"
 
