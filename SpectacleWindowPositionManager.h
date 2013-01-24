@@ -18,7 +18,9 @@ typedef enum {
     SpectacleWindowActionNextDisplay,
     SpectacleWindowActionPreviousDisplay,
     SpectacleWindowActionNextThird,
-    SpectacleWindowActionPreviousThird
+    SpectacleWindowActionPreviousThird,
+    SpectacleWindowActionNextTwoThirds,
+    SpectacleWindowActionPreviousTwoThirds
 } SpectacleWindowAction;
 
 @interface SpectacleWindowPositionManager : NSObject {
