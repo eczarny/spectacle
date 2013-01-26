@@ -86,10 +86,13 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (id)init {
     if ((self = [super init])) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *path = [[SpectacleUtilities applicationBundle] pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
+                                                                          ofType: ZeroKitPropertyListFileExtension];
         
         myUndoHistory = [[NSMutableDictionary dictionary] retain];
         myRedoHistory = [[NSMutableDictionary dictionary] retain];
-        myBlacklistedWindowRects = [[NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleApplicationBlacklistPreference]] retain];
+        myBlacklistedWindowRects = [[NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]] retain];
+        myBlacklistedApplications = [[NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]] retain];
     }
     
     return self;
@@ -252,7 +255,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     NSString *frontMostApplicationName = [self frontMostApplicationName];
     NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
     
-    if ([myBlacklistedWindowRects containsObject: blacklistedWindowRect]) {
+    if ([myBlacklistedWindowRects containsObject: blacklistedWindowRect] || [myBlacklistedApplications containsObject: frontMostApplicationName]) {
         NSBeep();
         
         return;
@@ -271,7 +274,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         
         [myBlacklistedWindowRects addObject: blacklistedWindowRect];
         
-        [userDefaults setObject: [myBlacklistedWindowRects allObjects] forKey: SpectacleApplicationBlacklistPreference];
+        [userDefaults setObject: [myBlacklistedWindowRects allObjects] forKey: SpectacleBlacklistedWindowRectsPreference];
         
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         

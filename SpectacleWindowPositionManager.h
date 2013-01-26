@@ -25,6 +25,7 @@ typedef enum {
     NSMutableDictionary *myUndoHistory;
     NSMutableDictionary *myRedoHistory;
     NSMutableSet *myBlacklistedWindowRects;
+    NSMutableSet *myBlacklistedApplications;
 }
 
 + (SpectacleWindowPositionManager *)sharedManager;
