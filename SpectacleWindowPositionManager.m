@@ -137,7 +137,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
     }
     
-    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen)) {
+    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
         NSBeep();
         
         return;
