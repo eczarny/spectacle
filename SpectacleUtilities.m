@@ -89,7 +89,7 @@
             
             [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
             
-            [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
+            [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: defaultHotKeys[hotKeyName]];
             
             [hotKeys addObject: hotKey];
         }
@@ -197,10 +197,10 @@
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary dictionary];
     
     for (NSString *hotKeyName in names) {
-        NSData *defaultHotKeyData = [applicationDefaults objectForKey: hotKeyName];
+        NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
         ZeroKitHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
         
-        [defaultHotKeys setObject: defaultHotKey forKey: hotKeyName];
+        defaultHotKeys[hotKeyName] = defaultHotKey;
     }
     
     return defaultHotKeys;

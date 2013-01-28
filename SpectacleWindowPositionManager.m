@@ -430,11 +430,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (CGRect)findThirdForFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
     NSArray *thirds = [self thirdsFromVisibleFrameOfScreen: visibleFrameOfScreen];
-    CGRect result = [[thirds objectAtIndex: 0] windowRect];
+    CGRect result = [thirds[0] windowRect];
     NSInteger i = 0;
     
     for (i = 0; i < [thirds count]; i++) {
-        CGRect currentWindowRect = [[thirds objectAtIndex: i] windowRect];
+        CGRect currentWindowRect = [thirds[i] windowRect];
         
         if (CGRectEqualToRect(currentWindowRect, frontMostWindowRect)) {
             NSInteger j = i;
@@ -449,7 +449,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
                 }
             }
             
-            result = [[thirds objectAtIndex: j] windowRect];
+            result = [thirds[j] windowRect];
             
             break;
         }
@@ -471,11 +471,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (NSMutableArray *)currentUndoHistory {
-    return [myUndoHistory objectForKey: [self currentWorkspaceKey]];
+    return myUndoHistory[[self currentWorkspaceKey]];
 }
 
 - (NSMutableArray *)currentRedoHistory {
-    return [myUndoHistory objectForKey: [self currentWorkspaceKey]];
+    return myUndoHistory[[self currentWorkspaceKey]];
 }
 
 #pragma mark -
@@ -527,7 +527,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)addHistoryItemToUndoHistory: (SpectacleHistoryItem *)historyItem {
     if (![self currentUndoHistory]) {
-        [myUndoHistory setObject: [NSMutableArray array] forKey: [self currentWorkspaceKey]];
+        myUndoHistory[[self currentWorkspaceKey]] = [NSMutableArray array];
     }
     
     if ([[self currentUndoHistory] count] >= SpectacleWindowActionHistorySize) {
@@ -539,7 +539,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem {
     if (![self currentRedoHistory]) {
-        [myRedoHistory setObject: [NSMutableArray array] forKey: [self currentWorkspaceKey]];
+        myRedoHistory[[self currentWorkspaceKey]] = [NSMutableArray array];
     }
     
     if ([[self currentRedoHistory] count] >= SpectacleWindowActionHistorySize) {

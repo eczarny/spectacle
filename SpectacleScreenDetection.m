@@ -88,7 +88,7 @@
     }
     
     for (NSInteger i = 0; i < [screens count]; i++) {
-        NSScreen *currentScreen = [screens objectAtIndex: i];
+        NSScreen *currentScreen = screens[i];
         CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
         NSInteger nextOrPreviousIndex = i;
         
@@ -108,7 +108,7 @@
             nextOrPreviousIndex = 0;
         }
         
-        result = [screens objectAtIndex: nextOrPreviousIndex];
+        result = screens[nextOrPreviousIndex];
         
         break;
     }

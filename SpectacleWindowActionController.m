@@ -21,7 +21,7 @@
     NSMutableDictionary *hotKeysFromUserDefaults = [NSMutableDictionary dictionary];
     
     for (NSString *hotKeyName in [SpectacleUtilities hotKeyNames]) {
-        [hotKeysFromUserDefaults setObject: [userDefaults dataForKey: hotKeyName] forKey: hotKeyName];
+        hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
     }
     
     [myHotKeyManager registerHotKeys: [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults hotKeyTarget: self]];

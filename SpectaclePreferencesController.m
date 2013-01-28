@@ -146,7 +146,7 @@
     SpectacleHotKeyValidator *hotKeyValidator = [[SpectacleHotKeyValidator alloc] init];
     
     for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
-        ZeroKitHotKeyRecorder *hotKeyRecorder = [myHotKeyRecorders objectForKey: hotKeyName];
+        ZeroKitHotKeyRecorder *hotKeyRecorder = myHotKeyRecorders[hotKeyName];
         ZeroKitHotKey *hotKey = [myHotKeyManager registeredHotKeyForName: hotKeyName];
         
         [hotKeyRecorder setHotKeyName: hotKeyName];
@@ -157,7 +157,7 @@
         
         [hotKeyRecorder setDelegate: self];
         
-        [hotKeyRecorder setAdditionalHotKeyValidators: [NSArray arrayWithObject: hotKeyValidator]];
+        [hotKeyRecorder setAdditionalHotKeyValidators: @[hotKeyValidator]];
     }
     
     [hotKeyValidator release];
