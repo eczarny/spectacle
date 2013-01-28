@@ -422,7 +422,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -605,8 +605,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 			};
 			name = Development;
 		};
@@ -614,8 +612,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 			};
 			name = Release;
 		};
@@ -624,8 +620,6 @@
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
 			};
 			name = Development;
 		};
@@ -634,8 +628,6 @@
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
 			};
 			name = Release;
 		};

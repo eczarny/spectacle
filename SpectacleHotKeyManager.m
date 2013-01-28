@@ -83,8 +83,8 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyID.signature = 'ZERO';
     hotKeyID.id = ++myCurrentHotKeyID;
     
-    err = RegisterEventHotKey([hotKey hotKeyCode],
-                              [hotKey hotKeyModifiers],
+    err = RegisterEventHotKey((UInt32)[hotKey hotKeyCode],
+                              (UInt32)[hotKey hotKeyModifiers],
                               hotKeyID,
                               GetEventDispatcherTarget(),
                               0,

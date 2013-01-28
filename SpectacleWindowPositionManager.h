@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <ZeroKit/ZeroKit.h>
 
-typedef enum {
+enum {
     SpectacleWindowActionUndo = -3,
     SpectacleWindowActionRedo,
     SpectacleWindowActionNone,
@@ -19,7 +19,9 @@ typedef enum {
     SpectacleWindowActionPreviousDisplay,
     SpectacleWindowActionNextThird,
     SpectacleWindowActionPreviousThird
-} SpectacleWindowAction;
+};
+
+typedef NSInteger SpectacleWindowAction;
 
 @interface SpectacleWindowPositionManager : NSObject {
     NSMutableDictionary *myUndoHistory;

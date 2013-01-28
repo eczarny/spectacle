@@ -15,16 +15,6 @@
 
 #pragma mark -
 
-#define CurrentWorkspace [SpectacleUtilities currentWorkspace]
-#define CurrentWorkspaceKey [NSString stringWithFormat: @"Workspace%d", CurrentWorkspace]
-
-#pragma mark -
-
-#define CurrentUndoHistory [myUndoHistory objectForKey: CurrentWorkspaceKey]
-#define CurrentRedoHistory [myRedoHistory objectForKey: CurrentWorkspaceKey]
-
-#pragma mark -
-
 #define BlacklistedWindowRect(applicationName, windowRect) [NSString stringWithFormat: @"%@ - %@", applicationName, WindowRectToString(windowRect)]
 
 #pragma mark -
@@ -64,6 +54,16 @@
 #pragma mark -
 
 @interface SpectacleWindowPositionManager (WindowHistory)
+
+- (NSString *)currentWorkspaceKey;
+
+#pragma mark -
+
+- (NSMutableArray *)currentUndoHistory;
+
+- (NSMutableArray *)currentRedoHistory;
+
+#pragma mark -
 
 - (void)moveWithHistory: (NSMutableArray *)history action: (SpectacleWindowAction)action;
 
@@ -179,11 +179,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)undoLastWindowAction {
-    [self moveWithHistory: CurrentUndoHistory action: SpectacleWindowActionUndo];
+    [self moveWithHistory: [self currentUndoHistory] action: SpectacleWindowActionUndo];
 }
 
 - (void)redoLastWindowAction {
-    [self moveWithHistory: CurrentRedoHistory action: SpectacleWindowActionRedo];
+    [self moveWithHistory: [self currentRedoHistory] action: SpectacleWindowActionRedo];
 }
 
 #pragma mark -
@@ -464,6 +464,22 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 @implementation SpectacleWindowPositionManager (WindowHistory)
 
+- (NSString *)currentWorkspaceKey {
+    return [NSString stringWithFormat: @"Workspace%ld", [SpectacleUtilities currentWorkspace]];
+}
+
+#pragma mark -
+
+- (NSMutableArray *)currentUndoHistory {
+    return [myUndoHistory objectForKey: [self currentWorkspaceKey]];
+}
+
+- (NSMutableArray *)currentRedoHistory {
+    return [myUndoHistory objectForKey: [self currentWorkspaceKey]];
+}
+
+#pragma mark -
+
 - (void)moveWithHistory: (NSMutableArray *)history action: (SpectacleWindowAction)action {
     SpectacleHistoryItem *historyItem = [history lastObject];
     ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
@@ -510,27 +526,27 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)addHistoryItemToUndoHistory: (SpectacleHistoryItem *)historyItem {
-    if (!CurrentUndoHistory) {
-        [myUndoHistory setObject: [NSMutableArray array] forKey: CurrentWorkspaceKey];
+    if (![self currentUndoHistory]) {
+        [myUndoHistory setObject: [NSMutableArray array] forKey: [self currentWorkspaceKey]];
     }
     
-    if ([CurrentUndoHistory count] >= SpectacleWindowActionHistorySize) {
-        [CurrentUndoHistory removeObjectAtIndex: 0];
+    if ([[self currentUndoHistory] count] >= SpectacleWindowActionHistorySize) {
+        [[self currentUndoHistory] removeObjectAtIndex: 0];
     }
     
-    [CurrentUndoHistory addObject: historyItem];
+    [[self currentUndoHistory] addObject: historyItem];
 }
 
 - (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem {
-    if (!CurrentRedoHistory) {
-        [myRedoHistory setObject: [NSMutableArray array] forKey: CurrentWorkspaceKey];
+    if (![self currentRedoHistory]) {
+        [myRedoHistory setObject: [NSMutableArray array] forKey: [self currentWorkspaceKey]];
     }
     
-    if ([CurrentRedoHistory count] >= SpectacleWindowActionHistorySize) {
-        [CurrentRedoHistory removeObjectAtIndex: 0];
+    if ([[self currentRedoHistory] count] >= SpectacleWindowActionHistorySize) {
+        [[self currentRedoHistory] removeObjectAtIndex: 0];
     }
     
-    [CurrentRedoHistory addObject: historyItem];
+    [[self currentRedoHistory] addObject: historyItem];
 }
 
 @end

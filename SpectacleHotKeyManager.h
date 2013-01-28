@@ -3,7 +3,7 @@
 
 @interface SpectacleHotKeyManager : NSObject {
     NSMutableDictionary *myRegisteredHotKeys;
-    NSInteger myCurrentHotKeyID;
+    UInt32 myCurrentHotKeyID;
     BOOL isHotKeyHandlerInstalled;
 }
 
