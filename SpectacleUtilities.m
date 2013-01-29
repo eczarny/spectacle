@@ -104,37 +104,37 @@
     SEL selector = NULL;
     
     if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
-        selector = @selector(moveFrontMostWindowToCenter);
+        selector = @selector(moveFrontMostWindowToCenter:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToFullscreen]) {
-        selector = @selector(moveFrontMostWindowToFullscreen);
+        selector = @selector(moveFrontMostWindowToFullscreen:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftHalf]) {
-        selector = @selector(moveFrontMostWindowToLeftHalf);
+        selector = @selector(moveFrontMostWindowToLeftHalf:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToRightHalf]) {
-        selector = @selector(moveFrontMostWindowToRightHalf);
+        selector = @selector(moveFrontMostWindowToRightHalf:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToTopHalf]) {
-        selector = @selector(moveFrontMostWindowToTopHalf);
+        selector = @selector(moveFrontMostWindowToTopHalf:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomHalf]) {
-        selector = @selector(moveFrontMostWindowToBottomHalf);
+        selector = @selector(moveFrontMostWindowToBottomHalf:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperLeft]) {
-        selector = @selector(moveFrontMostWindowToUpperLeft);
+        selector = @selector(moveFrontMostWindowToUpperLeft:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerLeft]) {
-        selector = @selector(moveFrontMostWindowToLowerLeft);
+        selector = @selector(moveFrontMostWindowToLowerLeft:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperRight]) {
-        selector = @selector(moveFrontMostWindowToUpperRight);
+        selector = @selector(moveFrontMostWindowToUpperRight:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
-        selector = @selector(moveFrontMostWindowToLowerRight);
+        selector = @selector(moveFrontMostWindowToLowerRight:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToNextDisplay]) {
-        selector = @selector(moveFrontMostWindowToNextDisplay);
+        selector = @selector(moveFrontMostWindowToNextDisplay:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousDisplay]) {
-        selector = @selector(moveFrontMostWindowToPreviousDisplay);
+        selector = @selector(moveFrontMostWindowToPreviousDisplay:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToNextThird]) {
-        selector = @selector(moveFrontMostWindowToNextThird);
+        selector = @selector(moveFrontMostWindowToNextThird:);
     } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {
-        selector = @selector(moveFrontMostWindowToPreviousThird);
+        selector = @selector(moveFrontMostWindowToPreviousThird:);
     } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
-        selector = @selector(undoLastWindowAction);
+        selector = @selector(undoLastWindowAction:);
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
-        selector = @selector(redoLastWindowAction);
+        selector = @selector(redoLastWindowAction:);
     }
     
     return [ZeroKitHotKeyAction hotKeyActionFromTarget: target selector: selector];

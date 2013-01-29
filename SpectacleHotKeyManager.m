@@ -235,7 +235,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
     
     switch (GetEventKind(event)) {
         case kEventHotKeyPressed:
-            [[hotKey hotKeyAction] trigger];
+            [[hotKey hotKeyAction] trigger: self];
             
             break;
         default:
