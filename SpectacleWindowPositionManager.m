@@ -475,7 +475,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 }
 
 - (NSMutableArray *)currentRedoHistory {
-    return myUndoHistory[[self currentWorkspaceKey]];
+    return myRedoHistory[[self currentWorkspaceKey]];
 }
 
 #pragma mark -
