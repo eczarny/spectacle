@@ -11,50 +11,50 @@
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToCenter: (id)sender;
+- (IBAction)moveFrontMostWindowToCenter;
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToFullscreen: (id)sender;
+- (IBAction)moveFrontMostWindowToFullscreen;
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToLeftHalf: (id)sender;
+- (IBAction)moveFrontMostWindowToLeftHalf;
 
-- (IBAction)moveFrontMostWindowToRightHalf: (id)sender;
+- (IBAction)moveFrontMostWindowToRightHalf;
 
-- (IBAction)moveFrontMostWindowToTopHalf: (id)sender;
+- (IBAction)moveFrontMostWindowToTopHalf;
 
-- (IBAction)moveFrontMostWindowToBottomHalf: (id)sender;
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToUpperLeft: (id)sender;
-
-- (IBAction)moveFrontMostWindowToLowerLeft: (id)sender;
+- (IBAction)moveFrontMostWindowToBottomHalf;
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToUpperRight: (id)sender;
+- (IBAction)moveFrontMostWindowToUpperLeft;
 
-- (IBAction)moveFrontMostWindowToLowerRight: (id)sender;
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToNextDisplay: (id)sender;
-
-- (IBAction)moveFrontMostWindowToPreviousDisplay: (id)sender;
+- (IBAction)moveFrontMostWindowToLowerLeft;
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToNextThird: (id)sender;
+- (IBAction)moveFrontMostWindowToUpperRight;
 
-- (IBAction)moveFrontMostWindowToPreviousThird: (id)sender;
+- (IBAction)moveFrontMostWindowToLowerRight;
 
 #pragma mark -
 
-- (IBAction)undoLastWindowAction: (id)sender;
+- (IBAction)moveFrontMostWindowToNextDisplay;
 
-- (IBAction)redoLastWindowAction: (id)sender;
+- (IBAction)moveFrontMostWindowToPreviousDisplay;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToNextThird;
+
+- (IBAction)moveFrontMostWindowToPreviousThird;
+
+#pragma mark -
+
+- (IBAction)undoLastWindowAction;
+
+- (IBAction)redoLastWindowAction;
 
 @end

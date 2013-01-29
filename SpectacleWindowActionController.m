@@ -18,7 +18,7 @@
 
 - (void)registerHotKeys {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *hotKeysFromUserDefaults = [NSMutableDictionary dictionary];
+    NSMutableDictionary *hotKeysFromUserDefaults = [NSMutableDictionary new];
     
     for (NSString *hotKeyName in [SpectacleUtilities hotKeyNames]) {
         hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
@@ -29,81 +29,81 @@
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToCenter: (id)sender {
+- (IBAction)moveFrontMostWindowToCenter {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToFullscreen: (id)sender {
+- (IBAction)moveFrontMostWindowToFullscreen {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionFullscreen];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToLeftHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToLeftHalf {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftHalf];
 }
 
-- (IBAction)moveFrontMostWindowToRightHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToRightHalf {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightHalf];
 }
 
-- (IBAction)moveFrontMostWindowToTopHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToTopHalf {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopHalf];
 }
 
-- (IBAction)moveFrontMostWindowToBottomHalf: (id)sender {
+- (IBAction)moveFrontMostWindowToBottomHalf {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToUpperLeft: (id)sender {
+- (IBAction)moveFrontMostWindowToUpperLeft {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperLeft];
 }
 
-- (IBAction)moveFrontMostWindowToLowerLeft: (id)sender {
+- (IBAction)moveFrontMostWindowToLowerLeft {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToUpperRight: (id)sender {
+- (IBAction)moveFrontMostWindowToUpperRight {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperRight];
 }
 
-- (IBAction)moveFrontMostWindowToLowerRight: (id)sender {
+- (IBAction)moveFrontMostWindowToLowerRight {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerRight];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToNextDisplay: (id)sender {
+- (IBAction)moveFrontMostWindowToNextDisplay {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionNextDisplay];
 }
 
-- (IBAction)moveFrontMostWindowToPreviousDisplay: (id)sender {
+- (IBAction)moveFrontMostWindowToPreviousDisplay {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionPreviousDisplay];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToNextThird: (id)sender {
+- (IBAction)moveFrontMostWindowToNextThird {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionNextThird];
 }
 
-- (IBAction)moveFrontMostWindowToPreviousThird: (id)sender {
+- (IBAction)moveFrontMostWindowToPreviousThird {
     [myWindowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionPreviousThird];
 }
 
 #pragma mark -
 
-- (IBAction)undoLastWindowAction: (id)sender {
+- (IBAction)undoLastWindowAction {
     [myWindowPositionManager undoLastWindowAction];
 }
 
-- (IBAction)redoLastWindowAction: (id)sender {
+- (IBAction)redoLastWindowAction {
     [myWindowPositionManager redoLastWindowAction];
 }
 

@@ -31,7 +31,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 - (id)init {
     if ((self = [super init])) {
-        myRegisteredHotKeys = [[NSMutableDictionary alloc] init];
+        myRegisteredHotKeys = [NSMutableDictionary new];
         myCurrentHotKeyID = 0;
         isHotKeyHandlerInstalled = NO;
     }
@@ -41,24 +41,10 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 #pragma mark -
 
-+ (id)allocWithZone: (NSZone *)zone {
-    @synchronized(self) {
-        if (!sharedInstance) {
-            sharedInstance = [super allocWithZone: zone];
-            
-            return sharedInstance;
-        }
-    }
-    
-    return nil;
-}
-
-#pragma mark -
-
 + (SpectacleHotKeyManager *)sharedManager {
     @synchronized(self) {
         if (!sharedInstance) {
-            [[self alloc] init];
+            sharedInstance = [self new];
         }
     }
     
@@ -72,7 +58,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     ZeroKitHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
     EventHotKeyID hotKeyID;
     EventHotKeyRef hotKeyRef;
-    OSStatus err;
+    OSStatus error;
     
     if (existingHotKey) {
         [hotKey setHotKeyAction: [existingHotKey hotKeyAction]];
@@ -83,14 +69,14 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyID.signature = 'ZERO';
     hotKeyID.id = ++myCurrentHotKeyID;
     
-    err = RegisterEventHotKey((UInt32)[hotKey hotKeyCode],
+    error = RegisterEventHotKey((UInt32)[hotKey hotKeyCode],
                               (UInt32)[hotKey hotKeyModifiers],
                               hotKeyID,
                               GetEventDispatcherTarget(),
                               0,
                               &hotKeyRef);
     
-    if (err) {
+    if (error) {
         NSLog(@"There was a problem registering hot key %@.", hotKeyName);
         
         return -1;
@@ -119,7 +105,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 - (void)unregisterHotKeyForName: (NSString *)name {
     ZeroKitHotKey *hotKey = [self registeredHotKeyForName: name];
     EventHotKeyRef hotKeyRef;
-    OSStatus err;
+    OSStatus error;
     
     if (!hotKey) {
         NSLog(@"The specified hot key has not been registered.");
@@ -130,10 +116,10 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyRef = [hotKey hotKeyRef];
     
     if (hotKeyRef) {
-        err = UnregisterEventHotKey(hotKeyRef);
+        error = UnregisterEventHotKey(hotKeyRef);
         
-        if (err) {
-            NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, err);
+        if (error) {
+            NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, error);
         }
         
         myRegisteredHotKeys[name] = [ZeroKitHotKey clearedHotKeyWithName: name];
@@ -176,14 +162,6 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     }
     
     return NO;
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [myRegisteredHotKeys release];
-    
-    [super dealloc];
 }
 
 @end
@@ -243,16 +221,10 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 - (OSStatus)handleHotKeyEvent: (EventRef)event {
     ZeroKitHotKey *hotKey;
     EventHotKeyID hotKeyID;
-    OSStatus err = GetEventParameter(event,
-                                     kEventParamDirectObject,
-                                     typeEventHotKeyID,
-                                     NULL,
-                                     sizeof(EventHotKeyID),
-                                     NULL,
-                                     &hotKeyID);
+    OSStatus error = GetEventParameter(event, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(EventHotKeyID), NULL, &hotKeyID);
     
-    if (err) {
-        return err;
+    if (error) {
+        return error;
     }
     
     hotKey = [self registeredHotKeyForHandle: hotKeyID.id];
@@ -270,7 +242,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
             break;
     }
     
-    return noErr;
+    return 0;
 }
 
 @end

@@ -89,10 +89,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         NSString *path = [[SpectacleUtilities applicationBundle] pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                                           ofType: ZeroKitPropertyListFileExtension];
         
-        myUndoHistory = [[NSMutableDictionary dictionary] retain];
-        myRedoHistory = [[NSMutableDictionary dictionary] retain];
-        myBlacklistedWindowRects = [[NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]] retain];
-        myBlacklistedApplications = [[NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]] retain];
+        myUndoHistory = [NSMutableDictionary new];
+        myRedoHistory = [NSMutableDictionary new];
+        myBlacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
+        myBlacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
     }
     
     return self;
@@ -100,24 +100,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-+ (id)allocWithZone: (NSZone *)zone {
-    @synchronized(self) {
-        if (!sharedInstance) {
-            sharedInstance = [super allocWithZone: zone];
-            
-            return sharedInstance;
-        }
-    }
-    
-    return nil;
-}
-
-#pragma mark -
-
 + (SpectacleWindowPositionManager *)sharedManager {
     @synchronized(self) {
         if (!sharedInstance) {
-            [[self alloc] init];
+            sharedInstance = [self new];
         }
     }
     
@@ -186,16 +172,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     [self moveWithHistory: [self currentRedoHistory] action: SpectacleWindowActionRedo];
 }
 
-#pragma mark -
-
-- (void)dealloc {
-    [myUndoHistory release];
-    [myRedoHistory release];
-    [myBlacklistedWindowRects release];
-    
-    [super dealloc];
-}
-
 @end
 
 #pragma mark -
@@ -242,6 +218,9 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         
         AXValueGetValue(windowPositionValue, kAXValueCGPointType, (void *)&windowPosition);
         AXValueGetValue(windowSizeValue, kAXValueCGSizeType, (void *)&windowSize);
+        
+        CFRelease(windowPositionValue);
+        CFRelease(windowSizeValue);
         
         result = CGRectMake(windowPosition.x, windowPosition.y, windowSize.width, windowSize.height);
     }
@@ -309,6 +288,9 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     [frontMostWindowElement setValue: windowRectSizeRef forAttribute: kAXSizeAttribute];
     [frontMostWindowElement setValue: windowRectPositionRef forAttribute: kAXPositionAttribute];
     [frontMostWindowElement setValue: windowRectSizeRef forAttribute: kAXSizeAttribute];
+    
+    CFRelease(windowRectPositionRef);
+    CFRelease(windowRectSizeRef);
 }
 
 #pragma mark -
@@ -399,7 +381,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
-    NSMutableArray *result = [NSMutableArray array];
+    NSMutableArray *result = [NSMutableArray new];
     NSInteger i = 0;
     
     for (i = 0; i < 3; i++) {
@@ -527,7 +509,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)addHistoryItemToUndoHistory: (SpectacleHistoryItem *)historyItem {
     if (![self currentUndoHistory]) {
-        myUndoHistory[[self currentWorkspaceKey]] = [NSMutableArray array];
+        myUndoHistory[[self currentWorkspaceKey]] = [NSMutableArray new];
     }
     
     if ([[self currentUndoHistory] count] >= SpectacleWindowActionHistorySize) {
@@ -539,7 +521,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem {
     if (![self currentRedoHistory]) {
-        myRedoHistory[[self currentWorkspaceKey]] = [NSMutableArray array];
+        myRedoHistory[[self currentWorkspaceKey]] = [NSMutableArray new];
     }
     
     if ([[self currentRedoHistory] count] >= SpectacleWindowActionHistorySize) {

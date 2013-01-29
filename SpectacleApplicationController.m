@@ -42,7 +42,6 @@
     
     [self registerHotKeys];
     
-    
     [notificationCenter addObserver: self
                            selector: @selector(enableStatusItem:)
                                name: SpectacleStatusItemEnabledNotification
@@ -86,7 +85,7 @@
 - (void)createStatusItem {
     NSString *applicationVersion = [SpectacleUtilities applicationVersion];
     
-    myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength] retain];
+    myStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     
     [myStatusItem setImage: [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
     [myStatusItem setAlternateImage: [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
@@ -104,7 +103,6 @@
 - (void)destroyStatusItem {
     [[NSStatusBar systemStatusBar] removeStatusItem: myStatusItem];
     
-    [myStatusItem release];
 }
 
 #pragma mark -

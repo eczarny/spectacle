@@ -4,7 +4,7 @@
 
 - (id)initWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
     if (self = [super init]) {
-        myAccessibilityElement = [accessibilityElement retain];
+        myAccessibilityElement = accessibilityElement;
         myWindowRect = windowRect;
     }
     
@@ -14,7 +14,7 @@
 #pragma mark -
 
 + (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
-    return [[[SpectacleHistoryItem alloc] initWithAccessibilityElement: accessibilityElement windowRect: windowRect] autorelease];
+    return [[SpectacleHistoryItem alloc] initWithAccessibilityElement: accessibilityElement windowRect: windowRect];
 }
 
 #pragma mark -
@@ -25,9 +25,8 @@
 
 - (void)setAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement {
     if (myAccessibilityElement != accessibilityElement) {
-        [myAccessibilityElement release];
         
-        myAccessibilityElement = [accessibilityElement retain];
+        myAccessibilityElement = accessibilityElement;
     }
 }
 
@@ -39,14 +38,6 @@
 
 - (void)setWindowRect: (CGRect)windowRect {
     myWindowRect = windowRect;
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [myAccessibilityElement release];
-    
-    [super dealloc];
 }
 
 @end
