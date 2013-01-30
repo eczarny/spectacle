@@ -2,6 +2,7 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectacleUtilities.h"
+#import "SpectacleConstants.h"
 
 @implementation SpectacleWindowActionController
 
@@ -24,7 +25,11 @@
         hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
     }
     
-    [myHotKeyManager registerHotKeys: [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults hotKeyTarget: self]];
+    NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults action: ^(ZeroKitHotKey *hotKey) {
+        [myWindowPositionManager moveFrontMostWindowWithAction: [myWindowPositionManager windowActionForHotKey: hotKey]];
+    }];
+    
+    [myHotKeyManager registerHotKeys: hotKeys];
 }
 
 #pragma mark -

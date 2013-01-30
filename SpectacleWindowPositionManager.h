@@ -42,4 +42,8 @@ typedef NSInteger SpectacleWindowAction;
 
 - (void)redoLastWindowAction;
 
+#pragma mark -
+
+- (SpectacleWindowAction)windowActionForHotKey: (ZeroKitHotKey *)hotKey;
+
 @end

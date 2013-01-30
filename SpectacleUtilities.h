@@ -40,11 +40,7 @@
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target;
-
-#pragma mark -
-
-+ (ZeroKitHotKeyAction *)actionForHotKeyWithName: (NSString *)key target: (id)target;
++ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZeroKitHotKeyAction)action;
 
 #pragma mark -
 

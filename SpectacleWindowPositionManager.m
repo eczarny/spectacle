@@ -21,6 +21,10 @@
 
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
+- (void)internallyMoveFrontMostWindowWithAction: (SpectacleWindowAction)action;
+
+#pragma mark -
+
 - (ZeroKitAccessibilityElement *)frontMostWindowElement;
 
 #pragma mark -
@@ -113,6 +117,75 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
+    if (action < SpectacleWindowActionNone) {
+        NSMutableArray *history = (action == SpectacleWindowActionUndo) ? [self currentUndoHistory] : [self currentRedoHistory];
+        
+        [self moveWithHistory: history action: action];
+    } else {
+        [self internallyMoveFrontMostWindowWithAction: action];
+    }
+}
+
+#pragma mark -
+
+- (void)undoLastWindowAction {
+    [self moveFrontMostWindowWithAction: SpectacleWindowActionUndo];
+}
+
+- (void)redoLastWindowAction {
+    [self moveFrontMostWindowWithAction: SpectacleWindowActionRedo];
+}
+
+#pragma mark -
+
+- (SpectacleWindowAction)windowActionForHotKey: (ZeroKitHotKey *)hotKey {
+    NSString *name = [hotKey hotKeyName];
+    SpectacleWindowAction windowAction = SpectacleWindowActionNone;
+    
+    if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
+        windowAction = SpectacleWindowActionCenter;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullscreen]) {
+        windowAction = SpectacleWindowActionFullscreen;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftHalf]) {
+        windowAction = SpectacleWindowActionLeftHalf;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToRightHalf]) {
+        windowAction = SpectacleWindowActionRightHalf;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToTopHalf]) {
+        windowAction = SpectacleWindowActionTopHalf;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomHalf]) {
+        windowAction = SpectacleWindowActionBottomHalf;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperLeft]) {
+        windowAction = SpectacleWindowActionUpperLeft;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerLeft]) {
+        windowAction = SpectacleWindowActionLowerLeft;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperRight]) {
+        windowAction = SpectacleWindowActionUpperRight;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
+        windowAction = SpectacleWindowActionLowerRight;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextDisplay]) {
+        windowAction = SpectacleWindowActionNextDisplay;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousDisplay]) {
+        windowAction = SpectacleWindowActionPreviousDisplay;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextThird]) {
+        windowAction = SpectacleWindowActionNextThird;
+    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {
+        windowAction = SpectacleWindowActionPreviousThird;
+    } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
+        windowAction = SpectacleWindowActionUndo;
+    } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
+        windowAction = SpectacleWindowActionRedo;
+    }
+    
+    return windowAction;
+}
+
+@end
+
+#pragma mark -
+
+@implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
+
+- (void)internallyMoveFrontMostWindowWithAction: (SpectacleWindowAction)action {
     ZeroKitAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
@@ -163,20 +236,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 }
 
 #pragma mark -
-
-- (void)undoLastWindowAction {
-    [self moveWithHistory: [self currentUndoHistory] action: SpectacleWindowActionUndo];
-}
-
-- (void)redoLastWindowAction {
-    [self moveWithHistory: [self currentRedoHistory] action: SpectacleWindowActionRedo];
-}
-
-@end
-
-#pragma mark -
-
-@implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (ZeroKitAccessibilityElement *)frontMostWindowElement {
     ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];

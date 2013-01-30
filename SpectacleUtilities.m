@@ -1,4 +1,5 @@
 #import "SpectacleUtilities.h"
+#import "SpectacleWindowPositionManager.h"
 #import "SpectacleConstants.h"
 
 @interface SpectacleUtilities (SpectacleUtilitiesPrivate)
@@ -75,7 +76,7 @@
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target {
++ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZeroKitHotKeyAction)action {
     NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: [dictionary allKeys]];
     NSMutableArray *hotKeys = [NSMutableArray new];
     
@@ -87,7 +88,7 @@
         if (![hotKey isClearedHotKey]) {
             NSString *hotKeyName = [hotKey hotKeyName];
             
-            [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
+            [hotKey setHotKeyAction: action];
             
             [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: defaultHotKeys[hotKeyName]];
             
@@ -96,48 +97,6 @@
     }
     
     return hotKeys;
-}
-
-#pragma mark -
-
-+ (ZeroKitHotKeyAction *)actionForHotKeyWithName: (NSString *)name target: (id)target {
-    SEL selector = NULL;
-    
-    if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
-        selector = @selector(moveFrontMostWindowToCenter:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullscreen]) {
-        selector = @selector(moveFrontMostWindowToFullscreen:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftHalf]) {
-        selector = @selector(moveFrontMostWindowToLeftHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToRightHalf]) {
-        selector = @selector(moveFrontMostWindowToRightHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToTopHalf]) {
-        selector = @selector(moveFrontMostWindowToTopHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomHalf]) {
-        selector = @selector(moveFrontMostWindowToBottomHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperLeft]) {
-        selector = @selector(moveFrontMostWindowToUpperLeft:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerLeft]) {
-        selector = @selector(moveFrontMostWindowToLowerLeft:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperRight]) {
-        selector = @selector(moveFrontMostWindowToUpperRight:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
-        selector = @selector(moveFrontMostWindowToLowerRight:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextDisplay]) {
-        selector = @selector(moveFrontMostWindowToNextDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousDisplay]) {
-        selector = @selector(moveFrontMostWindowToPreviousDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextThird]) {
-        selector = @selector(moveFrontMostWindowToNextThird:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {
-        selector = @selector(moveFrontMostWindowToPreviousThird:);
-    } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
-        selector = @selector(undoLastWindowAction:);
-    } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
-        selector = @selector(redoLastWindowAction:);
-    }
-    
-    return [ZeroKitHotKeyAction hotKeyActionFromTarget: target selector: selector];
 }
 
 #pragma mark -

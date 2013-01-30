@@ -1,6 +1,7 @@
 #import "SpectaclePreferencesController.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectacleHotKeyValidator.h"
+#import "SpectacleWindowPositionManager.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
@@ -81,7 +82,11 @@
 #pragma mark -
 
 - (void)hotKeyRecorder: (ZeroKitHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (ZeroKitHotKey *)hotKey {
-    [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: [hotKey hotKeyName] target: myApplicationController]];
+    SpectacleWindowPositionManager *windowPositionManager = [SpectacleWindowPositionManager sharedManager];
+    
+    [hotKey setHotKeyAction: ^(ZeroKitHotKey *hotKey) {
+        [windowPositionManager moveFrontMostWindowWithAction: [windowPositionManager windowActionForHotKey: hotKey]];
+    }];
     
     [myHotKeyManager registerHotKey: hotKey];
 }

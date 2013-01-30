@@ -58,6 +58,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     ZeroKitHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
     EventHotKeyID hotKeyID;
     EventHotKeyRef hotKeyRef;
+    EventTargetRef eventTarget = GetEventDispatcherTarget();
     OSStatus error;
     
     if (existingHotKey) {
@@ -69,12 +70,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyID.signature = 'ZERO';
     hotKeyID.id = ++myCurrentHotKeyID;
     
-    error = RegisterEventHotKey((UInt32)[hotKey hotKeyCode],
-                              (UInt32)[hotKey hotKeyModifiers],
-                              hotKeyID,
-                              GetEventDispatcherTarget(),
-                              0,
-                              &hotKeyRef);
+    error = RegisterEventHotKey((UInt32)[hotKey hotKeyCode], (UInt32)[hotKey hotKeyModifiers], hotKeyID, eventTarget, 0, &hotKeyRef);
     
     if (error) {
         NSLog(@"There was a problem registering hot key %@.", hotKeyName);
@@ -235,7 +231,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
     
     switch (GetEventKind(event)) {
         case kEventHotKeyPressed:
-            [[hotKey hotKeyAction] trigger: self];
+            [hotKey triggerHotKeyAction];
             
             break;
         default:
