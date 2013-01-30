@@ -44,6 +44,6 @@ typedef NSInteger SpectacleWindowAction;
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForHotKey: (ZeroKitHotKey *)hotKey;
+- (SpectacleWindowAction)windowActionForHotKey: (ZKHotKey *)hotKey;
 
 @end

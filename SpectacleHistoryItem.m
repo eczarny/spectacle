@@ -2,7 +2,7 @@
 
 @implementation SpectacleHistoryItem
 
-- (id)initWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+- (id)initWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
     if (self = [super init]) {
         myAccessibilityElement = accessibilityElement;
         myWindowRect = windowRect;
@@ -13,17 +13,17 @@
 
 #pragma mark -
 
-+ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
     return [[SpectacleHistoryItem alloc] initWithAccessibilityElement: accessibilityElement windowRect: windowRect];
 }
 
 #pragma mark -
 
-- (ZeroKitAccessibilityElement *)accessibilityElement {
+- (ZKAccessibilityElement *)accessibilityElement {
     return myAccessibilityElement;
 }
 
-- (void)setAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement {
+- (void)setAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement {
     if (myAccessibilityElement != accessibilityElement) {
         
         myAccessibilityElement = accessibilityElement;

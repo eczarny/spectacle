@@ -28,7 +28,7 @@
 
 #pragma mark -
 
-@interface SpectacleUtilities : ZeroKitUtilities
+@interface SpectacleUtilities : ZKUtilities
 
 + (void)displayAccessibilityAPIAlert;
 
@@ -40,7 +40,7 @@
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZeroKitHotKeyAction)action;
++ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action;
 
 #pragma mark -
 

@@ -132,7 +132,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="889390246"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="622074041">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -159,7 +159,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="619336483"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="580933406">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -186,7 +186,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="682556037"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="371466113">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -213,7 +213,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="244591005"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="432102645">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -240,7 +240,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="363827317"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="363827317">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -267,7 +267,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="986017371"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="835040599">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -294,7 +294,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="951202879"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="951202879">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -321,7 +321,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="289383272"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="289383272">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -348,7 +348,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="810368260"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="810368260">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -375,7 +375,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="325623976"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="889390246">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -402,7 +402,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="622074041"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="619336483">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -429,7 +429,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="580933406"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="682556037">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -456,7 +456,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="371466113"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="244591005">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -483,7 +483,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="432102645"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="986017371">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -510,7 +510,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="329619471"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSTextField" id="329619471">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -537,7 +537,7 @@
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="835040599"/>
-							<string key="NSClassName">ZeroKitHotKeyRecorder</string>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSBox" id="325623976">
 							<reference key="NSNextResponder" ref="253082788"/>
@@ -1447,23 +1447,23 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="myLoginItemEnabled">NSButton</string>
-						<string key="myMoveToBottomHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToCenterHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToFullscreenHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToLowerLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToLowerRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToNextDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToNextThirdHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToPreviousDisplayHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToPreviousThirdHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToTopHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToUpperLeftHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myMoveToUpperRightHotKeyRecorder">ZeroKitHotKeyRecorder</string>
-						<string key="myRedoLastMoveHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myMoveToBottomHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToCenterHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToFullscreenHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToLeftHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToLowerLeftHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToLowerRightHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToNextDisplayHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToNextThirdHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToPreviousDisplayHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToPreviousThirdHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToRightHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToTopHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToUpperLeftHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myMoveToUpperRightHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="myRedoLastMoveHotKeyRecorder">ZKHotKeyRecorder</string>
 						<string key="myStatusItemEnabled">NSPopUpButton</string>
-						<string key="myUndoLastMoveHotKeyRecorder">ZeroKitHotKeyRecorder</string>
+						<string key="myUndoLastMoveHotKeyRecorder">ZKHotKeyRecorder</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="myLoginItemEnabled">
@@ -1472,63 +1472,63 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToBottomHotKeyRecorder">
 							<string key="name">myMoveToBottomHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToCenterHotKeyRecorder">
 							<string key="name">myMoveToCenterHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToFullscreenHotKeyRecorder">
 							<string key="name">myMoveToFullscreenHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLeftHotKeyRecorder">
 							<string key="name">myMoveToLeftHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLowerLeftHotKeyRecorder">
 							<string key="name">myMoveToLowerLeftHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToLowerRightHotKeyRecorder">
 							<string key="name">myMoveToLowerRightHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToNextDisplayHotKeyRecorder">
 							<string key="name">myMoveToNextDisplayHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToNextThirdHotKeyRecorder">
 							<string key="name">myMoveToNextThirdHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToPreviousDisplayHotKeyRecorder">
 							<string key="name">myMoveToPreviousDisplayHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToPreviousThirdHotKeyRecorder">
 							<string key="name">myMoveToPreviousThirdHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToRightHotKeyRecorder">
 							<string key="name">myMoveToRightHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToTopHotKeyRecorder">
 							<string key="name">myMoveToTopHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToUpperLeftHotKeyRecorder">
 							<string key="name">myMoveToUpperLeftHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myMoveToUpperRightHotKeyRecorder">
 							<string key="name">myMoveToUpperRightHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myRedoLastMoveHotKeyRecorder">
 							<string key="name">myRedoLastMoveHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="myStatusItemEnabled">
 							<string key="name">myStatusItemEnabled</string>
@@ -1536,7 +1536,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="myUndoLastMoveHotKeyRecorder">
 							<string key="name">myUndoLastMoveHotKeyRecorder</string>
-							<string key="candidateClassName">ZeroKitHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -1545,11 +1545,11 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">ZeroKitHotKeyRecorder</string>
+					<string key="className">ZKHotKeyRecorder</string>
 					<string key="superclassName">NSControl</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ZeroKitHotKeyRecorder.h</string>
+						<string key="minorKey">./Classes/ZKHotKeyRecorder.h</string>
 					</object>
 				</object>
 			</array>

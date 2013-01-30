@@ -3,26 +3,26 @@
 
 @class SpectacleHotKeyManager, SpectacleApplicationController;
 
-@interface SpectaclePreferencesController : NSWindowController<ZeroKitHotKeyRecorderDelegate> {
+@interface SpectaclePreferencesController : NSWindowController<ZKHotKeyRecorderDelegate> {
     SpectacleApplicationController *myApplicationController;
     SpectacleHotKeyManager *myHotKeyManager;
     NSDictionary *myHotKeyRecorders;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToCenterHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToLeftHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToRightHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToTopHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToBottomHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToUpperLeftHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToLowerLeftHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToUpperRightHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToLowerRightHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToNextDisplayHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToPreviousDisplayHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToNextThirdHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myMoveToPreviousThirdHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
-    IBOutlet ZeroKitHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToCenterHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToLeftHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToRightHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToTopHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToBottomHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToUpperLeftHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToLowerLeftHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToUpperRightHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToLowerRightHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToNextDisplayHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToPreviousDisplayHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToNextThirdHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myMoveToPreviousThirdHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
     IBOutlet NSButton *myLoginItemEnabled;
     IBOutlet NSPopUpButton *myStatusItemEnabled;
 }

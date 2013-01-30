@@ -25,7 +25,7 @@
         hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
     }
     
-    NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults action: ^(ZeroKitHotKey *hotKey) {
+    NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults action: ^(ZKHotKey *hotKey) {
         [myWindowPositionManager moveFrontMostWindowWithAction: [myWindowPositionManager windowActionForHotKey: hotKey]];
     }];
     

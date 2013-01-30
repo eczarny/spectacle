@@ -2,21 +2,21 @@
 #import <ZeroKit/ZeroKit.h>
 
 @interface SpectacleHistoryItem : NSObject {
-    ZeroKitAccessibilityElement *myAccessibilityElement;
+    ZKAccessibilityElement *myAccessibilityElement;
     CGRect myWindowRect;
 }
 
-- (id)initWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
+- (id)initWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-+ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
 
 #pragma mark -
 
-- (ZeroKitAccessibilityElement *)accessibilityElement;
+- (ZKAccessibilityElement *)accessibilityElement;
 
-- (void)setAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement;
+- (void)setAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 

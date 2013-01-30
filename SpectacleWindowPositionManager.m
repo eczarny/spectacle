@@ -25,7 +25,7 @@
 
 #pragma mark -
 
-- (ZeroKitAccessibilityElement *)frontMostWindowElement;
+- (ZKAccessibilityElement *)frontMostWindowElement;
 
 #pragma mark -
 
@@ -33,13 +33,13 @@
 
 #pragma mark -
 
-- (CGRect)rectOfWindowWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement;
+- (CGRect)rectOfWindowWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 
-- (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZeroKitAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action;
+- (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action;
 
-- (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZeroKitAccessibilityElement *)frontMostWindowElement;
+- (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement;
 
 #pragma mark -
 
@@ -91,7 +91,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     if ((self = [super init])) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString *path = [[SpectacleUtilities applicationBundle] pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
-                                                                          ofType: ZeroKitPropertyListFileExtension];
+                                                                          ofType: ZKPropertyListFileExtension];
         
         myUndoHistory = [NSMutableDictionary new];
         myRedoHistory = [NSMutableDictionary new];
@@ -138,7 +138,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForHotKey: (ZeroKitHotKey *)hotKey {
+- (SpectacleWindowAction)windowActionForHotKey: (ZKHotKey *)hotKey {
     NSString *name = [hotKey hotKeyName];
     SpectacleWindowAction windowAction = SpectacleWindowActionNone;
     
@@ -186,7 +186,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (void)internallyMoveFrontMostWindowWithAction: (SpectacleWindowAction)action {
-    ZeroKitAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
+    ZKAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
     NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
@@ -237,10 +237,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (ZeroKitAccessibilityElement *)frontMostWindowElement {
-    ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];
-    ZeroKitAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
-    ZeroKitAccessibilityElement *frontMostWindowElement = nil;
+- (ZKAccessibilityElement *)frontMostWindowElement {
+    ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
+    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    ZKAccessibilityElement *frontMostWindowElement = nil;
     
     if (applicationWithFocusElement) {
         frontMostWindowElement = [applicationWithFocusElement elementWithAttribute: kAXFocusedWindowAttribute];
@@ -258,15 +258,15 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (NSString *)frontMostApplicationName {
-    ZeroKitAccessibilityElement *systemWideElement = [ZeroKitAccessibilityElement systemWideElement];
-    ZeroKitAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
+    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
     
     return [applicationWithFocusElement stringValueOfAttribute: kAXTitleAttribute];
 }
 
 #pragma mark -
 
-- (CGRect)rectOfWindowWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement {
+- (CGRect)rectOfWindowWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement {
     CGRect result = CGRectNull;
     
     if (accessibilityElement) {
@@ -289,7 +289,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZeroKitAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
+- (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
     NSString *frontMostApplicationName = [self frontMostApplicationName];
     NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
     
@@ -340,7 +340,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
 }
 
-- (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZeroKitAccessibilityElement *)frontMostWindowElement {
+- (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement {
     AXValueRef windowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&windowRect.origin);
     AXValueRef windowRectSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&windowRect.size);
     
@@ -523,7 +523,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 - (void)moveWithHistory: (NSMutableArray *)history action: (SpectacleWindowAction)action {
     SpectacleHistoryItem *historyItem = [history lastObject];
-    ZeroKitAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
+    ZKAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
     NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: windowRect];
     CGRect visibleFrameOfScreen = CGRectNull;
@@ -553,7 +553,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 }
 
 - (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
-    ZeroKitAccessibilityElement *frontMostWindowElement = [historyItem accessibilityElement];
+    ZKAccessibilityElement *frontMostWindowElement = [historyItem accessibilityElement];
     
     if (!historyItem || !frontMostWindowElement) {
         return NO;

@@ -81,17 +81,17 @@
 
 #pragma mark -
 
-- (void)hotKeyRecorder: (ZeroKitHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (ZeroKitHotKey *)hotKey {
+- (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (ZKHotKey *)hotKey {
     SpectacleWindowPositionManager *windowPositionManager = [SpectacleWindowPositionManager sharedManager];
     
-    [hotKey setHotKeyAction: ^(ZeroKitHotKey *hotKey) {
+    [hotKey setHotKeyAction: ^(ZKHotKey *hotKey) {
         [windowPositionManager moveFrontMostWindowWithAction: [windowPositionManager windowActionForHotKey: hotKey]];
     }];
     
     [myHotKeyManager registerHotKey: hotKey];
 }
 
-- (void)hotKeyRecorder: (ZeroKitHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZeroKitHotKey *)hotKey {
+- (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZKHotKey *)hotKey {
     [myHotKeyManager unregisterHotKeyForName: [hotKey hotKeyName]];
 }
 
@@ -151,8 +151,8 @@
     SpectacleHotKeyValidator *hotKeyValidator = [SpectacleHotKeyValidator new];
     
     for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
-        ZeroKitHotKeyRecorder *hotKeyRecorder = myHotKeyRecorders[hotKeyName];
-        ZeroKitHotKey *hotKey = [myHotKeyManager registeredHotKeyForName: hotKeyName];
+        ZKHotKeyRecorder *hotKeyRecorder = myHotKeyRecorders[hotKeyName];
+        ZKHotKey *hotKey = [myHotKeyManager registeredHotKeyForName: hotKeyName];
         
         [hotKeyRecorder setHotKeyName: hotKeyName];
         
@@ -172,7 +172,7 @@
 #pragma mark -
 
 - (void)enableHotKeyRecorders: (BOOL)enabled {
-    for (ZeroKitHotKeyRecorder *hotKeyRecorder in [myHotKeyRecorders allValues]) {
+    for (ZKHotKeyRecorder *hotKeyRecorder in [myHotKeyRecorders allValues]) {
         if (!enabled) {
             [hotKeyRecorder setHotKey: nil];
         }

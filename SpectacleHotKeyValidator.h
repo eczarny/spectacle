@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <ZeroKit/ZeroKit.h>
 
-@interface SpectacleHotKeyValidator : NSObject<ZeroKitHotKeyValidatorProtocol>
+@interface SpectacleHotKeyValidator : NSObject<ZKHotKeyValidatorProtocol>
 
-- (BOOL)isHotKeyValid: (ZeroKitHotKey *)hotKey;
+- (BOOL)isHotKeyValid: (ZKHotKey *)hotKey;
 
 @end

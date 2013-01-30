@@ -3,7 +3,7 @@
 
 @implementation SpectacleHotKeyValidator
 
-- (BOOL)isHotKeyValid: (ZeroKitHotKey *)hotKey {
+- (BOOL)isHotKeyValid: (ZKHotKey *)hotKey {
     return ![[SpectacleHotKeyManager sharedManager] isHotKeyRegistered: hotKey];
 }
 

@@ -515,10 +515,10 @@
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2D73675B149ADB4500837D7D /* Spectacle.xib in Resources */,
 				07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */,
-				07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */,
-				2D73675C149ADB4500837D7D /* SpectaclePreferencesWindow.xib in Resources */,
-				C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */,
 				C92F241A16937CA3000D94AB /* Spectacle Alternate Status Item@2x.png in Resources */,
+				07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */,
+				C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */,
+				2D73675C149ADB4500837D7D /* SpectaclePreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
