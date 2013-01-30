@@ -1,6 +1,3 @@
 [submodule "Frameworks/ZeroKit"]
 	path = Frameworks/ZeroKit
 	url = git@github.com:eczarny/zerokit.git
-[submodule "Frameworks/Sparkle"]
-	path = Frameworks/Sparkle
-	url = git://github.com/andymatuschak/Sparkle.git
