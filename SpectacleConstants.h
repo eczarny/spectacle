@@ -36,7 +36,7 @@
 
 #pragma mark -
 
-#define SpectacleWindowActionHistorySize                 10
+#define SpectacleWindowActionHistorySize                 25
 
 #pragma mark -
 
