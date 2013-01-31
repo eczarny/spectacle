@@ -16,12 +16,8 @@
 
 - (ZKAccessibilityElement *)accessibilityElement;
 
-- (void)setAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement;
-
 #pragma mark -
 
 - (CGRect)windowRect;
-
-- (void)setWindowRect: (CGRect)windowRect;
 
 @end

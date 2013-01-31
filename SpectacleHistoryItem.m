@@ -23,21 +23,10 @@
     return myAccessibilityElement;
 }
 
-- (void)setAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement {
-    if (myAccessibilityElement != accessibilityElement) {
-        
-        myAccessibilityElement = accessibilityElement;
-    }
-}
-
 #pragma mark -
 
 - (CGRect)windowRect {
     return myWindowRect;
-}
-
-- (void)setWindowRect: (CGRect)windowRect {
-    myWindowRect = windowRect;
 }
 
 @end
