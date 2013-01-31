@@ -15,15 +15,15 @@
 
 #pragma mark -
 
+#define UndoOrRedo(action) ((action == SpectacleWindowActionUndo) || (action == SpectacleWindowActionRedo))
+
+#pragma mark -
+
 #define BlacklistedWindowRect(applicationName, windowRect) [NSString stringWithFormat: @"%@ - %@", applicationName, WindowRectToString(windowRect)]
 
 #pragma mark -
 
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
-
-- (void)internallyMoveFrontMostWindowWithAction: (SpectacleWindowAction)action;
-
-#pragma mark -
 
 - (ZKAccessibilityElement *)frontMostWindowElement;
 
@@ -59,25 +59,23 @@
 
 @interface SpectacleWindowPositionManager (WindowHistory)
 
-- (NSString *)currentWorkspaceKey;
+- (NSString *)workspaceKey;
 
 #pragma mark -
 
-- (NSMutableArray *)currentUndoHistory;
+- (NSMutableArray *)undoHistory;
 
-- (NSMutableArray *)currentRedoHistory;
+- (NSMutableArray *)redoHistory;
 
 #pragma mark -
 
-- (void)moveWithHistory: (NSMutableArray *)history action: (SpectacleWindowAction)action;
+- (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action;
 
 - (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action;
 
 #pragma mark -
 
-- (void)addHistoryItemToUndoHistory: (SpectacleHistoryItem *)historyItem;
-
-- (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem;
+- (void)addHistoryItem: (SpectacleHistoryItem *)historyItem toHistory: (NSMutableArray *)history;
 
 @end
 
@@ -117,13 +115,59 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
-    if (action < SpectacleWindowActionNone) {
-        NSMutableArray *history = (action == SpectacleWindowActionUndo) ? [self currentUndoHistory] : [self currentRedoHistory];
-        
-        [self moveWithHistory: history action: action];
-    } else {
-        [self internallyMoveFrontMostWindowWithAction: action];
+    ZKAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
+    CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
+    CGRect previousFrontMostWindowRect = CGRectNull;
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
+    CGRect frameOfScreen = CGRectNull;
+    CGRect visibleFrameOfScreen = CGRectNull;
+    SpectacleHistoryItem *historyItem = nil;
+    
+    if (screenOfDisplay) {
+        frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
+        visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
     }
+    
+    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
+        NSBeep();
+        
+        return;
+    }
+    
+    if (UndoOrRedo(action)) {
+        [self undoOrRedoHistoryWithAction: action];
+        
+        return;
+    }
+    
+    historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: frontMostWindowElement
+                                                                 windowRect: frontMostWindowRect];
+    
+    [self addHistoryItem: historyItem toHistory: [self undoHistory]];
+    
+    frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
+    
+    if (MovingToNextOrPreviousDisplay(action) && RectFitsInRect(frontMostWindowRect, visibleFrameOfScreen)) {
+        action = SpectacleWindowActionCenter;
+    }
+    
+    previousFrontMostWindowRect = frontMostWindowRect;
+    
+    frontMostWindowRect = [self recalculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
+    
+    if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
+        frontMostWindowRect = [self recalculateCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
+    }
+    
+    if (CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
+        NSBeep();
+        
+        return;
+    }
+    
+    frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
+    
+    [self moveWindowRect: frontMostWindowRect frameOfScreen: frameOfScreen visibleFrameOfScreen: visibleFrameOfScreen frontMostWindowElement: frontMostWindowElement action: action];
 }
 
 #pragma mark -
@@ -184,58 +228,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
-
-- (void)internallyMoveFrontMostWindowWithAction: (SpectacleWindowAction)action {
-    ZKAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
-    CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
-    CGRect previousFrontMostWindowRect = CGRectNull;
-    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
-    CGRect frameOfScreen = CGRectNull;
-    CGRect visibleFrameOfScreen = CGRectNull;
-    SpectacleHistoryItem *historyItem = nil;
-    
-    if (screenOfDisplay) {
-        frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
-        visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
-    }
-    
-    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
-        NSBeep();
-        
-        return;
-    }
-    
-    historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: frontMostWindowElement
-                                                                 windowRect: frontMostWindowRect];
-    
-    [self addHistoryItemToUndoHistory: historyItem];
-    
-    frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
-    
-    if (MovingToNextOrPreviousDisplay(action) && RectFitsInRect(frontMostWindowRect, visibleFrameOfScreen)) {
-        action = SpectacleWindowActionCenter;
-    }
-    
-    previousFrontMostWindowRect = frontMostWindowRect;
-    
-    frontMostWindowRect = [self recalculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
-    
-    if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
-        frontMostWindowRect = [self recalculateCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
-    }
-    
-    if (CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
-        NSBeep();
-        
-        return;
-    }
-    
-    frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
-    
-    [self moveWindowRect: frontMostWindowRect frameOfScreen: frameOfScreen visibleFrameOfScreen: visibleFrameOfScreen frontMostWindowElement: frontMostWindowElement action: action];
-}
-
-#pragma mark -
 
 - (ZKAccessibilityElement *)frontMostWindowElement {
     ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
@@ -505,23 +497,33 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 @implementation SpectacleWindowPositionManager (WindowHistory)
 
-- (NSString *)currentWorkspaceKey {
+- (NSString *)workspaceKey {
     return [NSString stringWithFormat: @"Workspace%ld", [SpectacleUtilities currentWorkspace]];
 }
 
 #pragma mark -
 
-- (NSMutableArray *)currentUndoHistory {
-    return myUndoHistory[[self currentWorkspaceKey]];
+- (NSMutableArray *)undoHistory {
+    if (!myUndoHistory[[self workspaceKey]]) {
+        myUndoHistory[[self workspaceKey]] = [NSMutableArray new];
+    }
+    
+    return myUndoHistory[[self workspaceKey]];
 }
 
-- (NSMutableArray *)currentRedoHistory {
-    return myRedoHistory[[self currentWorkspaceKey]];
+- (NSMutableArray *)redoHistory {
+    if (!myRedoHistory[[self workspaceKey]]) {
+        myRedoHistory[[self workspaceKey]] = [NSMutableArray new];
+    }
+    
+    return myRedoHistory[[self workspaceKey]];
 }
 
 #pragma mark -
 
-- (void)moveWithHistory: (NSMutableArray *)history action: (SpectacleWindowAction)action {
+- (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action {
+    NSMutableArray *history = (action == SpectacleWindowActionUndo) ? [self undoHistory] : [self redoHistory];
+    NSMutableArray *oppositeHistory = (action == SpectacleWindowActionUndo) ? [self redoHistory] : [self undoHistory];
     SpectacleHistoryItem *historyItem = [history lastObject];
     ZKAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
@@ -532,62 +534,38 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
     }
     
-    if (!CGRectIsNull(windowRect)) {
-        SpectacleHistoryItem *nextHistoryItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: accessibilityElement
-                                                                                               windowRect: windowRect];
-        
-        if (action == SpectacleWindowActionUndo) {
-            [self addHistoryItemToRedoHistory: nextHistoryItem];
-        } else if (action == SpectacleWindowActionRedo) {
-            [self addHistoryItemToUndoHistory: nextHistoryItem];
-        }
-    }
-    
     if (![self moveWithHistoryItem: historyItem visibleFrameOfScreen: visibleFrameOfScreen action: action]) {
         NSBeep();
         
         return;
     }
     
+    [self addHistoryItem: [SpectacleHistoryItem historyItemFromAccessibilityElement: accessibilityElement windowRect: windowRect] toHistory: oppositeHistory];
+    
     [history removeLastObject];
 }
 
 - (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
     ZKAccessibilityElement *frontMostWindowElement = [historyItem accessibilityElement];
+    CGRect windowRect = [historyItem windowRect];
     
-    if (!historyItem || !frontMostWindowElement) {
+    if (!historyItem || !frontMostWindowElement || CGRectIsNull(windowRect)) {
         return NO;
     }
     
-    [self moveWindowRect: [historyItem windowRect] frameOfScreen: CGRectNull visibleFrameOfScreen: visibleFrameOfScreen frontMostWindowElement: frontMostWindowElement action: action];
+    [self moveWindowRect: windowRect frameOfScreen: CGRectNull visibleFrameOfScreen: visibleFrameOfScreen frontMostWindowElement: frontMostWindowElement action: action];
     
     return YES;
 }
 
 #pragma mark -
 
-- (void)addHistoryItemToUndoHistory: (SpectacleHistoryItem *)historyItem {
-    if (![self currentUndoHistory]) {
-        myUndoHistory[[self currentWorkspaceKey]] = [NSMutableArray new];
+- (void)addHistoryItem: (SpectacleHistoryItem *)historyItem toHistory: (NSMutableArray *)history {
+    if ([history count] >= SpectacleWindowActionHistorySize) {
+        [history removeObjectAtIndex: 0];
     }
     
-    if ([[self currentUndoHistory] count] >= SpectacleWindowActionHistorySize) {
-        [[self currentUndoHistory] removeObjectAtIndex: 0];
-    }
-    
-    [[self currentUndoHistory] addObject: historyItem];
-}
-
-- (void)addHistoryItemToRedoHistory: (SpectacleHistoryItem *)historyItem {
-    if (![self currentRedoHistory]) {
-        myRedoHistory[[self currentWorkspaceKey]] = [NSMutableArray new];
-    }
-    
-    if ([[self currentRedoHistory] count] >= SpectacleWindowActionHistorySize) {
-        [[self currentRedoHistory] removeObjectAtIndex: 0];
-    }
-    
-    [[self currentRedoHistory] addObject: historyItem];
+    [history addObject: historyItem];
 }
 
 @end
