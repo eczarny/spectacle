@@ -6,6 +6,8 @@
     if (self = [super init]) {
         accessibilityElement = anAccessibilityElement;
         windowRect = aWindowRect;
+        nextHistoryItem = nil;
+        previousHistoryItem = nil;
     }
     
     return self;
@@ -27,6 +29,26 @@
 
 - (CGRect)windowRect {
     return windowRect;
+}
+
+#pragma mark -
+
+- (SpectacleHistoryItem *)nextHistoryItem {
+    return nextHistoryItem;
+}
+
+- (void)setNextHistoryItem: (SpectacleHistoryItem *)historyItem {
+    nextHistoryItem = historyItem;
+}
+
+#pragma mark -
+
+- (SpectacleHistoryItem *)previousHistoryItem {
+    return previousHistoryItem;
+}
+
+- (void)setPreviousHistoryItem: (SpectacleHistoryItem *)historyItem {
+    previousHistoryItem = historyItem;
 }
 
 @end

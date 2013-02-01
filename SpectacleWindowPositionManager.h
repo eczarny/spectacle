@@ -24,8 +24,7 @@ enum {
 typedef NSInteger SpectacleWindowAction;
 
 @interface SpectacleWindowPositionManager : NSObject {
-    NSMutableDictionary *undoHistory;
-    NSMutableDictionary *redoHistory;
+    NSMutableDictionary *historiesByWorkspace;
     NSMutableSet *blacklistedWindowRects;
     NSMutableSet *blacklistedApplications;
 }

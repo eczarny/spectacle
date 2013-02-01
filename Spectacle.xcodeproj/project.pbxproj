@@ -14,6 +14,7 @@
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D1E1AD1147E07980021D73D /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407E1475ECF1000133CA /* ZeroKit.framework */; };
+		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
 		2D36FFD416B9BE100040372F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36FFD316B9BE100040372F /* Sparkle.framework */; };
 		2D36FFD516B9BE3A0040372F /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36FFD316B9BE100040372F /* Sparkle.framework */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
@@ -104,6 +105,8 @@
 		2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Spectacle.xcconfig; path = Configurations/Spectacle.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleDevelopment.xcconfig; path = Configurations/SpectacleDevelopment.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
+		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistory.h; sourceTree = "<group>"; };
+		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistory.m; sourceTree = "<group>"; };
 		2D36FFD316B9BE100040372F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleScreenDetection.h; sourceTree = "<group>"; };
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleScreenDetection.m; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 		0747DAE91183AAC100F75DD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
+				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
 				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
 				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
 			);
@@ -437,6 +442,7 @@
 			files = (
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
+				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleHotKeyValidator.m in Sources */,
