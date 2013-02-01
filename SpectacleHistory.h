@@ -6,6 +6,7 @@
     SpectacleHistoryItem *firstHistoryItem;
     SpectacleHistoryItem *lastHistoryItem;
     SpectacleHistoryItem *currentHistoryItem;
+    NSInteger size;
 }
 
 - (void)addHistoryItem: (SpectacleHistoryItem *)aHistoryItem;
