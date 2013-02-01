@@ -4,9 +4,9 @@
 @class SpectaclePreferencesController;
 
 @interface SpectacleApplicationController : SpectacleWindowActionController {
-    IBOutlet NSMenu *myStatusItemMenu;
-    NSStatusItem *myStatusItem;
-    SpectaclePreferencesController *myPreferencesController;
+    IBOutlet NSMenu *statusItemMenu;
+    NSStatusItem *statusItem;
+    SpectaclePreferencesController *preferencesController;
     
 }
 

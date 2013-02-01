@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11E53</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
-		<string key="IBDocument.AppKitVersion">1138.47</string>
+		<string key="IBDocument.SystemVersion">11G63</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2549</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSBox</string>
@@ -731,102 +731,6 @@
 					<int key="connectionID">68</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myStatusItemEnabled</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="275860819"/>
-					</object>
-					<int key="connectionID">69</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToUpperRightHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="928222524"/>
-					</object>
-					<int key="connectionID">84</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToUpperLeftHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="54016738"/>
-					</object>
-					<int key="connectionID">83</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToTopHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="665817787"/>
-					</object>
-					<int key="connectionID">82</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToRightHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="854798695"/>
-					</object>
-					<int key="connectionID">80</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToLowerRightHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="562089500"/>
-					</object>
-					<int key="connectionID">77</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToLowerLeftHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="415483681"/>
-					</object>
-					<int key="connectionID">76</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToLeftHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="216237081"/>
-					</object>
-					<int key="connectionID">75</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToFullscreenHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="559645078"/>
-					</object>
-					<int key="connectionID">73</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToCenterHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="629140152"/>
-					</object>
-					<int key="connectionID">72</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToBottomHotKeyRecorder</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="4001916"/>
-					</object>
-					<int key="connectionID">71</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">myLoginItemEnabled</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="1046001229"/>
-					</object>
-					<int key="connectionID">67</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">toggleLoginItem:</string>
 						<reference key="source" ref="1001"/>
@@ -844,51 +748,147 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myRedoLastMoveHotKeyRecorder</string>
+						<string key="label">loginItemEnabled</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="703184041"/>
+						<reference key="destination" ref="1046001229"/>
 					</object>
-					<int key="connectionID">119</int>
+					<int key="connectionID">125</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myUndoLastMoveHotKeyRecorder</string>
+						<string key="label">moveToBottomHotKeyRecorder</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="396480327"/>
+						<reference key="destination" ref="4001916"/>
 					</object>
-					<int key="connectionID">120</int>
+					<int key="connectionID">126</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToNextThirdHotKeyRecorder</string>
+						<string key="label">moveToCenterHotKeyRecorder</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="145974905"/>
+						<reference key="destination" ref="629140152"/>
 					</object>
-					<int key="connectionID">121</int>
+					<int key="connectionID">127</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToPreviousThirdHotKeyRecorder</string>
+						<string key="label">moveToFullscreenHotKeyRecorder</string>
 						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="1070576972"/>
+						<reference key="destination" ref="559645078"/>
 					</object>
-					<int key="connectionID">122</int>
+					<int key="connectionID">128</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToNextDisplayHotKeyRecorder</string>
+						<string key="label">moveToLeftHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="216237081"/>
+					</object>
+					<int key="connectionID">129</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToLowerLeftHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="415483681"/>
+					</object>
+					<int key="connectionID">130</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToLowerRightHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="562089500"/>
+					</object>
+					<int key="connectionID">131</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToNextDisplayHotKeyRecorder</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="1063450049"/>
 					</object>
-					<int key="connectionID">123</int>
+					<int key="connectionID">132</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">myMoveToPreviousDisplayHotKeyRecorder</string>
+						<string key="label">moveToNextThirdHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="145974905"/>
+					</object>
+					<int key="connectionID">133</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToPreviousDisplayHotKeyRecorder</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="292546697"/>
 					</object>
-					<int key="connectionID">124</int>
+					<int key="connectionID">134</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToPreviousThirdHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1070576972"/>
+					</object>
+					<int key="connectionID">135</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToRightHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="854798695"/>
+					</object>
+					<int key="connectionID">136</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToTopHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="665817787"/>
+					</object>
+					<int key="connectionID">137</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToUpperLeftHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="54016738"/>
+					</object>
+					<int key="connectionID">138</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">moveToUpperRightHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="928222524"/>
+					</object>
+					<int key="connectionID">139</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">redoLastMoveHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="703184041"/>
+					</object>
+					<int key="connectionID">140</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">undoLastMoveHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="396480327"/>
+					</object>
+					<int key="connectionID">141</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">statusItemEnabled</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="275860819"/>
+					</object>
+					<int key="connectionID">142</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1414,7 +1414,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">124</int>
+			<int key="maxID">142</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1446,96 +1446,96 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="myLoginItemEnabled">NSButton</string>
-						<string key="myMoveToBottomHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToCenterHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToFullscreenHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToLeftHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToLowerLeftHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToLowerRightHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToNextDisplayHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToNextThirdHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToPreviousDisplayHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToPreviousThirdHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToRightHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToTopHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToUpperLeftHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myMoveToUpperRightHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myRedoLastMoveHotKeyRecorder">ZKHotKeyRecorder</string>
-						<string key="myStatusItemEnabled">NSPopUpButton</string>
-						<string key="myUndoLastMoveHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="loginItemEnabled">NSButton</string>
+						<string key="moveToBottomHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToCenterHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToFullscreenHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToLeftHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToLowerLeftHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToLowerRightHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToNextDisplayHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToNextThirdHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToPreviousDisplayHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToPreviousThirdHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToRightHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToTopHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToUpperLeftHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="moveToUpperRightHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="redoLastMoveHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="statusItemEnabled">NSPopUpButton</string>
+						<string key="undoLastMoveHotKeyRecorder">ZKHotKeyRecorder</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="myLoginItemEnabled">
-							<string key="name">myLoginItemEnabled</string>
+						<object class="IBToOneOutletInfo" key="loginItemEnabled">
+							<string key="name">loginItemEnabled</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToBottomHotKeyRecorder">
-							<string key="name">myMoveToBottomHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToBottomHotKeyRecorder">
+							<string key="name">moveToBottomHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToCenterHotKeyRecorder">
-							<string key="name">myMoveToCenterHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToCenterHotKeyRecorder">
+							<string key="name">moveToCenterHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToFullscreenHotKeyRecorder">
-							<string key="name">myMoveToFullscreenHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToFullscreenHotKeyRecorder">
+							<string key="name">moveToFullscreenHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToLeftHotKeyRecorder">
-							<string key="name">myMoveToLeftHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToLeftHotKeyRecorder">
+							<string key="name">moveToLeftHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToLowerLeftHotKeyRecorder">
-							<string key="name">myMoveToLowerLeftHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToLowerLeftHotKeyRecorder">
+							<string key="name">moveToLowerLeftHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToLowerRightHotKeyRecorder">
-							<string key="name">myMoveToLowerRightHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToLowerRightHotKeyRecorder">
+							<string key="name">moveToLowerRightHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToNextDisplayHotKeyRecorder">
-							<string key="name">myMoveToNextDisplayHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToNextDisplayHotKeyRecorder">
+							<string key="name">moveToNextDisplayHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToNextThirdHotKeyRecorder">
-							<string key="name">myMoveToNextThirdHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToNextThirdHotKeyRecorder">
+							<string key="name">moveToNextThirdHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToPreviousDisplayHotKeyRecorder">
-							<string key="name">myMoveToPreviousDisplayHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToPreviousDisplayHotKeyRecorder">
+							<string key="name">moveToPreviousDisplayHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToPreviousThirdHotKeyRecorder">
-							<string key="name">myMoveToPreviousThirdHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToPreviousThirdHotKeyRecorder">
+							<string key="name">moveToPreviousThirdHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToRightHotKeyRecorder">
-							<string key="name">myMoveToRightHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToRightHotKeyRecorder">
+							<string key="name">moveToRightHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToTopHotKeyRecorder">
-							<string key="name">myMoveToTopHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToTopHotKeyRecorder">
+							<string key="name">moveToTopHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToUpperLeftHotKeyRecorder">
-							<string key="name">myMoveToUpperLeftHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToUpperLeftHotKeyRecorder">
+							<string key="name">moveToUpperLeftHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myMoveToUpperRightHotKeyRecorder">
-							<string key="name">myMoveToUpperRightHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="moveToUpperRightHotKeyRecorder">
+							<string key="name">moveToUpperRightHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myRedoLastMoveHotKeyRecorder">
-							<string key="name">myRedoLastMoveHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="redoLastMoveHotKeyRecorder">
+							<string key="name">redoLastMoveHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myStatusItemEnabled">
-							<string key="name">myStatusItemEnabled</string>
+						<object class="IBToOneOutletInfo" key="statusItemEnabled">
+							<string key="name">statusItemEnabled</string>
 							<string key="candidateClassName">NSPopUpButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="myUndoLastMoveHotKeyRecorder">
-							<string key="name">myUndoLastMoveHotKeyRecorder</string>
+						<object class="IBToOneOutletInfo" key="undoLastMoveHotKeyRecorder">
+							<string key="name">undoLastMoveHotKeyRecorder</string>
 							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 					</dictionary>
@@ -1556,10 +1556,6 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<real value="1070" key="NS.object.0"/>
-		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">

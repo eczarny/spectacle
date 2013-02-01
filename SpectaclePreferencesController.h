@@ -4,32 +4,27 @@
 @class SpectacleHotKeyManager, SpectacleApplicationController;
 
 @interface SpectaclePreferencesController : NSWindowController<ZKHotKeyRecorderDelegate> {
-    SpectacleApplicationController *myApplicationController;
-    SpectacleHotKeyManager *myHotKeyManager;
-    NSDictionary *myHotKeyRecorders;
-    IBOutlet ZKHotKeyRecorder *myMoveToCenterHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToFullscreenHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToLeftHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToRightHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToTopHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToBottomHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToUpperLeftHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToLowerLeftHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToUpperRightHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToLowerRightHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToNextDisplayHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToPreviousDisplayHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToNextThirdHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myMoveToPreviousThirdHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myUndoLastMoveHotKeyRecorder;
-    IBOutlet ZKHotKeyRecorder *myRedoLastMoveHotKeyRecorder;
-    IBOutlet NSButton *myLoginItemEnabled;
-    IBOutlet NSPopUpButton *myStatusItemEnabled;
+    SpectacleHotKeyManager *hotKeyManager;
+    NSDictionary *hotKeyRecorders;
+    IBOutlet ZKHotKeyRecorder *moveToCenterHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToFullscreenHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToLeftHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToRightHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToTopHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToBottomHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToUpperLeftHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToLowerLeftHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToUpperRightHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToLowerRightHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToNextDisplayHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToPreviousDisplayHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToNextThirdHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *moveToPreviousThirdHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *undoLastMoveHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *redoLastMoveHotKeyRecorder;
+    IBOutlet NSButton *loginItemEnabled;
+    IBOutlet NSPopUpButton *statusItemEnabled;
 }
-
-- (id)initWithApplicationController: (SpectacleApplicationController *)applicationController;
-
-#pragma mark -
 
 - (IBAction)toggleWindow: (id)sender;
 

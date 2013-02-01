@@ -19,10 +19,9 @@
 
 @implementation SpectaclePreferencesController
 
-- (id)initWithApplicationController: (SpectacleApplicationController *)applicationController {
+- (id)init {
     if ((self = [super initWithWindowNibName: SpectaclePreferencesWindowNibName])) {
-        myApplicationController = applicationController;
-        myHotKeyManager = [SpectacleHotKeyManager sharedManager];
+        hotKeyManager = [SpectacleHotKeyManager sharedManager];
     }
     
     return self;
@@ -34,23 +33,23 @@
     NSInteger loginItemEnabledState = NSOffState;
     BOOL isStatusItemEnabled = [[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference];
     
-    myHotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
-        myMoveToCenterHotKeyRecorder,          SpectacleWindowActionMoveToCenter,
-        myMoveToFullscreenHotKeyRecorder,      SpectacleWindowActionMoveToFullscreen,
-        myMoveToLeftHotKeyRecorder,            SpectacleWindowActionMoveToLeftHalf,
-        myMoveToRightHotKeyRecorder,           SpectacleWindowActionMoveToRightHalf,
-        myMoveToTopHotKeyRecorder,             SpectacleWindowActionMoveToTopHalf,
-        myMoveToBottomHotKeyRecorder,          SpectacleWindowActionMoveToBottomHalf,
-        myMoveToUpperLeftHotKeyRecorder,       SpectacleWindowActionMoveToUpperLeft,
-        myMoveToLowerLeftHotKeyRecorder,       SpectacleWindowActionMoveToLowerLeft,
-        myMoveToUpperRightHotKeyRecorder,      SpectacleWindowActionMoveToUpperRight,
-        myMoveToLowerRightHotKeyRecorder,      SpectacleWindowActionMoveToLowerRight,
-        myMoveToNextDisplayHotKeyRecorder,     SpectacleWindowActionMoveToNextDisplay,
-        myMoveToPreviousDisplayHotKeyRecorder, SpectacleWindowActionMoveToPreviousDisplay,
-        myMoveToNextThirdHotKeyRecorder,       SpectacleWindowActionMoveToNextThird,
-        myMoveToPreviousThirdHotKeyRecorder,   SpectacleWindowActionMoveToPreviousThird,
-        myUndoLastMoveHotKeyRecorder,          SpectacleWindowActionUndoLastMove,
-        myRedoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove, nil];
+    hotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
+        moveToCenterHotKeyRecorder,          SpectacleWindowActionMoveToCenter,
+        moveToFullscreenHotKeyRecorder,      SpectacleWindowActionMoveToFullscreen,
+        moveToLeftHotKeyRecorder,            SpectacleWindowActionMoveToLeftHalf,
+        moveToRightHotKeyRecorder,           SpectacleWindowActionMoveToRightHalf,
+        moveToTopHotKeyRecorder,             SpectacleWindowActionMoveToTopHalf,
+        moveToBottomHotKeyRecorder,          SpectacleWindowActionMoveToBottomHalf,
+        moveToUpperLeftHotKeyRecorder,       SpectacleWindowActionMoveToUpperLeft,
+        moveToLowerLeftHotKeyRecorder,       SpectacleWindowActionMoveToLowerLeft,
+        moveToUpperRightHotKeyRecorder,      SpectacleWindowActionMoveToUpperRight,
+        moveToLowerRightHotKeyRecorder,      SpectacleWindowActionMoveToLowerRight,
+        moveToNextDisplayHotKeyRecorder,     SpectacleWindowActionMoveToNextDisplay,
+        moveToPreviousDisplayHotKeyRecorder, SpectacleWindowActionMoveToPreviousDisplay,
+        moveToNextThirdHotKeyRecorder,       SpectacleWindowActionMoveToNextThird,
+        moveToPreviousThirdHotKeyRecorder,   SpectacleWindowActionMoveToPreviousThird,
+        undoLastMoveHotKeyRecorder,          SpectacleWindowActionUndoLastMove,
+        redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove, nil];
     
     [self loadRegisteredHotKeys];
     
@@ -58,9 +57,9 @@
         loginItemEnabledState = NSOnState;
     }
     
-    [myLoginItemEnabled setState: loginItemEnabledState];
+    [loginItemEnabled setState: loginItemEnabledState];
     
-    [myStatusItemEnabled selectItemWithTag: isStatusItemEnabled ? 0 : 1];
+    [statusItemEnabled selectItemWithTag: isStatusItemEnabled ? 0 : 1];
 }
 
 #pragma mark -
@@ -88,11 +87,11 @@
         [windowPositionManager moveFrontMostWindowWithAction: [windowPositionManager windowActionForHotKey: hotKey]];
     }];
     
-    [myHotKeyManager registerHotKey: hotKey];
+    [hotKeyManager registerHotKey: hotKey];
 }
 
 - (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZKHotKey *)hotKey {
-    [myHotKeyManager unregisterHotKeyForName: [hotKey hotKeyName]];
+    [hotKeyManager unregisterHotKeyForName: [hotKey hotKeyName]];
 }
 
 #pragma mark -
@@ -100,7 +99,7 @@
 - (IBAction)toggleLoginItem: (id)sender {
     NSBundle *applicationBundle = [SpectacleUtilities applicationBundle];
     
-    if ([myLoginItemEnabled state] == NSOnState) {
+    if ([loginItemEnabled state] == NSOnState) {
         [SpectacleUtilities enableLoginItemForBundle: applicationBundle];
     } else{
         [SpectacleUtilities disableLoginItemForBundle: applicationBundle];
@@ -150,9 +149,9 @@
 - (void)loadRegisteredHotKeys {
     SpectacleHotKeyValidator *hotKeyValidator = [SpectacleHotKeyValidator new];
     
-    for (NSString *hotKeyName in [myHotKeyRecorders allKeys]) {
-        ZKHotKeyRecorder *hotKeyRecorder = myHotKeyRecorders[hotKeyName];
-        ZKHotKey *hotKey = [myHotKeyManager registeredHotKeyForName: hotKeyName];
+    for (NSString *hotKeyName in [hotKeyRecorders allKeys]) {
+        ZKHotKeyRecorder *hotKeyRecorder = hotKeyRecorders[hotKeyName];
+        ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName: hotKeyName];
         
         [hotKeyRecorder setHotKeyName: hotKeyName];
         
@@ -172,7 +171,7 @@
 #pragma mark -
 
 - (void)enableHotKeyRecorders: (BOOL)enabled {
-    for (ZKHotKeyRecorder *hotKeyRecorder in [myHotKeyRecorders allValues]) {
+    for (ZKHotKeyRecorder *hotKeyRecorder in [hotKeyRecorders allValues]) {
         if (!enabled) {
             [hotKeyRecorder setHotKey: nil];
         }

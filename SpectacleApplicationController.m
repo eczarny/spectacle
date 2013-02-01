@@ -30,7 +30,7 @@
     
     [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
     
-    myPreferencesController = [[SpectaclePreferencesController alloc] initWithApplicationController: self];
+    preferencesController = [SpectaclePreferencesController new];
     
     if (!AXAPIEnabled()) {
         [SpectacleUtilities displayAccessibilityAPIAlert];
@@ -73,7 +73,7 @@
 #pragma mark -
 
 - (IBAction)showPreferencesWindow: (id)sender {
-    [myPreferencesController showWindow: sender];
+    [preferencesController showWindow: sender];
 }
 
 @end
@@ -85,23 +85,23 @@
 - (void)createStatusItem {
     NSString *applicationVersion = [SpectacleUtilities applicationVersion];
     
-    myStatusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     
-    [myStatusItem setImage: [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
-    [myStatusItem setAlternateImage: [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
-    [myStatusItem setHighlightMode: YES];
+    [statusItem setImage: [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
+    [statusItem setAlternateImage: [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
+    [statusItem setHighlightMode: YES];
     
     if (applicationVersion) {
-        [myStatusItem setToolTip: [NSString stringWithFormat: @"Spectacle %@", applicationVersion]];
+        [statusItem setToolTip: [NSString stringWithFormat: @"Spectacle %@", applicationVersion]];
     } else {
-        [myStatusItem setToolTip: @"Spectacle"];
+        [statusItem setToolTip: @"Spectacle"];
     }
     
-    [myStatusItem setMenu: myStatusItemMenu];
+    [statusItem setMenu: statusItemMenu];
 }
 
 - (void)destroyStatusItem {
-    [[NSStatusBar systemStatusBar] removeStatusItem: myStatusItem];
+    [[NSStatusBar systemStatusBar] removeStatusItem: statusItem];
     
 }
 

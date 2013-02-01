@@ -91,10 +91,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         NSString *path = [[SpectacleUtilities applicationBundle] pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                                           ofType: ZKPropertyListFileExtension];
         
-        myUndoHistory = [NSMutableDictionary new];
-        myRedoHistory = [NSMutableDictionary new];
-        myBlacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
-        myBlacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
+        undoHistory = [NSMutableDictionary new];
+        redoHistory = [NSMutableDictionary new];
+        blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
+        blacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
     }
     
     return self;
@@ -285,7 +285,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     NSString *frontMostApplicationName = [self frontMostApplicationName];
     NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
     
-    if ([myBlacklistedWindowRects containsObject: blacklistedWindowRect] || [myBlacklistedApplications containsObject: frontMostApplicationName]) {
+    if ([blacklistedWindowRects containsObject: blacklistedWindowRect] || [blacklistedApplications containsObject: frontMostApplicationName]) {
         NSBeep();
         
         return;
@@ -302,9 +302,9 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         
         NSBeep();
         
-        [myBlacklistedWindowRects addObject: blacklistedWindowRect];
+        [blacklistedWindowRects addObject: blacklistedWindowRect];
         
-        [userDefaults setObject: [myBlacklistedWindowRects allObjects] forKey: SpectacleBlacklistedWindowRectsPreference];
+        [userDefaults setObject: [blacklistedWindowRects allObjects] forKey: SpectacleBlacklistedWindowRectsPreference];
         
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         
@@ -504,19 +504,19 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (NSMutableArray *)undoHistory {
-    if (!myUndoHistory[[self workspaceKey]]) {
-        myUndoHistory[[self workspaceKey]] = [NSMutableArray new];
+    if (!undoHistory[[self workspaceKey]]) {
+        undoHistory[[self workspaceKey]] = [NSMutableArray new];
     }
     
-    return myUndoHistory[[self workspaceKey]];
+    return undoHistory[[self workspaceKey]];
 }
 
 - (NSMutableArray *)redoHistory {
-    if (!myRedoHistory[[self workspaceKey]]) {
-        myRedoHistory[[self workspaceKey]] = [NSMutableArray new];
+    if (!redoHistory[[self workspaceKey]]) {
+        redoHistory[[self workspaceKey]] = [NSMutableArray new];
     }
     
-    return myRedoHistory[[self workspaceKey]];
+    return redoHistory[[self workspaceKey]];
 }
 
 #pragma mark -
