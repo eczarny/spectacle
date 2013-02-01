@@ -4,6 +4,7 @@
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
+#import "ZKAccessibilityElementAdditions.h"
 
 #define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
 #define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
@@ -25,14 +26,6 @@
 #pragma mark -
 
 @interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
-
-- (ZKAccessibilityElement *)frontMostWindowElement;
-
-#pragma mark -
-
-- (NSString *)frontMostApplicationName;
-
-#pragma mark -
 
 - (CGRect)rectOfWindowWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement;
 
@@ -105,7 +98,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
-    ZKAccessibilityElement *frontMostWindowElement = [self frontMostWindowElement];
+    ZKAccessibilityElement *frontMostWindowElement = [ZKAccessibilityElement frontMostWindowElement];
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
     NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
@@ -227,35 +220,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 @implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
-- (ZKAccessibilityElement *)frontMostWindowElement {
-    ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
-    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
-    ZKAccessibilityElement *frontMostWindowElement = nil;
-    
-    if (applicationWithFocusElement) {
-        frontMostWindowElement = [applicationWithFocusElement elementWithAttribute: kAXFocusedWindowAttribute];
-        
-        if (!frontMostWindowElement) {
-            NSLog(@"Invalid accessibility element provided, unable to determine the size and position of the window.");
-        }
-    } else {
-        NSLog(@"Failed to find the application that currently has focus.");
-    }
-    
-    return frontMostWindowElement;
-}
-
-#pragma mark -
-
-- (NSString *)frontMostApplicationName {
-    ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
-    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
-    
-    return [applicationWithFocusElement stringValueOfAttribute: kAXTitleAttribute];
-}
-
-#pragma mark -
-
 - (CGRect)rectOfWindowWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement {
     CGRect result = CGRectNull;
     
@@ -280,7 +244,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
-    NSString *frontMostApplicationName = [self frontMostApplicationName];
+    NSString *frontMostApplicationName = [ZKAccessibilityElement frontMostApplicationName];
     NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
     
     if ([blacklistedWindowRects containsObject: blacklistedWindowRect] || [blacklistedApplications containsObject: frontMostApplicationName]) {
@@ -289,11 +253,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         return;
     }
     
-    CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: [self frontMostWindowElement]];
+    CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: [ZKAccessibilityElement frontMostWindowElement]];
     
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
 
-    CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: [self frontMostWindowElement]];
+    CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: [ZKAccessibilityElement frontMostWindowElement]];
     
     if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
