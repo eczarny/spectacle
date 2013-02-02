@@ -53,7 +53,7 @@
 
 @interface SpectacleWindowPositionManager (WindowHistory)
 
-- (SpectacleHistory *)historyForCurrentWorkspace;
+- (SpectacleHistory *)historyForCurrentApplication;
 
 #pragma mark -
 
@@ -75,7 +75,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         NSString *path = [[SpectacleUtilities applicationBundle] pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                                           ofType: ZKPropertyListFileExtension];
         
-        historiesByWorkspace = [NSMutableDictionary new];
+        applicationHistories = [NSMutableDictionary new];
         blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
         blacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
     }
@@ -104,7 +104,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
     CGRect frameOfScreen = CGRectNull;
     CGRect visibleFrameOfScreen = CGRectNull;
-    SpectacleHistory *history = [self historyForCurrentWorkspace];
+    SpectacleHistory *history = [self historyForCurrentApplication];
     SpectacleHistoryItem *historyItem = nil;
     
     if (screenOfDisplay) {
@@ -459,20 +459,20 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 
 @implementation SpectacleWindowPositionManager (WindowHistory)
 
-- (SpectacleHistory *)historyForCurrentWorkspace {
-    NSNumber *workspace = [NSNumber numberWithInteger: [SpectacleUtilities currentWorkspace]];
+- (SpectacleHistory *)historyForCurrentApplication {
+    NSString *applicationName = [ZKAccessibilityElement frontMostApplicationName];
     
-    if (!historiesByWorkspace[workspace]) {
-        historiesByWorkspace[workspace] = [SpectacleHistory new];
+    if (!applicationHistories[applicationName]) {
+        applicationHistories[applicationName] = [SpectacleHistory new];
     }
     
-    return historiesByWorkspace[workspace];
+    return applicationHistories[applicationName];
 }
 
 #pragma mark -
 
 - (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action {
-    SpectacleHistory *history = [self historyForCurrentWorkspace];
+    SpectacleHistory *history = [self historyForCurrentApplication];
     SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? [history previousHistoryItem] : [history nextHistoryItem];
     ZKAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
     CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];

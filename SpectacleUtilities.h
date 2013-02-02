@@ -42,8 +42,4 @@
 
 + (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action;
 
-#pragma mark -
-
-+ (NSInteger)currentWorkspace;
-
 @end
