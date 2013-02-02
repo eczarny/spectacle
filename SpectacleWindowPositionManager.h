@@ -1,6 +1,17 @@
 #import <Foundation/Foundation.h>
 #import <ZeroKit/ZeroKit.h>
 
+#define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
+#define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
+#define MovingToUpperOrLowerLeftOfDisplay(action) ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft))
+#define MovingToUpperOrLowerRightDisplay(action) ((action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight))
+
+#pragma mark -
+
+#define MovingToThirdOfDisplay(action) ((action == SpectacleWindowActionNextThird) || (action == SpectacleWindowActionPreviousThird))
+
+#pragma mark -
+
 enum {
     SpectacleWindowActionUndo = -3,
     SpectacleWindowActionRedo,

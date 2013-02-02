@@ -1,21 +1,11 @@
 #import "SpectacleWindowPositionManager.h"
+#import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleScreenDetection.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 #import "ZKAccessibilityElementAdditions.h"
-
-#define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
-#define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
-#define MovingToUpperOrLowerLeftOfDisplay(action) ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft))
-#define MovingToUpperOrLowerRightDisplay(action) ((action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight))
-
-#pragma mark -
-
-#define MovingToThirdOfDisplay(action) ((action == SpectacleWindowActionNextThird) || (action == SpectacleWindowActionPreviousThird))
-
-#pragma mark -
 
 #define UndoOrRedo(action) ((action == SpectacleWindowActionUndo) || (action == SpectacleWindowActionRedo))
 
@@ -34,18 +24,6 @@
 - (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action;
 
 - (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement;
-
-#pragma mark -
-
-- (CGRect)recalculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action;
-
-- (CGRect)recalculateCenteredWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage;
-
-#pragma mark -
-
-- (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
-
-- (CGRect)findThirdForFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
 
 @end
 
@@ -139,10 +117,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     previousFrontMostWindowRect = frontMostWindowRect;
     
-    frontMostWindowRect = [self recalculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
+    frontMostWindowRect = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
     
     if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
-        frontMostWindowRect = [self recalculateCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
+        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
     }
     
     if (CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
@@ -304,153 +282,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     CFRelease(windowRectPositionRef);
     CFRelease(windowRectSizeRef);
-}
-
-#pragma mark -
-
-- (CGRect)recalculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
-    if ((action >= SpectacleWindowActionRightHalf) && (action <= SpectacleWindowActionLowerRight)) {
-        windowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
-    } else if (MovingToCenterRegionOfDisplay(action)) {
-        windowRect.origin.x = floor(visibleFrameOfScreen.size.width / 2.0f) - floor(windowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
-    } else if (!MovingToThirdOfDisplay(action)) {
-        windowRect.origin.x = visibleFrameOfScreen.origin.x;
-    }
-    
-    if (MovingToTopRegionOfDisplay(action)) {
-        windowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
-    } else if (MovingToCenterRegionOfDisplay(action)) {
-        windowRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) - floor(windowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
-    } else if (!MovingToThirdOfDisplay(action)) {
-        windowRect.origin.y = visibleFrameOfScreen.origin.y;
-    }
-    
-    if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)) {
-        windowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
-        windowRect.size.height = visibleFrameOfScreen.size.height;
-    } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
-        windowRect.size.width = visibleFrameOfScreen.size.width;
-        windowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
-    } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)) {
-        windowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
-        windowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
-    } else if (!MovingToCenterRegionOfDisplay(action) && !MovingToThirdOfDisplay(action)) {
-        windowRect.size.width = visibleFrameOfScreen.size.width;
-        windowRect.size.height = visibleFrameOfScreen.size.height;
-    }
-    
-    if (MovingToThirdOfDisplay(action)) {
-        windowRect = [self findThirdForFrontMostWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
-    }
-    
-    if (MovingToTopRegionOfDisplay(action)) {
-        if (((visibleFrameOfScreen.size.height / 2.0f) - windowRect.size.height) > 0.0f) {
-            windowRect.origin.y = windowRect.origin.y + 1.0f;
-        } else {
-            windowRect.origin.y = windowRect.origin.y + 1.0f;
-            windowRect.size.height = windowRect.size.height - 1.0f;
-        }
-        
-        windowRect.origin.y = windowRect.origin.y + 1.0f;
-    }
-    
-    if ((action >= SpectacleWindowActionLeftHalf) && (action <= SpectacleWindowActionLowerLeft)) {
-        windowRect.size.width = windowRect.size.width - 1.0f;
-    }
-    
-    return windowRect;
-}
-
-- (CGRect)recalculateCenteredWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
-    CGRect previousWindowRect = windowRect;
-    SpectacleWindowAction action = SpectacleWindowActionCenter;
-    
-    windowRect.size.width = floor(windowRect.size.width + (windowRect.size.width * percentage));
-    windowRect.size.height = floor(windowRect.size.height + (windowRect.size.height * percentage));
-    
-    if (windowRect.size.width >= visibleFrameOfScreen.size.width) {
-        windowRect.size.width = previousWindowRect.size.width;
-    }
-    
-    if (windowRect.size.width == previousWindowRect.size.width) {
-        windowRect.size.width = visibleFrameOfScreen.size.width;
-    }
-    
-    if (windowRect.size.height >= visibleFrameOfScreen.size.height) {
-        windowRect.size.height = previousWindowRect.size.height;
-    }
-    
-    if (windowRect.size.height == previousWindowRect.size.height) {
-        windowRect.size.height = visibleFrameOfScreen.size.height;
-    }
-    
-    if (CGRectEqualToRect(windowRect, previousWindowRect)) {
-        action = SpectacleWindowActionFullscreen;
-    }
-    
-    return [self recalculateWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
-}
-
-#pragma mark -
-
-- (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
-    NSMutableArray *result = [NSMutableArray new];
-    NSInteger i = 0;
-    
-    for (i = 0; i < 3; i++) {
-        CGRect thirdOfScreen = visibleFrameOfScreen;
-        
-        thirdOfScreen.origin.x = visibleFrameOfScreen.origin.x + (floor(visibleFrameOfScreen.size.width / 3.0f) * i);
-        thirdOfScreen.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
-
-        [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement: nil windowRect: thirdOfScreen]];
-    }
-    
-    for (i = 0; i < 3; i++) {
-        CGRect thirdOfScreen = visibleFrameOfScreen;
-        
-        thirdOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - (floor(visibleFrameOfScreen.size.height / 3.0f) * (i + 1));
-        thirdOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f);
-        
-        if (i == 2) {
-            thirdOfScreen.origin.y = thirdOfScreen.origin.y - 1.0f;
-            thirdOfScreen.size.height = thirdOfScreen.size.height + 1.0f;
-        }
-        
-        [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement: nil windowRect: thirdOfScreen]];
-    }
-    
-    return result;
-}
-
-- (CGRect)findThirdForFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
-    NSArray *thirds = [self thirdsFromVisibleFrameOfScreen: visibleFrameOfScreen];
-    CGRect result = [thirds[0] windowRect];
-    NSInteger i = 0;
-    
-    for (i = 0; i < [thirds count]; i++) {
-        CGRect currentWindowRect = [thirds[i] windowRect];
-        
-        if (CGRectEqualToRect(currentWindowRect, frontMostWindowRect)) {
-            NSInteger j = i;
-            
-            if (action == SpectacleWindowActionNextThird) {
-                if (++j >= [thirds count]) {
-                    j = 0;
-                }
-            } else if (action == SpectacleWindowActionPreviousThird) {
-                if (--j < 0) {
-                    j = [thirds count] - 1;
-                }
-            }
-            
-            result = [thirds[j] windowRect];
-            
-            break;
-        }
-    }
-    
-    return result;
 }
 
 @end
