@@ -66,34 +66,25 @@
     return windowRect;
 }
 
-+ (CGRect)calculateCenteredWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
-    CGRect previousWindowRect = windowRect;
-    SpectacleWindowAction action = SpectacleWindowActionCenter;
++ (CGRect)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
+    CGFloat widthAdjustment = floor(windowRect.size.width * percentage);
+    CGFloat heightAdjustment = floor(windowRect.size.height * percentage);
     
-    windowRect.size.width = floor(windowRect.size.width + (windowRect.size.width * percentage));
-    windowRect.size.height = floor(windowRect.size.height + (windowRect.size.height * percentage));
+    windowRect.size.width = windowRect.size.width + widthAdjustment;
+    windowRect.origin.x = windowRect.origin.x - (widthAdjustment / 2.0f);
     
-    if (windowRect.size.width >= visibleFrameOfScreen.size.width) {
-        windowRect.size.width = previousWindowRect.size.width;
-    }
-    
-    if (windowRect.size.width == previousWindowRect.size.width) {
+    if (windowRect.size.width > visibleFrameOfScreen.size.width) {
         windowRect.size.width = visibleFrameOfScreen.size.width;
     }
     
-    if (windowRect.size.height >= visibleFrameOfScreen.size.height) {
-        windowRect.size.height = previousWindowRect.size.height;
-    }
+    windowRect.size.height = windowRect.size.height + heightAdjustment;
+    windowRect.origin.y = windowRect.origin.y - (heightAdjustment / 2.0f);
     
-    if (windowRect.size.height == previousWindowRect.size.height) {
+    if (windowRect.size.height > visibleFrameOfScreen.size.height) {
         windowRect.size.height = visibleFrameOfScreen.size.height;
     }
     
-    if (CGRectEqualToRect(windowRect, previousWindowRect)) {
-        action = SpectacleWindowActionFullscreen;
-    }
-    
-    return [SpectacleWindowPositionCalculator calculateWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
+    return windowRect;
 }
 
 @end

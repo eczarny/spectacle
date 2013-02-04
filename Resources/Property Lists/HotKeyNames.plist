@@ -16,6 +16,8 @@
 	<string>MoveToPreviousDisplay</string>
 	<string>MoveToNextThird</string>
 	<string>MoveToPreviousThird</string>
+	<string>MakeLarger</string>
+	<string>MakeSmaller</string>
 	<string>UndoLastMove</string>
 	<string>RedoLastMove</string>
 </array>

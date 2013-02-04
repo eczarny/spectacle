@@ -31,12 +31,19 @@
 #define SpectacleWindowActionMoveToNextThird             @"MoveToNextThird"
 #define SpectacleWindowActionMoveToPreviousThird         @"MoveToPreviousThird"
 
+#define SpectacleWindowActionMakeLarger                  @"MakeLarger"
+#define SpectacleWindowActionMakeSmaller                 @"MakeSmaller"
+
 #define SpectacleWindowActionUndoLastMove                @"UndoLastMove"
 #define SpectacleWindowActionRedoLastMove                @"RedoLastMove"
 
 #pragma mark -
 
 #define SpectacleWindowActionHistorySize                 50
+
+#pragma mark -
+
+#define SpectacleWindowActionResizePercentage            0.05
 
 #pragma mark -
 

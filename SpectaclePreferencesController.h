@@ -20,6 +20,8 @@
     IBOutlet ZKHotKeyRecorder *moveToPreviousDisplayHotKeyRecorder;
     IBOutlet ZKHotKeyRecorder *moveToNextThirdHotKeyRecorder;
     IBOutlet ZKHotKeyRecorder *moveToPreviousThirdHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *makeLargerHotKeyRecorder;
+    IBOutlet ZKHotKeyRecorder *makeSmallerHotKeyRecorder;
     IBOutlet ZKHotKeyRecorder *undoLastMoveHotKeyRecorder;
     IBOutlet ZKHotKeyRecorder *redoLastMoveHotKeyRecorder;
     IBOutlet NSButton *loginItemEnabled;

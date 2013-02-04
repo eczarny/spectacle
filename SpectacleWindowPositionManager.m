@@ -7,6 +7,10 @@
 #import "SpectacleConstants.h"
 #import "ZKAccessibilityElementAdditions.h"
 
+#define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
+
+#pragma mark -
+
 #define UndoOrRedo(action) ((action == SpectacleWindowActionUndo) || (action == SpectacleWindowActionRedo))
 
 #pragma mark -
@@ -117,10 +121,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     previousFrontMostWindowRect = frontMostWindowRect;
     
-    frontMostWindowRect = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
-    
-    if ((action == SpectacleWindowActionCenter) && CGRectEqualToRect(frontMostWindowRect, previousFrontMostWindowRect)) {
-        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateCenteredWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: 0.05];
+    if (Resizing(action)) {
+        CGFloat resizePercentage = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowActionResizePercentage;
+        
+        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: resizePercentage];
+    } else {
+        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
     }
     
     if (CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
@@ -183,6 +189,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         windowAction = SpectacleWindowActionNextThird;
     } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {
         windowAction = SpectacleWindowActionPreviousThird;
+    } else if ([name isEqualToString: SpectacleWindowActionMakeLarger]) {
+        windowAction = SpectacleWindowActionLarger;
+    } else if ([name isEqualToString: SpectacleWindowActionMakeSmaller]) {
+        windowAction = SpectacleWindowActionSmaller;
     } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
         windowAction = SpectacleWindowActionUndo;
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {

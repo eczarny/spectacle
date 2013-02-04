@@ -488,7 +488,7 @@
 						<object class="NSTextField" id="986017371">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{313, 231}, {104, 17}}</string>
+							<string key="NSFrame">{{313, 144}, {104, 17}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="396480327"/>
@@ -506,7 +506,7 @@
 						<object class="NSCustomView" id="396480327">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{422, 229}, {140, 21}}</string>
+							<string key="NSFrame">{{422, 142}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="329619471"/>
@@ -515,7 +515,7 @@
 						<object class="NSTextField" id="329619471">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{313, 202}, {104, 17}}</string>
+							<string key="NSFrame">{{313, 115}, {104, 17}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="703184041"/>
@@ -533,10 +533,63 @@
 						<object class="NSCustomView" id="703184041">
 							<reference key="NSNextResponder" ref="253082788"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{422, 200}, {140, 21}}</string>
+							<string key="NSFrame">{{422, 113}, {140, 21}}</string>
 							<reference key="NSSuperview" ref="253082788"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="835040599"/>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
+						</object>
+						<object class="NSTextField" id="411417654">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{313, 231}, {104, 17}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="674854132"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="962483627">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">71304192</int>
+								<string key="NSContents">Make Larger:</string>
+								<reference key="NSSupport" ref="451733591"/>
+								<reference key="NSControlView" ref="411417654"/>
+								<reference key="NSBackgroundColor" ref="832006892"/>
+								<reference key="NSTextColor" ref="1049168080"/>
+							</object>
+						</object>
+						<object class="NSCustomView" id="674854132">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{422, 229}, {140, 21}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="254006850"/>
+							<string key="NSClassName">ZKHotKeyRecorder</string>
+						</object>
+						<object class="NSTextField" id="254006850">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{313, 202}, {104, 17}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="38493052"/>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="62653417">
+								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags2">71304192</int>
+								<string key="NSContents">Make Smaller:</string>
+								<reference key="NSSupport" ref="451733591"/>
+								<reference key="NSControlView" ref="254006850"/>
+								<reference key="NSBackgroundColor" ref="832006892"/>
+								<reference key="NSTextColor" ref="1049168080"/>
+							</object>
+						</object>
+						<object class="NSCustomView" id="38493052">
+							<reference key="NSNextResponder" ref="253082788"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{422, 200}, {140, 21}}</string>
+							<reference key="NSSuperview" ref="253082788"/>
+							<reference key="NSWindow"/>
 							<string key="NSClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="NSBox" id="325623976">
@@ -608,7 +661,6 @@
 											<string key="NSFrame">{{384, 12}, {227, 26}}</string>
 											<reference key="NSSuperview" ref="730268159"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<string key="NSReuseIdentifierKey">_NS:868</string>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="662458338">
@@ -890,6 +942,22 @@
 					</object>
 					<int key="connectionID">142</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">makeLargerHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="674854132"/>
+					</object>
+					<int key="connectionID">149</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">makeSmallerHotKeyRecorder</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="38493052"/>
+					</object>
+					<int key="connectionID">150</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -963,6 +1031,10 @@
 							<reference ref="396480327"/>
 							<reference ref="329619471"/>
 							<reference ref="703184041"/>
+							<reference ref="411417654"/>
+							<reference ref="674854132"/>
+							<reference ref="254006850"/>
+							<reference ref="38493052"/>
 						</array>
 						<reference key="parent" ref="533468141"/>
 					</object>
@@ -1338,6 +1410,42 @@
 						<reference key="object" ref="209913434"/>
 						<reference key="parent" ref="986017371"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">143</int>
+						<reference key="object" ref="411417654"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="962483627"/>
+						</array>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">144</int>
+						<reference key="object" ref="674854132"/>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">145</int>
+						<reference key="object" ref="254006850"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="62653417"/>
+						</array>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">146</int>
+						<reference key="object" ref="38493052"/>
+						<reference key="parent" ref="253082788"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">147</int>
+						<reference key="object" ref="62653417"/>
+						<reference key="parent" ref="254006850"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">148</int>
+						<reference key="object" ref="962483627"/>
+						<reference key="parent" ref="411417654"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1355,6 +1463,12 @@
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="143.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="144.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="147.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="148.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1414,7 +1528,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">142</int>
+			<int key="maxID">150</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1447,6 +1561,8 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="loginItemEnabled">NSButton</string>
+						<string key="makeLargerHotKeyRecorder">ZKHotKeyRecorder</string>
+						<string key="makeSmallerHotKeyRecorder">ZKHotKeyRecorder</string>
 						<string key="moveToBottomHotKeyRecorder">ZKHotKeyRecorder</string>
 						<string key="moveToCenterHotKeyRecorder">ZKHotKeyRecorder</string>
 						<string key="moveToFullscreenHotKeyRecorder">ZKHotKeyRecorder</string>
@@ -1469,6 +1585,14 @@
 						<object class="IBToOneOutletInfo" key="loginItemEnabled">
 							<string key="name">loginItemEnabled</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="makeLargerHotKeyRecorder">
+							<string key="name">makeLargerHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="makeSmallerHotKeyRecorder">
+							<string key="name">makeSmallerHotKeyRecorder</string>
+							<string key="candidateClassName">ZKHotKeyRecorder</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="moveToBottomHotKeyRecorder">
 							<string key="name">moveToBottomHotKeyRecorder</string>

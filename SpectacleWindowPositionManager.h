@@ -13,8 +13,10 @@
 #pragma mark -
 
 enum {
-    SpectacleWindowActionUndo = -3,
+    SpectacleWindowActionUndo = -4,
     SpectacleWindowActionRedo,
+    SpectacleWindowActionLarger,
+    SpectacleWindowActionSmaller,
     SpectacleWindowActionNone,
     SpectacleWindowActionCenter,
     SpectacleWindowActionFullscreen,
