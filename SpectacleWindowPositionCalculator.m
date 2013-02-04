@@ -6,7 +6,11 @@
 
 + (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
 
-+ (CGRect)findThirdForFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
++ (CGRect)findThirdForWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
+
+#pragma mark -
+
++ (BOOL)isWindowRect: (CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
 
 @end
 
@@ -46,7 +50,7 @@
     }
     
     if (MovingToThirdOfDisplay(action)) {
-        windowRect = [SpectacleWindowPositionCalculator findThirdForFrontMostWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+        windowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     }
     
     if (MovingToTopRegionOfDisplay(action)) {
@@ -73,20 +77,21 @@
     CGFloat heightAdjustment = floor(windowRect.size.height * percentage);
     
     windowRect.size.width = windowRect.size.width + widthAdjustment;
-    windowRect.origin.x = windowRect.origin.x - (widthAdjustment / 2.0f);
+    windowRect.origin.x = windowRect.origin.x - floor(widthAdjustment / 2.0f);
     
-    if (windowRect.size.width > visibleFrameOfScreen.size.width) {
+    if (windowRect.size.width >= visibleFrameOfScreen.size.width) {
         windowRect.size.width = visibleFrameOfScreen.size.width;
     }
     
     windowRect.size.height = windowRect.size.height + heightAdjustment;
-    windowRect.origin.y = windowRect.origin.y - (heightAdjustment / 2.0f);
+    windowRect.origin.y = windowRect.origin.y - floor(heightAdjustment / 2.0f);
     
-    if (windowRect.size.height > visibleFrameOfScreen.size.height) {
+    if (windowRect.size.height >= visibleFrameOfScreen.size.height) {
         windowRect.size.height = visibleFrameOfScreen.size.height;
+        windowRect.origin.y = previousWindowRect.origin.y;
     }
     
-    if ((windowRect.size.width <= SpectacleWindowActionResizeMinimumWidth) || (windowRect.size.height <= SpectacleWindowActionResizeMinimumHeight)) {
+    if ([SpectacleWindowPositionCalculator isWindowRect: windowRect tooSmallRelativeToVisibleFrameOfScreen: visibleFrameOfScreen]) {
         windowRect = previousWindowRect;
     }
     
@@ -129,7 +134,7 @@
     return result;
 }
 
-+ (CGRect)findThirdForFrontMostWindowRect: (CGRect)frontMostWindowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
++ (CGRect)findThirdForWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
     NSArray *thirds = [SpectacleWindowPositionCalculator thirdsFromVisibleFrameOfScreen: visibleFrameOfScreen];
     CGRect result = [thirds[0] windowRect];
     NSInteger i = 0;
@@ -137,7 +142,7 @@
     for (i = 0; i < [thirds count]; i++) {
         CGRect currentWindowRect = [thirds[i] windowRect];
         
-        if (CGRectEqualToRect(currentWindowRect, frontMostWindowRect)) {
+        if (CGRectEqualToRect(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
             if (action == SpectacleWindowActionNextThird) {
@@ -157,6 +162,15 @@
     }
     
     return result;
+}
+
+#pragma mark -
+
++ (BOOL)isWindowRect: (CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
+    CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / SpectacleMinimumWindowSizeDivisor);
+    CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / SpectacleMinimumWindowSizeDivisor);
+    
+    return (windowRect.size.width <= minimumWindowRectWidth) || (windowRect.size.height <= minimumWindowRectHeight);
 }
 
 @end

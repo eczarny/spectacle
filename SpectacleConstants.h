@@ -43,10 +43,9 @@
 
 #pragma mark -
 
-#define SpectacleWindowActionResizePercentage            0.05
+#define SpectacleWindowResizingPercentage                0.05
 
-#define SpectacleWindowActionResizeMinimumWidth          300.0
-#define SpectacleWindowActionResizeMinimumHeight         200.0
+#define SpectacleMinimumWindowSizeDivisor                4
 
 #pragma mark -
 

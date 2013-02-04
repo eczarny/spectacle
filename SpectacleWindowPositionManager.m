@@ -122,7 +122,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     previousFrontMostWindowRect = frontMostWindowRect;
     
     if (Resizing(action)) {
-        CGFloat resizePercentage = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowActionResizePercentage;
+        CGFloat resizePercentage = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowResizingPercentage;
         
         frontMostWindowRect = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: resizePercentage];
     } else {
