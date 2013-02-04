@@ -1,5 +1,6 @@
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleHistoryItem.h"
+#import "SpectacleConstants.h"
 
 @interface SpectacleWindowPositionCalculator (SpectacleWindowPositionCalculatorPrivate)
 
@@ -67,6 +68,7 @@
 }
 
 + (CGRect)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
+    CGRect previousWindowRect = windowRect;
     CGFloat widthAdjustment = floor(windowRect.size.width * percentage);
     CGFloat heightAdjustment = floor(windowRect.size.height * percentage);
     
@@ -82,6 +84,10 @@
     
     if (windowRect.size.height > visibleFrameOfScreen.size.height) {
         windowRect.size.height = visibleFrameOfScreen.size.height;
+    }
+    
+    if ((windowRect.size.width <= SpectacleWindowActionResizeMinimumWidth) || (windowRect.size.height <= SpectacleWindowActionResizeMinimumHeight)) {
+        windowRect = previousWindowRect;
     }
     
     return windowRect;

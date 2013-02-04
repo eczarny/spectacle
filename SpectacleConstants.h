@@ -45,6 +45,9 @@
 
 #define SpectacleWindowActionResizePercentage            0.05
 
+#define SpectacleWindowActionResizeMinimumWidth          300.0
+#define SpectacleWindowActionResizeMinimumHeight         200.0
+
 #pragma mark -
 
 #define SpectacleStatusItemIcon                          @"Spectacle Status Item"
