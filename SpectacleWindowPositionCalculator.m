@@ -84,16 +84,16 @@
     windowRect.size.width = windowRect.size.width + sizeOffset;
     windowRect.origin.x = windowRect.origin.x - floor(sizeOffset / 2.0f);
     
-    if (AgainstTheLeftEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
-        windowRect.origin.x = visibleFrameOfScreen.origin.x;
-    }
-    
     if (AgainstTheRightEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
         windowRect.origin.x = CGRectGetMaxX(visibleFrameOfScreen) - windowRect.size.width;
         
         if (AgainstTheLeftEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
             windowRect.size.width = visibleFrameOfScreen.size.width;
         }
+    }
+    
+    if (AgainstTheLeftEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+        windowRect.origin.x = visibleFrameOfScreen.origin.x;
     }
     
     if (windowRect.size.width >= visibleFrameOfScreen.size.width) {
