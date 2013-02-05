@@ -43,7 +43,7 @@
 
 #pragma mark -
 
-#define SpectacleWindowSizeOffset                        25.0f
+#define SpectacleWindowSizeOffset                        30.0f
 
 #define SpectacleMinimumWindowSizeRatio                  4.0f
 
