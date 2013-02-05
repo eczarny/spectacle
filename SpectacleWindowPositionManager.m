@@ -122,9 +122,9 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     previousFrontMostWindowRect = frontMostWindowRect;
     
     if (Resizing(action)) {
-        CGFloat resizePercentage = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowResizingPercentage;
+        CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowSizeOffset;
         
-        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen percentage: resizePercentage];
+        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen sizeOffset: sizeOffset];
     } else {
         frontMostWindowRect = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
     }
@@ -241,11 +241,11 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         return;
     }
     
-    CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: [ZKAccessibilityElement frontMostWindowElement]];
+    CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
-
-    CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: [ZKAccessibilityElement frontMostWindowElement]];
+    
+    CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
     if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -275,6 +275,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         } else if (movedWindowRect.origin.y < visibleFrameOfScreen.origin.y) {
             movedWindowRect.origin.y = visibleFrameOfScreen.origin.y;
         }
+        
+        movedWindowRect.size = windowRect.size;
         
         movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
         

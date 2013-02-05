@@ -2,6 +2,13 @@
 #import "SpectacleHistoryItem.h"
 #import "SpectacleConstants.h"
 
+#define AgainstTheLeftEdgeOfScreen(a, b) (a.origin.x <= b.origin.x)
+#define AgainstTheRightEdgeOfScreen(a, b) (CGRectGetMaxX(a) >= CGRectGetMaxX(b))
+#define AgainstTheTopEdgeOfScreen(a, b) (CGRectGetMaxY(a) >= CGRectGetMaxY(b))
+#define AgainstTheBottomEdgeOfScreen(a, b) (a.origin.y <= b.origin.y)
+
+#pragma mark -
+
 @interface SpectacleWindowPositionCalculator (SpectacleWindowPositionCalculatorPrivate)
 
 + (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
@@ -71,24 +78,54 @@
     return windowRect;
 }
 
-+ (CGRect)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
++ (CGRect)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen sizeOffset: (CGFloat)sizeOffset {
     CGRect previousWindowRect = windowRect;
-    CGFloat widthAdjustment = floor(windowRect.size.width * percentage);
-    CGFloat heightAdjustment = floor(windowRect.size.height * percentage);
     
-    windowRect.size.width = windowRect.size.width + widthAdjustment;
-    windowRect.origin.x = windowRect.origin.x - floor(widthAdjustment / 2.0f);
+    windowRect.size.width = windowRect.size.width + sizeOffset;
+    windowRect.origin.x = windowRect.origin.x - floor(sizeOffset / 2.0f);
+    
+    if (AgainstTheLeftEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+        windowRect.origin.x = visibleFrameOfScreen.origin.x;
+    }
+    
+    if (AgainstTheRightEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+        windowRect.origin.x = CGRectGetMaxX(visibleFrameOfScreen) - windowRect.size.width;
+        
+        if (AgainstTheLeftEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+            windowRect.size.width = visibleFrameOfScreen.size.width;
+        }
+    }
     
     if (windowRect.size.width >= visibleFrameOfScreen.size.width) {
         windowRect.size.width = visibleFrameOfScreen.size.width;
     }
     
-    windowRect.size.height = windowRect.size.height + heightAdjustment;
-    windowRect.origin.y = windowRect.origin.y - floor(heightAdjustment / 2.0f);
+    windowRect.size.height = windowRect.size.height + sizeOffset;
+    windowRect.origin.y = windowRect.origin.y - floor(sizeOffset / 2.0f);
+    
+    if (AgainstTheTopEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+        windowRect.origin.y = CGRectGetMaxY(visibleFrameOfScreen) - windowRect.size.height;
+        
+        if (AgainstTheBottomEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+            windowRect.size.height = visibleFrameOfScreen.size.height;
+        }
+    }
+    
+    if (AgainstTheBottomEdgeOfScreen(previousWindowRect, visibleFrameOfScreen)) {
+        windowRect.origin.y = visibleFrameOfScreen.origin.y;
+    }
     
     if (windowRect.size.height >= visibleFrameOfScreen.size.height) {
         windowRect.size.height = visibleFrameOfScreen.size.height;
         windowRect.origin.y = previousWindowRect.origin.y;
+    }
+    
+    if (CGRectEqualToRect(previousWindowRect, visibleFrameOfScreen) && (sizeOffset < 0)) {
+        windowRect.size.width = previousWindowRect.size.width + sizeOffset;
+        windowRect.origin.x = previousWindowRect.origin.x - floor(sizeOffset / 2.0f);
+        
+        windowRect.size.height = previousWindowRect.size.height + sizeOffset;
+        windowRect.origin.y = previousWindowRect.origin.y - floor(sizeOffset / 2.0f);
     }
     
     if ([SpectacleWindowPositionCalculator isWindowRect: windowRect tooSmallRelativeToVisibleFrameOfScreen: visibleFrameOfScreen]) {
@@ -167,8 +204,8 @@
 #pragma mark -
 
 + (BOOL)isWindowRect: (CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
-    CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / SpectacleMinimumWindowSizeDivisor);
-    CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / SpectacleMinimumWindowSizeDivisor);
+    CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / SpectacleMinimumWindowSizeRatio);
+    CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / SpectacleMinimumWindowSizeRatio);
     
     return (windowRect.size.width <= minimumWindowRectWidth) || (windowRect.size.height <= minimumWindowRectHeight);
 }
