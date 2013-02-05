@@ -160,7 +160,7 @@
         thirdOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - (floor(visibleFrameOfScreen.size.height / 3.0f) * (i + 1));
         thirdOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f);
         
-        if (i == 2) {
+        if ((i == 2) && (fmodf(visibleFrameOfScreen.size.height, 3.0f) != 0.0f)) {
             thirdOfScreen.origin.y = thirdOfScreen.origin.y - 1.0f;
             thirdOfScreen.size.height = thirdOfScreen.size.height + 1.0f;
         }
