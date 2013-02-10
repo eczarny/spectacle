@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Spectacle</title>
+    <link>http://spectacleapp.com/updates/appcast.xml</link>
+    <description>Spectacle allows you to easily organize your windows without using a mouse.</description>
+    <language>en</language>
+    <item>
+      <title>Spectacle 0.6.10</title>
+      <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.6.10.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.6.0</sparkle:minimumSystemVersion>
+      <pubDate>Sat, 25 Aug 2012 22:54:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.6.10.zip" sparkle:shortVersionString="0.6.10" sparkle:version="7" sparkle:dsaSignature="MC0CFCO6sH3MyR8bIz+oo1vyPnV+Q6DmAhUAjFX8Tdo5O8Qy5eqixi4/Z4Td8QA=" length="2653606" type="application/octet-stream" />
+    </item>
+    <item>
+      <title>Spectacle 0.7</title>
+      <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.7.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.6.0</sparkle:minimumSystemVersion>
+      <pubDate>Mon, 22 Oct 2012 10:48:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.7.zip" sparkle:shortVersionString="0.7" sparkle:version="8" sparkle:dsaSignature="MCwCFHTj7nftHeZ5eI5fZ7fFcrDi4rzLAhRzpr+PemZ+WS517sdQUbH/k0+7Fg==" length="2670235" type="application/octet-stream" />
+    </item>
+    <item>
+      <title>Spectacle 0.8</title>
+      <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.8.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.7.0</sparkle:minimumSystemVersion>
+      <pubDate>Wed, 6 Feb 2013 22:59:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.zip" sparkle:shortVersionString="0.8" sparkle:version="9" sparkle:dsaSignature="MC0CFE3oTeNZ19fknp7Qo1ALFgKuCs2qAhUAkrINCA95WStHt+jJDn0Abx1r3vg=" length="2654316" type="application/octet-stream" />
+    </item>
+    <item>
+      <title>Spectacle 0.8.1</title>
+      <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.8.1.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.7.0</sparkle:minimumSystemVersion>
+      <pubDate>Fri, 8 Feb 2013 19:53:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.1.zip" sparkle:shortVersionString="0.8.1" sparkle:version="10" sparkle:dsaSignature="MC0CFHogmUZr/FmqHSEN3pt6a1/xZtIfAhUAiCMFDeI0NWRIzVbOp6luwajMTeQ=" length="2654321" type="application/octet-stream" />
+    </item>
+  </channel>
+</rss>

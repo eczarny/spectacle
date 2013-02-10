@@ -1,0 +1,129 @@
+@background-color:       #f7f7f7;
+@text-color:             #555;
+@link-color:             #000;
+@header-color:           #343434;
+@header-alternate-color: #ccc;
+
+* {
+  margin: 0px;
+}
+
+body {
+  background-color: @background-color;
+  color: @text-color;
+
+  font-family: museo-sans;
+  font-size: 1em;
+  font-weight: 200;
+
+  .centered {
+    margin: 15px auto 15px auto;
+  }
+
+  .centered-text {
+    text-align: center;
+  }
+
+  .shadowed {
+    text-shadow: 2px 2px 0px #fff;
+  }
+
+  a {
+    color: @link-color;
+    text-decoration: underline;
+    .shadowed;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  #header {
+    .centered;
+
+    h1 {
+      color: @header-color;
+      font-family: p22-underground-sc;
+      font-size: 4.4em;
+      font-weight: 400;
+      .centered-text;
+      .shadowed;
+    }
+  }
+
+  #content {
+    width: 1024px;
+    .centered;
+
+    #macbook-pro {
+      width: 50%;
+      height: 425px;
+      background-image: url('/images/macbook-pro.png');
+      position: relative;
+      float: right;
+      
+      img {
+        position: absolute;
+        right: 75px;
+        top: 73px;
+      }
+    }
+
+    #features {
+      width: 50%;
+      float: right;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      h3 {
+        font-size: 1.0em;
+        font-weight: 300;
+      }
+
+      h4 {
+        padding: 15px 15px 5px 15px;
+        font-size: 1.6em;
+        font-weight: 300;
+        .centered-text;
+        .shadowed;
+      }
+
+      h5 {
+        padding: 5px;
+        font-size: 1.0em;
+        font-weight: 300;
+        .centered-text;
+        .shadowed;
+      }
+
+      ul {
+        padding-top: 15px;
+        padding-bottom: 10px;
+
+        li {
+          font-weight: 300;
+        }
+      }
+    }
+
+    #details {
+      clear: both;
+      padding: 25px;
+      border-top: 1px solid #ddd;
+
+      h3 {
+        color: @header-color;
+        font-size: 1.4em;
+        font-weight: 400;
+        .shadowed;
+      }
+
+      p {
+        padding-top: 10px;
+        padding-bottom: 15px;
+        font-weight: 300;
+        line-height: 140%;
+      }
+    }
+  }
+}
