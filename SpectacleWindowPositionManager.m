@@ -364,10 +364,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 }
 
 - (CGRect)recalculateCenteredWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
-    CGRect previousWindowRect = windowRect;
+    //CGRect previousWindowRect = windowRect;
     SpectacleWindowAction action = SpectacleWindowActionCenter;
     
-    windowRect.size.width = floor(windowRect.size.width + (windowRect.size.width * percentage));
+    /*windowRect.size.width = floor(windowRect.size.width + (windowRect.size.width * percentage));
     windowRect.size.height = floor(windowRect.size.height + (windowRect.size.height * percentage));
     
     if (windowRect.size.width >= visibleFrameOfScreen.size.width) {
@@ -389,6 +389,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     if (CGRectEqualToRect(windowRect, previousWindowRect)) {
         action = SpectacleWindowActionFullscreen;
     }
+    */
+    windowRect.size.width = floor(visibleFrameOfScreen.size.width * 0.5f);
+    windowRect.size.height = floor(visibleFrameOfScreen.size.height * 0.66f);
+
     
     return [self recalculateWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
 }
