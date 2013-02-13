@@ -296,7 +296,6 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     CFRelease(windowRectSizeRef);
 }
 
-<<<<<<< HEAD
 - (CGRect)recalculateCenteredWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen percentage: (CGFloat)percentage {
     //CGRect previousWindowRect = windowRect;
     SpectacleWindowAction action = SpectacleWindowActionCenter;
@@ -330,9 +329,8 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     
     return [self recalculateWindowRect: windowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
 }
-=======
+
 @end
->>>>>>> aa52f6b039b5295c1586d2c28216d8cdd38eb828
 
 #pragma mark -
 
