@@ -15,7 +15,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 #pragma mark -
 
-- (ZeroKitHotKey *)registeredHotKeyForHandle: (NSInteger)handle;
+- (ZKHotKey *)registeredHotKeyForHandle: (NSInteger)handle;
 
 #pragma mark -
 
@@ -31,8 +31,8 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 - (id)init {
     if ((self = [super init])) {
-        myRegisteredHotKeys = [[NSMutableDictionary alloc] init];
-        myCurrentHotKeyID = 0;
+        registeredHotKeys = [NSMutableDictionary new];
+        currentHotKeyID = 0;
         isHotKeyHandlerInstalled = NO;
     }
     
@@ -41,24 +41,10 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 #pragma mark -
 
-+ (id)allocWithZone: (NSZone *)zone {
-    @synchronized(self) {
-        if (!sharedInstance) {
-            sharedInstance = [super allocWithZone: zone];
-            
-            return sharedInstance;
-        }
-    }
-    
-    return nil;
-}
-
-#pragma mark -
-
 + (SpectacleHotKeyManager *)sharedManager {
     @synchronized(self) {
         if (!sharedInstance) {
-            [[self alloc] init];
+            sharedInstance = [self new];
         }
     }
     
@@ -67,12 +53,13 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (NSInteger)registerHotKey: (ZeroKitHotKey *)hotKey {
+- (NSInteger)registerHotKey: (ZKHotKey *)hotKey {
     NSString *hotKeyName = [hotKey hotKeyName];
-    ZeroKitHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
+    ZKHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
     EventHotKeyID hotKeyID;
     EventHotKeyRef hotKeyRef;
-    OSStatus err;
+    EventTargetRef eventTarget = GetEventDispatcherTarget();
+    OSStatus error;
     
     if (existingHotKey) {
         [hotKey setHotKeyAction: [existingHotKey hotKeyAction]];
@@ -81,16 +68,11 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     }
     
     hotKeyID.signature = 'ZERO';
-    hotKeyID.id = ++myCurrentHotKeyID;
+    hotKeyID.id = ++currentHotKeyID;
     
-    err = RegisterEventHotKey([hotKey hotKeyCode],
-                              [hotKey hotKeyModifiers],
-                              hotKeyID,
-                              GetEventDispatcherTarget(),
-                              0,
-                              &hotKeyRef);
+    error = RegisterEventHotKey((UInt32)[hotKey hotKeyCode], (UInt32)[hotKey hotKeyModifiers], hotKeyID, eventTarget, 0, &hotKeyRef);
     
-    if (err) {
+    if (error) {
         NSLog(@"There was a problem registering hot key %@.", hotKeyName);
         
         return -1;
@@ -99,7 +81,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     [hotKey setHandle: hotKeyID.id];
     [hotKey setHotKeyRef: hotKeyRef];
     
-    [myRegisteredHotKeys setObject: hotKey forKey: hotKeyName];
+    registeredHotKeys[hotKeyName] = hotKey;
     
     [self updateUserDefaults];
     
@@ -109,7 +91,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 }
 
 - (void)registerHotKeys: (NSArray *)hotKeys {
-    for (ZeroKitHotKey *hotKey in hotKeys) {
+    for (ZKHotKey *hotKey in hotKeys) {
         [self registerHotKey: hotKey];
     }
 }
@@ -117,9 +99,9 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 #pragma mark -
 
 - (void)unregisterHotKeyForName: (NSString *)name {
-    ZeroKitHotKey *hotKey = [self registeredHotKeyForName: name];
+    ZKHotKey *hotKey = [self registeredHotKeyForName: name];
     EventHotKeyRef hotKeyRef;
-    OSStatus err;
+    OSStatus error;
     
     if (!hotKey) {
         NSLog(@"The specified hot key has not been registered.");
@@ -130,13 +112,13 @@ static SpectacleHotKeyManager *sharedInstance = nil;
     hotKeyRef = [hotKey hotKeyRef];
     
     if (hotKeyRef) {
-        err = UnregisterEventHotKey(hotKeyRef);
+        error = UnregisterEventHotKey(hotKeyRef);
         
-        if (err) {
-            NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, err);
+        if (error) {
+            NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, error);
         }
         
-        [myRegisteredHotKeys setObject: [ZeroKitHotKey clearedHotKeyWithName: name] forKey: name];
+        registeredHotKeys[name] = [ZKHotKey clearedHotKeyWithName: name];
         
         [self updateUserDefaults];
     } else {
@@ -145,7 +127,7 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 }
 
 - (void)unregisterHotKeys {
-    for (ZeroKitHotKey *hotKey in [myRegisteredHotKeys allValues]) {
+    for (ZKHotKey *hotKey in [registeredHotKeys allValues]) {
         [self unregisterHotKeyForName: [hotKey hotKeyName]];
     }
 }
@@ -153,11 +135,11 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 #pragma mark -
 
 - (NSArray *)registeredHotKeys {
-    return [myRegisteredHotKeys allValues];
+    return [registeredHotKeys allValues];
 }
 
-- (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name {
-    ZeroKitHotKey *hotKey = [myRegisteredHotKeys objectForKey: name];
+- (ZKHotKey *)registeredHotKeyForName: (NSString *)name {
+    ZKHotKey *hotKey = registeredHotKeys[name];
     
     if ([hotKey isClearedHotKey]) {
         hotKey = nil;
@@ -168,22 +150,14 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 
 #pragma mark -
 
-- (BOOL)isHotKeyRegistered: (ZeroKitHotKey *)hotKey {
-    for (ZeroKitHotKey *registeredHotKey in [myRegisteredHotKeys allValues]) {
+- (BOOL)isHotKeyRegistered: (ZKHotKey *)hotKey {
+    for (ZKHotKey *registeredHotKey in [registeredHotKeys allValues]) {
         if ([registeredHotKey isEqualToHotKey: hotKey]) {
             return YES;
         }
     }
     
     return NO;
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [myRegisteredHotKeys release];
-    
-    [super dealloc];
 }
 
 @end
@@ -201,7 +175,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 - (void)updateUserDefaults {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    for (ZeroKitHotKey *hotKey in [myRegisteredHotKeys allValues]) {
+    for (ZKHotKey *hotKey in [registeredHotKeys allValues]) {
         NSData *hotKeyData = [NSKeyedArchiver archivedDataWithRootObject: hotKey];
         NSString *hotKeyName = [hotKey hotKeyName];
         
@@ -214,7 +188,7 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 #pragma mark -
 
 - (void)installHotKeyEventHandler {
-    if (([myRegisteredHotKeys count] > 0) && !isHotKeyHandlerInstalled) {
+    if (([registeredHotKeys count] > 0) && !isHotKeyHandlerInstalled) {
         EventTypeSpec typeSpec;
         
         typeSpec.eventClass = kEventClassKeyboard;
@@ -228,8 +202,8 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 #pragma mark -
 
-- (ZeroKitHotKey *)registeredHotKeyForHandle: (NSInteger)handle {
-    for (ZeroKitHotKey *hotKey in [myRegisteredHotKeys allValues]) {
+- (ZKHotKey *)registeredHotKeyForHandle: (NSInteger)handle {
+    for (ZKHotKey *hotKey in [registeredHotKeys allValues]) {
         if ([hotKey handle] == handle) {
             return hotKey;
         }
@@ -241,18 +215,12 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 #pragma mark -
 
 - (OSStatus)handleHotKeyEvent: (EventRef)event {
-    ZeroKitHotKey *hotKey;
+    ZKHotKey *hotKey;
     EventHotKeyID hotKeyID;
-    OSStatus err = GetEventParameter(event,
-                                     kEventParamDirectObject,
-                                     typeEventHotKeyID,
-                                     NULL,
-                                     sizeof(EventHotKeyID),
-                                     NULL,
-                                     &hotKeyID);
+    OSStatus error = GetEventParameter(event, kEventParamDirectObject, typeEventHotKeyID, NULL, sizeof(EventHotKeyID), NULL, &hotKeyID);
     
-    if (err) {
-        return err;
+    if (error) {
+        return error;
     }
     
     hotKey = [self registeredHotKeyForHandle: hotKeyID.id];
@@ -263,14 +231,14 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
     
     switch (GetEventKind(event)) {
         case kEventHotKeyPressed:
-            [[hotKey hotKeyAction] trigger];
+            [hotKey triggerHotKeyAction];
             
             break;
         default:
             break;
     }
     
-    return noErr;
+    return 0;
 }
 
 @end

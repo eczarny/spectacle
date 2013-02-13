@@ -1,52 +1,62 @@
-#define SpectaclePreferencesWindowNibName             @"SpectaclePreferencesWindow"
+#define SpectaclePreferencesWindowNibName                @"SpectaclePreferencesWindow"
 
 #pragma mark -
 
-#define SpectacleStatusItemEnabledNotification        @"SpectacleStatusItemEnabledNotification"
-#define SpectacleStatusItemDisabledNotification       @"SpectacleStatusItemDisabledNotification"
+#define SpectacleStatusItemEnabledNotification           @"SpectacleStatusItemEnabledNotification"
+#define SpectacleStatusItemDisabledNotification          @"SpectacleStatusItemDisabledNotification"
 
 #pragma mark -
 
-#define SpectacleHotKeyNamesPropertyListFile          @"HotKeyNames"
+#define SpectacleHotKeyNamesPropertyListFile             @"HotKeyNames"
+#define SpectacleBlacklistedApplicationsPropertyListFile @"BlacklistedApplications"
 
 #pragma mark -
 
-#define SpectacleWindowActionMoveToCenter             @"MoveToCenter"
-#define SpectacleWindowActionMoveToFullscreen         @"MoveToFullscreen"
+#define SpectacleWindowActionMoveToCenter                @"MoveToCenter"
+#define SpectacleWindowActionMoveToFullscreen            @"MoveToFullscreen"
 
-#define SpectacleWindowActionMoveToLeftHalf           @"MoveToLeftHalf"
-#define SpectacleWindowActionMoveToRightHalf          @"MoveToRightHalf"
-#define SpectacleWindowActionMoveToTopHalf            @"MoveToTopHalf"
-#define SpectacleWindowActionMoveToBottomHalf         @"MoveToBottomHalf"
+#define SpectacleWindowActionMoveToLeftHalf              @"MoveToLeftHalf"
+#define SpectacleWindowActionMoveToRightHalf             @"MoveToRightHalf"
+#define SpectacleWindowActionMoveToTopHalf               @"MoveToTopHalf"
+#define SpectacleWindowActionMoveToBottomHalf            @"MoveToBottomHalf"
 
-#define SpectacleWindowActionMoveToUpperLeft          @"MoveToUpperLeft"
-#define SpectacleWindowActionMoveToLowerLeft          @"MoveToLowerLeft"
-#define SpectacleWindowActionMoveToUpperRight         @"MoveToUpperRight"
-#define SpectacleWindowActionMoveToLowerRight         @"MoveToLowerRight"
+#define SpectacleWindowActionMoveToUpperLeft             @"MoveToUpperLeft"
+#define SpectacleWindowActionMoveToLowerLeft             @"MoveToLowerLeft"
+#define SpectacleWindowActionMoveToUpperRight            @"MoveToUpperRight"
+#define SpectacleWindowActionMoveToLowerRight            @"MoveToLowerRight"
 
-#define SpectacleWindowActionMoveToNextDisplay        @"MoveToNextDisplay"
-#define SpectacleWindowActionMoveToPreviousDisplay    @"MoveToPreviousDisplay"
+#define SpectacleWindowActionMoveToNextDisplay           @"MoveToNextDisplay"
+#define SpectacleWindowActionMoveToPreviousDisplay       @"MoveToPreviousDisplay"
 
-#define SpectacleWindowActionMoveToNextThird          @"MoveToNextThird"
-#define SpectacleWindowActionMoveToPreviousThird      @"MoveToPreviousThird"
+#define SpectacleWindowActionMoveToNextThird             @"MoveToNextThird"
+#define SpectacleWindowActionMoveToPreviousThird         @"MoveToPreviousThird"
 
-#define SpectacleWindowActionUndoLastMove             @"UndoLastMove"
-#define SpectacleWindowActionRedoLastMove             @"RedoLastMove"
+#define SpectacleWindowActionMakeLarger                  @"MakeLarger"
+#define SpectacleWindowActionMakeSmaller                 @"MakeSmaller"
 
-#pragma mark -
-
-#define SpectacleWindowActionHistorySize              10
-
-#pragma mark -
-
-#define SpectacleStatusItemIcon                       @"Spectacle Status Item"
-#define SpectacleAlternateStatusItemIcon              @"Spectacle Alternate Status Item"
+#define SpectacleWindowActionUndoLastMove                @"UndoLastMove"
+#define SpectacleWindowActionRedoLastMove                @"RedoLastMove"
 
 #pragma mark -
 
-#define SpectacleStatusItemEnabledPreference          @"StatusItemEnabled"
-#define SpectacleBackgroundAlertSuppressedPreference  @"BackgroundAlertSuppressed"
+#define SpectacleWindowActionHistorySize                 50
 
 #pragma mark -
 
-#define SpectacleApplicationBlacklistPreference       @"ApplicationBlacklist"
+#define SpectacleWindowSizeOffset                        30.0f
+
+#define SpectacleMinimumWindowSizeRatio                  4.0f
+
+#pragma mark -
+
+#define SpectacleStatusItemIcon                          @"Spectacle Status Item"
+#define SpectacleAlternateStatusItemIcon                 @"Spectacle Alternate Status Item"
+
+#pragma mark -
+
+#define SpectacleStatusItemEnabledPreference             @"StatusItemEnabled"
+#define SpectacleBackgroundAlertSuppressedPreference     @"BackgroundAlertSuppressed"
+
+#pragma mark -
+
+#define SpectacleBlacklistedWindowRectsPreference        @"BlacklistedWindowRects"

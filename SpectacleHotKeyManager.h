@@ -2,8 +2,8 @@
 #import <ZeroKit/ZeroKit.h>
 
 @interface SpectacleHotKeyManager : NSObject {
-    NSMutableDictionary *myRegisteredHotKeys;
-    NSInteger myCurrentHotKeyID;
+    NSMutableDictionary *registeredHotKeys;
+    UInt32 currentHotKeyID;
     BOOL isHotKeyHandlerInstalled;
 }
 
@@ -11,7 +11,7 @@
 
 #pragma mark -
 
-- (NSInteger)registerHotKey: (ZeroKitHotKey *)hotKey;
+- (NSInteger)registerHotKey: (ZKHotKey *)hotKey;
 
 - (void)registerHotKeys: (NSArray *)hotKeys;
 
@@ -25,10 +25,10 @@
 
 - (NSArray *)registeredHotKeys;
 
-- (ZeroKitHotKey *)registeredHotKeyForName: (NSString *)name;
+- (ZKHotKey *)registeredHotKeyForName: (NSString *)name;
 
 #pragma mark -
 
-- (BOOL)isHotKeyRegistered: (ZeroKitHotKey *)hotKey;
+- (BOOL)isHotKeyRegistered: (ZKHotKey *)hotKey;
 
 @end

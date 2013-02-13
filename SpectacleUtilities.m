@@ -1,9 +1,16 @@
 #import "SpectacleUtilities.h"
+#import "SpectacleWindowPositionManager.h"
 #import "SpectacleConstants.h"
+
+@interface ZeroKitHotKey : ZKHotKey
+
+@end
+
+#pragma mark -
 
 @interface SpectacleUtilities (SpectacleUtilitiesPrivate)
 
-+ (void)updateHotKey: (ZeroKitHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZeroKitHotKey *)defaultHotKey;
++ (void)updateHotKey: (ZKHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZKHotKey *)defaultHotKey;
 
 #pragma mark -
 
@@ -16,14 +23,14 @@
 @implementation SpectacleUtilities
 
 + (void)displayAccessibilityAPIAlert {
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    NSAlert *alert = [NSAlert new];
     NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"UniversalAccessPref"]];
     
     [alert setAlertStyle: NSWarningAlertStyle];
-    [alert setMessageText: ZeroKitLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
-    [alert setInformativeText: ZeroKitLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
-    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Open Universal Access Preferences")];
-    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Stop Spectacle")];
+    [alert setMessageText: ZKLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
+    [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
+    [alert addButtonWithTitle: ZKLocalizedString(@"Open Universal Access Preferences")];
+    [alert addButtonWithTitle: ZKLocalizedString(@"Stop Spectacle")];
     
     switch ([alert runModal]) {
         case NSAlertFirstButtonReturn:
@@ -37,14 +44,14 @@
 }
 
 + (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback {
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    NSAlert *alert = [NSAlert new];
     
     [alert setAlertStyle: NSInformationalAlertStyle];
     [alert setShowsSuppressionButton: YES];
-    [alert setMessageText: ZeroKitLocalizedString(@"This will cause Spectacle to run in the background")];
-    [alert setInformativeText: ZeroKitLocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.")];
-    [alert addButtonWithTitle: ZeroKitLocalizedString(@"OK")];
-    [alert addButtonWithTitle: ZeroKitLocalizedString(@"Cancel")];
+    [alert setMessageText: ZKLocalizedString(@"This will cause Spectacle to run in the background")];
+    [alert setInformativeText: ZKLocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.")];
+    [alert addButtonWithTitle: ZKLocalizedString(@"OK")];
+    [alert addButtonWithTitle: ZKLocalizedString(@"Cancel")];
     
     NSInteger response = [alert runModal];
     BOOL isAlertSuppressed = [[alert suppressionButton] state] == NSOnState;
@@ -67,7 +74,7 @@
 
 + (NSArray *)hotKeyNames {
     NSBundle *bundle = [SpectacleUtilities applicationBundle];
-    NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: ZeroKitPropertyListFileExtension];
+    NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: ZKPropertyListFileExtension];
     NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
     
     return hotKeyNames;
@@ -75,21 +82,21 @@
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary hotKeyTarget: (id)target {
++ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action {
     NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: [dictionary allKeys]];
-    NSMutableArray *hotKeys = [NSMutableArray array];
+    NSMutableArray *hotKeys = [NSMutableArray new];
     
     [NSKeyedUnarchiver setClass: [ZeroKitHotKey class] forClassName: @"SpectacleHotKey"];
     
     for (NSData *hotKeyData in [dictionary allValues]) {
-        ZeroKitHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
+        ZKHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
         
         if (![hotKey isClearedHotKey]) {
             NSString *hotKeyName = [hotKey hotKeyName];
             
-            [hotKey setHotKeyAction: [SpectacleUtilities actionForHotKeyWithName: hotKeyName target: target]];
+            [hotKey setHotKeyAction: action];
             
-            [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: [defaultHotKeys objectForKey: hotKeyName]];
+            [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: defaultHotKeys[hotKeyName]];
             
             [hotKeys addObject: hotKey];
         }
@@ -98,72 +105,11 @@
     return hotKeys;
 }
 
-#pragma mark -
-
-+ (ZeroKitHotKeyAction *)actionForHotKeyWithName: (NSString *)name target: (id)target {
-    SEL selector = NULL;
-    
-    if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
-        selector = @selector(moveFrontMostWindowToCenter:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToFullscreen]) {
-        selector = @selector(moveFrontMostWindowToFullscreen:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLeftHalf]) {
-        selector = @selector(moveFrontMostWindowToLeftHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToRightHalf]) {
-        selector = @selector(moveFrontMostWindowToRightHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToTopHalf]) {
-        selector = @selector(moveFrontMostWindowToTopHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToBottomHalf]) {
-        selector = @selector(moveFrontMostWindowToBottomHalf:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperLeft]) {
-        selector = @selector(moveFrontMostWindowToUpperLeft:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerLeft]) {
-        selector = @selector(moveFrontMostWindowToLowerLeft:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToUpperRight]) {
-        selector = @selector(moveFrontMostWindowToUpperRight:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
-        selector = @selector(moveFrontMostWindowToLowerRight:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextDisplay]) {
-        selector = @selector(moveFrontMostWindowToNextDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousDisplay]) {
-        selector = @selector(moveFrontMostWindowToPreviousDisplay:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToNextThird]) {
-        selector = @selector(moveFrontMostWindowToNextThird:);
-    } else if ([name isEqualToString: SpectacleWindowActionMoveToPreviousThird]) {
-        selector = @selector(moveFrontMostWindowToPreviousThird:);
-    } else if ([name isEqualToString: SpectacleWindowActionUndoLastMove]) {
-        selector = @selector(undoLastWindowAction:);
-    } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
-        selector = @selector(redoLastWindowAction:);
-    }
-    
-    return [ZeroKitHotKeyAction hotKeyActionFromTarget: target selector: selector];
-}
+@end
 
 #pragma mark -
 
-+ (NSInteger)currentWorkspace {
-    CGWindowListOption options = kCGWindowListOptionOnScreenOnly | kCGWindowListExcludeDesktopElements;
-    CFArrayRef windows = CGWindowListCreate(options, kCGNullWindowID);
-    CFArrayRef windowDescriptions = CGWindowListCreateDescriptionFromArray(windows);
-    NSInteger currentWorkspace = 0;
-    
-    for (NSInteger i = 0; i < CFArrayGetCount(windowDescriptions); i++) {
-        CFDictionaryRef windowDescription = CFArrayGetValueAtIndex(windowDescriptions, i);
-        NSNumber *workspace = (NSNumber *)CFDictionaryGetValue(windowDescription, kCGWindowWorkspace);
-        
-        if (workspace) {
-            currentWorkspace = [workspace integerValue];
-            
-            break;
-        }
-    }
-    
-    CFRelease(windows);
-    CFRelease(windowDescriptions);
-    
-    return currentWorkspace;
-}
+@implementation ZeroKitHotKey
 
 @end
 
@@ -171,7 +117,7 @@
 
 @implementation SpectacleUtilities (SpectacleUtilitiesPrivate)
 
-+ (void)updateHotKey: (ZeroKitHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZeroKitHotKey *)defaultHotKey {
++ (void)updateHotKey: (ZKHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZKHotKey *)defaultHotKey {
     NSString *hotKeyName = [hotKey hotKeyName];
     NSInteger defaultHotKeyCode;
     
@@ -192,15 +138,15 @@
 
 + (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
     NSBundle *bundle = [SpectacleUtilities applicationBundle];
-    NSString *path = [bundle pathForResource: ZeroKitDefaultPreferencesFile ofType: ZeroKitPropertyListFileExtension];
+    NSString *path = [bundle pathForResource: ZKDefaultPreferencesFile ofType: ZKPropertyListFileExtension];
     NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
-    NSMutableDictionary *defaultHotKeys = [NSMutableDictionary dictionary];
+    NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
     
     for (NSString *hotKeyName in names) {
-        NSData *defaultHotKeyData = [applicationDefaults objectForKey: hotKeyName];
-        ZeroKitHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
+        NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
+        ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
         
-        [defaultHotKeys setObject: defaultHotKey forKey: hotKeyName];
+        defaultHotKeys[hotKeyName] = defaultHotKey;
     }
     
     return defaultHotKeys;

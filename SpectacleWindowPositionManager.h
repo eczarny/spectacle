@@ -1,9 +1,22 @@
 #import <Foundation/Foundation.h>
 #import <ZeroKit/ZeroKit.h>
 
-typedef enum {
-    SpectacleWindowActionUndo = -3,
+#define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
+#define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
+#define MovingToUpperOrLowerLeftOfDisplay(action) ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft))
+#define MovingToUpperOrLowerRightDisplay(action) ((action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight))
+
+#pragma mark -
+
+#define MovingToThirdOfDisplay(action) ((action == SpectacleWindowActionNextThird) || (action == SpectacleWindowActionPreviousThird))
+
+#pragma mark -
+
+enum {
+    SpectacleWindowActionUndo = -4,
     SpectacleWindowActionRedo,
+    SpectacleWindowActionLarger,
+    SpectacleWindowActionSmaller,
     SpectacleWindowActionNone,
     SpectacleWindowActionCenter,
     SpectacleWindowActionFullscreen,
@@ -19,12 +32,14 @@ typedef enum {
     SpectacleWindowActionPreviousDisplay,
     SpectacleWindowActionNextThird,
     SpectacleWindowActionPreviousThird
-} SpectacleWindowAction;
+};
+
+typedef NSInteger SpectacleWindowAction;
 
 @interface SpectacleWindowPositionManager : NSObject {
-    NSMutableDictionary *myUndoHistory;
-    NSMutableDictionary *myRedoHistory;
-    NSMutableSet *myBlacklistedWindowRects;
+    NSMutableDictionary *applicationHistories;
+    NSMutableSet *blacklistedWindowRects;
+    NSMutableSet *blacklistedApplications;
 }
 
 + (SpectacleWindowPositionManager *)sharedManager;
@@ -38,5 +53,9 @@ typedef enum {
 - (void)undoLastWindowAction;
 
 - (void)redoLastWindowAction;
+
+#pragma mark -
+
+- (SpectacleWindowAction)windowActionForHotKey: (ZKHotKey *)hotKey;
 
 @end

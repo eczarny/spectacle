@@ -2,10 +2,12 @@
 
 @implementation SpectacleHistoryItem
 
-- (id)initWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+- (id)initWithAccessibilityElement: (ZKAccessibilityElement *)anAccessibilityElement windowRect: (CGRect)aWindowRect {
     if (self = [super init]) {
-        myAccessibilityElement = [accessibilityElement retain];
-        myWindowRect = windowRect;
+        accessibilityElement = anAccessibilityElement;
+        windowRect = aWindowRect;
+        nextHistoryItem = nil;
+        previousHistoryItem = nil;
     }
     
     return self;
@@ -13,40 +15,40 @@
 
 #pragma mark -
 
-+ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
-    return [[[SpectacleHistoryItem alloc] initWithAccessibilityElement: accessibilityElement windowRect: windowRect] autorelease];
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZKAccessibilityElement *)anAccessibilityElement windowRect: (CGRect)aWindowRect {
+    return [[SpectacleHistoryItem alloc] initWithAccessibilityElement: anAccessibilityElement windowRect: aWindowRect];
 }
 
 #pragma mark -
 
-- (ZeroKitAccessibilityElement *)accessibilityElement {
-    return myAccessibilityElement;
-}
-
-- (void)setAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement {
-    if (myAccessibilityElement != accessibilityElement) {
-        [myAccessibilityElement release];
-        
-        myAccessibilityElement = [accessibilityElement retain];
-    }
+- (ZKAccessibilityElement *)accessibilityElement {
+    return accessibilityElement;
 }
 
 #pragma mark -
 
 - (CGRect)windowRect {
-    return myWindowRect;
-}
-
-- (void)setWindowRect: (CGRect)windowRect {
-    myWindowRect = windowRect;
+    return windowRect;
 }
 
 #pragma mark -
 
-- (void)dealloc {
-    [myAccessibilityElement release];
-    
-    [super dealloc];
+- (SpectacleHistoryItem *)nextHistoryItem {
+    return nextHistoryItem;
+}
+
+- (void)setNextHistoryItem: (SpectacleHistoryItem *)historyItem {
+    nextHistoryItem = historyItem;
+}
+
+#pragma mark -
+
+- (SpectacleHistoryItem *)previousHistoryItem {
+    return previousHistoryItem;
+}
+
+- (void)setPreviousHistoryItem: (SpectacleHistoryItem *)historyItem {
+    previousHistoryItem = historyItem;
 }
 
 @end

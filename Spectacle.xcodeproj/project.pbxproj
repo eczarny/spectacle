@@ -14,10 +14,13 @@
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D1E1AD1147E07980021D73D /* ZeroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D65407E1475ECF1000133CA /* ZeroKit.framework */; };
+		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
+		2D279EDD16BB8A7000F6894A /* ZKAccessibilityElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279EDC16BB8A7000F6894A /* ZKAccessibilityElementAdditions.m */; };
+		2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */; };
+		2D36FFD416B9BE100040372F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36FFD316B9BE100040372F /* Sparkle.framework */; };
+		2D36FFD516B9BE3A0040372F /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36FFD316B9BE100040372F /* Sparkle.framework */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
-		2D5CCD0415E970A70009CC43 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5CCCF915E970790009CC43 /* Sparkle.framework */; };
-		2D5CCD0515E970BA0009CC43 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5CCCF915E970790009CC43 /* Sparkle.framework */; };
 		2D736756149ADB2C00837D7D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2D736754149ADB2C00837D7D /* Credits.rtf */; };
 		2D73675B149ADB4500837D7D /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736757149ADB4500837D7D /* Spectacle.xib */; };
 		2D73675C149ADB4500837D7D /* SpectaclePreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736759149ADB4500837D7D /* SpectaclePreferencesWindow.xib */; };
@@ -33,53 +36,14 @@
 		2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
+		2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */; };
 		2DD111AC1487301C00C552FA /* Preferences Window Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DD111AB1487301C00C552FA /* Preferences Window Background.png */; };
 		2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
+		C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */; };
+		C92F241A16937CA3000D94AB /* Spectacle Alternate Status Item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92F241916937CA3000D94AB /* Spectacle Alternate Status Item@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2D5CCCF815E970790009CC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = Sparkle;
-		};
-		2D5CCCFA15E970790009CC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 61B5F90209C4CEE200B25A18;
-			remoteInfo = "Sparkle Test App";
-		};
-		2D5CCCFC15E970790009CC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 612279D90DB5470200AB99EA;
-			remoteInfo = "Sparkle Unit Tests";
-		};
-		2D5CCCFE15E970790009CC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D06E8D00FD68C7C005AE3F6;
-			remoteInfo = BinaryDelta;
-		};
-		2D5CCD0015E970790009CC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55C14BB7136EEF1500649790;
-			remoteInfo = finish_installation;
-		};
-		2D5CCD0215E970960009CC43 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = Sparkle;
-		};
 		2D6540711475EAE1000133CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
@@ -103,7 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D5CCD0515E970BA0009CC43 /* Sparkle.framework in Copy Frameworks */,
+				2D36FFD516B9BE3A0040372F /* Sparkle.framework in Copy Frameworks */,
 				2D8DA055147E1101003BE1D3 /* ZeroKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -143,10 +107,16 @@
 		2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Spectacle.xcconfig; path = Configurations/Spectacle.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleDevelopment.xcconfig; path = Configurations/SpectacleDevelopment.xcconfig; sourceTree = "<group>"; };
 		2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
+		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistory.h; sourceTree = "<group>"; };
+		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistory.m; sourceTree = "<group>"; };
+		2D279EDB16BB8A7000F6894A /* ZKAccessibilityElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKAccessibilityElementAdditions.h; sourceTree = "<group>"; };
+		2D279EDC16BB8A7000F6894A /* ZKAccessibilityElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKAccessibilityElementAdditions.m; sourceTree = "<group>"; };
+		2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionCalculator.h; sourceTree = "<group>"; };
+		2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionCalculator.m; sourceTree = "<group>"; };
+		2D36FFD316B9BE100040372F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleScreenDetection.h; sourceTree = "<group>"; };
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleScreenDetection.m; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Resources/Sparkle/dsa_public.pem; sourceTree = "<group>"; };
-		2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Frameworks/Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZeroKit.xcodeproj; path = Frameworks/ZeroKit/ZeroKit.xcodeproj; sourceTree = "<group>"; };
 		2D65407E1475ECF1000133CA /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development/ZeroKit.framework"; sourceTree = "<group>"; };
 		2D736755149ADB2C00837D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Languages/en.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -158,9 +128,12 @@
 		2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleApplicationController.m; sourceTree = "<group>"; };
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowActionController.h; sourceTree = "<group>"; };
 		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowActionController.m; sourceTree = "<group>"; };
+		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
 		2DD111AB1487301C00C552FA /* Preferences Window Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preferences Window Background.png"; path = "Resources/Images/Preferences Window Background.png"; sourceTree = "<group>"; };
 		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spectacle.pch; sourceTree = "<group>"; };
+		C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item@2x.png"; path = "Resources/Images/Spectacle Status Item@2x.png"; sourceTree = "<group>"; };
+		C92F241916937CA3000D94AB /* Spectacle Alternate Status Item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Alternate Status Item@2x.png"; path = "Resources/Images/Spectacle Alternate Status Item@2x.png"; sourceTree = "<group>"; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -171,7 +144,7 @@
 			files = (
 				2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */,
 				2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */,
-				2D5CCD0415E970A70009CC43 /* Sparkle.framework in Frameworks */,
+				2D36FFD416B9BE100040372F /* Sparkle.framework in Frameworks */,
 				2D1E1AD1147E07980021D73D /* ZeroKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +155,7 @@
 		0747DAE71183AAB600F75DD2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2D279ED616BB89CD00F6894A /* Additions */,
 				07678095118679C600614FB5 /* SpectacleHotKeyManager.h */,
 				07678096118679C600614FB5 /* SpectacleHotKeyManager.m */,
 				2D1AE52315D715F400EAC5BD /* SpectacleHotKeyValidator.h */,
@@ -190,6 +164,8 @@
 				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */,
 				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
 				07BB542C1186662F0045663F /* SpectacleUtilities.m */,
+				2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */,
+				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
 				072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */,
 			);
@@ -212,6 +188,8 @@
 		0747DAE91183AAC100F75DD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
+				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
 				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
 				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
 			);
@@ -221,6 +199,7 @@
 		0747DAEB1183AAE700F75DD2 /* Property Lists */ = {
 			isa = PBXGroup;
 			children = (
+				2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */,
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				070031AF1217712E001D4C46 /* HotKeyNames.plist */,
 				2D1E1AD2147E07E50021D73D /* Spectacle-Info.plist */,
@@ -273,7 +252,9 @@
 			children = (
 				2DF03CED148684E000D09E90 /* Spectacle.icns */,
 				07B6B754148B1654003F924A /* Spectacle Alternate Status Item.png */,
+				C92F241916937CA3000D94AB /* Spectacle Alternate Status Item@2x.png */,
 				07B6B752148B12A0003F924A /* Spectacle Status Item.png */,
+				C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -282,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */,
-				2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32DBCFA10370C40200C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
@@ -333,6 +313,7 @@
 				0766438911A212A800B7BFA3 /* CoreServices.framework */,
 				089C1672FE841209C02AAC07 /* Foundation.framework */,
 				F506C035013D953901CA16C8 /* PreferencePanes.framework */,
+				2D36FFD316B9BE100040372F /* Sparkle.framework */,
 				2D65407E1475ECF1000133CA /* ZeroKit.framework */,
 			);
 			name = "Other Frameworks";
@@ -346,24 +327,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2D279ED616BB89CD00F6894A /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				2D279EDB16BB8A7000F6894A /* ZKAccessibilityElementAdditions.h */,
+				2D279EDC16BB8A7000F6894A /* ZKAccessibilityElementAdditions.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
 		2D5CCCE715E96F4F0009CC43 /* Sparkle */ = {
 			isa = PBXGroup;
 			children = (
 				2D5CCCE815E96F740009CC43 /* dsa_public.pem */,
 			);
 			name = Sparkle;
-			sourceTree = "<group>";
-		};
-		2D5CCCEB15E970780009CC43 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2D5CCCF915E970790009CC43 /* Sparkle.framework */,
-				2D5CCCFB15E970790009CC43 /* Sparkle Test App.app */,
-				2D5CCCFD15E970790009CC43 /* Sparkle Unit Tests.octest */,
-				2D5CCCFF15E970790009CC43 /* BinaryDelta */,
-				2D5CCD0115E970790009CC43 /* finish_installation.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2D65406B1475EAE1000133CA /* Products */ = {
@@ -399,7 +377,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2D5CCD0315E970960009CC43 /* PBXTargetDependency */,
 				2D8DA052147E1074003BE1D3 /* PBXTargetDependency */,
 			);
 			name = Spectacle;
@@ -413,7 +390,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -430,10 +407,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2D5CCCEB15E970780009CC43 /* Products */;
-					ProjectRef = 2D5CCCEA15E970780009CC43 /* Sparkle.xcodeproj */;
-				},
-				{
 					ProductGroup = 2D65406B1475EAE1000133CA /* Products */;
 					ProjectRef = 2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */;
 				},
@@ -446,41 +419,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2D5CCCF915E970790009CC43 /* Sparkle.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Sparkle.framework;
-			remoteRef = 2D5CCCF815E970790009CC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2D5CCCFB15E970790009CC43 /* Sparkle Test App.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Sparkle Test App.app";
-			remoteRef = 2D5CCCFA15E970790009CC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2D5CCCFD15E970790009CC43 /* Sparkle Unit Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Sparkle Unit Tests.octest";
-			remoteRef = 2D5CCCFC15E970790009CC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2D5CCCFF15E970790009CC43 /* BinaryDelta */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = BinaryDelta;
-			remoteRef = 2D5CCCFE15E970790009CC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2D5CCD0115E970790009CC43 /* finish_installation.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = finish_installation.app;
-			remoteRef = 2D5CCD0015E970790009CC43 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		2D6540721475EAE1000133CA /* ZeroKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -495,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */,
 				2D736756149ADB2C00837D7D /* Credits.rtf in Resources */,
 				2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */,
 				2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */,
@@ -505,7 +444,9 @@
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2D73675B149ADB4500837D7D /* Spectacle.xib in Resources */,
 				07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */,
+				C92F241A16937CA3000D94AB /* Spectacle Alternate Status Item@2x.png in Resources */,
 				07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */,
+				C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */,
 				2D73675C149ADB4500837D7D /* SpectaclePreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +460,7 @@
 			files = (
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
+				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleHotKeyValidator.m in Sources */,
@@ -526,18 +468,15 @@
 				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
 				2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
+				2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
+				2D279EDD16BB8A7000F6894A /* ZKAccessibilityElementAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2D5CCD0315E970960009CC43 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Sparkle;
-			targetProxy = 2D5CCD0215E970960009CC43 /* PBXContainerItemProxy */;
-		};
 		2D8DA052147E1074003BE1D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ZeroKit;
@@ -593,8 +532,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 			};
 			name = Development;
 		};
@@ -602,8 +539,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(CONFIGURATION_BUILD_DIR)";
 			};
 			name = Release;
 		};
@@ -612,8 +547,10 @@
 			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 			};
 			name = Development;
 		};
@@ -622,8 +559,10 @@
 			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				VERSION_INFO_FILE = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 			};
 			name = Release;
 		};

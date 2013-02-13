@@ -2,26 +2,36 @@
 #import <ZeroKit/ZeroKit.h>
 
 @interface SpectacleHistoryItem : NSObject {
-    ZeroKitAccessibilityElement *myAccessibilityElement;
-    CGRect myWindowRect;
+    ZKAccessibilityElement *accessibilityElement;
+    CGRect windowRect;
+    SpectacleHistoryItem *nextHistoryItem;
+    SpectacleHistoryItem *previousHistoryItem;
 }
 
-- (id)initWithAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
+- (id)initWithAccessibilityElement: (ZKAccessibilityElement *)anAccessibilityElement windowRect: (CGRect)aWindowRect;
 
 #pragma mark -
 
-+ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement: (ZKAccessibilityElement *)anAccessibilityElement windowRect: (CGRect)aWindowRect;
 
 #pragma mark -
 
-- (ZeroKitAccessibilityElement *)accessibilityElement;
-
-- (void)setAccessibilityElement: (ZeroKitAccessibilityElement *)accessibilityElement;
+- (ZKAccessibilityElement *)accessibilityElement;
 
 #pragma mark -
 
 - (CGRect)windowRect;
 
-- (void)setWindowRect: (CGRect)windowRect;
+#pragma mark -
+
+- (SpectacleHistoryItem *)nextHistoryItem;
+
+- (void)setNextHistoryItem: (SpectacleHistoryItem *)historyItem;
+
+#pragma mark -
+
+- (SpectacleHistoryItem *)previousHistoryItem;
+
+- (void)setPreviousHistoryItem: (SpectacleHistoryItem *)historyItem;
 
 @end
