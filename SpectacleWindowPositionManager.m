@@ -313,6 +313,10 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (SpectacleHistory *)historyForCurrentApplication {
     NSString *applicationName = [ZKAccessibilityElement frontMostApplicationName];
     
+    if (!applicationName) {
+        return nil;
+    }
+    
     if (!applicationHistories[applicationName]) {
         applicationHistories[applicationName] = [SpectacleHistory new];
     }
