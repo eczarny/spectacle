@@ -220,10 +220,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
         AXValueGetValue(windowPositionValue, kAXValueCGPointType, (void *)&windowPosition);
         AXValueGetValue(windowSizeValue, kAXValueCGSizeType, (void *)&windowSize);
         
-        CFRelease(windowPositionValue);
-        CFRelease(windowSizeValue);
+        if ((windowPositionValue != NULL) && (windowSizeValue != NULL)) {
+            CFRelease(windowPositionValue);
+            CFRelease(windowSizeValue);
         
-        result = CGRectMake(windowPosition.x, windowPosition.y, windowSize.width, windowSize.height);
+            result = CGRectMake(windowPosition.x, windowPosition.y, windowSize.width, windowSize.height);
+        }
     }
     
     return result;
@@ -242,6 +244,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
     }
     
     CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
+    
+    if (CGRectIsNull(previousWindowRect)) {
+        NSBeep();
+        
+        return;
+    }
     
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
     
@@ -317,9 +325,7 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 - (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action {
     SpectacleHistory *history = [self historyForCurrentApplication];
     SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? [history previousHistoryItem] : [history nextHistoryItem];
-    ZKAccessibilityElement *accessibilityElement = [historyItem accessibilityElement];
-    CGRect windowRect = [self rectOfWindowWithAccessibilityElement: accessibilityElement];
-    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: windowRect];
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: [historyItem windowRect]];
     CGRect visibleFrameOfScreen = CGRectNull;
     
     if (screenOfDisplay) {
