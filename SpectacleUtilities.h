@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <ZeroKit/ZeroKit.h>
 
-#define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[NSScreen mainScreen] frame].size.height - b.size.height))
+#define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex:0] frame].size.height - b.size.height))
 
 #pragma mark -
 
