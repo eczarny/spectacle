@@ -49,6 +49,10 @@
 
 #pragma mark -
 
+#define SpectacleWindowCalculationFudgeFactor            8
+
+#pragma mark -
+
 #define SpectacleStatusItemIcon                          @"Spectacle Status Item"
 #define SpectacleAlternateStatusItemIcon                 @"Spectacle Alternate Status Item"
 
