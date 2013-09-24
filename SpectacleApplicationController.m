@@ -3,6 +3,9 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
+extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
+extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
+
 @interface SpectacleApplicationController (SpectacleApplicationControllerPrivate)
 
 - (void)createStatusItem;
@@ -32,12 +35,22 @@
     
     preferencesController = [SpectaclePreferencesController new];
     
-    if (!AXAPIEnabled()) {
-        [SpectacleUtilities displayAccessibilityAPIAlert];
+    if (AXIsProcessTrustedWithOptions != NULL) {
+        NSDictionary *options = @{ (__bridge id)kAXTrustedCheckOptionPrompt: @YES };
         
-        [[NSApplication sharedApplication] terminate: self];
-        
-        return;
+        if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options)) {
+            [[NSApplication sharedApplication] terminate: self];
+            
+            return;
+        }
+    } else {
+        if (!AXAPIEnabled()) {
+            [SpectacleUtilities displayAccessibilityAPIAlert];
+            
+            [[NSApplication sharedApplication] terminate: self];
+            
+            return;
+        }
     }
     
     [self registerHotKeys];
