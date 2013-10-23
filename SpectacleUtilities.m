@@ -23,23 +23,51 @@
 @implementation SpectacleUtilities
 
 + (void)displayAccessibilityAPIAlert {
-    NSAlert *alert = [NSAlert new];
-    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"UniversalAccessPref"]];
+    NSString *version = [[NSProcessInfo processInfo] operatingSystemVersionString];
     
-    [alert setAlertStyle: NSWarningAlertStyle];
-    [alert setMessageText: ZKLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
-    [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
-    [alert addButtonWithTitle: ZKLocalizedString(@"Open Universal Access Preferences")];
-    [alert addButtonWithTitle: ZKLocalizedString(@"Stop Spectacle")];
+    NSRange range = NSMakeRange(8, 4);
+    NSString *osxVersion = [version substringWithRange: range];
+
     
-    switch ([alert runModal]) {
-        case NSAlertFirstButtonReturn:
-            [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
-            
-            break;
-        case NSAlertSecondButtonReturn:
-        default:
-            break;
+    if ([osxVersion isEqualToString:@"10.9"]) {
+        NSAlert *alert = [NSAlert new];
+        NSURL *securityPaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"security" ]];
+        
+        [alert setAlertStyle: NSWarningAlertStyle];
+        [alert setMessageText: ZKLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
+        [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Security & Privacy preferences so that you can \"Allow spectacle to control your computer\" ?")];
+        [alert addButtonWithTitle: ZKLocalizedString(@"Open Security & Privacy Preferences")];
+        [alert addButtonWithTitle: ZKLocalizedString(@"Stop Spectacle")];
+        
+        switch ([alert runModal]) {
+            case NSAlertFirstButtonReturn:
+                [[NSWorkspace sharedWorkspace] openURL: securityPaneURL];
+                
+                break;
+            case NSAlertSecondButtonReturn:
+            default:
+                break;
+        }
+    }
+    else{
+        NSAlert *alert = [NSAlert new];
+        NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"UniversalAccessPref"]];
+        
+        [alert setAlertStyle: NSWarningAlertStyle];
+        [alert setMessageText: ZKLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
+        [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
+        [alert addButtonWithTitle: ZKLocalizedString(@"Open Universal Access Preferences")];
+        [alert addButtonWithTitle: ZKLocalizedString(@"Stop Spectacle")];
+        
+        switch ([alert runModal]) {
+            case NSAlertFirstButtonReturn:
+                [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
+                
+                break;
+            case NSAlertSecondButtonReturn:
+            default:
+                break;
+        }
     }
 }
 
