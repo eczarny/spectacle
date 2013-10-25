@@ -28,11 +28,25 @@
 
 #pragma mark -
 
+enum {
+    SpectacleIsTrusted,
+    SpectacleIsNotTrustedOnOrAfterMavericks,
+    SpectacleIsNotTrustedBeforeMavericks
+};
+
+typedef NSInteger SpectacleApplicationTrust;
+
+#pragma mark -
+
 @interface SpectacleUtilities : ZKUtilities
 
 + (void)displayAccessibilityAPIAlert;
 
 + (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback;
+
+#pragma mark -
+
++ (SpectacleApplicationTrust)spectacleTrust;
 
 #pragma mark -
 

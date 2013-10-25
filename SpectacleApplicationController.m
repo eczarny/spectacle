@@ -32,14 +32,6 @@
     
     preferencesController = [SpectaclePreferencesController new];
     
-    if (!AXAPIEnabled()) {
-        [SpectacleUtilities displayAccessibilityAPIAlert];
-        
-        [[NSApplication sharedApplication] terminate: self];
-        
-        return;
-    }
-    
     [self registerHotKeys];
     
     [notificationCenter addObserver: self
@@ -60,6 +52,19 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference]) {
         [self createStatusItem];
     }
+    
+    switch ([SpectacleUtilities spectacleTrust]) {
+        case SpectacleIsNotTrustedBeforeMavericks:
+            [SpectacleUtilities displayAccessibilityAPIAlert];
+            
+            break;
+        case SpectacleIsNotTrustedOnOrAfterMavericks:
+            [accessiblityAccessDialogWindow makeKeyAndOrderFront: self];
+            
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -74,6 +79,16 @@
 
 - (IBAction)showPreferencesWindow: (id)sender {
     [preferencesController showWindow: sender];
+}
+
+#pragma mark -
+
+- (IBAction)openSystemPreferences: (id)sender {
+    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"Security"]];
+    
+    [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
+    
+    [accessiblityAccessDialogWindow orderOut: self];
 }
 
 @end
