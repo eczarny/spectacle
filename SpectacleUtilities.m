@@ -38,6 +38,9 @@
             
             break;
         case NSAlertSecondButtonReturn:
+            [[NSApplication sharedApplication] terminate: self];
+            
+            break;
         default:
             break;
     }

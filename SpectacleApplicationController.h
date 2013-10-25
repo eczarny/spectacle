@@ -5,11 +5,15 @@
 
 @interface SpectacleApplicationController : SpectacleWindowActionController {
     IBOutlet NSMenu *statusItemMenu;
+    IBOutlet NSWindow *accessiblityAccessWindow;
     NSStatusItem *statusItem;
     SpectaclePreferencesController *preferencesController;
-    
 }
 
 - (IBAction)showPreferencesWindow: (id)sender;
+
+# pragma mark -
+
+- (IBAction)openSystemPreferences: (id)sender;
 
 @end

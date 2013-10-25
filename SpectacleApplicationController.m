@@ -4,7 +4,6 @@
 #import "SpectacleConstants.h"
 
 extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
-extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 
 @interface SpectacleApplicationController (SpectacleApplicationControllerPrivate)
 
@@ -36,20 +35,12 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
     preferencesController = [SpectaclePreferencesController new];
     
     if (AXIsProcessTrustedWithOptions != NULL) {
-        NSDictionary *options = @{ (__bridge id)kAXTrustedCheckOptionPrompt: @YES };
-        
-        if (!AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)options)) {
-            [[NSApplication sharedApplication] terminate: self];
-            
-            return;
+        if (!AXIsProcessTrustedWithOptions(NULL)) {
+            [accessiblityAccessWindow makeKeyAndOrderFront: self];
         }
     } else {
         if (!AXAPIEnabled()) {
             [SpectacleUtilities displayAccessibilityAPIAlert];
-            
-            [[NSApplication sharedApplication] terminate: self];
-            
-            return;
         }
     }
     
@@ -87,6 +78,16 @@ extern CFStringRef kAXTrustedCheckOptionPrompt __attribute__((weak_import));
 
 - (IBAction)showPreferencesWindow: (id)sender {
     [preferencesController showWindow: sender];
+}
+
+#pragma mark -
+
+- (IBAction)openSystemPreferences: (id)sender {
+    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"Security"]];
+    
+    [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
+    
+    [accessiblityAccessWindow orderOut: self];
 }
 
 @end
