@@ -2,6 +2,8 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleConstants.h"
 
+extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
+
 @interface ZeroKitHotKey : ZKHotKey
 
 @end
@@ -71,6 +73,20 @@
         default:
             break;
     }
+}
+
+#pragma mark -
+
++ (SpectacleApplicationTrust)spectacleTrust {
+    BOOL result = SpectacleIsTrusted;
+    
+    if ((AXIsProcessTrustedWithOptions != NULL) && !AXIsProcessTrustedWithOptions(NULL)) {
+        result = SpectacleIsNotTrustedOnOrAfterMavericks;
+    } else if (!AXAPIEnabled()) {
+        result = SpectacleIsNotTrustedBeforeMavericks;
+    }
+    
+    return result;
 }
 
 #pragma mark -

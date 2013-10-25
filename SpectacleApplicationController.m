@@ -3,8 +3,6 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
-extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
-
 @interface SpectacleApplicationController (SpectacleApplicationControllerPrivate)
 
 - (void)createStatusItem;
@@ -34,16 +32,6 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     
     preferencesController = [SpectaclePreferencesController new];
     
-    if (AXIsProcessTrustedWithOptions != NULL) {
-        if (!AXIsProcessTrustedWithOptions(NULL)) {
-            [accessiblityAccessWindow makeKeyAndOrderFront: self];
-        }
-    } else {
-        if (!AXAPIEnabled()) {
-            [SpectacleUtilities displayAccessibilityAPIAlert];
-        }
-    }
-    
     [self registerHotKeys];
     
     [notificationCenter addObserver: self
@@ -63,6 +51,19 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference]) {
         [self createStatusItem];
+    }
+    
+    switch ([SpectacleUtilities spectacleTrust]) {
+        case SpectacleIsNotTrustedBeforeMavericks:
+            [SpectacleUtilities displayAccessibilityAPIAlert];
+            
+            break;
+        case SpectacleIsNotTrustedOnOrAfterMavericks:
+            [accessiblityAccessDialogWindow makeKeyAndOrderFront: self];
+            
+            break;
+        default:
+            break;
     }
 }
 
@@ -87,7 +88,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     
     [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
     
-    [accessiblityAccessWindow orderOut: self];
+    [accessiblityAccessDialogWindow orderOut: self];
 }
 
 @end

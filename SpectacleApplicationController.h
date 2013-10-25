@@ -5,7 +5,7 @@
 
 @interface SpectacleApplicationController : SpectacleWindowActionController {
     IBOutlet NSMenu *statusItemMenu;
-    IBOutlet NSWindow *accessiblityAccessWindow;
+    IBOutlet NSWindow *accessiblityAccessDialogWindow;
     NSStatusItem *statusItem;
     SpectaclePreferencesController *preferencesController;
 }
