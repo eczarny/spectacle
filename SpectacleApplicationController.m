@@ -59,7 +59,7 @@
             
             break;
         case SpectacleIsNotTrustedOnOrAfterMavericks:
-            [accessiblityAccessDialogWindow makeKeyAndOrderFront: self];
+            [[NSApplication sharedApplication] runModalForWindow: accessiblityAccessDialogWindow];
             
             break;
         default:
@@ -87,6 +87,8 @@
     NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"Security"]];
     
     [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
+    
+    [[NSApplication sharedApplication] stopModal];
     
     [accessiblityAccessDialogWindow orderOut: self];
 }
