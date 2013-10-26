@@ -30,8 +30,18 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     
     [alert setAlertStyle: NSWarningAlertStyle];
     [alert setMessageText: ZKLocalizedString(@"Spectacle requires that the Accessibility API be enabled")];
-    [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
-    [alert addButtonWithTitle: ZKLocalizedString(@"Open Universal Access Preferences")];
+
+    //////////////////////
+    // TODO: Change-me! //
+    //////////////////////
+    // if Mac OSX version < 10.9
+      [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?")];
+      [alert addButtonWithTitle: ZKLocalizedString(@"Open Universal Access Preferences")];
+    // else // Mac OSX 10.9
+      [alert setInformativeText: ZKLocalizedString(@"Would you like to open the Security & Privacy / Accessibility so that you allow \"Spectacle\" to manage your windows?")];
+      [alert addButtonWithTitle: ZKLocalizedString(@"Open Security & Privacy")];
+    // end
+
     [alert addButtonWithTitle: ZKLocalizedString(@"Stop Spectacle")];
     
     switch ([alert runModal]) {
