@@ -12,8 +12,6 @@
 #define AlreadyTwoThirdsOfDisplay(a, b) (abs(a.size.width - floor((b.size.width * 2.0f) / 3.0f)) < SpectacleWindowCalculationFudgeFactor) && (a.size.height == b.size.height)
 #define AlreadyOneHalfOfDisplay(a, b) (abs(a.size.width - (b.size.width / 2.0f)) < SpectacleWindowCalculationFudgeFactor) && (a.size.height == b.size.height)
 
-#define IsMovingToNewHalfOfDisplay(a, b) (((action == SpectacleWindowActionLeftHalf) && AgainstTheRightEdgeOfScreen(a, b)) || ((action == SpectacleWindowActionRightHalf) && AgainstTheLeftEdgeOfScreen(a, b)))
-
 #pragma mark -
 
 @interface SpectacleWindowPositionCalculator (SpectacleWindowPositionCalculatorPrivate)
@@ -26,6 +24,12 @@
 
 + (BOOL)isWindowRect: (CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
 
+#pragma mark -
+
++ (BOOL)halfToOneThird: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
+
++ (BOOL)halfToTwoThirds: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
+
 @end
 
 #pragma mark -
@@ -33,69 +37,69 @@
 @implementation SpectacleWindowPositionCalculator
 
 + (CGRect)calculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
-    CGRect calculateWindowRect = windowRect;
+    CGRect calculatedWindowRect = windowRect;
     
     if ((action >= SpectacleWindowActionRightHalf) && (action <= SpectacleWindowActionLowerRight)) {
-        calculateWindowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
+        calculatedWindowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
-        calculateWindowRect.origin.x = floor(visibleFrameOfScreen.size.width / 2.0f) - floor(calculateWindowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
+        calculatedWindowRect.origin.x = floor(visibleFrameOfScreen.size.width / 2.0f) - floor(calculatedWindowRect.size.width / 2.0f) + visibleFrameOfScreen.origin.x;
     } else if (!MovingToThirdOfDisplay(action)) {
-        calculateWindowRect.origin.x = visibleFrameOfScreen.origin.x;
+        calculatedWindowRect.origin.x = visibleFrameOfScreen.origin.x;
     }
     
     if (MovingToTopRegionOfDisplay(action)) {
-        calculateWindowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
+        calculatedWindowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
-        calculateWindowRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) - floor(calculateWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
+        calculatedWindowRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) - floor(calculatedWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
     } else if (!MovingToThirdOfDisplay(action)) {
-        calculateWindowRect.origin.y = visibleFrameOfScreen.origin.y;
+        calculatedWindowRect.origin.y = visibleFrameOfScreen.origin.y;
     }
     
     if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)) {
-        if (AlreadyOneHalfOfDisplay(calculateWindowRect, visibleFrameOfScreen) && !IsMovingToNewHalfOfDisplay(windowRect, visibleFrameOfScreen)) {
-            calculateWindowRect.size.width = floor((visibleFrameOfScreen.size.width * 2.0f) / 3.0f);
-        } else if (AlreadyTwoThirdsOfDisplay(calculateWindowRect, visibleFrameOfScreen) && !IsMovingToNewHalfOfDisplay(windowRect, visibleFrameOfScreen)) {
-            calculateWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+        if ([SpectacleWindowPositionCalculator halfToTwoThirds: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action]) {
+            calculatedWindowRect.size.width = floor((visibleFrameOfScreen.size.width * 2.0f) / 3.0f);
+        } else if ([SpectacleWindowPositionCalculator halfToOneThird: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action]) {
+            calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
         } else {
-            calculateWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
+            calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
         }
         
         if (action == SpectacleWindowActionRightHalf) {
-            calculateWindowRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - calculateWindowRect.size.width;
+            calculatedWindowRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - calculatedWindowRect.size.width;
         }
         
-        calculateWindowRect.size.height = visibleFrameOfScreen.size.height;
+        calculatedWindowRect.size.height = visibleFrameOfScreen.size.height;
     } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
-        calculateWindowRect.size.width = visibleFrameOfScreen.size.width;
-        calculateWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
+        calculatedWindowRect.size.width = visibleFrameOfScreen.size.width;
+        calculatedWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
     } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)) {
-        calculateWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
-        calculateWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
+        calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
+        calculatedWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
     } else if (!MovingToCenterRegionOfDisplay(action) && !MovingToThirdOfDisplay(action)) {
-        calculateWindowRect.size.width = visibleFrameOfScreen.size.width;
-        calculateWindowRect.size.height = visibleFrameOfScreen.size.height;
+        calculatedWindowRect.size.width = visibleFrameOfScreen.size.width;
+        calculatedWindowRect.size.height = visibleFrameOfScreen.size.height;
     }
     
     if (MovingToThirdOfDisplay(action)) {
-        calculateWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: calculateWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
+        calculatedWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: calculatedWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     }
     
     if (MovingToTopRegionOfDisplay(action)) {
-        if (((visibleFrameOfScreen.size.height / 2.0f) - calculateWindowRect.size.height) > 0.0f) {
-            calculateWindowRect.origin.y = calculateWindowRect.origin.y + 1.0f;
+        if (((visibleFrameOfScreen.size.height / 2.0f) - calculatedWindowRect.size.height) > 0.0f) {
+            calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
         } else {
-            calculateWindowRect.origin.y = calculateWindowRect.origin.y + 1.0f;
-            calculateWindowRect.size.height = calculateWindowRect.size.height - 1.0f;
+            calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
+            calculatedWindowRect.size.height = calculatedWindowRect.size.height - 1.0f;
         }
         
-        calculateWindowRect.origin.y = calculateWindowRect.origin.y + 1.0f;
+        calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
     }
     
     if ((action >= SpectacleWindowActionLeftHalf) && (action <= SpectacleWindowActionLowerLeft)) {
-        calculateWindowRect.size.width = calculateWindowRect.size.width - 1.0f;
+        calculatedWindowRect.size.width = calculatedWindowRect.size.width - 1.0f;
     }
     
-    return calculateWindowRect;
+    return calculatedWindowRect;
 }
 
 + (CGRect)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen sizeOffset: (CGFloat)sizeOffset {
@@ -228,6 +232,32 @@
     CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / SpectacleMinimumWindowSizeRatio);
     
     return (windowRect.size.width <= minimumWindowRectWidth) || (windowRect.size.height <= minimumWindowRectHeight);
+}
+
+#pragma mark -
+
++ (BOOL)halfToOneThird: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    BOOL result = NO;
+    
+    if (action == SpectacleWindowActionLeftHalf) {
+        result = AlreadyTwoThirdsOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheLeftEdgeOfScreen(windowRect, visibleFrameOfScreen);
+    } else if (action == SpectacleWindowActionRightHalf) {
+        result = AlreadyTwoThirdsOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheRightEdgeOfScreen(windowRect, visibleFrameOfScreen);
+    }
+    
+    return result;
+}
+
++ (BOOL)halfToTwoThirds: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    BOOL result = NO;
+    
+    if (action == SpectacleWindowActionLeftHalf) {
+        result = AlreadyOneHalfOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheLeftEdgeOfScreen(windowRect, visibleFrameOfScreen);
+    } else if (action == SpectacleWindowActionRightHalf) {
+        result = AlreadyOneHalfOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheRightEdgeOfScreen(windowRect, visibleFrameOfScreen);
+    }
+    
+    return result;
 }
 
 @end
