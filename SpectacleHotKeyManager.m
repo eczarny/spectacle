@@ -27,8 +27,6 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 @implementation SpectacleHotKeyManager
 
-static SpectacleHotKeyManager *sharedInstance = nil;
-
 - (id)init {
     if ((self = [super init])) {
         registeredHotKeys = [NSMutableDictionary new];
@@ -42,11 +40,12 @@ static SpectacleHotKeyManager *sharedInstance = nil;
 #pragma mark -
 
 + (SpectacleHotKeyManager *)sharedManager {
-    @synchronized(self) {
-        if (!sharedInstance) {
-            sharedInstance = [self new];
-        }
-    }
+    static SpectacleHotKeyManager *sharedInstance = nil;
+    static dispatch_once_t predicate;
+
+    dispatch_once(&predicate, ^{
+        sharedInstance = [self new];
+    });
     
     return sharedInstance;
 }

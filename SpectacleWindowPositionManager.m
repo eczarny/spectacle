@@ -49,8 +49,6 @@
 
 @implementation SpectacleWindowPositionManager
 
-static SpectacleWindowPositionManager *sharedInstance = nil;
-
 - (id)init {
     if ((self = [super init])) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -68,11 +66,12 @@ static SpectacleWindowPositionManager *sharedInstance = nil;
 #pragma mark -
 
 + (SpectacleWindowPositionManager *)sharedManager {
-    @synchronized(self) {
-        if (!sharedInstance) {
-            sharedInstance = [self new];
-        }
-    }
+    static SpectacleWindowPositionManager *sharedInstance = nil;
+    static dispatch_once_t predicate;
+    
+    dispatch_once(&predicate, ^{
+        sharedInstance = [self new];
+    });
     
     return sharedInstance;
 }
