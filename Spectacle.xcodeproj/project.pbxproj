@@ -373,7 +373,6 @@
 				2D1E1AAD147E06AD0021D73D /* Frameworks */,
 				2D1E1AAE147E06AD0021D73D /* Resources */,
 				2D8DA054147E10EE003BE1D3 /* Copy Frameworks */,
-				2D8117E4181B6070009180B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -453,22 +452,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2D8117E4181B6070009180B6 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#LOCATION=\"${BUILT_PRODUCTS_DIR}\"/\"${FRAMEWORKS_FOLDER_PATH}\"\n#IDENTITY=\"Mac Developer: Eric Czarny (BZBL6437G2)\"\n\n#codesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/Sparkle.framework/Versions/A\"\n#codesign --verbose --force --sign \"$IDENTITY\" \"$LOCATION/ZeroKit.framework/Versions/A\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D1E1AAC147E06AD0021D73D /* Sources */ = {
