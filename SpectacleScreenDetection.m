@@ -1,22 +1,6 @@
 #import "SpectacleScreenDetection.h"
 #import "SpectacleUtilities.h"
 
-@interface SpectacleScreenDetection (SpectacleScreenDetectionPrivate)
-
-+ (NSScreen *)screenContainingRect: (CGRect)rect;
-
-#pragma mark -
-
-+ (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen;
-
-#pragma mark -
-
-+ (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleScreenDetection
 
 + (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
@@ -29,18 +13,14 @@
     return result;
 }
 
-@end
-
 #pragma mark -
-
-@implementation SpectacleScreenDetection (SpectacleScreenDetectionPrivate)
 
 + (NSScreen *)screenContainingRect: (CGRect)rect {
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
-    NSScreen *result = [NSScreen mainScreen];
+    NSScreen *result = NSScreen.mainScreen;
     
     for (NSScreen *currentScreen in [NSScreen screens]) {
-        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
+        CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         CGRect flippedRect = rect;
         CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
         
@@ -80,16 +60,16 @@
 #pragma mark -
 
 + (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
-    NSArray *screens = [NSScreen screens];
+    NSArray *screens = NSScreen.screens;
     NSScreen *result = nil;
     
-    if ([screens count] <= 1) {
+    if (screens.count <= 1) {
         return result;
     }
     
-    for (NSInteger i = 0; i < [screens count]; i++) {
+    for (NSInteger i = 0; i < screens.count; i++) {
         NSScreen *currentScreen = screens[i];
-        CGRect currentFrameOfScreen = NSRectToCGRect([currentScreen frame]);
+        CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         NSInteger nextOrPreviousIndex = i;
         
         if (!CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
@@ -103,8 +83,8 @@
         }
         
         if (nextOrPreviousIndex < 0) {
-            nextOrPreviousIndex = [screens count] - 1;
-        } else if (nextOrPreviousIndex >= [screens count]) {
+            nextOrPreviousIndex = screens.count - 1;
+        } else if (nextOrPreviousIndex >= screens.count) {
             nextOrPreviousIndex = 0;
         }
         

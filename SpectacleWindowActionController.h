@@ -2,10 +2,7 @@
 
 @class SpectacleWindowPositionManager, SpectacleHotKeyManager;
 
-@interface SpectacleWindowActionController : NSObject {
-    SpectacleWindowPositionManager *windowPositionManager;
-    SpectacleHotKeyManager *hotKeyManager;
-}
+@interface SpectacleWindowActionController : NSObject
 
 - (void)registerHotKeys;
 

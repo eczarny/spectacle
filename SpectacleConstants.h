@@ -64,3 +64,8 @@
 #pragma mark -
 
 #define SpectacleBlacklistedWindowRectsPreference        @"BlacklistedWindowRects"
+
+#pragma mark -
+
+#define SpectacleSecurityPreferencePaneName              @"Security"
+#define SpectacleUniversalAccessPreferencePaneName       @"UniversalAccessPref"

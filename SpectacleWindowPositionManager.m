@@ -19,29 +19,11 @@
 
 #pragma mark -
 
-@interface SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
+@interface SpectacleWindowPositionManager ()
 
-- (CGRect)rectOfWindowWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement;
-
-#pragma mark -
-
-- (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action;
-
-- (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement;
-
-@end
-
-#pragma mark -
-
-@interface SpectacleWindowPositionManager (WindowHistory)
-
-- (SpectacleHistory *)historyForCurrentApplication;
-
-#pragma mark -
-
-- (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action;
-
-- (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action;
+@property (nonatomic) NSMutableDictionary *applicationHistories;
+@property (nonatomic) NSMutableSet *blacklistedWindowRects;
+@property (nonatomic) NSMutableSet *blacklistedApplications;
 
 @end
 
@@ -51,13 +33,13 @@
 
 - (id)init {
     if ((self = [super init])) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *path = [[SpectacleUtilities applicationBundle] pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
+        NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+        NSString *path = [SpectacleUtilities.applicationBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                                           ofType: ZKPropertyListFileExtension];
         
-        applicationHistories = [NSMutableDictionary new];
-        blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
-        blacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
+        _applicationHistories = [NSMutableDictionary new];
+        _blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
+        _blacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
     }
     
     return self;
@@ -79,13 +61,13 @@
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
-    ZKAccessibilityElement *frontMostWindowElement = [ZKAccessibilityElement frontMostWindowElement];
+    ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
     NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
     CGRect frameOfScreen = CGRectNull;
     CGRect visibleFrameOfScreen = CGRectNull;
-    SpectacleHistory *history = [self historyForCurrentApplication];
+    SpectacleHistory *history = self.historyForCurrentApplication;
     SpectacleHistoryItem *historyItem = nil;
     
     if (screenOfDisplay) {
@@ -157,7 +139,7 @@
 #pragma mark -
 
 - (SpectacleWindowAction)windowActionForHotKey: (ZKHotKey *)hotKey {
-    NSString *name = [hotKey hotKeyName];
+    NSString *name = hotKey.hotKeyName;
     SpectacleWindowAction windowAction = SpectacleWindowActionNone;
     
     if ([name isEqualToString: SpectacleWindowActionMoveToCenter]) {
@@ -201,11 +183,7 @@
     return windowAction;
 }
 
-@end
-
 #pragma mark -
-
-@implementation SpectacleWindowPositionManager (SpectacleWindowPositionManagerPrivate)
 
 - (CGRect)rectOfWindowWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement {
     CGRect result = CGRectNull;
@@ -233,10 +211,10 @@
 #pragma mark -
 
 - (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
-    NSString *frontMostApplicationName = [ZKAccessibilityElement frontMostApplicationName];
+    NSString *frontMostApplicationName = ZKAccessibilityElement.frontMostApplicationName;
     NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
     
-    if ([blacklistedWindowRects containsObject: blacklistedWindowRect] || [blacklistedApplications containsObject: frontMostApplicationName]) {
+    if ([_blacklistedWindowRects containsObject: blacklistedWindowRect] || [_blacklistedApplications containsObject: frontMostApplicationName]) {
         NSBeep();
         
         return;
@@ -255,13 +233,13 @@
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
     if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
         
         NSBeep();
         
-        [blacklistedWindowRects addObject: blacklistedWindowRect];
+        [_blacklistedWindowRects addObject: blacklistedWindowRect];
         
-        [userDefaults setObject: [blacklistedWindowRects allObjects] forKey: SpectacleBlacklistedWindowRectsPreference];
+        [userDefaults setObject: _blacklistedWindowRects.allObjects forKey: SpectacleBlacklistedWindowRectsPreference];
         
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         
@@ -303,36 +281,32 @@
     CFRelease(windowRectSizeRef);
 }
 
-@end
-
 #pragma mark -
 
-@implementation SpectacleWindowPositionManager (WindowHistory)
-
 - (SpectacleHistory *)historyForCurrentApplication {
-    NSString *applicationName = [ZKAccessibilityElement frontMostApplicationName];
+    NSString *applicationName = ZKAccessibilityElement.frontMostApplicationName;
     
     if (!applicationName) {
         return nil;
     }
     
-    if (!applicationHistories[applicationName]) {
-        applicationHistories[applicationName] = [SpectacleHistory new];
+    if (!_applicationHistories[applicationName]) {
+        _applicationHistories[applicationName] = [SpectacleHistory new];
     }
     
-    return applicationHistories[applicationName];
+    return _applicationHistories[applicationName];
 }
 
 #pragma mark -
 
 - (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action {
-    SpectacleHistory *history = [self historyForCurrentApplication];
-    SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? [history previousHistoryItem] : [history nextHistoryItem];
-    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: [historyItem windowRect]];
+    SpectacleHistory *history = self.historyForCurrentApplication;
+    SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? history.previousHistoryItem : history.nextHistoryItem;
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: historyItem.windowRect];
     CGRect visibleFrameOfScreen = CGRectNull;
     
     if (screenOfDisplay) {
-        visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
+        visibleFrameOfScreen = NSRectToCGRect(screenOfDisplay.visibleFrame);
     }
     
     if (![self moveWithHistoryItem: historyItem visibleFrameOfScreen: visibleFrameOfScreen action: action]) {
@@ -341,8 +315,8 @@
 }
 
 - (BOOL)moveWithHistoryItem: (SpectacleHistoryItem *)historyItem visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
-    ZKAccessibilityElement *frontMostWindowElement = [historyItem accessibilityElement];
-    CGRect windowRect = [historyItem windowRect];
+    ZKAccessibilityElement *frontMostWindowElement = historyItem.accessibilityElement;
+    CGRect windowRect = historyItem.windowRect;
     
     if (!historyItem || !frontMostWindowElement || CGRectIsNull(windowRect)) {
         return NO;

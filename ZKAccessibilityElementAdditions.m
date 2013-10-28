@@ -3,7 +3,7 @@
 @implementation ZKAccessibilityElement (ZKAccessibilityElementAdditions)
 
 + (ZKAccessibilityElement *)frontMostWindowElement {
-    ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
+    ZKAccessibilityElement *systemWideElement = ZKAccessibilityElement.systemWideElement;
     ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
     ZKAccessibilityElement *frontMostWindowElement = nil;
     
@@ -23,7 +23,7 @@
 #pragma mark -
 
 + (NSString *)frontMostApplicationName {
-    ZKAccessibilityElement *systemWideElement = [ZKAccessibilityElement systemWideElement];
+    ZKAccessibilityElement *systemWideElement = ZKAccessibilityElement.systemWideElement;
     ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
     
     return [applicationWithFocusElement stringValueOfAttribute: kAXTitleAttribute];

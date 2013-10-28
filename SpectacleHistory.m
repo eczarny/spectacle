@@ -2,9 +2,12 @@
 #import "SpectacleHistoryItem.h"
 #import "SpectacleConstants.h"
 
-@interface SpectacleHistory (SpectacleHistoryPrivate)
+@interface SpectacleHistory ()
 
-- (SpectacleHistoryItem *)moveCurrentHistoryItemToHistoryItem: (SpectacleHistoryItem *)historyItem;
+@property (nonatomic) SpectacleHistoryItem *firstHistoryItem;
+@property (nonatomic) SpectacleHistoryItem *lastHistoryItem;
+@property (nonatomic) SpectacleHistoryItem *currentHistoryItem;
+@property (nonatomic) NSInteger size;
 
 @end
 
@@ -14,10 +17,10 @@
 
 - (id)init {
     if ((self = [super init])) {
-        firstHistoryItem = nil;
-        lastHistoryItem = firstHistoryItem;
-        currentHistoryItem = firstHistoryItem;
-        size = 0;
+        _firstHistoryItem = nil;
+        _lastHistoryItem = _firstHistoryItem;
+        _currentHistoryItem = _firstHistoryItem;
+        _size = 0;
     }
     
     return self;
@@ -27,63 +30,57 @@
 
 - (void)addHistoryItem: (SpectacleHistoryItem *)historyItem {
     if ([self isEmpty]) {
-        currentHistoryItem = historyItem;
-        firstHistoryItem = currentHistoryItem;
-        lastHistoryItem = firstHistoryItem;
+        _currentHistoryItem = historyItem;
+        _firstHistoryItem = _currentHistoryItem;
+        _lastHistoryItem = _firstHistoryItem;
     } else {
-        [historyItem setNextHistoryItem: [currentHistoryItem nextHistoryItem]];
+        historyItem.nextHistoryItem = _currentHistoryItem.nextHistoryItem;
+        historyItem.previousHistoryItem = _currentHistoryItem;
         
-        [historyItem setPreviousHistoryItem: currentHistoryItem];
-        
-        [[currentHistoryItem nextHistoryItem] setPreviousHistoryItem: historyItem];
-        
-        [currentHistoryItem setNextHistoryItem: historyItem];
+        _currentHistoryItem.nextHistoryItem.previousHistoryItem = historyItem;
+        _currentHistoryItem.nextHistoryItem = historyItem;
         
         if (![historyItem nextHistoryItem]) {
-            firstHistoryItem = historyItem;
+            _firstHistoryItem = historyItem;
         }
         
         if (![historyItem previousHistoryItem]) {
-            lastHistoryItem = historyItem;
+            _lastHistoryItem = historyItem;
         }
         
-        currentHistoryItem = historyItem;
+        _currentHistoryItem = historyItem;
     }
     
-    if (++size >= SpectacleWindowActionHistorySize) {
-        [[lastHistoryItem nextHistoryItem] setPreviousHistoryItem: [lastHistoryItem previousHistoryItem]];
+    if (++_size >= SpectacleWindowActionHistorySize) {
+        _lastHistoryItem.nextHistoryItem.previousHistoryItem = _lastHistoryItem.previousHistoryItem;
         
-        lastHistoryItem = [lastHistoryItem nextHistoryItem];
+        _lastHistoryItem = _lastHistoryItem.nextHistoryItem;
         
-        size--;
+        _size--;
     }
 }
 
 #pragma mark -
 
 - (SpectacleHistoryItem *)nextHistoryItem {
-    return [self moveCurrentHistoryItemToHistoryItem: [currentHistoryItem nextHistoryItem]];
+    return [self moveCurrentHistoryItemToHistoryItem: _currentHistoryItem.nextHistoryItem];
 }
 
 - (SpectacleHistoryItem *)previousHistoryItem {
-    return [self moveCurrentHistoryItemToHistoryItem: [currentHistoryItem previousHistoryItem]];
+    return [self moveCurrentHistoryItemToHistoryItem: _currentHistoryItem.previousHistoryItem];
 }
 
 #pragma mark -
 
 - (BOOL)isEmpty {
-    return size == 0;
+    return _size == 0;
 }
-
-@end
 
 #pragma mark -
 
-@implementation SpectacleHistory (SpectacleHistoryPrivate)
-
 - (SpectacleHistoryItem *)moveCurrentHistoryItemToHistoryItem: (SpectacleHistoryItem *)historyItem {
     if (historyItem) {
-        currentHistoryItem = historyItem;
+        _currentHistoryItem = historyItem;
     }
     
     return historyItem;

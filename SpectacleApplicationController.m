@@ -3,21 +3,10 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 
-@interface SpectacleApplicationController (SpectacleApplicationControllerPrivate)
+@interface SpectacleApplicationController ()
 
-- (void)createStatusItem;
-
-- (void)destroyStatusItem;
-
-#pragma mark -
-
-- (void)enableStatusItem: (NSNotification *)notification;
-
-- (void)disableStatusItem: (NSNotification *)notification;
-
-#pragma mark -
-
-- (void)menuDidSendAction: (NSNotification *)notification;
+@property (nonatomic) NSStatusItem *statusItem;
+@property (nonatomic) SpectaclePreferencesController *preferencesController;
 
 @end
 
@@ -26,11 +15,11 @@
 @implementation SpectacleApplicationController
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
     
-    [SpectacleUtilities registerDefaultsForBundle: [SpectacleUtilities applicationBundle]];
+    [SpectacleUtilities registerDefaultsForBundle: SpectacleUtilities.applicationBundle];
     
-    preferencesController = [SpectaclePreferencesController new];
+    _preferencesController = [SpectaclePreferencesController new];
     
     [self registerHotKeys];
     
@@ -49,17 +38,17 @@
                                name: NSMenuDidSendActionNotification
                              object: nil];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey: SpectacleStatusItemEnabledPreference]) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey: SpectacleStatusItemEnabledPreference]) {
         [self createStatusItem];
     }
     
-    switch ([SpectacleUtilities spectacleTrust]) {
+    switch (SpectacleUtilities.spectacleTrust) {
         case SpectacleIsNotTrustedBeforeMavericks:
             [SpectacleUtilities displayAccessibilityAPIAlert];
             
             break;
         case SpectacleIsNotTrustedOnOrAfterMavericks:
-            [[NSApplication sharedApplication] runModalForWindow: accessiblityAccessDialogWindow];
+            [[NSApplication sharedApplication] runModalForWindow: _accessiblityAccessDialogWindow];
             
             break;
         default:
@@ -78,47 +67,43 @@
 #pragma mark -
 
 - (IBAction)showPreferencesWindow: (id)sender {
-    [preferencesController showWindow: sender];
+    [_preferencesController showWindow: sender];
 }
 
 #pragma mark -
 
 - (IBAction)openSystemPreferences: (id)sender {
-    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: @"Security"]];
+    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: SpectacleSecurityPreferencePaneName]];
     
     [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
     
-    [[NSApplication sharedApplication] stopModal];
+    [NSApplication.sharedApplication stopModal];
     
-    [accessiblityAccessDialogWindow orderOut: self];
+    [_accessiblityAccessDialogWindow orderOut: self];
 }
-
-@end
 
 #pragma mark -
 
-@implementation SpectacleApplicationController (SpectacleApplicationControllerPrivate)
-
 - (void)createStatusItem {
-    NSString *applicationVersion = [SpectacleUtilities applicationVersion];
+    NSString *applicationVersion = SpectacleUtilities.applicationVersion;
     
-    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     
-    [statusItem setImage: [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
-    [statusItem setAlternateImage: [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: [SpectacleUtilities applicationBundle]]];
-    [statusItem setHighlightMode: YES];
+    _statusItem.image = [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: SpectacleUtilities.applicationBundle];
+    _statusItem.alternateImage = [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: SpectacleUtilities.applicationBundle];
+    _statusItem.highlightMode = YES;
     
     if (applicationVersion) {
-        [statusItem setToolTip: [NSString stringWithFormat: @"Spectacle %@", applicationVersion]];
+        _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", applicationVersion];
     } else {
-        [statusItem setToolTip: @"Spectacle"];
+        _statusItem.toolTip = @"Spectacle";
     }
     
-    [statusItem setMenu: statusItemMenu];
+    [_statusItem setMenu: _statusItemMenu];
 }
 
 - (void)destroyStatusItem {
-    [[NSStatusBar systemStatusBar] removeStatusItem: statusItem];
+    [NSStatusBar.systemStatusBar removeStatusItem: _statusItem];
     
 }
 
@@ -135,7 +120,7 @@
 #pragma mark -
 
 - (void)menuDidSendAction: (NSNotification *)notification {
-    [[NSApplication sharedApplication] activateIgnoringOtherApps: YES];
+    [NSApplication.sharedApplication activateIgnoringOtherApps: YES];
 }
 
 @end

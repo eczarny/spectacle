@@ -2,12 +2,7 @@
 
 @class SpectacleHistoryItem;
 
-@interface SpectacleHistory : NSObject {
-    SpectacleHistoryItem *firstHistoryItem;
-    SpectacleHistoryItem *lastHistoryItem;
-    SpectacleHistoryItem *currentHistoryItem;
-    NSInteger size;
-}
+@interface SpectacleHistory : NSObject
 
 - (void)addHistoryItem: (SpectacleHistoryItem *)aHistoryItem;
 

@@ -3,12 +3,12 @@
 
 @class SpectaclePreferencesController;
 
-@interface SpectacleApplicationController : SpectacleWindowActionController {
-    IBOutlet NSMenu *statusItemMenu;
-    IBOutlet NSWindow *accessiblityAccessDialogWindow;
-    NSStatusItem *statusItem;
-    SpectaclePreferencesController *preferencesController;
-}
+@interface SpectacleApplicationController : SpectacleWindowActionController
+
+@property (nonatomic) IBOutlet NSMenu *statusItemMenu;
+@property (nonatomic) IBOutlet NSWindow *accessiblityAccessDialogWindow;
+
+# pragma mark -
 
 - (IBAction)showPreferencesWindow: (id)sender;
 

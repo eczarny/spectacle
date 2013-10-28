@@ -14,26 +14,6 @@
 
 #pragma mark -
 
-@interface SpectacleWindowPositionCalculator (SpectacleWindowPositionCalculatorPrivate)
-
-+ (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
-
-+ (CGRect)findThirdForWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
-
-#pragma mark -
-
-+ (BOOL)isWindowRect: (CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen;
-
-#pragma mark -
-
-+ (BOOL)halfToOneThird: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
-
-+ (BOOL)halfToTwoThirds: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleWindowPositionCalculator
 
 + (CGRect)calculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
@@ -159,11 +139,7 @@
     return windowRect;
 }
 
-@end
-
 #pragma mark -
-
-@implementation SpectacleWindowPositionCalculator (SpectacleWindowPositionCalculatorPrivate)
 
 + (NSArray *)thirdsFromVisibleFrameOfScreen: (CGRect)visibleFrameOfScreen {
     NSMutableArray *result = [NSMutableArray new];
@@ -200,19 +176,19 @@
     CGRect result = [thirds[0] windowRect];
     NSInteger i = 0;
     
-    for (i = 0; i < [thirds count]; i++) {
+    for (i = 0; i < thirds.count; i++) {
         CGRect currentWindowRect = [thirds[i] windowRect];
         
         if (CGRectEqualToRect(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
             if (action == SpectacleWindowActionNextThird) {
-                if (++j >= [thirds count]) {
+                if (++j >= thirds.count) {
                     j = 0;
                 }
             } else if (action == SpectacleWindowActionPreviousThird) {
                 if (--j < 0) {
-                    j = [thirds count] - 1;
+                    j = thirds.count - 1;
                 }
             }
             
