@@ -20,6 +20,7 @@
 		2D36FFD416B9BE100040372F /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36FFD316B9BE100040372F /* Sparkle.framework */; };
 		2D36FFD516B9BE3A0040372F /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36FFD316B9BE100040372F /* Sparkle.framework */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
+		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
 		2D736756149ADB2C00837D7D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2D736754149ADB2C00837D7D /* Credits.rtf */; };
 		2D73675B149ADB4500837D7D /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D736757149ADB4500837D7D /* Spectacle.xib */; };
@@ -116,6 +117,7 @@
 		2D36FFD316B9BE100040372F /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleScreenDetection.h; sourceTree = "<group>"; };
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleScreenDetection.m; sourceTree = "<group>"; };
+		2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Security & Privacy System Preferences.scpt"; path = "Resources/Scripts/Security & Privacy System Preferences.scpt"; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Resources/Sparkle/dsa_public.pem; sourceTree = "<group>"; };
 		2D65406A1475EAE1000133CA /* ZeroKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZeroKit.xcodeproj; path = Frameworks/ZeroKit/ZeroKit.xcodeproj; sourceTree = "<group>"; };
 		2D65407E1475ECF1000133CA /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development/ZeroKit.framework"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				0747DAED1183AAF600F75DD2 /* Interface Builder */,
 				0747DAEC1183AAEE00F75DD2 /* Localized Strings */,
 				0747DAEB1183AAE700F75DD2 /* Property Lists */,
+				2DB2DC22181ECFCF0008A192 /* Scripts */,
 				2D5CCCE715E96F4F0009CC43 /* Sparkle */,
 				2D736754149ADB2C00837D7D /* Credits.rtf */,
 			);
@@ -350,6 +353,14 @@
 				2D6540721475EAE1000133CA /* ZeroKit.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2DB2DC22181ECFCF0008A192 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 		32DBCFA10370C40200C91783 /* Other Sources */ = {
@@ -441,6 +452,7 @@
 				2D73677B149ADB7400837D7D /* InfoPlist.strings in Resources */,
 				2D73677E149ADB7400837D7D /* Localizable.strings in Resources */,
 				2DC3A85A181A039200B68601 /* Security & Privacy.png in Resources */,
+				2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */,
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2D73675B149ADB4500837D7D /* Spectacle.xib in Resources */,
 				07B6B755148B1654003F924A /* Spectacle Alternate Status Item.png in Resources */,

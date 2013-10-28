@@ -69,3 +69,9 @@
 
 #define SpectacleSecurityPreferencePaneName              @"Security"
 #define SpectacleUniversalAccessPreferencePaneName       @"UniversalAccessPref"
+
+#pragma mark -
+
+#define SpectacleSecurityAndPrivacyPreferencesScriptName @"Security & Privacy System Preferences"
+
+#define SpectacleAppleScriptFileExtension                @"scpt"

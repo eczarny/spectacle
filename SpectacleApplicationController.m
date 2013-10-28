@@ -74,12 +74,16 @@
 
 - (IBAction)openSystemPreferences: (id)sender {
     NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: SpectacleSecurityPreferencePaneName]];
-    
-    [[NSWorkspace sharedWorkspace] openURL: preferencePaneURL];
+    NSBundle *applicationBundle = SpectacleUtilities.applicationBundle;
+    NSURL *scriptURL = [applicationBundle URLForResource: SpectacleSecurityAndPrivacyPreferencesScriptName withExtension: SpectacleAppleScriptFileExtension];
     
     [NSApplication.sharedApplication stopModal];
-    
+
     [_accessiblityAccessDialogWindow orderOut: self];
+    
+    if (![[[NSAppleScript alloc] initWithContentsOfURL: scriptURL error: nil] executeAndReturnError: nil]) {
+        [NSWorkspace.sharedWorkspace openURL: preferencePaneURL];
+    }
 }
 
 #pragma mark -
