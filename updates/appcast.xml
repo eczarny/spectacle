@@ -40,5 +40,12 @@
       <pubDate>Thu, 25 Apr 2013 13:09:00 EDT</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.2.zip" sparkle:shortVersionString="0.8.2" sparkle:version="11" sparkle:dsaSignature="MCwCFAOHb1kesuJdaY7ThkDwgqhY/h/OAhQpVuiCmE4mQFgMzvw0kkfgOShhuw==" length="2654409" type="application/octet-stream" />
     </item>
+    <item>
+      <title>Spectacle 0.8.3</title>
+      <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.8.3.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.7.0</sparkle:minimumSystemVersion>
+      <pubDate>Mon, 28 Oct 2013 20:43:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.3.zip" sparkle:shortVersionString="0.8.3" sparkle:version="12" sparkle:dsaSignature="MC0CFDhwTbg+v6BLsZahOWuj46SJxZZ/AhUAl99eVe4vwVZ8p0u4Ya23n1LjKCE=" length="2565106" type="application/octet-stream" />
+    </item>
   </channel>
 </rss>
