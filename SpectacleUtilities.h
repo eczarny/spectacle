@@ -26,8 +26,6 @@
 
 #define WindowRectToString(windowRect) [NSString stringWithFormat: @"(%f, %f) %fx%f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
 
-#pragma mark -
-
 enum {
     SpectacleIsTrusted,
     SpectacleIsNotTrustedOnOrAfterMavericks,
