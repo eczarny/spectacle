@@ -9,8 +9,8 @@
 
 #pragma mark -
 
-#define AlreadyTwoThirdsOfDisplay(a, b) (abs(a.size.width - floor((b.size.width * 2.0f) / 3.0f)) < SpectacleWindowCalculationFudgeFactor) && (a.size.height == b.size.height)
-#define AlreadyOneHalfOfDisplay(a, b) (abs(a.size.width - (b.size.width / 2.0f)) < SpectacleWindowCalculationFudgeFactor) && (a.size.height == b.size.height)
+#define AlreadyTwoThirdsOfDisplay(a, b) (abs(a.size.width - floor((b.size.width * 2.0f) / 3.0f)) < SpectacleWindowCalculationFudgeFactor) && (abs(a.size.height - b.size.height) < SpectacleWindowCalculationFudgeFactor*2)
+#define AlreadyOneHalfOfDisplay(a, b) (abs(a.size.width - (b.size.width / 2.0f)) < SpectacleWindowCalculationFudgeFactor) && (abs(a.size.height - b.size.height) < SpectacleWindowCalculationFudgeFactor*2)
 
 #pragma mark -
 
