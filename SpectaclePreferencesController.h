@@ -23,6 +23,8 @@
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *makeSmallerHotKeyRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *undoLastMoveHotKeyRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *redoLastMoveHotKeyRecorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *makeLargerVerticalHotKeyRecorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *makeSmallerVerticalHotKeyRecorder;
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
 
