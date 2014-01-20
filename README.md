@@ -21,7 +21,7 @@ Those wishing to contribute to the project should begin by obtaining the latest 
 
 # License
 
-Copyright (c) 2013 Eric Czarny.
+Copyright (c) 2014 Eric Czarny.
 
 Spectacle should be accompanied by a LICENSE file containing the license relevant to this distribution.
 
