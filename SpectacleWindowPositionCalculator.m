@@ -104,6 +104,21 @@
         windowRect.size.width = visibleFrameOfScreen.size.width;
     }
     
+    if (CGRectEqualToRect(previousWindowRect, visibleFrameOfScreen) && (sizeOffset < 0)) {
+        windowRect.size.width = previousWindowRect.size.width + sizeOffset;
+        windowRect.origin.x = previousWindowRect.origin.x - floor(sizeOffset / 2.0f);
+    }
+    
+    if ([SpectacleWindowPositionCalculator isWindowRect: windowRect tooSmallRelativeToVisibleFrameOfScreen: visibleFrameOfScreen]) {
+        windowRect = previousWindowRect;
+    }
+    
+    return windowRect;
+}
+
++ (CGRect)calculateVResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen sizeOffset: (CGFloat)sizeOffset {
+    CGRect previousWindowRect = windowRect;
+    
     windowRect.size.height = windowRect.size.height + sizeOffset;
     windowRect.origin.y = windowRect.origin.y - floor(sizeOffset / 2.0f);
     
@@ -125,9 +140,6 @@
     }
     
     if (CGRectEqualToRect(previousWindowRect, visibleFrameOfScreen) && (sizeOffset < 0)) {
-        windowRect.size.width = previousWindowRect.size.width + sizeOffset;
-        windowRect.origin.x = previousWindowRect.origin.x - floor(sizeOffset / 2.0f);
-        
         windowRect.size.height = previousWindowRect.size.height + sizeOffset;
         windowRect.origin.y = previousWindowRect.origin.y - floor(sizeOffset / 2.0f);
     }

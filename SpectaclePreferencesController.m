@@ -48,7 +48,9 @@
         _makeLargerHotKeyRecorder,            SpectacleWindowActionMakeLarger,
         _makeSmallerHotKeyRecorder,           SpectacleWindowActionMakeSmaller,
         _undoLastMoveHotKeyRecorder,          SpectacleWindowActionUndoLastMove,
-        _redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove, nil];
+        _redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove,
+        _makeLargerVerticalHotKeyRecorder,    SpectacleWindowActionMakeLargerVertical,
+        _makeSmallerVerticalHotKeyRecorder,   SpectacleWindowActionMakeSmallerVertical, nil];
     
     [self loadRegisteredHotKeys];
     

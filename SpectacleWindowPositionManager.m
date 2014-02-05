@@ -8,6 +8,7 @@
 #import "ZKAccessibilityElementAdditions.h"
 
 #define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
+#define VResizing(action) ((action == SpectacleWindowActionLargerVertical) || (action == SpectacleWindowActionSmallerVertical))
 
 #pragma mark -
 
@@ -106,6 +107,10 @@
         CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowSizeOffset;
         
         frontMostWindowRect = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen sizeOffset: sizeOffset];
+    } else if(VResizing(action)) {
+        CGFloat sizeOffset = ((action == SpectacleWindowActionLargerVertical) ? 1.0 : -1.0) * SpectacleWindowSizeOffset;
+        
+        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateVResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen sizeOffset: sizeOffset];
     } else {
         frontMostWindowRect = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
     }
@@ -178,6 +183,10 @@
         windowAction = SpectacleWindowActionUndo;
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
         windowAction = SpectacleWindowActionRedo;
+    } else if ([name isEqualToString: SpectacleWindowActionMakeLargerVertical]) {
+        windowAction = SpectacleWindowActionLargerVertical;
+    } else if ([name isEqualToString: SpectacleWindowActionMakeSmallerVertical]) {
+        windowAction = SpectacleWindowActionSmallerVertical;
     }
     
     return windowAction;
