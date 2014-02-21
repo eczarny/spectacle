@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SpectaclePreferencesController">
             <connections>
                 <outlet property="loginItemEnabled" destination="39" id="125"/>
                 <outlet property="makeLargerHotKeyRecorder" destination="144" id="149"/>
+                <outlet property="makeLargerVerticalHotKeyRecorder" destination="HFd-BS-PGK" id="p39-ug-EmF"/>
                 <outlet property="makeSmallerHotKeyRecorder" destination="146" id="150"/>
+                <outlet property="makeSmallerVerticalHotKeyRecorder" destination="YLx-og-CGY" id="B3O-qn-GwN"/>
                 <outlet property="moveToBottomHotKeyRecorder" destination="20" id="126"/>
                 <outlet property="moveToCenterHotKeyRecorder" destination="7" id="127"/>
                 <outlet property="moveToFullscreenHotKeyRecorder" destination="9" id="128"/>
@@ -27,6 +29,7 @@
                 <outlet property="redoLastMoveHotKeyRecorder" destination="116" id="140"/>
                 <outlet property="statusItemEnabled" destination="41" id="142"/>
                 <outlet property="undoLastMoveHotKeyRecorder" destination="114" id="141"/>
+                <outlet property="versionNumberLabel" destination="s5Z-Mc-MZd" id="8gM-G9-q0C"/>
                 <outlet property="window" destination="3" id="68"/>
             </connections>
         </customObject>
@@ -34,14 +37,14 @@
         <customObject id="-3" userLabel="Application"/>
         <window title="Spectacle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="3">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="283" y="311" width="616" height="467"/>
+            <rect key="contentRect" x="283" y="311" width="616" height="520"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="4">
-                <rect key="frame" x="0.0" y="0.0" width="616" height="467"/>
+                <rect key="frame" x="0.0" y="0.0" width="616" height="520"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="8">
-                        <rect key="frame" x="51" y="405" width="84" height="17"/>
+                        <rect key="frame" x="51" y="458" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Center:" id="62">
                             <font key="font" metaFont="system"/>
@@ -50,11 +53,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="7" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="403" width="140" height="21"/>
+                        <rect key="frame" x="140" y="456" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="6">
-                        <rect key="frame" x="51" y="376" width="84" height="17"/>
+                        <rect key="frame" x="51" y="429" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Fullscreen:" id="63">
                             <font key="font" metaFont="system"/>
@@ -63,11 +66,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="9" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="374" width="140" height="21"/>
+                        <rect key="frame" x="140" y="427" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="19">
-                        <rect key="frame" x="51" y="318" width="84" height="17"/>
+                        <rect key="frame" x="51" y="371" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Left Half:" id="56">
                             <font key="font" metaFont="system"/>
@@ -76,11 +79,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="22" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="316" width="140" height="21"/>
+                        <rect key="frame" x="140" y="369" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="24">
-                        <rect key="frame" x="51" y="289" width="84" height="17"/>
+                        <rect key="frame" x="51" y="342" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Right Half:" id="55">
                             <font key="font" metaFont="system"/>
@@ -89,11 +92,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="21" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="287" width="140" height="21"/>
+                        <rect key="frame" x="140" y="340" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="25">
-                        <rect key="frame" x="51" y="260" width="84" height="17"/>
+                        <rect key="frame" x="51" y="313" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Top Half:" id="54">
                             <font key="font" metaFont="system"/>
@@ -102,11 +105,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="23" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="258" width="140" height="21"/>
+                        <rect key="frame" x="140" y="311" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="18">
-                        <rect key="frame" x="51" y="231" width="84" height="17"/>
+                        <rect key="frame" x="51" y="284" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Bottom Half:" id="57">
                             <font key="font" metaFont="system"/>
@@ -115,11 +118,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="20" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="229" width="140" height="21"/>
+                        <rect key="frame" x="140" y="282" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="16">
-                        <rect key="frame" x="51" y="173" width="84" height="17"/>
+                        <rect key="frame" x="51" y="226" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Upper Left:" id="59">
                             <font key="font" metaFont="system"/>
@@ -128,11 +131,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="13" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="171" width="140" height="21"/>
+                        <rect key="frame" x="140" y="224" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="10">
-                        <rect key="frame" x="51" y="144" width="84" height="17"/>
+                        <rect key="frame" x="51" y="197" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lower Left:" id="61">
                             <font key="font" metaFont="system"/>
@@ -141,11 +144,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="15" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="142" width="140" height="21"/>
+                        <rect key="frame" x="140" y="195" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="11">
-                        <rect key="frame" x="51" y="115" width="84" height="17"/>
+                        <rect key="frame" x="51" y="168" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Upper Right:" id="60">
                             <font key="font" metaFont="system"/>
@@ -154,11 +157,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="12" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="113" width="140" height="21"/>
+                        <rect key="frame" x="140" y="166" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="17">
-                        <rect key="frame" x="51" y="86" width="84" height="17"/>
+                        <rect key="frame" x="51" y="139" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lower Right:" id="58">
                             <font key="font" metaFont="system"/>
@@ -167,11 +170,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="14" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="140" y="84" width="140" height="21"/>
+                        <rect key="frame" x="140" y="137" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="28">
-                        <rect key="frame" x="313" y="405" width="104" height="17"/>
+                        <rect key="frame" x="313" y="458" width="104" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Next Display:" id="52">
                             <font key="font" metaFont="system"/>
@@ -180,11 +183,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="27" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="403" width="140" height="21"/>
+                        <rect key="frame" x="422" y="456" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="26">
-                        <rect key="frame" x="305" y="376" width="112" height="17"/>
+                        <rect key="frame" x="305" y="429" width="112" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Previous Display:" id="53">
                             <font key="font" metaFont="system"/>
@@ -193,11 +196,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="29" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="374" width="140" height="21"/>
+                        <rect key="frame" x="422" y="427" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="34">
-                        <rect key="frame" x="313" y="318" width="104" height="17"/>
+                        <rect key="frame" x="313" y="371" width="104" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Next Third:" id="49">
                             <font key="font" metaFont="system"/>
@@ -206,11 +209,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="35" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="316" width="140" height="21"/>
+                        <rect key="frame" x="422" y="369" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="36">
-                        <rect key="frame" x="318" y="289" width="99" height="17"/>
+                        <rect key="frame" x="318" y="342" width="99" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Previous Third:" id="48">
                             <font key="font" metaFont="system"/>
@@ -219,11 +222,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="37" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="287" width="140" height="21"/>
+                        <rect key="frame" x="422" y="340" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="113">
-                        <rect key="frame" x="313" y="144" width="104" height="17"/>
+                        <rect key="frame" x="313" y="110" width="104" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Undo:" id="118">
                             <font key="font" metaFont="system"/>
@@ -232,11 +235,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="114" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="142" width="140" height="21"/>
+                        <rect key="frame" x="422" y="108" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="115">
-                        <rect key="frame" x="313" y="115" width="104" height="17"/>
+                        <rect key="frame" x="313" y="81" width="104" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Redo:" id="117">
                             <font key="font" metaFont="system"/>
@@ -245,11 +248,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="116" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="113" width="140" height="21"/>
+                        <rect key="frame" x="422" y="79" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="143">
-                        <rect key="frame" x="313" y="231" width="104" height="17"/>
+                        <rect key="frame" x="313" y="284" width="104" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Make Larger:" id="148">
                             <font key="font" metaFont="system"/>
@@ -258,11 +261,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="144" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="229" width="140" height="21"/>
+                        <rect key="frame" x="422" y="282" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="145">
-                        <rect key="frame" x="313" y="202" width="104" height="17"/>
+                        <rect key="frame" x="313" y="255" width="104" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Make Smaller:" id="147">
                             <font key="font" metaFont="system"/>
@@ -271,11 +274,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="146" customClass="ZKHotKeyRecorder">
-                        <rect key="frame" x="422" y="200" width="140" height="21"/>
+                        <rect key="frame" x="422" y="253" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <box autoresizesSubviews="NO" borderType="line" titlePosition="noTitle" id="38">
-                        <rect key="frame" x="-6" y="-6" width="628" height="50"/>
+                        <rect key="frame" x="-6" y="-4" width="628" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="626" height="48"/>
@@ -327,6 +330,41 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <textField verticalHuggingPriority="750" id="7m3-wE-pfd">
+                        <rect key="frame" x="313" y="197" width="104" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Make Larger V:" id="ZXO-2V-wkq">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView id="HFd-BS-PGK" customClass="ZKHotKeyRecorder">
+                        <rect key="frame" x="422" y="195" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <textField verticalHuggingPriority="750" id="skr-sn-Q2o">
+                        <rect key="frame" x="312" y="168" width="105" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Make Smaller V:" id="hgs-Lb-BEr">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView id="YLx-og-CGY" customClass="ZKHotKeyRecorder">
+                        <rect key="frame" x="422" y="166" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="s5Z-Mc-MZd">
+                        <rect key="frame" x="18" y="52" width="104" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="XBe-0Y-bg9">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>

@@ -34,6 +34,9 @@
 #define SpectacleWindowActionMakeLarger                  @"MakeLarger"
 #define SpectacleWindowActionMakeSmaller                 @"MakeSmaller"
 
+#define SpectacleWindowActionMakeLargerVertical          @"MakeLargerVertical"
+#define SpectacleWindowActionMakeSmallerVertical         @"MakeSmallerVertical"
+
 #define SpectacleWindowActionUndoLastMove                @"UndoLastMove"
 #define SpectacleWindowActionRedoLastMove                @"RedoLastMove"
 
