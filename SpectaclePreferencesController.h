@@ -27,7 +27,7 @@
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *makeSmallerVerticalHotKeyRecorder;
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
-
+@property (nonatomic) IBOutlet NSTextField *versionNumberLabel;
 #pragma mark -
 
 - (IBAction)toggleWindow: (id)sender;

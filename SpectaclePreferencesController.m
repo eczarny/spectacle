@@ -61,6 +61,13 @@
     _loginItemEnabled.state = loginItemEnabledState;
     
     [_statusItemEnabled selectItemWithTag: isStatusItemEnabled ? 0 : 1];
+
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+
+    NSString *build = infoDictionary[(NSString*)kCFBundleVersionKey];
+    NSString *bundleName = infoDictionary[@"CFBundleShortVersionString"];
+
+    [self.versionNumberLabel setStringValue:[NSString stringWithFormat:@"%@ (%@)", bundleName, build]];
 }
 
 #pragma mark -
