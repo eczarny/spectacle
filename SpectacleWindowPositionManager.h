@@ -19,6 +19,7 @@ enum {
     SpectacleWindowActionSmaller,
     SpectacleWindowActionNone,
     SpectacleWindowActionCenter,
+    SpectacleWindowActionMaximize,
     SpectacleWindowActionFullscreen,
     SpectacleWindowActionLeftHalf,
     SpectacleWindowActionUpperLeft,
