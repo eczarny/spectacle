@@ -3,6 +3,7 @@
 <plist version="1.0">
 <array>
 	<string>MoveToCenter</string>
+	<string>MoveToMaximize</string>
 	<string>MoveToFullscreen</string>
 	<string>MoveToLeftHalf</string>
 	<string>MoveToRightHalf</string>
