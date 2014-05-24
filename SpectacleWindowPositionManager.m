@@ -248,24 +248,32 @@
     
     movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
     
-    if (!CGRectContainsRect(visibleFrameOfScreen, movedWindowRect) && (action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
-        if (movedWindowRect.origin.x + movedWindowRect.size.width > visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width) {
-            movedWindowRect.origin.x = (visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width) - movedWindowRect.size.width;
-        } else if (movedWindowRect.origin.x < visibleFrameOfScreen.origin.x) {
-            movedWindowRect.origin.x = visibleFrameOfScreen.origin.x;
+    if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
+        CGRect eventualWindowRect = windowRect;
+        
+        // adjust width and height until it fits within the desired windowRect
+        while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
+            if (movedWindowRect.size.width > windowRect.size.width) {
+                eventualWindowRect.size.width -= 1;
+            }
+            if (movedWindowRect.size.height > windowRect.size.height) {
+                eventualWindowRect.size.height -= 1;
+            }
+            [self moveWindowRect:eventualWindowRect frontMostWindowElement:frontMostWindowElement];
+            movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
         }
         
-        if (movedWindowRect.origin.y + movedWindowRect.size.height > visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height) {
-            movedWindowRect.origin.y = (visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height) - movedWindowRect.size.height;
-        } else if (movedWindowRect.origin.y < visibleFrameOfScreen.origin.y) {
-            movedWindowRect.origin.y = visibleFrameOfScreen.origin.y;
+        // centre the window
+        if (movedWindowRect.size.width < windowRect.size.width || movedWindowRect.size.height < windowRect.size.height) {
+            if (movedWindowRect.size.width < windowRect.size.width) {
+                eventualWindowRect.origin.x += ((windowRect.size.width - movedWindowRect.size.width) / 2);
+            }
+            if (movedWindowRect.size.height < windowRect.size.height) {
+                eventualWindowRect.origin.y += ((windowRect.size.height - movedWindowRect.size.height) / 2);
+            }
+            [self moveWindowRect:eventualWindowRect frontMostWindowElement:frontMostWindowElement];
+            movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
         }
-        
-        movedWindowRect.size = windowRect.size;
-        
-        movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
-        
-        [self moveWindowRect: movedWindowRect frontMostWindowElement: frontMostWindowElement];
     }
 }
 
