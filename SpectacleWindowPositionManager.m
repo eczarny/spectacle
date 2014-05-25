@@ -261,7 +261,13 @@
             if (movedWindowRect.size.height > windowRect.size.height) {
                 adjustedWindowRect.size.height -= 1;
             }
-
+            
+            // give up if we're trying to shrink to half the desired as this resizing is just not working
+            if (adjustedWindowRect.size.width < windowRect.size.width / 2.0f || adjustedWindowRect.size.height < windowRect.size.height / 2.0f) {
+                NSLog(@"AMC give up");
+                break;
+            }
+            
             [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
             movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
         }
@@ -269,7 +275,7 @@
         // centre the resized window, taking into account any quantization adjustments
         adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
         adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
-
+        
         [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
     }
 }
