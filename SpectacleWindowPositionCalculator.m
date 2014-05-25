@@ -47,16 +47,6 @@
         calculatedWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: calculatedWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     }
     
-    if (MovingToTopRegionOfDisplay(action)) {
-        if (((visibleFrameOfScreen.size.height / 2.0f) - calculatedWindowRect.size.height) > 0.0f) {
-            calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
-        } else {
-            calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
-        }
-        
-        calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
-    }
-    
     return calculatedWindowRect;
 }
 

@@ -246,34 +246,31 @@
         return;
     }
     
-    movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
+    [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
+    movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
-    if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
-        CGRect eventualWindowRect = windowRect;
+    // did we move exactly into the desired location?
+    if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
+        CGRect adjustedWindowRect = windowRect;
         
-        // adjust width and height until it fits within the desired windowRect
+        // reduce size to fit
         while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
             if (movedWindowRect.size.width > windowRect.size.width) {
-                eventualWindowRect.size.width -= 1;
+                adjustedWindowRect.size.width -= 1;
             }
             if (movedWindowRect.size.height > windowRect.size.height) {
-                eventualWindowRect.size.height -= 1;
+                adjustedWindowRect.size.height -= 1;
             }
-            [self moveWindowRect:eventualWindowRect frontMostWindowElement:frontMostWindowElement];
+
+            [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
             movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
         }
         
-        // centre the window
-        if (movedWindowRect.size.width < windowRect.size.width || movedWindowRect.size.height < windowRect.size.height) {
-            if (movedWindowRect.size.width < windowRect.size.width) {
-                eventualWindowRect.origin.x += ((windowRect.size.width - movedWindowRect.size.width) / 2);
-            }
-            if (movedWindowRect.size.height < windowRect.size.height) {
-                eventualWindowRect.origin.y += ((windowRect.size.height - movedWindowRect.size.height) / 2);
-            }
-            [self moveWindowRect:eventualWindowRect frontMostWindowElement:frontMostWindowElement];
-            movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
-        }
+        // centre the resized window, taking into account any quantization adjustments
+        adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
+        adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
+
+        [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
     }
 }
 
