@@ -264,7 +264,6 @@
             
             // give up if we're trying to shrink to half the desired as this resizing is just not working
             if (adjustedWindowRect.size.width < windowRect.size.width / 2.0f || adjustedWindowRect.size.height < windowRect.size.height / 2.0f) {
-                NSLog(@"AMC give up");
                 break;
             }
             
