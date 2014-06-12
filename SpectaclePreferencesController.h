@@ -1,7 +1,8 @@
 #import <Cocoa/Cocoa.h>
-#import <ZeroKit/ZeroKit.h>
 
-@class SpectacleHotKeyManager, SpectacleApplicationController;
+#import "ZKHotKeyRecorderDelegate.h"
+
+@class SpectacleHotKeyManager, SpectacleApplicationController, ZKHotKeyRecorder;
 
 @interface SpectaclePreferencesController : NSWindowController<ZKHotKeyRecorderDelegate>
 

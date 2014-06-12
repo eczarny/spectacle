@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
-#import <ZeroKit/ZeroKit.h>
+
+#import "ZKAccessibilityElement.h"
 
 @interface ZKAccessibilityElement (ZKAccessibilityElementAdditions)
 

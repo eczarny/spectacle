@@ -83,7 +83,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 + (NSArray *)hotKeyNames {
     NSBundle *bundle = SpectacleUtilities.applicationBundle;
-    NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: ZKPropertyListFileExtension];
+    NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: SpectaclePropertyListFileExtension];
     NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
     
     return hotKeyNames;
@@ -137,7 +137,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 + (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
     NSBundle *bundle = SpectacleUtilities.applicationBundle;
-    NSString *path = [bundle pathForResource: ZKDefaultPreferencesFile ofType: ZKPropertyListFileExtension];
+    NSString *path = [bundle pathForResource: SpectacleDefaultPreferencesPropertyListFile ofType: SpectaclePropertyListFileExtension];
     NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
     

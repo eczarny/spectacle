@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
-#import <ZeroKit/ZeroKit.h>
+
+@class ZKAccessibilityElement;
 
 @interface SpectacleHistoryItem : NSObject
 

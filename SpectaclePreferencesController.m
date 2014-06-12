@@ -4,6 +4,7 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
+#import "ZKHotKeyRecorder.h"
 
 @interface SpectaclePreferencesController ()
 
