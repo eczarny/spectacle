@@ -26,6 +26,7 @@
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *redoLastMoveHotKeyRecorder;
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
+@property (nonatomic) IBOutlet NSTextField *versionNumberLabel;
 
 #pragma mark -
 
