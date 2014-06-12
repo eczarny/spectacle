@@ -16,6 +16,7 @@
 #pragma mark -
 
 #define SpectacleWindowActionMoveToCenter                @"MoveToCenter"
+#define SpectacleWindowActionMoveToMaximize              @"MoveToMaximize"
 #define SpectacleWindowActionMoveToFullscreen            @"MoveToFullscreen"
 
 #define SpectacleWindowActionMoveToLeftHalf              @"MoveToLeftHalf"

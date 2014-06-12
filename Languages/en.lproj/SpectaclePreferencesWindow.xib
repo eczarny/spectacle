@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SpectaclePreferencesController">
@@ -11,11 +11,12 @@
                 <outlet property="makeLargerHotKeyRecorder" destination="144" id="149"/>
                 <outlet property="makeSmallerHotKeyRecorder" destination="146" id="150"/>
                 <outlet property="moveToBottomHotKeyRecorder" destination="20" id="126"/>
-                <outlet property="moveToCenterHotKeyRecorder" destination="7" id="127"/>
+                <outlet property="moveToCenterHotKeyRecorder" destination="32" id="151"/>
                 <outlet property="moveToFullscreenHotKeyRecorder" destination="9" id="128"/>
                 <outlet property="moveToLeftHotKeyRecorder" destination="22" id="129"/>
                 <outlet property="moveToLowerLeftHotKeyRecorder" destination="15" id="130"/>
                 <outlet property="moveToLowerRightHotKeyRecorder" destination="14" id="131"/>
+                <outlet property="moveToMaximizeHotKeyRecorder" destination="7" id="152"/>
                 <outlet property="moveToNextDisplayHotKeyRecorder" destination="27" id="132"/>
                 <outlet property="moveToNextThirdHotKeyRecorder" destination="35" id="133"/>
                 <outlet property="moveToPreviousDisplayHotKeyRecorder" destination="29" id="134"/>
@@ -40,10 +41,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="616" height="467"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textField verticalHuggingPriority="750" id="30">
+                        <rect key="frame" x="51" y="434" width="84" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Center:" id="31">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView id="32" customClass="ZKHotKeyRecorder">
+                        <rect key="frame" x="140" y="432" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                     <textField verticalHuggingPriority="750" id="8">
                         <rect key="frame" x="51" y="405" width="84" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Center:" id="62">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Maximize:" id="62">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

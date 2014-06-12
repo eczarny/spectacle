@@ -33,6 +33,7 @@
     
     _hotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
         _moveToCenterHotKeyRecorder,          SpectacleWindowActionMoveToCenter,
+        _moveToMaximizeHotKeyRecorder,        SpectacleWindowActionMoveToMaximize,
         _moveToFullscreenHotKeyRecorder,      SpectacleWindowActionMoveToFullscreen,
         _moveToLeftHotKeyRecorder,            SpectacleWindowActionMoveToLeftHalf,
         _moveToRightHotKeyRecorder,           SpectacleWindowActionMoveToRightHalf,
