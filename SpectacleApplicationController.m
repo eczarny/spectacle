@@ -89,19 +89,13 @@
 #pragma mark -
 
 - (void)createStatusItem {
-    NSString *applicationVersion = SpectacleUtilities.applicationVersion;
-    
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     
     _statusItem.image = [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: SpectacleUtilities.applicationBundle];
     _statusItem.alternateImage = [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: SpectacleUtilities.applicationBundle];
     _statusItem.highlightMode = YES;
     
-    if (applicationVersion) {
-        _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", applicationVersion];
-    } else {
-        _statusItem.toolTip = @"Spectacle";
-    }
+    _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion];
     
     [_statusItem setMenu: _statusItemMenu];
 }
