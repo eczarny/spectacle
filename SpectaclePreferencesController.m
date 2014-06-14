@@ -60,6 +60,8 @@
     _loginItemEnabled.state = loginItemEnabledState;
     
     [_statusItemEnabled selectItemWithTag: isStatusItemEnabled ? 0 : 1];
+
+    [self.window setTitle: [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion]];
 }
 
 #pragma mark -
