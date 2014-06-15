@@ -10,6 +10,10 @@
 
 #pragma mark -
 
+#define CGRectEqualToRectWithFudge(a, b) ((abs(a.size.width - b.size.width) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.size.height - b.size.height) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.origin.x - b.origin.x) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.origin.y - b.origin.y) < (SpectacleWindowCalculationFudgeFactor * 2)))
+
+#pragma mark -
+
 #define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
 
 #pragma mark -

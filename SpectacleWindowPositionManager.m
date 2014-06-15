@@ -232,7 +232,7 @@
     
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
-    if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
+    if (MovingToThirdOfDisplay(action) && !CGRectEqualToRectWithFudge(movedWindowRect, windowRect)) {
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
         
         NSBeep();

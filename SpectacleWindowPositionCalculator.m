@@ -179,7 +179,7 @@
     for (i = 0; i < thirds.count; i++) {
         CGRect currentWindowRect = [thirds[i] windowRect];
         
-        if (CGRectEqualToRect(currentWindowRect, windowRect)) {
+        if (CGRectEqualToRectWithFudge(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
             if (action == SpectacleWindowActionNextThird) {
