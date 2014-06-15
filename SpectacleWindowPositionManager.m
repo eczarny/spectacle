@@ -74,8 +74,8 @@
         frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
         visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
     }
-    
-    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
+
+    if (frontMostWindowElement.isSheet || CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
         NSBeep();
         
         return;

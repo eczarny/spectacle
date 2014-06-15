@@ -25,4 +25,8 @@
 
 - (void)setValue: (AXValueRef)value forAttribute: (CFStringRef)attribute;
 
+#pragma mark -
+
+- (BOOL)isSheet;
+
 @end

@@ -128,6 +128,12 @@
 
 #pragma mark -
 
+- (BOOL)isSheet {
+    return[[self stringValueOfAttribute: kAXRoleAttribute] isEqualToString: (__bridge NSString *)kAXSheetRole];
+}
+
+#pragma mark -
+
 - (void)dealloc {
     if (_element != NULL) {
         CFRelease(_element);
