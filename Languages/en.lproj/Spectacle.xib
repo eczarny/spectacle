@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
@@ -16,7 +16,25 @@
         <customObject id="867" customClass="SpectacleApplicationController">
             <connections>
                 <outlet property="accessiblityAccessDialogWindow" destination="aH5-eW-ySa" id="G7s-gg-8h9"/>
+                <outlet property="makeLargerHotKeyMenuItem" destination="Yun-AA-OVD" id="6gD-iQ-gKm"/>
+                <outlet property="makeSmallerHotKeyMenuItem" destination="gTe-ym-DB0" id="O2B-Mr-VA8"/>
+                <outlet property="moveToBottomHotKeyMenuItem" destination="huV-Gw-lbX" id="jVY-wC-bA6"/>
+                <outlet property="moveToCenterHotKeyMenuItem" destination="xJu-Uo-nZw" id="aeV-bD-LL3"/>
+                <outlet property="moveToFullscreenHotKeyMenuItem" destination="dwQ-Bl-nEL" id="Bf8-Z0-sXt"/>
+                <outlet property="moveToLeftHotKeyMenuItem" destination="Jae-vx-7ZC" id="Yvm-9P-Xmh"/>
+                <outlet property="moveToLowerLeftHotKeyMenuItem" destination="eN5-A6-iho" id="yjO-b4-Pah"/>
+                <outlet property="moveToLowerRightHotKeyMenuItem" destination="oDU-J0-NkJ" id="KRM-Pg-msz"/>
+                <outlet property="moveToNextDisplayHotKeyMenuItem" destination="I4U-jL-hXq" id="1PI-Ve-faD"/>
+                <outlet property="moveToNextThirdHotKeyMenuItem" destination="7HO-L3-O6Q" id="jQs-tv-OAo"/>
+                <outlet property="moveToPreviousDisplayHotKeyMenuItem" destination="aPo-Rp-A1X" id="H3a-Bz-4mZ"/>
+                <outlet property="moveToPreviousThirdHotKeyMenuItem" destination="bV9-Ga-jDG" id="Vbf-tv-qvs"/>
+                <outlet property="moveToRightHotKeyMenuItem" destination="cae-26-Oab" id="1D3-Lj-7j9"/>
+                <outlet property="moveToTopHotKeyMenuItem" destination="yh0-ik-weD" id="dtt-u7-QSZ"/>
+                <outlet property="moveToUpperLeftHotKeyMenuItem" destination="ldc-QO-Cq6" id="IBQ-px-5GQ"/>
+                <outlet property="moveToUpperRightHotKeyMenuItem" destination="C7t-Sf-kOI" id="Pxf-S8-OLH"/>
+                <outlet property="redoLastMoveHotKeyMenuItem" destination="187-7k-0Ct" id="drs-8b-iJV"/>
                 <outlet property="statusItemMenu" destination="870" id="1169"/>
+                <outlet property="undoLastMoveHotKeyMenuItem" destination="l9O-0B-fjp" id="Wyx-ma-9u3"/>
             </connections>
         </customObject>
         <customObject id="1164" customClass="SUUpdater"/>
@@ -662,26 +680,141 @@
         </menu>
         <menu title="Spectacle Status Item" id="870">
             <items>
-                <menuItem title="About Spectacle" id="879">
+                <menuItem title="About Spectacle" tag="-1" id="879">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="orderFrontStandardAboutPanel:" target="-3" id="1104"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Check for Updates..." id="1166">
+                <menuItem title="Check for Updates..." tag="-1" id="1166">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForUpdates:" target="1164" id="1168"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="880"/>
-                <menuItem title="Preferences..." id="872">
+                <menuItem title="Preferences..." tag="-1" id="872">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showPreferencesWindow:" target="867" id="1149"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="1165"/>
+                <menuItem title="Center" id="xJu-Uo-nZw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToCenter:" target="867" id="vtY-tj-77J"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Fullscreen" id="dwQ-Bl-nEL">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToFullscreen:" target="867" id="KEL-mq-NeX"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Nmj-XX-uaG"/>
+                <menuItem title="Left Half" id="Jae-vx-7ZC">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToLeftHalf:" target="867" id="KP5-Rx-vgE"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Right Half" id="cae-26-Oab">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToRightHalf:" target="867" id="f4Z-cN-fIw"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Top Half" id="yh0-ik-weD">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToTopHalf:" target="867" id="HNq-6U-0hH"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Bottom Half" id="huV-Gw-lbX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToBottomHalf:" target="867" id="NjX-2V-ZRo"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="gbv-tO-TvK"/>
+                <menuItem title="Upper Left" id="ldc-QO-Cq6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToUpperLeft:" target="867" id="BTA-nP-tNX"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Lower Left" id="eN5-A6-iho">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToLowerLeft:" target="867" id="AqU-v5-00V"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Upper Right" id="C7t-Sf-kOI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToUpperRight:" target="867" id="8RB-bI-M5d"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Lower Right" id="oDU-J0-NkJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToLowerRight:" target="867" id="tmK-BJ-a5i"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="0li-21-m4g"/>
+                <menuItem title="Next Display" id="I4U-jL-hXq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToNextDisplay:" target="867" id="7JK-n4-7gf"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Previous Display" id="aPo-Rp-A1X">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToPreviousDisplay:" target="867" id="bDi-81-OMQ"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="2VE-eu-Tv6"/>
+                <menuItem title="Next Third" id="7HO-L3-O6Q">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToNextThird:" target="867" id="hXK-sD-SEh"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Previous Third" id="bV9-Ga-jDG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToPreviousThird:" target="867" id="7aq-aA-Ypm"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="dDR-EJ-dud"/>
+                <menuItem title="Make Larger" id="Yun-AA-OVD">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeFrontMostWindowLarger:" target="867" id="leK-RJ-yo7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Make Smaller" id="gTe-ym-DB0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeFrontMostWindowSmaller:" target="867" id="ZEf-Be-fBT"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="nH8-Kx-TCA"/>
+                <menuItem title="Undo" id="l9O-0B-fjp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="undoLastWindowAction:" target="867" id="3dR-bd-J2H"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Redo" id="187-7k-0Ct">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="redoLastWindowAction:" target="867" id="nKx-eV-yMf"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="b3s-Pm-hAJ"/>
                 <menuItem title="Quit Spectacle" id="873">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

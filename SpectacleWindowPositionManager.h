@@ -1,5 +1,4 @@
 #import <Foundation/Foundation.h>
-#import <ZeroKit/ZeroKit.h>
 
 #define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
 #define MovingToTopRegionOfDisplay(action) ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionUpperRight))
@@ -35,6 +34,8 @@ enum {
 };
 
 typedef NSInteger SpectacleWindowAction;
+
+@class ZKHotKey;
 
 @interface SpectacleWindowPositionManager : NSObject
 
