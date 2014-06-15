@@ -1,7 +1,16 @@
 #import <Foundation/Foundation.h>
-#import <ZeroKit/ZeroKit.h>
+
+#import "ZKHotKey.h"
+
+#define LocalizedString(string) NSLocalizedString(string, string)
+
+#pragma mark -
 
 #define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex:0] frame].size.height - b.size.height))
+
+#pragma mark -
+
+#define CGRectEqualToRectWithFudge(a, b) ((abs(a.size.width - b.size.width) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.size.height - b.size.height) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.origin.x - b.origin.x) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.origin.y - b.origin.y) < (SpectacleWindowCalculationFudgeFactor * 2)))
 
 #pragma mark -
 
@@ -36,7 +45,17 @@ typedef NSInteger SpectacleApplicationTrust;
 
 #pragma mark -
 
-@interface SpectacleUtilities : ZKUtilities
+@interface SpectacleUtilities : NSObject
+
+#pragma mark -
+
++ (NSString *)applicationVersion;
+
+#pragma mark -
+
++ (void)registerDefaultsForBundle: (NSBundle *)bundle;
+
+#pragma mark -
 
 + (void)displayAccessibilityAPIAlert;
 
@@ -53,5 +72,23 @@ typedef NSInteger SpectacleApplicationTrust;
 #pragma mark -
 
 + (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action;
+
+#pragma mark -
+
++ (NSString *)pathForPreferencePaneNamed: (NSString *)preferencePaneName;
+
+#pragma mark -
+
++ (BOOL)isLoginItemEnabledForBundle: (NSBundle *)bundle;
+
+#pragma mark -
+
++ (void)enableLoginItemForBundle: (NSBundle *)bundle;
+
++ (void)disableLoginItemForBundle: (NSBundle *)bundle;
+
+#pragma mark -
+
++ (NSMutableDictionary *)stringAttributesWithShadow;
 
 @end

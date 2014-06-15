@@ -5,7 +5,7 @@
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
-#import "ZKAccessibilityElementAdditions.h"
+#import "ZKAccessibilityElement.h"
 
 #define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
 
@@ -34,8 +34,8 @@
 - (id)init {
     if ((self = [super init])) {
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-        NSString *path = [SpectacleUtilities.applicationBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
-                                                                          ofType: ZKPropertyListFileExtension];
+        NSString *path = [NSBundle.mainBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
+                                                       ofType: SpectaclePropertyListFileExtension];
         
         _applicationHistories = [NSMutableDictionary new];
         _blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
@@ -74,8 +74,8 @@
         frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
         visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
     }
-    
-    if (CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
+
+    if (frontMostWindowElement.isSheet || CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
         NSBeep();
         
         return;
@@ -232,7 +232,7 @@
     
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
-    if (MovingToThirdOfDisplay(action) && !CGRectEqualToRect(movedWindowRect, windowRect)) {
+    if (MovingToThirdOfDisplay(action) && !CGRectEqualToRectWithFudge(movedWindowRect, windowRect)) {
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
         
         NSBeep();

@@ -1,5 +1,8 @@
 #import <Foundation/Foundation.h>
-#import <ZeroKit/ZeroKit.h>
+
+#import "ZKHotKeyValidatorProtocol.h"
+
+@class ZKHotKey;
 
 @interface SpectacleHotKeyValidator : NSObject<ZKHotKeyValidatorProtocol>
 

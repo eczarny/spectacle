@@ -4,6 +4,7 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
+#import "ZKHotKeyRecorder.h"
 
 @interface SpectaclePreferencesController ()
 
@@ -52,13 +53,15 @@
     
     [self loadRegisteredHotKeys];
     
-    if ([SpectacleUtilities isLoginItemEnabledForBundle: SpectacleUtilities.applicationBundle]) {
+    if ([SpectacleUtilities isLoginItemEnabledForBundle: NSBundle.mainBundle]) {
         loginItemEnabledState = NSOnState;
     }
     
     _loginItemEnabled.state = loginItemEnabledState;
     
     [_statusItemEnabled selectItemWithTag: isStatusItemEnabled ? 0 : 1];
+
+    [self.window setTitle: [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion]];
 }
 
 #pragma mark -
@@ -87,16 +90,20 @@
     }];
     
     [_hotKeyManager registerHotKey: hotKey];
+
+    [NSNotificationCenter.defaultCenter postNotificationName: SpectacleHotKeyChangedNotification object: self];
 }
 
 - (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZKHotKey *)hotKey {
     [_hotKeyManager unregisterHotKeyForName: hotKey.hotKeyName];
+
+    [NSNotificationCenter.defaultCenter postNotificationName: SpectacleHotKeyChangedNotification object: self];
 }
 
 #pragma mark -
 
 - (IBAction)toggleLoginItem: (id)sender {
-    NSBundle *applicationBundle = SpectacleUtilities.applicationBundle;
+    NSBundle *applicationBundle = NSBundle.mainBundle;
     
     if (_loginItemEnabled.state == NSOnState) {
         [SpectacleUtilities enableLoginItemForBundle: applicationBundle];

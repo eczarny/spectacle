@@ -113,6 +113,16 @@
 
 #pragma mark -
 
+- (IBAction)makeFrontMostWindowLarger: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLarger];
+}
+
+- (IBAction)makeFrontMostWindowSmaller: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionSmaller];
+}
+
+#pragma mark -
+
 - (IBAction)undoLastWindowAction: (id)sender {
     [_windowPositionManager undoLastWindowAction];
 }

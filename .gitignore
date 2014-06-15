@@ -1,8 +1,18 @@
-.DS_Store
-*.perspectivev3
-*.mode1v3
-*.mode1
-*.mode2
+# Xcode
+#
+build/
 *.pbxuser
-*.xcworkspace
-xcuserdata/
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate

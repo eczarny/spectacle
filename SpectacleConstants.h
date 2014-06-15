@@ -5,8 +5,17 @@
 #define SpectacleStatusItemEnabledNotification           @"SpectacleStatusItemEnabledNotification"
 #define SpectacleStatusItemDisabledNotification          @"SpectacleStatusItemDisabledNotification"
 
+#define SpectacleHotKeyChangedNotification               @"SpectacleHotKeyChangedNotification"
+
 #pragma mark -
 
+#define SpectacleMenuItemActivateIgnoringOtherApps       -1
+
+#pragma mark -
+
+#define SpectaclePropertyListFileExtension               @"plist"
+
+#define SpectacleDefaultPreferencesPropertyListFile      @"Defaults"
 #define SpectacleHotKeyNamesPropertyListFile             @"HotKeyNames"
 #define SpectacleBlacklistedApplicationsPropertyListFile @"BlacklistedApplications"
 
@@ -54,6 +63,8 @@
 
 #pragma mark -
 
+#define SpectaclePreferencePaneExtension                 @"prefPane"
+
 #define SpectacleStatusItemEnabledPreference             @"StatusItemEnabled"
 #define SpectacleBackgroundAlertSuppressedPreference     @"BackgroundAlertSuppressed"
 
@@ -71,3 +82,10 @@
 #define SpectacleSecurityAndPrivacyPreferencesScriptName @"Security & Privacy System Preferences"
 
 #define SpectacleAppleScriptFileExtension                @"scpt"
+
+#pragma mark -
+
+#define SpectacleHotKeyTranslationsPropertyListFile      @"SpecialHotKeyTranslations"
+
+#define SpectacleHotKeyTranslationsKey                   @"SpecialHotKeyTranslations"
+#define SpectacleHotKeyGlyphTranslationsKey              @"SpecialHotKeyGlyphTranslations"

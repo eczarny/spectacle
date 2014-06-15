@@ -50,6 +50,12 @@
 
 #pragma mark -
 
+- (IBAction)makeFrontMostWindowLarger: (id)sender;
+
+- (IBAction)makeFrontMostWindowSmaller: (id)sender;
+
+#pragma mark -
+
 - (IBAction)undoLastWindowAction: (id)sender;
 
 - (IBAction)redoLastWindowAction: (id)sender;
