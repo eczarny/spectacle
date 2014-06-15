@@ -7,6 +7,12 @@
 
 #pragma mark -
 
++ (ZKAccessibilityElement *)frontMostWindowElement;
+
++ (NSString *)frontMostApplicationName;
+
+#pragma mark -
+
 - (ZKAccessibilityElement *)elementWithAttribute: (CFStringRef)attribute;
 
 #pragma mark -

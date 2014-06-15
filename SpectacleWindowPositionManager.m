@@ -5,7 +5,7 @@
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
-#import "ZKAccessibilityElementAdditions.h"
+#import "ZKAccessibilityElement.h"
 
 #define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
 
