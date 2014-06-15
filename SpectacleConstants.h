@@ -7,6 +7,8 @@
 
 #define SpectacleHotKeyChangedNotification               @"SpectacleHotKeyChangedNotification"
 
+#define SpectacleRestoreDefaultHotKeysNotification       @"SpectacleRestoreDefaultHotKeysNotification"
+
 #pragma mark -
 
 #define SpectacleMenuItemActivateIgnoringOtherApps       -1

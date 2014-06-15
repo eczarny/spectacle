@@ -62,10 +62,15 @@
                              object: nil];
 
     [notificationCenter addObserver: self
+                           selector: @selector(updateHotKeyMenuItems)
+                               name: SpectacleRestoreDefaultHotKeysNotification
+                             object: nil];
+
+    [notificationCenter addObserver: self
                            selector: @selector(menuDidSendAction:)
                                name: NSMenuDidSendActionNotification
                              object: nil];
-    
+
     if ([NSUserDefaults.standardUserDefaults boolForKey: SpectacleStatusItemEnabledPreference]) {
         [self createStatusItem];
     }
@@ -114,6 +119,18 @@
     if (![[[NSAppleScript alloc] initWithContentsOfURL: scriptURL error: nil] executeAndReturnError: nil]) {
         [NSWorkspace.sharedWorkspace openURL: preferencePaneURL];
     }
+}
+
+#pragma mark -
+
+- (IBAction)restoreDefaults: (id)sender {
+    [SpectacleUtilities displayRestoreDefaultsAlertWithCallback: ^(BOOL isConfirmed) {
+        if (isConfirmed) {
+            [SpectacleUtilities restoreDefaultHotKeys];
+
+            [NSNotificationCenter.defaultCenter postNotificationName: SpectacleRestoreDefaultHotKeysNotification object: self];
+        }
+    }];
 }
 
 #pragma mark -

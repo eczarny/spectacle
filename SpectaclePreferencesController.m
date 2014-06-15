@@ -28,6 +28,7 @@
 #pragma mark -
 
 - (void)windowDidLoad {
+    NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
     NSInteger loginItemEnabledState = NSOffState;
     BOOL isStatusItemEnabled = [NSUserDefaults.standardUserDefaults boolForKey: SpectacleStatusItemEnabledPreference];
     
@@ -52,7 +53,12 @@
         _redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove, nil];
     
     [self loadRegisteredHotKeys];
-    
+
+    [notificationCenter addObserver: self
+                           selector: @selector(loadRegisteredHotKeys)
+                               name: SpectacleRestoreDefaultHotKeysNotification
+                             object: nil];
+
     if ([SpectacleUtilities isLoginItemEnabledForBundle: NSBundle.mainBundle]) {
         loginItemEnabledState = NSOnState;
     }
