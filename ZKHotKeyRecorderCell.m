@@ -4,7 +4,7 @@
 #import "ZKHotKeyValidator.h"
 #import "ZKHotKeyRecorder.h"
 #import "ZKHotKeyRecorderDelegate.h"
-#import "ZKUtilities.h"
+#import "SpectacleUtilities.h"
 
 #define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
 
@@ -353,15 +353,15 @@
     NSColor *foregroundColor = NSColor.blackColor;
     
     if (_isRecording && !_isMouseAboveBadge) {
-        label = ZKLocalizedStringFromCurrentBundle(@"Enter hot key");
+        label = LocalizedString(@"Enter hot key");
     } else if (_isRecording && _isMouseAboveBadge && !_hotKey) {
-        label = ZKLocalizedStringFromCurrentBundle(@"Stop recording");
+        label = LocalizedString(@"Stop recording");
     } else if (_isRecording && _isMouseAboveBadge) {
-        label = ZKLocalizedStringFromCurrentBundle(@"Use existing");
+        label = LocalizedString(@"Use existing");
     } else if (_hotKey) {
         label = _hotKey.displayString;
     } else {
-        label = ZKLocalizedStringFromCurrentBundle(@"Click to record");
+        label = LocalizedString(@"Click to record");
     }
     
     // Recording is in progress and modifier flags have already been set, display them.
@@ -383,7 +383,7 @@
 #pragma mark -
 
 - (void)drawString: (NSString *)string withForegroundColor: (NSColor *)foregroundColor inRect: (NSRect)rect {
-    NSMutableDictionary *attributes = ZKUtilities.stringAttributesWithShadow;
+    NSMutableDictionary *attributes = SpectacleUtilities.stringAttributesWithShadow;
     NSRect labelRect = rect;
     
     attributes[NSFontAttributeName] = [NSFont systemFontOfSize: NSFont.smallSystemFontSize];

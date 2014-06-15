@@ -1,7 +1,6 @@
 #import "SpectacleConstants.h"
 #import "ZKHotKeyTranslator.h"
 #import "ZKHotKey.h"
-#import "ZKUtilities.h"
 
 enum {
     ZKHotKeyAlternateGlyph   = 0x2325,

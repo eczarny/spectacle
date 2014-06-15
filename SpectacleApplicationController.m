@@ -17,7 +17,7 @@
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
     NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
     
-    [SpectacleUtilities registerDefaultsForBundle: SpectacleUtilities.applicationBundle];
+    [SpectacleUtilities registerDefaultsForBundle: NSBundle.mainBundle];
     
     _preferencesController = [SpectaclePreferencesController new];
     
@@ -74,7 +74,7 @@
 
 - (IBAction)openSystemPreferences: (id)sender {
     NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: SpectacleSecurityPreferencePaneName]];
-    NSBundle *applicationBundle = SpectacleUtilities.applicationBundle;
+    NSBundle *applicationBundle = NSBundle.mainBundle;
     NSURL *scriptURL = [applicationBundle URLForResource: SpectacleSecurityAndPrivacyPreferencesScriptName withExtension: SpectacleAppleScriptFileExtension];
     
     [NSApplication.sharedApplication stopModal];
@@ -91,8 +91,8 @@
 - (void)createStatusItem {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     
-    _statusItem.image = [SpectacleUtilities imageFromResource: SpectacleStatusItemIcon inBundle: SpectacleUtilities.applicationBundle];
-    _statusItem.alternateImage = [SpectacleUtilities imageFromResource: SpectacleAlternateStatusItemIcon inBundle: SpectacleUtilities.applicationBundle];
+    _statusItem.image = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource: SpectacleStatusItemIcon]];
+    _statusItem.alternateImage = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource: SpectacleAlternateStatusItemIcon]];
     _statusItem.highlightMode = YES;
     
     _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion];

@@ -34,8 +34,8 @@
 - (id)init {
     if ((self = [super init])) {
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-        NSString *path = [SpectacleUtilities.applicationBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
-                                                                        ofType: SpectaclePropertyListFileExtension];
+        NSString *path = [NSBundle.mainBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
+                                                       ofType: SpectaclePropertyListFileExtension];
         
         _applicationHistories = [NSMutableDictionary new];
         _blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];

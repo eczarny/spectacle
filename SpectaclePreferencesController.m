@@ -53,7 +53,7 @@
     
     [self loadRegisteredHotKeys];
     
-    if ([SpectacleUtilities isLoginItemEnabledForBundle: SpectacleUtilities.applicationBundle]) {
+    if ([SpectacleUtilities isLoginItemEnabledForBundle: NSBundle.mainBundle]) {
         loginItemEnabledState = NSOnState;
     }
     
@@ -99,7 +99,7 @@
 #pragma mark -
 
 - (IBAction)toggleLoginItem: (id)sender {
-    NSBundle *applicationBundle = SpectacleUtilities.applicationBundle;
+    NSBundle *applicationBundle = NSBundle.mainBundle;
     
     if (_loginItemEnabled.state == NSOnState) {
         [SpectacleUtilities enableLoginItemForBundle: applicationBundle];

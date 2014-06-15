@@ -2,7 +2,7 @@
 #import "ZKHotKeyValidatorProtocol.h"
 #import "ZKHotKeyTranslator.h"
 #import "ZKHotKey.h"
-#import "ZKUtilities.h"
+#import "SpectacleUtilities.h"
 
 @implementation ZKHotKeyValidator
 
@@ -89,11 +89,11 @@
     NSString *hotKeyString = [ZKHotKeyTranslator.sharedTranslator translateHotKey: hotKey];
     NSMutableDictionary *userInfo = [NSMutableDictionary new];
     
-    userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat: ZKLocalizedStringFromCurrentBundle(description), hotKeyString];
+    userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat: LocalizedString(description), hotKeyString];
     
-    userInfo[NSLocalizedRecoverySuggestionErrorKey] = [NSString stringWithFormat: ZKLocalizedStringFromCurrentBundle(recoverySuggestion), hotKeyString];
+    userInfo[NSLocalizedRecoverySuggestionErrorKey] = [NSString stringWithFormat: LocalizedString(recoverySuggestion), hotKeyString];
     
-    userInfo[NSLocalizedRecoveryOptionsErrorKey] = @[ZKLocalizedStringFromCurrentBundle(@"OK")];
+    userInfo[NSLocalizedRecoveryOptionsErrorKey] = @[LocalizedString(@"OK")];
     
     return [NSError errorWithDomain: NSCocoaErrorDomain code: 0 userInfo: userInfo];
 }

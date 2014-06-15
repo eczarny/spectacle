@@ -12,16 +12,39 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 @implementation SpectacleUtilities
 
++ (NSString *)applicationVersion {
+    NSBundle *bundle = NSBundle.mainBundle;
+    NSString *bundleVersion = [bundle objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+
+    if (!bundleVersion) {
+        bundleVersion = [bundle objectForInfoDictionaryKey: @"CFBundleVersion"];
+    }
+
+    return bundleVersion;
+}
+
+#pragma mark -
+
++ (void)registerDefaultsForBundle: (NSBundle *)bundle {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    NSString *path = [bundle pathForResource: SpectacleDefaultPreferencesPropertyListFile ofType: SpectaclePropertyListFileExtension];
+    NSDictionary *applicationDefaults = [[NSDictionary alloc] initWithContentsOfFile: path];
+
+    [defaults registerDefaults: applicationDefaults];
+}
+
+#pragma mark -
+
 + (void)displayAccessibilityAPIAlert {
     NSAlert *alert = [NSAlert new];
     NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: SpectacleUniversalAccessPreferencePaneName]];
     
     alert.alertStyle = NSWarningAlertStyle;
-    alert.messageText = ZKLocalizedString(@"Spectacle requires that the Accessibility API be enabled");
-    alert.informativeText = ZKLocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?");
+    alert.messageText = LocalizedString(@"Spectacle requires that the Accessibility API be enabled");
+    alert.informativeText = LocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?");
     
-    [alert addButtonWithTitle: ZKLocalizedString(@"Open Universal Access Preferences")];
-    [alert addButtonWithTitle: ZKLocalizedString(@"Stop Spectacle")];
+    [alert addButtonWithTitle: LocalizedString(@"Open Universal Access Preferences")];
+    [alert addButtonWithTitle: LocalizedString(@"Stop Spectacle")];
     
     switch ([alert runModal]) {
         case NSAlertFirstButtonReturn:
@@ -42,11 +65,11 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     
     alert.alertStyle = NSInformationalAlertStyle;
     alert.showsSuppressionButton = YES;
-    alert.messageText = ZKLocalizedString(@"This will cause Spectacle to run in the background");
-    alert.informativeText = ZKLocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.");
+    alert.messageText = LocalizedString(@"This will cause Spectacle to run in the background");
+    alert.informativeText = LocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.");
     
-    [alert addButtonWithTitle: ZKLocalizedString(@"OK")];
-    [alert addButtonWithTitle: ZKLocalizedString(@"Cancel")];
+    [alert addButtonWithTitle: LocalizedString(@"OK")];
+    [alert addButtonWithTitle: LocalizedString(@"Cancel")];
     
     NSInteger response = [alert runModal];
     BOOL isAlertSuppressed = [alert.suppressionButton state] == NSOnState;
@@ -82,7 +105,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 #pragma mark -
 
 + (NSArray *)hotKeyNames {
-    NSBundle *bundle = SpectacleUtilities.applicationBundle;
+    NSBundle *bundle = NSBundle.mainBundle;
     NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: SpectaclePropertyListFileExtension];
     NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
     
@@ -136,7 +159,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 #pragma mark -
 
 + (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
-    NSBundle *bundle = SpectacleUtilities.applicationBundle;
+    NSBundle *bundle = NSBundle.mainBundle;
     NSString *path = [bundle pathForResource: SpectacleDefaultPreferencesPropertyListFile ofType: SpectaclePropertyListFileExtension];
     NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
@@ -149,6 +172,145 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     }
     
     return defaultHotKeys;
+}
+
+#pragma mark -
+
++ (NSString *)pathForPreferencePaneNamed: (NSString *)preferencePaneName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSAllDomainsMask, YES);
+    NSFileManager *fileManager = NSFileManager.defaultManager;
+    NSString *preferencePanePath = nil;
+
+    if (preferencePaneName) {
+        preferencePaneName = [preferencePaneName stringByAppendingFormat: @".%@", SpectaclePreferencePaneExtension];
+
+        for (__strong NSString *path in paths) {
+            path = [path stringByAppendingPathComponent: preferencePaneName];
+
+            if (path && [fileManager fileExistsAtPath: path isDirectory: nil]) {
+                preferencePanePath = path;
+
+                break;
+            }
+        }
+
+        if (!preferencePanePath) {
+            NSLog(@"There was a problem obtaining the path for the specified preference pane: %@", preferencePaneName);
+        }
+    }
+
+    return preferencePanePath;
+}
+
+#pragma mark -
+
++ (BOOL)isLoginItemEnabledForBundle: (NSBundle *)bundle {
+    LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    NSString *applicationPath = bundle.bundlePath;
+    BOOL result = NO;
+
+    if (sharedFileList) {
+        NSArray *sharedFileListArray = nil;
+        UInt32 seedValue;
+
+        sharedFileListArray = CFBridgingRelease(LSSharedFileListCopySnapshot(sharedFileList, &seedValue));
+
+        for (id sharedFile in sharedFileListArray) {
+            LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
+            CFURLRef applicationPathURL = NULL;
+
+            LSSharedFileListItemResolve(sharedFileListItem, 0, (CFURLRef *)&applicationPathURL, NULL);
+
+            if (applicationPathURL != NULL) {
+                NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
+
+                CFRelease(applicationPathURL);
+
+                if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
+                    result = YES;
+
+                    break;
+                }
+            }
+        }
+
+        CFRelease(sharedFileList);
+    } else {
+        NSLog(@"Unable to create the shared file list.");
+    }
+
+    return result;
+}
+
+#pragma mark -
+
++ (void)enableLoginItemForBundle: (NSBundle *)bundle {
+    LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    NSString *applicationPath = bundle.bundlePath;
+    CFURLRef applicationPathURL = CFBridgingRetain([NSURL fileURLWithPath: applicationPath]);
+
+    if (sharedFileList) {
+        LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, applicationPathURL, NULL, NULL);
+
+        if (sharedFileListItem) {
+            CFRelease(sharedFileListItem);
+        }
+
+        CFRelease(sharedFileList);
+    } else {
+        NSLog(@"Unable to create the shared file list.");
+    }
+}
+
++ (void)disableLoginItemForBundle: (NSBundle *)bundle {
+    LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    NSString *applicationPath = bundle.bundlePath;
+    CFURLRef applicationPathURL = CFBridgingRetain([NSURL fileURLWithPath: applicationPath]);
+
+    if (sharedFileList) {
+        NSArray *sharedFileListArray = nil;
+        UInt32 seedValue;
+
+        sharedFileListArray = CFBridgingRelease(LSSharedFileListCopySnapshot(sharedFileList, &seedValue));
+
+        for (id sharedFile in sharedFileListArray) {
+            LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
+
+            LSSharedFileListItemResolve(sharedFileListItem, 0, (CFURLRef *)&applicationPathURL, NULL);
+
+            if (applicationPathURL != NULL) {
+                NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
+
+                if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
+                    LSSharedFileListItemRemove(sharedFileList, sharedFileListItem);
+                }
+            }
+        }
+
+        CFRelease(sharedFileList);
+    } else {
+        NSLog(@"Unable to create the shared file list.");
+    }
+}
+
+#pragma mark -
+
++ (NSMutableDictionary *)stringAttributesWithShadow {
+    NSMutableParagraphStyle *paragraphStyle = NSParagraphStyle.defaultParagraphStyle.mutableCopy;
+    NSShadow *textShadow = [NSShadow new];
+    NSMutableDictionary *stringAttributes = [NSMutableDictionary new];
+
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paragraphStyle.alignment = NSCenterTextAlignment;
+
+    textShadow.shadowColor = [NSColor whiteColor];
+    textShadow.shadowOffset = NSMakeSize(0.0f, -1.0);
+    textShadow.shadowBlurRadius = 0.0f;
+
+    stringAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
+    stringAttributes[NSShadowAttributeName] = textShadow;
+
+    return stringAttributes;
 }
 
 @end

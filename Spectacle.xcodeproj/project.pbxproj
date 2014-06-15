@@ -22,7 +22,6 @@
 		2D3A0510194956E100CD96E7 /* ZKHotKeyRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0504194956E100CD96E7 /* ZKHotKeyRecorderCell.m */; };
 		2D3A0511194956E100CD96E7 /* ZKHotKeyTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0507194956E100CD96E7 /* ZKHotKeyTranslator.m */; };
 		2D3A0512194956E100CD96E7 /* ZKHotKeyValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0509194956E100CD96E7 /* ZKHotKeyValidator.m */; };
-		2D3A0513194956E100CD96E7 /* ZKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A050C194956E100CD96E7 /* ZKUtilities.m */; };
 		2D3A05151949573D00CD96E7 /* SpecialHotKeyTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A05141949573D00CD96E7 /* SpecialHotKeyTranslations.plist */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
@@ -101,8 +100,6 @@
 		2D3A0508194956E100CD96E7 /* ZKHotKeyValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKHotKeyValidator.h; sourceTree = "<group>"; };
 		2D3A0509194956E100CD96E7 /* ZKHotKeyValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKHotKeyValidator.m; sourceTree = "<group>"; };
 		2D3A050A194956E100CD96E7 /* ZKHotKeyValidatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKHotKeyValidatorProtocol.h; sourceTree = "<group>"; };
-		2D3A050B194956E100CD96E7 /* ZKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKUtilities.h; sourceTree = "<group>"; };
-		2D3A050C194956E100CD96E7 /* ZKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKUtilities.m; sourceTree = "<group>"; };
 		2D3A05141949573D00CD96E7 /* SpecialHotKeyTranslations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SpecialHotKeyTranslations.plist; path = "Resources/Property Lists/SpecialHotKeyTranslations.plist"; sourceTree = "<group>"; };
 		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleScreenDetection.h; sourceTree = "<group>"; };
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleScreenDetection.m; sourceTree = "<group>"; };
@@ -159,8 +156,6 @@
 				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
 				072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */,
-				2D3A050B194956E100CD96E7 /* ZKUtilities.h */,
-				2D3A050C194956E100CD96E7 /* ZKUtilities.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -513,7 +508,6 @@
 				2D3A0510194956E100CD96E7 /* ZKHotKeyRecorderCell.m in Sources */,
 				2D3A0511194956E100CD96E7 /* ZKHotKeyTranslator.m in Sources */,
 				2D3A0512194956E100CD96E7 /* ZKHotKeyValidator.m in Sources */,
-				2D3A0513194956E100CD96E7 /* ZKUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
