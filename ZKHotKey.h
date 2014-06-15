@@ -11,12 +11,12 @@ typedef void(^ZKHotKeyAction)(ZKHotKey *);
 @property (nonatomic) NSString *hotKeyName;
 @property (nonatomic, copy) ZKHotKeyAction hotKeyAction;
 @property (nonatomic) NSInteger hotKeyCode;
-@property (nonatomic) NSInteger hotKeyModifiers;
+@property (nonatomic) NSUInteger hotKeyModifiers;
 @property (nonatomic) EventHotKeyRef hotKeyRef;
 
 #pragma mark -
 
-- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSInteger)hotKeyModifiers;
+- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers;
 
 #pragma mark -
 
@@ -38,7 +38,7 @@ typedef void(^ZKHotKeyAction)(ZKHotKey *);
 
 #pragma mark -
 
-+ (BOOL)validCocoaModifiers: (NSInteger)modifiers;
++ (BOOL)validCocoaModifiers: (NSUInteger)modifiers;
 
 #pragma mark -
 

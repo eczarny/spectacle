@@ -12,7 +12,7 @@
 
 @interface ZKHotKeyRecorderCell ()
 
-@property (nonatomic) NSInteger modifierFlags;
+@property (nonatomic) NSUInteger modifierFlags;
 @property (nonatomic) BOOL isRecording;
 @property (nonatomic) NSTrackingArea *trackingArea;
 @property (nonatomic) BOOL isMouseAboveBadge;
@@ -60,7 +60,7 @@
 
 - (BOOL)performKeyEquivalent: (NSEvent *)event {
     NSInteger keyCode = event.keyCode;
-    NSInteger newModifierFlags = _modifierFlags | event.modifierFlags;
+    NSUInteger newModifierFlags = _modifierFlags | event.modifierFlags;
     
     if (_isRecording && [ZKHotKey validCocoaModifiers: newModifierFlags]) {
         NSString *characters = event.charactersIgnoringModifiers.uppercaseString;

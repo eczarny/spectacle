@@ -60,7 +60,7 @@ enum {
 
 #pragma mark -
 
-+ (NSInteger)convertModifiersToCarbonIfNecessary: (NSInteger)modifiers {
++ (NSUInteger)convertModifiersToCarbonIfNecessary: (NSUInteger)modifiers {
     if ([ZKHotKey validCocoaModifiers: modifiers]) {
         modifiers = [self convertCocoaModifiersToCarbon: modifiers];
     }
@@ -68,9 +68,63 @@ enum {
     return modifiers;
 }
 
++ (NSUInteger)convertModifiersToCocoafNecessary: (NSUInteger)modifiers {
+    if (![ZKHotKey validCocoaModifiers: modifiers]) {
+        modifiers = [self convertCarbonModifiersToCocoa: modifiers];
+    }
+
+    return modifiers;
+}
+
 #pragma mark -
 
-+ (NSString *)translateCocoaModifiers: (NSInteger)modifiers {
++ (NSUInteger)convertCocoaModifiersToCarbon: (NSUInteger)modifiers {
+    NSUInteger convertedModifiers = 0;
+
+    if (modifiers & NSControlKeyMask) {
+        convertedModifiers |= ZKHotKeyControlCarbonKeyMask;
+    }
+
+    if (modifiers & NSAlternateKeyMask) {
+        convertedModifiers |= ZKHotKeyAlternateCarbonKeyMask;
+    }
+
+    if (modifiers & NSShiftKeyMask) {
+        convertedModifiers |= ZKHotKeyShiftCarbonKeyMask;
+    }
+
+    if (modifiers & NSCommandKeyMask) {
+        convertedModifiers |= ZKHotKeyCommandCarbonKeyMask;
+    }
+
+    return convertedModifiers;
+}
+
++ (NSUInteger)convertCarbonModifiersToCocoa: (NSUInteger)modifiers {
+    NSUInteger convertedModifiers = 0;
+
+    if (modifiers & ZKHotKeyControlCarbonKeyMask) {
+        convertedModifiers |= NSControlKeyMask;
+    }
+
+    if (modifiers & ZKHotKeyAlternateCarbonKeyMask) {
+        convertedModifiers |= NSAlternateKeyMask;
+    }
+
+    if (modifiers & ZKHotKeyShiftCarbonKeyMask) {
+        convertedModifiers |= NSShiftKeyMask;
+    }
+
+    if (modifiers & ZKHotKeyCommandCarbonKeyMask) {
+        convertedModifiers |= NSCommandKeyMask;
+    }
+
+    return convertedModifiers;
+}
+
+#pragma mark -
+
++ (NSString *)translateCocoaModifiers: (NSUInteger)modifiers {
     NSString *modifierGlyphs = @"";
     
     if (modifiers & NSControlKeyMask) {
@@ -143,55 +197,9 @@ enum {
 #pragma mark -
 
 - (NSString *)translateHotKey: (ZKHotKey *)hotKey {
-    NSInteger modifiers = [ZKHotKeyTranslator convertCarbonModifiersToCocoa: [hotKey hotKeyModifiers]];
+    NSUInteger modifiers = [ZKHotKeyTranslator convertCarbonModifiersToCocoa: [hotKey hotKeyModifiers]];
     
     return [NSString stringWithFormat: @"%@%@", [ZKHotKeyTranslator translateCocoaModifiers: modifiers], [self translateKeyCode: hotKey.hotKeyCode]];
-}
-
-#pragma mark -
-
-+ (NSInteger)convertCocoaModifiersToCarbon: (NSInteger)modifiers {
-    NSInteger convertedModifiers = 0;
-    
-    if (modifiers & NSControlKeyMask) {
-        convertedModifiers |= ZKHotKeyControlCarbonKeyMask;
-    }
-    
-    if (modifiers & NSAlternateKeyMask) {
-        convertedModifiers |= ZKHotKeyAlternateCarbonKeyMask;
-    }
-    
-    if (modifiers & NSShiftKeyMask) {
-        convertedModifiers |= ZKHotKeyShiftCarbonKeyMask;
-    }
-    
-    if (modifiers & NSCommandKeyMask) {
-        convertedModifiers |= ZKHotKeyCommandCarbonKeyMask;
-    }
-    
-    return convertedModifiers;
-}
-
-+ (NSInteger)convertCarbonModifiersToCocoa: (NSInteger)modifiers {
-    NSInteger convertedModifiers = 0;
-    
-    if (modifiers & ZKHotKeyControlCarbonKeyMask) {
-        convertedModifiers |= NSControlKeyMask;
-    }
-    
-    if (modifiers & ZKHotKeyAlternateCarbonKeyMask) {
-        convertedModifiers |= NSAlternateKeyMask;
-    }
-    
-    if (modifiers & ZKHotKeyShiftCarbonKeyMask) {
-        convertedModifiers |= NSShiftKeyMask;
-    }
-    
-    if (modifiers & ZKHotKeyCommandCarbonKeyMask) {
-        convertedModifiers |= NSCommandKeyMask;
-    }
-    
-    return convertedModifiers;
 }
 
 #pragma mark -

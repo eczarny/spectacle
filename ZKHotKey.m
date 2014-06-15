@@ -3,7 +3,7 @@
 
 @implementation ZKHotKey
 
-- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSInteger)hotKeyModifiers {
+- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers {
     if (self = [super init]) {
         _handle = -1;
         _hotKeyName = nil;
@@ -28,7 +28,7 @@
             _hotKeyName = [coder decodeObject];
             
             [coder decodeValueOfObjCType: @encode(NSInteger) at: &_hotKeyCode];
-            [coder decodeValueOfObjCType: @encode(NSInteger) at: &_hotKeyModifiers];
+            [coder decodeValueOfObjCType: @encode(NSUInteger) at: &_hotKeyModifiers];
         }
     }
     
@@ -45,7 +45,7 @@
     } else {
         [coder encodeObject: _hotKeyName];
         [coder encodeValueOfObjCType: @encode(NSInteger) at: &_hotKeyCode];
-        [coder encodeValueOfObjCType: @encode(NSInteger) at: &_hotKeyModifiers];
+        [coder encodeValueOfObjCType: @encode(NSUInteger) at: &_hotKeyModifiers];
     }
 }
 
@@ -95,7 +95,7 @@
 
 #pragma mark -
 
-+ (BOOL)validCocoaModifiers: (NSInteger)modifiers {
++ (BOOL)validCocoaModifiers: (NSUInteger)modifiers {
     return (modifiers & NSAlternateKeyMask) || (modifiers & NSCommandKeyMask) || (modifiers & NSControlKeyMask) || (modifiers & NSShiftKeyMask);
 }
 

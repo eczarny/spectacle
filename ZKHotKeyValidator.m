@@ -29,7 +29,7 @@
         }
         
         NSInteger keyCode = [ZKHotKeyValidator keyCodeFromDictionary: hotKeyDictionary];
-        NSInteger modifiers = [ZKHotKeyValidator modifiersFromDictionary: hotKeyDictionary];
+        NSUInteger modifiers = [ZKHotKeyValidator modifiersFromDictionary: hotKeyDictionary];
         
         if (([hotKey hotKeyCode] == keyCode) && [ZKHotKeyValidator hotKey: hotKey containsModifiers: modifiers]) {
             if (error) {
@@ -68,9 +68,9 @@
     return keyCode;
 }
 
-+ (NSInteger)modifiersFromDictionary: (CFDictionaryRef)dictionary {
++ (NSUInteger)modifiersFromDictionary: (CFDictionaryRef)dictionary {
     CFNumberRef modifiersFromDictionary = (CFNumberRef)CFDictionaryGetValue(dictionary, kHISymbolicHotKeyModifiers);
-    NSInteger modifiers = 0;
+    NSUInteger modifiers = 0;
     
     CFNumberGetValue(modifiersFromDictionary, kCFNumberLongType, &modifiers);
     
@@ -79,7 +79,7 @@
 
 #pragma mark -
 
-+ (BOOL)hotKey: (ZKHotKey *)hotKey containsModifiers: (NSInteger)modifiers {
++ (BOOL)hotKey: (ZKHotKey *)hotKey containsModifiers: (NSUInteger)modifiers {
     return hotKey.hotKeyModifiers == [ZKHotKeyTranslator convertModifiersToCarbonIfNecessary: modifiers];
 }
 

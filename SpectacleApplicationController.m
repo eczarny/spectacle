@@ -1,11 +1,14 @@
 #import "SpectacleApplicationController.h"
 #import "SpectaclePreferencesController.h"
+#import "SpectacleHotKeyManager.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
+#import "ZKHotKeyTranslator.h"
 
 @interface SpectacleApplicationController ()
 
 @property (nonatomic) NSStatusItem *statusItem;
+@property (nonatomic) NSDictionary *hotKeyMenuItems;
 @property (nonatomic) SpectaclePreferencesController *preferencesController;
 
 @end
@@ -20,19 +23,44 @@
     [SpectacleUtilities registerDefaultsForBundle: NSBundle.mainBundle];
     
     _preferencesController = [SpectaclePreferencesController new];
-    
+
+    _hotKeyMenuItems = [[NSDictionary alloc] initWithObjectsAndKeys:
+        _moveToCenterHotKeyMenuItem,          SpectacleWindowActionMoveToCenter,
+        _moveToFullscreenHotKeyMenuItem,      SpectacleWindowActionMoveToFullscreen,
+        _moveToLeftHotKeyMenuItem,            SpectacleWindowActionMoveToLeftHalf,
+        _moveToRightHotKeyMenuItem,           SpectacleWindowActionMoveToRightHalf,
+        _moveToTopHotKeyMenuItem,             SpectacleWindowActionMoveToTopHalf,
+        _moveToBottomHotKeyMenuItem,          SpectacleWindowActionMoveToBottomHalf,
+        _moveToUpperLeftHotKeyMenuItem,       SpectacleWindowActionMoveToUpperLeft,
+        _moveToLowerLeftHotKeyMenuItem,       SpectacleWindowActionMoveToLowerLeft,
+        _moveToUpperRightHotKeyMenuItem,      SpectacleWindowActionMoveToUpperRight,
+        _moveToLowerRightHotKeyMenuItem,      SpectacleWindowActionMoveToLowerRight,
+        _moveToNextDisplayHotKeyMenuItem,     SpectacleWindowActionMoveToNextDisplay,
+        _moveToPreviousDisplayHotKeyMenuItem, SpectacleWindowActionMoveToPreviousDisplay,
+        _moveToNextThirdHotKeyMenuItem,       SpectacleWindowActionMoveToNextThird,
+        _moveToPreviousThirdHotKeyMenuItem,   SpectacleWindowActionMoveToPreviousThird,
+        _makeLargerHotKeyMenuItem,            SpectacleWindowActionMakeLarger,
+        _makeSmallerHotKeyMenuItem,           SpectacleWindowActionMakeSmaller,
+        _undoLastMoveHotKeyMenuItem,          SpectacleWindowActionUndoLastMove,
+        _redoLastMoveHotKeyMenuItem,          SpectacleWindowActionRedoLastMove, nil];
+
     [self registerHotKeys];
     
     [notificationCenter addObserver: self
-                           selector: @selector(enableStatusItem:)
+                           selector: @selector(enableStatusItem)
                                name: SpectacleStatusItemEnabledNotification
                              object: nil];
     
     [notificationCenter addObserver: self
-                           selector: @selector(disableStatusItem:)
+                           selector: @selector(disableStatusItem)
                                name: SpectacleStatusItemDisabledNotification
                              object: nil];
-    
+
+    [notificationCenter addObserver: self
+                           selector: @selector(updateHotKeyMenuItems)
+                               name: SpectacleHotKeyChangedNotification
+                             object: nil];
+
     [notificationCenter addObserver: self
                            selector: @selector(menuDidSendAction:)
                                name: NSMenuDidSendActionNotification
@@ -41,7 +69,9 @@
     if ([NSUserDefaults.standardUserDefaults boolForKey: SpectacleStatusItemEnabledPreference]) {
         [self createStatusItem];
     }
-    
+
+    [self updateHotKeyMenuItems];
+
     switch (SpectacleUtilities.spectacleTrust) {
         case SpectacleIsNotTrustedBeforeMavericks:
             [SpectacleUtilities displayAccessibilityAPIAlert];
@@ -107,18 +137,42 @@
 
 #pragma mark -
 
-- (void)enableStatusItem: (NSNotification *)notification {
+- (void)updateHotKeyMenuItems {
+    SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
+    ZKHotKeyTranslator *hotKeyTranslator = ZKHotKeyTranslator.sharedTranslator;
+
+    for (NSString *hotKeyName in _hotKeyMenuItems.allKeys) {
+        NSMenuItem *hotKeyMenuItem = _hotKeyMenuItems[hotKeyName];
+        ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName: hotKeyName];
+
+        if (hotKey) {
+            hotKeyMenuItem.keyEquivalent = [[hotKeyTranslator translateKeyCode: hotKey.hotKeyCode] lowercaseString];
+            hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoafNecessary: hotKey.hotKeyModifiers];
+        } else {
+            hotKeyMenuItem.keyEquivalent = @"";
+            hotKeyMenuItem.keyEquivalentModifierMask = 0;
+        }
+    }
+}
+
+#pragma mark -
+
+- (void)enableStatusItem {
     [self createStatusItem];
 }
 
-- (void)disableStatusItem: (NSNotification *)notification {
+- (void)disableStatusItem {
     [self destroyStatusItem];
 }
 
 #pragma mark -
 
 - (void)menuDidSendAction: (NSNotification *)notification {
-    [NSApplication.sharedApplication activateIgnoringOtherApps: YES];
+    NSMenuItem *menuItem = [notification.userInfo objectForKey: @"MenuItem"];
+
+    if (menuItem.tag == SpectacleMenuItemActivateIgnoringOtherApps) {
+        [NSApplication.sharedApplication activateIgnoringOtherApps: YES];
+    }
 }
 
 @end

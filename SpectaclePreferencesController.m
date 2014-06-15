@@ -90,10 +90,14 @@
     }];
     
     [_hotKeyManager registerHotKey: hotKey];
+
+    [NSNotificationCenter.defaultCenter postNotificationName: SpectacleHotKeyChangedNotification object: self];
 }
 
 - (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZKHotKey *)hotKey {
     [_hotKeyManager unregisterHotKeyForName: hotKey.hotKeyName];
+
+    [NSNotificationCenter.defaultCenter postNotificationName: SpectacleHotKeyChangedNotification object: self];
 }
 
 #pragma mark -

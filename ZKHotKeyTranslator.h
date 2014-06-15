@@ -10,11 +10,19 @@
 
 #pragma mark -
 
-+ (NSInteger)convertModifiersToCarbonIfNecessary: (NSInteger)modifiers;
++ (NSUInteger)convertModifiersToCarbonIfNecessary: (NSUInteger)modifiers;
+
++ (NSUInteger)convertModifiersToCocoafNecessary: (NSUInteger)modifiers;
 
 #pragma mark -
 
-+ (NSString *)translateCocoaModifiers: (NSInteger)modifiers;
++ (NSUInteger)convertCocoaModifiersToCarbon: (NSUInteger)modifiers;
+
++ (NSUInteger)convertCarbonModifiersToCocoa: (NSUInteger)modifiers;
+
+#pragma mark -
+
++ (NSString *)translateCocoaModifiers: (NSUInteger)modifiers;
 
 - (NSString *)translateKeyCode: (NSInteger)keyCode;
 

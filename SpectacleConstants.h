@@ -5,6 +5,12 @@
 #define SpectacleStatusItemEnabledNotification           @"SpectacleStatusItemEnabledNotification"
 #define SpectacleStatusItemDisabledNotification          @"SpectacleStatusItemDisabledNotification"
 
+#define SpectacleHotKeyChangedNotification               @"SpectacleHotKeyChangedNotification"
+
+#pragma mark -
+
+#define SpectacleMenuItemActivateIgnoringOtherApps       -1
+
 #pragma mark -
 
 #define SpectaclePropertyListFileExtension               @"plist"
