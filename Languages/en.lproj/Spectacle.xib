@@ -840,7 +840,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="he4-Bj-XB4">
-                        <rect key="frame" x="-27" y="-356" width="835" height="653"/>
+                        <rect key="frame" x="-27" y="-366" width="835" height="653"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="Security &amp; Privacy" id="zQN-Oe-PPv"/>
                     </imageView>
@@ -889,6 +889,6 @@
         </window>
     </objects>
     <resources>
-        <image name="Security &amp; Privacy" width="835" height="653"/>
+        <image name="Security &amp; Privacy" width="782" height="636"/>
     </resources>
 </document>

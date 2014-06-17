@@ -40,7 +40,8 @@
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */; };
-		2DC3A85A181A039200B68601 /* Security & Privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC3A859181A039200B68601 /* Security & Privacy.png */; };
+		2DCDE1AD194FDB74008C4D5C /* Security & Privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDE1AB194FDB74008C4D5C /* Security & Privacy.png */; };
+		2DCDE1AE194FDB74008C4D5C /* Security & Privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDE1AC194FDB74008C4D5C /* Security & Privacy@2x.png */; };
 		2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
 		6F10BDB719AD4A0E9E05A451 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3ED82115CF4D7AB8FC8947 /* libPods.a */; };
 		C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */; };
@@ -113,7 +114,8 @@
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowActionController.h; sourceTree = "<group>"; };
 		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowActionController.m; sourceTree = "<group>"; };
 		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
-		2DC3A859181A039200B68601 /* Security & Privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Security & Privacy.png"; path = "Resources/Images/Security & Privacy.png"; sourceTree = "<group>"; };
+		2DCDE1AB194FDB74008C4D5C /* Security & Privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Security & Privacy.png"; path = "Resources/Images/Security & Privacy.png"; sourceTree = "<group>"; };
+		2DCDE1AC194FDB74008C4D5C /* Security & Privacy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Security & Privacy@2x.png"; path = "Resources/Images/Security & Privacy@2x.png"; sourceTree = "<group>"; };
 		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spectacle.pch; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				0747DAF21183AB1B00F75DD2 /* Icons */,
-				2DC3A859181A039200B68601 /* Security & Privacy.png */,
+				2DCDE1A6194FD60A008C4D5C /* Screenshots */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -351,6 +353,15 @@
 			name = Scripts;
 			sourceTree = "<group>";
 		};
+		2DCDE1A6194FD60A008C4D5C /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				2DCDE1AB194FDB74008C4D5C /* Security & Privacy.png */,
+				2DCDE1AC194FDB74008C4D5C /* Security & Privacy@2x.png */,
+			);
+			name = Screenshots;
+			sourceTree = "<group>";
+		};
 		32DBCFA10370C40200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,7 +434,8 @@
 				2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */,
 				2D73677B149ADB7400837D7D /* InfoPlist.strings in Resources */,
 				2D73677E149ADB7400837D7D /* Localizable.strings in Resources */,
-				2DC3A85A181A039200B68601 /* Security & Privacy.png in Resources */,
+				2DCDE1AD194FDB74008C4D5C /* Security & Privacy.png in Resources */,
+				2DCDE1AE194FDB74008C4D5C /* Security & Privacy@2x.png in Resources */,
 				2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */,
 				2D3A05151949573D00CD96E7 /* SpecialHotKeyTranslations.plist in Resources */,
 				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
