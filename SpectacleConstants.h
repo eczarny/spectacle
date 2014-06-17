@@ -72,6 +72,7 @@
 #define SpectaclePreferencePaneExtension                 @"prefPane"
 
 #define SpectacleStatusItemEnabledPreference             @"StatusItemEnabled"
+#define SpectacleAutomaticUpdateCheckEnabledPreference   @"AutomaticUpdateCheckEnabled"
 #define SpectacleBackgroundAlertSuppressedPreference     @"BackgroundAlertSuppressed"
 
 #pragma mark -
