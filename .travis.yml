@@ -1,3 +1,9 @@
 language: objective-c
 xcode_workspace: Spectacle.xcworkspace
 xcode_scheme: Spectacle
+
+before_install:
+  - gem install cocoapods -v '0.33.1'
+
+before_script:
+  - export LANG=en_US.UTF-8
