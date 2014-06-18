@@ -290,10 +290,10 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 + (void)enableLoginItemForBundle: (NSBundle *)bundle {
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
-    CFURLRef applicationPathURL = CFBridgingRetain([NSURL fileURLWithPath: applicationPath]);
+    NSURL *applicationPathURL = [NSURL fileURLWithPath: applicationPath];
 
     if (sharedFileList) {
-        LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, applicationPathURL, NULL, NULL);
+        LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)applicationPathURL, NULL, NULL);
 
         if (sharedFileListItem) {
             CFRelease(sharedFileListItem);
@@ -308,7 +308,6 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 + (void)disableLoginItemForBundle: (NSBundle *)bundle {
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
-    CFURLRef applicationPathURL = CFBridgingRetain([NSURL fileURLWithPath: applicationPath]);
 
     if (sharedFileList) {
         NSArray *sharedFileListArray = nil;
@@ -318,8 +317,9 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
         for (id sharedFile in sharedFileListArray) {
             LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
+            CFURLRef applicationPathURL;
 
-            LSSharedFileListItemResolve(sharedFileListItem, 0, (CFURLRef *)&applicationPathURL, NULL);
+            LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL);
 
             if (applicationPathURL != NULL) {
                 NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
@@ -327,6 +327,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
                 if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
                     LSSharedFileListItemRemove(sharedFileList, sharedFileListItem);
                 }
+
+                CFRelease(applicationPathURL);
             }
         }
 
