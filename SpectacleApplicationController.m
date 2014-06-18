@@ -21,9 +21,6 @@
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification {
     NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
-    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-    BOOL automaticallyChecksForUpdates = [userDefaults boolForKey: SpectacleAutomaticUpdateCheckEnabledPreference];
-    BOOL statusItemEnabled = [userDefaults boolForKey: SpectacleStatusItemEnabledPreference];
 
     [SpectacleUtilities registerDefaultsForBundle: NSBundle.mainBundle];
 
@@ -51,6 +48,14 @@
 
     [self registerHotKeys];
 
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    BOOL automaticallyChecksForUpdates = [userDefaults boolForKey: SpectacleAutomaticUpdateCheckEnabledPreference];
+    BOOL statusItemEnabled = [userDefaults boolForKey: SpectacleStatusItemEnabledPreference];
+
+    if (statusItemEnabled) {
+        [self createStatusItem];
+    }
+
     [notificationCenter addObserver: self
                            selector: @selector(enableStatusItem)
                                name: SpectacleStatusItemEnabledNotification
@@ -75,10 +80,6 @@
                            selector: @selector(menuDidSendAction:)
                                name: NSMenuDidSendActionNotification
                              object: nil];
-
-    if (statusItemEnabled) {
-        [self createStatusItem];
-    }
 
     [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates: automaticallyChecksForUpdates];
 
