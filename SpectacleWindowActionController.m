@@ -31,7 +31,9 @@
     NSMutableDictionary *hotKeysFromUserDefaults = [NSMutableDictionary new];
     
     for (NSString *hotKeyName in SpectacleUtilities.hotKeyNames) {
-        hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
+        NSData *hotkey = [userDefaults dataForKey: hotKeyName];
+        if (hotkey == nil) continue;
+        hotKeysFromUserDefaults[hotKeyName] = hotkey;
     }
 
     NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults action: ^(ZKHotKey *hotKey) {
@@ -39,6 +41,12 @@
     }];
 
     [_hotKeyManager registerHotKeys: hotKeys];
+}
+
+#pragma mark -
+
+- (IBAction)toggleHotKeys: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionHotKeys];
 }
 
 #pragma mark -

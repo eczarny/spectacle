@@ -34,6 +34,7 @@
                 <outlet property="moveToUpperRightHotKeyMenuItem" destination="C7t-Sf-kOI" id="Pxf-S8-OLH"/>
                 <outlet property="redoLastMoveHotKeyMenuItem" destination="187-7k-0Ct" id="drs-8b-iJV"/>
                 <outlet property="statusItemMenu" destination="870" id="1169"/>
+                <outlet property="toggleHotKeysMenuItem" destination="4WC-KD-beO" id="Q4A-tz-sA7"/>
                 <outlet property="undoLastMoveHotKeyMenuItem" destination="l9O-0B-fjp" id="Wyx-ma-9u3"/>
             </connections>
         </customObject>
@@ -697,6 +698,13 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="showPreferencesWindow:" target="867" id="1149"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="roM-rK-xbV"/>
+                <menuItem title="Toggle Hotkeys" id="4WC-KD-beO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleHotKeys:" target="867" id="2Lh-Nr-5oO"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="1165"/>

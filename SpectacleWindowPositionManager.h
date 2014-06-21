@@ -30,7 +30,8 @@ enum {
     SpectacleWindowActionNextDisplay,
     SpectacleWindowActionPreviousDisplay,
     SpectacleWindowActionNextThird,
-    SpectacleWindowActionPreviousThird
+    SpectacleWindowActionPreviousThird,
+    SpectacleWindowActionHotKeys
 };
 
 typedef NSInteger SpectacleWindowAction;

@@ -8,6 +8,10 @@
 
 #pragma mark -
 
+- (IBAction)toggleHotKeys: (id)sender;
+
+#pragma mark -
+
 - (IBAction)moveFrontMostWindowToCenter: (id)sender;
 
 #pragma mark -

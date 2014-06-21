@@ -26,6 +26,7 @@
                 <outlet property="moveToUpperRightHotKeyRecorder" destination="12" id="139"/>
                 <outlet property="redoLastMoveHotKeyRecorder" destination="116" id="140"/>
                 <outlet property="statusItemEnabled" destination="41" id="142"/>
+                <outlet property="toggleHotKeysRecorder" destination="BYn-vb-qOl" id="ZvI-10-nSW"/>
                 <outlet property="undoLastMoveHotKeyRecorder" destination="114" id="141"/>
                 <outlet property="window" destination="3" id="68"/>
             </connections>
@@ -34,10 +35,10 @@
         <customObject id="-3" userLabel="Application"/>
         <window title="Spectacle X.Y.Z" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="3">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="283" y="311" width="616" height="467"/>
+            <rect key="contentRect" x="283" y="311" width="616" height="489"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <view key="contentView" id="4">
-                <rect key="frame" x="0.0" y="0.0" width="616" height="467"/>
+                <rect key="frame" x="0.0" y="0.0" width="616" height="489"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="8">
@@ -327,6 +328,19 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <textField verticalHuggingPriority="750" id="LIg-iV-hXa">
+                        <rect key="frame" x="30" y="434" width="105" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Toggle Hotkeys:" id="1Cq-gZ-tVH">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView id="BYn-vb-qOl" customClass="ZKHotKeyRecorder">
+                        <rect key="frame" x="140" y="432" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
         </window>

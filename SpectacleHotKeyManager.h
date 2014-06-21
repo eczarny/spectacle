@@ -4,6 +4,12 @@
 
 @interface SpectacleHotKeyManager : NSObject
 
+@property (nonatomic) BOOL hotKeysEnabled;
+
+- (void)setHotKeysEnabled: (BOOL)hotKeysEnabled;
+
+#pragma mark -
+
 + (SpectacleHotKeyManager *)sharedManager;
 
 #pragma mark -

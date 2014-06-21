@@ -7,6 +7,7 @@
 
 @property (nonatomic) IBOutlet NSMenu *statusItemMenu;
 @property (nonatomic) IBOutlet NSWindow *accessiblityAccessDialogWindow;
+@property (nonatomic) IBOutlet NSMenuItem *toggleHotKeysMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToCenterHotKeyMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToFullscreenHotKeyMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToLeftHotKeyMenuItem;
