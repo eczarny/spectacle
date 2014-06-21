@@ -206,11 +206,10 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     NSString *path = [bundle pathForResource: SpectacleDefaultPreferencesPropertyListFile ofType: SpectaclePropertyListFileExtension];
     NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
-    NSLog(@"???");
+    
     for (NSString *hotKeyName in names) {
         NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
         if (defaultHotKeyData == nil) {
-            NSLog(@"!!!");
             continue;
         }
         ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
