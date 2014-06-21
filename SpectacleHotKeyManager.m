@@ -19,15 +19,13 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 @implementation SpectacleHotKeyManager
 
-static EventHotKeyID currentHotKeyID = {
-    .signature = 'ZERO',
-    .id = 0
-};
+static UInt32 currentHotKeyID = 0;
 
 - (id)init {
     if ((self = [super init])) {
         _registeredHotKeysByName = [NSMutableDictionary new];
         _isHotKeyHandlerInstalled = NO;
+        _hotKeysEnabled = true;
     }
     
     return self;
@@ -51,8 +49,6 @@ static EventHotKeyID currentHotKeyID = {
 - (NSInteger)registerHotKey: (ZKHotKey *)hotKey {
     NSString *hotKeyName = hotKey.hotKeyName;
     ZKHotKey *existingHotKey = [self registeredHotKeyForName: hotKeyName];
-    EventHotKeyRef hotKeyRef;
-    EventTargetRef eventTarget = GetEventDispatcherTarget();
     OSStatus error;
     
     if (existingHotKey) {
@@ -61,18 +57,20 @@ static EventHotKeyID currentHotKeyID = {
         [self unregisterHotKeyForName: hotKeyName];
     }
     
-    currentHotKeyID.id = ++currentHotKeyID.id;
+    currentHotKeyID = currentHotKeyID + 1;
     
-    error = RegisterEventHotKey((unsigned int)hotKey.hotKeyCode, (unsigned int)hotKey.hotKeyModifiers, currentHotKeyID, eventTarget, 0, &hotKeyRef);
+    hotKey.handle = currentHotKeyID;
+    hotKey.enabled = false;
+    
+    if ([hotKeyName isEqualToString: SpectacleWindowActionToggleHotKeys])
+        error = [hotKey updateEnabled: true];
+    else error = [hotKey updateEnabled: _hotKeysEnabled];
     
     if (error) {
         NSLog(@"There was a problem registering hot key %@.", hotKeyName);
         
         return -1;
     }
-    
-    hotKey.handle = currentHotKeyID.id;
-    hotKey.hotKeyRef = hotKeyRef;
     
     _registeredHotKeysByName[hotKeyName] = hotKey;
     
@@ -91,9 +89,21 @@ static EventHotKeyID currentHotKeyID = {
 
 #pragma mark -
 
+- (void)setHotKeysEnabled: (BOOL)hotKeysEnabled {
+    for (ZKHotKey *hotKey in self.registeredHotKeys) {
+        if ([hotKey.hotKeyName isEqualToString: SpectacleWindowActionToggleHotKeys]) continue;
+        if ([hotKey updateEnabled: hotKeysEnabled]) {
+            NSLog(@"Cannot toggle hotkey");
+        }
+    }
+    
+    _hotKeysEnabled = hotKeysEnabled;
+}
+
+#pragma mark -
+
 - (void)unregisterHotKeyForName: (NSString *)name {
     ZKHotKey *hotKey = [self registeredHotKeyForName: name];
-    EventHotKeyRef hotKeyRef;
     OSStatus error;
     
     if (!hotKey) {
@@ -102,21 +112,15 @@ static EventHotKeyID currentHotKeyID = {
         return;
     }
     
-    hotKeyRef = hotKey.hotKeyRef;
-    
-    if (hotKeyRef) {
-        error = UnregisterEventHotKey(hotKeyRef);
+    error = [hotKey updateEnabled: false];
         
-        if (error) {
-            NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, error);
-        }
-        
-        _registeredHotKeysByName[name] = [ZKHotKey clearedHotKeyWithName: name];
-        
-        [self updateUserDefaults];
-    } else {
-        NSLog(@"Unable to unregister hot key %@, no hotKeyRef appears to exist.", name);
+    if (error) {
+        NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, error);
     }
+    
+    _registeredHotKeysByName[name] = [ZKHotKey clearedHotKeyWithName: name];
+    
+    [self updateUserDefaults];
 }
 
 - (void)unregisterHotKeys {

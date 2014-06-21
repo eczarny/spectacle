@@ -15,6 +15,10 @@
 
 #pragma mark -
 
+#define SpectacleHotKeySignature                         'Spec'
+
+#pragma mark -
+
 #define SpectaclePropertyListFileExtension               @"plist"
 
 #define SpectacleDefaultPreferencesPropertyListFile      @"Defaults"
@@ -22,6 +26,8 @@
 #define SpectacleBlacklistedApplicationsPropertyListFile @"BlacklistedApplications"
 
 #pragma mark -
+
+#define SpectacleWindowActionToggleHotKeys               @"ToggleHotKeys"
 
 #define SpectacleWindowActionMoveToCenter                @"MoveToCenter"
 #define SpectacleWindowActionMoveToFullscreen            @"MoveToFullscreen"

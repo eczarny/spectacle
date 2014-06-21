@@ -5,6 +5,7 @@
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
+#import "SpectacleHotKeyManager.h"
 #import "ZKAccessibilityElement.h"
 
 #define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
@@ -61,6 +62,14 @@
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
+    if (action == SpectacleWindowActionHotKeys) {
+        NSLog(@"ToggleHotKeys");
+        SpectacleHotKeyManager *manager = SpectacleHotKeyManager.sharedManager;
+        manager.hotKeysEnabled = !manager.hotKeysEnabled;
+        
+        return;
+    }
+    
     ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
@@ -178,6 +187,8 @@
         windowAction = SpectacleWindowActionUndo;
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
         windowAction = SpectacleWindowActionRedo;
+    } else if ([name isEqualToString: SpectacleWindowActionToggleHotKeys]) {
+        windowAction = SpectacleWindowActionHotKeys;
     }
     
     return windowAction;

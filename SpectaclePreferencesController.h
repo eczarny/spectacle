@@ -6,6 +6,7 @@
 
 @interface SpectaclePreferencesController : NSWindowController<ZKHotKeyRecorderDelegate>
 
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *toggleHotKeysRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToCenterHotKeyRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToFullscreenHotKeyRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToLeftHotKeyRecorder;

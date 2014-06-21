@@ -209,6 +209,9 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     
     for (NSString *hotKeyName in names) {
         NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
+        if (defaultHotKeyData == nil) {
+            continue;
+        }
         ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
         
         defaultHotKeys[hotKeyName] = defaultHotKey;

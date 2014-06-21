@@ -27,6 +27,7 @@
     _preferencesController = [SpectaclePreferencesController new];
 
     _hotKeyMenuItems = [[NSDictionary alloc] initWithObjectsAndKeys:
+        _toggleHotKeysMenuItem,               SpectacleWindowActionToggleHotKeys,
         _moveToCenterHotKeyMenuItem,          SpectacleWindowActionMoveToCenter,
         _moveToFullscreenHotKeyMenuItem,      SpectacleWindowActionMoveToFullscreen,
         _moveToLeftHotKeyMenuItem,            SpectacleWindowActionMoveToLeftHalf,
@@ -164,11 +165,9 @@
 - (void)updateHotKeyMenuItems {
     SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
     ZKHotKeyTranslator *hotKeyTranslator = ZKHotKeyTranslator.sharedTranslator;
-
     for (NSString *hotKeyName in _hotKeyMenuItems.allKeys) {
         NSMenuItem *hotKeyMenuItem = _hotKeyMenuItems[hotKeyName];
         ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName: hotKeyName];
-
         if (hotKey) {
             hotKeyMenuItem.keyEquivalent = [[hotKeyTranslator translateKeyCode: hotKey.hotKeyCode] lowercaseString];
             hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoafNecessary: hotKey.hotKeyModifiers];

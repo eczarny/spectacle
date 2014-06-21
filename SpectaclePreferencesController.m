@@ -33,6 +33,7 @@
     BOOL isStatusItemEnabled = [NSUserDefaults.standardUserDefaults boolForKey: SpectacleStatusItemEnabledPreference];
     
     _hotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
+        _toggleHotKeysRecorder,               SpectacleWindowActionToggleHotKeys,
         _moveToCenterHotKeyRecorder,          SpectacleWindowActionMoveToCenter,
         _moveToFullscreenHotKeyRecorder,      SpectacleWindowActionMoveToFullscreen,
         _moveToLeftHotKeyRecorder,            SpectacleWindowActionMoveToLeftHalf,

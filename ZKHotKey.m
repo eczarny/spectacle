@@ -1,5 +1,6 @@
 #import "ZKHotKey.h"
 #import "ZKHotKeyTranslator.h"
+#import "SpectacleConstants.h"
 
 @implementation ZKHotKey
 
@@ -33,6 +34,29 @@
     }
     
     return self;
+}
+
+#pragma mark -
+
+- (OSStatus)updateEnabled: (BOOL)enabled {
+    OSStatus  error;
+    
+    if (_enabled && !enabled) {
+        error = UnregisterEventHotKey(_hotKeyRef);
+        if (error) return error;
+    } else if (!_enabled && enabled) {
+        EventHotKeyID event_id = {
+            .signature = SpectacleHotKeySignature,
+            .id = (UInt32)_handle
+        };
+        error = RegisterEventHotKey((unsigned int)_hotKeyCode,
+                                    (unsigned int)_hotKeyModifiers, event_id,
+                                    GetEventDispatcherTarget(), 0, &_hotKeyRef);
+        if (error) return error;
+    }
+    _enabled = enabled;
+    
+    return 0;
 }
 
 #pragma mark -

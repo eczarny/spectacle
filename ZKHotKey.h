@@ -13,10 +13,15 @@ typedef void(^ZKHotKeyAction)(ZKHotKey *);
 @property (nonatomic) NSInteger hotKeyCode;
 @property (nonatomic) NSUInteger hotKeyModifiers;
 @property (nonatomic) EventHotKeyRef hotKeyRef;
+@property (nonatomic) BOOL enabled;
 
 #pragma mark -
 
 - (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers;
+
+#pragma mark -
+
+- (OSStatus)updateEnabled: (BOOL)enabled;
 
 #pragma mark -
 
