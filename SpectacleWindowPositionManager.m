@@ -246,26 +246,40 @@
         return;
     }
     
-    movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
-    
-    if (!CGRectContainsRect(visibleFrameOfScreen, movedWindowRect) && (action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
-        if (movedWindowRect.origin.x + movedWindowRect.size.width > visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width) {
-            movedWindowRect.origin.x = (visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width) - movedWindowRect.size.width;
-        } else if (movedWindowRect.origin.x < visibleFrameOfScreen.origin.x) {
-            movedWindowRect.origin.x = visibleFrameOfScreen.origin.x;
+    if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
+        
+        // attempt the move 
+        [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
+        movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
+        
+        // did we move exactly into the desired location?
+        if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
+            CGRect adjustedWindowRect = windowRect;
+            
+            // reduce size to fit
+            while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
+                if (movedWindowRect.size.width > windowRect.size.width) {
+                    adjustedWindowRect.size.width -= 1;
+                }
+                if (movedWindowRect.size.height > windowRect.size.height) {
+                    adjustedWindowRect.size.height -= 1;
+                }
+                
+                // give up if we're trying to shrink to half the desired as this resizing is just not working
+                if (adjustedWindowRect.size.width < windowRect.size.width / 2.0f || adjustedWindowRect.size.height < windowRect.size.height / 2.0f) {
+                    break;
+                }
+                
+                [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
+                movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
+            }
+            
+            // centre the resized window, taking into account any quantization adjustments
+            adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
+            adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
+            
+            [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
         }
-        
-        if (movedWindowRect.origin.y + movedWindowRect.size.height > visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height) {
-            movedWindowRect.origin.y = (visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height) - movedWindowRect.size.height;
-        } else if (movedWindowRect.origin.y < visibleFrameOfScreen.origin.y) {
-            movedWindowRect.origin.y = visibleFrameOfScreen.origin.y;
-        }
-        
-        movedWindowRect.size = windowRect.size;
-        
-        movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
-        
-        [self moveWindowRect: movedWindowRect frontMostWindowElement: frontMostWindowElement];
     }
 }
 
