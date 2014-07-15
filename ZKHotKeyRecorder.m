@@ -1,3 +1,4 @@
+#import "SpectacleConstants.h"
 #import "ZKHotKeyRecorder.h"
 #import "ZKHotKeyRecorderCell.h"
 
@@ -84,7 +85,13 @@
         return;
     }
     
-    [super keyDown: event];
+    if (event.keyCode == SpectacleEscapeKey) {
+        [MyCell resignFirstResponder];
+        return;
+    }
+    else {
+        [super keyDown: event];
+    }
 }
 
 - (void)flagsChanged: (NSEvent *)event {
