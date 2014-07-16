@@ -87,9 +87,7 @@
     
     if (event.keyCode == SpectacleEscapeKey) {
         [MyCell resignFirstResponder];
-        return;
-    }
-    else {
+    } else {
         [super keyDown: event];
     }
 }
