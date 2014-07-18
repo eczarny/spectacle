@@ -145,9 +145,13 @@
 
 - (void)createStatusItem {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
-
-    _statusItem.image = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource: SpectacleStatusItemIcon]];
-    _statusItem.alternateImage = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource: SpectacleAlternateStatusItemIcon]];
+    
+    NSImage *statusImage = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource:SpectacleStatusItemIcon]];
+    
+    [statusImage setTemplate:YES];
+    
+    _statusItem.image = statusImage;
+    
     _statusItem.highlightMode = YES;
 
     _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion];
