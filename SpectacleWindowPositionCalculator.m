@@ -128,11 +128,6 @@
         thirdOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - (floor(visibleFrameOfScreen.size.height / 3.0f) * (i + 1));
         thirdOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f);
         
-        if ((i == 2) && (fmodf(visibleFrameOfScreen.size.height, 3.0f) != 0.0f)) {
-            thirdOfScreen.origin.y = thirdOfScreen.origin.y - 1.0f;
-            thirdOfScreen.size.height = thirdOfScreen.size.height + 1.0f;
-        }
-        
         [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement: nil windowRect: thirdOfScreen]];
     }
     
@@ -147,7 +142,8 @@
     for (i = 0; i < thirds.count; i++) {
         CGRect currentWindowRect = [thirds[i] windowRect];
         
-        if (CGRectEqualToRectWithFudge(currentWindowRect, windowRect)) {
+        // are we within this "third" and centred within it? advance to next
+        if (CGRectCentredWithin(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
             if (action == SpectacleWindowActionNextThird) {
@@ -200,12 +196,12 @@
         }
 
         // are we at half width already? shrink to one third
-        if (fabs(CGRectGetMidX(windowRect) - CGRectGetMidX(halfRect)) <= 1.0f) {
+        if (CGRectCentredWithin(halfRect, windowRect)) {
             return oneThirdRect;
         }
         
-        // are we at one third already? grow to two thirds
-        if (fabs(CGRectGetMidX(windowRect) - CGRectGetMidX(oneThirdRect)) <= 1.0f) {
+        // are we at one third width already? grow to two thirds
+        if (CGRectCentredWithin(oneThirdRect, windowRect)) {
             
             // calculate a left or right two thirds visible rect
             CGRect twoThirdRects = halfRect;
