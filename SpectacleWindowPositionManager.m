@@ -96,16 +96,6 @@
         return;
     }
     
-    // adjust visible frame for bottom dock gap that may be present on other monitors
-    CGFloat bottomDockGap = 0;
-    for (NSScreen *screen in [NSScreen screens]) {
-        if (screen != screenOfDisplay) {
-            bottomDockGap = MAX(bottomDockGap, screen.visibleFrame.origin.y - screen.frame.origin.y);
-        }
-    }
-    visibleFrameOfScreen.size.height -= bottomDockGap;
-    visibleFrameOfScreen.origin.y += bottomDockGap;
-    
     if ([history isEmpty]) {
         historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: frontMostWindowElement
                                                                      windowRect: frontMostWindowRect];
