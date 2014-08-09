@@ -1,5 +1,6 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
+#import "SpectacleHotKeyManager.h"
 #import "SpectacleConstants.h"
 
 extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
@@ -38,8 +39,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 + (void)displayAccessibilityAPIAlert {
     NSAlert *alert = [NSAlert new];
     NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: SpectacleUniversalAccessPreferencePaneName]];
-    
-    alert.alertStyle = NSWarningAlertStyle;
+
     alert.messageText = LocalizedString(@"Spectacle requires that the Accessibility API be enabled");
     alert.informativeText = LocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?");
     
@@ -82,6 +82,31 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
         case NSAlertSecondButtonReturn:
             callback(NO, isAlertSuppressed);
             
+            break;
+        default:
+            break;
+    }
+}
+
++ (void)displayRestoreDefaultsAlertWithCallback: (void (^)(BOOL))callback {
+    NSAlert *alert = [NSAlert new];
+
+    alert.messageText = LocalizedString(@"This will restore Spectacle's default hot keys");
+    alert.informativeText = LocalizedString(@"Would you like to restore the default hot keys? Any custom hot keys will be lost.");
+
+    [alert addButtonWithTitle: LocalizedString(@"OK")];
+    [alert addButtonWithTitle: LocalizedString(@"Cancel")];
+
+    NSInteger response = [alert runModal];
+
+    switch (response) {
+        case NSAlertFirstButtonReturn:
+            callback(YES);
+
+            break;
+        case NSAlertSecondButtonReturn:
+            callback(NO);
+
             break;
         default:
             break;
@@ -135,6 +160,24 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     }
     
     return hotKeys;
+}
+
+#pragma mark -
+
++ (void)restoreDefaultHotKeys {
+    SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
+    SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
+    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: SpectacleUtilities.hotKeyNames];
+
+    for (NSString *hotKeyName in defaultHotKeys) {
+        ZKHotKey *defaultHotKey = defaultHotKeys[hotKeyName];
+
+        defaultHotKey.hotKeyAction = ^(ZKHotKey *hotKey) {
+            [windowPositionManager moveFrontMostWindowWithAction: [windowPositionManager windowActionForHotKey: hotKey]];
+        };
+
+        [hotKeyManager registerHotKey: defaultHotKey];
+    }
 }
 
 #pragma mark -
@@ -247,10 +290,10 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 + (void)enableLoginItemForBundle: (NSBundle *)bundle {
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
-    CFURLRef applicationPathURL = CFBridgingRetain([NSURL fileURLWithPath: applicationPath]);
+    NSURL *applicationPathURL = [NSURL fileURLWithPath: applicationPath];
 
     if (sharedFileList) {
-        LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, applicationPathURL, NULL, NULL);
+        LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)applicationPathURL, NULL, NULL);
 
         if (sharedFileListItem) {
             CFRelease(sharedFileListItem);
@@ -265,7 +308,6 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 + (void)disableLoginItemForBundle: (NSBundle *)bundle {
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
-    CFURLRef applicationPathURL = CFBridgingRetain([NSURL fileURLWithPath: applicationPath]);
 
     if (sharedFileList) {
         NSArray *sharedFileListArray = nil;
@@ -275,8 +317,9 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
         for (id sharedFile in sharedFileListArray) {
             LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
+            CFURLRef applicationPathURL;
 
-            LSSharedFileListItemResolve(sharedFileListItem, 0, (CFURLRef *)&applicationPathURL, NULL);
+            LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL);
 
             if (applicationPathURL != NULL) {
                 NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
@@ -284,6 +327,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
                 if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
                     LSSharedFileListItemRemove(sharedFileList, sharedFileListItem);
                 }
+
+                CFRelease(applicationPathURL);
             }
         }
 

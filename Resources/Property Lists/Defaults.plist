@@ -40,6 +40,8 @@
 	<data>YnBsaXN0MDDUAQIDBAUGGRpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKQHCBESVSRudWxs1AkKCwwNDg8QViRjbGFzc1ltb2RpZmllcnNXa2V5Q29kZVRuYW1lgAMRCwAQBoACXFJlZG9MYXN0TW92ZdITFBUWWiRjbGFzc25hbWVYJGNsYXNzZXNYWktIb3RLZXmiFxhYWktIb3RLZXlYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLRGxxUcm9vdIABCBEaIy0yNzxCS1JcZGlrbnByf4SPmKGkrbbIy9AAAAAAAAABAQAAAAAAAAAdAAAAAAAAAAAAAAAAAAAA0g==</data>
 	<key>StatusItemEnabled</key>
 	<true/>
+	<key>AutomaticUpdateCheckEnabled</key>
+	<true/>
 	<key>BackgroundAlertSuppressed</key>
 	<false/>
 </dict>

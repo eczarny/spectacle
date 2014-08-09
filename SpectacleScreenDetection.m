@@ -62,34 +62,52 @@
 + (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
     NSArray *screens = NSScreen.screens;
     NSScreen *result = nil;
-    
+
     if (screens.count <= 1) {
         return result;
     }
-    
-    for (NSInteger i = 0; i < screens.count; i++) {
-        NSScreen *currentScreen = screens[i];
+
+    NSArray *screensInConsistentOrder = [[screens sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
+        if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedAscending;
+        } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedDescending;
+        }
+
+        return (NSComparisonResult)(screenTwo.frame.origin.y - screenOne.frame.origin.y);
+    }] sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
+        if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedAscending;
+        } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedDescending;
+        }
+
+        return (NSComparisonResult)(screenTwo.frame.origin.x - screenOne.frame.origin.x);
+    }];
+
+    for (NSInteger i = 0; i < screensInConsistentOrder.count; i++) {
+        NSScreen *currentScreen = screensInConsistentOrder[i];
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         NSInteger nextOrPreviousIndex = i;
-        
+
         if (!CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
             continue;
         }
-        
+
         if (action == SpectacleWindowActionNextDisplay) {
             nextOrPreviousIndex++;
         } else if (action == SpectacleWindowActionPreviousDisplay) {
             nextOrPreviousIndex--;
         }
-        
+
         if (nextOrPreviousIndex < 0) {
             nextOrPreviousIndex = screens.count - 1;
         } else if (nextOrPreviousIndex >= screens.count) {
             nextOrPreviousIndex = 0;
         }
-        
+
         result = screens[nextOrPreviousIndex];
-        
+
         break;
     }
     

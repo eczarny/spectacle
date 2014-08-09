@@ -33,11 +33,11 @@
     for (NSString *hotKeyName in SpectacleUtilities.hotKeyNames) {
         hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
     }
-    
+
     NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults action: ^(ZKHotKey *hotKey) {
         [_windowPositionManager moveFrontMostWindowWithAction: [_windowPositionManager windowActionForHotKey: hotKey]];
     }];
-    
+
     [_hotKeyManager registerHotKeys: hotKeys];
 }
 

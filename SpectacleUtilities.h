@@ -61,6 +61,8 @@ typedef NSInteger SpectacleApplicationTrust;
 
 + (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback;
 
++ (void)displayRestoreDefaultsAlertWithCallback: (void (^)(BOOL))callback;
+
 #pragma mark -
 
 + (SpectacleApplicationTrust)spectacleTrust;
@@ -72,6 +74,10 @@ typedef NSInteger SpectacleApplicationTrust;
 #pragma mark -
 
 + (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action;
+
+#pragma mark -
+
++ (void)restoreDefaultHotKeys;
 
 #pragma mark -
 

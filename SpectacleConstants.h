@@ -7,6 +7,8 @@
 
 #define SpectacleHotKeyChangedNotification               @"SpectacleHotKeyChangedNotification"
 
+#define SpectacleRestoreDefaultHotKeysNotification       @"SpectacleRestoreDefaultHotKeysNotification"
+
 #pragma mark -
 
 #define SpectacleMenuItemActivateIgnoringOtherApps       -1
@@ -52,6 +54,10 @@
 
 #pragma mark -
 
+#define SpectacleEscapeKey                               53
+
+#pragma mark -
+
 #define SpectacleWindowSizeOffset                        30.0f
 
 #define SpectacleMinimumWindowSizeRatio                  4.0f
@@ -66,6 +72,7 @@
 #define SpectaclePreferencePaneExtension                 @"prefPane"
 
 #define SpectacleStatusItemEnabledPreference             @"StatusItemEnabled"
+#define SpectacleAutomaticUpdateCheckEnabledPreference   @"AutomaticUpdateCheckEnabled"
 #define SpectacleBackgroundAlertSuppressedPreference     @"BackgroundAlertSuppressed"
 
 #pragma mark -

@@ -34,4 +34,8 @@
 
 - (IBAction)openSystemPreferences: (id)sender;
 
+# pragma mark -
+
+- (IBAction)restoreDefaults: (id)sender;
+
 @end

@@ -61,6 +61,15 @@
 #pragma mark -
 
 - (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action {
+    NSString *frontMostWindowName = ZKAccessibilityElement.frontMostApplicationName;
+    NSString *spectacleWindowName = NSBundle.mainBundle.infoDictionary[@"CFBundleName"];
+    
+    if ([frontMostWindowName isEqualToString: spectacleWindowName]) {
+        NSBeep();
+        
+        return;
+    }
+    
     ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
