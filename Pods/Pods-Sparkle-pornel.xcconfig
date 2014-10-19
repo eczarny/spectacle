@@ -1,2 +1,0 @@
-PODS_SPARKLE_PORNEL_FRAMEWORK_SEARCH_PATHS = "${PODS_ROOT}/Sparkle-pornel" "$(PODS_ROOT)/Sparkle-pornel"
-PODS_SPARKLE_PORNEL_OTHER_LDFLAGS = -framework Sparkle

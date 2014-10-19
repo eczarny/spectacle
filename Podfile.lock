@@ -1,10 +1,10 @@
 PODS:
-  - Sparkle-pornel (1.6.1)
+  - Sparkle (1.8.0)
 
 DEPENDENCIES:
-  - Sparkle-pornel (~> 1.6)
+  - Sparkle (~> 1.8)
 
 SPEC CHECKSUMS:
-  Sparkle-pornel: dfb419ba2135a0b7e9c686c566eeb4abb5af2df1
+  Sparkle: 5eb20bb37ca21e471dab8417dee880198d905327
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.4
