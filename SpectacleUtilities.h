@@ -10,7 +10,8 @@
 
 #pragma mark -
 
-#define CGRectEqualToRectWithFudge(a, b) ((abs(a.size.width - b.size.width) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.size.height - b.size.height) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.origin.x - b.origin.x) < (SpectacleWindowCalculationFudgeFactor * 2)) && (abs(a.origin.y - b.origin.y) < (SpectacleWindowCalculationFudgeFactor * 2)))
+// true if b is contained and centred within a
+#define CGRectCentredWithin(a, b) CGRectContainsRect(a, b) && fabs(CGRectGetMidX(b) - CGRectGetMidX(a)) <= 1.0f && fabs(CGRectGetMidY(b) - CGRectGetMidY(a)) <= 1.0f
 
 #pragma mark -
 

@@ -9,11 +9,6 @@
 
 #pragma mark -
 
-#define AlreadyTwoThirdsOfDisplay(a, b) (abs(a.size.width - floor((b.size.width * 2.0f) / 3.0f)) < SpectacleWindowCalculationFudgeFactor) && (abs(a.size.height - b.size.height) < (SpectacleWindowCalculationFudgeFactor * 2))
-#define AlreadyOneHalfOfDisplay(a, b) (abs(a.size.width - (b.size.width / 2.0f)) < SpectacleWindowCalculationFudgeFactor) && (abs(a.size.height - b.size.height) < (SpectacleWindowCalculationFudgeFactor * 2))
-
-#pragma mark -
-
 @implementation SpectacleWindowPositionCalculator
 
 + (CGRect)calculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
@@ -36,19 +31,7 @@
     }
     
     if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)) {
-        if ([SpectacleWindowPositionCalculator halfToTwoThirds: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action]) {
-            calculatedWindowRect.size.width = floor((visibleFrameOfScreen.size.width * 2.0f) / 3.0f);
-        } else if ([SpectacleWindowPositionCalculator halfToOneThird: windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action]) {
-            calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
-        } else {
-            calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
-        }
-        
-        if (action == SpectacleWindowActionRightHalf) {
-            calculatedWindowRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - calculatedWindowRect.size.width;
-        }
-        
-        calculatedWindowRect.size.height = visibleFrameOfScreen.size.height;
+        calculatedWindowRect = [SpectacleWindowPositionCalculator calculateLeftRightHalfRect:windowRect visibleFrameOfScreen:visibleFrameOfScreen withAction:action];
     } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
         calculatedWindowRect.size.width = visibleFrameOfScreen.size.width;
         calculatedWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
@@ -62,21 +45,6 @@
     
     if (MovingToThirdOfDisplay(action)) {
         calculatedWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: calculatedWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
-    }
-    
-    if (MovingToTopRegionOfDisplay(action)) {
-        if (((visibleFrameOfScreen.size.height / 2.0f) - calculatedWindowRect.size.height) > 0.0f) {
-            calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
-        } else {
-            calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
-            calculatedWindowRect.size.height = calculatedWindowRect.size.height - 1.0f;
-        }
-        
-        calculatedWindowRect.origin.y = calculatedWindowRect.origin.y + 1.0f;
-    }
-    
-    if ((action >= SpectacleWindowActionLeftHalf) && (action <= SpectacleWindowActionLowerLeft)) {
-        calculatedWindowRect.size.width = calculatedWindowRect.size.width - 1.0f;
     }
     
     return calculatedWindowRect;
@@ -160,11 +128,6 @@
         thirdOfScreen.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - (floor(visibleFrameOfScreen.size.height / 3.0f) * (i + 1));
         thirdOfScreen.size.height = floor(visibleFrameOfScreen.size.height / 3.0f);
         
-        if ((i == 2) && (fmodf(visibleFrameOfScreen.size.height, 3.0f) != 0.0f)) {
-            thirdOfScreen.origin.y = thirdOfScreen.origin.y - 1.0f;
-            thirdOfScreen.size.height = thirdOfScreen.size.height + 1.0f;
-        }
-        
         [result addObject: [SpectacleHistoryItem historyItemFromAccessibilityElement: nil windowRect: thirdOfScreen]];
     }
     
@@ -179,7 +142,8 @@
     for (i = 0; i < thirds.count; i++) {
         CGRect currentWindowRect = [thirds[i] windowRect];
         
-        if (CGRectEqualToRectWithFudge(currentWindowRect, windowRect)) {
+        // are we within this "third" and centred within it? advance to next
+        if (CGRectCentredWithin(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
             if (action == SpectacleWindowActionNextThird) {
@@ -212,28 +176,46 @@
 
 #pragma mark -
 
-+ (BOOL)halfToOneThird: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
-    BOOL result = NO;
-    
-    if (action == SpectacleWindowActionLeftHalf) {
-        result = AlreadyTwoThirdsOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheLeftEdgeOfScreen(windowRect, visibleFrameOfScreen);
-    } else if (action == SpectacleWindowActionRightHalf) {
-        result = AlreadyTwoThirdsOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheRightEdgeOfScreen(windowRect, visibleFrameOfScreen);
-    }
-    
-    return result;
-}
++ (CGRect)calculateLeftRightHalfRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
 
-+ (BOOL)halfToTwoThirds: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
-    BOOL result = NO;
-    
-    if (action == SpectacleWindowActionLeftHalf) {
-        result = AlreadyOneHalfOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheLeftEdgeOfScreen(windowRect, visibleFrameOfScreen);
-    } else if (action == SpectacleWindowActionRightHalf) {
-        result = AlreadyOneHalfOfDisplay(windowRect, visibleFrameOfScreen) && AgainstTheRightEdgeOfScreen(windowRect, visibleFrameOfScreen);
+    // calculate a left or right half visible rect
+    CGRect halfRect = visibleFrameOfScreen;
+    halfRect.size.width = floor(halfRect.size.width / 2.0f);
+    if (action == SpectacleWindowActionRightHalf) {
+        halfRect.origin.x += halfRect.size.width;
     }
     
-    return result;
+    // are we already occuping full height?
+    if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(halfRect)) <= 1.0f) {
+        
+        // calculate a left or right one third visible rect
+        CGRect oneThirdRect = halfRect;
+        oneThirdRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+        if (action == SpectacleWindowActionRightHalf) {
+            oneThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdRect.size.width;
+        }
+
+        // are we at half width already? shrink to one third
+        if (CGRectCentredWithin(halfRect, windowRect)) {
+            return oneThirdRect;
+        }
+        
+        // are we at one third width already? grow to two thirds
+        if (CGRectCentredWithin(oneThirdRect, windowRect)) {
+            
+            // calculate a left or right two thirds visible rect
+            CGRect twoThirdRects = halfRect;
+            twoThirdRects.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+            if (action == SpectacleWindowActionRightHalf) {
+                twoThirdRects.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdRects.size.width;
+            }
+            return twoThirdRects;
+        }
+        
+    }
+    
+    // default to the half
+    return halfRect;
 }
 
 @end
