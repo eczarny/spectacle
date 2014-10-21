@@ -97,6 +97,8 @@
         default:
             break;
     }
+
+    [userDefaults removeObjectForKey: SpectacleBlacklistedWindowRectsPreference];
 }
 
 #pragma mark -

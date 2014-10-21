@@ -10,8 +10,7 @@
 
 #pragma mark -
 
-// true if b is contained and centred within a
-#define CGRectCentredWithin(a, b) CGRectContainsRect(a, b) && fabs(CGRectGetMidX(b) - CGRectGetMidX(a)) <= 1.0f && fabs(CGRectGetMidY(b) - CGRectGetMidY(a)) <= 1.0f
+#define RectCentredWithinRect(a, b) CGRectContainsRect(a, b) && fabs(CGRectGetMidX(b) - CGRectGetMidX(a)) <= 1.0f && fabs(CGRectGetMidY(b) - CGRectGetMidY(a)) <= 1.0f
 
 #pragma mark -
 
@@ -34,7 +33,7 @@
 
 #pragma mark -
 
-#define WindowRectToString(windowRect) [NSString stringWithFormat: @"(%f, %f) %fx%f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
+#define RectToString(windowRect) [NSString stringWithFormat: @"(%f, %f) %fx%f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
 
 enum {
     SpectacleIsTrusted,

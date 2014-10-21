@@ -15,14 +15,9 @@
 
 #pragma mark -
 
-#define BlacklistedWindowRect(applicationName, windowRect) [NSString stringWithFormat: @"%@ - %@", applicationName, WindowRectToString(windowRect)]
-
-#pragma mark -
-
 @interface SpectacleWindowPositionManager ()
 
 @property (nonatomic) NSMutableDictionary *applicationHistories;
-@property (nonatomic) NSMutableSet *blacklistedWindowRects;
 @property (nonatomic) NSMutableSet *blacklistedApplications;
 
 @end
@@ -33,12 +28,10 @@
 
 - (id)init {
     if ((self = [super init])) {
-        NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
         NSString *path = [NSBundle.mainBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                        ofType: SpectaclePropertyListFileExtension];
         
         _applicationHistories = [NSMutableDictionary new];
-        _blacklistedWindowRects = [NSMutableSet setWithArray: [userDefaults arrayForKey: SpectacleBlacklistedWindowRectsPreference]];
         _blacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
     }
     
@@ -221,9 +214,8 @@
 
 - (void)moveWindowRect: (CGRect)windowRect frameOfScreen: (CGRect)frameOfScreen visibleFrameOfScreen: (CGRect)visibleFrameOfScreen frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement action: (SpectacleWindowAction)action {
     NSString *frontMostApplicationName = ZKAccessibilityElement.frontMostApplicationName;
-    NSString *blacklistedWindowRect = BlacklistedWindowRect(frontMostApplicationName, windowRect);
     
-    if ([_blacklistedWindowRects containsObject: blacklistedWindowRect] || [_blacklistedApplications containsObject: frontMostApplicationName]) {
+    if ([_blacklistedApplications containsObject: frontMostApplicationName]) {
         NSBeep();
         
         return;
@@ -241,14 +233,8 @@
     
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     
-    if (MovingToThirdOfDisplay(action) && !CGRectCentredWithin(movedWindowRect, windowRect)) {
-        NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-        
+    if (MovingToThirdOfDisplay(action) && !RectCentredWithinRect(movedWindowRect, windowRect)) {
         NSBeep();
-        
-        [_blacklistedWindowRects addObject: blacklistedWindowRect];
-        
-        [userDefaults setObject: _blacklistedWindowRects.allObjects forKey: SpectacleBlacklistedWindowRectsPreference];
         
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         
@@ -256,34 +242,35 @@
     }
     
     if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
-        
-        // attempt the move 
         [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
+
         movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
         
-        // did we move exactly into the desired location?
+        // Does the window fit within the desired position?
         if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
             CGRect adjustedWindowRect = windowRect;
             
-            // reduce size to fit
+            // If not, try reducing the window size to fit.
             while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
                 if (movedWindowRect.size.width > windowRect.size.width) {
                     adjustedWindowRect.size.width -= 1;
                 }
+
                 if (movedWindowRect.size.height > windowRect.size.height) {
                     adjustedWindowRect.size.height -= 1;
                 }
                 
-                // give up if we're trying to shrink to half the desired as this resizing is just not working
+                // If the window's size has been reduced to half of its original size, stop.
                 if (adjustedWindowRect.size.width < windowRect.size.width / 2.0f || adjustedWindowRect.size.height < windowRect.size.height / 2.0f) {
                     break;
                 }
                 
                 [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
+
                 movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
             }
             
-            // centre the resized window, taking into account any quantization adjustments
+            // Center the window, taking into account any quantization adjustments.
             adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
             adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
             

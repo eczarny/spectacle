@@ -31,7 +31,7 @@
     }
     
     if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)) {
-        calculatedWindowRect = [SpectacleWindowPositionCalculator calculateLeftRightHalfRect:windowRect visibleFrameOfScreen:visibleFrameOfScreen withAction:action];
+        calculatedWindowRect = [SpectacleWindowPositionCalculator calculateLeftOrRightHalfRect:windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
         calculatedWindowRect.size.width = visibleFrameOfScreen.size.width;
         calculatedWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
@@ -46,7 +46,7 @@
     if (MovingToThirdOfDisplay(action)) {
         calculatedWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: calculatedWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     }
-    
+
     return calculatedWindowRect;
 }
 
@@ -143,7 +143,7 @@
         CGRect currentWindowRect = [thirds[i] windowRect];
         
         // are we within this "third" and centred within it? advance to next
-        if (CGRectCentredWithin(currentWindowRect, windowRect)) {
+        if (RectCentredWithinRect(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
             if (action == SpectacleWindowActionNextThird) {
@@ -176,46 +176,42 @@
 
 #pragma mark -
 
-+ (CGRect)calculateLeftRightHalfRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
++ (CGRect)calculateLeftOrRightHalfRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
+    CGRect oneHalfRect = visibleFrameOfScreen;
 
-    // calculate a left or right half visible rect
-    CGRect halfRect = visibleFrameOfScreen;
-    halfRect.size.width = floor(halfRect.size.width / 2.0f);
+    oneHalfRect.size.width = floor(oneHalfRect.size.width / 2.0f);
+
     if (action == SpectacleWindowActionRightHalf) {
-        halfRect.origin.x += halfRect.size.width;
+        oneHalfRect.origin.x += oneHalfRect.size.width;
     }
-    
-    // are we already occuping full height?
-    if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(halfRect)) <= 1.0f) {
-        
-        // calculate a left or right one third visible rect
-        CGRect oneThirdRect = halfRect;
+
+    if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(oneHalfRect)) <= 1.0f) {
+        CGRect oneThirdRect = oneHalfRect;
+
         oneThirdRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+
         if (action == SpectacleWindowActionRightHalf) {
             oneThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdRect.size.width;
         }
 
-        // are we at half width already? shrink to one third
-        if (CGRectCentredWithin(halfRect, windowRect)) {
+        if (RectCentredWithinRect(oneHalfRect, windowRect)) {
             return oneThirdRect;
         }
-        
-        // are we at one third width already? grow to two thirds
-        if (CGRectCentredWithin(oneThirdRect, windowRect)) {
-            
-            // calculate a left or right two thirds visible rect
-            CGRect twoThirdRects = halfRect;
-            twoThirdRects.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+
+        if (RectCentredWithinRect(oneThirdRect, windowRect)) {
+            CGRect twoThirdsRect = oneHalfRect;
+
+            twoThirdsRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+
             if (action == SpectacleWindowActionRightHalf) {
-                twoThirdRects.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdRects.size.width;
+                twoThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdsRect.size.width;
             }
-            return twoThirdRects;
+
+            return twoThirdsRect;
         }
-        
     }
-    
-    // default to the half
-    return halfRect;
+
+    return oneHalfRect;
 }
 
 @end
