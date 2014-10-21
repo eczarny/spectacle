@@ -253,11 +253,11 @@
             // If not, try reducing the window size to fit.
             while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
                 if (movedWindowRect.size.width > windowRect.size.width) {
-                    adjustedWindowRect.size.width -= 1;
+                    adjustedWindowRect.size.width -= 2;
                 }
 
                 if (movedWindowRect.size.height > windowRect.size.height) {
-                    adjustedWindowRect.size.height -= 1;
+                    adjustedWindowRect.size.height -= 2;
                 }
                 
                 // If the window's size has been reduced to half of its original size, stop.
