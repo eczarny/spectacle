@@ -90,11 +90,7 @@
     [self updateHotKeyMenuItems];
 
     switch (SpectacleUtilities.spectacleTrust) {
-        case SpectacleIsNotTrustedBeforeMavericks:
-            [SpectacleUtilities displayAccessibilityAPIAlert];
-
-            break;
-        case SpectacleIsNotTrustedOnOrAfterMavericks:
+        case SpectacleIsNotTrusted:
             [[NSApplication sharedApplication] runModalForWindow: _accessiblityAccessDialogWindow];
 
             break;

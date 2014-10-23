@@ -82,7 +82,6 @@
 #pragma mark -
 
 #define SpectacleSecurityPreferencePaneName              @"Security"
-#define SpectacleUniversalAccessPreferencePaneName       @"UniversalAccessPref"
 
 #pragma mark -
 

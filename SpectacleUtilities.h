@@ -37,8 +37,7 @@
 
 enum {
     SpectacleIsTrusted,
-    SpectacleIsNotTrustedOnOrAfterMavericks,
-    SpectacleIsNotTrustedBeforeMavericks
+    SpectacleIsNotTrusted
 };
 
 typedef NSInteger SpectacleApplicationTrust;
@@ -56,8 +55,6 @@ typedef NSInteger SpectacleApplicationTrust;
 + (void)registerDefaultsForBundle: (NSBundle *)bundle;
 
 #pragma mark -
-
-+ (void)displayAccessibilityAPIAlert;
 
 + (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback;
 

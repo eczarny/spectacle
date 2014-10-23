@@ -36,30 +36,6 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (void)displayAccessibilityAPIAlert {
-    NSAlert *alert = [NSAlert new];
-    NSURL *preferencePaneURL = [NSURL fileURLWithPath: [SpectacleUtilities pathForPreferencePaneNamed: SpectacleUniversalAccessPreferencePaneName]];
-
-    alert.messageText = LocalizedString(@"Spectacle requires that the Accessibility API be enabled");
-    alert.informativeText = LocalizedString(@"Would you like to open the Universal Access preferences so that you can turn on \"Enable access for assistive devices\"?");
-    
-    [alert addButtonWithTitle: LocalizedString(@"Open Universal Access Preferences")];
-    [alert addButtonWithTitle: LocalizedString(@"Stop Spectacle")];
-    
-    switch ([alert runModal]) {
-        case NSAlertFirstButtonReturn:
-            [NSWorkspace.sharedWorkspace openURL: preferencePaneURL];
-            
-            break;
-        case NSAlertSecondButtonReturn:
-            [NSApplication.sharedApplication terminate: self];
-            
-            break;
-        default:
-            break;
-    }
-}
-
 + (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback {
     NSAlert *alert = [NSAlert new];
     
@@ -119,9 +95,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     BOOL result = SpectacleIsTrusted;
     
     if ((AXIsProcessTrustedWithOptions != NULL) && !AXIsProcessTrustedWithOptions(NULL)) {
-        result = SpectacleIsNotTrustedOnOrAfterMavericks;
-    } else if (!AXAPIEnabled()) {
-        result = SpectacleIsNotTrustedBeforeMavericks;
+        result = SpectacleIsNotTrusted;
     }
     
     return result;
