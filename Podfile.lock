@@ -1,10 +1,13 @@
 PODS:
+  - HockeySDK-Mac (2.1.0)
   - Sparkle (1.8.0)
 
 DEPENDENCIES:
+  - HockeySDK-Mac (~> 2.1)
   - Sparkle (~> 1.8)
 
 SPEC CHECKSUMS:
+  HockeySDK-Mac: b833b385b4fb66932d760fbcb47733a1544d867c
   Sparkle: 5eb20bb37ca21e471dab8417dee880198d905327
 
 COCOAPODS: 0.34.4
