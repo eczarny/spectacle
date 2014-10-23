@@ -53,9 +53,6 @@
 		0706C0431191092B0068F04B /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
 		072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionManager.h; sourceTree = "<group>"; };
 		072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionManager.m; sourceTree = "<group>"; };
-		0747DAF71183AC5100F75DD2 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configurations/Common.xcconfig; sourceTree = "<group>"; };
-		0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonDevelopment.xcconfig; path = Configurations/CommonDevelopment.xcconfig; sourceTree = "<group>"; };
-		0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CommonRelease.xcconfig; path = Configurations/CommonRelease.xcconfig; sourceTree = "<group>"; };
 		0766438911A212A800B7BFA3 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		07678095118679C600614FB5 /* SpectacleHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHotKeyManager.h; sourceTree = "<group>"; };
 		07678096118679C600614FB5 /* SpectacleHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyManager.m; sourceTree = "<group>"; };
@@ -78,9 +75,6 @@
 		2D1AE52415D715F400EAC5BD /* SpectacleHotKeyValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHotKeyValidator.m; sourceTree = "<group>"; };
 		2D1E1AB0147E06AD0021D73D /* Spectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1E1AD2147E07E50021D73D /* Spectacle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Spectacle-Info.plist"; path = "Resources/Property Lists/Spectacle-Info.plist"; sourceTree = "<group>"; };
-		2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Spectacle.xcconfig; path = Configurations/Spectacle.xcconfig; sourceTree = "<group>"; };
-		2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleDevelopment.xcconfig; path = Configurations/SpectacleDevelopment.xcconfig; sourceTree = "<group>"; };
-		2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = SpectacleRelease.xcconfig; path = Configurations/SpectacleRelease.xcconfig; sourceTree = "<group>"; };
 		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleHistory.h; sourceTree = "<group>"; };
 		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleHistory.m; sourceTree = "<group>"; };
 		2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpectacleWindowPositionCalculator.h; sourceTree = "<group>"; };
@@ -231,19 +225,6 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		0747DAEF1183AB0400F75DD2 /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				0747DAF71183AC5100F75DD2 /* Common.xcconfig */,
-				0747DAF81183AC5100F75DD2 /* CommonDevelopment.xcconfig */,
-				0747DAF91183AC5100F75DD2 /* CommonRelease.xcconfig */,
-				2D1E1AD4147E08DE0021D73D /* Spectacle.xcconfig */,
-				2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */,
-				2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */,
-			);
-			name = Configurations;
-			sourceTree = "<group>";
-		};
 		0747DAF21183AB1B00F75DD2 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,7 +263,6 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0747DAEF1183AB0400F75DD2 /* Configurations */,
 				0747DAEE1183AAFE00F75DD2 /* Images */,
 				0747DAED1183AAF600F75DD2 /* Interface Builder */,
 				0747DAEC1183AAEE00F75DD2 /* Localized Strings */,
@@ -410,7 +390,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = 1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -567,15 +547,77 @@
 /* Begin XCBuildConfiguration section */
 		1DBD214D08BA80EA00186707 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D1E1AD5147E08DE0021D73D /* SpectacleDevelopment.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = Spectacle.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Development;
 		};
 		1DBD214E08BA80EA00186707 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D1E1AD6147E08DE0021D73D /* SpectacleRelease.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREFIX_HEADER = Spectacle.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -584,7 +626,9 @@
 			baseConfigurationReference = 29B4A4B112B8B8C547E42E66 /* Pods.development.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Resources/Property Lists/Spectacle-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Development;
 		};
@@ -593,7 +637,9 @@
 			baseConfigurationReference = 4E39F28AA9996E070256C000 /* Pods.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = "Resources/Property Lists/Spectacle-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};

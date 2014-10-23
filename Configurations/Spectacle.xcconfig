@@ -1,6 +1,0 @@
-PRODUCT_NAME = Spectacle
-INFOPLIST_FILE = Resources/Property Lists/Spectacle-Info.plist
-
-GCC_PREFIX_HEADER = Spectacle.pch
-
-COMBINE_HIDPI_IMAGES = YES
