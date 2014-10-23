@@ -4,9 +4,13 @@
 
 Easily organize windows without using a mouse.
 
+## System requirements
+
+Spectacle [0.8.6][1] is the last version to support Mac OS X 10.7; future releases will only support 10.9 or greater. Folks wishing to stay on 10.7 should download [0.8.6][1]. Those looking for a version of Spectacle that supports 10.6 can still download [0.7][2].
+
 ## Keyboard Shortcuts
 
-Spectacle makes use of several [keyboard shortcuts][1] that trigger specific _window actions_. A window action is nothing more than a command that tells Spectacle how to change the size and/or position of a particular window.
+Spectacle makes use of several [keyboard shortcuts][3] that trigger specific _window actions_. A window action is nothing more than a command that tells Spectacle how to change the size and/or position of a particular window.
 
 A keyboard shortcut consists of one or more modifier keys paired with a character key. The common modifier keys Spectacle takes advantage of are:
 
@@ -49,7 +53,7 @@ Spectacle remembers where every window was prior to executing a window action. T
 
 ## Limitations
 
-Apple's [OS X Accessibility Protocol][1] makes Spectacle possible. This protocol allows assistive applications to _drive the user interface of another application running in OS X_. In order to do its job Spectacle must be granted access to use these accessibility features. Instructions to do so will be displayed if Spectacle determines it does not have sufficient privileges.
+Apple's [OS X Accessibility Protocol][4] makes Spectacle possible. This protocol allows assistive applications to _drive the user interface of another application running in OS X_. In order to do its job Spectacle must be granted access to use these accessibility features. Instructions to do so will be displayed if Spectacle determines it does not have sufficient privileges.
 
 Most applications built with the Cocoa frameworks can be readily manipulated via the _OS X Accessibility Protocol_; allowing Spectacle to interact with nearly every window it encounters. Unfortunately this is not always the case. Spectacle will be unable to manipulate the windows of applications that build their user interfaces in unexpected ways.
 
@@ -59,5 +63,7 @@ Copyright (c) 2014 Eric Czarny.
 
 Spectacle should be accompanied by a LICENSE file containing the license relevant to this distribution.
 
-[1]: http://support.apple.com/kb/ht1343
-[2]: https://developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXModel/OSXAXmodel.html
+[1]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.6.zip
+[2]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.7.zip
+[3]: http://support.apple.com/kb/ht1343
+[4]: https://developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXModel/OSXAXmodel.html
