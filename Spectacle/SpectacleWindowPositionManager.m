@@ -66,7 +66,7 @@
     ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
-    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect];
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect screens: NSScreen.screens mainScreen: NSScreen.mainScreen];
     CGRect frameOfScreen = CGRectNull;
     CGRect visibleFrameOfScreen = CGRectNull;
     SpectacleHistory *history = self.historyForCurrentApplication;
@@ -312,7 +312,7 @@
 - (void)undoOrRedoHistoryWithAction: (SpectacleWindowAction)action {
     SpectacleHistory *history = self.historyForCurrentApplication;
     SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? history.previousHistoryItem : history.nextHistoryItem;
-    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: historyItem.windowRect];
+    NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: historyItem.windowRect screens: NSScreen.screens mainScreen: NSScreen.mainScreen];
     CGRect visibleFrameOfScreen = CGRectNull;
     
     if (screenOfDisplay) {

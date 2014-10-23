@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Spectacle.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2DA5B7C519F8BA79007EDE8E"
+               BuildableName = "SpectacleSpecs.xctest"
+               BlueprintName = "SpectacleSpecs"
+               ReferencedContainer = "container:Spectacle.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +42,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Development">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2DA5B7C519F8BA79007EDE8E"
+               BuildableName = "SpectacleSpecs.xctest"
+               BlueprintName = "SpectacleSpecs"
+               ReferencedContainer = "container:Spectacle.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

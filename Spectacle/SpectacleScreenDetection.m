@@ -3,11 +3,12 @@
 
 @implementation SpectacleScreenDetection
 
-+ (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect {
-    NSScreen *result = [self screenContainingRect: rect];
++ (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect screens: (NSArray *)screens mainScreen: (NSScreen *)mainScreen {
+    NSArray *screensInConsistentOrder = [SpectacleScreenDetection screensInConsistentOrder: screens];
+    NSScreen *result = [self screenContainingRect: rect screens: screensInConsistentOrder mainScreen: mainScreen];
     
     if (MovingToNextOrPreviousDisplay(action)) {
-        result = [self nextOrPreviousScreenToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action];
+        result = [self nextOrPreviousScreenToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action screens: screensInConsistentOrder];
     }
     
     return result;
@@ -15,11 +16,11 @@
 
 #pragma mark -
 
-+ (NSScreen *)screenContainingRect: (CGRect)rect {
++ (NSScreen *)screenContainingRect: (CGRect)rect screens: (NSArray *)screens mainScreen: (NSScreen *)mainScreen {
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
-    NSScreen *result = NSScreen.mainScreen;
+    NSScreen *result = mainScreen;
     
-    for (NSScreen *currentScreen in SpectacleScreenDetection.screensInConsistentOrder) {
+    for (NSScreen *currentScreen in screens) {
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         CGRect flippedRect = rect;
         CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
@@ -59,8 +60,7 @@
 
 #pragma mark -
 
-+ (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
-    NSArray *screens = SpectacleScreenDetection.screensInConsistentOrder;
++ (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action screens: (NSArray *)screens {
     NSScreen *result = nil;
 
     if (screens.count <= 1) {
@@ -118,9 +118,7 @@
 
 # pragma mark -
 
-+ (NSArray *)screensInConsistentOrder {
-    NSArray *screens = NSScreen.screens;
-
++ (NSArray *)screensInConsistentOrder: (NSArray *)screens {
     NSArray *result = [[screens sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
         if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
             return NSOrderedAscending;

@@ -1,13 +1,25 @@
 PODS:
+  - Expecta (0.3.1)
   - HockeySDK-Mac (2.1.0)
+  - OCHamcrest (4.0.1)
+  - OCMockito (1.3.1):
+    - OCHamcrest (~> 4.0)
   - Sparkle (1.8.0)
+  - Specta (0.2.1)
 
 DEPENDENCIES:
+  - Expecta (~> 0.3.1)
   - HockeySDK-Mac (~> 2.1)
+  - OCMockito (~> 1.3)
   - Sparkle (~> 1.8)
+  - Specta (~> 0.2.1)
 
 SPEC CHECKSUMS:
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   HockeySDK-Mac: b833b385b4fb66932d760fbcb47733a1544d867c
+  OCHamcrest: b464725bbb48d0f1cd9c6f4ec3cb35fe0c4f2b94
+  OCMockito: 57b8c4bb54ff3a4a14eb2174f9e57faf9f56efb6
   Sparkle: 5eb20bb37ca21e471dab8417dee880198d905327
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.34.4
