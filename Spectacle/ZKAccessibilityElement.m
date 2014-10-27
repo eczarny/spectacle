@@ -74,7 +74,7 @@
         
         CFRelease(childElement);
     } else {
-        NSLog(@"Unable to obtain the accessibility element with the specified attribute: %@", attribute);
+        NSLog(@"Unable to obtain the accessibility element with the specified attribute: %@ (error code %d)", attribute, result);
     }
     
     return newElement;
@@ -92,7 +92,7 @@
         if (result == kAXErrorSuccess) {
             return CFBridgingRelease(value);
         } else {
-            NSLog(@"There was a problem getting the string value of the specified attribute: %@", attribute);
+            NSLog(@"There was a problem getting the string value of the specified attribute: %@ (error code %d)", attribute, result);
         }
     }
     
@@ -109,7 +109,7 @@
         if ((result == kAXErrorSuccess) && (AXValueGetType(value) == type)) {
             return value;
         } else {
-            NSLog(@"There was a problem getting the value of the specified attribute: %@", attribute);
+            NSLog(@"There was a problem getting the value of the specified attribute: %@ (error code %d)", attribute, result);
         }
     }
     
@@ -122,7 +122,7 @@
     AXError result = AXUIElementSetAttributeValue(_element, attribute, (CFTypeRef *)value);
     
     if (result != kAXErrorSuccess) {
-        NSLog(@"There was a problem setting the value of the specified attribute: %@", attribute);
+        NSLog(@"There was a problem setting the value of the specified attribute: %@ (error code %d)", attribute, result);
     }
 }
 
