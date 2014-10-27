@@ -19,7 +19,7 @@
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
     NSScreen *result = NSScreen.mainScreen;
     
-    for (NSScreen *currentScreen in [NSScreen screens]) {
+    for (NSScreen *currentScreen in SpectacleScreenDetection.screensInConsistentOrder) {
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         CGRect flippedRect = rect;
         CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
@@ -60,33 +60,15 @@
 #pragma mark -
 
 + (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action {
-    NSArray *screens = NSScreen.screens;
+    NSArray *screens = SpectacleScreenDetection.screensInConsistentOrder;
     NSScreen *result = nil;
 
     if (screens.count <= 1) {
         return result;
     }
 
-    NSArray *screensInConsistentOrder = [[screens sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
-        if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
-            return NSOrderedAscending;
-        } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
-            return NSOrderedDescending;
-        }
-
-        return (NSComparisonResult)(screenTwo.frame.origin.y - screenOne.frame.origin.y);
-    }] sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
-        if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
-            return NSOrderedAscending;
-        } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
-            return NSOrderedDescending;
-        }
-
-        return (NSComparisonResult)(screenTwo.frame.origin.x - screenOne.frame.origin.x);
-    }];
-
-    for (NSInteger i = 0; i < screensInConsistentOrder.count; i++) {
-        NSScreen *currentScreen = screensInConsistentOrder[i];
+    for (NSInteger i = 0; i < screens.count; i++) {
+        NSScreen *currentScreen = screens[i];
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         NSInteger nextOrPreviousIndex = i;
 
@@ -111,6 +93,32 @@
         break;
     }
     
+    return result;
+}
+
+# pragma mark -
+
++ (NSArray *)screensInConsistentOrder {
+    NSArray *screens = NSScreen.screens;
+
+    NSArray *result = [[screens sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
+        if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedAscending;
+        } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedDescending;
+        }
+
+        return (NSComparisonResult)(screenTwo.frame.origin.y - screenOne.frame.origin.y);
+    }] sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
+        if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedAscending;
+        } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
+            return NSOrderedDescending;
+        }
+
+        return (NSComparisonResult)(screenTwo.frame.origin.x - screenOne.frame.origin.x);
+    }];
+
     return result;
 }
 
