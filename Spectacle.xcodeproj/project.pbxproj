@@ -373,7 +373,7 @@
 				2D1E1AAC147E06AD0021D73D /* Sources */,
 				2D1E1AAD147E06AD0021D73D /* Frameworks */,
 				2D1E1AAE147E06AD0021D73D /* Resources */,
-				2DC25F9D19FF3F93009591A9 /* Add CFBundleVersion */,
+				2DC25F9D19FF3F93009591A9 /* Update CFBundleVersion */,
 				F1EA1F8459FB4A1D9574B6AD /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -442,19 +442,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DC25F9D19FF3F93009591A9 /* Add CFBundleVersion */ = {
+		2DC25F9D19FF3F93009591A9 /* Update CFBundleVersion */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Add CFBundleVersion";
+			name = "Update CFBundleVersion";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# See: http://tgoode.com/2014/06/05/sensible-way-increment-bundle-version-cfbundleversion-xcode/\nbranch=${1:-'master'}\nbuild_number=$(expr $(git rev-list $branch --count) - $(git rev-list HEAD...$branch --count))\necho \"Updating build number to $build_number using branch: $branch\"\n/usr/libexec/PlistBuddy -c \"Add :CFBundleVersion string $build_number\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
+			shellScript = "# See: http://tgoode.com/2014/06/05/sensible-way-increment-bundle-version-cfbundleversion-xcode/\nbranch=${1:-'master'}\nbuild_number=$(expr $(git rev-list $branch --count) - $(git rev-list HEAD...$branch --count))\necho \"Updating build number to $build_number using branch: $branch\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $build_number\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
 		};
 		4333C7B808B243C29E3C2D58 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

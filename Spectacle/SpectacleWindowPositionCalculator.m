@@ -142,7 +142,6 @@
     for (i = 0; i < thirds.count; i++) {
         CGRect currentWindowRect = [thirds[i] windowRect];
         
-        // are we within this "third" and centred within it? advance to next
         if (RectCentredWithinRect(currentWindowRect, windowRect)) {
             NSInteger j = i;
             
