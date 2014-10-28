@@ -9,4 +9,4 @@ before_script:
   - export LANG=en_US.UTF-8
 
 script:
-  - xctool -workspace Spectacle.xcworkspace -scheme Spectacle test
+  - xctool -workspace Spectacle.xcworkspace -scheme Spectacle
