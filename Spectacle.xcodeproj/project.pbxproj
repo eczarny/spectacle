@@ -373,7 +373,7 @@
 				2D1E1AAC147E06AD0021D73D /* Sources */,
 				2D1E1AAD147E06AD0021D73D /* Frameworks */,
 				2D1E1AAE147E06AD0021D73D /* Resources */,
-				2DC25F9D19FF3F93009591A9 /* ShellScript */,
+				2DC25F9D19FF3F93009591A9 /* Add CFBundleVersion */,
 				F1EA1F8459FB4A1D9574B6AD /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -442,13 +442,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DC25F9D19FF3F93009591A9 /* ShellScript */ = {
+		2DC25F9D19FF3F93009591A9 /* Add CFBundleVersion */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Add CFBundleVersion";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
