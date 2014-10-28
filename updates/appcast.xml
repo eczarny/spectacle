@@ -72,8 +72,15 @@
       <title>Spectacle 0.8.7</title>
       <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.8.7.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
-      <pubDate>Tue, 28 Oct 2014 2:50:00 EDT</pubDate>
+      <pubDate>Tue, 28 Oct 2014 14:50:00 EDT</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.7.zip" sparkle:shortVersionString="0.8.7" sparkle:version="393" sparkle:dsaSignature="MCwCFA6bNg6QUVSpGnmDE0jbhTsyfTqJAhQi0k3pUeBhpj0jlkVMOQyEr4B6Hw==" length="3633109" type="application/octet-stream" />
+    </item>
+    <item>
+      <title>Spectacle 0.8.8</title>
+      <sparkle:releaseNotesLink>http://spectacleapp.com/updates/changes/0.8.8.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
+      <pubDate>Tue, 28 Oct 2014 19:32:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.8.zip" sparkle:shortVersionString="0.8.8" sparkle:version="395" sparkle:dsaSignature="MCwCFGfVpJ6hPPYmOhkeZ4EvEZSsYCSOAhRJuibhrFlFT0fMN+uRQ/Hbufmstg==" length="3634082" type="application/octet-stream" />
     </item>
   </channel>
 </rss>
