@@ -293,9 +293,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
             LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
             CFURLRef applicationPathURL;
 
-            LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL);
-
-            if (applicationPathURL != NULL) {
+            if (LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL) == noErr) {
                 NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
 
                 if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
