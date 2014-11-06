@@ -32,6 +32,7 @@
 		2D73677E149ADB7400837D7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D736779149ADB7400837D7D /* Localizable.strings */; };
 		2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */; };
 		2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */; };
+		2D7F52421A0A9C750082D7C8 /* SpectacleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */; };
 		2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0706C0431191092B0068F04B /* Defaults.plist */; };
 		2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 070031AF1217712E001D4C46 /* HotKeyNames.plist */; };
 		2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07678096118679C600614FB5 /* SpectacleHotKeyManager.m */; };
@@ -120,6 +121,7 @@
 		2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleApplicationController.m; path = Spectacle/SpectacleApplicationController.m; sourceTree = "<group>"; };
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowActionController.h; path = Spectacle/SpectacleWindowActionController.h; sourceTree = "<group>"; };
 		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowActionController.m; path = Spectacle/SpectacleWindowActionController.m; sourceTree = "<group>"; };
+		2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleConstants.m; path = Spectacle/SpectacleConstants.m; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* SpectacleSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleSpecs-Info.plist"; path = "SpectacleSpecs/Resources/Property Lists/SpectacleSpecs-Info.plist"; sourceTree = "<group>"; };
 		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Spectacle/Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
@@ -162,6 +164,8 @@
 		0747DAE71183AAB600F75DD2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
+				2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */,
 				07678095118679C600614FB5 /* SpectacleHotKeyManager.h */,
 				07678096118679C600614FB5 /* SpectacleHotKeyManager.m */,
 				2D1AE52315D715F400EAC5BD /* SpectacleHotKeyValidator.h */,
@@ -384,7 +388,6 @@
 			children = (
 				077938E51184FADB0013BC14 /* main.m */,
 				32DBCFA20370C41700C91783 /* Spectacle.pch */,
-				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
 				2DDEB84919F9EDF6007D2BA2 /* SpectacleSpecs.pch */,
 			);
 			name = "Other Sources";
@@ -607,6 +610,7 @@
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
 				2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
 				2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */,
+				2D7F52421A0A9C750082D7C8 /* SpectacleConstants.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
 				2D3A050D194956E100CD96E7 /* ZKAccessibilityElement.m in Sources */,
 				2D3A050E194956E100CD96E7 /* ZKHotKey.m in Sources */,

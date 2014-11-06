@@ -1,97 +1,97 @@
-#define SpectaclePreferencesWindowNibName                @"SpectaclePreferencesWindow"
+extern NSString *const SpectaclePreferencesWindowNibName;
 
 #pragma mark -
 
-#define SpectacleStatusItemEnabledNotification           @"SpectacleStatusItemEnabledNotification"
-#define SpectacleStatusItemDisabledNotification          @"SpectacleStatusItemDisabledNotification"
+extern NSString *const SpectacleStatusItemEnabledNotification;
+extern NSString *const SpectacleStatusItemDisabledNotification;
 
-#define SpectacleHotKeyChangedNotification               @"SpectacleHotKeyChangedNotification"
+extern NSString *const SpectacleHotKeyChangedNotification;
 
-#define SpectacleRestoreDefaultHotKeysNotification       @"SpectacleRestoreDefaultHotKeysNotification"
-
-#pragma mark -
-
-#define SpectacleMenuItemActivateIgnoringOtherApps       -1
+extern NSString *const SpectacleRestoreDefaultHotKeysNotification;
 
 #pragma mark -
 
-#define SpectaclePropertyListFileExtension               @"plist"
-
-#define SpectacleDefaultPreferencesPropertyListFile      @"Defaults"
-#define SpectacleHotKeyNamesPropertyListFile             @"HotKeyNames"
-#define SpectacleBlacklistedApplicationsPropertyListFile @"BlacklistedApplications"
+extern const NSInteger SpectacleMenuItemActivateIgnoringOtherApps;
 
 #pragma mark -
 
-#define SpectacleWindowActionMoveToCenter                @"MoveToCenter"
-#define SpectacleWindowActionMoveToFullscreen            @"MoveToFullscreen"
+extern NSString *const SpectaclePropertyListFileExtension;
 
-#define SpectacleWindowActionMoveToLeftHalf              @"MoveToLeftHalf"
-#define SpectacleWindowActionMoveToRightHalf             @"MoveToRightHalf"
-#define SpectacleWindowActionMoveToTopHalf               @"MoveToTopHalf"
-#define SpectacleWindowActionMoveToBottomHalf            @"MoveToBottomHalf"
-
-#define SpectacleWindowActionMoveToUpperLeft             @"MoveToUpperLeft"
-#define SpectacleWindowActionMoveToLowerLeft             @"MoveToLowerLeft"
-#define SpectacleWindowActionMoveToUpperRight            @"MoveToUpperRight"
-#define SpectacleWindowActionMoveToLowerRight            @"MoveToLowerRight"
-
-#define SpectacleWindowActionMoveToNextDisplay           @"MoveToNextDisplay"
-#define SpectacleWindowActionMoveToPreviousDisplay       @"MoveToPreviousDisplay"
-
-#define SpectacleWindowActionMoveToNextThird             @"MoveToNextThird"
-#define SpectacleWindowActionMoveToPreviousThird         @"MoveToPreviousThird"
-
-#define SpectacleWindowActionMakeLarger                  @"MakeLarger"
-#define SpectacleWindowActionMakeSmaller                 @"MakeSmaller"
-
-#define SpectacleWindowActionUndoLastMove                @"UndoLastMove"
-#define SpectacleWindowActionRedoLastMove                @"RedoLastMove"
+extern NSString *const SpectacleDefaultPreferencesPropertyListFile;
+extern NSString *const SpectacleHotKeyNamesPropertyListFile;
+extern NSString *const SpectacleBlacklistedApplicationsPropertyListFile;
 
 #pragma mark -
 
-#define SpectacleWindowActionHistorySize                 50
+extern NSString *const SpectacleWindowActionMoveToCenter;
+extern NSString *const SpectacleWindowActionMoveToFullscreen;
+
+extern NSString *const SpectacleWindowActionMoveToLeftHalf;
+extern NSString *const SpectacleWindowActionMoveToRightHalf;
+extern NSString *const SpectacleWindowActionMoveToTopHalf;
+extern NSString *const SpectacleWindowActionMoveToBottomHalf;
+
+extern NSString *const SpectacleWindowActionMoveToUpperLeft;
+extern NSString *const SpectacleWindowActionMoveToLowerLeft;
+extern NSString *const SpectacleWindowActionMoveToUpperRight;
+extern NSString *const SpectacleWindowActionMoveToLowerRight;
+
+extern NSString *const SpectacleWindowActionMoveToNextDisplay;
+extern NSString *const SpectacleWindowActionMoveToPreviousDisplay;
+
+extern NSString *const SpectacleWindowActionMoveToNextThird;
+extern NSString *const SpectacleWindowActionMoveToPreviousThird;
+
+extern NSString *const SpectacleWindowActionMakeLarger;
+extern NSString *const SpectacleWindowActionMakeSmaller;
+
+extern NSString *const SpectacleWindowActionUndoLastMove;
+extern NSString *const SpectacleWindowActionRedoLastMove;
 
 #pragma mark -
 
-#define SpectacleEscapeKey                               53
+extern const NSInteger SpectacleWindowActionHistorySize;
 
 #pragma mark -
 
-#define SpectacleWindowSizeOffset                        30.0f
-
-#define SpectacleMinimumWindowSizeRatio                  4.0f
+extern const NSInteger SpectacleEscapeKey;
 
 #pragma mark -
 
-#define SpectacleStatusItemIcon                          @"Spectacle Status Item"
-#define SpectacleAlternateStatusItemIcon                 @"Spectacle Alternate Status Item"
+extern const CGFloat SpectacleWindowSizeOffset;
+
+extern const CGFloat SpectacleMinimumWindowSizeRatio;
 
 #pragma mark -
 
-#define SpectaclePreferencePaneExtension                 @"prefPane"
-
-#define SpectacleStatusItemEnabledPreference             @"StatusItemEnabled"
-#define SpectacleAutomaticUpdateCheckEnabledPreference   @"AutomaticUpdateCheckEnabled"
-#define SpectacleBackgroundAlertSuppressedPreference     @"BackgroundAlertSuppressed"
+extern NSString *const SpectacleStatusItemIcon;
+extern NSString *const SpectacleAlternateStatusItemIcon;
 
 #pragma mark -
 
-#define SpectacleBlacklistedWindowRectsPreference        @"BlacklistedWindowRects"
+extern NSString *const SpectaclePreferencePaneExtension;
+
+extern NSString *const SpectacleStatusItemEnabledPreference;
+extern NSString *const SpectacleAutomaticUpdateCheckEnabledPreference;
+extern NSString *const SpectacleBackgroundAlertSuppressedPreference;
 
 #pragma mark -
 
-#define SpectacleSecurityPreferencePaneName              @"Security"
+extern NSString *const SpectacleBlacklistedWindowRectsPreference;
 
 #pragma mark -
 
-#define SpectacleSecurityAndPrivacyPreferencesScriptName @"Security & Privacy System Preferences"
-
-#define SpectacleAppleScriptFileExtension                @"scpt"
+extern NSString *const SpectacleSecurityPreferencePaneName;
 
 #pragma mark -
 
-#define SpectacleHotKeyTranslationsPropertyListFile      @"SpecialHotKeyTranslations"
+extern NSString *const SpectacleSecurityAndPrivacyPreferencesScriptName;
 
-#define SpectacleHotKeyTranslationsKey                   @"SpecialHotKeyTranslations"
-#define SpectacleHotKeyGlyphTranslationsKey              @"SpecialHotKeyGlyphTranslations"
+extern NSString *const SpectacleAppleScriptFileExtension;
+
+#pragma mark -
+
+extern NSString *const SpectacleHotKeyTranslationsPropertyListFile;
+
+extern NSString *const SpectacleHotKeyTranslationsKey;
+extern NSString *const SpectacleHotKeyGlyphTranslationsKey;
