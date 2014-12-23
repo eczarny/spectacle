@@ -50,7 +50,17 @@
         _makeLargerHotKeyRecorder,            SpectacleWindowActionMakeLarger,
         _makeSmallerHotKeyRecorder,           SpectacleWindowActionMakeSmaller,
         _undoLastMoveHotKeyRecorder,          SpectacleWindowActionUndoLastMove,
-        _redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove, nil];
+        _redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove,
+        _tagWindow1Recorder,                  SpectacleWindowActionTagWindow1,
+        _goToWindow1Recorder,                 SpectacleWindowActionGoToWindow1,
+        _tagWindow2Recorder,                  SpectacleWindowActionTagWindow2,
+        _goToWindow2Recorder,                 SpectacleWindowActionGoToWindow2,
+        _tagWindow3Recorder,                  SpectacleWindowActionTagWindow3,
+        _goToWindow3Recorder,                 SpectacleWindowActionGoToWindow3,
+        _tagWindow4Recorder,                  SpectacleWindowActionTagWindow4,
+        _goToWindow4Recorder,                 SpectacleWindowActionGoToWindow4,
+        _tagWindow5Recorder,                  SpectacleWindowActionTagWindow5,
+        _goToWindow5Recorder,                 SpectacleWindowActionGoToWindow5, nil];
     
     [self loadRegisteredHotKeys];
 

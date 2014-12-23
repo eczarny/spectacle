@@ -24,6 +24,16 @@
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *makeSmallerHotKeyRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *undoLastMoveHotKeyRecorder;
 @property (nonatomic) IBOutlet ZKHotKeyRecorder *redoLastMoveHotKeyRecorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *tagWindow1Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *goToWindow1Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *tagWindow2Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *goToWindow2Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *tagWindow3Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *goToWindow3Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *tagWindow4Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *goToWindow4Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *tagWindow5Recorder;
+@property (nonatomic) IBOutlet ZKHotKeyRecorder *goToWindow5Recorder;
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
 

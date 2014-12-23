@@ -20,5 +20,15 @@
 	<string>MakeSmaller</string>
 	<string>UndoLastMove</string>
 	<string>RedoLastMove</string>
+	<string>TagWindow1</string>
+	<string>GoToWindow1</string>
+	<string>TagWindow2</string>
+	<string>GoToWindow2</string>
+	<string>TagWindow3</string>
+	<string>GoToWindow3</string>
+	<string>TagWindow4</string>
+	<string>GoToWindow4</string>
+	<string>TagWindow5</string>
+	<string>GoToWindow5</string>
 </array>
 </plist>
