@@ -103,6 +103,7 @@
             AXUIElementGetPid(tagged.getElement, &pid);
             AXUIElementRef app = AXUIElementCreateApplication(pid);
             AXUIElementSetAttributeValue(app, kAXFrontmostAttribute, kCFBooleanTrue);
+            AXUIElementSetAttributeValue(tagged.getElement, kAXMinimizedAttribute, kCFBooleanFalse);
             return;
         }
     }
