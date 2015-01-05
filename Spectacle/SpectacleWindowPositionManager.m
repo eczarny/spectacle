@@ -3,7 +3,6 @@
 #import "SpectacleScreenDetection.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
-#import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
 #import "ZKAccessibilityElement.h"
 

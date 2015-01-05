@@ -2,7 +2,6 @@
 #import "SpectacleWindowPositionManager.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectacleUtilities.h"
-#import "SpectacleConstants.h"
 
 @interface SpectacleWindowActionController ()
 

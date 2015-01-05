@@ -3,7 +3,6 @@
 #import "ZKHotKeyTranslator.h"
 #import "ZKHotKeyValidator.h"
 #import "ZKHotKeyRecorder.h"
-#import "ZKHotKeyRecorderDelegate.h"
 #import "SpectacleUtilities.h"
 
 #define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
