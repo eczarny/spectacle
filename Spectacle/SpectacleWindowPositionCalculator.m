@@ -185,28 +185,28 @@
     }
 
     if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(oneHalfRect)) <= 1.0f) {
-        CGRect oneThirdRect = oneHalfRect;
+        CGRect twoThirdsRect = oneHalfRect;
 
-        oneThirdRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+        twoThirdsRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
 
         if (action == SpectacleWindowActionRightHalf) {
-            oneThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdRect.size.width;
+            twoThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdsRect.size.width;
         }
 
         if (RectCentredWithinRect(oneHalfRect, windowRect)) {
-            return oneThirdRect;
-        }
-
-        if (RectCentredWithinRect(oneThirdRect, windowRect)) {
-            CGRect twoThirdsRect = oneHalfRect;
-
-            twoThirdsRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
-
-            if (action == SpectacleWindowActionRightHalf) {
-                twoThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdsRect.size.width;
-            }
-
             return twoThirdsRect;
+        }
+        
+        if (RectCentredWithinRect(twoThirdsRect, windowRect)) {
+            CGRect oneThirdRect = oneHalfRect;
+            
+            oneThirdRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+            
+            if (action == SpectacleWindowActionRightHalf) {
+                oneThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdRect.size.width;
+            }
+            
+            return oneThirdRect;
         }
     }
 
