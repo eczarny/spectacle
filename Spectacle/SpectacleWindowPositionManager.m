@@ -73,7 +73,12 @@
     
     if (screenOfDisplay) {
         frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
+        frameOfScreen.size.width++;
+        frameOfScreen.size.height++;
+        
         visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
+        visibleFrameOfScreen.size.width++;
+        visibleFrameOfScreen.size.height++;
     }
 
     if (frontMostWindowElement.isSheet || CGRectIsNull(frontMostWindowRect) || CGRectIsNull(frameOfScreen) || CGRectIsNull(visibleFrameOfScreen) || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
