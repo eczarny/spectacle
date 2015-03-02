@@ -273,7 +273,7 @@
             float xAdjust = floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
             float yAdjust = floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
             float rightLim = (movedWindowRect.origin.x + movedWindowRect.size.width) - visibleFrameOfScreen.size.width;
-            float bottomLim = (movedWindowRect.origin.y + movedWindowRect.size.height) - visibleFrameOfScreen.size.height;
+            float bottomLim = (movedWindowRect.origin.y + movedWindowRect.size.height) - frameOfScreen.size.height;
             adjustedWindowRect.origin.x += ((xAdjust > 0) * xAdjust) - (rightLim > 0) * rightLim;
             adjustedWindowRect.origin.y += ((yAdjust > 0) * yAdjust) - (bottomLim > 0) * bottomLim;
             
