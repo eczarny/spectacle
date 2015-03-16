@@ -130,4 +130,54 @@
     [_windowPositionManager redoLastWindowAction];
 }
 
+#pragma mark -
+
+- (IBAction)tag1WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTag1];
+}
+
+- (IBAction)goTo1WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionGoTo1];
+}
+
+#pragma mark -
+
+- (IBAction)tag2WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTag2];
+}
+
+- (IBAction)goTo2WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionGoTo2];
+}
+
+#pragma mark -
+
+- (IBAction)tag3WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTag3];
+}
+
+- (IBAction)goTo3WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionGoTo3];
+}
+
+#pragma mark -
+
+- (IBAction)tag4WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTag4];
+}
+
+- (IBAction)goTo4WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionGoTo4];
+}
+
+#pragma mark -
+
+- (IBAction)tag5WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTag5];
+}
+
+- (IBAction)goTo5WindowAction: (id)sender {
+    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionGoTo5];
+}
+
 @end

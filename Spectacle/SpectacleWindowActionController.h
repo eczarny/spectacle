@@ -60,4 +60,10 @@
 
 - (IBAction)redoLastWindowAction: (id)sender;
 
+#pragma mark -
+
+- (IBAction)tagWindow1: (id)sender;
+
+- (IBAction)goToWindow1: (id)sender;
+
 @end

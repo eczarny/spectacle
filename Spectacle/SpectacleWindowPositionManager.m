@@ -18,6 +18,9 @@
 
 @property (nonatomic) NSMutableDictionary *applicationHistories;
 @property (nonatomic) NSMutableSet *blacklistedApplications;
+@property (nonatomic) NSMutableArray *taggedWindows;
+@property (nonatomic) NSArray *taggingActions;
+@property (nonatomic) NSArray *goToActions;
 
 @end
 
@@ -26,6 +29,8 @@
 @implementation SpectacleWindowPositionManager
 
 - (id)init {
+    _taggedWindows = [NSMutableArray arrayWithObjects: [NSNull null], [NSNull null], [NSNull null], [NSNull null], [NSNull null], nil];
+    
     if ((self = [super init])) {
         NSString *path = [NSBundle.mainBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                        ofType: SpectaclePropertyListFileExtension];
@@ -33,6 +38,22 @@
         _applicationHistories = [NSMutableDictionary new];
         _blacklistedApplications = [NSMutableSet setWithArray: [NSArray arrayWithContentsOfFile: path]];
     }
+    
+    _taggingActions = @[
+        @(SpectacleWindowActionTag1),
+        @(SpectacleWindowActionTag2),
+        @(SpectacleWindowActionTag3),
+        @(SpectacleWindowActionTag4),
+        @(SpectacleWindowActionTag5),
+    ];
+    
+    _goToActions = @[
+        @(SpectacleWindowActionGoTo1),
+        @(SpectacleWindowActionGoTo2),
+        @(SpectacleWindowActionGoTo3),
+        @(SpectacleWindowActionGoTo4),
+        @(SpectacleWindowActionGoTo5),
+    ];
     
     return self;
 }
@@ -63,6 +84,30 @@
     }
     
     ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
+    
+    for (int i = 0; i < 5; i++) {
+        SpectacleWindowAction tagAction = [_taggingActions[i] integerValue];
+        SpectacleWindowAction goToAction = [_goToActions[i] integerValue];
+        
+        if (action == tagAction) {
+            _taggedWindows[i] = frontMostWindowElement;
+            return;
+        }
+        else if (action == goToAction) {
+            pid_t pid = 0;
+            ZKAccessibilityElement *tagged = [_taggedWindows objectAtIndex: i];
+            
+            if ([tagged isEqual: [NSNull null]])
+                return;
+            
+            AXUIElementGetPid(tagged.getElement, &pid);
+            AXUIElementRef app = AXUIElementCreateApplication(pid);
+            AXUIElementSetAttributeValue(app, kAXFrontmostAttribute, kCFBooleanTrue);
+            AXUIElementSetAttributeValue(tagged.getElement, kAXMinimizedAttribute, kCFBooleanFalse);
+            return;
+        }
+    }
+    
     CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
     CGRect previousFrontMostWindowRect = CGRectNull;
     NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction: action andRect: frontMostWindowRect screens: NSScreen.screens mainScreen: NSScreen.mainScreen];
@@ -179,8 +224,28 @@
         windowAction = SpectacleWindowActionUndo;
     } else if ([name isEqualToString: SpectacleWindowActionRedoLastMove]) {
         windowAction = SpectacleWindowActionRedo;
+    } else if ([name isEqualToString: SpectacleWindowActionTagWindow1]) {
+        windowAction = SpectacleWindowActionTag1;
+    } else if ([name isEqualToString: SpectacleWindowActionGoToWindow1]) {
+        windowAction = SpectacleWindowActionGoTo1;
+    } else if ([name isEqualToString: SpectacleWindowActionTagWindow2]) {
+        windowAction = SpectacleWindowActionTag2;
+    } else if ([name isEqualToString: SpectacleWindowActionGoToWindow2]) {
+        windowAction = SpectacleWindowActionGoTo2;
+    } else if ([name isEqualToString: SpectacleWindowActionTagWindow3]) {
+        windowAction = SpectacleWindowActionTag3;
+    } else if ([name isEqualToString: SpectacleWindowActionGoToWindow3]) {
+        windowAction = SpectacleWindowActionGoTo3;
+    } else if ([name isEqualToString: SpectacleWindowActionTagWindow4]) {
+        windowAction = SpectacleWindowActionTag4;
+    } else if ([name isEqualToString: SpectacleWindowActionGoToWindow4]) {
+        windowAction = SpectacleWindowActionGoTo4;
+    } else if ([name isEqualToString: SpectacleWindowActionTagWindow5]) {
+        windowAction = SpectacleWindowActionTag5;
+    } else if ([name isEqualToString: SpectacleWindowActionGoToWindow5]) {
+        windowAction = SpectacleWindowActionGoTo5;
     }
-    
+
     return windowAction;
 }
 

@@ -48,6 +48,21 @@ extern NSString *const SpectacleWindowActionMakeSmaller;
 extern NSString *const SpectacleWindowActionUndoLastMove;
 extern NSString *const SpectacleWindowActionRedoLastMove;
 
+extern NSString *const SpectacleWindowActionTagWindow1;
+extern NSString *const SpectacleWindowActionGoToWindow1;
+
+extern NSString *const SpectacleWindowActionTagWindow2;
+extern NSString *const SpectacleWindowActionGoToWindow2;
+
+extern NSString *const SpectacleWindowActionTagWindow3;
+extern NSString *const SpectacleWindowActionGoToWindow3;
+
+extern NSString *const SpectacleWindowActionTagWindow4;
+extern NSString *const SpectacleWindowActionGoToWindow4;
+
+extern NSString *const SpectacleWindowActionTagWindow5;
+extern NSString *const SpectacleWindowActionGoToWindow5;
+
 #pragma mark -
 
 extern const NSInteger SpectacleWindowActionHistorySize;

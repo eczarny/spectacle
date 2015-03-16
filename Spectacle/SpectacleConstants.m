@@ -50,6 +50,21 @@ NSString *const SpectacleWindowActionMakeSmaller = @"MakeSmaller";
 NSString *const SpectacleWindowActionUndoLastMove = @"UndoLastMove";
 NSString *const SpectacleWindowActionRedoLastMove = @"RedoLastMove";
 
+NSString *const SpectacleWindowActionTagWindow1 = @"TagWindow1";
+NSString *const SpectacleWindowActionGoToWindow1 = @"GoToWindow1";
+
+NSString *const SpectacleWindowActionTagWindow2 = @"TagWindow2";
+NSString *const SpectacleWindowActionGoToWindow2 = @"GoToWindow2";
+
+NSString *const SpectacleWindowActionTagWindow3 = @"TagWindow3";
+NSString *const SpectacleWindowActionGoToWindow3 = @"GoToWindow3";
+
+NSString *const SpectacleWindowActionTagWindow4 = @"TagWindow4";
+NSString *const SpectacleWindowActionGoToWindow4 = @"GoToWindow4";
+
+NSString *const SpectacleWindowActionTagWindow5 = @"TagWindow5";
+NSString *const SpectacleWindowActionGoToWindow5 = @"GoToWindow5";
+
 #pragma mark -
 
 const NSInteger SpectacleWindowActionHistorySize = 50;

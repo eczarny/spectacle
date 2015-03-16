@@ -150,4 +150,10 @@
     _element = CFRetain(element);
 }
 
+#pragma mark -
+
+- (AXUIElementRef) getElement {
+    return _element;
+}
+
 @end

@@ -27,6 +27,10 @@
 
 #pragma mark -
 
+- (AXUIElementRef) getElement;
+
+#pragma mark -
+
 - (BOOL)isSheet;
 
 @end
