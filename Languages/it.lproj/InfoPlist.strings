@@ -1,4 +1,0 @@
-/* Localized versions of the Spectacle Info.plist keys. */
-
-NSPrefPaneIconLabel = "Spectacle";
-NSHumanReadableCopyright = "Copyright © 2014 Eric Czarny";
