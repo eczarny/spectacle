@@ -150,12 +150,12 @@
     
     NSImage *statusImage = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource:SpectacleStatusItemIcon]];
     
-    [statusImage setTemplate:YES];
+    [statusImage setTemplate: YES];
     
     _statusItem.image = statusImage;
     
     _statusItem.highlightMode = YES;
-
+    
     _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion];
 
     [_statusItem setMenu: _statusItemMenu];

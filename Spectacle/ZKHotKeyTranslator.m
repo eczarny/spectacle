@@ -172,6 +172,10 @@ enum {
         UniCharCount actualLength = 0;
         UniChar chars[4];
         
+        if (inputSource != NULL) {
+            CFRelease(inputSource);
+        }
+        
         if (layoutData == NULL) {
             NSLog(@"Unable to determine keyboard layout.");
             
@@ -187,8 +191,6 @@ enum {
         }
         
         result = [[NSString stringWithCharacters: chars length: 1] uppercaseString];
-        
-        CFRelease(inputSource);
     }
     
     return result;
