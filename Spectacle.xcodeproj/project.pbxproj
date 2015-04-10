@@ -118,8 +118,8 @@
 		2DA5B7C919F8BA79007EDE8E /* SpectacleSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleSpecs-Info.plist"; path = "SpectacleSpecs/Resources/Property Lists/SpectacleSpecs-Info.plist"; sourceTree = "<group>"; };
 		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Spectacle/Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
 		2DC4E3CB1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Spectacle/Languages/en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		2DC4E3CD1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Languages/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2DC4E3CF1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Languages/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2DC4E3CD1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Languages/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2DC4E3CF1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Languages/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2DC4E3D11AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Spectacle/Languages/en.lproj/Spectacle.xib; sourceTree = "<group>"; };
 		2DC4E3D31AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Spectacle/Languages/en.lproj/SpectaclePreferencesWindow.xib; sourceTree = "<group>"; };
 		2DC4E3D91AD84E7F0022ABF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Spectacle/Languages/it.lproj/Localizable.strings; sourceTree = "<group>"; };
