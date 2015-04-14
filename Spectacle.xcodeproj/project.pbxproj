@@ -114,6 +114,11 @@
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowActionController.h; path = Spectacle/SpectacleWindowActionController.h; sourceTree = "<group>"; };
 		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowActionController.m; path = Spectacle/SpectacleWindowActionController.m; sourceTree = "<group>"; };
 		2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleConstants.m; path = Spectacle/SpectacleConstants.m; sourceTree = "<group>"; };
+		2D98D72A1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Spectacle/Languages/fr.lproj/Spectacle.xib; sourceTree = "<group>"; };
+		2D98D72B1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Spectacle/Languages/fr.lproj/SpectaclePreferencesWindow.xib; sourceTree = "<group>"; };
+		2D98D72C1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D98D72D1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D98D72E1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = Spectacle/Languages/fr.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* SpectacleSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleSpecs-Info.plist"; path = "SpectacleSpecs/Resources/Property Lists/SpectacleSpecs-Info.plist"; sourceTree = "<group>"; };
 		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Spectacle/Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
@@ -464,6 +469,7 @@
 			knownRegions = (
 				en,
 				it,
+				fr,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* Spectacle */;
 			projectDirPath = "";
@@ -635,6 +641,7 @@
 			children = (
 				2DC4E3CB1AD84E5C0022ABF0 /* en */,
 				2DC4E3DA1AD84E7F0022ABF0 /* it */,
+				2D98D72E1ADDBBF6007AD995 /* fr */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -643,6 +650,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DC4E3CD1AD84E5C0022ABF0 /* en */,
+				2D98D72C1ADDBBF6007AD995 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -652,6 +660,7 @@
 			children = (
 				2DC4E3CF1AD84E5C0022ABF0 /* en */,
 				2DC4E3D91AD84E7F0022ABF0 /* it */,
+				2D98D72D1ADDBBF6007AD995 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -660,6 +669,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DC4E3D11AD84E5C0022ABF0 /* en */,
+				2D98D72A1ADDBBF6007AD995 /* fr */,
 			);
 			name = Spectacle.xib;
 			sourceTree = "<group>";
@@ -668,6 +678,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2DC4E3D31AD84E5C0022ABF0 /* en */,
+				2D98D72B1ADDBBF6007AD995 /* fr */,
 			);
 			name = SpectaclePreferencesWindow.xib;
 			sourceTree = "<group>";

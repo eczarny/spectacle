@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject">
+            <connections>
+                <outlet property="delegate" destination="867" id="868"/>
+            </connections>
+        </customObject>
+        <customObject id="371" customClass="NSFontManager"/>
+        <customObject id="867" customClass="SpectacleApplicationController">
+            <connections>
+                <outlet property="accessiblityAccessDialogWindow" destination="aH5-eW-ySa" id="G7s-gg-8h9"/>
+                <outlet property="makeLargerHotKeyMenuItem" destination="Yun-AA-OVD" id="6gD-iQ-gKm"/>
+                <outlet property="makeSmallerHotKeyMenuItem" destination="gTe-ym-DB0" id="O2B-Mr-VA8"/>
+                <outlet property="moveToBottomHotKeyMenuItem" destination="huV-Gw-lbX" id="jVY-wC-bA6"/>
+                <outlet property="moveToCenterHotKeyMenuItem" destination="xJu-Uo-nZw" id="aeV-bD-LL3"/>
+                <outlet property="moveToFullscreenHotKeyMenuItem" destination="dwQ-Bl-nEL" id="Bf8-Z0-sXt"/>
+                <outlet property="moveToLeftHotKeyMenuItem" destination="Jae-vx-7ZC" id="Yvm-9P-Xmh"/>
+                <outlet property="moveToLowerLeftHotKeyMenuItem" destination="eN5-A6-iho" id="yjO-b4-Pah"/>
+                <outlet property="moveToLowerRightHotKeyMenuItem" destination="oDU-J0-NkJ" id="KRM-Pg-msz"/>
+                <outlet property="moveToNextDisplayHotKeyMenuItem" destination="I4U-jL-hXq" id="1PI-Ve-faD"/>
+                <outlet property="moveToNextThirdHotKeyMenuItem" destination="7HO-L3-O6Q" id="jQs-tv-OAo"/>
+                <outlet property="moveToPreviousDisplayHotKeyMenuItem" destination="aPo-Rp-A1X" id="H3a-Bz-4mZ"/>
+                <outlet property="moveToPreviousThirdHotKeyMenuItem" destination="bV9-Ga-jDG" id="Vbf-tv-qvs"/>
+                <outlet property="moveToRightHotKeyMenuItem" destination="cae-26-Oab" id="1D3-Lj-7j9"/>
+                <outlet property="moveToTopHotKeyMenuItem" destination="yh0-ik-weD" id="dtt-u7-QSZ"/>
+                <outlet property="moveToUpperLeftHotKeyMenuItem" destination="ldc-QO-Cq6" id="IBQ-px-5GQ"/>
+                <outlet property="moveToUpperRightHotKeyMenuItem" destination="C7t-Sf-kOI" id="Pxf-S8-OLH"/>
+                <outlet property="redoLastMoveHotKeyMenuItem" destination="187-7k-0Ct" id="drs-8b-iJV"/>
+                <outlet property="statusItemMenu" destination="870" id="1169"/>
+                <outlet property="undoLastMoveHotKeyMenuItem" destination="l9O-0B-fjp" id="Wyx-ma-9u3"/>
+            </connections>
+        </customObject>
+        <customObject id="1164" customClass="SUUpdater"/>
+        <menu title="Main Menu" systemMenu="main" id="29">
+            <items>
+                <menuItem title="Spectacle" id="56">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Spectacle" systemMenu="apple" id="57">
+                        <items>
+                            <menuItem title="À propos de Spectacle" id="58">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="236"/>
+                            <menuItem title="Quitter Spectacle" keyEquivalent="q" id="136">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="369"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+        </menu>
+        <menu title="Spectacle Status Item" id="870">
+            <items>
+                <menuItem title="À propos de Spectacle" tag="-1" id="879">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="orderFrontStandardAboutPanel:" target="-3" id="1104"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Vérifier les mises à jour..." tag="-1" id="1166">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="1164" id="1168"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="880"/>
+                <menuItem title="Préférences..." tag="-1" id="872">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showPreferencesWindow:" target="867" id="1149"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="1165"/>
+                <menuItem title="Centrer" id="xJu-Uo-nZw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToCenter:" target="867" id="vtY-tj-77J"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Plein écran" id="dwQ-Bl-nEL">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToFullscreen:" target="867" id="KEL-mq-NeX"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Nmj-XX-uaG"/>
+                <menuItem title="Moitié gauche" id="Jae-vx-7ZC">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToLeftHalf:" target="867" id="KP5-Rx-vgE"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Moitié droit" id="cae-26-Oab">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToRightHalf:" target="867" id="f4Z-cN-fIw"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Moitié haut" id="yh0-ik-weD">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToTopHalf:" target="867" id="HNq-6U-0hH"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Moitié bas" id="huV-Gw-lbX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToBottomHalf:" target="867" id="NjX-2V-ZRo"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="gbv-tO-TvK"/>
+                <menuItem title="En haut à gauche" id="ldc-QO-Cq6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToUpperLeft:" target="867" id="BTA-nP-tNX"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="En bas à gauche" id="eN5-A6-iho">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToLowerLeft:" target="867" id="AqU-v5-00V"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="En haut à droite" id="C7t-Sf-kOI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToUpperRight:" target="867" id="8RB-bI-M5d"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="En bas à droite" id="oDU-J0-NkJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToLowerRight:" target="867" id="tmK-BJ-a5i"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="0li-21-m4g"/>
+                <menuItem title="Affichage suivant" id="I4U-jL-hXq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToNextDisplay:" target="867" id="7JK-n4-7gf"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Affichage précédent" id="aPo-Rp-A1X">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToPreviousDisplay:" target="867" id="bDi-81-OMQ"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="2VE-eu-Tv6"/>
+                <menuItem title="Troisième suivant" id="7HO-L3-O6Q">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToNextThird:" target="867" id="hXK-sD-SEh"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Troisième précédent" id="bV9-Ga-jDG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontMostWindowToPreviousThird:" target="867" id="7aq-aA-Ypm"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="dDR-EJ-dud"/>
+                <menuItem title="Agrandir" id="Yun-AA-OVD">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeFrontMostWindowLarger:" target="867" id="leK-RJ-yo7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Réduire" id="gTe-ym-DB0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="makeFrontMostWindowSmaller:" target="867" id="ZEf-Be-fBT"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="nH8-Kx-TCA"/>
+                <menuItem title="Annuler" id="l9O-0B-fjp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="undoLastWindowAction:" target="867" id="3dR-bd-J2H"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Rétablir" id="187-7k-0Ct">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="redoLastWindowAction:" target="867" id="nKx-eV-yMf"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="b3s-Pm-hAJ"/>
+                <menuItem title="Rétablir par défaut..." id="aFM-wq-kOy">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="restoreDefaults:" target="867" id="N7T-fJ-kry"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="OfT-IK-7NI"/>
+                <menuItem title="Quitter Spectacle" id="873">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-3" id="877"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aH5-eW-ySa">
+            <rect key="contentRect" x="422" y="199" width="780" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <value key="minSize" type="size" width="780" height="414"/>
+            <value key="maxSize" type="size" width="780" height="414"/>
+            <view key="contentView" id="wR6-GU-kdb">
+                <rect key="frame" x="0.0" y="0.0" width="780" height="360"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="he4-Bj-XB4">
+                        <rect key="frame" x="-27" y="-366" width="835" height="653"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="Security &amp; Privacy" id="zQN-Oe-PPv"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" id="9dg-wQ-O5z">
+                        <rect key="frame" x="212" y="251" width="212" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Ouvrir Préférences Système" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iPl-AT-Pei">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="openSystemPreferences:" target="867" id="8yr-HL-TfK"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="nIS-kz-1R7">
+                        <rect key="frame" x="424" y="251" width="148" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Quitter Spectacle" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gMV-vD-CUe">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="terminate:" target="-3" id="Qo4-UR-2lc"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q8H-wi-KU2">
+                        <rect key="frame" x="108" y="321" width="564" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Spectacle souhaite contrôler vos fenêtres à l'aide des fonctionnalités d'accessibilité." id="HRo-tn-M1V">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="MM0-lm-06Y">
+                        <rect key="frame" x="129" y="295" width="522" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Accorder l'accès à cette application dans les Préférences Système." id="ruu-yJ-Q1F">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+        </window>
+    </objects>
+    <resources>
+        <image name="Security &amp; Privacy" width="782" height="636"/>
+    </resources>
+</document>
