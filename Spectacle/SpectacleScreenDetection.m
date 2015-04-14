@@ -24,7 +24,7 @@
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
         CGRect flippedRect = rect;
         CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
-        
+
         flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, currentFrameOfScreen);
         
         if (CGRectContainsRect(currentFrameOfScreen, flippedRect)) {

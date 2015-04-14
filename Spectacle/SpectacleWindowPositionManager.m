@@ -123,7 +123,7 @@
                                                                  windowRect: frontMostWindowRect];
     
     [history addHistoryItem: historyItem];
-    
+
     [self moveWindowRect: frontMostWindowRect frameOfScreen: frameOfScreen visibleFrameOfScreen: visibleFrameOfScreen frontMostWindowElement: frontMostWindowElement action: action];
 }
 
@@ -241,7 +241,7 @@
     }
     
     if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
-        [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
+        [self moveWindowRect:windowRect frontMostWindowElement: frontMostWindowElement];
 
         movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
         
@@ -264,7 +264,7 @@
                     break;
                 }
                 
-                [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
+                [self moveWindowRect: adjustedWindowRect frontMostWindowElement: frontMostWindowElement];
 
                 movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
             }
@@ -272,12 +272,13 @@
             // Center the window, taking into account any quantization adjustments.
             float xAdjust = floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
             float yAdjust = floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
-            float rightLim = (movedWindowRect.origin.x + movedWindowRect.size.width) - visibleFrameOfScreen.size.width;
-            float bottomLim = (movedWindowRect.origin.y + movedWindowRect.size.height) - frameOfScreen.size.height;
-            adjustedWindowRect.origin.x += ((xAdjust > 0) * xAdjust) - (rightLim > 0) * rightLim;
-            adjustedWindowRect.origin.y += ((yAdjust > 0) * yAdjust) - (bottomLim > 0) * bottomLim;
-            
-            [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
+            float rightLimit = (movedWindowRect.origin.x + movedWindowRect.size.width) - visibleFrameOfScreen.size.width;
+            float bottomLimit = (movedWindowRect.origin.y + movedWindowRect.size.height) - frameOfScreen.size.height;
+
+            adjustedWindowRect.origin.x += ((xAdjust > 0) * xAdjust) - (rightLimit > 0) * rightLimit;
+            adjustedWindowRect.origin.y += ((yAdjust > 0) * yAdjust) - (bottomLimit > 0) * bottomLimit;
+
+            [self moveWindowRect: adjustedWindowRect frontMostWindowElement: frontMostWindowElement];
         }
     }
 }
@@ -285,11 +286,11 @@
 - (void)moveWindowRect: (CGRect)windowRect frontMostWindowElement: (ZKAccessibilityElement *)frontMostWindowElement {
     AXValueRef windowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&windowRect.origin);
     AXValueRef windowRectSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&windowRect.size);
-    
+
     [frontMostWindowElement setValue: windowRectSizeRef forAttribute: kAXSizeAttribute];
     [frontMostWindowElement setValue: windowRectPositionRef forAttribute: kAXPositionAttribute];
     [frontMostWindowElement setValue: windowRectSizeRef forAttribute: kAXSizeAttribute];
-    
+
     CFRelease(windowRectPositionRef);
     CFRelease(windowRectSizeRef);
 }

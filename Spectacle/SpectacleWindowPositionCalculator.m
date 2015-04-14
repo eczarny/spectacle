@@ -23,7 +23,7 @@
     }
 
     if (MovingToTopRegionOfDisplay(action)) {
-        calculatedWindowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f);
+        calculatedWindowRect.origin.y = visibleFrameOfScreen.origin.y + floor(visibleFrameOfScreen.size.height / 2.0f) + remainder(visibleFrameOfScreen.size.height, 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
         calculatedWindowRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) - floor(calculatedWindowRect.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
     } else if (!MovingToThirdOfDisplay(action)) {
@@ -222,7 +222,7 @@
     oneHalfRect.size.height = floor(oneHalfRect.size.height / 2.0f);
 
     if (action == SpectacleWindowActionTopHalf) {
-        oneHalfRect.origin.y += oneHalfRect.size.height;
+        oneHalfRect.origin.y += oneHalfRect.size.height + remainder(visibleFrameOfScreen.size.height, 2.0f);
     }
 
     if (fabs(CGRectGetMidX(windowRect) - CGRectGetMidX(oneHalfRect)) <= 1.0f) {
