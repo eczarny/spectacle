@@ -116,8 +116,8 @@
 		2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleConstants.m; path = Spectacle/SpectacleConstants.m; sourceTree = "<group>"; };
 		2D98D72A1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Spectacle/Languages/fr.lproj/Spectacle.xib; sourceTree = "<group>"; };
 		2D98D72B1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = Spectacle/Languages/fr.lproj/SpectaclePreferencesWindow.xib; sourceTree = "<group>"; };
-		2D98D72C1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2D98D72D1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D98D72C1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D98D72D1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D98D72E1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = Spectacle/Languages/fr.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* SpectacleSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleSpecs-Info.plist"; path = "SpectacleSpecs/Resources/Property Lists/SpectacleSpecs-Info.plist"; sourceTree = "<group>"; };
