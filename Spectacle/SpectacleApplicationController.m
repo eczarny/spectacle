@@ -1,5 +1,4 @@
 #import <Sparkle/Sparkle.h>
-#import <HockeySDK/HockeySDK.h>
 
 #import "SpectacleApplicationController.h"
 #import "SpectaclePreferencesController.h"
@@ -83,9 +82,6 @@
                              object: nil];
 
     [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates: automaticallyChecksForUpdates];
-
-    [BITHockeyManager.sharedHockeyManager configureWithIdentifier: @"d1ff699d780232448962aacb48ee6ec7"];
-    [BITHockeyManager.sharedHockeyManager startManager];
 
     [self updateHotKeyMenuItems];
 
