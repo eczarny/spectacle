@@ -60,7 +60,7 @@
 - (BOOL)performKeyEquivalent: (NSEvent *)event {
     NSInteger keyCode = event.keyCode;
     NSUInteger newModifierFlags = _modifierFlags | event.modifierFlags;
-    
+
     if (_isRecording && [ZKHotKey validCocoaModifiers: newModifierFlags]) {
         NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
         

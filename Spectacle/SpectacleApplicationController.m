@@ -153,9 +153,7 @@
     [statusImage setTemplate: YES];
     
     _statusItem.image = statusImage;
-    
     _statusItem.highlightMode = YES;
-    
     _statusItem.toolTip = [NSString stringWithFormat: @"Spectacle %@", SpectacleUtilities.applicationVersion];
 
     [_statusItem setMenu: _statusItemMenu];
@@ -177,7 +175,7 @@
 
         if (hotKey) {
             hotKeyMenuItem.keyEquivalent = [[hotKeyTranslator translateKeyCode: hotKey.hotKeyCode] lowercaseString];
-            hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoafNecessary: hotKey.hotKeyModifiers];
+            hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoaIfNecessary: hotKey.hotKeyModifiers];
         } else {
             hotKeyMenuItem.keyEquivalent = @"";
             hotKeyMenuItem.keyEquivalentModifierMask = 0;

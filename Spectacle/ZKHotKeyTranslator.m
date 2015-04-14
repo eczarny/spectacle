@@ -25,6 +25,7 @@ enum {
     ZKHotKeyCommandCarbonKeyMask   = 1 << 8,
     ZKHotKeyControlCarbonKeyMask   = 1 << 12,
     ZKHotKeyShiftCarbonKeyMask     = 1 << 9,
+    ZKHotKeyFunctionCarbonKeyMask  = 1 << 17
 };
 
 @interface ZKHotKeyTranslator ()
@@ -68,7 +69,7 @@ enum {
     return modifiers;
 }
 
-+ (NSUInteger)convertModifiersToCocoafNecessary: (NSUInteger)modifiers {
++ (NSUInteger)convertModifiersToCocoaIfNecessary: (NSUInteger)modifiers {
     if (![ZKHotKey validCocoaModifiers: modifiers]) {
         modifiers = [self convertCarbonModifiersToCocoa: modifiers];
     }
@@ -97,6 +98,10 @@ enum {
         convertedModifiers |= ZKHotKeyCommandCarbonKeyMask;
     }
 
+    if (modifiers & NSFunctionKeyMask) {
+        convertedModifiers |= ZKHotKeyFunctionCarbonKeyMask;
+    }
+
     return convertedModifiers;
 }
 
@@ -117,6 +122,10 @@ enum {
 
     if (modifiers & ZKHotKeyCommandCarbonKeyMask) {
         convertedModifiers |= NSCommandKeyMask;
+    }
+
+    if (modifiers & ZKHotKeyFunctionCarbonKeyMask) {
+        convertedModifiers |= NSFunctionKeyMask;
     }
 
     return convertedModifiers;
@@ -142,7 +151,7 @@ enum {
     if (modifiers & NSCommandKeyMask) {
         modifierGlyphs = [modifierGlyphs stringByAppendingFormat: @"%C", (UInt16)ZKHotKeyCommandGlyph];
     }
-    
+
     return modifierGlyphs;
 }
 
@@ -189,10 +198,10 @@ enum {
             
             return @"?";
         }
-        
+
         result = [[NSString stringWithCharacters: chars length: 1] uppercaseString];
     }
-    
+
     return result;
 }
 

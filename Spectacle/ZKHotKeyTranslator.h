@@ -12,7 +12,7 @@
 
 + (NSUInteger)convertModifiersToCarbonIfNecessary: (NSUInteger)modifiers;
 
-+ (NSUInteger)convertModifiersToCocoafNecessary: (NSUInteger)modifiers;
++ (NSUInteger)convertModifiersToCocoaIfNecessary: (NSUInteger)modifiers;
 
 #pragma mark -
 
