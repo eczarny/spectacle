@@ -144,7 +144,7 @@
 - (void)createStatusItem {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
     
-    NSImage *statusImage = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource:SpectacleStatusItemIcon]];
+    NSImage *statusImage = [[NSImage alloc] initWithContentsOfFile: [NSBundle.mainBundle pathForImageResource: SpectacleStatusItemIcon]];
     
     [statusImage setTemplate: YES];
     

@@ -67,7 +67,6 @@ const CGFloat SpectacleMinimumWindowSizeRatio = 4.0f;
 #pragma mark -
 
 NSString *const SpectacleStatusItemIcon = @"Spectacle Status Item";
-NSString *const SpectacleAlternateStatusItemIcon = @"Spectacle Alternate Status Item";
 
 #pragma mark -
 
