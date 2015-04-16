@@ -1,4 +1,5 @@
 #import "SpectacleScreenDetection.h"
+
 #import "SpectacleUtilities.h"
 
 @implementation SpectacleScreenDetection

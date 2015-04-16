@@ -1,4 +1,5 @@
 #import "ZKHotKey.h"
+
 #import "ZKHotKeyTranslator.h"
 
 @implementation ZKHotKey

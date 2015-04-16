@@ -1,6 +1,7 @@
 #import <Carbon/Carbon.h>
 
 #import "SpectacleHotKeyManager.h"
+
 #import "ZKHotKey.h"
 
 static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data);

@@ -1,4 +1,5 @@
 #import "SpectacleHotKeyValidator.h"
+
 #import "SpectacleHotKeyManager.h"
 
 @implementation SpectacleHotKeyValidator

@@ -1,5 +1,6 @@
-#import "SpectacleConstants.h"
 #import "ZKHotKeyTranslator.h"
+
+#import "SpectacleConstants.h"
 #import "ZKHotKey.h"
 
 enum {

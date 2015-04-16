@@ -34,6 +34,7 @@
 		2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
+		2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */; };
 		2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */; };
 		2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CA1AD84E5C0022ABF0 /* Credits.rtf */; };
 		2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CC1AD84E5C0022ABF0 /* InfoPlist.strings */; };
@@ -119,6 +120,8 @@
 		2D98D72C1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D98D72D1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Languages/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D98D72E1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = Spectacle/Languages/fr.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleCalculationResult.h; path = Spectacle/SpectacleCalculationResult.h; sourceTree = "<group>"; };
+		2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleCalculationResult.m; path = Spectacle/SpectacleCalculationResult.m; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* SpectacleSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleSpecs-Info.plist"; path = "SpectacleSpecs/Resources/Property Lists/SpectacleSpecs-Info.plist"; sourceTree = "<group>"; };
 		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Spectacle/Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 		0747DAE91183AAC100F75DD2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */,
+				2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */,
 				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
 				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
 				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
@@ -598,6 +603,7 @@
 			files = (
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
+				2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */,
 				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleHotKeyManager.m in Sources */,

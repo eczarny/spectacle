@@ -6,11 +6,11 @@
 
 #pragma mark -
 
-#define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex:   0] frame].size.height - b.size.height))
+#define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex: 0] frame].size.height - b.size.height))
 
 #pragma mark -
 
-#define RectCentredWithinRect(a, b) CGRectContainsRect(a, b) && fabs(CGRectGetMidX(b) - CGRectGetMidX(a)) <= 1.0f && fabs(CGRectGetMidY(b) - CGRectGetMidY(a)) <= 1.0f
+#define RectCenteredWithinRect(a, b) (CGRectContainsRect(a, b) && (fabs(CGRectGetMidX(b) - CGRectGetMidX(a)) <= 1.0f && fabs(CGRectGetMidY(b) - CGRectGetMidY(a)) <= 1.0f))
 
 #pragma mark -
 

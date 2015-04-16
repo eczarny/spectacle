@@ -1,7 +1,8 @@
 #import "SpectacleUtilities.h"
-#import "SpectacleWindowPositionManager.h"
-#import "SpectacleHotKeyManager.h"
+
 #import "SpectacleConstants.h"
+#import "SpectacleHotKeyManager.h"
+#import "SpectacleWindowPositionManager.h"
 
 extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
 

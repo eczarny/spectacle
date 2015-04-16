@@ -1,8 +1,9 @@
 #import "ZKHotKeyValidator.h"
-#import "ZKHotKeyValidatorProtocol.h"
-#import "ZKHotKeyTranslator.h"
-#import "ZKHotKey.h"
+
 #import "SpectacleUtilities.h"
+#import "ZKHotKey.h"
+#import "ZKHotKeyTranslator.h"
+#import "ZKHotKeyValidatorProtocol.h"
 
 @implementation ZKHotKeyValidator
 

@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+
 #import "SpectacleWindowPositionManager.h"
 
 @interface SpectacleScreenDetection : NSObject

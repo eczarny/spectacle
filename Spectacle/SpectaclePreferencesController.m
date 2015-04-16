@@ -1,9 +1,10 @@
 #import "SpectaclePreferencesController.h"
+
+#import "SpectacleConstants.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectacleHotKeyValidator.h"
-#import "SpectacleWindowPositionManager.h"
 #import "SpectacleUtilities.h"
-#import "SpectacleConstants.h"
+#import "SpectacleWindowPositionManager.h"
 #import "ZKHotKeyRecorder.h"
 
 @interface SpectaclePreferencesController ()

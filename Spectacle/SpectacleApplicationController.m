@@ -1,10 +1,10 @@
 #import <Sparkle/Sparkle.h>
 
 #import "SpectacleApplicationController.h"
-#import "SpectaclePreferencesController.h"
-#import "SpectacleHotKeyManager.h"
-#import "SpectacleUtilities.h"
 #import "SpectacleConstants.h"
+#import "SpectacleHotKeyManager.h"
+#import "SpectaclePreferencesController.h"
+#import "SpectacleUtilities.h"
 #import "ZKHotKeyTranslator.h"
 
 @interface SpectacleApplicationController ()

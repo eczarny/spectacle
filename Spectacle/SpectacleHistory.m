@@ -1,6 +1,7 @@
 #import "SpectacleHistory.h"
-#import "SpectacleHistoryItem.h"
+
 #import "SpectacleConstants.h"
+#import "SpectacleHistoryItem.h"
 
 @interface SpectacleHistory ()
 

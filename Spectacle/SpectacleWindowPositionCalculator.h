@@ -1,11 +1,12 @@
 #import <Foundation/Foundation.h>
+
+#import "SpectacleCalculationResult.h"
 #import "SpectacleWindowPositionManager.h"
-#import "SpectacleUtilities.h"
 
 @interface SpectacleWindowPositionCalculator : NSObject
 
-+ (CGRect)calculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action;
++ (SpectacleCalculationResult *)calculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action;
 
-+ (CGRect)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen sizeOffset: (CGFloat)sizeOffset;
++ (SpectacleCalculationResult *)calculateResizedWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen sizeOffset: (CGFloat)sizeOffset action: (SpectacleWindowAction)action;
 
 @end

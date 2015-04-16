@@ -1,9 +1,11 @@
 #import "SpectacleWindowPositionManager.h"
-#import "SpectacleWindowPositionCalculator.h"
-#import "SpectacleScreenDetection.h"
+
+#import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
-#import "SpectacleConstants.h"
+#import "SpectacleScreenDetection.h"
+#import "SpectacleUtilities.h"
+#import "SpectacleWindowPositionCalculator.h"
 #import "ZKAccessibilityElement.h"
 
 #define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
@@ -70,6 +72,7 @@
     CGRect visibleFrameOfScreen = CGRectNull;
     SpectacleHistory *history = self.historyForCurrentApplication;
     SpectacleHistoryItem *historyItem = nil;
+    SpectacleCalculationResult *calculationResult = nil;
     
     if (screenOfDisplay) {
         frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
@@ -105,12 +108,20 @@
     
     if (Resizing(action)) {
         CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowSizeOffset;
-        
-        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen sizeOffset: sizeOffset];
+
+        calculationResult = [SpectacleWindowPositionCalculator calculateResizedWindowRect: frontMostWindowRect
+                                                                     visibleFrameOfScreen: visibleFrameOfScreen
+                                                                               sizeOffset: sizeOffset
+                                                                                   action: action];
     } else {
-        frontMostWindowRect = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect visibleFrameOfScreen: visibleFrameOfScreen action: action];
+        calculationResult = [SpectacleWindowPositionCalculator calculateWindowRect: frontMostWindowRect
+                                                              visibleFrameOfScreen: visibleFrameOfScreen
+                                                                            action: action];
     }
-    
+
+    action = calculationResult.action;
+    frontMostWindowRect = calculationResult.windowRect;
+
     if (CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
         NSBeep();
         
@@ -227,14 +238,14 @@
         
         return;
     }
-    
+
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
     
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
-    
-    if (MovingToThirdOfDisplay(action) && !RectCentredWithinRect(movedWindowRect, windowRect)) {
+
+    if (MovingToThirdOfDisplay(action) && !RectCenteredWithinRect(movedWindowRect, windowRect)) {
         NSBeep();
-        
+
         [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
         
         return;
