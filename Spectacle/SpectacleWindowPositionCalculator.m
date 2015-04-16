@@ -32,8 +32,6 @@
 
     if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)) {
         calculatedWindowRect = [SpectacleWindowPositionCalculator calculateLeftOrRightHalfRect:windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
-    } else if (action == SpectacleWindowActionFullscreen) {
-        calculatedWindowRect = [SpectacleWindowPositionCalculator calculateFullscreenOrHalfRect:windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
         calculatedWindowRect = [SpectacleWindowPositionCalculator calculateTopOrBottomHalfRect:windowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)) {
@@ -252,29 +250,6 @@
     }
 
     return oneHalfRect;
-}
-
-#pragma mark -
-
-+ (CGRect)calculateFullscreenOrHalfRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen withAction: (SpectacleWindowAction)action {
-    if ((windowRect.size.width == visibleFrameOfScreen.size.width) && (windowRect.origin.x == visibleFrameOfScreen.origin.x)) {
-        if ((windowRect.size.height == visibleFrameOfScreen.size.height) && (windowRect.origin.y == visibleFrameOfScreen.origin.y)) {
-            CGRect topHalfRect = windowRect;
-            
-            topHalfRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
-            topHalfRect.origin.y = floor(visibleFrameOfScreen.size.height / 2.0f) + visibleFrameOfScreen.origin.y;
-            
-            return topHalfRect;
-        } else if ((windowRect.size.height == floor(visibleFrameOfScreen.size.height / 2.0f)) && (windowRect.origin.y == floor(visibleFrameOfScreen.size.height / 2.0f) + visibleFrameOfScreen.origin.y)) {
-            CGRect bottomHalfRect = windowRect;
-            
-            bottomHalfRect.origin.y = visibleFrameOfScreen.origin.y;
-            
-            return bottomHalfRect;
-        }
-    }
-    
-    return visibleFrameOfScreen;
 }
 
 @end
