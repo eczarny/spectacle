@@ -242,14 +242,6 @@
     [self moveWindowRect: windowRect frontMostWindowElement: frontMostWindowElement];
     
     CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement: frontMostWindowElement];
-
-    if (MovingToThirdOfDisplay(action) && !RectCenteredWithinRect(movedWindowRect, windowRect)) {
-        NSBeep();
-
-        [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
-        
-        return;
-    }
     
     if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
         [self moveWindowRect:windowRect frontMostWindowElement: frontMostWindowElement];
@@ -291,6 +283,12 @@
 
             [self moveWindowRect: adjustedWindowRect frontMostWindowElement: frontMostWindowElement];
         }
+    }
+
+    if (MovingToThirdOfDisplay(action) && !CGRectContainsRect(windowRect, movedWindowRect)) {
+        NSBeep();
+
+        [self moveWindowRect: previousWindowRect frontMostWindowElement: frontMostWindowElement];
     }
 }
 
