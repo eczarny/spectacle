@@ -261,7 +261,7 @@
                 if (movedWindowRect.size.height > windowRect.size.height) {
                     adjustedWindowRect.size.height -= 2;
                 }
-                
+
                 // If the window's size has been reduced to half of its original size, stop.
                 if (adjustedWindowRect.size.width < windowRect.size.width / 2.0f || adjustedWindowRect.size.height < windowRect.size.height / 2.0f) {
                     break;
@@ -273,13 +273,8 @@
             }
             
             // Center the window, taking into account any quantization adjustments.
-            float xAdjust = floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
-            float yAdjust = floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
-            float rightLimit = (movedWindowRect.origin.x + movedWindowRect.size.width) - visibleFrameOfScreen.size.width;
-            float bottomLimit = (movedWindowRect.origin.y + movedWindowRect.size.height) - frameOfScreen.size.height;
-
-            adjustedWindowRect.origin.x += ((xAdjust > 0) * xAdjust) - (rightLimit > 0) * rightLimit;
-            adjustedWindowRect.origin.y += ((yAdjust > 0) * yAdjust) - (bottomLimit > 0) * bottomLimit;
+            adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
+            adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
 
             [self moveWindowRect: adjustedWindowRect frontMostWindowElement: frontMostWindowElement];
         }
