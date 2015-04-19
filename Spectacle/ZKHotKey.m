@@ -4,7 +4,7 @@
 
 @implementation ZKHotKey
 
-- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers {
+- (instancetype)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers {
     if (self = [super init]) {
         _handle = -1;
         _hotKeyName = nil;
@@ -19,7 +19,10 @@
 
 #pragma mark -
 
-- (id)initWithCoder: (NSCoder *)coder {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+
+- (instancetype)initWithCoder: (NSCoder *)coder {
     if (self = [super init]) {
         if ([coder allowsKeyedCoding]) {
             _hotKeyName = [coder decodeObjectForKey: @"name"];
@@ -35,6 +38,8 @@
     
     return self;
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark -
 

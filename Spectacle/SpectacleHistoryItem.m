@@ -2,7 +2,7 @@
 
 @implementation SpectacleHistoryItem
 
-- (id)initWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
+- (instancetype)initWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect {
     if (self = [super init]) {
         _accessibilityElement = accessibilityElement;
         _windowRect = windowRect;

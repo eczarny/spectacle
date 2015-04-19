@@ -24,7 +24,7 @@ static EventHotKeyID currentHotKeyID = {
     .id = 0
 };
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         _registeredHotKeysByName = [NSMutableDictionary new];
         _isHotKeyHandlerInstalled = NO;

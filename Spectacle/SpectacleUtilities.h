@@ -35,12 +35,11 @@
 
 #define RectToString(windowRect) [NSString stringWithFormat: @"(%f, %f) %fx%f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
 
-enum {
+
+typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
     SpectacleIsTrusted,
     SpectacleIsNotTrusted
 };
-
-typedef NSInteger SpectacleApplicationTrust;
 
 #pragma mark -
 

@@ -16,7 +16,7 @@ typedef void(^ZKHotKeyAction)(ZKHotKey *);
 
 #pragma mark -
 
-- (id)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers;
+- (instancetype)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 

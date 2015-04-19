@@ -16,7 +16,7 @@
 
 @implementation SpectacleHistory
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         _firstHistoryItem = nil;
         _lastHistoryItem = _firstHistoryItem;

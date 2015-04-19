@@ -15,7 +15,7 @@
 
 @implementation SpectacleWindowActionController
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         _windowPositionManager = SpectacleWindowPositionManager.sharedManager;
         _hotKeyManager = SpectacleHotKeyManager.sharedManager;

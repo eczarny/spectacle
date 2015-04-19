@@ -25,7 +25,7 @@
 
 @implementation ZKHotKeyRecorderCell
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         _hotKeyRecorder = nil;
         _hotKeyName = nil;

@@ -11,7 +11,7 @@
 
 #pragma mark -
 
-- (id)initWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect;
+- (instancetype)initWithAccessibilityElement: (ZKAccessibilityElement *)accessibilityElement windowRect: (CGRect)windowRect NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 

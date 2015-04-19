@@ -27,7 +27,7 @@
 
 @implementation SpectacleWindowPositionManager
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         NSString *path = [NSBundle.mainBundle pathForResource: SpectacleBlacklistedApplicationsPropertyListFile
                                                        ofType: SpectaclePropertyListFileExtension];

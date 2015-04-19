@@ -9,7 +9,7 @@
 
 @implementation ZKHotKeyRecorder
 
-- (id)initWithFrame: (NSRect)frame {
+- (instancetype)initWithFrame: (NSRect)frame {
     if (self = [super initWithFrame: frame]) {
         [MyCell setHotKeyRecorder: self];
     }

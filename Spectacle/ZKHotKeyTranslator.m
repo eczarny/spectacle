@@ -39,7 +39,7 @@ enum {
 
 @implementation ZKHotKeyTranslator
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super init])) {
         _specialHotKeyTranslations = nil;
     }

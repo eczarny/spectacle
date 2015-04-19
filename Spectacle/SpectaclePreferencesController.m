@@ -18,7 +18,7 @@
 
 @implementation SpectaclePreferencesController
 
-- (id)init {
+- (instancetype)init {
     if ((self = [super initWithWindowNibName: SpectaclePreferencesWindowNibName])) {
         _hotKeyManager = SpectacleHotKeyManager.sharedManager;
     }
@@ -33,25 +33,26 @@
     NSInteger loginItemEnabledState = NSOffState;
     BOOL isStatusItemEnabled = [NSUserDefaults.standardUserDefaults boolForKey: SpectacleStatusItemEnabledPreference];
     
-    _hotKeyRecorders = [[NSDictionary alloc] initWithObjectsAndKeys:
-        _moveToCenterHotKeyRecorder,          SpectacleWindowActionMoveToCenter,
-        _moveToFullscreenHotKeyRecorder,      SpectacleWindowActionMoveToFullscreen,
-        _moveToLeftHotKeyRecorder,            SpectacleWindowActionMoveToLeftHalf,
-        _moveToRightHotKeyRecorder,           SpectacleWindowActionMoveToRightHalf,
-        _moveToTopHotKeyRecorder,             SpectacleWindowActionMoveToTopHalf,
-        _moveToBottomHotKeyRecorder,          SpectacleWindowActionMoveToBottomHalf,
-        _moveToUpperLeftHotKeyRecorder,       SpectacleWindowActionMoveToUpperLeft,
-        _moveToLowerLeftHotKeyRecorder,       SpectacleWindowActionMoveToLowerLeft,
-        _moveToUpperRightHotKeyRecorder,      SpectacleWindowActionMoveToUpperRight,
-        _moveToLowerRightHotKeyRecorder,      SpectacleWindowActionMoveToLowerRight,
-        _moveToNextDisplayHotKeyRecorder,     SpectacleWindowActionMoveToNextDisplay,
-        _moveToPreviousDisplayHotKeyRecorder, SpectacleWindowActionMoveToPreviousDisplay,
-        _moveToNextThirdHotKeyRecorder,       SpectacleWindowActionMoveToNextThird,
-        _moveToPreviousThirdHotKeyRecorder,   SpectacleWindowActionMoveToPreviousThird,
-        _makeLargerHotKeyRecorder,            SpectacleWindowActionMakeLarger,
-        _makeSmallerHotKeyRecorder,           SpectacleWindowActionMakeSmaller,
-        _undoLastMoveHotKeyRecorder,          SpectacleWindowActionUndoLastMove,
-        _redoLastMoveHotKeyRecorder,          SpectacleWindowActionRedoLastMove, nil];
+    _hotKeyRecorders = @{
+        SpectacleWindowActionMoveToCenter:          _moveToCenterHotKeyRecorder,
+        SpectacleWindowActionMoveToFullscreen:      _moveToFullscreenHotKeyRecorder,
+        SpectacleWindowActionMoveToLeftHalf:        _moveToLeftHotKeyRecorder,
+        SpectacleWindowActionMoveToRightHalf:       _moveToRightHotKeyRecorder,
+        SpectacleWindowActionMoveToTopHalf:         _moveToTopHotKeyRecorder,
+        SpectacleWindowActionMoveToBottomHalf:      _moveToBottomHotKeyRecorder,
+        SpectacleWindowActionMoveToUpperLeft:       _moveToUpperLeftHotKeyRecorder,
+        SpectacleWindowActionMoveToLowerLeft:       _moveToLowerLeftHotKeyRecorder,
+        SpectacleWindowActionMoveToUpperRight:      _moveToUpperRightHotKeyRecorder,
+        SpectacleWindowActionMoveToLowerRight:      _moveToLowerRightHotKeyRecorder,
+        SpectacleWindowActionMoveToNextDisplay:     _moveToNextDisplayHotKeyRecorder,
+        SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyRecorder,
+        SpectacleWindowActionMoveToNextThird:       _moveToNextThirdHotKeyRecorder,
+        SpectacleWindowActionMoveToPreviousThird:   _moveToPreviousThirdHotKeyRecorder,
+        SpectacleWindowActionMakeLarger:            _makeLargerHotKeyRecorder,
+        SpectacleWindowActionMakeSmaller:           _makeSmallerHotKeyRecorder,
+        SpectacleWindowActionUndoLastMove:          _undoLastMoveHotKeyRecorder,
+        SpectacleWindowActionRedoLastMove:          _redoLastMoveHotKeyRecorder
+    };
     
     [self loadRegisteredHotKeys];
 

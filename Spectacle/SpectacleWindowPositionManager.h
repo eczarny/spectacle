@@ -11,7 +11,8 @@
 
 #pragma mark -
 
-enum {
+
+typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
     SpectacleWindowActionUndo = -4,
     SpectacleWindowActionRedo,
     SpectacleWindowActionLarger,
@@ -32,8 +33,6 @@ enum {
     SpectacleWindowActionNextThird,
     SpectacleWindowActionPreviousThird
 };
-
-typedef NSInteger SpectacleWindowAction;
 
 @class ZKHotKey;
 

@@ -26,25 +26,26 @@
 
     _preferencesController = [SpectaclePreferencesController new];
 
-    _hotKeyMenuItems = [[NSDictionary alloc] initWithObjectsAndKeys:
-        _moveToCenterHotKeyMenuItem,          SpectacleWindowActionMoveToCenter,
-        _moveToFullscreenHotKeyMenuItem,      SpectacleWindowActionMoveToFullscreen,
-        _moveToLeftHotKeyMenuItem,            SpectacleWindowActionMoveToLeftHalf,
-        _moveToRightHotKeyMenuItem,           SpectacleWindowActionMoveToRightHalf,
-        _moveToTopHotKeyMenuItem,             SpectacleWindowActionMoveToTopHalf,
-        _moveToBottomHotKeyMenuItem,          SpectacleWindowActionMoveToBottomHalf,
-        _moveToUpperLeftHotKeyMenuItem,       SpectacleWindowActionMoveToUpperLeft,
-        _moveToLowerLeftHotKeyMenuItem,       SpectacleWindowActionMoveToLowerLeft,
-        _moveToUpperRightHotKeyMenuItem,      SpectacleWindowActionMoveToUpperRight,
-        _moveToLowerRightHotKeyMenuItem,      SpectacleWindowActionMoveToLowerRight,
-        _moveToNextDisplayHotKeyMenuItem,     SpectacleWindowActionMoveToNextDisplay,
-        _moveToPreviousDisplayHotKeyMenuItem, SpectacleWindowActionMoveToPreviousDisplay,
-        _moveToNextThirdHotKeyMenuItem,       SpectacleWindowActionMoveToNextThird,
-        _moveToPreviousThirdHotKeyMenuItem,   SpectacleWindowActionMoveToPreviousThird,
-        _makeLargerHotKeyMenuItem,            SpectacleWindowActionMakeLarger,
-        _makeSmallerHotKeyMenuItem,           SpectacleWindowActionMakeSmaller,
-        _undoLastMoveHotKeyMenuItem,          SpectacleWindowActionUndoLastMove,
-        _redoLastMoveHotKeyMenuItem,          SpectacleWindowActionRedoLastMove, nil];
+    _hotKeyMenuItems = @{
+        SpectacleWindowActionMoveToCenter:          _moveToCenterHotKeyMenuItem,
+        SpectacleWindowActionMoveToFullscreen:      _moveToFullscreenHotKeyMenuItem,
+        SpectacleWindowActionMoveToLeftHalf:        _moveToLeftHotKeyMenuItem,
+        SpectacleWindowActionMoveToRightHalf:       _moveToRightHotKeyMenuItem,
+        SpectacleWindowActionMoveToTopHalf:         _moveToTopHotKeyMenuItem,
+        SpectacleWindowActionMoveToBottomHalf:      _moveToBottomHotKeyMenuItem,
+        SpectacleWindowActionMoveToUpperLeft:       _moveToUpperLeftHotKeyMenuItem,
+        SpectacleWindowActionMoveToLowerLeft:       _moveToLowerLeftHotKeyMenuItem,
+        SpectacleWindowActionMoveToUpperRight:      _moveToUpperRightHotKeyMenuItem,
+        SpectacleWindowActionMoveToLowerRight:      _moveToLowerRightHotKeyMenuItem,
+        SpectacleWindowActionMoveToNextDisplay:     _moveToNextDisplayHotKeyMenuItem,
+        SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyMenuItem,
+        SpectacleWindowActionMoveToNextThird:       _moveToNextThirdHotKeyMenuItem,
+        SpectacleWindowActionMoveToPreviousThird:   _moveToPreviousThirdHotKeyMenuItem,
+        SpectacleWindowActionMakeLarger:            _makeLargerHotKeyMenuItem,
+        SpectacleWindowActionMakeSmaller:           _makeSmallerHotKeyMenuItem,
+        SpectacleWindowActionUndoLastMove:          _undoLastMoveHotKeyMenuItem,
+        SpectacleWindowActionRedoLastMove:          _redoLastMoveHotKeyMenuItem
+    };
 
     [self registerHotKeys];
 
@@ -192,7 +193,7 @@
 #pragma mark -
 
 - (void)menuDidSendAction: (NSNotification *)notification {
-    NSMenuItem *menuItem = [notification.userInfo objectForKey: @"MenuItem"];
+    NSMenuItem *menuItem = (notification.userInfo)[@"MenuItem"];
 
     if (menuItem.tag == SpectacleMenuItemActivateIgnoringOtherApps) {
         [NSApplication.sharedApplication activateIgnoringOtherApps: YES];
