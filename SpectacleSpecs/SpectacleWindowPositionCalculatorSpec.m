@@ -57,5 +57,41 @@ SpecBegin(SpectacleWindowPositionCalculator)
 
             expect(result.windowRect).to.equal(expectedWindowRect);
         });
+
+        it(@"should calculate a window's CGRect in the upper left corner of the screen", ^{
+            CGRect expectedWindowRect = CGRectMake(0.0f, 441.0f, 720.0f, 436.0f);
+            SpectacleCalculationResult *result = [SpectacleWindowPositionCalculator calculateWindowRect: windowRect
+                                                                                   visibleFrameOfScreen: visibleFrameScreen
+                                                                                                 action: SpectacleWindowActionUpperLeft];
+
+            expect(result.windowRect).to.equal(expectedWindowRect);
+        });
+
+        it(@"should calculate a window's CGRect in the lower left corner of the screen", ^{
+            CGRect expectedWindowRect = CGRectMake(0.0f, 4.0f, 720.0f, 436.0f);
+            SpectacleCalculationResult *result = [SpectacleWindowPositionCalculator calculateWindowRect: windowRect
+                                                                                   visibleFrameOfScreen: visibleFrameScreen
+                                                                                                 action: SpectacleWindowActionLowerLeft];
+
+            expect(result.windowRect).to.equal(expectedWindowRect);
+        });
+
+        it(@"should calculate a window's CGRect in the upper right corner of the screen", ^{
+            CGRect expectedWindowRect = CGRectMake(720.0f, 441.0f, 720.0f, 436.0f);
+            SpectacleCalculationResult *result = [SpectacleWindowPositionCalculator calculateWindowRect: windowRect
+                                                                                   visibleFrameOfScreen: visibleFrameScreen
+                                                                                                 action: SpectacleWindowActionUpperRight];
+
+            expect(result.windowRect).to.equal(expectedWindowRect);
+        });
+
+        it(@"should calculate a window's CGRect in the lower right corner of the screen", ^{
+            CGRect expectedWindowRect = CGRectMake(720.0f, 4.0f, 720.0f, 436.0f);
+            SpectacleCalculationResult *result = [SpectacleWindowPositionCalculator calculateWindowRect: windowRect
+                                                                                   visibleFrameOfScreen: visibleFrameScreen
+                                                                                                 action: SpectacleWindowActionLowerRight];
+
+            expect(result.windowRect).to.equal(expectedWindowRect);
+        });
     });
 SpecEnd
