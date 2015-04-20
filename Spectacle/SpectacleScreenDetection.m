@@ -68,22 +68,6 @@
         return result;
     }
 
-    NSLog(@"Discovered %lu screen(s).", (unsigned long)screens.count);
-
-    NSLog(@"Current screen: %@", RectToString(frameOfScreen));
-
-    for (NSInteger i = 0; i < screens.count; i++) {
-        NSScreen *currentScreen = screens[i];
-
-        NSLog(@"    Screen %ld: %@", (long)i, RectToString(NSRectToCGRect(currentScreen.frame)));
-    }
-
-    if (action == SpectacleWindowActionNextDisplay) {
-        NSLog(@"Selecting the screen of the NEXT display.");
-    } else if (action == SpectacleWindowActionPreviousDisplay) {
-        NSLog(@"Selecting the screen of the PREVIOUS display.");
-    }
-
     for (NSInteger i = 0; i < screens.count; i++) {
         NSScreen *currentScreen = screens[i];
         CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
@@ -92,8 +76,6 @@
         if (!CGRectEqualToRect(currentFrameOfScreen, frameOfScreen)) {
             continue;
         }
-
-        NSLog(@"Index of the current screen: %ld", (long)i);
 
         if (action == SpectacleWindowActionNextDisplay) {
             nextOrPreviousIndex++;
@@ -111,8 +93,6 @@
 
         break;
     }
-
-    NSLog(@"Selected screen: %@", RectToString(NSRectToCGRect(result.frame)));
 
     return result;
 }

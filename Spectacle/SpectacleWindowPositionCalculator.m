@@ -16,9 +16,6 @@
 + (SpectacleCalculationResult *)calculateWindowRect: (CGRect)windowRect visibleFrameOfScreen: (CGRect)visibleFrameOfScreen action: (SpectacleWindowAction)action {
     CGRect calculatedWindowRect = windowRect;
 
-    NSLog(@"visibleFrameOfScreen = %@", RectToString(visibleFrameOfScreen));
-    NSLog(@"windowRect = %@", RectToString(windowRect));
-
     if ((action >= SpectacleWindowActionRightHalf) && (action <= SpectacleWindowActionLowerRight)) {
         calculatedWindowRect.origin.x = visibleFrameOfScreen.origin.x + floor(visibleFrameOfScreen.size.width / 2.0f);
     } else if (MovingToCenterRegionOfDisplay(action)) {
@@ -50,8 +47,6 @@
     if (MovingToThirdOfDisplay(action)) {
         calculatedWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect: calculatedWindowRect visibleFrameOfScreen: visibleFrameOfScreen withAction: action];
     }
-
-    NSLog(@"calculatedWindowRect = %@", RectToString(calculatedWindowRect));
 
     return [SpectacleCalculationResult resultWithAction: action windowRect: calculatedWindowRect];
 }
