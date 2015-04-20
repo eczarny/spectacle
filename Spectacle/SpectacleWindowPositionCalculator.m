@@ -186,28 +186,28 @@
     }
 
     if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(oneHalfRect)) <= 1.0f) {
-        CGRect twoThirdsRect = oneHalfRect;
+        CGRect oneThirdsRect = oneHalfRect;
 
-        twoThirdsRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+        oneThirdsRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
 
         if (action == SpectacleWindowActionRightHalf) {
-            twoThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdsRect.size.width;
+            oneThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdsRect.size.width;
         }
 
         if (RectCenteredWithinRect(oneHalfRect, windowRect)) {
-            return [SpectacleCalculationResult resultWithAction: SpectacleWindowActionNextThird windowRect: twoThirdsRect];
+            return [SpectacleCalculationResult resultWithAction: SpectacleWindowActionNextThird windowRect: oneThirdsRect];
         }
         
-        if (RectCenteredWithinRect(twoThirdsRect, windowRect)) {
-            CGRect oneThirdRect = oneHalfRect;
+        if (RectCenteredWithinRect(oneThirdsRect, windowRect)) {
+            CGRect twoThirdRect = oneHalfRect;
             
-            oneThirdRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+            twoThirdRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
             
             if (action == SpectacleWindowActionRightHalf) {
-                oneThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdRect.size.width;
+                twoThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdRect.size.width;
             }
             
-            return [SpectacleCalculationResult resultWithAction: SpectacleWindowActionNextThird windowRect: oneThirdRect];
+            return [SpectacleCalculationResult resultWithAction: SpectacleWindowActionNextThird windowRect: twoThirdRect];
         }
     }
 
