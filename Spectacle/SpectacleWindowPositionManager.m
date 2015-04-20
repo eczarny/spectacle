@@ -127,7 +127,7 @@
         
         return;
     }
-    
+
     frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
     
     historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement: frontMostWindowElement

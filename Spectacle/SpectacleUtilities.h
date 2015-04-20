@@ -33,7 +33,7 @@
 
 #pragma mark -
 
-#define RectToString(windowRect) [NSString stringWithFormat: @"(%f, %f) %fx%f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
+#define RectToString(windowRect) [NSString stringWithFormat: @"(%.1f, %.1f) %.1fx%.1f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
 
 
 typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
