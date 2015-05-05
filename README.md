@@ -78,5 +78,5 @@ Spectacle should be accompanied by a LICENSE file containing the license relevan
 [1]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.6.zip
 [2]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.7.zip
 [3]: http://support.apple.com/kb/ht1343
-[4]: https://developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXModel/OSXAXmodel.html
+[4]: https://developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXmodel.html
 [5]: http://cocoapods.org/
