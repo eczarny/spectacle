@@ -10,7 +10,8 @@
 
 @implementation ZKAccessibilityElement
 
-- (instancetype)init {
+- (instancetype)init
+{
     if (self = [super init]) {
         _element = NULL;
     }
@@ -20,7 +21,8 @@
 
 #pragma mark -
 
-+ (ZKAccessibilityElement *)systemWideElement {
++ (ZKAccessibilityElement *)systemWideElement
+{
     ZKAccessibilityElement *newElement = [ZKAccessibilityElement new];
     AXUIElementRef systemWideElement = AXUIElementCreateSystemWide();
     
@@ -33,13 +35,14 @@
 
 #pragma mark -
 
-+ (ZKAccessibilityElement *)frontMostWindowElement {
++ (ZKAccessibilityElement *)frontMostWindowElement
+{
     ZKAccessibilityElement *systemWideElement = ZKAccessibilityElement.systemWideElement;
-    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
     ZKAccessibilityElement *frontMostWindowElement = nil;
 
     if (applicationWithFocusElement) {
-        frontMostWindowElement = [applicationWithFocusElement elementWithAttribute: kAXFocusedWindowAttribute];
+        frontMostWindowElement = [applicationWithFocusElement elementWithAttribute:kAXFocusedWindowAttribute];
 
         if (!frontMostWindowElement) {
             NSLog(@"Invalid accessibility element provided, unable to determine the size and position of the window.");
@@ -51,16 +54,18 @@
     return frontMostWindowElement;
 }
 
-+ (NSString *)frontMostApplicationName {
++ (NSString *)frontMostApplicationName
+{
     ZKAccessibilityElement *systemWideElement = ZKAccessibilityElement.systemWideElement;
-    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute: kAXFocusedApplicationAttribute];
+    ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
 
-    return [applicationWithFocusElement stringValueOfAttribute: kAXTitleAttribute];
+    return [applicationWithFocusElement stringValueOfAttribute:kAXTitleAttribute];
 }
 
 #pragma mark -
 
-- (ZKAccessibilityElement *)elementWithAttribute: (CFStringRef)attribute {
+- (ZKAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute
+{
     ZKAccessibilityElement *newElement = nil;
     AXUIElementRef childElement;
     AXError result;
@@ -82,7 +87,8 @@
 
 #pragma mark -
 
-- (NSString *)stringValueOfAttribute: (CFStringRef)attribute {
+- (NSString *)stringValueOfAttribute:(CFStringRef)attribute
+{
     if (CFGetTypeID(_element) == AXUIElementGetTypeID()) {
         CFTypeRef value;
         AXError result;
@@ -99,7 +105,8 @@
     return nil;
 }
 
-- (AXValueRef)valueOfAttribute: (CFStringRef)attribute type: (AXValueType)type {
+- (AXValueRef)valueOfAttribute:(CFStringRef)attribute type:(AXValueType)type
+{
     if (CFGetTypeID(_element) == AXUIElementGetTypeID()) {
         CFTypeRef value;
         AXError result;
@@ -118,7 +125,8 @@
 
 #pragma mark -
 
-- (void)setValue: (AXValueRef)value forAttribute: (CFStringRef)attribute {
+- (void)setValue:(AXValueRef)value forAttribute:(CFStringRef)attribute
+{
     AXError result = AXUIElementSetAttributeValue(_element, attribute, (CFTypeRef *)value);
     
     if (result != kAXErrorSuccess) {
@@ -128,13 +136,15 @@
 
 #pragma mark -
 
-- (BOOL)isSheet {
-    return[[self stringValueOfAttribute: kAXRoleAttribute] isEqualToString: (__bridge NSString *)kAXSheetRole];
+- (BOOL)isSheet
+{
+    return[[self stringValueOfAttribute:kAXRoleAttribute] isEqualToString:(__bridge NSString *)kAXSheetRole];
 }
 
 #pragma mark -
 
-- (void)dealloc {
+- (void)dealloc
+{
     if (_element != NULL) {
         CFRelease(_element);
     }
@@ -142,7 +152,8 @@
 
 #pragma mark -
 
-- (void)setElement: (AXUIElementRef)element {
+- (void)setElement:(AXUIElementRef)element
+{
     if (_element != NULL) {
         CFRelease(_element);
     }

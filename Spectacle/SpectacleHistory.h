@@ -4,7 +4,7 @@
 
 @interface SpectacleHistory : NSObject
 
-- (void)addHistoryItem: (SpectacleHistoryItem *)aHistoryItem;
+- (void)addHistoryItem:(SpectacleHistoryItem *)aHistoryItem;
 
 #pragma mark -
 

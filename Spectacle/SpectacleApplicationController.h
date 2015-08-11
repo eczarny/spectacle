@@ -29,14 +29,14 @@
 
 # pragma mark -
 
-- (IBAction)showPreferencesWindow: (id)sender;
+- (IBAction)showPreferencesWindow:(id)sender;
 
 # pragma mark -
 
-- (IBAction)openSystemPreferences: (id)sender;
+- (IBAction)openSystemPreferences:(id)sender;
 
 # pragma mark -
 
-- (IBAction)restoreDefaults: (id)sender;
+- (IBAction)restoreDefaults:(id)sender;
 
 @end

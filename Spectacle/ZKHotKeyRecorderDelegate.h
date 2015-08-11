@@ -4,8 +4,8 @@
 
 @protocol ZKHotKeyRecorderDelegate<NSObject>
 
-- (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey: (ZKHotKey *)hotKey;
+- (void)hotKeyRecorder:(ZKHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey:(ZKHotKey *)hotKey;
 
-- (void)hotKeyRecorder: (ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey: (ZKHotKey *)hotKey;
+- (void)hotKeyRecorder:(ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey:(ZKHotKey *)hotKey;
 
 @end

@@ -6,7 +6,7 @@
 
 #pragma mark -
 
-#define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex: 0] frame].size.height - b.size.height))
+#define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex:0] frame].size.height - b.size.height))
 
 #pragma mark -
 
@@ -33,7 +33,7 @@
 
 #pragma mark -
 
-#define RectToString(windowRect) [NSString stringWithFormat: @"(%.1f, %.1f) %.1fx%.1f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
+#define RectToString(windowRect) [NSString stringWithFormat:@"(%.1f, %.1f) %.1fx%.1f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
 
 
 typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
@@ -51,13 +51,13 @@ typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
 
 #pragma mark -
 
-+ (void)registerDefaultsForBundle: (NSBundle *)bundle;
++ (void)registerDefaultsForBundle:(NSBundle *)bundle;
 
 #pragma mark -
 
-+ (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback;
++ (void)displayRunningInBackgroundAlertWithCallback:(void (^)(BOOL, BOOL))callback;
 
-+ (void)displayRestoreDefaultsAlertWithCallback: (void (^)(BOOL))callback;
++ (void)displayRestoreDefaultsAlertWithCallback:(void (^)(BOOL))callback;
 
 #pragma mark -
 
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action;
++ (NSArray *)hotKeysFromDictionary:(NSDictionary *)dictionary action:(ZKHotKeyAction)action;
 
 #pragma mark -
 
@@ -77,17 +77,17 @@ typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
 
 #pragma mark -
 
-+ (NSString *)pathForPreferencePaneNamed: (NSString *)preferencePaneName;
++ (NSString *)pathForPreferencePaneNamed:(NSString *)preferencePaneName;
 
 #pragma mark -
 
-+ (BOOL)isLoginItemEnabledForBundle: (NSBundle *)bundle;
++ (BOOL)isLoginItemEnabledForBundle:(NSBundle *)bundle;
 
 #pragma mark -
 
-+ (void)enableLoginItemForBundle: (NSBundle *)bundle;
++ (void)enableLoginItemForBundle:(NSBundle *)bundle;
 
-+ (void)disableLoginItemForBundle: (NSBundle *)bundle;
++ (void)disableLoginItemForBundle:(NSBundle *)bundle;
 
 #pragma mark -
 

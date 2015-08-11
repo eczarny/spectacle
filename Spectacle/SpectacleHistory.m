@@ -16,7 +16,8 @@
 
 @implementation SpectacleHistory
 
-- (instancetype)init {
+- (instancetype)init
+{
     if ((self = [super init])) {
         _firstHistoryItem = nil;
         _lastHistoryItem = _firstHistoryItem;
@@ -29,7 +30,8 @@
 
 #pragma mark -
 
-- (void)addHistoryItem: (SpectacleHistoryItem *)historyItem {
+- (void)addHistoryItem:(SpectacleHistoryItem *)historyItem
+{
     if ([self isEmpty]) {
         _currentHistoryItem = historyItem;
         _firstHistoryItem = _currentHistoryItem;
@@ -63,23 +65,27 @@
 
 #pragma mark -
 
-- (SpectacleHistoryItem *)nextHistoryItem {
-    return [self moveCurrentHistoryItemToHistoryItem: _currentHistoryItem.nextHistoryItem];
+- (SpectacleHistoryItem *)nextHistoryItem
+{
+    return [self moveCurrentHistoryItemToHistoryItem:_currentHistoryItem.nextHistoryItem];
 }
 
-- (SpectacleHistoryItem *)previousHistoryItem {
-    return [self moveCurrentHistoryItemToHistoryItem: _currentHistoryItem.previousHistoryItem];
+- (SpectacleHistoryItem *)previousHistoryItem
+{
+    return [self moveCurrentHistoryItemToHistoryItem:_currentHistoryItem.previousHistoryItem];
 }
 
 #pragma mark -
 
-- (BOOL)isEmpty {
+- (BOOL)isEmpty
+{
     return _size == 0;
 }
 
 #pragma mark -
 
-- (SpectacleHistoryItem *)moveCurrentHistoryItemToHistoryItem: (SpectacleHistoryItem *)historyItem {
+- (SpectacleHistoryItem *)moveCurrentHistoryItemToHistoryItem:(SpectacleHistoryItem *)historyItem
+{
     if (historyItem) {
         _currentHistoryItem = historyItem;
     }

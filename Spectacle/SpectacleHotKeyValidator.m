@@ -4,8 +4,9 @@
 
 @implementation SpectacleHotKeyValidator
 
-- (BOOL)isHotKeyValid: (ZKHotKey *)hotKey {
-    return ![SpectacleHotKeyManager.sharedManager isHotKeyRegistered: hotKey];
+- (BOOL)isHotKeyValid:(ZKHotKey *)hotKey
+{
+    return ![SpectacleHotKeyManager.sharedManager isHotKeyRegistered:hotKey];
 }
 
 @end

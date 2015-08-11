@@ -4,6 +4,6 @@
 
 @protocol ZKHotKeyValidatorProtocol<NSObject>
 
-- (BOOL)isHotKeyValid: (ZKHotKey *)hotKey;
+- (BOOL)isHotKeyValid:(ZKHotKey *)hotKey;
 
 @end

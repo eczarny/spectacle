@@ -13,17 +13,17 @@
 
 #pragma mark -
 
-- (ZKAccessibilityElement *)elementWithAttribute: (CFStringRef)attribute;
+- (ZKAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute;
 
 #pragma mark -
 
-- (NSString *)stringValueOfAttribute: (CFStringRef)attribute;
+- (NSString *)stringValueOfAttribute:(CFStringRef)attribute;
 
-- (AXValueRef)valueOfAttribute: (CFStringRef)attribute type: (AXValueType)type;
+- (AXValueRef)valueOfAttribute:(CFStringRef)attribute type:(AXValueType)type;
 
 #pragma mark -
 
-- (void)setValue: (AXValueRef)value forAttribute: (CFStringRef)attribute;
+- (void)setValue:(AXValueRef)value forAttribute:(CFStringRef)attribute;
 
 #pragma mark -
 

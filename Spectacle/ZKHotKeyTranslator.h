@@ -10,24 +10,24 @@
 
 #pragma mark -
 
-+ (NSUInteger)convertModifiersToCarbonIfNecessary: (NSUInteger)modifiers;
++ (NSUInteger)convertModifiersToCarbonIfNecessary:(NSUInteger)modifiers;
 
-+ (NSUInteger)convertModifiersToCocoaIfNecessary: (NSUInteger)modifiers;
-
-#pragma mark -
-
-+ (NSUInteger)convertCocoaModifiersToCarbon: (NSUInteger)modifiers;
-
-+ (NSUInteger)convertCarbonModifiersToCocoa: (NSUInteger)modifiers;
++ (NSUInteger)convertModifiersToCocoaIfNecessary:(NSUInteger)modifiers;
 
 #pragma mark -
 
-+ (NSString *)translateCocoaModifiers: (NSUInteger)modifiers;
++ (NSUInteger)convertCocoaModifiersToCarbon:(NSUInteger)modifiers;
 
-- (NSString *)translateKeyCode: (NSInteger)keyCode;
++ (NSUInteger)convertCarbonModifiersToCocoa:(NSUInteger)modifiers;
 
 #pragma mark -
 
-- (NSString *)translateHotKey: (ZKHotKey *)hotKey;
++ (NSString *)translateCocoaModifiers:(NSUInteger)modifiers;
+
+- (NSString *)translateKeyCode:(NSInteger)keyCode;
+
+#pragma mark -
+
+- (NSString *)translateHotKey:(ZKHotKey *)hotKey;
 
 @end

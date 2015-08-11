@@ -15,7 +15,8 @@
 
 @implementation SpectacleWindowActionController
 
-- (instancetype)init {
+- (instancetype)init
+{
     if (self = [super init]) {
         _windowPositionManager = SpectacleWindowPositionManager.sharedManager;
         _hotKeyManager = SpectacleHotKeyManager.sharedManager;
@@ -26,108 +27,127 @@
 
 #pragma mark -
 
-- (void)registerHotKeys {
+- (void)registerHotKeys
+{
     NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
     NSMutableDictionary *hotKeysFromUserDefaults = [NSMutableDictionary new];
     
     for (NSString *hotKeyName in SpectacleUtilities.hotKeyNames) {
-        hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey: hotKeyName];
+        hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey:hotKeyName];
     }
 
-    NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary: hotKeysFromUserDefaults action: ^(ZKHotKey *hotKey) {
-        [_windowPositionManager moveFrontMostWindowWithAction: [_windowPositionManager windowActionForHotKey: hotKey]];
+    NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary:hotKeysFromUserDefaults action:^(ZKHotKey *hotKey) {
+        [_windowPositionManager moveFrontMostWindowWithAction:[_windowPositionManager windowActionForHotKey:hotKey]];
     }];
 
-    [_hotKeyManager registerHotKeys: hotKeys];
+    [_hotKeyManager registerHotKeys:hotKeys];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToCenter: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionCenter];
+- (IBAction)moveFrontMostWindowToCenter:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToFullscreen: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionFullscreen];
+- (IBAction)moveFrontMostWindowToFullscreen:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionFullscreen];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToLeftHalf: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLeftHalf];
+- (IBAction)moveFrontMostWindowToLeftHalf:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLeftHalf];
 }
 
-- (IBAction)moveFrontMostWindowToRightHalf: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionRightHalf];
+- (IBAction)moveFrontMostWindowToRightHalf:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionRightHalf];
 }
 
-- (IBAction)moveFrontMostWindowToTopHalf: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionTopHalf];
+- (IBAction)moveFrontMostWindowToTopHalf:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionTopHalf];
 }
 
-- (IBAction)moveFrontMostWindowToBottomHalf: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionBottomHalf];
-}
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToUpperLeft: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperLeft];
-}
-
-- (IBAction)moveFrontMostWindowToLowerLeft: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerLeft];
+- (IBAction)moveFrontMostWindowToBottomHalf:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToUpperRight: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionUpperRight];
+- (IBAction)moveFrontMostWindowToUpperLeft:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperLeft];
 }
 
-- (IBAction)moveFrontMostWindowToLowerRight: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLowerRight];
-}
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToNextDisplay: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionNextDisplay];
-}
-
-- (IBAction)moveFrontMostWindowToPreviousDisplay: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionPreviousDisplay];
+- (IBAction)moveFrontMostWindowToLowerLeft:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToNextThird: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionNextThird];
+- (IBAction)moveFrontMostWindowToUpperRight:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperRight];
 }
 
-- (IBAction)moveFrontMostWindowToPreviousThird: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionPreviousThird];
-}
-
-#pragma mark -
-
-- (IBAction)makeFrontMostWindowLarger: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionLarger];
-}
-
-- (IBAction)makeFrontMostWindowSmaller: (id)sender {
-    [_windowPositionManager moveFrontMostWindowWithAction: SpectacleWindowActionSmaller];
+- (IBAction)moveFrontMostWindowToLowerRight:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerRight];
 }
 
 #pragma mark -
 
-- (IBAction)undoLastWindowAction: (id)sender {
+- (IBAction)moveFrontMostWindowToNextDisplay:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextDisplay];
+}
+
+- (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousDisplay];
+}
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToNextThird:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextThird];
+}
+
+- (IBAction)moveFrontMostWindowToPreviousThird:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousThird];
+}
+
+#pragma mark -
+
+- (IBAction)makeFrontMostWindowLarger:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLarger];
+}
+
+- (IBAction)makeFrontMostWindowSmaller:(id)sender
+{
+    [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionSmaller];
+}
+
+#pragma mark -
+
+- (IBAction)undoLastWindowAction:(id)sender
+{
     [_windowPositionManager undoLastWindowAction];
 }
 
-- (IBAction)redoLastWindowAction: (id)sender {
+- (IBAction)redoLastWindowAction:(id)sender
+{
     [_windowPositionManager redoLastWindowAction];
 }
 

@@ -14,12 +14,13 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 @implementation SpectacleUtilities
 
-+ (NSString *)applicationVersion {
++ (NSString *)applicationVersion
+{
     NSBundle *bundle = NSBundle.mainBundle;
-    NSString *bundleVersion = [bundle objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString *bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 
     if (!bundleVersion) {
-        bundleVersion = [bundle objectForInfoDictionaryKey: @"CFBundleVersion"];
+        bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
     }
 
     return bundleVersion;
@@ -27,17 +28,19 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (void)registerDefaultsForBundle: (NSBundle *)bundle {
++ (void)registerDefaultsForBundle:(NSBundle *)bundle
+{
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    NSString *path = [bundle pathForResource: SpectacleDefaultPreferencesPropertyListFile ofType: SpectaclePropertyListFileExtension];
-    NSDictionary *applicationDefaults = [[NSDictionary alloc] initWithContentsOfFile: path];
+    NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+    NSDictionary *applicationDefaults = [[NSDictionary alloc] initWithContentsOfFile:path];
 
-    [defaults registerDefaults: applicationDefaults];
+    [defaults registerDefaults:applicationDefaults];
 }
 
 #pragma mark -
 
-+ (void)displayRunningInBackgroundAlertWithCallback: (void (^)(BOOL, BOOL))callback {
++ (void)displayRunningInBackgroundAlertWithCallback:(void (^)(BOOL, BOOL))callback
+{
     NSAlert *alert = [NSAlert new];
     
     alert.alertStyle = NSInformationalAlertStyle;
@@ -45,8 +48,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     alert.messageText = LocalizedString(@"This will cause Spectacle to run in the background");
     alert.informativeText = LocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.");
     
-    [alert addButtonWithTitle: LocalizedString(@"OK")];
-    [alert addButtonWithTitle: LocalizedString(@"Cancel")];
+    [alert addButtonWithTitle:LocalizedString(@"OK")];
+    [alert addButtonWithTitle:LocalizedString(@"Cancel")];
     
     NSInteger response = [alert runModal];
     BOOL isAlertSuppressed = [alert.suppressionButton state] == NSOnState;
@@ -65,14 +68,15 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     }
 }
 
-+ (void)displayRestoreDefaultsAlertWithCallback: (void (^)(BOOL))callback {
++ (void)displayRestoreDefaultsAlertWithCallback:(void (^)(BOOL))callback
+{
     NSAlert *alert = [NSAlert new];
 
     alert.messageText = LocalizedString(@"This will restore Spectacle's default hot keys");
     alert.informativeText = LocalizedString(@"Would you like to restore the default hot keys? Any custom hot keys will be lost.");
 
-    [alert addButtonWithTitle: LocalizedString(@"OK")];
-    [alert addButtonWithTitle: LocalizedString(@"Cancel")];
+    [alert addButtonWithTitle:LocalizedString(@"OK")];
+    [alert addButtonWithTitle:LocalizedString(@"Cancel")];
 
     NSInteger response = [alert runModal];
 
@@ -92,7 +96,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (SpectacleApplicationTrust)spectacleTrust {
++ (SpectacleApplicationTrust)spectacleTrust
+{
     BOOL result = SpectacleIsTrusted;
     
     if ((AXIsProcessTrustedWithOptions != NULL) && !AXIsProcessTrustedWithOptions(NULL)) {
@@ -104,33 +109,35 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (NSArray *)hotKeyNames {
++ (NSArray *)hotKeyNames
+{
     NSBundle *bundle = NSBundle.mainBundle;
-    NSString *path = [bundle pathForResource: SpectacleHotKeyNamesPropertyListFile ofType: SpectaclePropertyListFileExtension];
-    NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile: path];
+    NSString *path = [bundle pathForResource:SpectacleHotKeyNamesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+    NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile:path];
     
     return hotKeyNames;
 }
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary: (NSDictionary *)dictionary action: (ZKHotKeyAction)action {
-    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: dictionary.allKeys];
++ (NSArray *)hotKeysFromDictionary:(NSDictionary *)dictionary action:(ZKHotKeyAction)action
+{
+    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:dictionary.allKeys];
     NSMutableArray *hotKeys = [NSMutableArray new];
     
-    [NSKeyedUnarchiver setClass: ZeroKitHotKey.class forClassName: @"SpectacleHotKey"];
+    [NSKeyedUnarchiver setClass:ZeroKitHotKey.class forClassName:@"SpectacleHotKey"];
     
     for (NSData *hotKeyData in dictionary.allValues) {
-        ZKHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData: hotKeyData];
+        ZKHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData:hotKeyData];
         
         if (![hotKey isClearedHotKey]) {
             NSString *hotKeyName = hotKey.hotKeyName;
             
             hotKey.hotKeyAction = action;
             
-            [SpectacleUtilities updateHotKey: hotKey withPotentiallyNewDefaultHotKey: defaultHotKeys[hotKeyName]];
+            [SpectacleUtilities updateHotKey:hotKey withPotentiallyNewDefaultHotKey:defaultHotKeys[hotKeyName]];
             
-            [hotKeys addObject: hotKey];
+            [hotKeys addObject:hotKey];
         }
     }
     
@@ -139,29 +146,32 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (void)restoreDefaultHotKeys {
++ (void)restoreDefaultHotKeys
+{
     SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
     SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
-    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames: SpectacleUtilities.hotKeyNames];
+    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:SpectacleUtilities.hotKeyNames];
 
     for (NSString *hotKeyName in defaultHotKeys) {
         ZKHotKey *defaultHotKey = defaultHotKeys[hotKeyName];
 
         defaultHotKey.hotKeyAction = ^(ZKHotKey *hotKey) {
-            [windowPositionManager moveFrontMostWindowWithAction: [windowPositionManager windowActionForHotKey: hotKey]];
+            [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForHotKey:hotKey]];
         };
 
-        [hotKeyManager registerHotKey: defaultHotKey];
+        [hotKeyManager registerHotKey:defaultHotKey];
     }
 }
 
 #pragma mark -
 
-+ (void)updateHotKey: (ZKHotKey *)hotKey withPotentiallyNewDefaultHotKey: (ZKHotKey *)defaultHotKey {
++ (void)updateHotKey:(ZKHotKey *)hotKey withPotentiallyNewDefaultHotKey:(ZKHotKey *)defaultHotKey
+{
     NSString *hotKeyName = hotKey.hotKeyName;
     NSInteger defaultHotKeyCode;
     
-    if (![hotKeyName isEqualToString: SpectacleWindowActionMoveToLowerLeft] && ![hotKeyName isEqualToString: SpectacleWindowActionMoveToLowerRight]) {
+    if (![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
+        && ![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
         return;
     }
     
@@ -176,15 +186,16 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (NSDictionary *)defaultHotKeysWithNames: (NSArray *)names {
++ (NSDictionary *)defaultHotKeysWithNames:(NSArray *)names
+{
     NSBundle *bundle = NSBundle.mainBundle;
-    NSString *path = [bundle pathForResource: SpectacleDefaultPreferencesPropertyListFile ofType: SpectaclePropertyListFileExtension];
-    NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile: path];
+    NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+    NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
     NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
     
     for (NSString *hotKeyName in names) {
         NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
-        ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData: defaultHotKeyData];
+        ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData:defaultHotKeyData];
         
         defaultHotKeys[hotKeyName] = defaultHotKey;
     }
@@ -194,18 +205,19 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (NSString *)pathForPreferencePaneNamed: (NSString *)preferencePaneName {
++ (NSString *)pathForPreferencePaneNamed:(NSString *)preferencePaneName
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSAllDomainsMask, YES);
     NSFileManager *fileManager = NSFileManager.defaultManager;
     NSString *preferencePanePath = nil;
 
     if (preferencePaneName) {
-        preferencePaneName = [preferencePaneName stringByAppendingFormat: @".%@", SpectaclePreferencePaneExtension];
+        preferencePaneName = [preferencePaneName stringByAppendingFormat:@".%@", SpectaclePreferencePaneExtension];
 
         for (__strong NSString *path in paths) {
-            path = [path stringByAppendingPathComponent: preferencePaneName];
+            path = [path stringByAppendingPathComponent:preferencePaneName];
 
-            if (path && [fileManager fileExistsAtPath: path isDirectory: nil]) {
+            if (path && [fileManager fileExistsAtPath:path isDirectory:nil]) {
                 preferencePanePath = path;
 
                 break;
@@ -222,7 +234,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (BOOL)isLoginItemEnabledForBundle: (NSBundle *)bundle {
++ (BOOL)isLoginItemEnabledForBundle:(NSBundle *)bundle
+{
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
     BOOL result = NO;
@@ -244,7 +257,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
                 CFRelease(applicationPathURL);
 
-                if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
+                if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
                     result = YES;
 
                     break;
@@ -262,10 +275,11 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (void)enableLoginItemForBundle: (NSBundle *)bundle {
++ (void)enableLoginItemForBundle:(NSBundle *)bundle
+{
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
-    NSURL *applicationPathURL = [NSURL fileURLWithPath: applicationPath];
+    NSURL *applicationPathURL = [NSURL fileURLWithPath:applicationPath];
 
     if (sharedFileList) {
         LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)applicationPathURL, NULL, NULL);
@@ -280,7 +294,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
     }
 }
 
-+ (void)disableLoginItemForBundle: (NSBundle *)bundle {
++ (void)disableLoginItemForBundle:(NSBundle *)bundle
+{
     LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     NSString *applicationPath = bundle.bundlePath;
 
@@ -297,7 +312,7 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
             if (LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL) == noErr) {
                 NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
 
-                if ([resolvedApplicationPath compare: applicationPath] == NSOrderedSame) {
+                if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
                     LSSharedFileListItemRemove(sharedFileList, sharedFileListItem);
                 }
 
@@ -313,7 +328,8 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (NSMutableDictionary *)stringAttributesWithShadow {
++ (NSMutableDictionary *)stringAttributesWithShadow
+{
     NSMutableParagraphStyle *paragraphStyle = NSParagraphStyle.defaultParagraphStyle.mutableCopy;
     NSShadow *textShadow = [NSShadow new];
     NSMutableDictionary *stringAttributes = [NSMutableDictionary new];

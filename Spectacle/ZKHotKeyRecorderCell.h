@@ -18,8 +18,8 @@
 
 #pragma mark -
 
-- (BOOL)performKeyEquivalent: (NSEvent *)event;
+- (BOOL)performKeyEquivalent:(NSEvent *)event;
 
-- (void)flagsChanged: (NSEvent *)event;
+- (void)flagsChanged:(NSEvent *)event;
 
 @end

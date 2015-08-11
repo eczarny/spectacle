@@ -16,13 +16,14 @@ typedef void(^ZKHotKeyAction)(ZKHotKey *);
 
 #pragma mark -
 
-- (instancetype)initWithHotKeyCode: (NSInteger)hotKeyCode hotKeyModifiers: (NSUInteger)hotKeyModifiers NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithHotKeyCode:(NSInteger)hotKeyCode
+                   hotKeyModifiers:(NSUInteger)hotKeyModifiers NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 
 + (ZKHotKey *)clearedHotKey;
 
-+ (ZKHotKey *)clearedHotKeyWithName: (NSString *)name;
++ (ZKHotKey *)clearedHotKeyWithName:(NSString *)name;
 
 #pragma mark -
 
@@ -38,12 +39,12 @@ typedef void(^ZKHotKeyAction)(ZKHotKey *);
 
 #pragma mark -
 
-+ (BOOL)validCocoaModifiers: (NSUInteger)modifiers;
++ (BOOL)validCocoaModifiers:(NSUInteger)modifiers;
 
 #pragma mark -
 
-- (BOOL)isEqual: (id)object;
+- (BOOL)isEqual:(id)object;
 
-- (BOOL)isEqualToHotKey: (ZKHotKey *)hotKey;
+- (BOOL)isEqualToHotKey:(ZKHotKey *)hotKey;
 
 @end

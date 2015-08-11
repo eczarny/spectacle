@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 #pragma mark -
 
-- (void)moveFrontMostWindowWithAction: (SpectacleWindowAction)action;
+- (void)moveFrontMostWindowWithAction:(SpectacleWindowAction)action;
 
 #pragma mark -
 
@@ -52,6 +52,6 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForHotKey: (ZKHotKey *)hotKey;
+- (SpectacleWindowAction)windowActionForHotKey:(ZKHotKey *)hotKey;
 
 @end

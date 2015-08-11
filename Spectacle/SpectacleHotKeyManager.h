@@ -8,13 +8,13 @@
 
 #pragma mark -
 
-- (NSInteger)registerHotKey: (ZKHotKey *)hotKey;
+- (NSInteger)registerHotKey:(ZKHotKey *)hotKey;
 
-- (void)registerHotKeys: (NSArray *)hotKeys;
+- (void)registerHotKeys:(NSArray *)hotKeys;
 
 #pragma mark -
 
-- (void)unregisterHotKeyForName: (NSString *)name;
+- (void)unregisterHotKeyForName:(NSString *)name;
 
 - (void)unregisterHotKeys;
 
@@ -22,10 +22,10 @@
 
 - (NSArray *)registeredHotKeys;
 
-- (ZKHotKey *)registeredHotKeyForName: (NSString *)name;
+- (ZKHotKey *)registeredHotKeyForName:(NSString *)name;
 
 #pragma mark -
 
-- (BOOL)isHotKeyRegistered: (ZKHotKey *)hotKey;
+- (BOOL)isHotKeyRegistered:(ZKHotKey *)hotKey;
 
 @end

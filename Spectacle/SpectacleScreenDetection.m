@@ -4,12 +4,18 @@
 
 @implementation SpectacleScreenDetection
 
-+ (NSScreen *)screenWithAction: (SpectacleWindowAction)action andRect: (CGRect)rect screens: (NSArray *)screens mainScreen: (NSScreen *)mainScreen {
-    NSArray *screensInConsistentOrder = [SpectacleScreenDetection screensInConsistentOrder: screens];
-    NSScreen *result = [self screenContainingRect: rect screens: screensInConsistentOrder mainScreen: mainScreen];
++ (NSScreen *)screenWithAction:(SpectacleWindowAction)action
+                       andRect:(CGRect)rect
+                       screens:(NSArray *)screens
+                    mainScreen:(NSScreen *)mainScreen
+{
+    NSArray *screensInConsistentOrder = [SpectacleScreenDetection screensInConsistentOrder:screens];
+    NSScreen *result = [self screenContainingRect:rect screens:screensInConsistentOrder mainScreen:mainScreen];
     
     if (MovingToNextOrPreviousDisplay(action)) {
-        result = [self nextOrPreviousScreenToFrameOfScreen: NSRectToCGRect([result frame]) inDirectionOfAction: action screens: screensInConsistentOrder];
+        result = [self nextOrPreviousScreenToFrameOfScreen:NSRectToCGRect([result frame])
+                                       inDirectionOfAction:action
+                                                   screens:screensInConsistentOrder];
     }
     
     return result;
@@ -17,7 +23,8 @@
 
 #pragma mark -
 
-+ (NSScreen *)screenContainingRect: (CGRect)rect screens: (NSArray *)screens mainScreen: (NSScreen *)mainScreen {
++ (NSScreen *)screenContainingRect:(CGRect)rect screens:(NSArray *)screens mainScreen:(NSScreen *)mainScreen
+{
     CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
     NSScreen *result = mainScreen;
     
@@ -34,7 +41,8 @@
             break;
         }
         
-        percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect: flippedRect withinFrameOfScreen: currentFrameOfScreen];
+        percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect:flippedRect
+                                                        withinFrameOfScreen:currentFrameOfScreen];
         
         if (percentageOfRectWithinCurrentFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {
             largestPercentageOfRectWithinFrameOfScreen = percentageOfRectWithinCurrentFrameOfScreen;
@@ -48,7 +56,8 @@
 
 #pragma mark -
 
-+ (CGFloat)percentageOfRect: (CGRect)rect withinFrameOfScreen: (CGRect)frameOfScreen {
++ (CGFloat)percentageOfRect:(CGRect)rect withinFrameOfScreen:(CGRect)frameOfScreen
+{
     CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
     CGFloat result = 0.0f;
     
@@ -61,7 +70,10 @@
 
 #pragma mark -
 
-+ (NSScreen *)nextOrPreviousScreenToFrameOfScreen: (CGRect)frameOfScreen inDirectionOfAction: (SpectacleWindowAction)action screens: (NSArray *)screens {
++ (NSScreen *)nextOrPreviousScreenToFrameOfScreen:(CGRect)frameOfScreen
+                              inDirectionOfAction:(SpectacleWindowAction)action
+                                          screens:(NSArray *)screens
+{
     NSScreen *result = nil;
 
     if (screens.count <= 1) {
@@ -99,8 +111,9 @@
 
 # pragma mark -
 
-+ (NSArray *)screensInConsistentOrder: (NSArray *)screens {
-    NSArray *result = [[screens sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
++ (NSArray *)screensInConsistentOrder:(NSArray *)screens
+{
+    NSArray *result = [[screens sortedArrayWithOptions:NSSortStable usingComparator:^(NSScreen *screenOne, NSScreen *screenTwo) {
         if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
             return NSOrderedAscending;
         } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
@@ -108,7 +121,7 @@
         }
 
         return (NSComparisonResult)(screenTwo.frame.origin.y - screenOne.frame.origin.y);
-    }] sortedArrayWithOptions: NSSortStable usingComparator: ^(NSScreen *screenOne, NSScreen *screenTwo) {
+    }] sortedArrayWithOptions:NSSortStable usingComparator:^(NSScreen *screenOne, NSScreen *screenTwo) {
         if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {
             return NSOrderedAscending;
         } else if (CGPointEqualToPoint(screenTwo.frame.origin, CGPointMake(0, 0))) {
