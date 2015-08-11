@@ -37,8 +37,8 @@
 
 
 typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
-    SpectacleIsTrusted,
-    SpectacleIsNotTrusted
+  SpectacleIsTrusted,
+  SpectacleIsNotTrusted
 };
 
 #pragma mark -

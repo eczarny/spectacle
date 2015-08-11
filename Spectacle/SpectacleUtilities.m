@@ -16,335 +16,341 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 + (NSString *)applicationVersion
 {
-    NSBundle *bundle = NSBundle.mainBundle;
-    NSString *bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+  NSBundle *bundle = NSBundle.mainBundle;
+  NSString *bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 
-    if (!bundleVersion) {
-        bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
-    }
+  if (!bundleVersion) {
+    bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+  }
 
-    return bundleVersion;
+  return bundleVersion;
 }
 
 #pragma mark -
 
 + (void)registerDefaultsForBundle:(NSBundle *)bundle
 {
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-    NSDictionary *applicationDefaults = [[NSDictionary alloc] initWithContentsOfFile:path];
+  NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+  NSDictionary *applicationDefaults = [[NSDictionary alloc] initWithContentsOfFile:path];
 
-    [defaults registerDefaults:applicationDefaults];
+  [defaults registerDefaults:applicationDefaults];
 }
 
 #pragma mark -
 
 + (void)displayRunningInBackgroundAlertWithCallback:(void (^)(BOOL, BOOL))callback
 {
-    NSAlert *alert = [NSAlert new];
-    
-    alert.alertStyle = NSInformationalAlertStyle;
-    alert.showsSuppressionButton = YES;
-    alert.messageText = LocalizedString(@"This will cause Spectacle to run in the background");
-    alert.informativeText = LocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.");
-    
-    [alert addButtonWithTitle:LocalizedString(@"OK")];
-    [alert addButtonWithTitle:LocalizedString(@"Cancel")];
-    
-    NSInteger response = [alert runModal];
-    BOOL isAlertSuppressed = [alert.suppressionButton state] == NSOnState;
-    
-    switch (response) {
-        case NSAlertFirstButtonReturn:
-            callback(YES, isAlertSuppressed);
-            
-            break;
-        case NSAlertSecondButtonReturn:
-            callback(NO, isAlertSuppressed);
-            
-            break;
-        default:
-            break;
-    }
+  NSAlert *alert = [NSAlert new];
+  
+  alert.alertStyle = NSInformationalAlertStyle;
+  alert.showsSuppressionButton = YES;
+  alert.messageText = LocalizedString(@"This will cause Spectacle to run in the background");
+  alert.informativeText = LocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.");
+  
+  [alert addButtonWithTitle:LocalizedString(@"OK")];
+  [alert addButtonWithTitle:LocalizedString(@"Cancel")];
+  
+  NSInteger response = [alert runModal];
+  BOOL isAlertSuppressed = [alert.suppressionButton state] == NSOnState;
+  
+  switch (response) {
+    case NSAlertFirstButtonReturn:
+      callback(YES, isAlertSuppressed);
+      
+      break;
+    case NSAlertSecondButtonReturn:
+      callback(NO, isAlertSuppressed);
+      
+      break;
+    default:
+      break;
+  }
 }
 
 + (void)displayRestoreDefaultsAlertWithCallback:(void (^)(BOOL))callback
 {
-    NSAlert *alert = [NSAlert new];
+  NSAlert *alert = [NSAlert new];
 
-    alert.messageText = LocalizedString(@"This will restore Spectacle's default hot keys");
-    alert.informativeText = LocalizedString(@"Would you like to restore the default hot keys? Any custom hot keys will be lost.");
+  alert.messageText = LocalizedString(@"This will restore Spectacle's default hot keys");
+  alert.informativeText = LocalizedString(@"Would you like to restore the default hot keys? Any custom hot keys will be lost.");
 
-    [alert addButtonWithTitle:LocalizedString(@"OK")];
-    [alert addButtonWithTitle:LocalizedString(@"Cancel")];
+  [alert addButtonWithTitle:LocalizedString(@"OK")];
+  [alert addButtonWithTitle:LocalizedString(@"Cancel")];
 
-    NSInteger response = [alert runModal];
+  NSInteger response = [alert runModal];
 
-    switch (response) {
-        case NSAlertFirstButtonReturn:
-            callback(YES);
+  switch (response) {
+    case NSAlertFirstButtonReturn:
+      callback(YES);
 
-            break;
-        case NSAlertSecondButtonReturn:
-            callback(NO);
+      break;
+    case NSAlertSecondButtonReturn:
+      callback(NO);
 
-            break;
-        default:
-            break;
-    }
+      break;
+    default:
+      break;
+  }
 }
 
 #pragma mark -
 
 + (SpectacleApplicationTrust)spectacleTrust
 {
-    BOOL result = SpectacleIsTrusted;
-    
-    if ((AXIsProcessTrustedWithOptions != NULL) && !AXIsProcessTrustedWithOptions(NULL)) {
-        result = SpectacleIsNotTrusted;
-    }
-    
-    return result;
+  BOOL result = SpectacleIsTrusted;
+  
+  if ((AXIsProcessTrustedWithOptions != NULL) && !AXIsProcessTrustedWithOptions(NULL)) {
+    result = SpectacleIsNotTrusted;
+  }
+  
+  return result;
 }
 
 #pragma mark -
 
 + (NSArray *)hotKeyNames
 {
-    NSBundle *bundle = NSBundle.mainBundle;
-    NSString *path = [bundle pathForResource:SpectacleHotKeyNamesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-    NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile:path];
-    
-    return hotKeyNames;
+  NSBundle *bundle = NSBundle.mainBundle;
+  NSString *path = [bundle pathForResource:SpectacleHotKeyNamesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+  NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile:path];
+  
+  return hotKeyNames;
 }
 
 #pragma mark -
 
 + (NSArray *)hotKeysFromDictionary:(NSDictionary *)dictionary action:(ZKHotKeyAction)action
 {
-    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:dictionary.allKeys];
-    NSMutableArray *hotKeys = [NSMutableArray new];
+  NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:dictionary.allKeys];
+  NSMutableArray *hotKeys = [NSMutableArray new];
+  
+  [NSKeyedUnarchiver setClass:ZeroKitHotKey.class forClassName:@"SpectacleHotKey"];
+  
+  for (NSData *hotKeyData in dictionary.allValues) {
+    ZKHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData:hotKeyData];
     
-    [NSKeyedUnarchiver setClass:ZeroKitHotKey.class forClassName:@"SpectacleHotKey"];
-    
-    for (NSData *hotKeyData in dictionary.allValues) {
-        ZKHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData:hotKeyData];
-        
-        if (![hotKey isClearedHotKey]) {
-            NSString *hotKeyName = hotKey.hotKeyName;
-            
-            hotKey.hotKeyAction = action;
-            
-            [SpectacleUtilities updateHotKey:hotKey withPotentiallyNewDefaultHotKey:defaultHotKeys[hotKeyName]];
-            
-            [hotKeys addObject:hotKey];
-        }
+    if (![hotKey isClearedHotKey]) {
+      NSString *hotKeyName = hotKey.hotKeyName;
+      
+      hotKey.hotKeyAction = action;
+      
+      [SpectacleUtilities updateHotKey:hotKey withPotentiallyNewDefaultHotKey:defaultHotKeys[hotKeyName]];
+      
+      [hotKeys addObject:hotKey];
     }
-    
-    return hotKeys;
+  }
+  
+  return hotKeys;
 }
 
 #pragma mark -
 
 + (void)restoreDefaultHotKeys
 {
-    SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
-    SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
-    NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:SpectacleUtilities.hotKeyNames];
+  SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
+  SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
+  NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:SpectacleUtilities.hotKeyNames];
 
-    for (NSString *hotKeyName in defaultHotKeys) {
-        ZKHotKey *defaultHotKey = defaultHotKeys[hotKeyName];
+  for (NSString *hotKeyName in defaultHotKeys) {
+    ZKHotKey *defaultHotKey = defaultHotKeys[hotKeyName];
 
-        defaultHotKey.hotKeyAction = ^(ZKHotKey *hotKey) {
-            [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForHotKey:hotKey]];
-        };
+    defaultHotKey.hotKeyAction = ^(ZKHotKey *hotKey) {
+      [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForHotKey:hotKey]];
+    };
 
-        [hotKeyManager registerHotKey:defaultHotKey];
-    }
+    [hotKeyManager registerHotKey:defaultHotKey];
+  }
 }
 
 #pragma mark -
 
 + (void)updateHotKey:(ZKHotKey *)hotKey withPotentiallyNewDefaultHotKey:(ZKHotKey *)defaultHotKey
 {
-    NSString *hotKeyName = hotKey.hotKeyName;
-    NSInteger defaultHotKeyCode;
+  NSString *hotKeyName = hotKey.hotKeyName;
+  NSInteger defaultHotKeyCode;
+  
+  if (![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
+    && ![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
+    return;
+  }
+  
+  defaultHotKeyCode = defaultHotKey.hotKeyCode;
+  
+  if ((hotKey.hotKeyCode == defaultHotKeyCode) && (hotKey.hotKeyModifiers == 768)) {
+    hotKey.hotKeyCode = defaultHotKeyCode;
     
-    if (![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
-        && ![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
-        return;
-    }
-    
-    defaultHotKeyCode = defaultHotKey.hotKeyCode;
-    
-    if ((hotKey.hotKeyCode == defaultHotKeyCode) && (hotKey.hotKeyModifiers == 768)) {
-        hotKey.hotKeyCode = defaultHotKeyCode;
-        
-        hotKey.hotKeyModifiers = defaultHotKey.hotKeyModifiers;
-    }
+    hotKey.hotKeyModifiers = defaultHotKey.hotKeyModifiers;
+  }
 }
 
 #pragma mark -
 
 + (NSDictionary *)defaultHotKeysWithNames:(NSArray *)names
 {
-    NSBundle *bundle = NSBundle.mainBundle;
-    NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-    NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
-    NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
+  NSBundle *bundle = NSBundle.mainBundle;
+  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+  NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
+  NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
+  
+  for (NSString *hotKeyName in names) {
+    NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
+    ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData:defaultHotKeyData];
     
-    for (NSString *hotKeyName in names) {
-        NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
-        ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData:defaultHotKeyData];
-        
-        defaultHotKeys[hotKeyName] = defaultHotKey;
-    }
-    
-    return defaultHotKeys;
+    defaultHotKeys[hotKeyName] = defaultHotKey;
+  }
+  
+  return defaultHotKeys;
 }
 
 #pragma mark -
 
 + (NSString *)pathForPreferencePaneNamed:(NSString *)preferencePaneName
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSAllDomainsMask, YES);
-    NSFileManager *fileManager = NSFileManager.defaultManager;
-    NSString *preferencePanePath = nil;
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSAllDomainsMask, YES);
+  NSFileManager *fileManager = NSFileManager.defaultManager;
+  NSString *preferencePanePath = nil;
 
-    if (preferencePaneName) {
-        preferencePaneName = [preferencePaneName stringByAppendingFormat:@".%@", SpectaclePreferencePaneExtension];
+  if (preferencePaneName) {
+    preferencePaneName = [preferencePaneName stringByAppendingFormat:@".%@", SpectaclePreferencePaneExtension];
 
-        for (__strong NSString *path in paths) {
-            path = [path stringByAppendingPathComponent:preferencePaneName];
+    for (__strong NSString *path in paths) {
+      path = [path stringByAppendingPathComponent:preferencePaneName];
 
-            if (path && [fileManager fileExistsAtPath:path isDirectory:nil]) {
-                preferencePanePath = path;
+      if (path && [fileManager fileExistsAtPath:path isDirectory:nil]) {
+        preferencePanePath = path;
 
-                break;
-            }
-        }
-
-        if (!preferencePanePath) {
-            NSLog(@"There was a problem obtaining the path for the specified preference pane: %@", preferencePaneName);
-        }
+        break;
+      }
     }
 
-    return preferencePanePath;
+    if (!preferencePanePath) {
+      NSLog(@"There was a problem obtaining the path for the specified preference pane: %@", preferencePaneName);
+    }
+  }
+
+  return preferencePanePath;
 }
 
 #pragma mark -
 
 + (BOOL)isLoginItemEnabledForBundle:(NSBundle *)bundle
 {
-    LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    NSString *applicationPath = bundle.bundlePath;
-    BOOL result = NO;
+  LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+  NSString *applicationPath = bundle.bundlePath;
+  BOOL result = NO;
 
-    if (sharedFileList) {
-        NSArray *sharedFileListArray = nil;
-        UInt32 seedValue;
+  if (sharedFileList) {
+    NSArray *sharedFileListArray = nil;
+    UInt32 seedValue;
 
-        sharedFileListArray = CFBridgingRelease(LSSharedFileListCopySnapshot(sharedFileList, &seedValue));
+    sharedFileListArray = CFBridgingRelease(LSSharedFileListCopySnapshot(sharedFileList, &seedValue));
 
-        for (id sharedFile in sharedFileListArray) {
-            LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
-            CFURLRef applicationPathURL = NULL;
+    for (id sharedFile in sharedFileListArray) {
+      LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
+      CFURLRef applicationPathURL = NULL;
 
-            LSSharedFileListItemResolve(sharedFileListItem, 0, (CFURLRef *)&applicationPathURL, NULL);
+      LSSharedFileListItemResolve(sharedFileListItem, 0, (CFURLRef *)&applicationPathURL, NULL);
 
-            if (applicationPathURL != NULL) {
-                NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
+      if (applicationPathURL != NULL) {
+        NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
 
-                CFRelease(applicationPathURL);
+        CFRelease(applicationPathURL);
 
-                if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
-                    result = YES;
+        if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
+          result = YES;
 
-                    break;
-                }
-            }
+          break;
         }
-
-        CFRelease(sharedFileList);
-    } else {
-        NSLog(@"Unable to create the shared file list.");
+      }
     }
 
-    return result;
+    CFRelease(sharedFileList);
+  } else {
+    NSLog(@"Unable to create the shared file list.");
+  }
+
+  return result;
 }
 
 #pragma mark -
 
 + (void)enableLoginItemForBundle:(NSBundle *)bundle
 {
-    LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    NSString *applicationPath = bundle.bundlePath;
-    NSURL *applicationPathURL = [NSURL fileURLWithPath:applicationPath];
+  LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+  NSString *applicationPath = bundle.bundlePath;
+  NSURL *applicationPathURL = [NSURL fileURLWithPath:applicationPath];
 
-    if (sharedFileList) {
-        LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList, kLSSharedFileListItemLast, NULL, NULL, (__bridge CFURLRef)applicationPathURL, NULL, NULL);
+  if (sharedFileList) {
+    LSSharedFileListItemRef sharedFileListItem = LSSharedFileListInsertItemURL(sharedFileList,
+                                                                               kLSSharedFileListItemLast,
+                                                                               NULL,
+                                                                               NULL,
+                                                                               (__bridge CFURLRef)applicationPathURL,
+                                                                               NULL,
+                                                                               NULL);
 
-        if (sharedFileListItem) {
-            CFRelease(sharedFileListItem);
-        }
-
-        CFRelease(sharedFileList);
-    } else {
-        NSLog(@"Unable to create the shared file list.");
+    if (sharedFileListItem) {
+      CFRelease(sharedFileListItem);
     }
+
+    CFRelease(sharedFileList);
+  } else {
+    NSLog(@"Unable to create the shared file list.");
+  }
 }
 
 + (void)disableLoginItemForBundle:(NSBundle *)bundle
 {
-    LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    NSString *applicationPath = bundle.bundlePath;
+  LSSharedFileListRef sharedFileList = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+  NSString *applicationPath = bundle.bundlePath;
 
-    if (sharedFileList) {
-        NSArray *sharedFileListArray = nil;
-        UInt32 seedValue;
+  if (sharedFileList) {
+    NSArray *sharedFileListArray = nil;
+    UInt32 seedValue;
 
-        sharedFileListArray = CFBridgingRelease(LSSharedFileListCopySnapshot(sharedFileList, &seedValue));
+    sharedFileListArray = CFBridgingRelease(LSSharedFileListCopySnapshot(sharedFileList, &seedValue));
 
-        for (id sharedFile in sharedFileListArray) {
-            LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
-            CFURLRef applicationPathURL;
+    for (id sharedFile in sharedFileListArray) {
+      LSSharedFileListItemRef sharedFileListItem = (__bridge LSSharedFileListItemRef)sharedFile;
+      CFURLRef applicationPathURL;
 
-            if (LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL) == noErr) {
-                NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
+      if (LSSharedFileListItemResolve(sharedFileListItem, 0, &applicationPathURL, NULL) == noErr) {
+        NSString *resolvedApplicationPath = [(__bridge NSURL *)applicationPathURL path];
 
-                if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
-                    LSSharedFileListItemRemove(sharedFileList, sharedFileListItem);
-                }
-
-                CFRelease(applicationPathURL);
-            }
+        if ([resolvedApplicationPath compare:applicationPath] == NSOrderedSame) {
+          LSSharedFileListItemRemove(sharedFileList, sharedFileListItem);
         }
 
-        CFRelease(sharedFileList);
-    } else {
-        NSLog(@"Unable to create the shared file list.");
+        CFRelease(applicationPathURL);
+      }
     }
+
+    CFRelease(sharedFileList);
+  } else {
+    NSLog(@"Unable to create the shared file list.");
+  }
 }
 
 #pragma mark -
 
 + (NSMutableDictionary *)stringAttributesWithShadow
 {
-    NSMutableParagraphStyle *paragraphStyle = NSParagraphStyle.defaultParagraphStyle.mutableCopy;
-    NSShadow *textShadow = [NSShadow new];
-    NSMutableDictionary *stringAttributes = [NSMutableDictionary new];
+  NSMutableParagraphStyle *paragraphStyle = NSParagraphStyle.defaultParagraphStyle.mutableCopy;
+  NSShadow *textShadow = [NSShadow new];
+  NSMutableDictionary *stringAttributes = [NSMutableDictionary new];
 
-    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    paragraphStyle.alignment = NSCenterTextAlignment;
+  paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+  paragraphStyle.alignment = NSCenterTextAlignment;
 
-    textShadow.shadowColor = [NSColor whiteColor];
-    textShadow.shadowOffset = NSMakeSize(0.0f, -1.0);
-    textShadow.shadowBlurRadius = 0.0f;
+  textShadow.shadowColor = [NSColor whiteColor];
+  textShadow.shadowOffset = NSMakeSize(0.0f, -1.0);
+  textShadow.shadowBlurRadius = 0.0f;
 
-    stringAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
-    stringAttributes[NSShadowAttributeName] = textShadow;
+  stringAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
+  stringAttributes[NSShadowAttributeName] = textShadow;
 
-    return stringAttributes;
+  return stringAttributes;
 }
 
 @end

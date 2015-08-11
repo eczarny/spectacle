@@ -21,194 +21,194 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
+  NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
 
-    [SpectacleUtilities registerDefaultsForBundle:NSBundle.mainBundle];
+  [SpectacleUtilities registerDefaultsForBundle:NSBundle.mainBundle];
 
-    _preferencesController = [SpectaclePreferencesController new];
+  _preferencesController = [SpectaclePreferencesController new];
 
-    _hotKeyMenuItems = @{SpectacleWindowActionMoveToCenter:          _moveToCenterHotKeyMenuItem,
-                         SpectacleWindowActionMoveToFullscreen:      _moveToFullscreenHotKeyMenuItem,
-                         SpectacleWindowActionMoveToLeftHalf:        _moveToLeftHotKeyMenuItem,
-                         SpectacleWindowActionMoveToRightHalf:       _moveToRightHotKeyMenuItem,
-                         SpectacleWindowActionMoveToTopHalf:         _moveToTopHotKeyMenuItem,
-                         SpectacleWindowActionMoveToBottomHalf:      _moveToBottomHotKeyMenuItem,
-                         SpectacleWindowActionMoveToUpperLeft:       _moveToUpperLeftHotKeyMenuItem,
-                         SpectacleWindowActionMoveToLowerLeft:       _moveToLowerLeftHotKeyMenuItem,
-                         SpectacleWindowActionMoveToUpperRight:      _moveToUpperRightHotKeyMenuItem,
-                         SpectacleWindowActionMoveToLowerRight:      _moveToLowerRightHotKeyMenuItem,
-                         SpectacleWindowActionMoveToNextDisplay:     _moveToNextDisplayHotKeyMenuItem,
-                         SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyMenuItem,
-                         SpectacleWindowActionMoveToNextThird:       _moveToNextThirdHotKeyMenuItem,
-                         SpectacleWindowActionMoveToPreviousThird:   _moveToPreviousThirdHotKeyMenuItem,
-                         SpectacleWindowActionMakeLarger:            _makeLargerHotKeyMenuItem,
-                         SpectacleWindowActionMakeSmaller:           _makeSmallerHotKeyMenuItem,
-                         SpectacleWindowActionUndoLastMove:          _undoLastMoveHotKeyMenuItem,
-                         SpectacleWindowActionRedoLastMove:          _redoLastMoveHotKeyMenuItem};
+  _hotKeyMenuItems = @{SpectacleWindowActionMoveToCenter: _moveToCenterHotKeyMenuItem,
+                       SpectacleWindowActionMoveToFullscreen: _moveToFullscreenHotKeyMenuItem,
+                       SpectacleWindowActionMoveToLeftHalf: _moveToLeftHotKeyMenuItem,
+                       SpectacleWindowActionMoveToRightHalf: _moveToRightHotKeyMenuItem,
+                       SpectacleWindowActionMoveToTopHalf: _moveToTopHotKeyMenuItem,
+                       SpectacleWindowActionMoveToBottomHalf: _moveToBottomHotKeyMenuItem,
+                       SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftHotKeyMenuItem,
+                       SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftHotKeyMenuItem,
+                       SpectacleWindowActionMoveToUpperRight: _moveToUpperRightHotKeyMenuItem,
+                       SpectacleWindowActionMoveToLowerRight: _moveToLowerRightHotKeyMenuItem,
+                       SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayHotKeyMenuItem,
+                       SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyMenuItem,
+                       SpectacleWindowActionMoveToNextThird: _moveToNextThirdHotKeyMenuItem,
+                       SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdHotKeyMenuItem,
+                       SpectacleWindowActionMakeLarger: _makeLargerHotKeyMenuItem,
+                       SpectacleWindowActionMakeSmaller: _makeSmallerHotKeyMenuItem,
+                       SpectacleWindowActionUndoLastMove: _undoLastMoveHotKeyMenuItem,
+                       SpectacleWindowActionRedoLastMove: _redoLastMoveHotKeyMenuItem};
 
-    [self registerHotKeys];
+  [self registerHotKeys];
 
-    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-    BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:SpectacleAutomaticUpdateCheckEnabledPreference];
-    BOOL statusItemEnabled = [userDefaults boolForKey:SpectacleStatusItemEnabledPreference];
+  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+  BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:SpectacleAutomaticUpdateCheckEnabledPreference];
+  BOOL statusItemEnabled = [userDefaults boolForKey:SpectacleStatusItemEnabledPreference];
 
-    if (statusItemEnabled) {
-        [self createStatusItem];
-    }
+  if (statusItemEnabled) {
+    [self createStatusItem];
+  }
 
-    [notificationCenter addObserver:self
-                           selector:@selector(enableStatusItem)
-                               name:SpectacleStatusItemEnabledNotification
-                             object:nil];
+  [notificationCenter addObserver:self
+                         selector:@selector(enableStatusItem)
+                             name:SpectacleStatusItemEnabledNotification
+                           object:nil];
 
-    [notificationCenter addObserver:self
-                           selector:@selector(disableStatusItem)
-                               name:SpectacleStatusItemDisabledNotification
-                             object:nil];
+  [notificationCenter addObserver:self
+                         selector:@selector(disableStatusItem)
+                             name:SpectacleStatusItemDisabledNotification
+                           object:nil];
 
-    [notificationCenter addObserver:self
-                           selector:@selector(updateHotKeyMenuItems)
-                               name:SpectacleHotKeyChangedNotification
-                             object:nil];
+  [notificationCenter addObserver:self
+                         selector:@selector(updateHotKeyMenuItems)
+                             name:SpectacleHotKeyChangedNotification
+                           object:nil];
 
-    [notificationCenter addObserver:self
-                           selector:@selector(updateHotKeyMenuItems)
-                               name:SpectacleRestoreDefaultHotKeysNotification
-                             object:nil];
+  [notificationCenter addObserver:self
+                         selector:@selector(updateHotKeyMenuItems)
+                             name:SpectacleRestoreDefaultHotKeysNotification
+                           object:nil];
 
-    [notificationCenter addObserver:self
-                           selector:@selector(menuDidSendAction:)
-                               name:NSMenuDidSendActionNotification
-                             object:nil];
+  [notificationCenter addObserver:self
+                         selector:@selector(menuDidSendAction:)
+                             name:NSMenuDidSendActionNotification
+                           object:nil];
 
-    [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
+  [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
 
-    [self updateHotKeyMenuItems];
+  [self updateHotKeyMenuItems];
 
-    switch (SpectacleUtilities.spectacleTrust) {
-        case SpectacleIsNotTrusted:
-            [[NSApplication sharedApplication] runModalForWindow:_accessiblityAccessDialogWindow];
+  switch (SpectacleUtilities.spectacleTrust) {
+    case SpectacleIsNotTrusted:
+      [[NSApplication sharedApplication] runModalForWindow:_accessiblityAccessDialogWindow];
 
-            break;
-        default:
-            break;
-    }
+      break;
+    default:
+      break;
+  }
 
-    [userDefaults removeObjectForKey:SpectacleBlacklistedWindowRectsPreference];
+  [userDefaults removeObjectForKey:SpectacleBlacklistedWindowRectsPreference];
 }
 
 #pragma mark -
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)application hasVisibleWindows:(BOOL)visibleWindows
 {
-    [self showPreferencesWindow:self];
+  [self showPreferencesWindow:self];
 
-    return YES;
+  return YES;
 }
 
 #pragma mark -
 
 - (IBAction)showPreferencesWindow:(id)sender
 {
-    [_preferencesController showWindow:sender];
+  [_preferencesController showWindow:sender];
 }
 
 #pragma mark -
 
 - (IBAction)openSystemPreferences:(id)sender
 {
-    NSURL *preferencePaneURL = [NSURL fileURLWithPath:[SpectacleUtilities pathForPreferencePaneNamed:SpectacleSecurityPreferencePaneName]];
-    NSBundle *applicationBundle = NSBundle.mainBundle;
-    NSURL *scriptURL = [applicationBundle URLForResource:SpectacleSecurityAndPrivacyPreferencesScriptName
-                                           withExtension:SpectacleAppleScriptFileExtension];
+  NSURL *preferencePaneURL = [NSURL fileURLWithPath:[SpectacleUtilities pathForPreferencePaneNamed:SpectacleSecurityPreferencePaneName]];
+  NSBundle *applicationBundle = NSBundle.mainBundle;
+  NSURL *scriptURL = [applicationBundle URLForResource:SpectacleSecurityAndPrivacyPreferencesScriptName
+                                         withExtension:SpectacleAppleScriptFileExtension];
 
-    [NSApplication.sharedApplication stopModal];
+  [NSApplication.sharedApplication stopModal];
 
-    [_accessiblityAccessDialogWindow orderOut:self];
+  [_accessiblityAccessDialogWindow orderOut:self];
 
-    if (![[[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:nil] executeAndReturnError:nil]) {
-        [NSWorkspace.sharedWorkspace openURL:preferencePaneURL];
-    }
+  if (![[[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:nil] executeAndReturnError:nil]) {
+    [NSWorkspace.sharedWorkspace openURL:preferencePaneURL];
+  }
 }
 
 #pragma mark -
 
 - (IBAction)restoreDefaults:(id)sender
 {
-    [SpectacleUtilities displayRestoreDefaultsAlertWithCallback:^(BOOL isConfirmed) {
-        if (isConfirmed) {
-            [SpectacleUtilities restoreDefaultHotKeys];
+  [SpectacleUtilities displayRestoreDefaultsAlertWithCallback:^(BOOL isConfirmed) {
+    if (isConfirmed) {
+      [SpectacleUtilities restoreDefaultHotKeys];
 
-            [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultHotKeysNotification
-                                                              object:self];
-        }
-    }];
+      [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultHotKeysNotification
+                                                        object:self];
+    }
+  }];
 }
 
 #pragma mark -
 
 - (void)createStatusItem
 {
-    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    
-    NSImage *statusImage = [[NSImage alloc] initWithContentsOfFile:[NSBundle.mainBundle pathForImageResource:SpectacleStatusItemIcon]];
-    
-    [statusImage setTemplate:YES];
-    
-    _statusItem.image = statusImage;
-    _statusItem.highlightMode = YES;
-    _statusItem.toolTip = [NSString stringWithFormat:@"Spectacle %@", SpectacleUtilities.applicationVersion];
+  _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+  
+  NSImage *statusImage = [[NSImage alloc] initWithContentsOfFile:[NSBundle.mainBundle pathForImageResource:SpectacleStatusItemIcon]];
+  
+  [statusImage setTemplate:YES];
+  
+  _statusItem.image = statusImage;
+  _statusItem.highlightMode = YES;
+  _statusItem.toolTip = [NSString stringWithFormat:@"Spectacle %@", SpectacleUtilities.applicationVersion];
 
-    [_statusItem setMenu:_statusItemMenu];
+  [_statusItem setMenu:_statusItemMenu];
 }
 
 - (void)destroyStatusItem
 {
-    [NSStatusBar.systemStatusBar removeStatusItem:_statusItem];
+  [NSStatusBar.systemStatusBar removeStatusItem:_statusItem];
 }
 
 #pragma mark -
 
 - (void)updateHotKeyMenuItems
 {
-    SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
-    ZKHotKeyTranslator *hotKeyTranslator = ZKHotKeyTranslator.sharedTranslator;
+  SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
+  ZKHotKeyTranslator *hotKeyTranslator = ZKHotKeyTranslator.sharedTranslator;
 
-    for (NSString *hotKeyName in _hotKeyMenuItems.allKeys) {
-        NSMenuItem *hotKeyMenuItem = _hotKeyMenuItems[hotKeyName];
-        ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName:hotKeyName];
+  for (NSString *hotKeyName in _hotKeyMenuItems.allKeys) {
+    NSMenuItem *hotKeyMenuItem = _hotKeyMenuItems[hotKeyName];
+    ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName:hotKeyName];
 
-        if (hotKey) {
-            hotKeyMenuItem.keyEquivalent = [[hotKeyTranslator translateKeyCode:hotKey.hotKeyCode] lowercaseString];
-            hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoaIfNecessary:hotKey.hotKeyModifiers];
-        } else {
-            hotKeyMenuItem.keyEquivalent = @"";
-            hotKeyMenuItem.keyEquivalentModifierMask = 0;
-        }
+    if (hotKey) {
+      hotKeyMenuItem.keyEquivalent = [[hotKeyTranslator translateKeyCode:hotKey.hotKeyCode] lowercaseString];
+      hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoaIfNecessary:hotKey.hotKeyModifiers];
+    } else {
+      hotKeyMenuItem.keyEquivalent = @"";
+      hotKeyMenuItem.keyEquivalentModifierMask = 0;
     }
+  }
 }
 
 #pragma mark -
 
 - (void)enableStatusItem
 {
-    [self createStatusItem];
+  [self createStatusItem];
 }
 
 - (void)disableStatusItem
 {
-    [self destroyStatusItem];
+  [self destroyStatusItem];
 }
 
 #pragma mark -
 
 - (void)menuDidSendAction:(NSNotification *)notification
 {
-    NSMenuItem *menuItem = (notification.userInfo)[@"MenuItem"];
+  NSMenuItem *menuItem = (notification.userInfo)[@"MenuItem"];
 
-    if (menuItem.tag == SpectacleMenuItemActivateIgnoringOtherApps) {
-        [NSApplication.sharedApplication activateIgnoringOtherApps:YES];
-    }
+  if (menuItem.tag == SpectacleMenuItemActivateIgnoringOtherApps) {
+    [NSApplication.sharedApplication activateIgnoringOtherApps:YES];
+  }
 }
 
 @end

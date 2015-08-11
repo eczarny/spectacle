@@ -1,9 +1,9 @@
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-    #import <QuartzCore/QuartzCore.h>
+  #import <Cocoa/Cocoa.h>
+  #import <QuartzCore/QuartzCore.h>
 
-    #import "Specta.h"
+  #import "Specta.h"
 
-    #define EXP_SHORTHAND
-    #import "Expecta.h"
+  #define EXP_SHORTHAND
+  #import "Expecta.h"
 #endif

@@ -11,111 +11,111 @@
 
 - (instancetype)initWithFrame:(NSRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
-        [MyCell setHotKeyRecorder:self];
-    }
-    
-    return self;
+  if (self = [super initWithFrame:frame]) {
+    [MyCell setHotKeyRecorder:self];
+  }
+  
+  return self;
 }
 
 #pragma mark -
 
 + (Class)cellClass
 {
-    return ZKHotKeyRecorderCell.class;
+  return ZKHotKeyRecorderCell.class;
 }
 
 #pragma mark -
 
 - (NSString *)hotKeyName
 {
-    return [MyCell hotKeyName];
+  return [MyCell hotKeyName];
 }
 
 - (void)setHotKeyName:(NSString *)hotKeyName
 {
-    [MyCell setHotKeyName:hotKeyName];
+  [MyCell setHotKeyName:hotKeyName];
 }
 
 #pragma mark -
 
 - (ZKHotKey *)hotKey
 {
-    return [MyCell hotKey];
+  return [MyCell hotKey];
 }
 
 - (void)setHotKey:(ZKHotKey *)hotKey
 {
-    [MyCell setHotKey:hotKey];
-    
-    [self updateCell:MyCell];
+  [MyCell setHotKey:hotKey];
+  
+  [self updateCell:MyCell];
 }
 
 #pragma mark -
 
 - (id<ZKHotKeyRecorderDelegate>)delegate
 {
-    return [MyCell delegate];
+  return [MyCell delegate];
 }
 
 - (void)setDelegate:(id<ZKHotKeyRecorderDelegate>)delegate
 {
-    [MyCell setDelegate:delegate];
+  [MyCell setDelegate:delegate];
 }
 
 #pragma mark -
 
 - (void)setAdditionalHotKeyValidators:(NSArray *)additionalHotKeyValidators
 {
-    [MyCell setAdditionalHotKeyValidators:additionalHotKeyValidators];
+  [MyCell setAdditionalHotKeyValidators:additionalHotKeyValidators];
 }
 
 #pragma mark -
 
 - (BOOL)acceptsFirstResponder
 {
-    return YES;
+  return YES;
 }
 
 - (BOOL)acceptsFirstMouse:(NSEvent *)event
 {
-    return YES;
+  return YES;
 }
 
 #pragma mark -
 
 - (BOOL)performKeyEquivalent:(NSEvent *)event
 {
-    if ([self.window.firstResponder isEqualTo:self]) {
-        return [MyCell performKeyEquivalent:event];
-    }
-    
-    return [super performKeyEquivalent:event];
+  if ([self.window.firstResponder isEqualTo:self]) {
+    return [MyCell performKeyEquivalent:event];
+  }
+  
+  return [super performKeyEquivalent:event];
 }
 
 - (void)keyDown:(NSEvent *)event
 {
-    if ([self performKeyEquivalent:event]) {
-        return;
-    }
-    
-    if (event.keyCode == SpectacleEscapeKey) {
-        [MyCell resignFirstResponder];
-    } else {
-        [super keyDown:event];
-    }
+  if ([self performKeyEquivalent:event]) {
+    return;
+  }
+  
+  if (event.keyCode == SpectacleEscapeKey) {
+    [MyCell resignFirstResponder];
+  } else {
+    [super keyDown:event];
+  }
 }
 
 - (void)flagsChanged:(NSEvent *)event
 {
-    [MyCell flagsChanged:event];
+  [MyCell flagsChanged:event];
 }
 
 #pragma mark -
 
 - (BOOL)resignFirstResponder
 {
-    return [MyCell resignFirstResponder];
+  return [MyCell resignFirstResponder];
 }
 
 @end

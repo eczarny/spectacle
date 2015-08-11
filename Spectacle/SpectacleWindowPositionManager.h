@@ -13,25 +13,25 @@
 
 
 typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
-    SpectacleWindowActionUndo = -4,
-    SpectacleWindowActionRedo,
-    SpectacleWindowActionLarger,
-    SpectacleWindowActionSmaller,
-    SpectacleWindowActionNone,
-    SpectacleWindowActionCenter,
-    SpectacleWindowActionFullscreen,
-    SpectacleWindowActionLeftHalf,
-    SpectacleWindowActionUpperLeft,
-    SpectacleWindowActionLowerLeft,
-    SpectacleWindowActionRightHalf,
-    SpectacleWindowActionUpperRight,
-    SpectacleWindowActionLowerRight,
-    SpectacleWindowActionTopHalf,
-    SpectacleWindowActionBottomHalf,
-    SpectacleWindowActionNextDisplay,
-    SpectacleWindowActionPreviousDisplay,
-    SpectacleWindowActionNextThird,
-    SpectacleWindowActionPreviousThird
+  SpectacleWindowActionUndo = -4,
+  SpectacleWindowActionRedo,
+  SpectacleWindowActionLarger,
+  SpectacleWindowActionSmaller,
+  SpectacleWindowActionNone,
+  SpectacleWindowActionCenter,
+  SpectacleWindowActionFullscreen,
+  SpectacleWindowActionLeftHalf,
+  SpectacleWindowActionUpperLeft,
+  SpectacleWindowActionLowerLeft,
+  SpectacleWindowActionRightHalf,
+  SpectacleWindowActionUpperRight,
+  SpectacleWindowActionLowerRight,
+  SpectacleWindowActionTopHalf,
+  SpectacleWindowActionBottomHalf,
+  SpectacleWindowActionNextDisplay,
+  SpectacleWindowActionPreviousDisplay,
+  SpectacleWindowActionNextThird,
+  SpectacleWindowActionPreviousThird
 };
 
 @class ZKHotKey;
