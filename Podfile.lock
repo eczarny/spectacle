@@ -1,16 +1,16 @@
 PODS:
-  - Expecta (0.4.0)
-  - Sparkle (1.9.0)
-  - Specta (0.5.0)
+  - Expecta (1.0.2)
+  - Sparkle (1.10.0)
+  - Specta (1.0.3)
 
 DEPENDENCIES:
-  - Expecta (~> 0.4.0)
-  - Sparkle (~> 1.9)
-  - Specta (~> 0.5.0)
+  - Expecta (~> 1.0.2)
+  - Sparkle (~> 1.10)
+  - Specta (~> 1.0.3)
 
 SPEC CHECKSUMS:
-  Expecta: 392a6b5bfb9f4097e47dd8064d9b732079490332
-  Sparkle: 75bbbc5ab2d666f7f77c241afe7fd28364a8f9f7
-  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
+  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  Sparkle: c859bf5283b9f12aa45bceccf8e25ebb4c008eb2
+  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 
-COCOAPODS: 0.37.0.beta.1
+COCOAPODS: 0.38.2
