@@ -90,8 +90,7 @@
   if (frontMostWindowElement.isSheet
       || CGRectIsNull(frontMostWindowRect)
       || CGRectIsNull(frameOfScreen)
-      || CGRectIsNull(visibleFrameOfScreen)
-      || CGRectEqualToRect(frontMostWindowRect, frameOfScreen)) {
+      || CGRectIsNull(visibleFrameOfScreen)) {
     NSBeep();
     
     return;
