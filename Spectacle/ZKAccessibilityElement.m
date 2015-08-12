@@ -138,7 +138,14 @@
 
 - (BOOL)isSheet
 {
-  return[[self stringValueOfAttribute:kAXRoleAttribute] isEqualToString:(__bridge NSString *)kAXSheetRole];
+  return [[self stringValueOfAttribute:kAXRoleAttribute] isEqualToString:(__bridge NSString *)kAXSheetRole];
+}
+
+- (BOOL)isFullScreen
+{
+  ZKAccessibilityElement *fullScreenButtonElement = [self elementWithAttribute:kAXFullScreenButtonAttribute];
+
+  return [[fullScreenButtonElement stringValueOfAttribute:kAXSubroleAttribute] isEqualToString:(__bridge NSString *)kAXZoomButtonSubrole];
 }
 
 #pragma mark -

@@ -88,6 +88,7 @@
   }
 
   if (frontMostWindowElement.isSheet
+      || frontMostWindowElement.isFullScreen
       || CGRectIsNull(frontMostWindowRect)
       || CGRectIsNull(frameOfScreen)
       || CGRectIsNull(visibleFrameOfScreen)) {

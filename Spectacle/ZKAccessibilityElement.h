@@ -29,4 +29,6 @@
 
 - (BOOL)isSheet;
 
+- (BOOL)isFullScreen;
+
 @end
