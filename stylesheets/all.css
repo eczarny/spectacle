@@ -696,7 +696,7 @@ img {
     opacity: 1; } }
 
 /* line 186, stylesheets/all.css.sass */
-h1, h2, h3, footer {
+h1, h2, h3, h4, footer {
   text-align: center; }
 
 /* line 189, stylesheets/all.css.sass */
@@ -738,6 +738,10 @@ h3 {
   font-weight: bold;
   margin-bottom: 16px; }
 
+h4 {
+  font-size: 1.2em;
+  margin: 0 auto 40px; }
+
 /* line 221, stylesheets/all.css.sass */
 p {
   font-size: 1em;
@@ -753,7 +757,7 @@ p {
   display: block;
   border-radius: 5px;
   text-align: center;
-  margin: 0 auto 60px;
+  margin: 0 auto 20px;
   padding-top: 15px;
   font-size: 2.2em;
   font-weight: bold;
@@ -782,7 +786,10 @@ p {
 
 /* line 254, stylesheets/all.css.sass */
 .info {
-  *zoom: 1; }
+  *zoom: 1;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto; }
   /* line 18, stylesheets/bourbon/addons/_clearfix.scss */
   .info:before, .info:after {
     content: " ";
@@ -793,7 +800,7 @@ p {
 
 /* line 257, stylesheets/all.css.sass */
 .feature {
-  width: 25%;
+  width: 33%;
   float: left;
   padding: 0 2%; }
   @media (max-width: 620px) {
