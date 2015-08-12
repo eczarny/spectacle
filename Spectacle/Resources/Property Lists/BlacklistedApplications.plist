@@ -2,10 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>Pro Tools 11</string>
-	<string>Pro Tools 10</string>
-	<string>Pro Tools</string>
 	<string>Adobe Reader</string>
+	<string>Notification Center</string>
 	<string>Photoshop</string>
+	<string>Pro Tools</string>
+	<string>Pro Tools 10</string>
+	<string>Pro Tools 11</string>
 </array>
 </plist>
