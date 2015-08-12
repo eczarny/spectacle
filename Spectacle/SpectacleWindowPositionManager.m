@@ -267,43 +267,17 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
   [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
   
   CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
-  
-  if ((action != SpectacleWindowActionUndo) && (action != SpectacleWindowActionRedo)) {
-    [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
 
-    movedWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
-    
-    // Does the window fit within the desired position?
-    if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
-      CGRect adjustedWindowRect = windowRect;
-      
-      // If not, try reducing the window size to fit.
-      while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
-        if (movedWindowRect.size.width > windowRect.size.width) {
-          adjustedWindowRect.size.width -= 2;
-        }
-
-        if (movedWindowRect.size.height > windowRect.size.height) {
-          adjustedWindowRect.size.height -= 2;
-        }
-
-        // If the window's size has been reduced to half of its original size, stop.
-        if (adjustedWindowRect.size.width < windowRect.size.width / 2.0f || adjustedWindowRect.size.height < windowRect.size.height / 2.0f) {
-          break;
-        }
-        
-        [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
-
-        movedWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
-      }
-      
-      // Center the window, taking into account any quantization adjustments.
-      adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
-      adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
-
-      [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
-    }
+  if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
+    movedWindowRect = [self makeMovedWindowRect:movedWindowRect
+                                  fitWindowRect:windowRect
+                         frontMostWindowElement:frontMostWindowElement];
   }
+
+  movedWindowRect = [self makeMovedWindowRect:movedWindowRect
+                      fitVisibleFrameOfScreen:visibleFrameOfScreen
+                                frameOfScreen:frameOfScreen
+                       frontMostWindowElement:frontMostWindowElement];
 
   if (MovingToThirdOfDisplay(action) && !CGRectContainsRect(windowRect, movedWindowRect)) {
     NSBeep();
@@ -323,6 +297,70 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
 
   CFRelease(windowRectPositionRef);
   CFRelease(windowRectSizeRef);
+}
+
+- (CGRect)makeMovedWindowRect:(CGRect)movedWindowRect
+                fitWindowRect:(CGRect)windowRect
+       frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
+{
+  CGRect adjustedWindowRect = windowRect;
+
+  while (movedWindowRect.size.width > windowRect.size.width || movedWindowRect.size.height > windowRect.size.height) {
+    if (movedWindowRect.size.width > windowRect.size.width) {
+      adjustedWindowRect.size.width -= 2;
+    }
+
+    if (movedWindowRect.size.height > windowRect.size.height) {
+      adjustedWindowRect.size.height -= 2;
+    }
+
+    if (adjustedWindowRect.size.width < windowRect.size.width * 0.85f || adjustedWindowRect.size.height < windowRect.size.height * 0.85f) {
+      break;
+    }
+
+    [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
+
+    movedWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
+  }
+
+  adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
+  adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
+
+  [self moveWindowRect:adjustedWindowRect frontMostWindowElement:frontMostWindowElement];
+
+  return [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
+}
+
+- (CGRect)makeMovedWindowRect:(CGRect)movedWindowRect
+      fitVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+                frameOfScreen:(CGRect)frameOfScreen
+       frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
+{
+  CGRect previouslyMovedWindowRect = movedWindowRect;
+
+  if (movedWindowRect.origin.x < visibleFrameOfScreen.origin.x) {
+    movedWindowRect.origin.x = visibleFrameOfScreen.origin.x;
+  } else if ((movedWindowRect.origin.x + movedWindowRect.size.width) > (visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width)) {
+    movedWindowRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - movedWindowRect.size.width;
+  }
+
+  movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
+
+  if (movedWindowRect.origin.y < visibleFrameOfScreen.origin.y) {
+    movedWindowRect.origin.y = visibleFrameOfScreen.origin.y;
+  } else if ((movedWindowRect.origin.y + movedWindowRect.size.height) > (visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height)) {
+    movedWindowRect.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - movedWindowRect.size.height;
+  }
+
+  movedWindowRect.origin.y = FlipVerticalOriginOfRectInRect(movedWindowRect, frameOfScreen);
+
+  if (!CGRectEqualToRect(movedWindowRect, previouslyMovedWindowRect)) {
+    [self moveWindowRect:movedWindowRect frontMostWindowElement:frontMostWindowElement];
+
+    movedWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
+  }
+
+  return movedWindowRect;
 }
 
 #pragma mark -
