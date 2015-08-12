@@ -6,13 +6,13 @@ Before you start working on your contribution to Spectacle please keep reading. 
 
 ## Issues
 
-Before creating a new issue please check and make sure somebody hasn't already beat you to it. If your defect or feature request doesn't already exist feel free to create a new issue. When creating a new issue take the time to be as clear and descriptive as possible.
+Before creating a new issue check and make sure somebody hasn't already beat you to it. _Please take this time to also review Spectacle's [common issues][2]_. If your defect or feature request doesn't already exist feel free to create a new issue. When creating a new issue take the time to be as clear and descriptive as possible.
 
 Here are a few things to keep in mind when creating an issue for a potential defect:
 
 * What version of Spectacle did you use when encountering the defect?
 * What version of OS X did you use when encountering the defect?
-* Was there any relevant Spectacle output in the [Console][2]?
+* Was there any relevant Spectacle output in the [Console][3]?
 
 Including screenshots or videos are extremely helpful so please include them if you can. Diagrams can also be highly valuable when describing a new feature in a feature request.
 
@@ -32,4 +32,5 @@ To help make it easier maintain Spectacle please match the existing coding style
 By contributing to Spectacle you agree that your contributions will be licensed under its MIT license.
 
 [1]: https://guides.github.com/activities/contributing-to-open-source/#contributing
-[2]: https://en.wikipedia.org/wiki/Console_(OS_X)
+[2]: https://github.com/eczarny/spectacle#common-issues
+[3]: https://en.wikipedia.org/wiki/Console_(OS_X)
