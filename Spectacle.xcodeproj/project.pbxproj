@@ -82,7 +82,7 @@
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		29B4A4B112B8B8C547E42E66 /* Pods.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.development.xcconfig; path = "Pods/Target Support Files/Pods/Pods.development.xcconfig"; sourceTree = "<group>"; };
+		29B4A4B112B8B8C547E42E66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2D1AE52315D715F400EAC5BD /* SpectacleHotKeyValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHotKeyValidator.h; path = Spectacle/SpectacleHotKeyValidator.h; sourceTree = "<group>"; };
 		2D1AE52415D715F400EAC5BD /* SpectacleHotKeyValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHotKeyValidator.m; path = Spectacle/SpectacleHotKeyValidator.m; sourceTree = "<group>"; };
 		2D1E1AB0147E06AD0021D73D /* Spectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +111,6 @@
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetection.m; path = Spectacle/SpectacleScreenDetection.m; sourceTree = "<group>"; };
 		2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Security & Privacy System Preferences.scpt"; path = "Spectacle/Resources/Scripts/Security & Privacy System Preferences.scpt"; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Spectacle/Resources/Sparkle/dsa_public.pem; sourceTree = "<group>"; };
-		2D65407E1475ECF1000133CA /* ZeroKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZeroKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/Spectacle-gfuhcjgbmgbmfqaeerwhcojqjawa/Build/Products/Development/ZeroKit.framework"; sourceTree = "<group>"; };
 		2D768E8B147ED51A00901E76 /* SpectacleApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleApplicationController.h; path = Spectacle/SpectacleApplicationController.h; sourceTree = "<group>"; };
 		2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleApplicationController.m; path = Spectacle/SpectacleApplicationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowActionController.h; path = Spectacle/SpectacleWindowActionController.h; sourceTree = "<group>"; };
@@ -140,7 +139,7 @@
 		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Spectacle/Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spectacle.pch; path = Spectacle/Spectacle.pch; sourceTree = "<group>"; };
 		4E39F28AA9996E070256C000 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.development.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.development.xcconfig"; sourceTree = "<group>"; };
+		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02FBB6DFA9570FE6D1A7E16 /* Pods-SpectacleSpecs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.release.xcconfig"; sourceTree = "<group>"; };
 		C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item@2x.png"; path = "Spectacle/Resources/Images/Spectacle Status Item@2x.png"; sourceTree = "<group>"; };
@@ -333,7 +332,6 @@
 				0766438911A212A800B7BFA3 /* CoreServices.framework */,
 				089C1672FE841209C02AAC07 /* Foundation.framework */,
 				F506C035013D953901CA16C8 /* PreferencePanes.framework */,
-				2D65407E1475ECF1000133CA /* ZeroKit.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -405,9 +403,9 @@
 		575622CC1FF017BE3D3EFB89 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29B4A4B112B8B8C547E42E66 /* Pods.development.xcconfig */,
+				29B4A4B112B8B8C547E42E66 /* Pods.debug.xcconfig */,
 				4E39F28AA9996E070256C000 /* Pods.release.xcconfig */,
-				61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.development.xcconfig */,
+				61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */,
 				C02FBB6DFA9570FE6D1A7E16 /* Pods-SpectacleSpecs.release.xcconfig */,
 			);
 			name = Pods;
@@ -696,7 +694,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1DBD214D08BA80EA00186707 /* Development */ = {
+		1DBD214D08BA80EA00186707 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -731,11 +729,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
-			name = Development;
+			name = Debug;
 		};
 		1DBD214E08BA80EA00186707 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -767,21 +764,20 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		2D1E1ACC147E06AD0021D73D /* Development */ = {
+		2D1E1ACC147E06AD0021D73D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29B4A4B112B8B8C547E42E66 /* Pods.development.xcconfig */;
+			baseConfigurationReference = 29B4A4B112B8B8C547E42E66 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spectacle/Resources/Property Lists/Spectacle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
-			name = Development;
+			name = Debug;
 		};
 		2D1E1ACD147E06AD0021D73D /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -794,9 +790,9 @@
 			};
 			name = Release;
 		};
-		2DA5B7CE19F8BA79007EDE8E /* Development */ = {
+		2DA5B7CE19F8BA79007EDE8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.development.xcconfig */;
+			baseConfigurationReference = 61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Spectacle.app/Contents/MacOS/Spectacle";
@@ -844,7 +840,7 @@
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
-			name = Development;
+			name = Debug;
 		};
 		2DA5B7CF19F8BA79007EDE8E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -870,7 +866,7 @@
 		1DBD214C08BA80EA00186707 /* Build configuration list for PBXProject "Spectacle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DBD214D08BA80EA00186707 /* Development */,
+				1DBD214D08BA80EA00186707 /* Debug */,
 				1DBD214E08BA80EA00186707 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -879,7 +875,7 @@
 		2D1E1ACB147E06AD0021D73D /* Build configuration list for PBXNativeTarget "Spectacle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D1E1ACC147E06AD0021D73D /* Development */,
+				2D1E1ACC147E06AD0021D73D /* Debug */,
 				2D1E1ACD147E06AD0021D73D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -888,7 +884,7 @@
 		2DA5B7D019F8BA79007EDE8E /* Build configuration list for PBXNativeTarget "SpectacleSpecs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2DA5B7CE19F8BA79007EDE8E /* Development */,
+				2DA5B7CE19F8BA79007EDE8E /* Debug */,
 				2DA5B7CF19F8BA79007EDE8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
