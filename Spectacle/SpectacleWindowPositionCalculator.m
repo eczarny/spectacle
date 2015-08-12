@@ -210,28 +210,28 @@
   }
 
   if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(oneHalfRect)) <= 1.0f) {
-    CGRect oneThirdsRect = oneHalfRect;
-
-    oneThirdsRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
-
+    CGRect twoThirdRect = oneHalfRect;
+    
+    twoThirdRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+    
     if (action == SpectacleWindowActionRightHalf) {
-      oneThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdsRect.size.width;
+      twoThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdRect.size.width;
     }
 
     if (RectCenteredWithinRect(oneHalfRect, windowRect)) {
-      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:oneThirdsRect];
+      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:twoThirdRect];
     }
     
-    if (RectCenteredWithinRect(oneThirdsRect, windowRect)) {
-      CGRect twoThirdRect = oneHalfRect;
+    if (RectCenteredWithinRect(twoThirdRect, windowRect)) {
+      CGRect oneThirdsRect = oneHalfRect;
       
-      twoThirdRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+      oneThirdsRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
       
       if (action == SpectacleWindowActionRightHalf) {
-        twoThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdRect.size.width;
+        oneThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdsRect.size.width;
       }
       
-      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:twoThirdRect];
+      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:oneThirdsRect];
     }
   }
 
@@ -253,28 +253,28 @@
   }
 
   if (fabs(CGRectGetMidX(windowRect) - CGRectGetMidX(oneHalfRect)) <= 1.0f) {
-    CGRect oneThirdRect = oneHalfRect;
-
-    oneThirdRect.size.height = floor(visibleFrameOfScreen.size.height / 3.0f);
-
+    CGRect twoThirdsRect = oneHalfRect;
+    
+    twoThirdsRect.size.height = floor(visibleFrameOfScreen.size.height * 2 / 3.0f);
+    
     if (action == SpectacleWindowActionTopHalf) {
-      oneThirdRect.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - oneThirdRect.size.height;
+      twoThirdsRect.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - twoThirdsRect.size.height;
     }
 
     if (RectCenteredWithinRect(oneHalfRect, windowRect)) {
-      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:oneThirdRect];
+      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:twoThirdsRect];
     }
 
-    if (RectCenteredWithinRect(oneThirdRect, windowRect)) {
-      CGRect twoThirdsRect = oneHalfRect;
-
-      twoThirdsRect.size.height = floor(visibleFrameOfScreen.size.height * 2 / 3.0f);
-
+    if (RectCenteredWithinRect(twoThirdsRect, windowRect)) {
+      CGRect oneThirdRect = oneHalfRect;
+      
+      oneThirdRect.size.height = floor(visibleFrameOfScreen.size.height / 3.0f);
+      
       if (action == SpectacleWindowActionTopHalf) {
-        twoThirdsRect.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - twoThirdsRect.size.height;
+        oneThirdRect.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - oneThirdRect.size.height;
       }
 
-      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:twoThirdsRect];
+      return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:oneThirdRect];
     }
   }
 
