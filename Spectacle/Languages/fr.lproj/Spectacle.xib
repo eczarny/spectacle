@@ -146,26 +146,26 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="0li-21-m4g"/>
-                <menuItem title="Affichage suivant" id="I4U-jL-hXq">
+                <menuItem title="Écran suivant" id="I4U-jL-hXq">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveFrontMostWindowToNextDisplay:" target="867" id="7JK-n4-7gf"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Affichage précédent" id="aPo-Rp-A1X">
+                <menuItem title="Écran précédent" id="aPo-Rp-A1X">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveFrontMostWindowToPreviousDisplay:" target="867" id="bDi-81-OMQ"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="2VE-eu-Tv6"/>
-                <menuItem title="Troisième suivant" id="7HO-L3-O6Q">
+                <menuItem title="Tiers suivant" id="7HO-L3-O6Q">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveFrontMostWindowToNextThird:" target="867" id="hXK-sD-SEh"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Troisième précédent" id="bV9-Ga-jDG">
+                <menuItem title="Tiers précédent" id="bV9-Ga-jDG">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveFrontMostWindowToPreviousThird:" target="867" id="7aq-aA-Ypm"/>
