@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */; };
-		07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B6B752148B12A0003F924A /* Spectacle Status Item.png */; };
 		2D1AE52515D715F400EAC5BD /* SpectacleHotKeyValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AE52415D715F400EAC5BD /* SpectacleHotKeyValidator.m */; };
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
@@ -36,18 +35,15 @@
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */; };
+		2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA23EFB1B7D736100C9E8EF /* Images.xcassets */; };
 		2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */; };
 		2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CA1AD84E5C0022ABF0 /* Credits.rtf */; };
 		2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CC1AD84E5C0022ABF0 /* InfoPlist.strings */; };
 		2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */; };
 		2DC4E3D71AD84E5C0022ABF0 /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D01AD84E5C0022ABF0 /* Spectacle.xib */; };
 		2DC4E3D81AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D21AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib */; };
-		2DCDE1AD194FDB74008C4D5C /* Security & Privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDE1AB194FDB74008C4D5C /* Security & Privacy.png */; };
-		2DCDE1AE194FDB74008C4D5C /* Security & Privacy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DCDE1AC194FDB74008C4D5C /* Security & Privacy@2x.png */; };
-		2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2DF03CED148684E000D09E90 /* Spectacle.icns */; };
 		6F10BDB719AD4A0E9E05A451 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3ED82115CF4D7AB8FC8947 /* libPods.a */; };
 		B52965322B8BF99D575F9364 /* libPods-SpectacleSpecs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 067291DB4D1EA1EA8DF275FC /* libPods-SpectacleSpecs.a */; };
-		C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +71,6 @@
 		078B0F50118D18CC004EE86C /* SpectacleConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleConstants.h; path = Spectacle/SpectacleConstants.h; sourceTree = "<group>"; };
 		079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHistoryItem.h; path = Spectacle/SpectacleHistoryItem.h; sourceTree = "<group>"; };
 		079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleHistoryItem.m; path = Spectacle/SpectacleHistoryItem.m; sourceTree = "<group>"; };
-		07B6B752148B12A0003F924A /* Spectacle Status Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item.png"; path = "Spectacle/Resources/Images/Spectacle Status Item.png"; sourceTree = "<group>"; };
 		07BB542B1186662F0045663F /* SpectacleUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleUtilities.h; path = Spectacle/SpectacleUtilities.h; sourceTree = "<group>"; };
 		07BB542C1186662F0045663F /* SpectacleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleUtilities.m; path = Spectacle/SpectacleUtilities.m; sourceTree = "<group>"; };
 		07E632151187AAD800451374 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -123,6 +118,7 @@
 		2D98D72E1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = Spectacle/Languages/fr.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleCalculationResult.h; path = Spectacle/SpectacleCalculationResult.h; sourceTree = "<group>"; };
 		2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleCalculationResult.m; path = Spectacle/SpectacleCalculationResult.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2DA23EFB1B7D736100C9E8EF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Spectacle/Resources/Images.xcassets; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* SpectacleSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SpectacleSpecs-Info.plist"; path = "SpectacleSpecs/Resources/Property Lists/SpectacleSpecs-Info.plist"; sourceTree = "<group>"; };
 		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Spectacle/Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
@@ -133,16 +129,12 @@
 		2DC4E3D31AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Spectacle/Languages/en.lproj/SpectaclePreferencesWindow.xib; sourceTree = "<group>"; };
 		2DC4E3D91AD84E7F0022ABF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Spectacle/Languages/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2DC4E3DA1AD84E7F0022ABF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = it; path = Spectacle/Languages/it.lproj/Credits.rtf; sourceTree = "<group>"; };
-		2DCDE1AB194FDB74008C4D5C /* Security & Privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Security & Privacy.png"; path = "Spectacle/Resources/Images/Security & Privacy.png"; sourceTree = "<group>"; };
-		2DCDE1AC194FDB74008C4D5C /* Security & Privacy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Security & Privacy@2x.png"; path = "Spectacle/Resources/Images/Security & Privacy@2x.png"; sourceTree = "<group>"; };
 		2DDEB84919F9EDF6007D2BA2 /* SpectacleSpecs.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleSpecs.pch; path = SpectacleSpecs/SpectacleSpecs.pch; sourceTree = "<group>"; };
-		2DF03CED148684E000D09E90 /* Spectacle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Spectacle.icns; path = Spectacle/Resources/Images/Icons/Spectacle.icns; sourceTree = "<group>"; };
 		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spectacle.pch; path = Spectacle/Spectacle.pch; sourceTree = "<group>"; };
 		4E39F28AA9996E070256C000 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02FBB6DFA9570FE6D1A7E16 /* Pods-SpectacleSpecs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.release.xcconfig"; sourceTree = "<group>"; };
-		C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Spectacle Status Item@2x.png"; path = "Spectacle/Resources/Images/Spectacle Status Item@2x.png"; sourceTree = "<group>"; };
 		F506C035013D953901CA16C8 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -255,25 +247,6 @@
 			name = "Interface Builder";
 			sourceTree = "<group>";
 		};
-		0747DAEE1183AAFE00F75DD2 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				0747DAF21183AB1B00F75DD2 /* Icons */,
-				2DCDE1A6194FD60A008C4D5C /* Screenshots */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
-		0747DAF21183AB1B00F75DD2 /* Icons */ = {
-			isa = PBXGroup;
-			children = (
-				2DF03CED148684E000D09E90 /* Spectacle.icns */,
-				07B6B752148B12A0003F924A /* Spectacle Status Item.png */,
-				C92F241716937C63000D94AB /* Spectacle Status Item@2x.png */,
-			);
-			name = Icons;
-			sourceTree = "<group>";
-		};
 		089C166AFE841209C02AAC07 /* Spectacle */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +275,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0747DAEE1183AAFE00F75DD2 /* Images */,
+				2DA23EFB1B7D736100C9E8EF /* Images.xcassets */,
 				0747DAED1183AAF600F75DD2 /* Interface Builder */,
 				0747DAEC1183AAEE00F75DD2 /* Localized Strings */,
 				0747DAEB1183AAE700F75DD2 /* Property Lists */,
@@ -379,15 +352,6 @@
 				2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */,
 			);
 			name = Scripts;
-			sourceTree = "<group>";
-		};
-		2DCDE1A6194FD60A008C4D5C /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				2DCDE1AB194FDB74008C4D5C /* Security & Privacy.png */,
-				2DCDE1AC194FDB74008C4D5C /* Security & Privacy@2x.png */,
-			);
-			name = Screenshots;
 			sourceTree = "<group>";
 		};
 		32DBCFA10370C40200C91783 /* Other Sources */ = {
@@ -499,15 +463,11 @@
 				2D8DA04E147E0FA7003BE1D3 /* HotKeyNames.plist in Resources */,
 				2DC4E3D81AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib in Resources */,
 				2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */,
-				2DCDE1AD194FDB74008C4D5C /* Security & Privacy.png in Resources */,
 				2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */,
-				2DCDE1AE194FDB74008C4D5C /* Security & Privacy@2x.png in Resources */,
 				2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */,
+				2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */,
 				2D3A05151949573D00CD96E7 /* SpecialHotKeyTranslations.plist in Resources */,
-				2DF03CEE148684E000D09E90 /* Spectacle.icns in Resources */,
 				2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */,
-				07B6B753148B12A0003F924A /* Spectacle Status Item.png in Resources */,
-				C92F241816937C63000D94AB /* Spectacle Status Item@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,6 +732,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29B4A4B112B8B8C547E42E66 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = Spectacle;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spectacle/Resources/Property Lists/Spectacle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -783,6 +744,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E39F28AA9996E070256C000 /* Pods.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = Spectacle;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spectacle/Resources/Property Lists/Spectacle-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
