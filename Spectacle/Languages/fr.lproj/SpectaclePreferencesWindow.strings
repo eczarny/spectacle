@@ -1,0 +1,66 @@
+
+/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "44"; */
+"44.title" = "comme une application d'arrière-plan";
+
+/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "45"; */
+"45.title" = "dans la barre d'état";
+
+/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "46"; */
+"46.title" = "Lancer...";
+
+/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "47"; */
+"47.title" = "Ouvrir Spectacle au démarrage";
+
+/* Class = "NSTextFieldCell"; title = "Previous Third:"; ObjectID = "48"; */
+"48.title" = "Tiers précédent:";
+
+/* Class = "NSTextFieldCell"; title = "Next Third:"; ObjectID = "49"; */
+"49.title" = "Tiers suivant:";
+
+/* Class = "NSTextFieldCell"; title = "Next Display:"; ObjectID = "52"; */
+"52.title" = "Écran suivant:";
+
+/* Class = "NSTextFieldCell"; title = "Previous Display:"; ObjectID = "53"; */
+"53.title" = "Écran précédent:";
+
+/* Class = "NSTextFieldCell"; title = "Top Half:"; ObjectID = "54"; */
+"54.title" = "Moitié haut:";
+
+/* Class = "NSTextFieldCell"; title = "Right Half:"; ObjectID = "55"; */
+"55.title" = "Moitié droit:";
+
+/* Class = "NSTextFieldCell"; title = "Left Half:"; ObjectID = "56"; */
+"56.title" = "Moitié gauche:";
+
+/* Class = "NSTextFieldCell"; title = "Bottom Half:"; ObjectID = "57"; */
+"57.title" = "Moitié bas:";
+
+/* Class = "NSTextFieldCell"; title = "Lower Right:"; ObjectID = "58"; */
+"58.title" = "En bas à droite:";
+
+/* Class = "NSTextFieldCell"; title = "Upper Left:"; ObjectID = "59"; */
+"59.title" = "En haut à gauche:";
+
+/* Class = "NSTextFieldCell"; title = "Upper Right:"; ObjectID = "60"; */
+"60.title" = "En haut à droite:";
+
+/* Class = "NSTextFieldCell"; title = "Lower Left:"; ObjectID = "61"; */
+"61.title" = "En bas à gauche:";
+
+/* Class = "NSTextFieldCell"; title = "Center:"; ObjectID = "62"; */
+"62.title" = "Centrer:";
+
+/* Class = "NSTextFieldCell"; title = "Fullscreen:"; ObjectID = "63"; */
+"63.title" = "Plein écran:";
+
+/* Class = "NSTextFieldCell"; title = "Redo:"; ObjectID = "117"; */
+"117.title" = "Rétablir:";
+
+/* Class = "NSTextFieldCell"; title = "Undo:"; ObjectID = "118"; */
+"118.title" = "Annuler:";
+
+/* Class = "NSTextFieldCell"; title = "Make Smaller:"; ObjectID = "147"; */
+"147.title" = "Réduire:";
+
+/* Class = "NSTextFieldCell"; title = "Make Larger:"; ObjectID = "148"; */
+"148.title" = "Agrandir:";
