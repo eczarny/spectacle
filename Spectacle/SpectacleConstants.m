@@ -11,6 +11,8 @@ NSString *const SpectacleHotKeyChangedNotification = @"SpectacleHotKeyChangedNot
 
 NSString *const SpectacleRestoreDefaultHotKeysNotification = @"SpectacleRestoreDefaultHotKeysNotification";
 
+NSString *const SpectacleShowAlertNotification = @"SpectacleShowAlertNotification";
+
 #pragma mark -
 
 const NSInteger SpectacleMenuItemActivateIgnoringOtherApps = -1;

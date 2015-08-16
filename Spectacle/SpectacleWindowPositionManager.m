@@ -152,6 +152,10 @@
   visibleFrameOfScreen:visibleFrameOfScreen
 frontMostWindowElement:frontMostWindowElement
                 action:action];
+    
+  // Show Alert
+  NSDictionary *userInfo = @{ @"type": [NSString stringWithFormat:@"%ld", action] };
+  [NSNotificationCenter.defaultCenter postNotificationName:SpectacleShowAlertNotification object:nil userInfo:userInfo];
 }
 
 #pragma mark -

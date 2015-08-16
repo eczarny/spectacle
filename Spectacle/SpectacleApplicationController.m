@@ -1,6 +1,7 @@
 #import <Sparkle/Sparkle.h>
 
 #import "SpectacleApplicationController.h"
+#import "SpectacleAlertController.h"
 #import "SpectacleConstants.h"
 #import "SpectacleHotKeyManager.h"
 #import "SpectaclePreferencesController.h"
@@ -12,6 +13,7 @@
 @property (nonatomic) NSStatusItem *statusItem;
 @property (nonatomic) NSDictionary *hotKeyMenuItems;
 @property (nonatomic) SpectaclePreferencesController *preferencesController;
+@property (nonatomic) SpectacleAlertController * alertController;
 
 @end
 
@@ -27,6 +29,8 @@
 
   _preferencesController = [SpectaclePreferencesController new];
 
+  _alertController = [SpectacleAlertController new];
+    
   _hotKeyMenuItems = @{SpectacleWindowActionMoveToCenter: _moveToCenterHotKeyMenuItem,
                        SpectacleWindowActionMoveToFullscreen: _moveToFullscreenHotKeyMenuItem,
                        SpectacleWindowActionMoveToLeftHalf: _moveToLeftHotKeyMenuItem,
@@ -81,6 +85,12 @@
                              name:NSMenuDidSendActionNotification
                            object:nil];
 
+  [notificationCenter addObserver: self
+                         selector: @selector(showAlertPanel:)
+                             name: SpectacleShowAlertNotification
+                           object: nil];
+
+    
   [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
 
   [self updateHotKeyMenuItems];
@@ -209,6 +219,29 @@
   if (menuItem.tag == SpectacleMenuItemActivateIgnoringOtherApps) {
     [NSApplication.sharedApplication activateIgnoringOtherApps:YES];
   }
+}
+
+
+#pragma mark - DivideAlertController
+
+- (void)showAlertPanel:(NSNotification *)notification {
+    [_alertController close];
+    
+    NSDictionary *userInfo = [notification userInfo];
+    NSInteger type = [[userInfo valueForKey:@"type"] integerValue];
+    
+    _alertController.windowType = type;
+    [_alertController showWindow:self];
+    
+    _alertController.window.level = NSFloatingWindowLevel;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [NSThread sleepForTimeInterval:0.5];
+            [_alertController close];
+        });
+    });
 }
 
 @end

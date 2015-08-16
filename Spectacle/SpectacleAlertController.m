@@ -1,16 +1,16 @@
 //
-//  DivideAlertController.m
+//  SpectalceAlertController.m
 //  Divide
 //
 //  Created by shseo on 2015. 6. 23..
 //
 //
 
-#import "DivideAlertController.h"
-#import "DivideWindowPositionManager.h"
+#import "SpectacleAlertController.h"
+#import "SpectacleWindowPositionManager.h"
 
 
-@interface DivideAlertController ()
+@interface SpectacleAlertController ()
 
 @property (nonatomic) IBOutlet NSView *currentView;
 @property (nonatomic) IBOutlet NSImageView *icon;
@@ -19,7 +19,7 @@
 @end
 
 
-@implementation DivideAlertController
+@implementation SpectacleAlertController
 
 static NSString *StatusCenter = @"Center";
 static NSString *StatusLeft = @"Left";
@@ -33,7 +33,7 @@ static NSString *StatusBottomRight = @"Bottom Right";
 
 
 - (instancetype)init {
-    self = [super initWithWindowNibName:@"DivideAlertWindow"];
+    self = [super initWithWindowNibName:@"SpectacleAlertWindow"];
     return self;
 }
 
