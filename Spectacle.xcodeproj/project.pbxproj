@@ -61,6 +61,7 @@
 		580565B21B80DC4F00DC1BDF /* window_top_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580565A01B80DC4F00DC1BDF /* window_top_right@2x.png */; };
 		580565B31B80DC4F00DC1BDF /* window_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 580565A11B80DC4F00DC1BDF /* window_top.png */; };
 		580565B41B80DC4F00DC1BDF /* window_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580565A21B80DC4F00DC1BDF /* window_top@2x.png */; };
+		580565B71B80DD2D00DC1BDF /* SpectacleAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580565B61B80DD2D00DC1BDF /* SpectacleAlertController.m */; };
 		6F10BDB719AD4A0E9E05A451 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3ED82115CF4D7AB8FC8947 /* libPods.a */; };
 		B52965322B8BF99D575F9364 /* libPods-SpectacleSpecs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 067291DB4D1EA1EA8DF275FC /* libPods-SpectacleSpecs.a */; };
 /* End PBXBuildFile section */
@@ -170,6 +171,8 @@
 		580565A01B80DC4F00DC1BDF /* window_top_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "window_top_right@2x.png"; path = "Spectacle/Resources/Images/window_top_right@2x.png"; sourceTree = "<group>"; };
 		580565A11B80DC4F00DC1BDF /* window_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = window_top.png; path = Spectacle/Resources/Images/window_top.png; sourceTree = "<group>"; };
 		580565A21B80DC4F00DC1BDF /* window_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "window_top@2x.png"; path = "Spectacle/Resources/Images/window_top@2x.png"; sourceTree = "<group>"; };
+		580565B51B80DD2D00DC1BDF /* SpectacleAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleAlertController.h; path = Spectacle/SpectacleAlertController.h; sourceTree = "<group>"; };
+		580565B61B80DD2D00DC1BDF /* SpectacleAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleAlertController.m; path = Spectacle/SpectacleAlertController.m; sourceTree = "<group>"; };
 		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02FBB6DFA9570FE6D1A7E16 /* Pods-SpectacleSpecs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 		0747DAE81183AABB00F75DD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				580565B51B80DD2D00DC1BDF /* SpectacleAlertController.h */,
+				580565B61B80DD2D00DC1BDF /* SpectacleAlertController.m */,
 				2D768E8B147ED51A00901E76 /* SpectacleApplicationController.h */,
 				2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */,
 				07838601148BD517001E7BD7 /* SpectaclePreferencesController.h */,
@@ -662,6 +667,7 @@
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
 				2D3A050D194956E100CD96E7 /* ZKAccessibilityElement.m in Sources */,
 				2D3A050E194956E100CD96E7 /* ZKHotKey.m in Sources */,
+				580565B71B80DD2D00DC1BDF /* SpectacleAlertController.m in Sources */,
 				2D3A050F194956E100CD96E7 /* ZKHotKeyRecorder.m in Sources */,
 				2D3A0510194956E100CD96E7 /* ZKHotKeyRecorderCell.m in Sources */,
 				2D3A0511194956E100CD96E7 /* ZKHotKeyTranslator.m in Sources */,
