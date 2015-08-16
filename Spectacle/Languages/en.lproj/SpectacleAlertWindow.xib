@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DivideAlertController">
+            <connections>
+                <outlet property="currentView" destination="jK6-Rp-LjI" id="UR4-dD-Dhl"/>
+                <outlet property="icon" destination="kpW-QV-531" id="MWJ-kU-Kc2"/>
+                <outlet property="title" destination="kgb-sN-kTy" id="M0q-UC-B5j"/>
+                <outlet property="window" destination="ptg-8f-yQI" id="bde-4b-Vbz"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Divide Alert" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" id="ptg-8f-yQI" userLabel="SpectacleAlertController">
+            <windowStyleMask key="styleMask" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="674" y="167" width="113" height="117"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" wantsLayer="YES" id="jK6-Rp-LjI">
+                <rect key="frame" x="-1" y="0.0" width="113" height="117"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kpW-QV-531">
+                        <rect key="frame" x="24" y="42" width="64" height="64"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="save" id="rX3-xT-o7M"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="kgb-sN-kTy">
+                        <rect key="frame" x="-13" y="9" width="138" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="Zce-bt-tnh">
+                            <font key="font" metaFont="systemBold"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <animations>
+                    <caTransition key="subviews">
+                        <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGXV5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QFgcI
+ESUrLDI2N0FERUZHSElOTwoLVVhVJG51bGzUCQoLDA0ODxBWJGNsYXNzVmZpbHRlclR0eXBlXxASX19D
+QUNvZGluZ0NvbnRlbnRzgBWAAoAQgBHaCRITFBUWFxgZGhscHR4fICEiIyRcQ0lfaW5wdXRUaW1lXkNJ
+X2lucHV0Q2VudGVyXxAZQ0lfaW5wdXRTdHJpYXRpb25Db250cmFzdF5DSV9pbnB1dEV4dGVudF8QGkNJ
+X2lucHV0TWF4U3RyaWF0aW9uUmFkaXVzXUNJX2lucHV0Q29sb3JfEBlDSV9pbnB1dFN0cmlhdGlvblN0
+cmVuZ3RoXxAVQ0lfaW5wdXRGYWRlVGhyZXNob2xkWUNJRW5hYmxlZIAPgAqAA4ANgAaAC4AIgAyADgnT
+JicJKCkqV0NJQ291bnRYQ0lWZWN0b3IQAoAEgAVfEBR7ezE1MCwgMTUwfSwgezAsIDB9fdItLi8wWiRj
+bGFzc25hbWVYJGNsYXNzZXNYQ0lWZWN0b3KiLzFYTlNPYmplY3TTJicJMzQqEASAB4AFXxAUe3swLCAw
+fSwgezMwMCwgMzAwfX3VCTg5Ojs8PT4/QFNyZWRVYWxwaGFUYmx1ZVVncmVlboAJIj+AAAAiP4AAACI/
+GZmaIj9MzM3SLS5CQ1dDSUNvbG9yokIxIwAAAAAAAAAAI0AEo9cKPXCkIz/gAAAAAAAAIz/2AAAAAAAA
+Iz/rMzMzMzMz0i0uSktfEBFDSUZsYXNoVHJhbnNpdGlvbqNMTTFfEBFDSUZsYXNoVHJhbnNpdGlvblhD
+SUZpbHRlclRmYWRl0lAJUVRaTlMub2JqZWN0c6JSU4ASgBOAFNItLlZXV05TQXJyYXmiVjHSLS5ZWlxD
+QVRyYW5zaXRpb26jW1wxXENBVHJhbnNpdGlvbltDQUFuaW1hdGlvbl8QD05TS2V5ZWRBcmNoaXZlctFf
+YFRyb290gAEACAARABoAIwAtADIANwBQAFYAXwBmAG0AcgCHAIkAiwCNAI8ApACxAMAA3ADrAQgBFgEy
+AUoBVAFWAVgBWgFcAV4BYAFiAWQBZgFnAW4BdgF/AYEBgwGFAZwBoQGsAbUBvgHBAcoB0QHTAdUB1wHu
+AfkB/QIDAggCDgIQAhUCGgIfAiQCKQIxAjQCPQJGAk8CWAJhAmYCegJ+ApICmwKgAqUCsAKzArUCtwK5
+Ar4CxgLJAs4C2wLfAuwC+AMKAw0DEgAAAAAAAAIBAAAAAAAAAGEAAAAAAAAAAAAAAAAAAAMUA
+</mutableData>
+                    </caTransition>
+                </animations>
+            </view>
+            <point key="canvasLocation" x="60.5" y="244.5"/>
+        </window>
+        <customObject id="0Xb-9H-eTf" customClass="SpectacleAlertController">
+            <connections>
+                <outlet property="title" destination="kgb-sN-kTy" id="sAe-jx-t2N"/>
+            </connections>
+        </customObject>
+    </objects>
+    <resources>
+        <image name="save" width="15" height="15"/>
+    </resources>
+</document>

@@ -9,6 +9,8 @@ extern NSString *const SpectacleHotKeyChangedNotification;
 
 extern NSString *const SpectacleRestoreDefaultHotKeysNotification;
 
+extern NSString *const SpectacleShowAlertNotification;
+
 #pragma mark -
 
 extern const NSInteger SpectacleMenuItemActivateIgnoringOtherApps;
