@@ -1,47 +1,47 @@
-#import "ZKHotKeyTranslator.h"
+#import "SpectacleShortcutTranslator.h"
 
 #import "SpectacleConstants.h"
-#import "ZKHotKey.h"
+#import "SpectacleShortcut.h"
 
 enum {
-  ZKHotKeyAlternateGlyph = 0x2325,
-  ZKHotKeyCommandGlyph = 0x2318,
-  ZKHotKeyControlGlyph = 0x2303,
-  ZKHotKeyDeleteLeftGlyph = 0x232B,
-  ZKHotKeyDeleteRightGlyph = 0x2326,
-  ZKHotKeyDownArrowGlyph = 0x2193,
-  ZKHotKeyLeftArrowGlyph = 0x2190,
-  ZKHotKeyPageDownGlyph = 0x21DF,
-  ZKHotKeyPageUpGlyph = 0x21DE,
-  ZKHotKeyReturnGlyph = 0x21A9,
-  ZKHotKeyRightArrowGlyph = 0x2192,
-  ZKHotKeyShiftGlyph = 0x21E7,
-  ZKHotKeyTabLeftGlyph = 0x21E4,
-  ZKHotKeyTabRightGlyph = 0x21E5,
-  ZKHotKeyUpArrowGlyph = 0x2191
+  SpectacleShortcutAlternateGlyph = 0x2325,
+  SpectacleShortcutCommandGlyph = 0x2318,
+  SpectacleShortcutControlGlyph = 0x2303,
+  SpectacleShortcutDeleteLeftGlyph = 0x232B,
+  SpectacleShortcutDeleteRightGlyph = 0x2326,
+  SpectacleShortcutDownArrowGlyph = 0x2193,
+  SpectacleShortcutLeftArrowGlyph = 0x2190,
+  SpectacleShortcutPageDownGlyph = 0x21DF,
+  SpectacleShortcutPageUpGlyph = 0x21DE,
+  SpectacleShortcutReturnGlyph = 0x21A9,
+  SpectacleShortcutRightArrowGlyph = 0x2192,
+  SpectacleShortcutShiftGlyph = 0x21E7,
+  SpectacleShortcutTabLeftGlyph = 0x21E4,
+  SpectacleShortcutTabRightGlyph = 0x21E5,
+  SpectacleShortcutUpArrowGlyph = 0x2191
 };
 
 enum {
-  ZKHotKeyAlternateCarbonKeyMask = 1 << 11,
-  ZKHotKeyCommandCarbonKeyMask = 1 << 8,
-  ZKHotKeyControlCarbonKeyMask = 1 << 12,
-  ZKHotKeyShiftCarbonKeyMask = 1 << 9,
-  ZKHotKeyFunctionCarbonKeyMask = 1 << 17
+  SpectacleShortcutAlternateCarbonKeyMask = 1 << 11,
+  SpectacleShortcutCommandCarbonKeyMask = 1 << 8,
+  SpectacleShortcutControlCarbonKeyMask = 1 << 12,
+  SpectacleShortcutShiftCarbonKeyMask = 1 << 9,
+  SpectacleShortcutFunctionCarbonKeyMask = 1 << 17
 };
 
-@interface ZKHotKeyTranslator ()
+@interface SpectacleShortcutTranslator ()
 
-@property (nonatomic) NSDictionary *specialHotKeyTranslations;
+@property (nonatomic) NSDictionary *specialShortcutTranslations;
 
 @end
 
 #pragma mark -
 
-@implementation ZKHotKeyTranslator
+@implementation SpectacleShortcutTranslator
 
-+ (ZKHotKeyTranslator *)sharedTranslator
++ (SpectacleShortcutTranslator *)sharedTranslator
 {
-  static ZKHotKeyTranslator *sharedInstance = nil;
+  static SpectacleShortcutTranslator *sharedInstance = nil;
   static dispatch_once_t predicate;
 
   dispatch_once(&predicate, ^{
@@ -55,7 +55,7 @@ enum {
 
 + (NSUInteger)convertModifiersToCarbonIfNecessary:(NSUInteger)modifiers
 {
-  if ([ZKHotKey validCocoaModifiers:modifiers]) {
+  if ([SpectacleShortcut validCocoaModifiers:modifiers]) {
     modifiers = [self convertCocoaModifiersToCarbon:modifiers];
   }
 
@@ -64,7 +64,7 @@ enum {
 
 + (NSUInteger)convertModifiersToCocoaIfNecessary:(NSUInteger)modifiers
 {
-  if (![ZKHotKey validCocoaModifiers:modifiers]) {
+  if (![SpectacleShortcut validCocoaModifiers:modifiers]) {
     modifiers = [self convertCarbonModifiersToCocoa:modifiers];
   }
 
@@ -78,23 +78,23 @@ enum {
   NSUInteger convertedModifiers = 0;
 
   if (modifiers & NSControlKeyMask) {
-    convertedModifiers |= ZKHotKeyControlCarbonKeyMask;
+    convertedModifiers |= SpectacleShortcutControlCarbonKeyMask;
   }
 
   if (modifiers & NSAlternateKeyMask) {
-    convertedModifiers |= ZKHotKeyAlternateCarbonKeyMask;
+    convertedModifiers |= SpectacleShortcutAlternateCarbonKeyMask;
   }
 
   if (modifiers & NSShiftKeyMask) {
-    convertedModifiers |= ZKHotKeyShiftCarbonKeyMask;
+    convertedModifiers |= SpectacleShortcutShiftCarbonKeyMask;
   }
 
   if (modifiers & NSCommandKeyMask) {
-    convertedModifiers |= ZKHotKeyCommandCarbonKeyMask;
+    convertedModifiers |= SpectacleShortcutCommandCarbonKeyMask;
   }
 
   if (modifiers & NSFunctionKeyMask) {
-    convertedModifiers |= ZKHotKeyFunctionCarbonKeyMask;
+    convertedModifiers |= SpectacleShortcutFunctionCarbonKeyMask;
   }
 
   return convertedModifiers;
@@ -104,23 +104,23 @@ enum {
 {
   NSUInteger convertedModifiers = 0;
 
-  if (modifiers & ZKHotKeyControlCarbonKeyMask) {
+  if (modifiers & SpectacleShortcutControlCarbonKeyMask) {
     convertedModifiers |= NSControlKeyMask;
   }
 
-  if (modifiers & ZKHotKeyAlternateCarbonKeyMask) {
+  if (modifiers & SpectacleShortcutAlternateCarbonKeyMask) {
     convertedModifiers |= NSAlternateKeyMask;
   }
 
-  if (modifiers & ZKHotKeyShiftCarbonKeyMask) {
+  if (modifiers & SpectacleShortcutShiftCarbonKeyMask) {
     convertedModifiers |= NSShiftKeyMask;
   }
 
-  if (modifiers & ZKHotKeyCommandCarbonKeyMask) {
+  if (modifiers & SpectacleShortcutCommandCarbonKeyMask) {
     convertedModifiers |= NSCommandKeyMask;
   }
 
-  if (modifiers & ZKHotKeyFunctionCarbonKeyMask) {
+  if (modifiers & SpectacleShortcutFunctionCarbonKeyMask) {
     convertedModifiers |= NSFunctionKeyMask;
   }
 
@@ -134,19 +134,19 @@ enum {
   NSString *modifierGlyphs = @"";
 
   if (modifiers & NSControlKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyControlGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutControlGlyph];
   }
 
   if (modifiers & NSAlternateKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyAlternateGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutAlternateGlyph];
   }
 
   if (modifiers & NSShiftKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyShiftGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutShiftGlyph];
   }
 
   if (modifiers & NSCommandKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyCommandGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutCommandGlyph];
   }
 
   return modifierGlyphs;
@@ -159,12 +159,12 @@ enum {
 
   [self buildKeyCodeConvertorDictionary];
 
-  keyCodeTranslations = self.specialHotKeyTranslations[SpectacleHotKeyTranslationsKey];
+  keyCodeTranslations = self.specialShortcutTranslations[SpectacleShortcutTranslationsKey];
 
   result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
 
   if (result) {
-    NSDictionary *glyphTranslations = self.specialHotKeyTranslations[SpectacleHotKeyGlyphTranslationsKey];
+    NSDictionary *glyphTranslations = self.specialShortcutTranslations[SpectacleShortcutGlyphTranslationsKey];
     id translatedGlyph = glyphTranslations[result];
 
     if (translatedGlyph) {
@@ -216,23 +216,23 @@ enum {
 
 #pragma mark -
 
-- (NSString *)translateHotKey:(ZKHotKey *)hotKey
+- (NSString *)translateShortcut:(SpectacleShortcut *)shortcut
 {
-  NSUInteger modifiers = [ZKHotKeyTranslator convertCarbonModifiersToCocoa:[hotKey hotKeyModifiers]];
+  NSUInteger modifiers = [SpectacleShortcutTranslator convertCarbonModifiersToCocoa:[shortcut shortcutModifiers]];
 
-  return [NSString stringWithFormat:@"%@%@", [ZKHotKeyTranslator translateCocoaModifiers:modifiers], [self translateKeyCode:hotKey.hotKeyCode]];
+  return [NSString stringWithFormat:@"%@%@", [SpectacleShortcutTranslator translateCocoaModifiers:modifiers], [self translateKeyCode:shortcut.shortcutCode]];
 }
 
 #pragma mark -
 
 - (void)buildKeyCodeConvertorDictionary
 {
-  if (!self.specialHotKeyTranslations) {
+  if (!self.specialShortcutTranslations) {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:SpectacleHotKeyTranslationsPropertyListFile
+    NSString *path = [bundle pathForResource:SpectacleShortcutTranslationsPropertyListFile
                                       ofType:SpectaclePropertyListFileExtension];
 
-    self.specialHotKeyTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
+    self.specialShortcutTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
   }
 }
 

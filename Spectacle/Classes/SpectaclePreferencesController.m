@@ -1,16 +1,16 @@
 #import "SpectaclePreferencesController.h"
 
 #import "SpectacleConstants.h"
-#import "SpectacleHotKeyManager.h"
-#import "SpectacleHotKeyValidator.h"
+#import "SpectacleShortcutManager.h"
+#import "SpectacleRegisteredShortcutValidator.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
-#import "ZKHotKeyRecorder.h"
+#import "SpectacleShortcutRecorder.h"
 
 @interface SpectaclePreferencesController ()
 
-@property (nonatomic, weak) SpectacleHotKeyManager *hotKeyManager;
-@property (nonatomic) NSDictionary *hotKeyRecorders;
+@property (nonatomic, weak) SpectacleShortcutManager *shortcutManager;
+@property (nonatomic) NSDictionary *shortcutRecorders;
 
 @end
 
@@ -21,7 +21,7 @@
 - (instancetype)init
 {
   if ((self = [super initWithWindowNibName:SpectaclePreferencesWindowNibName])) {
-    _hotKeyManager = SpectacleHotKeyManager.sharedManager;
+    _shortcutManager = SpectacleShortcutManager.sharedManager;
   }
   
   return self;
@@ -34,31 +34,31 @@
   NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
   NSInteger loginItemEnabledState = NSOffState;
   BOOL isStatusItemEnabled = [NSUserDefaults.standardUserDefaults boolForKey:SpectacleStatusItemEnabledPreference];
+
+  self.shortcutRecorders = @{SpectacleWindowActionMoveToCenter: _moveToCenterShortcutRecorder,
+                             SpectacleWindowActionMoveToFullscreen: _moveToFullscreenShortcutRecorder,
+                             SpectacleWindowActionMoveToLeftHalf: _moveToLeftShortcutRecorder,
+                             SpectacleWindowActionMoveToRightHalf: _moveToRightShortcutRecorder,
+                             SpectacleWindowActionMoveToTopHalf: _moveToTopShortcutRecorder,
+                             SpectacleWindowActionMoveToBottomHalf: _moveToBottomShortcutRecorder,
+                             SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftShortcutRecorder,
+                             SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftShortcutRecorder,
+                             SpectacleWindowActionMoveToUpperRight: _moveToUpperRightShortcutRecorder,
+                             SpectacleWindowActionMoveToLowerRight: _moveToLowerRightShortcutRecorder,
+                             SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayShortcutRecorder,
+                             SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayShortcutRecorder,
+                             SpectacleWindowActionMoveToNextThird: _moveToNextThirdShortcutRecorder,
+                             SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdShortcutRecorder,
+                             SpectacleWindowActionMakeLarger: _makeLargerShortcutRecorder,
+                             SpectacleWindowActionMakeSmaller: _makeSmallerShortcutRecorder,
+                             SpectacleWindowActionUndoLastMove: _undoLastMoveShortcutRecorder,
+                             SpectacleWindowActionRedoLastMove: _redoLastMoveShortcutRecorder};
   
-  self.hotKeyRecorders = @{SpectacleWindowActionMoveToCenter: _moveToCenterHotKeyRecorder,
-                           SpectacleWindowActionMoveToFullscreen: _moveToFullscreenHotKeyRecorder,
-                           SpectacleWindowActionMoveToLeftHalf: _moveToLeftHotKeyRecorder,
-                           SpectacleWindowActionMoveToRightHalf: _moveToRightHotKeyRecorder,
-                           SpectacleWindowActionMoveToTopHalf: _moveToTopHotKeyRecorder,
-                           SpectacleWindowActionMoveToBottomHalf: _moveToBottomHotKeyRecorder,
-                           SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftHotKeyRecorder,
-                           SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftHotKeyRecorder,
-                           SpectacleWindowActionMoveToUpperRight: _moveToUpperRightHotKeyRecorder,
-                           SpectacleWindowActionMoveToLowerRight: _moveToLowerRightHotKeyRecorder,
-                           SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayHotKeyRecorder,
-                           SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyRecorder,
-                           SpectacleWindowActionMoveToNextThird: _moveToNextThirdHotKeyRecorder,
-                           SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdHotKeyRecorder,
-                           SpectacleWindowActionMakeLarger: _makeLargerHotKeyRecorder,
-                           SpectacleWindowActionMakeSmaller: _makeSmallerHotKeyRecorder,
-                           SpectacleWindowActionUndoLastMove: _undoLastMoveHotKeyRecorder,
-                           SpectacleWindowActionRedoLastMove: _redoLastMoveHotKeyRecorder};
-  
-  [self loadRegisteredHotKeys];
+  [self loadRegisteredShortcuts];
 
   [notificationCenter addObserver:self
-                         selector:@selector(loadRegisteredHotKeys)
-                             name:SpectacleRestoreDefaultHotKeysNotification
+                         selector:@selector(loadRegisteredShortcuts)
+                             name:SpectacleRestoreDefaultShortcutsNotification
                            object:nil];
 
   if ([SpectacleUtilities isLoginItemEnabledForBundle:NSBundle.mainBundle]) {
@@ -74,24 +74,24 @@
 
 #pragma mark -
 
-- (void)hotKeyRecorder:(ZKHotKeyRecorder *)hotKeyRecorder didReceiveNewHotKey:(ZKHotKey *)hotKey
+- (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder didReceiveNewShortcut:(SpectacleShortcut *)shortcut
 {
   SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
   
-  [hotKey setHotKeyAction:^(ZKHotKey *hotKey) {
-    [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForHotKey:hotKey]];
+  [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
+    [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForShortcut:shortcut]];
   }];
-  
-  [self.hotKeyManager registerHotKey:hotKey];
 
-  [NSNotificationCenter.defaultCenter postNotificationName:SpectacleHotKeyChangedNotification object:self];
+  [self.shortcutManager registerShortcut:shortcut];
+
+  [NSNotificationCenter.defaultCenter postNotificationName:SpectacleShortcutChangedNotification object:self];
 }
 
-- (void)hotKeyRecorder:(ZKHotKeyRecorder *)hotKeyRecorder didClearExistingHotKey:(ZKHotKey *)hotKey
+- (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
-  [self.hotKeyManager unregisterHotKeyForName:hotKey.hotKeyName];
+  [self.shortcutManager unregisterShortcutForName:shortcut.shortcutName];
 
-  [NSNotificationCenter.defaultCenter postNotificationName:SpectacleHotKeyChangedNotification object:self];
+  [NSNotificationCenter.defaultCenter postNotificationName:SpectacleShortcutChangedNotification object:self];
 }
 
 #pragma mark -
@@ -144,39 +144,39 @@
 
 #pragma mark -
 
-- (void)loadRegisteredHotKeys
+- (void)loadRegisteredShortcuts
 {
-  SpectacleHotKeyValidator *hotKeyValidator = [SpectacleHotKeyValidator new];
-  
-  for (NSString *hotKeyName in self.hotKeyRecorders.allKeys) {
-    ZKHotKeyRecorder *hotKeyRecorder = self.hotKeyRecorders[hotKeyName];
-    ZKHotKey *hotKey = [self.hotKeyManager registeredHotKeyForName:hotKeyName];
+  SpectacleRegisteredShortcutValidator *shortcutValidator = [SpectacleRegisteredShortcutValidator new];
+
+  for (NSString *shortcutName in self.shortcutRecorders.allKeys) {
+    SpectacleShortcutRecorder *shortcutRecorder = self.shortcutRecorders[shortcutName];
+    SpectacleShortcut *shortcut = [self.shortcutManager registeredShortcutForName:shortcutName];
     
-    hotKeyRecorder.hotKeyName = hotKeyName;
+    shortcutRecorder.shortcutName = shortcutName;
     
-    if (hotKey) {
-      hotKeyRecorder.hotKey = hotKey;
+    if (shortcut) {
+      shortcutRecorder.shortcut = shortcut;
     }
     
-    hotKeyRecorder.delegate = self;
+    shortcutRecorder.delegate = self;
     
-    hotKeyRecorder.additionalHotKeyValidators = @[hotKeyValidator];
+    shortcutRecorder.additionalShortcutValidators = @[shortcutValidator];
   }
   
   
-  [self enableHotKeyRecorders:YES];
+  [self enableShortcutRecorders:YES];
 }
 
 #pragma mark -
 
-- (void)enableHotKeyRecorders:(BOOL)enabled
+- (void)enableShortcutRecorders:(BOOL)enabled
 {
-  for (ZKHotKeyRecorder *hotKeyRecorder in self.hotKeyRecorders.allValues) {
+  for (SpectacleShortcutRecorder *shortcutRecorder in self.shortcutRecorders.allValues) {
     if (!enabled) {
-      hotKeyRecorder.hotKey = nil;
+      shortcutRecorder.shortcut = nil;
     }
     
-    hotKeyRecorder.enabled = enabled;
+    shortcutRecorder.enabled = enabled;
   }
 }
 

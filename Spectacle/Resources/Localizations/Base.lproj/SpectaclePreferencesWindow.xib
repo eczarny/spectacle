@@ -8,25 +8,25 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SpectaclePreferencesController">
             <connections>
                 <outlet property="loginItemEnabled" destination="Rrq-0h-p8v" id="epA-8y-ZhO"/>
-                <outlet property="makeLargerHotKeyRecorder" destination="iwx-0m-WUf" id="5MI-rb-Afn"/>
-                <outlet property="makeSmallerHotKeyRecorder" destination="0jH-Zh-PgG" id="H2h-ci-Jmo"/>
-                <outlet property="moveToBottomHotKeyRecorder" destination="hzO-eo-G8F" id="Xk4-ti-gDM"/>
-                <outlet property="moveToCenterHotKeyRecorder" destination="mbr-Cs-whm" id="7a8-d8-tKB"/>
-                <outlet property="moveToFullscreenHotKeyRecorder" destination="Wxa-6e-lyM" id="VJp-gJ-Jvl"/>
-                <outlet property="moveToLeftHotKeyRecorder" destination="4na-E1-mUM" id="77t-hZ-HyZ"/>
-                <outlet property="moveToLowerLeftHotKeyRecorder" destination="u0O-yW-0g8" id="zft-fW-va2"/>
-                <outlet property="moveToLowerRightHotKeyRecorder" destination="lJh-dh-K7C" id="i1k-jB-G0W"/>
-                <outlet property="moveToNextDisplayHotKeyRecorder" destination="lLw-FX-nqn" id="32F-Qw-V2n"/>
-                <outlet property="moveToNextThirdHotKeyRecorder" destination="kGL-qW-2Cn" id="ry4-Tp-V42"/>
-                <outlet property="moveToPreviousDisplayHotKeyRecorder" destination="OsP-Gv-gJI" id="Rg6-TK-NrY"/>
-                <outlet property="moveToPreviousThirdHotKeyRecorder" destination="NdL-ul-8LW" id="gIu-m0-iLT"/>
-                <outlet property="moveToRightHotKeyRecorder" destination="eCb-ZU-egY" id="HST-Y8-hY5"/>
-                <outlet property="moveToTopHotKeyRecorder" destination="rN1-zt-f9E" id="JSv-Ee-NVn"/>
-                <outlet property="moveToUpperLeftHotKeyRecorder" destination="wLj-pQ-b7w" id="lZ4-Te-7M4"/>
-                <outlet property="moveToUpperRightHotKeyRecorder" destination="44s-Ps-tmn" id="3PG-O1-q2E"/>
-                <outlet property="redoLastMoveHotKeyRecorder" destination="pPP-7U-GSg" id="RHb-ul-NZ8"/>
+                <outlet property="makeLargerShortcutRecorder" destination="iwx-0m-WUf" id="lUC-P6-Vv0"/>
+                <outlet property="makeSmallerShortcutRecorder" destination="0jH-Zh-PgG" id="KIO-62-XGL"/>
+                <outlet property="moveToBottomShortcutRecorder" destination="hzO-eo-G8F" id="DJU-MT-61C"/>
+                <outlet property="moveToCenterShortcutRecorder" destination="mbr-Cs-whm" id="aZl-2a-crG"/>
+                <outlet property="moveToFullscreenShortcutRecorder" destination="Wxa-6e-lyM" id="RBe-8y-feS"/>
+                <outlet property="moveToLeftShortcutRecorder" destination="4na-E1-mUM" id="mcM-bw-uWP"/>
+                <outlet property="moveToLowerLeftShortcutRecorder" destination="u0O-yW-0g8" id="fDR-cZ-vdk"/>
+                <outlet property="moveToLowerRightShortcutRecorder" destination="lJh-dh-K7C" id="CCg-we-Urp"/>
+                <outlet property="moveToNextDisplayShortcutRecorder" destination="lLw-FX-nqn" id="l2e-tq-Xkb"/>
+                <outlet property="moveToNextThirdShortcutRecorder" destination="kGL-qW-2Cn" id="tvD-Rn-p2o"/>
+                <outlet property="moveToPreviousDisplayShortcutRecorder" destination="OsP-Gv-gJI" id="v05-17-4dU"/>
+                <outlet property="moveToPreviousThirdShortcutRecorder" destination="NdL-ul-8LW" id="WYV-Hd-UOn"/>
+                <outlet property="moveToRightShortcutRecorder" destination="eCb-ZU-egY" id="iW0-K6-OeV"/>
+                <outlet property="moveToTopShortcutRecorder" destination="rN1-zt-f9E" id="Mw9-c9-b8O"/>
+                <outlet property="moveToUpperLeftShortcutRecorder" destination="wLj-pQ-b7w" id="fvL-bO-rKZ"/>
+                <outlet property="moveToUpperRightShortcutRecorder" destination="44s-Ps-tmn" id="Kbc-Pj-hti"/>
+                <outlet property="redoLastMoveShortcutRecorder" destination="pPP-7U-GSg" id="AYn-wB-Yo2"/>
                 <outlet property="statusItemEnabled" destination="oe0-cf-jea" id="qu5-ae-zvE"/>
-                <outlet property="undoLastMoveHotKeyRecorder" destination="au4-Gr-KF9" id="gCa-FL-Fn3"/>
+                <outlet property="undoLastMoveShortcutRecorder" destination="au4-Gr-KF9" id="ecz-fA-ywO"/>
                 <outlet property="window" destination="JW4-q9-L7q" id="3he-NT-S7L"/>
             </connections>
         </customObject>
@@ -49,7 +49,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="mbr-Cs-whm" customClass="ZKHotKeyRecorder">
+                    <customView id="mbr-Cs-whm" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="403" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -62,7 +62,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="Wxa-6e-lyM" customClass="ZKHotKeyRecorder">
+                    <customView id="Wxa-6e-lyM" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="374" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -75,7 +75,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="4na-E1-mUM" customClass="ZKHotKeyRecorder">
+                    <customView id="4na-E1-mUM" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="316" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -88,7 +88,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="eCb-ZU-egY" customClass="ZKHotKeyRecorder">
+                    <customView id="eCb-ZU-egY" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="287" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -101,7 +101,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="rN1-zt-f9E" customClass="ZKHotKeyRecorder">
+                    <customView id="rN1-zt-f9E" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="258" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -114,7 +114,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="hzO-eo-G8F" customClass="ZKHotKeyRecorder">
+                    <customView id="hzO-eo-G8F" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="229" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -127,7 +127,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="wLj-pQ-b7w" customClass="ZKHotKeyRecorder">
+                    <customView id="wLj-pQ-b7w" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="171" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -140,7 +140,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="u0O-yW-0g8" customClass="ZKHotKeyRecorder">
+                    <customView id="u0O-yW-0g8" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="142" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -153,7 +153,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="44s-Ps-tmn" customClass="ZKHotKeyRecorder">
+                    <customView id="44s-Ps-tmn" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="113" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -166,7 +166,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="lJh-dh-K7C" customClass="ZKHotKeyRecorder">
+                    <customView id="lJh-dh-K7C" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="140" y="84" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -179,7 +179,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="lLw-FX-nqn" customClass="ZKHotKeyRecorder">
+                    <customView id="lLw-FX-nqn" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="403" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -192,7 +192,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="OsP-Gv-gJI" customClass="ZKHotKeyRecorder">
+                    <customView id="OsP-Gv-gJI" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="374" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -205,7 +205,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="kGL-qW-2Cn" customClass="ZKHotKeyRecorder">
+                    <customView id="kGL-qW-2Cn" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="316" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -218,7 +218,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="NdL-ul-8LW" customClass="ZKHotKeyRecorder">
+                    <customView id="NdL-ul-8LW" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="287" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -231,7 +231,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="iwx-0m-WUf" customClass="ZKHotKeyRecorder">
+                    <customView id="iwx-0m-WUf" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="229" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -244,7 +244,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="0jH-Zh-PgG" customClass="ZKHotKeyRecorder">
+                    <customView id="0jH-Zh-PgG" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="200" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -257,7 +257,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="au4-Gr-KF9" customClass="ZKHotKeyRecorder">
+                    <customView id="au4-Gr-KF9" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="142" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
@@ -270,7 +270,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <customView id="pPP-7U-GSg" customClass="ZKHotKeyRecorder">
+                    <customView id="pPP-7U-GSg" customClass="SpectacleShortcutRecorder">
                         <rect key="frame" x="422" y="113" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>

@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
   SpectacleWindowActionPreviousThird
 };
 
-@class ZKHotKey;
+@class SpectacleShortcut;
 
 @interface SpectacleWindowPositionManager : NSObject
 
@@ -52,6 +52,6 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForHotKey:(ZKHotKey *)hotKey;
+- (SpectacleWindowAction)windowActionForShortcut:(SpectacleShortcut *)shortcut;
 
 @end

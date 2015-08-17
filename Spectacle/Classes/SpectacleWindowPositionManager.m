@@ -168,9 +168,9 @@ frontMostWindowElement:frontMostWindowElement
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForHotKey:(ZKHotKey *)hotKey
+- (SpectacleWindowAction)windowActionForShortcut:(SpectacleShortcut *)shortcut
 {
-  NSString *name = hotKey.hotKeyName;
+  NSString *name = shortcut.shortcutName;
   SpectacleWindowAction windowAction = SpectacleWindowActionNone;
 
   if ([name isEqualToString:SpectacleWindowActionMoveToCenter]) {

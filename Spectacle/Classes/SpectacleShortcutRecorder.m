@@ -1,18 +1,18 @@
 #import "SpectacleConstants.h"
 
-#import "ZKHotKeyRecorder.h"
-#import "ZKHotKeyRecorderCell.h"
+#import "SpectacleShortcutRecorder.h"
+#import "SpectacleShortcutRecorderCell.h"
 
-#define MyCell (ZKHotKeyRecorderCell *)[self cell]
+#define MyCell (SpectacleShortcutRecorderCell *)[self cell]
 
 #pragma mark -
 
-@implementation ZKHotKeyRecorder
+@implementation SpectacleShortcutRecorder
 
 - (instancetype)initWithFrame:(NSRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    [MyCell setHotKeyRecorder:self];
+    [MyCell setShortcutRecorder:self];
   }
   
   return self;
@@ -22,52 +22,52 @@
 
 + (Class)cellClass
 {
-  return ZKHotKeyRecorderCell.class;
+  return SpectacleShortcutRecorderCell.class;
 }
 
 #pragma mark -
 
-- (NSString *)hotKeyName
+- (NSString *)shortcutName
 {
-  return [MyCell hotKeyName];
+  return [MyCell shortcutName];
 }
 
-- (void)setHotKeyName:(NSString *)hotKeyName
+- (void)setShortcutName:(NSString *)shortcutName
 {
-  [MyCell setHotKeyName:hotKeyName];
+  [MyCell setShortcutName:shortcutName];
 }
 
 #pragma mark -
 
-- (ZKHotKey *)hotKey
+- (SpectacleShortcut *)shortcut
 {
-  return [MyCell hotKey];
+  return [MyCell shortcut];
 }
 
-- (void)setHotKey:(ZKHotKey *)hotKey
+- (void)setShortcut:(SpectacleShortcut *)shortcut
 {
-  [MyCell setHotKey:hotKey];
+  [MyCell setShortcut:shortcut];
   
   [self updateCell:MyCell];
 }
 
 #pragma mark -
 
-- (id<ZKHotKeyRecorderDelegate>)delegate
+- (id<SpectacleShortcutRecorderDelegate>)delegate
 {
   return [MyCell delegate];
 }
 
-- (void)setDelegate:(id<ZKHotKeyRecorderDelegate>)delegate
+- (void)setDelegate:(id<SpectacleShortcutRecorderDelegate>)delegate
 {
   [MyCell setDelegate:delegate];
 }
 
 #pragma mark -
 
-- (void)setAdditionalHotKeyValidators:(NSArray *)additionalHotKeyValidators
+- (void)setAdditionalShortcutValidators:(NSArray *)additionalShortcutValidators
 {
-  [MyCell setAdditionalHotKeyValidators:additionalHotKeyValidators];
+  [MyCell setAdditionalShortcutValidators:additionalShortcutValidators];
 }
 
 #pragma mark -

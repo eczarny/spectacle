@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SpecialHotKeyTranslations</key>
+	<key>SpecialShortcutTranslations</key>
 	<dict>
 		<key>122</key>
 		<string>F1</string>
@@ -45,47 +45,47 @@
 		<key>49</key>
 		<string>Space</string>
 		<key>51</key>
-		<string>SpectacleHotKeyDeleteLeftGlyph</string>
+		<string>SpectacleShortcutDeleteLeftGlyph</string>
 		<key>117</key>
-		<string>SpectacleHotKeyDeleteRightGlyph</string>
+		<string>SpectacleShortcutDeleteRightGlyph</string>
 		<key>123</key>
-		<string>SpectacleHotKeyLeftArrowGlyph</string>
+		<string>SpectacleShortcutLeftArrowGlyph</string>
 		<key>124</key>
-		<string>SpectacleHotKeyRightArrowGlyph</string>
+		<string>SpectacleShortcutRightArrowGlyph</string>
 		<key>126</key>
-		<string>SpectacleHotKeyUpArrowGlyph</string>
+		<string>SpectacleShortcutUpArrowGlyph</string>
 		<key>125</key>
-		<string>SpectacleHotKeyDownArrowGlyph</string>
+		<string>SpectacleShortcutDownArrowGlyph</string>
 		<key>121</key>
-		<string>SpectacleHotKeyPageDownGlyph</string>
+		<string>SpectacleShortcutPageDownGlyph</string>
 		<key>116</key>
-		<string>SpectacleHotKeyPageUpGlyph</string>
+		<string>SpectacleShortcutPageUpGlyph</string>
 		<key>36</key>
-		<string>SpectacleHotKeyReturnGlyph</string>
+		<string>SpectacleShortcutReturnGlyph</string>
 		<key>48</key>
-		<string>SpectacleHotKeyTabRightGlyph</string>
+		<string>SpectacleShortcutTabRightGlyph</string>
 	</dict>
-	<key>SpecialHotKeyGlyphTranslations</key>
+	<key>SpecialShortcutGlyphTranslations</key>
 	<dict>
-		<key>SpectacleHotKeyDeleteLeftGlyph</key>
+		<key>SpectacleShortcutDeleteLeftGlyph</key>
 		<integer>9003</integer>
-		<key>SpectacleHotKeyDeleteRightGlyph</key>
+		<key>SpectacleShortcutDeleteRightGlyph</key>
 		<integer>8998</integer>
-		<key>SpectacleHotKeyLeftArrowGlyph</key>
+		<key>SpectacleShortcutLeftArrowGlyph</key>
 		<integer>8592</integer>
-		<key>SpectacleHotKeyRightArrowGlyph</key>
+		<key>SpectacleShortcutRightArrowGlyph</key>
 		<integer>8594</integer>
-		<key>SpectacleHotKeyUpArrowGlyph</key>
+		<key>SpectacleShortcutUpArrowGlyph</key>
 		<integer>8593</integer>
-		<key>SpectacleHotKeyDownArrowGlyph</key>
+		<key>SpectacleShortcutDownArrowGlyph</key>
 		<integer>8595</integer>
-		<key>SpectacleHotKeyPageDownGlyph</key>
+		<key>SpectacleShortcutPageDownGlyph</key>
 		<integer>8671</integer>
-		<key>SpectacleHotKeyPageUpGlyph</key>
+		<key>SpectacleShortcutPageUpGlyph</key>
 		<integer>8670</integer>
-		<key>SpectacleHotKeyReturnGlyph</key>
+		<key>SpectacleShortcutReturnGlyph</key>
 		<integer>8617</integer>
-		<key>SpectacleHotKeyTabRightGlyph</key>
+		<key>SpectacleShortcutTabRightGlyph</key>
 		<integer>8677</integer>
 	</dict>
 </dict>

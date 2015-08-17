@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "ZKHotKey.h"
+#import "SpectacleShortcut.h"
 
 #define LocalizedString(string) NSLocalizedString(string, string)
 
@@ -65,15 +65,15 @@ typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
 
 #pragma mark -
 
-+ (NSArray *)hotKeyNames;
++ (NSArray *)shortcutNames;
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary:(NSDictionary *)dictionary action:(ZKHotKeyAction)action;
++ (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action;
 
 #pragma mark -
 
-+ (void)restoreDefaultHotKeys;
++ (void)restoreDefaultShortcuts;
 
 #pragma mark -
 

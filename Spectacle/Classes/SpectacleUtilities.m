@@ -1,12 +1,12 @@
 #import "SpectacleUtilities.h"
 
 #import "SpectacleConstants.h"
-#import "SpectacleHotKeyManager.h"
+#import "SpectacleShortcutManager.h"
 #import "SpectacleWindowPositionManager.h"
 
 extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribute__((weak_import));
 
-@interface ZeroKitHotKey : ZKHotKey
+@interface ZKHotKey : SpectacleShortcut
 
 @end
 
@@ -109,98 +109,98 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-+ (NSArray *)hotKeyNames
++ (NSArray *)shortcutNames
 {
   NSBundle *bundle = NSBundle.mainBundle;
-  NSString *path = [bundle pathForResource:SpectacleHotKeyNamesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-  NSArray *hotKeyNames = [NSArray arrayWithContentsOfFile:path];
+  NSString *path = [bundle pathForResource:SpectacleShortcutNamesPropertyListFile ofType:SpectaclePropertyListFileExtension];
+  NSArray *shortcutNames = [NSArray arrayWithContentsOfFile:path];
   
-  return hotKeyNames;
+  return shortcutNames;
 }
 
 #pragma mark -
 
-+ (NSArray *)hotKeysFromDictionary:(NSDictionary *)dictionary action:(ZKHotKeyAction)action
++ (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action
 {
-  NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:dictionary.allKeys];
-  NSMutableArray *hotKeys = [NSMutableArray new];
+  NSDictionary *defaultShortcuts = [SpectacleUtilities defaultShortcutsWithNames:dictionary.allKeys];
+  NSMutableArray *shortcuts = [NSMutableArray new];
   
-  [NSKeyedUnarchiver setClass:ZeroKitHotKey.class forClassName:@"SpectacleHotKey"];
+  [NSKeyedUnarchiver setClass:ZKHotKey.class forClassName:@"SpectacleShortcut"];
   
-  for (NSData *hotKeyData in dictionary.allValues) {
-    ZKHotKey *hotKey = [NSKeyedUnarchiver unarchiveObjectWithData:hotKeyData];
+  for (NSData *shortcutData in dictionary.allValues) {
+    SpectacleShortcut *shortcut = [NSKeyedUnarchiver unarchiveObjectWithData:shortcutData];
     
-    if (![hotKey isClearedHotKey]) {
-      NSString *hotKeyName = hotKey.hotKeyName;
+    if (![shortcut isClearedShortcut]) {
+      NSString *shortcutName = shortcut.shortcutName;
       
-      hotKey.hotKeyAction = action;
+      shortcut.shortcutAction = action;
       
-      [SpectacleUtilities updateHotKey:hotKey withPotentiallyNewDefaultHotKey:defaultHotKeys[hotKeyName]];
+      [SpectacleUtilities updateShortcut:shortcut withPotentiallyNewDefaultShortcut:defaultShortcuts[shortcutName]];
       
-      [hotKeys addObject:hotKey];
+      [shortcuts addObject:shortcut];
     }
   }
   
-  return hotKeys;
+  return shortcuts;
 }
 
 #pragma mark -
 
-+ (void)restoreDefaultHotKeys
++ (void)restoreDefaultShortcuts
 {
   SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
-  SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
-  NSDictionary *defaultHotKeys = [SpectacleUtilities defaultHotKeysWithNames:SpectacleUtilities.hotKeyNames];
+  SpectacleShortcutManager *shortcutManager = SpectacleShortcutManager.sharedManager;
+  NSDictionary *defaultShortcuts = [SpectacleUtilities defaultShortcutsWithNames:SpectacleUtilities.shortcutNames];
 
-  for (NSString *hotKeyName in defaultHotKeys) {
-    ZKHotKey *defaultHotKey = defaultHotKeys[hotKeyName];
+  for (NSString *shortcutName in defaultShortcuts) {
+    SpectacleShortcut *defaultShortcut = defaultShortcuts[shortcutName];
 
-    defaultHotKey.hotKeyAction = ^(ZKHotKey *hotKey) {
-      [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForHotKey:hotKey]];
+    defaultShortcut.shortcutAction = ^(SpectacleShortcut *shortcut) {
+      [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForShortcut:shortcut]];
     };
 
-    [hotKeyManager registerHotKey:defaultHotKey];
+    [shortcutManager registerShortcut:defaultShortcut];
   }
 }
 
 #pragma mark -
 
-+ (void)updateHotKey:(ZKHotKey *)hotKey withPotentiallyNewDefaultHotKey:(ZKHotKey *)defaultHotKey
++ (void)updateShortcut:(SpectacleShortcut *)shortcut withPotentiallyNewDefaultShortcut:(SpectacleShortcut *)defaultShortcut
 {
-  NSString *hotKeyName = hotKey.hotKeyName;
-  NSInteger defaultHotKeyCode;
+  NSString *shortcutName = shortcut.shortcutName;
+  NSInteger defaultShortcutCode;
   
-  if (![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
-    && ![hotKeyName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
+  if (![shortcutName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
+    && ![shortcutName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
     return;
   }
   
-  defaultHotKeyCode = defaultHotKey.hotKeyCode;
+  defaultShortcutCode = defaultShortcut.shortcutCode;
   
-  if ((hotKey.hotKeyCode == defaultHotKeyCode) && (hotKey.hotKeyModifiers == 768)) {
-    hotKey.hotKeyCode = defaultHotKeyCode;
+  if ((shortcut.shortcutCode == defaultShortcutCode) && (shortcut.shortcutModifiers == 768)) {
+    shortcut.shortcutCode = defaultShortcutCode;
     
-    hotKey.hotKeyModifiers = defaultHotKey.hotKeyModifiers;
+    shortcut.shortcutModifiers = defaultShortcut.shortcutModifiers;
   }
 }
 
 #pragma mark -
 
-+ (NSDictionary *)defaultHotKeysWithNames:(NSArray *)names
++ (NSDictionary *)defaultShortcutsWithNames:(NSArray *)names
 {
   NSBundle *bundle = NSBundle.mainBundle;
   NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
   NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
-  NSMutableDictionary *defaultHotKeys = [NSMutableDictionary new];
+  NSMutableDictionary *defaultShortcuts = [NSMutableDictionary new];
   
-  for (NSString *hotKeyName in names) {
-    NSData *defaultHotKeyData = applicationDefaults[hotKeyName];
-    ZKHotKey *defaultHotKey = [NSKeyedUnarchiver unarchiveObjectWithData:defaultHotKeyData];
+  for (NSString *shortcutName in names) {
+    NSData *defaultShortcutData = applicationDefaults[shortcutName];
+    SpectacleShortcut *defaultShortcut = [NSKeyedUnarchiver unarchiveObjectWithData:defaultShortcutData];
     
-    defaultHotKeys[hotKeyName] = defaultHotKey;
+    defaultShortcuts[shortcutName] = defaultShortcut;
   }
   
-  return defaultHotKeys;
+  return defaultShortcuts;
 }
 
 #pragma mark -
@@ -357,6 +357,6 @@ extern Boolean AXIsProcessTrustedWithOptions(CFDictionaryRef options) __attribut
 
 #pragma mark -
 
-@implementation ZeroKitHotKey
+@implementation ZKHotKey
 
 @end

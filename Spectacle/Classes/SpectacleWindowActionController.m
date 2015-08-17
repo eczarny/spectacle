@@ -1,13 +1,13 @@
 #import "SpectacleWindowActionController.h"
 
-#import "SpectacleHotKeyManager.h"
+#import "SpectacleShortcutManager.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
 
 @interface SpectacleWindowActionController ()
 
 @property (nonatomic) SpectacleWindowPositionManager *windowPositionManager;
-@property (nonatomic) SpectacleHotKeyManager *hotKeyManager;
+@property (nonatomic) SpectacleShortcutManager *shortcutManager;
 
 @end
 
@@ -19,7 +19,7 @@
 {
   if (self = [super init]) {
     _windowPositionManager = SpectacleWindowPositionManager.sharedManager;
-    _hotKeyManager = SpectacleHotKeyManager.sharedManager;
+    _shortcutManager = SpectacleShortcutManager.sharedManager;
   }
   
   return self;
@@ -27,20 +27,21 @@
 
 #pragma mark -
 
-- (void)registerHotKeys
+- (void)registerShortcuts
 {
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-  NSMutableDictionary *hotKeysFromUserDefaults = [NSMutableDictionary new];
+  NSMutableDictionary *shortcutsFromUserDefaults = [NSMutableDictionary new];
   
-  for (NSString *hotKeyName in SpectacleUtilities.hotKeyNames) {
-    hotKeysFromUserDefaults[hotKeyName] = [userDefaults dataForKey:hotKeyName];
+  for (NSString *shortcutName in SpectacleUtilities.shortcutNames) {
+    shortcutsFromUserDefaults[shortcutName] = [userDefaults dataForKey:shortcutName];
   }
 
-  NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary:hotKeysFromUserDefaults action:^(ZKHotKey *hotKey) {
-    [self.windowPositionManager moveFrontMostWindowWithAction:[_windowPositionManager windowActionForHotKey:hotKey]];
+  NSArray *shortcuts = [SpectacleUtilities shortcutsFromDictionary:shortcutsFromUserDefaults
+                                                            action:^(SpectacleShortcut *shortcut) {
+    [self.windowPositionManager moveFrontMostWindowWithAction:[_windowPositionManager windowActionForShortcut:shortcut]];
   }];
 
-  [self.hotKeyManager registerHotKeys:hotKeys];
+  [self.shortcutManager registerShortcuts:shortcuts];
 }
 
 #pragma mark -

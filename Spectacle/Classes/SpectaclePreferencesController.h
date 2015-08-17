@@ -1,29 +1,29 @@
 #import <Cocoa/Cocoa.h>
 
-#import "ZKHotKeyRecorderDelegate.h"
+#import "SpectacleShortcutRecorderDelegate.h"
 
-@class SpectacleHotKeyManager, SpectacleApplicationController, ZKHotKeyRecorder;
+@class SpectacleShortcutManager, SpectacleApplicationController, SpectacleShortcutRecorder;
 
-@interface SpectaclePreferencesController : NSWindowController<ZKHotKeyRecorderDelegate>
+@interface SpectaclePreferencesController : NSWindowController<SpectacleShortcutRecorderDelegate>
 
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToCenterHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToFullscreenHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToLeftHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToRightHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToTopHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToBottomHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToUpperLeftHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToLowerLeftHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToUpperRightHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToLowerRightHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToNextDisplayHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToPreviousDisplayHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToNextThirdHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *moveToPreviousThirdHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *makeLargerHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *makeSmallerHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *undoLastMoveHotKeyRecorder;
-@property (nonatomic) IBOutlet ZKHotKeyRecorder *redoLastMoveHotKeyRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToCenterShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToFullscreenShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLeftShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToTopShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToBottomShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToUpperLeftShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLowerLeftShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToUpperRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLowerRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToNextDisplayShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToPreviousDisplayShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToNextThirdShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToPreviousThirdShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *makeLargerShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *makeSmallerShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *undoLastMoveShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *redoLastMoveShortcutRecorder;
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
 

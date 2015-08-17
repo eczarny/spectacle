@@ -5,9 +5,9 @@ extern NSString *const SpectaclePreferencesWindowNibName;
 extern NSString *const SpectacleStatusItemEnabledNotification;
 extern NSString *const SpectacleStatusItemDisabledNotification;
 
-extern NSString *const SpectacleHotKeyChangedNotification;
+extern NSString *const SpectacleShortcutChangedNotification;
 
-extern NSString *const SpectacleRestoreDefaultHotKeysNotification;
+extern NSString *const SpectacleRestoreDefaultShortcutsNotification;
 
 #pragma mark -
 
@@ -18,7 +18,7 @@ extern const NSInteger SpectacleMenuItemActivateIgnoringOtherApps;
 extern NSString *const SpectaclePropertyListFileExtension;
 
 extern NSString *const SpectacleDefaultPreferencesPropertyListFile;
-extern NSString *const SpectacleHotKeyNamesPropertyListFile;
+extern NSString *const SpectacleShortcutNamesPropertyListFile;
 extern NSString *const SpectacleBlacklistedApplicationsPropertyListFile;
 
 #pragma mark -
@@ -91,7 +91,7 @@ extern NSString *const SpectacleAppleScriptFileExtension;
 
 #pragma mark -
 
-extern NSString *const SpectacleHotKeyTranslationsPropertyListFile;
+extern NSString *const SpectacleShortcutTranslationsPropertyListFile;
 
-extern NSString *const SpectacleHotKeyTranslationsKey;
-extern NSString *const SpectacleHotKeyGlyphTranslationsKey;
+extern NSString *const SpectacleShortcutTranslationsKey;
+extern NSString *const SpectacleShortcutGlyphTranslationsKey;

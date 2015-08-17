@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
 
-@class SpectacleWindowPositionManager, SpectacleHotKeyManager;
+@class SpectacleWindowPositionManager, SpectacleShortcutManager;
 
 @interface SpectacleWindowActionController : NSObject
 
-- (void)registerHotKeys;
+- (void)registerShortcuts;
 
 #pragma mark -
 

@@ -2,11 +2,11 @@
 #import <Carbon/Carbon.h>
 #import <CoreServices/CoreServices.h>
 
-@class ZKHotKey;
+@class SpectacleShortcut;
 
-@interface ZKHotKeyTranslator : NSObject
+@interface SpectacleShortcutTranslator : NSObject
 
-+ (ZKHotKeyTranslator *)sharedTranslator;
++ (SpectacleShortcutTranslator *)sharedTranslator;
 
 #pragma mark -
 
@@ -28,6 +28,6 @@
 
 #pragma mark -
 
-- (NSString *)translateHotKey:(ZKHotKey *)hotKey;
+- (NSString *)translateShortcut:(SpectacleShortcut *)shortcut;
 
 @end

@@ -2,15 +2,15 @@
 
 #import "SpectacleApplicationController.h"
 #import "SpectacleConstants.h"
-#import "SpectacleHotKeyManager.h"
+#import "SpectacleShortcutManager.h"
 #import "SpectaclePreferencesController.h"
+#import "SpectacleShortcutTranslator.h"
 #import "SpectacleUtilities.h"
-#import "ZKHotKeyTranslator.h"
 
 @interface SpectacleApplicationController ()
 
 @property (nonatomic) NSStatusItem *statusItem;
-@property (nonatomic) NSDictionary *hotKeyMenuItems;
+@property (nonatomic) NSDictionary *shortcutMenuItems;
 @property (nonatomic) SpectaclePreferencesController *preferencesController;
 
 @end
@@ -27,26 +27,26 @@
 
   self.preferencesController = [SpectaclePreferencesController new];
 
-  self.hotKeyMenuItems = @{SpectacleWindowActionMoveToCenter: _moveToCenterHotKeyMenuItem,
-                           SpectacleWindowActionMoveToFullscreen: _moveToFullscreenHotKeyMenuItem,
-                           SpectacleWindowActionMoveToLeftHalf: _moveToLeftHotKeyMenuItem,
-                           SpectacleWindowActionMoveToRightHalf: _moveToRightHotKeyMenuItem,
-                           SpectacleWindowActionMoveToTopHalf: _moveToTopHotKeyMenuItem,
-                           SpectacleWindowActionMoveToBottomHalf: _moveToBottomHotKeyMenuItem,
-                           SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftHotKeyMenuItem,
-                           SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftHotKeyMenuItem,
-                           SpectacleWindowActionMoveToUpperRight: _moveToUpperRightHotKeyMenuItem,
-                           SpectacleWindowActionMoveToLowerRight: _moveToLowerRightHotKeyMenuItem,
-                           SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayHotKeyMenuItem,
-                           SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyMenuItem,
-                           SpectacleWindowActionMoveToNextThird: _moveToNextThirdHotKeyMenuItem,
-                           SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdHotKeyMenuItem,
-                           SpectacleWindowActionMakeLarger: _makeLargerHotKeyMenuItem,
-                           SpectacleWindowActionMakeSmaller: _makeSmallerHotKeyMenuItem,
-                           SpectacleWindowActionUndoLastMove: _undoLastMoveHotKeyMenuItem,
-                           SpectacleWindowActionRedoLastMove: _redoLastMoveHotKeyMenuItem};
+  self.shortcutMenuItems = @{SpectacleWindowActionMoveToCenter: _moveToCenterShortcutMenuItem,
+                             SpectacleWindowActionMoveToFullscreen: _moveToFullscreenShortcutMenuItem,
+                             SpectacleWindowActionMoveToLeftHalf: _moveToLeftShortcutMenuItem,
+                             SpectacleWindowActionMoveToRightHalf: _moveToRightShortcutMenuItem,
+                             SpectacleWindowActionMoveToTopHalf: _moveToTopShortcutMenuItem,
+                             SpectacleWindowActionMoveToBottomHalf: _moveToBottomShortcutMenuItem,
+                             SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftShortcutMenuItem,
+                             SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftShortcutMenuItem,
+                             SpectacleWindowActionMoveToUpperRight: _moveToUpperRightShortcutMenuItem,
+                             SpectacleWindowActionMoveToLowerRight: _moveToLowerRightShortcutMenuItem,
+                             SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayShortcutMenuItem,
+                             SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayShortcutMenuItem,
+                             SpectacleWindowActionMoveToNextThird: _moveToNextThirdShortcutMenuItem,
+                             SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdShortcutMenuItem,
+                             SpectacleWindowActionMakeLarger: _makeLargerShortcutMenuItem,
+                             SpectacleWindowActionMakeSmaller: _makeSmallerShortcutMenuItem,
+                             SpectacleWindowActionUndoLastMove: _undoLastMoveShortcutMenuItem,
+                             SpectacleWindowActionRedoLastMove: _redoLastMoveShortcutMenuItem};
 
-  [self registerHotKeys];
+  [self registerShortcuts];
 
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
   BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:SpectacleAutomaticUpdateCheckEnabledPreference];
@@ -67,13 +67,13 @@
                            object:nil];
 
   [notificationCenter addObserver:self
-                         selector:@selector(updateHotKeyMenuItems)
-                             name:SpectacleHotKeyChangedNotification
+                         selector:@selector(updateShortcutMenuItems)
+                             name:SpectacleShortcutChangedNotification
                            object:nil];
 
   [notificationCenter addObserver:self
-                         selector:@selector(updateHotKeyMenuItems)
-                             name:SpectacleRestoreDefaultHotKeysNotification
+                         selector:@selector(updateShortcutMenuItems)
+                             name:SpectacleRestoreDefaultShortcutsNotification
                            object:nil];
 
   [notificationCenter addObserver:self
@@ -83,7 +83,7 @@
 
   [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
 
-  [self updateHotKeyMenuItems];
+  [self updateShortcutMenuItems];
 
   switch (SpectacleUtilities.spectacleTrust) {
     case SpectacleIsNotTrusted:
@@ -137,9 +137,9 @@
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithCallback:^(BOOL isConfirmed) {
     if (isConfirmed) {
-      [SpectacleUtilities restoreDefaultHotKeys];
+      [SpectacleUtilities restoreDefaultShortcuts];
 
-      [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultHotKeysNotification
+      [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultShortcutsNotification
                                                         object:self];
     }
   }];
@@ -169,21 +169,21 @@
 
 #pragma mark -
 
-- (void)updateHotKeyMenuItems
+- (void)updateShortcutMenuItems
 {
-  SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
-  ZKHotKeyTranslator *hotKeyTranslator = ZKHotKeyTranslator.sharedTranslator;
+  SpectacleShortcutManager *shortcutManager = SpectacleShortcutManager.sharedManager;
+  SpectacleShortcutTranslator *shortcutTranslator = SpectacleShortcutTranslator.sharedTranslator;
 
-  for (NSString *hotKeyName in self.hotKeyMenuItems.allKeys) {
-    NSMenuItem *hotKeyMenuItem = self.hotKeyMenuItems[hotKeyName];
-    ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName:hotKeyName];
+  for (NSString *shortcutName in self.shortcutMenuItems.allKeys) {
+    NSMenuItem *shortcutMenuItem = self.shortcutMenuItems[shortcutName];
+    SpectacleShortcut *shortcut = [shortcutManager registeredShortcutForName:shortcutName];
 
-    if (hotKey) {
-      hotKeyMenuItem.keyEquivalent = [[hotKeyTranslator translateKeyCode:hotKey.hotKeyCode] lowercaseString];
-      hotKeyMenuItem.keyEquivalentModifierMask = [ZKHotKeyTranslator convertModifiersToCocoaIfNecessary:hotKey.hotKeyModifiers];
+    if (shortcut) {
+      shortcutMenuItem.keyEquivalent = [[shortcutTranslator translateKeyCode:shortcut.shortcutCode] lowercaseString];
+      shortcutMenuItem.keyEquivalentModifierMask = [SpectacleShortcutTranslator convertModifiersToCocoaIfNecessary:shortcut.shortcutModifiers];
     } else {
-      hotKeyMenuItem.keyEquivalent = @"";
-      hotKeyMenuItem.keyEquivalentModifierMask = 0;
+      shortcutMenuItem.keyEquivalent = @"";
+      shortcutMenuItem.keyEquivalentModifierMask = 0;
     }
   }
 }

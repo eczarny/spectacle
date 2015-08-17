@@ -1,38 +1,38 @@
-#import "ZKHotKeyRecorderCell.h"
+#import "SpectacleShortcutRecorderCell.h"
 
 #import "SpectacleUtilities.h"
-#import "ZKHotKey.h"
-#import "ZKHotKeyRecorder.h"
-#import "ZKHotKeyTranslator.h"
-#import "ZKHotKeyValidator.h"
+#import "SpectacleShortcut.h"
+#import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutValidator.h"
+#import "SpectacleShortcutRecorder.h"
 
 #define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
 
 #pragma mark -
 
-@interface ZKHotKeyRecorderCell ()
+@interface SpectacleShortcutRecorderCell ()
 
 @property (nonatomic) NSUInteger modifierFlags;
 @property (nonatomic) BOOL isRecording;
 @property (nonatomic) NSTrackingArea *trackingArea;
 @property (nonatomic) BOOL isMouseAboveBadge;
 @property (nonatomic) BOOL isMouseDown;
-@property (nonatomic) void *hotKeyMode;
+@property (nonatomic) void *shortcutMode;
 
 @end
 
 #pragma mark -
 
-@implementation ZKHotKeyRecorderCell
+@implementation SpectacleShortcutRecorderCell
 
 - (instancetype)init
 {
   if (self = [super init]) {
-    _hotKeyRecorder = nil;
-    _hotKeyName = nil;
-    _hotKey = nil;
+    _shortcutRecorder = nil;
+    _shortcutName = nil;
+    _shortcut = nil;
     _delegate = nil;
-    _additionalHotKeyValidators = [NSArray new];
+    _additionalShortcutValidators = [NSArray new];
     _modifierFlags = 0;
     _isRecording = NO;
     _trackingArea = nil;
@@ -48,7 +48,7 @@
 - (BOOL)resignFirstResponder
 {
   if (self.isRecording) {
-    PopSymbolicHotKeyMode(self.hotKeyMode);
+    PopSymbolicHotKeyMode(self.shortcutMode);
 
     self.isRecording = NO;
 
@@ -65,21 +65,21 @@
   NSInteger keyCode = event.keyCode;
   NSUInteger newModifierFlags = self.modifierFlags | event.modifierFlags;
 
-  if (self.isRecording && [ZKHotKey validCocoaModifiers:newModifierFlags]) {
+  if (self.isRecording && [SpectacleShortcut validCocoaModifiers:newModifierFlags]) {
     NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
 
     if (characters.length) {
-      ZKHotKey *newHotKey = [[ZKHotKey alloc] initWithHotKeyCode:keyCode hotKeyModifiers:newModifierFlags];
+      SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutCode:keyCode shortcutModifiers:newModifierFlags];
       NSError *error = nil;
 
-      if (![ZKHotKeyValidator isHotKeyValid:newHotKey withValidators:self.additionalHotKeyValidators error:&error]) {
+      if (![SpectacleShortcutValidator isShortcutValid:newShortcut withValidators:self.additionalShortcutValidators error:&error]) {
         [[NSAlert alertWithError:error] runModal];
       } else {
-        newHotKey.hotKeyName = self.hotKeyName;
+        newShortcut.shortcutName = self.shortcutName;
 
-        self.hotKey = newHotKey;
+        self.shortcut = newShortcut;
 
-        [self.delegate hotKeyRecorder:self.hotKeyRecorder didReceiveNewHotKey:newHotKey];
+        [self.delegate shortcutRecorder:self.shortcutRecorder didReceiveNewShortcut:newShortcut];
       }
     } else {
       NSBeep();
@@ -87,7 +87,7 @@
 
     self.modifierFlags = 0;
 
-    PopSymbolicHotKeyMode(self.hotKeyMode);
+    PopSymbolicHotKeyMode(self.shortcutMode);
 
     self.isRecording = NO;
 
@@ -152,17 +152,17 @@
         if ([view mouse:mouseLocation inRect:rect] && !self.isRecording && !self.isMouseAboveBadge) {
           self.isRecording = YES;
 
-          self.hotKeyMode = PushSymbolicHotKeyMode(kHIHotKeyModeAllDisabled);
+          self.shortcutMode = PushSymbolicHotKeyMode(kHIHotKeyModeAllDisabled);
 
           [view.window makeFirstResponder:view];
         } else if (self.isRecording && self.isMouseAboveBadge) {
-          PopSymbolicHotKeyMode(self.hotKeyMode);
+          PopSymbolicHotKeyMode(self.shortcutMode);
 
           self.isRecording = NO;
-        } else if (!self.isRecording && self.hotKey && self.isMouseAboveBadge) {
-          [self.delegate hotKeyRecorder:self.hotKeyRecorder didClearExistingHotKey:self.hotKey];
+        } else if (!self.isRecording && self.shortcut && self.isMouseAboveBadge) {
+          [self.delegate shortcutRecorder:self.shortcutRecorder didClearExistingShortcut:self.shortcut];
 
-          self.hotKey = nil;
+          self.shortcut = nil;
         }
 
         [view setNeedsDisplay:YES];
@@ -276,16 +276,16 @@
   badgeRect.origin = NSMakePoint(NSMaxX(rect) - badgeSize.width - 4.0f, floor((NSMaxY(rect) - badgeSize.height) / 2.0f));
   badgeRect.size = badgeSize;
 
-  if (self.isRecording && !self.hotKey) {
-    [self drawClearHotKeyBadgeInRect:badgeRect withOpacity:0.25f];
+  if (self.isRecording && !self.shortcut) {
+    [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.25f];
   } else if (self.isRecording) {
-    [self drawRevertHotKeyBadgeInRect:badgeRect];
-  } else if (self.hotKey) {
-    [self drawClearHotKeyBadgeInRect:badgeRect withOpacity:0.25f];
+    [self drawRevertShortcutBadgeInRect:badgeRect];
+  } else if (self.shortcut) {
+    [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.25f];
   }
 
-  if (((self.hotKey && !self.isRecording) || (!self.hotKey && self.isRecording)) && self.isMouseAboveBadge && self.isMouseDown) {
-    [self drawClearHotKeyBadgeInRect:badgeRect withOpacity:0.50f];
+  if (((self.shortcut && !self.isRecording) || (!self.shortcut && self.isRecording)) && self.isMouseAboveBadge && self.isMouseDown) {
+    [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.50f];
   }
 
   if (!self.trackingArea) {
@@ -300,7 +300,7 @@
 
 #pragma mark -
 
-- (void)drawClearHotKeyBadgeInRect:(NSRect)rect withOpacity:(CGFloat)opacity
+- (void)drawClearShortcutBadgeInRect:(NSRect)rect withOpacity:(CGFloat)opacity
 {
   CGFloat horizontalScale = (rect.size.width / 13.0f);
   CGFloat verticalScale = (rect.size.height / 13.0f);
@@ -327,7 +327,7 @@
   [NSGraphicsContext.currentContext restoreGraphicsState];
 }
 
-- (void)drawRevertHotKeyBadgeInRect:(NSRect)rect
+- (void)drawRevertShortcutBadgeInRect:(NSRect)rect
 {
   CGFloat horizontalScale = (rect.size.width / 1.0f);
   CGFloat verticalScale = (rect.size.height / 1.0f);
@@ -374,19 +374,19 @@
 
   if (self.isRecording && !self.isMouseAboveBadge) {
     label = LocalizedString(@"Enter hot key");
-  } else if (self.isRecording && self.isMouseAboveBadge && !self.hotKey) {
+  } else if (self.isRecording && self.isMouseAboveBadge && !self.shortcut) {
     label = LocalizedString(@"Stop recording");
   } else if (self.isRecording && self.isMouseAboveBadge) {
     label = LocalizedString(@"Use existing");
-  } else if (self.hotKey) {
-    label = self.hotKey.displayString;
+  } else if (self.shortcut) {
+    label = self.shortcut.displayString;
   } else {
     label = LocalizedString(@"Click to record");
   }
 
   // Recording is in progress and modifier flags have already been set, display them.
   if (self.isRecording && (self.modifierFlags > 0)) {
-    label = [ZKHotKeyTranslator translateCocoaModifiers:self.modifierFlags];
+    label = [SpectacleShortcutTranslator translateCocoaModifiers:self.modifierFlags];
   }
 
   if (!self.isEnabled) {

@@ -16,25 +16,25 @@
         <customObject id="tMJ-JP-XRD" customClass="SpectacleApplicationController">
             <connections>
                 <outlet property="accessiblityAccessDialogWindow" destination="aH5-eW-ySa" id="u6t-Fq-cCp"/>
-                <outlet property="makeLargerHotKeyMenuItem" destination="Yun-AA-OVD" id="S9V-OR-ZG1"/>
-                <outlet property="makeSmallerHotKeyMenuItem" destination="gTe-ym-DB0" id="WML-Tm-tQ8"/>
-                <outlet property="moveToBottomHotKeyMenuItem" destination="huV-Gw-lbX" id="NS5-sM-BE2"/>
-                <outlet property="moveToCenterHotKeyMenuItem" destination="xJu-Uo-nZw" id="lql-NN-tk3"/>
-                <outlet property="moveToFullscreenHotKeyMenuItem" destination="dwQ-Bl-nEL" id="Vq1-ZM-QYh"/>
-                <outlet property="moveToLeftHotKeyMenuItem" destination="Jae-vx-7ZC" id="IVw-ab-Vu5"/>
-                <outlet property="moveToLowerLeftHotKeyMenuItem" destination="eN5-A6-iho" id="N5z-5A-ZOg"/>
-                <outlet property="moveToLowerRightHotKeyMenuItem" destination="oDU-J0-NkJ" id="WEb-fW-gFX"/>
-                <outlet property="moveToNextDisplayHotKeyMenuItem" destination="I4U-jL-hXq" id="vRg-zx-3xc"/>
-                <outlet property="moveToNextThirdHotKeyMenuItem" destination="7HO-L3-O6Q" id="n48-zz-rsV"/>
-                <outlet property="moveToPreviousDisplayHotKeyMenuItem" destination="aPo-Rp-A1X" id="Gl8-ug-7Xv"/>
-                <outlet property="moveToPreviousThirdHotKeyMenuItem" destination="bV9-Ga-jDG" id="cui-fP-5cD"/>
-                <outlet property="moveToRightHotKeyMenuItem" destination="cae-26-Oab" id="X2H-za-auv"/>
-                <outlet property="moveToTopHotKeyMenuItem" destination="yh0-ik-weD" id="sTX-P3-gym"/>
-                <outlet property="moveToUpperLeftHotKeyMenuItem" destination="ldc-QO-Cq6" id="nAr-Wd-HTk"/>
-                <outlet property="moveToUpperRightHotKeyMenuItem" destination="C7t-Sf-kOI" id="WTx-hy-8ns"/>
-                <outlet property="redoLastMoveHotKeyMenuItem" destination="187-7k-0Ct" id="mc8-m6-3ly"/>
+                <outlet property="makeLargerShortcutMenuItem" destination="Yun-AA-OVD" id="7P4-V3-6Yd"/>
+                <outlet property="makeSmallerShortcutMenuItem" destination="gTe-ym-DB0" id="Qj6-FS-ebO"/>
+                <outlet property="moveToBottomShortcutMenuItem" destination="huV-Gw-lbX" id="R2l-hx-4hT"/>
+                <outlet property="moveToCenterShortcutMenuItem" destination="xJu-Uo-nZw" id="TUY-VV-2gn"/>
+                <outlet property="moveToFullscreenShortcutMenuItem" destination="dwQ-Bl-nEL" id="bbv-zr-yKB"/>
+                <outlet property="moveToLeftShortcutMenuItem" destination="Jae-vx-7ZC" id="CBd-QJ-Ojw"/>
+                <outlet property="moveToLowerLeftShortcutMenuItem" destination="eN5-A6-iho" id="g7a-5S-hng"/>
+                <outlet property="moveToLowerRightShortcutMenuItem" destination="oDU-J0-NkJ" id="XpK-S2-fel"/>
+                <outlet property="moveToNextDisplayShortcutMenuItem" destination="I4U-jL-hXq" id="EBQ-xh-fXk"/>
+                <outlet property="moveToNextThirdShortcutMenuItem" destination="7HO-L3-O6Q" id="yrD-z7-Yzl"/>
+                <outlet property="moveToPreviousDisplayShortcutMenuItem" destination="aPo-Rp-A1X" id="LFz-As-pEk"/>
+                <outlet property="moveToPreviousThirdShortcutMenuItem" destination="bV9-Ga-jDG" id="1k3-S5-1pz"/>
+                <outlet property="moveToRightShortcutMenuItem" destination="cae-26-Oab" id="dya-ai-hmk"/>
+                <outlet property="moveToTopShortcutMenuItem" destination="yh0-ik-weD" id="7Et-V2-jDL"/>
+                <outlet property="moveToUpperLeftShortcutMenuItem" destination="ldc-QO-Cq6" id="cDG-Fx-IhZ"/>
+                <outlet property="moveToUpperRightShortcutMenuItem" destination="C7t-Sf-kOI" id="w51-Xe-ZMs"/>
+                <outlet property="redoLastMoveShortcutMenuItem" destination="187-7k-0Ct" id="TFE-uS-twj"/>
                 <outlet property="statusItemMenu" destination="KsA-8w-wcl" id="76U-gs-viQ"/>
-                <outlet property="undoLastMoveHotKeyMenuItem" destination="l9O-0B-fjp" id="K9S-aY-Tx6"/>
+                <outlet property="undoLastMoveShortcutMenuItem" destination="l9O-0B-fjp" id="gns-Zw-ZVc"/>
             </connections>
         </customObject>
         <customObject id="qZ6-IG-VBZ" customClass="SUUpdater"/>

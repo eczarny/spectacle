@@ -7,9 +7,9 @@ NSString *const SpectaclePreferencesWindowNibName = @"SpectaclePreferencesWindow
 NSString *const SpectacleStatusItemEnabledNotification = @"SpectacleStatusItemEnabledNotification";
 NSString *const SpectacleStatusItemDisabledNotification = @"SpectacleStatusItemDisabledNotification";
 
-NSString *const SpectacleHotKeyChangedNotification = @"SpectacleHotKeyChangedNotification";
+NSString *const SpectacleShortcutChangedNotification = @"SpectacleShortcutChangedNotification";
 
-NSString *const SpectacleRestoreDefaultHotKeysNotification = @"SpectacleRestoreDefaultHotKeysNotification";
+NSString *const SpectacleRestoreDefaultShortcutsNotification = @"SpectacleRestoreDefaultShortcutsNotification";
 
 #pragma mark -
 
@@ -20,7 +20,7 @@ const NSInteger SpectacleMenuItemActivateIgnoringOtherApps = -1;
 NSString *const SpectaclePropertyListFileExtension = @"plist";
 
 NSString *const SpectacleDefaultPreferencesPropertyListFile = @"Defaults";
-NSString *const SpectacleHotKeyNamesPropertyListFile = @"HotKeyNames";
+NSString *const SpectacleShortcutNamesPropertyListFile = @"ShortcutNames";
 NSString *const SpectacleBlacklistedApplicationsPropertyListFile = @"BlacklistedApplications";
 
 #pragma mark -
@@ -92,8 +92,8 @@ NSString *const SpectacleAppleScriptFileExtension = @"scpt";
 
 #pragma mark -
 
-NSString *const SpectacleHotKeyTranslationsPropertyListFile = @"SpecialHotKeyTranslations";
+NSString *const SpectacleShortcutTranslationsPropertyListFile = @"SpecialShortcutTranslations";
 
-NSString *const SpectacleHotKeyTranslationsKey = @"SpecialHotKeyTranslations";
-NSString *const SpectacleHotKeyGlyphTranslationsKey = @"SpecialHotKeyGlyphTranslations";
+NSString *const SpectacleShortcutTranslationsKey = @"SpecialShortcutTranslations";
+NSString *const SpectacleShortcutGlyphTranslationsKey = @"SpecialShortcutGlyphTranslations";
 
