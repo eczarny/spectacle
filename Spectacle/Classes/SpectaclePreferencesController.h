@@ -29,14 +29,6 @@
 
 #pragma mark -
 
-- (IBAction)toggleWindow:(id)sender;
-
-#pragma mark -
-
-- (IBAction)hideWindow:(id)sender;
-
-#pragma mark -
-
 - (IBAction)toggleLoginItem:(id)sender;
 
 - (IBAction)toggleStatusItem:(id)sender;

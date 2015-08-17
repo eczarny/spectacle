@@ -32,11 +32,11 @@
   if ((self = [super init])) {
     NSString *path = [NSBundle.mainBundle pathForResource:SpectacleBlacklistedApplicationsPropertyListFile
                                                    ofType:SpectaclePropertyListFileExtension];
-    
+
     _applicationHistories = [NSMutableDictionary new];
     _blacklistedApplications = [NSMutableSet setWithArray:[NSArray arrayWithContentsOfFile:path]];
   }
-  
+
   return self;
 }
 
@@ -46,11 +46,11 @@
 {
   static SpectacleWindowPositionManager *sharedInstance = nil;
   static dispatch_once_t predicate;
-  
+
   dispatch_once(&predicate, ^{
     sharedInstance = [self new];
   });
-  
+
   return sharedInstance;
 }
 
@@ -60,13 +60,13 @@
 {
   NSString *frontMostWindowName = ZKAccessibilityElement.frontMostApplicationName;
   NSString *spectacleWindowName = NSBundle.mainBundle.infoDictionary[@"CFBundleName"];
-  
+
   if ([frontMostWindowName isEqualToString:spectacleWindowName]) {
     NSBeep();
-    
+
     return;
   }
-  
+
   ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
   CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
   CGRect previousFrontMostWindowRect = CGRectNull;
@@ -81,7 +81,7 @@
   SpectacleHistory *history = self.historyForCurrentApplication;
   SpectacleHistoryItem *historyItem = nil;
   SpectacleCalculationResult *calculationResult = nil;
-  
+
   if (screenOfDisplay) {
     frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
     visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
@@ -93,31 +93,31 @@
       || CGRectIsNull(frameOfScreen)
       || CGRectIsNull(visibleFrameOfScreen)) {
     NSBeep();
-    
+
     return;
   }
-  
+
   if (UndoOrRedo(action)) {
     [self undoOrRedoHistoryWithAction:action];
-    
+
     return;
   }
-  
+
   if ([history isEmpty]) {
     historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement:frontMostWindowElement
                                                                  windowRect:frontMostWindowRect];
-    
+
     [history addHistoryItem:historyItem];
   }
-  
+
   frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
-  
+
   if (MovingToNextOrPreviousDisplay(action) && RectFitsInRect(frontMostWindowRect, visibleFrameOfScreen)) {
     action = SpectacleWindowActionCenter;
   }
-  
+
   previousFrontMostWindowRect = frontMostWindowRect;
-  
+
   if (Resizing(action)) {
     CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowSizeOffset;
 
@@ -136,15 +136,15 @@
 
   if (CGRectEqualToRect(previousFrontMostWindowRect, frontMostWindowRect)) {
     NSBeep();
-    
+
     return;
   }
 
   frontMostWindowRect.origin.y = FlipVerticalOriginOfRectInRect(frontMostWindowRect, frameOfScreen);
-  
+
   historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement:frontMostWindowElement
                                                                windowRect:frontMostWindowRect];
-  
+
   [history addHistoryItem:historyItem];
 
   [self moveWindowRect:frontMostWindowRect
@@ -172,7 +172,7 @@ frontMostWindowElement:frontMostWindowElement
 {
   NSString *name = hotKey.hotKeyName;
   SpectacleWindowAction windowAction = SpectacleWindowActionNone;
-  
+
   if ([name isEqualToString:SpectacleWindowActionMoveToCenter]) {
     windowAction = SpectacleWindowActionCenter;
   } else if ([name isEqualToString:SpectacleWindowActionMoveToFullscreen]) {
@@ -210,7 +210,7 @@ frontMostWindowElement:frontMostWindowElement
   } else if ([name isEqualToString:SpectacleWindowActionRedoLastMove]) {
     windowAction = SpectacleWindowActionRedo;
   }
-  
+
   return windowAction;
 }
 
@@ -219,24 +219,24 @@ frontMostWindowElement:frontMostWindowElement
 - (CGRect)rectOfWindowWithAccessibilityElement:(ZKAccessibilityElement *)accessibilityElement
 {
   CGRect result = CGRectNull;
-  
+
   if (accessibilityElement) {
     CFTypeRef windowPositionValue = [accessibilityElement valueOfAttribute:kAXPositionAttribute type:kAXValueCGPointType];
     CFTypeRef windowSizeValue = [accessibilityElement valueOfAttribute:kAXSizeAttribute type:kAXValueCGSizeType];
     CGPoint windowPosition;
     CGSize windowSize;
-    
+
     AXValueGetValue(windowPositionValue, kAXValueCGPointType, (void *)&windowPosition);
     AXValueGetValue(windowSizeValue, kAXValueCGSizeType, (void *)&windowSize);
-    
+
     if ((windowPositionValue != NULL) && (windowSizeValue != NULL)) {
       CFRelease(windowPositionValue);
       CFRelease(windowSizeValue);
-    
+
       result = CGRectMake(windowPosition.x, windowPosition.y, windowSize.width, windowSize.height);
     }
   }
-  
+
   return result;
 }
 
@@ -249,23 +249,23 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
                 action:(SpectacleWindowAction)action
 {
   NSString *frontMostApplicationName = ZKAccessibilityElement.frontMostApplicationName;
-  
-  if ([_blacklistedApplications containsObject:frontMostApplicationName]) {
+
+  if ([self.blacklistedApplications containsObject:frontMostApplicationName]) {
     NSBeep();
-    
+
     return;
   }
-  
+
   CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
-  
+
   if (CGRectIsNull(previousWindowRect)) {
     NSBeep();
-    
+
     return;
   }
 
   [self moveWindowRect:windowRect frontMostWindowElement:frontMostWindowElement];
-  
+
   CGRect movedWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
 
   if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
@@ -368,16 +368,16 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
 - (SpectacleHistory *)historyForCurrentApplication
 {
   NSString *applicationName = ZKAccessibilityElement.frontMostApplicationName;
-  
+
   if (!applicationName) {
     return nil;
   }
-  
-  if (!_applicationHistories[applicationName]) {
-    _applicationHistories[applicationName] = [SpectacleHistory new];
+
+  if (!self.applicationHistories[applicationName]) {
+    self.applicationHistories[applicationName] = [SpectacleHistory new];
   }
-  
-  return _applicationHistories[applicationName];
+
+  return self.applicationHistories[applicationName];
 }
 
 #pragma mark -
@@ -392,11 +392,11 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
                                                               mainScreen:NSScreen.mainScreen];
 
   CGRect visibleFrameOfScreen = CGRectNull;
-  
+
   if (screenOfDisplay) {
     visibleFrameOfScreen = NSRectToCGRect(screenOfDisplay.visibleFrame);
   }
-  
+
   if (![self moveWithHistoryItem:historyItem visibleFrameOfScreen:visibleFrameOfScreen action:action]) {
     NSBeep();
   }
@@ -408,17 +408,17 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
 {
   ZKAccessibilityElement *frontMostWindowElement = historyItem.accessibilityElement;
   CGRect windowRect = historyItem.windowRect;
-  
+
   if (!historyItem || !frontMostWindowElement || CGRectIsNull(windowRect)) {
     return NO;
   }
-  
+
   [self moveWindowRect:windowRect
          frameOfScreen:CGRectNull
   visibleFrameOfScreen:visibleFrameOfScreen
 frontMostWindowElement:frontMostWindowElement
                 action:action];
-  
+
   return YES;
 }
 

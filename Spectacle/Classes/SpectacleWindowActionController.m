@@ -37,118 +37,118 @@
   }
 
   NSArray *hotKeys = [SpectacleUtilities hotKeysFromDictionary:hotKeysFromUserDefaults action:^(ZKHotKey *hotKey) {
-    [_windowPositionManager moveFrontMostWindowWithAction:[_windowPositionManager windowActionForHotKey:hotKey]];
+    [self.windowPositionManager moveFrontMostWindowWithAction:[_windowPositionManager windowActionForHotKey:hotKey]];
   }];
 
-  [_hotKeyManager registerHotKeys:hotKeys];
+  [self.hotKeyManager registerHotKeys:hotKeys];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToCenter:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionCenter];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToFullscreen:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionFullscreen];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionFullscreen];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToLeftHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLeftHalf];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLeftHalf];
 }
 
 - (IBAction)moveFrontMostWindowToRightHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionRightHalf];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionRightHalf];
 }
 
 - (IBAction)moveFrontMostWindowToTopHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionTopHalf];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionTopHalf];
 }
 
 - (IBAction)moveFrontMostWindowToBottomHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionBottomHalf];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToUpperLeft:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperLeft];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperLeft];
 }
 
 - (IBAction)moveFrontMostWindowToLowerLeft:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerLeft];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToUpperRight:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperRight];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperRight];
 }
 
 - (IBAction)moveFrontMostWindowToLowerRight:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerRight];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerRight];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToNextDisplay:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextDisplay];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextDisplay];
 }
 
 - (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousDisplay];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousDisplay];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToNextThird:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextThird];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextThird];
 }
 
 - (IBAction)moveFrontMostWindowToPreviousThird:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousThird];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousThird];
 }
 
 #pragma mark -
 
 - (IBAction)makeFrontMostWindowLarger:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLarger];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLarger];
 }
 
 - (IBAction)makeFrontMostWindowSmaller:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionSmaller];
+  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionSmaller];
 }
 
 #pragma mark -
 
 - (IBAction)undoLastWindowAction:(id)sender
 {
-  [_windowPositionManager undoLastWindowAction];
+  [self.windowPositionManager undoLastWindowAction];
 }
 
 - (IBAction)redoLastWindowAction:(id)sender
 {
-  [_windowPositionManager redoLastWindowAction];
+  [self.windowPositionManager redoLastWindowAction];
 }
 
 @end

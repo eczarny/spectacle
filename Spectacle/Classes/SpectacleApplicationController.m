@@ -25,26 +25,26 @@
 
   [SpectacleUtilities registerDefaultsForBundle:NSBundle.mainBundle];
 
-  _preferencesController = [SpectaclePreferencesController new];
+  self.preferencesController = [SpectaclePreferencesController new];
 
-  _hotKeyMenuItems = @{SpectacleWindowActionMoveToCenter: _moveToCenterHotKeyMenuItem,
-                       SpectacleWindowActionMoveToFullscreen: _moveToFullscreenHotKeyMenuItem,
-                       SpectacleWindowActionMoveToLeftHalf: _moveToLeftHotKeyMenuItem,
-                       SpectacleWindowActionMoveToRightHalf: _moveToRightHotKeyMenuItem,
-                       SpectacleWindowActionMoveToTopHalf: _moveToTopHotKeyMenuItem,
-                       SpectacleWindowActionMoveToBottomHalf: _moveToBottomHotKeyMenuItem,
-                       SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftHotKeyMenuItem,
-                       SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftHotKeyMenuItem,
-                       SpectacleWindowActionMoveToUpperRight: _moveToUpperRightHotKeyMenuItem,
-                       SpectacleWindowActionMoveToLowerRight: _moveToLowerRightHotKeyMenuItem,
-                       SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayHotKeyMenuItem,
-                       SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyMenuItem,
-                       SpectacleWindowActionMoveToNextThird: _moveToNextThirdHotKeyMenuItem,
-                       SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdHotKeyMenuItem,
-                       SpectacleWindowActionMakeLarger: _makeLargerHotKeyMenuItem,
-                       SpectacleWindowActionMakeSmaller: _makeSmallerHotKeyMenuItem,
-                       SpectacleWindowActionUndoLastMove: _undoLastMoveHotKeyMenuItem,
-                       SpectacleWindowActionRedoLastMove: _redoLastMoveHotKeyMenuItem};
+  self.hotKeyMenuItems = @{SpectacleWindowActionMoveToCenter: _moveToCenterHotKeyMenuItem,
+                           SpectacleWindowActionMoveToFullscreen: _moveToFullscreenHotKeyMenuItem,
+                           SpectacleWindowActionMoveToLeftHalf: _moveToLeftHotKeyMenuItem,
+                           SpectacleWindowActionMoveToRightHalf: _moveToRightHotKeyMenuItem,
+                           SpectacleWindowActionMoveToTopHalf: _moveToTopHotKeyMenuItem,
+                           SpectacleWindowActionMoveToBottomHalf: _moveToBottomHotKeyMenuItem,
+                           SpectacleWindowActionMoveToUpperLeft: _moveToUpperLeftHotKeyMenuItem,
+                           SpectacleWindowActionMoveToLowerLeft: _moveToLowerLeftHotKeyMenuItem,
+                           SpectacleWindowActionMoveToUpperRight: _moveToUpperRightHotKeyMenuItem,
+                           SpectacleWindowActionMoveToLowerRight: _moveToLowerRightHotKeyMenuItem,
+                           SpectacleWindowActionMoveToNextDisplay: _moveToNextDisplayHotKeyMenuItem,
+                           SpectacleWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayHotKeyMenuItem,
+                           SpectacleWindowActionMoveToNextThird: _moveToNextThirdHotKeyMenuItem,
+                           SpectacleWindowActionMoveToPreviousThird: _moveToPreviousThirdHotKeyMenuItem,
+                           SpectacleWindowActionMakeLarger: _makeLargerHotKeyMenuItem,
+                           SpectacleWindowActionMakeSmaller: _makeSmallerHotKeyMenuItem,
+                           SpectacleWindowActionUndoLastMove: _undoLastMoveHotKeyMenuItem,
+                           SpectacleWindowActionRedoLastMove: _redoLastMoveHotKeyMenuItem};
 
   [self registerHotKeys];
 
@@ -87,7 +87,7 @@
 
   switch (SpectacleUtilities.spectacleTrust) {
     case SpectacleIsNotTrusted:
-      [[NSApplication sharedApplication] runModalForWindow:_accessiblityAccessDialogWindow];
+      [[NSApplication sharedApplication] runModalForWindow:self.accessiblityAccessDialogWindow];
 
       break;
     default:
@@ -110,7 +110,7 @@
 
 - (IBAction)showPreferencesWindow:(id)sender
 {
-  [_preferencesController showWindow:sender];
+  [self.preferencesController showWindow:sender];
 }
 
 #pragma mark -
@@ -124,7 +124,7 @@
 
   [NSApplication.sharedApplication stopModal];
 
-  [_accessiblityAccessDialogWindow orderOut:self];
+  [self.accessiblityAccessDialogWindow orderOut:self];
 
   if (![[[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:nil] executeAndReturnError:nil]) {
     [NSWorkspace.sharedWorkspace openURL:preferencePaneURL];
@@ -149,22 +149,22 @@
 
 - (void)createStatusItem
 {
-  _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-  
-  NSImage *statusImage = [NSBundle.mainBundle imageForResource:SpectacleStatusItemIcon];
-  
-  [statusImage setTemplate:YES];
-  
-  _statusItem.image = statusImage;
-  _statusItem.highlightMode = YES;
-  _statusItem.toolTip = [NSString stringWithFormat:@"Spectacle %@", SpectacleUtilities.applicationVersion];
+  self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
-  [_statusItem setMenu:_statusItemMenu];
+  NSImage *statusImage = [NSBundle.mainBundle imageForResource:SpectacleStatusItemIcon];
+
+  [statusImage setTemplate:YES];
+
+  self.statusItem.image = statusImage;
+  self.statusItem.highlightMode = YES;
+  self.statusItem.toolTip = [NSString stringWithFormat:@"Spectacle %@", SpectacleUtilities.applicationVersion];
+
+  [self.statusItem setMenu:self.statusItemMenu];
 }
 
 - (void)destroyStatusItem
 {
-  [NSStatusBar.systemStatusBar removeStatusItem:_statusItem];
+  [NSStatusBar.systemStatusBar removeStatusItem:self.statusItem];
 }
 
 #pragma mark -
@@ -174,8 +174,8 @@
   SpectacleHotKeyManager *hotKeyManager = SpectacleHotKeyManager.sharedManager;
   ZKHotKeyTranslator *hotKeyTranslator = ZKHotKeyTranslator.sharedTranslator;
 
-  for (NSString *hotKeyName in _hotKeyMenuItems.allKeys) {
-    NSMenuItem *hotKeyMenuItem = _hotKeyMenuItems[hotKeyName];
+  for (NSString *hotKeyName in self.hotKeyMenuItems.allKeys) {
+    NSMenuItem *hotKeyMenuItem = self.hotKeyMenuItems[hotKeyName];
     ZKHotKey *hotKey = [hotKeyManager registeredHotKeyForName:hotKeyName];
 
     if (hotKey) {

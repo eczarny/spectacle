@@ -30,7 +30,7 @@ static EventHotKeyID currentHotKeyID = {
     _registeredHotKeysByName = [NSMutableDictionary new];
     _isHotKeyHandlerInstalled = NO;
   }
-  
+
   return self;
 }
 
@@ -44,7 +44,7 @@ static EventHotKeyID currentHotKeyID = {
   dispatch_once(&predicate, ^{
     sharedInstance = [self new];
   });
-  
+
   return sharedInstance;
 }
 
@@ -57,37 +57,37 @@ static EventHotKeyID currentHotKeyID = {
   EventHotKeyRef hotKeyRef;
   EventTargetRef eventTarget = GetEventDispatcherTarget();
   OSStatus err;
-  
+
   if (existingHotKey) {
     [hotKey setHotKeyAction:existingHotKey.hotKeyAction];
-    
+
     [self unregisterHotKeyForName:hotKeyName];
   }
-  
+
   currentHotKeyID.id = ++currentHotKeyID.id;
-  
+
   err = RegisterEventHotKey((unsigned int)hotKey.hotKeyCode,
                             (unsigned int)hotKey.hotKeyModifiers,
                             currentHotKeyID,
                             eventTarget,
                             0,
                             &hotKeyRef);
-  
+
   if (err) {
     NSLog(@"There was a problem registering hot key %@.", hotKeyName);
-    
+
     return -1;
   }
-  
+
   hotKey.handle = currentHotKeyID.id;
   hotKey.hotKeyRef = hotKeyRef;
-  
-  _registeredHotKeysByName[hotKeyName] = hotKey;
-  
+
+  self.registeredHotKeysByName[hotKeyName] = hotKey;
+
   [self updateUserDefaults];
-  
+
   [self installHotKeyEventHandler];
-  
+
   return hotKey.handle;
 }
 
@@ -105,24 +105,24 @@ static EventHotKeyID currentHotKeyID = {
   ZKHotKey *hotKey = [self registeredHotKeyForName:name];
   EventHotKeyRef hotKeyRef;
   OSStatus err;
-  
+
   if (!hotKey) {
     NSLog(@"The specified hot key has not been registered.");
-    
+
     return;
   }
-  
+
   hotKeyRef = hotKey.hotKeyRef;
-  
+
   if (hotKeyRef) {
     err = UnregisterEventHotKey(hotKeyRef);
-    
+
     if (err) {
       NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, err);
     }
-    
-    _registeredHotKeysByName[name] = [ZKHotKey clearedHotKeyWithName:name];
-    
+
+    self.registeredHotKeysByName[name] = [ZKHotKey clearedHotKeyWithName:name];
+
     [self updateUserDefaults];
   } else {
     NSLog(@"Unable to unregister hot key %@, no hotKeyRef appears to exist.", name);
@@ -140,17 +140,17 @@ static EventHotKeyID currentHotKeyID = {
 
 - (NSArray *)registeredHotKeys
 {
-  return _registeredHotKeysByName.allValues;
+  return self.registeredHotKeysByName.allValues;
 }
 
 - (ZKHotKey *)registeredHotKeyForName:(NSString *)name
 {
-  ZKHotKey *hotKey = _registeredHotKeysByName[name];
-  
+  ZKHotKey *hotKey = self.registeredHotKeysByName[name];
+
   if (hotKey.isClearedHotKey) {
     hotKey = nil;
   }
-  
+
   return hotKey;
 }
 
@@ -163,7 +163,7 @@ static EventHotKeyID currentHotKeyID = {
       return YES;
     }
   }
-  
+
   return NO;
 }
 
@@ -172,11 +172,11 @@ static EventHotKeyID currentHotKeyID = {
 - (void)updateUserDefaults
 {
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-  
+
   for (ZKHotKey *hotKey in self.registeredHotKeys) {
     NSData *hotKeyData = [NSKeyedArchiver archivedDataWithRootObject:hotKey];
     NSString *hotKeyName = hotKey.hotKeyName;
-    
+
     if (![hotKeyData isEqualToData:[userDefaults dataForKey:hotKeyName]]) {
       [userDefaults setObject:hotKeyData forKey:hotKeyName];
     }
@@ -187,15 +187,15 @@ static EventHotKeyID currentHotKeyID = {
 
 - (void)installHotKeyEventHandler
 {
-  if ((_registeredHotKeysByName.count > 0) && !_isHotKeyHandlerInstalled) {
+  if ((self.registeredHotKeysByName.count > 0) && !self.isHotKeyHandlerInstalled) {
     EventTypeSpec typeSpec;
-    
+
     typeSpec.eventClass = kEventClassKeyboard;
     typeSpec.eventKind = kEventHotKeyPressed;
-    
+
     InstallApplicationEventHandler(&hotKeyEventHandler, 1, &typeSpec, NULL, NULL);
-    
-    _isHotKeyHandlerInstalled = YES;
+
+    self.isHotKeyHandlerInstalled = YES;
   }
 }
 
@@ -208,7 +208,7 @@ static EventHotKeyID currentHotKeyID = {
       return hotKey;
     }
   }
-  
+
   return nil;
 }
 
@@ -225,26 +225,26 @@ static EventHotKeyID currentHotKeyID = {
                                    sizeof(EventHotKeyID),
                                    NULL,
                                    &hotKeyID);
-  
+
   if (err) {
     return err;
   }
-  
+
   hotKey = [self registeredHotKeyForHandle:hotKeyID.id];
-  
+
   if (!hotKey) {
     NSLog(@"Unable to handle event for hot key with handle %d, the registered hot key does not exist.", hotKeyID.id);
   }
-  
+
   switch (GetEventKind(event)) {
     case kEventHotKeyPressed:
       [hotKey triggerHotKeyAction];
-      
+
       break;
     default:
       break;
   }
-  
+
   return 0;
 }
 

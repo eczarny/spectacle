@@ -15,7 +15,7 @@
   if (self = [super init]) {
     _element = NULL;
   }
-  
+
   return self;
 }
 
@@ -25,11 +25,11 @@
 {
   ZKAccessibilityElement *newElement = [ZKAccessibilityElement new];
   AXUIElementRef systemWideElement = AXUIElementCreateSystemWide();
-  
+
   newElement.element = systemWideElement;
-  
+
   CFRelease(systemWideElement);
-  
+
   return newElement;
 }
 
@@ -69,19 +69,19 @@
   ZKAccessibilityElement *newElement = nil;
   AXUIElementRef childElement;
   AXError result;
-  
-  result = AXUIElementCopyAttributeValue(_element, attribute, (CFTypeRef *)&childElement);
-  
+
+  result = AXUIElementCopyAttributeValue(self.element, attribute, (CFTypeRef *)&childElement);
+
   if (result == kAXErrorSuccess) {
     newElement = [ZKAccessibilityElement new];
-    
+
     newElement.element = childElement;
-    
+
     CFRelease(childElement);
   } else {
     NSLog(@"Unable to obtain the accessibility element with the specified attribute: %@ (error code %d)", attribute, result);
   }
-  
+
   return newElement;
 }
 
@@ -89,37 +89,37 @@
 
 - (NSString *)stringValueOfAttribute:(CFStringRef)attribute
 {
-  if (CFGetTypeID(_element) == AXUIElementGetTypeID()) {
+  if (CFGetTypeID(self.element) == AXUIElementGetTypeID()) {
     CFTypeRef value;
     AXError result;
-    
-    result = AXUIElementCopyAttributeValue(_element, attribute, &value);
-    
+
+    result = AXUIElementCopyAttributeValue(self.element, attribute, &value);
+
     if (result == kAXErrorSuccess) {
       return CFBridgingRelease(value);
     } else {
       NSLog(@"There was a problem getting the string value of the specified attribute: %@ (error code %d)", attribute, result);
     }
   }
-  
+
   return nil;
 }
 
 - (AXValueRef)valueOfAttribute:(CFStringRef)attribute type:(AXValueType)type
 {
-  if (CFGetTypeID(_element) == AXUIElementGetTypeID()) {
+  if (CFGetTypeID(self.element) == AXUIElementGetTypeID()) {
     CFTypeRef value;
     AXError result;
-    
-    result = AXUIElementCopyAttributeValue(_element, attribute, (CFTypeRef *)&value);
-    
+
+    result = AXUIElementCopyAttributeValue(self.element, attribute, (CFTypeRef *)&value);
+
     if ((result == kAXErrorSuccess) && (AXValueGetType(value) == type)) {
       return value;
     } else {
       NSLog(@"There was a problem getting the value of the specified attribute: %@ (error code %d)", attribute, result);
     }
   }
-  
+
   return NULL;
 }
 
@@ -127,8 +127,8 @@
 
 - (void)setValue:(AXValueRef)value forAttribute:(CFStringRef)attribute
 {
-  AXError result = AXUIElementSetAttributeValue(_element, attribute, (CFTypeRef *)value);
-  
+  AXError result = AXUIElementSetAttributeValue(self.element, attribute, (CFTypeRef *)value);
+
   if (result != kAXErrorSuccess) {
     NSLog(@"There was a problem setting the value of the specified attribute: %@ (error code %d)", attribute, result);
   }
@@ -164,7 +164,7 @@
   if (_element != NULL) {
     CFRelease(_element);
   }
-  
+
   _element = CFRetain(element);
 }
 

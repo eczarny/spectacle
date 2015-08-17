@@ -14,7 +14,7 @@
     _hotKeyModifiers = [ZKHotKeyTranslator convertModifiersToCarbonIfNecessary:hotKeyModifiers];
     _hotKeyRef = NULL;
   }
-  
+
   return self;
 }
 
@@ -32,12 +32,12 @@
       _hotKeyModifiers = [coder decodeIntegerForKey:@"modifiers"];
     } else {
       _hotKeyName = [coder decodeObject];
-      
+
       [coder decodeValueOfObjCType:@encode(NSInteger) at:&_hotKeyCode];
       [coder decodeValueOfObjCType:@encode(NSUInteger) at:&_hotKeyModifiers];
     }
   }
-  
+
   return self;
 }
 
@@ -48,11 +48,11 @@
 - (void)encodeWithCoder:(NSCoder *)coder
 {
   if ([coder allowsKeyedCoding]) {
-    [coder encodeObject:_hotKeyName forKey:@"name"];
-    [coder encodeInteger:_hotKeyCode forKey:@"keyCode"];
-    [coder encodeInteger:_hotKeyModifiers forKey:@"modifiers"];
+    [coder encodeObject:self.hotKeyName forKey:@"name"];
+    [coder encodeInteger:self.hotKeyCode forKey:@"keyCode"];
+    [coder encodeInteger:self.hotKeyModifiers forKey:@"modifiers"];
   } else {
-    [coder encodeObject:_hotKeyName];
+    [coder encodeObject:self.hotKeyName];
     [coder encodeValueOfObjCType:@encode(NSInteger) at:&_hotKeyCode];
     [coder encodeValueOfObjCType:@encode(NSUInteger) at:&_hotKeyModifiers];
   }
@@ -65,7 +65,7 @@
   if (encoder.isBycopy) {
     return self;
   }
-  
+
   return [super replacementObjectForPortCoder:encoder];
 }
 
@@ -79,9 +79,9 @@
 + (ZKHotKey *)clearedHotKeyWithName:(NSString *)name
 {
   ZKHotKey *hotKey = [[ZKHotKey alloc] initWithHotKeyCode:0 hotKeyModifiers:0];
-  
+
   hotKey.hotKeyName = name;
-  
+
   return hotKey;
 }
 
@@ -89,8 +89,8 @@
 
 - (void)triggerHotKeyAction
 {
-  if (_hotKeyAction) {
-    _hotKeyAction(self);
+  if (self.hotKeyAction) {
+    self.hotKeyAction(self);
   }
 }
 
@@ -98,7 +98,7 @@
 
 - (BOOL)isClearedHotKey
 {
-  return (_hotKeyCode == 0) && (_hotKeyModifiers == 0);
+  return (self.hotKeyCode == 0) && (self.hotKeyModifiers == 0);
 }
 
 #pragma mark -
@@ -126,11 +126,11 @@
   if (object == self) {
     return YES;
   }
-  
+
   if (!object || ![object isKindOfClass:[self class]]) {
     return NO;
   }
-  
+
   return [self isEqualToHotKey:object];
 }
 
@@ -139,15 +139,15 @@
   if (hotKey == self) {
     return YES;
   }
-  
-  if (hotKey.hotKeyCode != _hotKeyCode) {
+
+  if (hotKey.hotKeyCode != self.hotKeyCode) {
     return NO;
   }
-  
-  if (hotKey.hotKeyModifiers != _hotKeyModifiers) {
+
+  if (hotKey.hotKeyModifiers != self.hotKeyModifiers) {
     return NO;
   }
-  
+
   return YES;
 }
 

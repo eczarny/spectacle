@@ -4,29 +4,29 @@
 #import "ZKHotKey.h"
 
 enum {
-  ZKHotKeyAlternateGlyph   = 0x2325,
-  ZKHotKeyCommandGlyph   = 0x2318,
-  ZKHotKeyControlGlyph   = 0x2303,
-  ZKHotKeyDeleteLeftGlyph  = 0x232B,
+  ZKHotKeyAlternateGlyph = 0x2325,
+  ZKHotKeyCommandGlyph = 0x2318,
+  ZKHotKeyControlGlyph = 0x2303,
+  ZKHotKeyDeleteLeftGlyph = 0x232B,
   ZKHotKeyDeleteRightGlyph = 0x2326,
-  ZKHotKeyDownArrowGlyph   = 0x2193,
-  ZKHotKeyLeftArrowGlyph   = 0x2190,
-  ZKHotKeyPageDownGlyph  = 0x21DF,
-  ZKHotKeyPageUpGlyph    = 0x21DE,
-  ZKHotKeyReturnGlyph    = 0x21A9,
-  ZKHotKeyRightArrowGlyph  = 0x2192,
-  ZKHotKeyShiftGlyph     = 0x21E7,
-  ZKHotKeyTabLeftGlyph   = 0x21E4,
-  ZKHotKeyTabRightGlyph  = 0x21E5,
-  ZKHotKeyUpArrowGlyph   = 0x2191
+  ZKHotKeyDownArrowGlyph = 0x2193,
+  ZKHotKeyLeftArrowGlyph = 0x2190,
+  ZKHotKeyPageDownGlyph = 0x21DF,
+  ZKHotKeyPageUpGlyph = 0x21DE,
+  ZKHotKeyReturnGlyph = 0x21A9,
+  ZKHotKeyRightArrowGlyph = 0x2192,
+  ZKHotKeyShiftGlyph = 0x21E7,
+  ZKHotKeyTabLeftGlyph = 0x21E4,
+  ZKHotKeyTabRightGlyph = 0x21E5,
+  ZKHotKeyUpArrowGlyph = 0x2191
 };
 
 enum {
   ZKHotKeyAlternateCarbonKeyMask = 1 << 11,
-  ZKHotKeyCommandCarbonKeyMask   = 1 << 8,
-  ZKHotKeyControlCarbonKeyMask   = 1 << 12,
-  ZKHotKeyShiftCarbonKeyMask   = 1 << 9,
-  ZKHotKeyFunctionCarbonKeyMask  = 1 << 17
+  ZKHotKeyCommandCarbonKeyMask = 1 << 8,
+  ZKHotKeyControlCarbonKeyMask = 1 << 12,
+  ZKHotKeyShiftCarbonKeyMask = 1 << 9,
+  ZKHotKeyFunctionCarbonKeyMask = 1 << 17
 };
 
 @interface ZKHotKeyTranslator ()
@@ -39,26 +39,15 @@ enum {
 
 @implementation ZKHotKeyTranslator
 
-- (instancetype)init
-{
-  if ((self = [super init])) {
-    _specialHotKeyTranslations = nil;
-  }
-  
-  return self;
-}
-
-#pragma mark -
-
 + (ZKHotKeyTranslator *)sharedTranslator
 {
   static ZKHotKeyTranslator *sharedInstance = nil;
   static dispatch_once_t predicate;
-  
+
   dispatch_once(&predicate, ^{
     sharedInstance = [self new];
   });
-  
+
   return sharedInstance;
 }
 
@@ -69,7 +58,7 @@ enum {
   if ([ZKHotKey validCocoaModifiers:modifiers]) {
     modifiers = [self convertCocoaModifiersToCarbon:modifiers];
   }
-  
+
   return modifiers;
 }
 
@@ -143,19 +132,19 @@ enum {
 + (NSString *)translateCocoaModifiers:(NSUInteger)modifiers
 {
   NSString *modifierGlyphs = @"";
-  
+
   if (modifiers & NSControlKeyMask) {
     modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyControlGlyph];
   }
-  
+
   if (modifiers & NSAlternateKeyMask) {
     modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyAlternateGlyph];
   }
-  
+
   if (modifiers & NSShiftKeyMask) {
     modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyShiftGlyph];
   }
-  
+
   if (modifiers & NSCommandKeyMask) {
     modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)ZKHotKeyCommandGlyph];
   }
@@ -167,17 +156,17 @@ enum {
 {
   NSDictionary *keyCodeTranslations = nil;
   NSString *result;
-  
+
   [self buildKeyCodeConvertorDictionary];
-  
-  keyCodeTranslations = _specialHotKeyTranslations[SpectacleHotKeyTranslationsKey];
-  
+
+  keyCodeTranslations = self.specialHotKeyTranslations[SpectacleHotKeyTranslationsKey];
+
   result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
-  
+
   if (result) {
-    NSDictionary *glyphTranslations = _specialHotKeyTranslations[SpectacleHotKeyGlyphTranslationsKey];
+    NSDictionary *glyphTranslations = self.specialHotKeyTranslations[SpectacleHotKeyGlyphTranslationsKey];
     id translatedGlyph = glyphTranslations[result];
-    
+
     if (translatedGlyph) {
       result = [NSString stringWithFormat:@"%C", (UInt16)[translatedGlyph integerValue]];
     }
@@ -189,17 +178,17 @@ enum {
     UniCharCount length = 4;
     UniCharCount actualLength = 0;
     UniChar chars[4];
-    
+
     if (inputSource != NULL) {
       CFRelease(inputSource);
     }
-    
+
     if (layoutData == NULL) {
       NSLog(@"Unable to determine keyboard layout.");
-      
+
       return @"?";
     }
-    
+
     keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
 
     OSStatus err = UCKeyTranslate(keyboardLayout,
@@ -215,7 +204,7 @@ enum {
 
     if (err) {
       NSLog(@"There was a problem translating the key code.");
-      
+
       return @"?";
     }
 
@@ -230,7 +219,7 @@ enum {
 - (NSString *)translateHotKey:(ZKHotKey *)hotKey
 {
   NSUInteger modifiers = [ZKHotKeyTranslator convertCarbonModifiersToCocoa:[hotKey hotKeyModifiers]];
-  
+
   return [NSString stringWithFormat:@"%@%@", [ZKHotKeyTranslator translateCocoaModifiers:modifiers], [self translateKeyCode:hotKey.hotKeyCode]];
 }
 
@@ -238,12 +227,12 @@ enum {
 
 - (void)buildKeyCodeConvertorDictionary
 {
-  if (!_specialHotKeyTranslations) {
+  if (!self.specialHotKeyTranslations) {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *path = [bundle pathForResource:SpectacleHotKeyTranslationsPropertyListFile
                                       ofType:SpectaclePropertyListFileExtension];
-    
-    _specialHotKeyTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
+
+    self.specialHotKeyTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
   }
 }
 

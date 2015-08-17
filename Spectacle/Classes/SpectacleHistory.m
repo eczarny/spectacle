@@ -19,12 +19,11 @@
 - (instancetype)init
 {
   if ((self = [super init])) {
-    _firstHistoryItem = nil;
-    _lastHistoryItem = _firstHistoryItem;
-    _currentHistoryItem = _firstHistoryItem;
+    _lastHistoryItem = self.firstHistoryItem;
+    _currentHistoryItem = self.firstHistoryItem;
     _size = 0;
   }
-  
+
   return self;
 }
 
@@ -33,32 +32,32 @@
 - (void)addHistoryItem:(SpectacleHistoryItem *)historyItem
 {
   if ([self isEmpty]) {
-    _currentHistoryItem = historyItem;
-    _firstHistoryItem = _currentHistoryItem;
-    _lastHistoryItem = _firstHistoryItem;
+    self.currentHistoryItem = historyItem;
+    self.firstHistoryItem = self.currentHistoryItem;
+    self.lastHistoryItem = self.firstHistoryItem;
   } else {
-    historyItem.nextHistoryItem = _currentHistoryItem.nextHistoryItem;
-    historyItem.previousHistoryItem = _currentHistoryItem;
-    
-    _currentHistoryItem.nextHistoryItem.previousHistoryItem = historyItem;
-    _currentHistoryItem.nextHistoryItem = historyItem;
-    
+    historyItem.nextHistoryItem = self.currentHistoryItem.nextHistoryItem;
+    historyItem.previousHistoryItem = self.currentHistoryItem;
+
+    self.currentHistoryItem.nextHistoryItem.previousHistoryItem = historyItem;
+    self.currentHistoryItem.nextHistoryItem = historyItem;
+
     if (![historyItem nextHistoryItem]) {
-      _firstHistoryItem = historyItem;
+      self.firstHistoryItem = historyItem;
     }
-    
+
     if (![historyItem previousHistoryItem]) {
-      _lastHistoryItem = historyItem;
+      self.lastHistoryItem = historyItem;
     }
-    
-    _currentHistoryItem = historyItem;
+
+    self.currentHistoryItem = historyItem;
   }
-  
+
   if (++_size >= SpectacleWindowActionHistorySize) {
-    _lastHistoryItem.nextHistoryItem.previousHistoryItem = _lastHistoryItem.previousHistoryItem;
-    
-    _lastHistoryItem = _lastHistoryItem.nextHistoryItem;
-    
+    self.lastHistoryItem.nextHistoryItem.previousHistoryItem = self.lastHistoryItem.previousHistoryItem;
+
+    self.lastHistoryItem = self.lastHistoryItem.nextHistoryItem;
+
     _size--;
   }
 }
@@ -67,12 +66,12 @@
 
 - (SpectacleHistoryItem *)nextHistoryItem
 {
-  return [self moveCurrentHistoryItemToHistoryItem:_currentHistoryItem.nextHistoryItem];
+  return [self moveCurrentHistoryItemToHistoryItem:self.currentHistoryItem.nextHistoryItem];
 }
 
 - (SpectacleHistoryItem *)previousHistoryItem
 {
-  return [self moveCurrentHistoryItemToHistoryItem:_currentHistoryItem.previousHistoryItem];
+  return [self moveCurrentHistoryItemToHistoryItem:self.currentHistoryItem.previousHistoryItem];
 }
 
 #pragma mark -
@@ -87,9 +86,9 @@
 - (SpectacleHistoryItem *)moveCurrentHistoryItemToHistoryItem:(SpectacleHistoryItem *)historyItem
 {
   if (historyItem) {
-    _currentHistoryItem = historyItem;
+    self.currentHistoryItem = historyItem;
   }
-  
+
   return historyItem;
 }
 
