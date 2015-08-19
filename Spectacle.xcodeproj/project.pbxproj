@@ -19,7 +19,7 @@
 		2D3A0510194956E100CD96E7 /* SpectacleShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */; };
 		2D3A0511194956E100CD96E7 /* SpectacleShortcutTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0507194956E100CD96E7 /* SpectacleShortcutTranslator.m */; };
 		2D3A0512194956E100CD96E7 /* SpectacleShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0509194956E100CD96E7 /* SpectacleShortcutValidator.m */; };
-		2D3A05151949573D00CD96E7 /* SpecialShortcutTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A05141949573D00CD96E7 /* SpecialShortcutTranslations.plist */; };
+		2D3A05151949573D00CD96E7 /* ShortcutTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A05141949573D00CD96E7 /* ShortcutTranslations.plist */; };
 		2D3E08021AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3E08011AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
@@ -100,7 +100,7 @@
 		2D3A0508194956E100CD96E7 /* SpectacleShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutValidator.h; path = Spectacle/Classes/SpectacleShortcutValidator.h; sourceTree = "<group>"; };
 		2D3A0509194956E100CD96E7 /* SpectacleShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutValidator.m; path = Spectacle/Classes/SpectacleShortcutValidator.m; sourceTree = "<group>"; };
 		2D3A050A194956E100CD96E7 /* SpectacleShortcutValidatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutValidatorProtocol.h; path = Spectacle/Classes/SpectacleShortcutValidatorProtocol.h; sourceTree = "<group>"; };
-		2D3A05141949573D00CD96E7 /* SpecialShortcutTranslations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SpecialShortcutTranslations.plist; path = "Spectacle/Resources/Property Lists/SpecialShortcutTranslations.plist"; sourceTree = "<group>"; };
+		2D3A05141949573D00CD96E7 /* ShortcutTranslations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ShortcutTranslations.plist; path = "Spectacle/Resources/Property Lists/ShortcutTranslations.plist"; sourceTree = "<group>"; };
 		2D3E08011AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpectacleWindowPositionCalculatorSpec.m; sourceTree = "<group>"; };
 		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleScreenDetection.h; path = Spectacle/Classes/SpectacleScreenDetection.h; sourceTree = "<group>"; };
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetection.m; path = Spectacle/Classes/SpectacleScreenDetection.m; sourceTree = "<group>"; };
@@ -163,27 +163,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0747DAE71183AAB600F75DD2 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
-				2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */,
-				07678095118679C600614FB5 /* SpectacleShortcutManager.h */,
-				07678096118679C600614FB5 /* SpectacleShortcutManager.m */,
-				2D1AE52315D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.h */,
-				2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */,
-				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */,
-				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */,
-				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
-				07BB542C1186662F0045663F /* SpectacleUtilities.m */,
-				2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */,
-				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
-				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
-				072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
 		0747DAE81183AABB00F75DD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,26 +176,13 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		0747DAE91183AAC100F75DD2 /* Models */ = {
+		0747DAE91183AAC100F75DD2 /* Accessibility */ = {
 			isa = PBXGroup;
 			children = (
-				2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */,
-				2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */,
-				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
-				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
-				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
-				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
-				2D3A04FF194956E100CD96E7 /* SpectacleShortcut.h */,
-				2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */,
-				2D3A0506194956E100CD96E7 /* SpectacleShortcutTranslator.h */,
-				2D3A0507194956E100CD96E7 /* SpectacleShortcutTranslator.m */,
-				2D3A0508194956E100CD96E7 /* SpectacleShortcutValidator.h */,
-				2D3A0509194956E100CD96E7 /* SpectacleShortcutValidator.m */,
-				2D3A050A194956E100CD96E7 /* SpectacleShortcutValidatorProtocol.h */,
 				2D3A04FC194956E100CD96E7 /* ZKAccessibilityElement.h */,
 				2D3A04FD194956E100CD96E7 /* ZKAccessibilityElement.m */,
 			);
-			name = Models;
+			name = Accessibility;
 			sourceTree = "<group>";
 		};
 		0747DAEB1183AAE700F75DD2 /* Property Lists */ = {
@@ -225,7 +191,7 @@
 				2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */,
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				070031AF1217712E001D4C46 /* ShortcutNames.plist */,
-				2D3A05141949573D00CD96E7 /* SpecialShortcutTranslations.plist */,
+				2D3A05141949573D00CD96E7 /* ShortcutTranslations.plist */,
 			);
 			name = "Property Lists";
 			sourceTree = "<group>";
@@ -272,10 +238,14 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0747DAE71183AAB600F75DD2 /* Common */,
+				0747DAE91183AAC100F75DD2 /* Accessibility */,
 				0747DAE81183AABB00F75DD2 /* Controllers */,
-				2D2CAC271949604D0047A69D /* Controls */,
-				0747DAE91183AAC100F75DD2 /* Models */,
+				2DC8A0131B84E1AF00ABEBD5 /* Shortcuts */,
+				2DC8A0141B84E24500ABEBD5 /* Window Management */,
+				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
+				2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */,
+				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
+				07BB542C1186662F0045663F /* SpectacleUtilities.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -299,18 +269,6 @@
 				2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2D2CAC271949604D0047A69D /* Controls */ = {
-			isa = PBXGroup;
-			children = (
-				2D3A0501194956E100CD96E7 /* SpectacleShortcutRecorder.h */,
-				2D3A0502194956E100CD96E7 /* SpectacleShortcutRecorder.m */,
-				2D3A0503194956E100CD96E7 /* SpectacleShortcutRecorderCell.h */,
-				2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */,
-				2D3A0505194956E100CD96E7 /* SpectacleShortcutRecorderDelegate.h */,
-			);
-			name = Controls;
 			sourceTree = "<group>";
 		};
 		2D5CCCE715E96F4F0009CC43 /* Certificates */ = {
@@ -355,6 +313,64 @@
 				2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */,
 			);
 			name = Scripts;
+			sourceTree = "<group>";
+		};
+		2DC8A0111B84E17400ABEBD5 /* Shortcut Management */ = {
+			isa = PBXGroup;
+			children = (
+				07678095118679C600614FB5 /* SpectacleShortcutManager.h */,
+				07678096118679C600614FB5 /* SpectacleShortcutManager.m */,
+				2D1AE52315D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.h */,
+				2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */,
+			);
+			name = "Shortcut Management";
+			sourceTree = "<group>";
+		};
+		2DC8A0121B84E18400ABEBD5 /* Shortcut Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				2D3A0501194956E100CD96E7 /* SpectacleShortcutRecorder.h */,
+				2D3A0502194956E100CD96E7 /* SpectacleShortcutRecorder.m */,
+				2D3A0503194956E100CD96E7 /* SpectacleShortcutRecorderCell.h */,
+				2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */,
+				2D3A0505194956E100CD96E7 /* SpectacleShortcutRecorderDelegate.h */,
+			);
+			name = "Shortcut Recorder";
+			sourceTree = "<group>";
+		};
+		2DC8A0131B84E1AF00ABEBD5 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				2DC8A0111B84E17400ABEBD5 /* Shortcut Management */,
+				2DC8A0121B84E18400ABEBD5 /* Shortcut Recorder */,
+				2D3A04FF194956E100CD96E7 /* SpectacleShortcut.h */,
+				2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */,
+				2D3A0506194956E100CD96E7 /* SpectacleShortcutTranslator.h */,
+				2D3A0507194956E100CD96E7 /* SpectacleShortcutTranslator.m */,
+				2D3A0508194956E100CD96E7 /* SpectacleShortcutValidator.h */,
+				2D3A0509194956E100CD96E7 /* SpectacleShortcutValidator.m */,
+				2D3A050A194956E100CD96E7 /* SpectacleShortcutValidatorProtocol.h */,
+			);
+			name = Shortcuts;
+			sourceTree = "<group>";
+		};
+		2DC8A0141B84E24500ABEBD5 /* Window Management */ = {
+			isa = PBXGroup;
+			children = (
+				2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */,
+				2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */,
+				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
+				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
+				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
+				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
+				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */,
+				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */,
+				2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */,
+				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
+				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
+				072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */,
+			);
+			name = "Window Management";
 			sourceTree = "<group>";
 		};
 		32DBCFA10370C40200C91783 /* Supporting Files */ = {
@@ -471,7 +487,7 @@
 				2D8DA04E147E0FA7003BE1D3 /* ShortcutNames.plist in Resources */,
 				2D7752101B83E94C00C022EE /* Spectacle.xib in Resources */,
 				2D7752111B83E95000C022EE /* SpectaclePreferencesWindow.xib in Resources */,
-				2D3A05151949573D00CD96E7 /* SpecialShortcutTranslations.plist in Resources */,
+				2D3A05151949573D00CD96E7 /* ShortcutTranslations.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

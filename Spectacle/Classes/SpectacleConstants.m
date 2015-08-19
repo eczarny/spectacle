@@ -92,8 +92,8 @@ NSString *const SpectacleAppleScriptFileExtension = @"scpt";
 
 #pragma mark -
 
-NSString *const SpectacleShortcutTranslationsPropertyListFile = @"SpecialShortcutTranslations";
+NSString *const SpectacleShortcutTranslationsPropertyListFile = @"ShortcutTranslations";
 
-NSString *const SpectacleShortcutTranslationsKey = @"SpecialShortcutTranslations";
-NSString *const SpectacleShortcutGlyphTranslationsKey = @"SpecialShortcutGlyphTranslations";
+NSString *const SpectacleShortcutTranslationsKey = @"ShortcutTranslations";
+NSString *const SpectacleShortcutGlyphTranslationsKey = @"ShortcutGlyphTranslations";
 

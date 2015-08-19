@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SpecialShortcutTranslations</key>
+	<key>ShortcutTranslations</key>
 	<dict>
 		<key>122</key>
 		<string>F1</string>
@@ -65,7 +65,7 @@
 		<key>48</key>
 		<string>SpectacleShortcutTabRightGlyph</string>
 	</dict>
-	<key>SpecialShortcutGlyphTranslations</key>
+	<key>ShortcutGlyphTranslations</key>
 	<dict>
 		<key>SpectacleShortcutDeleteLeftGlyph</key>
 		<integer>9003</integer>
