@@ -1,8 +1,14 @@
 #import "SpectacleCalculationResult.h"
 #import "SpectacleConstants.h"
 #import "SpectacleHistoryItem.h"
-#import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionCalculator.h"
+
+#define RectCenteredWithinRect(a, b) \
+  (CGRectContainsRect(a, b) \
+  && (fabs(CGRectGetMidX(b) - CGRectGetMidX(a)) <= 1.0f \
+  && fabs(CGRectGetMidY(b) - CGRectGetMidY(a)) <= 1.0f))
+
+#pragma mark -
 
 #define AgainstTheLeftEdgeOfScreen(a, b) (a.origin.x <= b.origin.x)
 #define AgainstTheRightEdgeOfScreen(a, b) (CGRectGetMaxX(a) >= CGRectGetMaxX(b))

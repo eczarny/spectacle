@@ -1,5 +1,8 @@
 #import "SpectacleScreenDetection.h"
-#import "SpectacleUtilities.h"
+
+#define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
+
+#pragma mark -
 
 @implementation SpectacleScreenDetection
 
