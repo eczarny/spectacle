@@ -1,5 +1,4 @@
 #import "SpectacleConstants.h"
-
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleShortcutRecorderCell.h"
 

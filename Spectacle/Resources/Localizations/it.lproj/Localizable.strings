@@ -11,14 +11,10 @@
 "Would you like to restore the default hot keys? Any custom hot keys will be lost." = "Vuoi ripristinare le combinazioni iniziali? Ogni combinazione personale sarà cancellata.";
 
 /* Buttons */
-"Open Universal Access Preferences" = "Apri Preferenze di Sistema, Accessibilità";
-"Stop Spectacle" = "Ferma Spectacle";
 "OK" = "Bene";
 "Cancel" = "Annulla";
-
-/* Toggle Switch */
-"ON" = "ON";
-"OFF" = "OFF";
+"Open Universal Access Preferences" = "Apri Preferenze di Sistema, Accessibilità";
+"Stop Spectacle" = "Ferma Spectacle";
 
 /* Hot Key Recorders */
 "Enter hot key" = "Premi i tasti";
@@ -31,5 +27,3 @@
 "The hot key \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this hot key change the existing shortcut in the Keyboard preference pane under System Preferences." = "La combinazione \"%@\" è già assegnata ad un comando di sistema.\n\nPer usare questa combinazione modifica il comando da tastiera nelle Preferenze di Sistema, Tastiera.";
 "The hot key \"%@\" is already used in the menu." = "La combinazione \"%@\" è già assegnata nel menu.";
 "The hot key \"%@\" is already in use. Please select a new hot key." = "La combinazione \"%@\" è già assegnata. Scegline un'altra.";
-"OK" = "Bene";
-

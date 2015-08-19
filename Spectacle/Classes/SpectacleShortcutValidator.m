@@ -1,8 +1,6 @@
-#import "SpectacleShortcutValidator.h"
-
-#import "SpectacleUtilities.h"
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutValidator.h"
 #import "SpectacleShortcutValidatorProtocol.h"
 
 @implementation SpectacleShortcutValidator
@@ -37,8 +35,8 @@
     if (([shortcut shortcutCode] == keyCode) && [SpectacleShortcutValidator shortcut:shortcut containsModifiers:modifiers]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                        description:@"Hot key %@ already in use."
-                                 recoverySuggestion:@"The hot key \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this hot key change the existing shortcut in the Keyboard preference pane under System Preferences."];
+                                                   description:@"Hot key %@ already in use."
+                                            recoverySuggestion:@"The hot key \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this hot key change the existing shortcut in the Keyboard preference pane under System Preferences."];
       }
       
       return NO;
@@ -49,8 +47,8 @@
     if ([validator conformsToProtocol:@protocol(SpectacleShortcutValidatorProtocol)] && ![validator isShortcutValid:shortcut]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                        description:@"Hot key %@ already in use."
-                                 recoverySuggestion:@"The hot key \"%@\" is already in use. Please select a new hot key."];
+                                                   description:@"Hot key %@ already in use."
+                                            recoverySuggestion:@"The hot key \"%@\" is already in use. Please select a new hot key."];
       }
       
       return NO;
@@ -92,17 +90,17 @@
 #pragma mark -
 
 + (NSError *)errorWithShortcut:(SpectacleShortcut *)shortcut
-         description:(NSString *)description
-      recoverySuggestion:(NSString *)recoverySuggestion
+                   description:(NSString *)description
+            recoverySuggestion:(NSString *)recoverySuggestion
 {
   NSString *shortcutString = [SpectacleShortcutTranslator.sharedTranslator translateShortcut:shortcut];
   NSMutableDictionary *userInfo = [NSMutableDictionary new];
   
-  userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:LocalizedString(description), shortcutString];
+  userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:NSLocalizedString(description, description), shortcutString];
   
-  userInfo[NSLocalizedRecoverySuggestionErrorKey] = [NSString stringWithFormat:LocalizedString(recoverySuggestion), shortcutString];
+  userInfo[NSLocalizedRecoverySuggestionErrorKey] = [NSString stringWithFormat:NSLocalizedString(recoverySuggestion, recoverySuggestion), shortcutString];
   
-  userInfo[NSLocalizedRecoveryOptionsErrorKey] = @[LocalizedString(@"OK")];
+  userInfo[NSLocalizedRecoveryOptionsErrorKey] = @[NSLocalizedString(@"OK", @"OK")];
   
   return [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:userInfo];
 }
@@ -128,8 +126,8 @@
         && [SpectacleShortcutValidator shortcut:shortcut containsModifiers:menuItem.keyEquivalentModifierMask]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                        description:@"Hot key %@ already in use."
-                                 recoverySuggestion:@"The hot key \"%@\" is already used in the menu."];
+                                                   description:@"Hot key %@ already in use."
+                                            recoverySuggestion:@"The hot key \"%@\" is already used in the menu."];
       }
       
       return NO;

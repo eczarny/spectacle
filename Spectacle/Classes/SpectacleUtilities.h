@@ -2,10 +2,6 @@
 
 #import "SpectacleShortcut.h"
 
-#define LocalizedString(string) NSLocalizedString(string, string)
-
-#pragma mark -
-
 #define FlipVerticalOriginOfRectInRect(a, b) (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex:0] frame].size.height - b.size.height))
 
 #pragma mark -
@@ -35,17 +31,9 @@
 
 #define RectToString(windowRect) [NSString stringWithFormat:@"(%.1f, %.1f) %.1fx%.1f", windowRect.origin.x, windowRect.origin.y, windowRect.size.width, windowRect.size.height]
 
-
-typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
-  SpectacleIsTrusted,
-  SpectacleIsNotTrusted
-};
-
 #pragma mark -
 
 @interface SpectacleUtilities : NSObject
-
-#pragma mark -
 
 + (NSString *)applicationVersion;
 
@@ -58,10 +46,6 @@ typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
 + (void)displayRunningInBackgroundAlertWithCallback:(void (^)(BOOL, BOOL))callback;
 
 + (void)displayRestoreDefaultsAlertWithCallback:(void (^)(BOOL))callback;
-
-#pragma mark -
-
-+ (SpectacleApplicationTrust)spectacleTrust;
 
 #pragma mark -
 
@@ -78,19 +62,5 @@ typedef NS_ENUM(NSInteger, SpectacleApplicationTrust) {
 #pragma mark -
 
 + (NSString *)pathForPreferencePaneNamed:(NSString *)preferencePaneName;
-
-#pragma mark -
-
-+ (BOOL)isLoginItemEnabledForBundle:(NSBundle *)bundle;
-
-#pragma mark -
-
-+ (void)enableLoginItemForBundle:(NSBundle *)bundle;
-
-+ (void)disableLoginItemForBundle:(NSBundle *)bundle;
-
-#pragma mark -
-
-+ (NSMutableDictionary *)stringAttributesWithShadow;
 
 @end

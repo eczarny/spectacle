@@ -1,7 +1,8 @@
 #import <Foundation/Foundation.h>
 
-#import "SpectacleCalculationResult.h"
 #import "SpectacleWindowPositionManager.h"
+
+@class SpectacleCalculationResult;
 
 @interface SpectacleWindowPositionCalculator : NSObject
 

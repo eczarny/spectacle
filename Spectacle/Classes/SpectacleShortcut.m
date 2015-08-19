@@ -1,5 +1,4 @@
 #import "SpectacleShortcut.h"
-
 #import "SpectacleShortcutTranslator.h"
 
 @implementation SpectacleShortcut

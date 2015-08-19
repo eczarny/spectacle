@@ -24,8 +24,7 @@
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
-		2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */; };
-		2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */; };
+		2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */; };
 		2D7752101B83E94C00C022EE /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D01AD84E5C0022ABF0 /* Spectacle.xib */; };
 		2D7752111B83E95000C022EE /* SpectaclePreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D21AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib */; };
 		2D7F52421A0A9C750082D7C8 /* SpectacleConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */; };
@@ -42,6 +41,7 @@
 		2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CA1AD84E5C0022ABF0 /* Credits.rtf */; };
 		2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CC1AD84E5C0022ABF0 /* InfoPlist.strings */; };
 		2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */; };
+		2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */; };
 		6F10BDB719AD4A0E9E05A451 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3ED82115CF4D7AB8FC8947 /* libPods.a */; };
 		B52965322B8BF99D575F9364 /* libPods-SpectacleSpecs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 067291DB4D1EA1EA8DF275FC /* libPods-SpectacleSpecs.a */; };
 /* End PBXBuildFile section */
@@ -106,10 +106,8 @@
 		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetection.m; path = Spectacle/Classes/SpectacleScreenDetection.m; sourceTree = "<group>"; };
 		2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Security & Privacy System Preferences.scpt"; path = "Spectacle/Resources/Scripts/Security & Privacy System Preferences.scpt"; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Spectacle/Resources/Certificates/dsa_public.pem; sourceTree = "<group>"; };
-		2D768E8B147ED51A00901E76 /* SpectacleApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleApplicationController.h; path = Spectacle/Classes/SpectacleApplicationController.h; sourceTree = "<group>"; };
-		2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleApplicationController.m; path = Spectacle/Classes/SpectacleApplicationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowActionController.h; path = Spectacle/Classes/SpectacleWindowActionController.h; sourceTree = "<group>"; };
-		2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowActionController.m; path = Spectacle/Classes/SpectacleWindowActionController.m; sourceTree = "<group>"; };
+		2D768E8B147ED51A00901E76 /* SpectacleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleAppDelegate.h; path = Spectacle/Classes/SpectacleAppDelegate.h; sourceTree = "<group>"; };
+		2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleAppDelegate.m; path = Spectacle/Classes/SpectacleAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleConstants.m; path = Spectacle/Classes/SpectacleConstants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D98D72C1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Resources/Localizations/fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D98D72D1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Resources/Localizations/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -132,8 +130,9 @@
 		2DC4E3CF1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2DC4E3D91AD84E7F0022ABF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Spectacle/Resources/Localizations/it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2DC4E3DA1AD84E7F0022ABF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = it; path = Spectacle/Resources/Localizations/it.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2DC8A0151B85097900ABEBD5 /* SpectacleLoginItemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleLoginItemHelper.h; path = Spectacle/Classes/SpectacleLoginItemHelper.h; sourceTree = "<group>"; };
+		2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleLoginItemHelper.m; path = Spectacle/Classes/SpectacleLoginItemHelper.m; sourceTree = "<group>"; };
 		2DDEB84919F9EDF6007D2BA2 /* SpectacleSpecs.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleSpecs.pch; path = "Supporting Files/SpectacleSpecs.pch"; sourceTree = "<group>"; };
-		32DBCFA20370C41700C91783 /* Spectacle.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spectacle.pch; path = "Spectacle/Supporting Files/Spectacle.pch"; sourceTree = "<group>"; };
 		4E39F28AA9996E070256C000 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,26 +162,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0747DAE81183AABB00F75DD2 /* Controllers */ = {
+		0747DAE81183AABB00F75DD2 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				2D768E8B147ED51A00901E76 /* SpectacleApplicationController.h */,
-				2D768E8C147ED51A00901E76 /* SpectacleApplicationController.m */,
+				2DC8A0151B85097900ABEBD5 /* SpectacleLoginItemHelper.h */,
+				2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */,
 				07838601148BD517001E7BD7 /* SpectaclePreferencesController.h */,
 				07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */,
-				2D768E8E147ED57600901E76 /* SpectacleWindowActionController.h */,
-				2D768E8F147ED57600901E76 /* SpectacleWindowActionController.m */,
 			);
-			name = Controllers;
+			name = Preferences;
 			sourceTree = "<group>";
 		};
-		0747DAE91183AAC100F75DD2 /* Accessibility */ = {
+		0747DAE91183AAC100F75DD2 /* Accessibility API */ = {
 			isa = PBXGroup;
 			children = (
 				2D3A04FC194956E100CD96E7 /* ZKAccessibilityElement.h */,
 				2D3A04FD194956E100CD96E7 /* ZKAccessibilityElement.m */,
 			);
-			name = Accessibility;
+			name = "Accessibility API";
 			sourceTree = "<group>";
 		};
 		0747DAEB1183AAE700F75DD2 /* Property Lists */ = {
@@ -238,10 +235,11 @@
 		08FB77AFFE84173DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0747DAE91183AAC100F75DD2 /* Accessibility */,
-				0747DAE81183AABB00F75DD2 /* Controllers */,
+				0747DAE81183AABB00F75DD2 /* Preferences */,
 				2DC8A0131B84E1AF00ABEBD5 /* Shortcuts */,
 				2DC8A0141B84E24500ABEBD5 /* Window Management */,
+				2D768E8B147ED51A00901E76 /* SpectacleAppDelegate.h */,
+				2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */,
 				078B0F50118D18CC004EE86C /* SpectacleConstants.h */,
 				2D7F52411A0A9C750082D7C8 /* SpectacleConstants.m */,
 				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
@@ -357,6 +355,7 @@
 		2DC8A0141B84E24500ABEBD5 /* Window Management */ = {
 			isa = PBXGroup;
 			children = (
+				0747DAE91183AAC100F75DD2 /* Accessibility API */,
 				2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */,
 				2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */,
 				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
@@ -378,7 +377,6 @@
 			children = (
 				2D1E1AD2147E07E50021D73D /* Info.plist */,
 				077938E51184FADB0013BC14 /* main.m */,
-				32DBCFA20370C41700C91783 /* Spectacle.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -583,22 +581,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
-				2D768E8D147ED51A00901E76 /* SpectacleApplicationController.m in Sources */,
+				2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */,
 				2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */,
 				2D7F52421A0A9C750082D7C8 /* SpectacleConstants.m in Sources */,
 				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
-				2D8DA056147E113D003BE1D3 /* SpectacleShortcutManager.m in Sources */,
+				2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */,
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */,
 				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */,
 				2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */,
+				2D8DA056147E113D003BE1D3 /* SpectacleShortcutManager.m in Sources */,
 				2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */,
 				2D3A0510194956E100CD96E7 /* SpectacleShortcutRecorderCell.m in Sources */,
 				2D3A0511194956E100CD96E7 /* SpectacleShortcutTranslator.m in Sources */,
 				2D3A0512194956E100CD96E7 /* SpectacleShortcutValidator.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
-				2D768E90147ED57600901E76 /* SpectacleWindowActionController.m in Sources */,
 				2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
 				2D3A050D194956E100CD96E7 /* ZKAccessibilityElement.m in Sources */,
@@ -699,7 +697,6 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREFIX_HEADER = "Spectacle/Supporting Files/Spectacle.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -739,7 +736,6 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREFIX_HEADER = "Spectacle/Supporting Files/Spectacle.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

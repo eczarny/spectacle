@@ -2,7 +2,7 @@
 
 #import "SpectacleShortcutRecorderDelegate.h"
 
-@class SpectacleShortcutManager, SpectacleApplicationController, SpectacleShortcutRecorder;
+@class SpectacleShortcutManager, SpectacleAppDelegate, SpectacleShortcutRecorder;
 
 @interface SpectaclePreferencesController : NSWindowController<SpectacleShortcutRecorderDelegate>
 

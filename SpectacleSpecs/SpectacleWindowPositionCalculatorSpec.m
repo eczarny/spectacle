@@ -1,6 +1,6 @@
-#import "SpectacleWindowPositionCalculator.h"
-
+#import "SpectacleCalculationResult.h"
 #import "SpectacleConstants.h"
+#import "SpectacleWindowPositionCalculator.h"
 
 SpecBegin(SpectacleWindowPositionCalculator)
   describe(@"SpectacleWindowPositionCalculator", ^{

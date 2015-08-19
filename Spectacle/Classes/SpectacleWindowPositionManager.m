@@ -1,11 +1,11 @@
-#import "SpectacleWindowPositionManager.h"
-
+#import "SpectacleCalculationResult.h"
 #import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleScreenDetection.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionCalculator.h"
+#import "SpectacleWindowPositionManager.h"
 #import "ZKAccessibilityElement.h"
 
 #define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))

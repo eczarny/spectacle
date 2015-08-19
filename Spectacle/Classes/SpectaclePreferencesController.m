@@ -1,11 +1,11 @@
-#import "SpectaclePreferencesController.h"
-
 #import "SpectacleConstants.h"
-#import "SpectacleShortcutManager.h"
+#import "SpectacleLoginItemHelper.h"
+#import "SpectaclePreferencesController.h"
 #import "SpectacleRegisteredShortcutValidator.h"
+#import "SpectacleShortcutManager.h"
+#import "SpectacleShortcutRecorder.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
-#import "SpectacleShortcutRecorder.h"
 
 @interface SpectaclePreferencesController ()
 
@@ -61,7 +61,7 @@
                              name:SpectacleRestoreDefaultShortcutsNotification
                            object:nil];
 
-  if ([SpectacleUtilities isLoginItemEnabledForBundle:NSBundle.mainBundle]) {
+  if ([SpectacleLoginItemHelper isLoginItemEnabledForBundle:NSBundle.mainBundle]) {
     loginItemEnabledState = NSOnState;
   }
   
@@ -101,9 +101,9 @@
   NSBundle *applicationBundle = NSBundle.mainBundle;
   
   if (self.loginItemEnabled.state == NSOnState) {
-    [SpectacleUtilities enableLoginItemForBundle:applicationBundle];
+    [SpectacleLoginItemHelper enableLoginItemForBundle:applicationBundle];
   } else {
-    [SpectacleUtilities disableLoginItemForBundle:applicationBundle];
+    [SpectacleLoginItemHelper disableLoginItemForBundle:applicationBundle];
   }
 }
 

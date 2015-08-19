@@ -1,8 +1,7 @@
 #import <Carbon/Carbon.h>
 
-#import "SpectacleShortcutManager.h"
-
 #import "SpectacleShortcut.h"
+#import "SpectacleShortcutManager.h"
 
 static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data);
 

@@ -1,10 +1,8 @@
-#import "SpectacleShortcutRecorderCell.h"
-
-#import "SpectacleUtilities.h"
 #import "SpectacleShortcut.h"
+#import "SpectacleShortcutRecorder.h"
+#import "SpectacleShortcutRecorderCell.h"
 #import "SpectacleShortcutTranslator.h"
 #import "SpectacleShortcutValidator.h"
-#import "SpectacleShortcutRecorder.h"
 
 #define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
 
@@ -373,15 +371,15 @@
   NSColor *foregroundColor = NSColor.blackColor;
 
   if (self.isRecording && !self.isMouseAboveBadge) {
-    label = LocalizedString(@"Enter hot key");
+    label = NSLocalizedString(@"Enter hot key", @"Enter hot key");
   } else if (self.isRecording && self.isMouseAboveBadge && !self.shortcut) {
-    label = LocalizedString(@"Stop recording");
+    label = NSLocalizedString(@"Stop recording", @"Stop recording");
   } else if (self.isRecording && self.isMouseAboveBadge) {
-    label = LocalizedString(@"Use existing");
+    label = NSLocalizedString(@"Use existing", "Use existing");
   } else if (self.shortcut) {
     label = self.shortcut.displayString;
   } else {
-    label = LocalizedString(@"Click to record");
+    label = NSLocalizedString(@"Click to record", @"Click to record");
   }
 
   // Recording is in progress and modifier flags have already been set, display them.
@@ -404,7 +402,7 @@
 
 - (void)drawString:(NSString *)string withForegroundColor:(NSColor *)foregroundColor inRect:(NSRect)rect
 {
-  NSMutableDictionary *attributes = SpectacleUtilities.stringAttributesWithShadow;
+  NSMutableDictionary *attributes = [self stringAttributesWithShadow];
   NSRect labelRect = rect;
 
   attributes[NSFontAttributeName] = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
@@ -413,6 +411,27 @@
   labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes:attributes].height / 2.0f);
 
   [string drawInRect:labelRect withAttributes:attributes];
+}
+
+#pragma mark -
+
+- (NSMutableDictionary *)stringAttributesWithShadow
+{
+  NSMutableParagraphStyle *paragraphStyle = NSParagraphStyle.defaultParagraphStyle.mutableCopy;
+  NSShadow *textShadow = [NSShadow new];
+  NSMutableDictionary *stringAttributes = [NSMutableDictionary new];
+
+  paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+  paragraphStyle.alignment = NSCenterTextAlignment;
+
+  textShadow.shadowColor = [NSColor whiteColor];
+  textShadow.shadowOffset = NSMakeSize(0.0f, -1.0);
+  textShadow.shadowBlurRadius = 0.0f;
+
+  stringAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
+  stringAttributes[NSShadowAttributeName] = textShadow;
+
+  return stringAttributes;
 }
 
 @end

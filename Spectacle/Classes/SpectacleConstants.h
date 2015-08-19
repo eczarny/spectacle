@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 extern NSString *const SpectaclePreferencesWindowNibName;
 
 #pragma mark -

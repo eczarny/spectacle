@@ -1,10 +1,8 @@
 #import <Foundation/Foundation.h>
 
-#import "SpectacleWindowActionController.h"
-
 @class SpectaclePreferencesController;
 
-@interface SpectacleApplicationController : SpectacleWindowActionController
+@interface SpectacleAppDelegate : NSObject
 
 @property (nonatomic) IBOutlet NSMenu *statusItemMenu;
 @property (nonatomic) IBOutlet NSWindow *accessiblityAccessDialogWindow;
@@ -33,10 +31,62 @@
 
 # pragma mark -
 
-- (IBAction)openSystemPreferences:(id)sender;
+- (IBAction)moveFrontMostWindowToFullscreen:(id)sender;
+
+- (IBAction)moveFrontMostWindowToCenter:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToLeftHalf:(id)sender;
+
+- (IBAction)moveFrontMostWindowToRightHalf:(id)sender;
+
+- (IBAction)moveFrontMostWindowToTopHalf:(id)sender;
+
+- (IBAction)moveFrontMostWindowToBottomHalf:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToUpperLeft:(id)sender;
+
+- (IBAction)moveFrontMostWindowToLowerLeft:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToUpperRight:(id)sender;
+
+- (IBAction)moveFrontMostWindowToLowerRight:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToNextDisplay:(id)sender;
+
+- (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontMostWindowToNextThird:(id)sender;
+
+- (IBAction)moveFrontMostWindowToPreviousThird:(id)sender;
+
+#pragma mark -
+
+- (IBAction)makeFrontMostWindowLarger:(id)sender;
+
+- (IBAction)makeFrontMostWindowSmaller:(id)sender;
+
+#pragma mark -
+
+- (IBAction)undoLastWindowAction:(id)sender;
+
+- (IBAction)redoLastWindowAction:(id)sender;
 
 # pragma mark -
 
 - (IBAction)restoreDefaults:(id)sender;
+
+# pragma mark -
+
+- (IBAction)openSystemPreferences:(id)sender;
 
 @end

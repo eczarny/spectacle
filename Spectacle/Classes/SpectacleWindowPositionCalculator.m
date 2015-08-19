@@ -1,8 +1,8 @@
-#import "SpectacleWindowPositionCalculator.h"
-
+#import "SpectacleCalculationResult.h"
 #import "SpectacleConstants.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleUtilities.h"
+#import "SpectacleWindowPositionCalculator.h"
 
 #define AgainstTheLeftEdgeOfScreen(a, b) (a.origin.x <= b.origin.x)
 #define AgainstTheRightEdgeOfScreen(a, b) (CGRectGetMaxX(a) >= CGRectGetMaxX(b))

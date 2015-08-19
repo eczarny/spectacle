@@ -1,7 +1,6 @@
-#import "SpectacleShortcutTranslator.h"
-
 #import "SpectacleConstants.h"
 #import "SpectacleShortcut.h"
+#import "SpectacleShortcutTranslator.h"
 
 enum {
   SpectacleShortcutAlternateGlyph = 0x2325,
