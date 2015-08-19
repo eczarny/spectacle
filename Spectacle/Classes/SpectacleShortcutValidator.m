@@ -35,8 +35,8 @@
     if (([shortcut shortcutCode] == keyCode) && [SpectacleShortcutValidator shortcut:shortcut containsModifiers:modifiers]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                                   description:@"Hot key %@ already in use."
-                                            recoverySuggestion:@"The hot key \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this hot key change the existing shortcut in the Keyboard preference pane under System Preferences."];
+                                                   description:@"Shortcut %@ already in use."
+                                            recoverySuggestion:@"The shortcut \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this shortcut change the existing shortcut in the Keyboard preference pane under System Preferences."];
       }
       
       return NO;
@@ -47,8 +47,8 @@
     if ([validator conformsToProtocol:@protocol(SpectacleShortcutValidatorProtocol)] && ![validator isShortcutValid:shortcut]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                                   description:@"Hot key %@ already in use."
-                                            recoverySuggestion:@"The hot key \"%@\" is already in use. Please select a new hot key."];
+                                                   description:@"Shortcut %@ already in use."
+                                            recoverySuggestion:@"The shortcut \"%@\" is already in use. Please select a new shortcut."];
       }
       
       return NO;
@@ -126,8 +126,8 @@
         && [SpectacleShortcutValidator shortcut:shortcut containsModifiers:menuItem.keyEquivalentModifierMask]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                                   description:@"Hot key %@ already in use."
-                                            recoverySuggestion:@"The hot key \"%@\" is already used in the menu."];
+                                                   description:@"Shortcut %@ already in use."
+                                            recoverySuggestion:@"The shortcut \"%@\" is already used in the menu."];
       }
       
       return NO;

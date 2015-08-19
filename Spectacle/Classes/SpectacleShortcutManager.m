@@ -73,7 +73,7 @@ static EventHotKeyID currentShortcutID = {
                             &ref);
 
   if (err) {
-    NSLog(@"There was a problem registering hot key %@.", shortcutName);
+    NSLog(@"There was a problem registering shortcut %@.", shortcutName);
 
     return -1;
   }
@@ -106,7 +106,7 @@ static EventHotKeyID currentShortcutID = {
   OSStatus err;
 
   if (!shortcut) {
-    NSLog(@"The specified hot key has not been registered.");
+    NSLog(@"The specified shortcut has not been registered.");
 
     return;
   }
@@ -117,14 +117,14 @@ static EventHotKeyID currentShortcutID = {
     err = UnregisterEventHotKey(ref);
 
     if (err) {
-      NSLog(@"Receiving the following error code when unregistering hot key %@: %d", name, err);
+      NSLog(@"Receiving the following error code when unregistering shortcut %@: %d", name, err);
     }
 
     self.registeredShortcutsByName[name] = [SpectacleShortcut clearedShortcutWithName:name];
 
     [self updateUserDefaults];
   } else {
-    NSLog(@"Unable to unregister hot key %@, no ref appears to exist.", name);
+    NSLog(@"Unable to unregister shortcut %@, no ref appears to exist.", name);
   }
 }
 
@@ -232,7 +232,7 @@ static EventHotKeyID currentShortcutID = {
   shortcut = [self registeredShortcutForHandle:shortcutID.id];
 
   if (!shortcut) {
-    NSLog(@"Unable to handle event for hot key with handle %d, the registered hot key does not exist.", shortcutID.id);
+    NSLog(@"Unable to handle event for shortcut with handle %d, the registered shortcut does not exist.", shortcutID.id);
   }
 
   switch (GetEventKind(event)) {

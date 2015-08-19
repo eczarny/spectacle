@@ -7,8 +7,8 @@
 "This will cause Spectacle to run in the background" = "In questo modo Spectacle sarà attivo ma non visibile";
 "Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder." = "Lancia Spectacle senza mostrarne l'icona nella barra del menù.\n\nPer accedere alle preferenze di Spectacle, pigia Spectacle in Launchpad, o apri Spectacle dal Finder.";
 
-"This will restore Spectacle's default hot keys" = "Così saranno ripristinati i comandi da tastiera di base";
-"Would you like to restore the default hot keys? Any custom hot keys will be lost." = "Vuoi ripristinare le combinazioni iniziali? Ogni combinazione personale sarà cancellata.";
+"This will restore Spectacle's default shortcuts" = "Così saranno ripristinati i comandi da tastiera di base";
+"Would you like to restore the default shortcuts? Any custom shortcuts will be lost." = "Vuoi ripristinare le combinazioni iniziali? Ogni combinazione personale sarà cancellata.";
 
 /* Buttons */
 "OK" = "Bene";
@@ -17,13 +17,13 @@
 "Stop Spectacle" = "Ferma Spectacle";
 
 /* Hot Key Recorders */
-"Enter hot key" = "Premi i tasti";
+"Enter shortcut" = "Premi i tasti";
 "Stop recording" = "Ferma registrazione";
 "Use existing" = "Usa ";
 "Click to record" = "Inizia registrazione";
 
 /* Hot Key Validation Errors */
-"Hot key %@ already in use." = "Combinazione %@ già assegnata.";
-"The hot key \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this hot key change the existing shortcut in the Keyboard preference pane under System Preferences." = "La combinazione \"%@\" è già assegnata ad un comando di sistema.\n\nPer usare questa combinazione modifica il comando da tastiera nelle Preferenze di Sistema, Tastiera.";
-"The hot key \"%@\" is already used in the menu." = "La combinazione \"%@\" è già assegnata nel menu.";
-"The hot key \"%@\" is already in use. Please select a new hot key." = "La combinazione \"%@\" è già assegnata. Scegline un'altra.";
+"Shortcut %@ already in use." = "Combinazione %@ già assegnata.";
+"The shortcut \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this shortcut change the existing shortcut in the Keyboard preference pane under System Preferences." = "La combinazione \"%@\" è già assegnata ad un comando di sistema.\n\nPer usare questa combinazione modifica il comando da tastiera nelle Preferenze di Sistema, Tastiera.";
+"The shortcut \"%@\" is already used in the menu." = "La combinazione \"%@\" è già assegnata nel menu.";
+"The shortcut \"%@\" is already in use. Please select a new shortcut." = "La combinazione \"%@\" è già assegnata. Scegline un'altra.";

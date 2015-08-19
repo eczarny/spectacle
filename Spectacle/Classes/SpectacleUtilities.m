@@ -69,8 +69,8 @@
 {
   NSAlert *alert = [NSAlert new];
 
-  alert.messageText = NSLocalizedString(@"This will restore Spectacle's default hot keys", @"This will restore Spectacle's default hot keys");
-  alert.informativeText = NSLocalizedString(@"Would you like to restore the default hot keys? Any custom hot keys will be lost.", @"Would you like to restore the default hot keys? Any custom hot keys will be lost.");
+  alert.messageText = NSLocalizedString(@"This will restore Spectacle's default shortcuts", @"This will restore Spectacle's default shortcuts");
+  alert.informativeText = NSLocalizedString(@"Would you like to restore the default shortcuts? Any custom shortcuts will be lost.", @"Would you like to restore the default shortcuts? Any custom shortcuts will be lost.");
 
   [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
   [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"OK")];

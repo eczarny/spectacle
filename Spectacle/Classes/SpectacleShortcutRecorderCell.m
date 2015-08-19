@@ -371,7 +371,7 @@
   NSColor *foregroundColor = NSColor.blackColor;
 
   if (self.isRecording && !self.isMouseAboveBadge) {
-    label = NSLocalizedString(@"Enter hot key", @"Enter hot key");
+    label = NSLocalizedString(@"Enter shortcut", @"Enter shortcut");
   } else if (self.isRecording && self.isMouseAboveBadge && !self.shortcut) {
     label = NSLocalizedString(@"Stop recording", @"Stop recording");
   } else if (self.isRecording && self.isMouseAboveBadge) {
