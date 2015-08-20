@@ -136,7 +136,7 @@
       result = [NSString stringWithFormat:@"%C", (UInt16)[translatedGlyph integerValue]];
     }
   } else {
-    TISInputSourceRef inputSource = TISCopyCurrentKeyboardInputSource();
+    TISInputSourceRef inputSource = TISCopyCurrentASCIICapableKeyboardLayoutInputSource();
     CFDataRef layoutData = (CFDataRef)TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData);
     const UCKeyboardLayout *keyboardLayout = nil;
     UInt32 keysDown = 0;
