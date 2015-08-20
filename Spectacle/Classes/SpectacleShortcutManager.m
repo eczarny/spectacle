@@ -53,7 +53,7 @@ static EventHotKeyID currentShortcutID = {
 {
   NSString *shortcutName = shortcut.shortcutName;
   SpectacleShortcut *existingShortcut = [self registeredShortcutForName:shortcutName];
-  EventHotKeyRef ref;
+  EventHotKeyRef shortcutRef;
   EventTargetRef eventTarget = GetEventDispatcherTarget();
   OSStatus err;
 
@@ -70,7 +70,7 @@ static EventHotKeyID currentShortcutID = {
                             currentShortcutID,
                             eventTarget,
                             0,
-                            &ref);
+                            &shortcutRef);
 
   if (err) {
     NSLog(@"There was a problem registering shortcut %@.", shortcutName);
@@ -79,7 +79,7 @@ static EventHotKeyID currentShortcutID = {
   }
 
   shortcut.handle = currentShortcutID.id;
-  shortcut.ref = ref;
+  shortcut.ref = shortcutRef;
 
   self.registeredShortcutsByName[shortcutName] = shortcut;
 
@@ -102,7 +102,7 @@ static EventHotKeyID currentShortcutID = {
 - (void)unregisterShortcutForName:(NSString *)name
 {
   SpectacleShortcut *shortcut = [self registeredShortcutForName:name];
-  EventHotKeyRef ref;
+  EventHotKeyRef shortcutRef;
   OSStatus err;
 
   if (!shortcut) {
@@ -111,10 +111,10 @@ static EventHotKeyID currentShortcutID = {
     return;
   }
 
-  ref = shortcut.ref;
+  shortcutRef = shortcut.ref;
 
-  if (ref) {
-    err = UnregisterEventHotKey(ref);
+  if (shortcutRef) {
+    err = UnregisterEventHotKey(shortcutRef);
 
     if (err) {
       NSLog(@"Receiving the following error code when unregistering shortcut %@: %d", name, err);

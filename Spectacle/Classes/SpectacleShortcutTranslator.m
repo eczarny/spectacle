@@ -2,32 +2,6 @@
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslator.h"
 
-enum {
-  SpectacleShortcutAlternateGlyph = 0x2325,
-  SpectacleShortcutCommandGlyph = 0x2318,
-  SpectacleShortcutControlGlyph = 0x2303,
-  SpectacleShortcutDeleteLeftGlyph = 0x232B,
-  SpectacleShortcutDeleteRightGlyph = 0x2326,
-  SpectacleShortcutDownArrowGlyph = 0x2193,
-  SpectacleShortcutLeftArrowGlyph = 0x2190,
-  SpectacleShortcutPageDownGlyph = 0x21DF,
-  SpectacleShortcutPageUpGlyph = 0x21DE,
-  SpectacleShortcutReturnGlyph = 0x21A9,
-  SpectacleShortcutRightArrowGlyph = 0x2192,
-  SpectacleShortcutShiftGlyph = 0x21E7,
-  SpectacleShortcutTabLeftGlyph = 0x21E4,
-  SpectacleShortcutTabRightGlyph = 0x21E5,
-  SpectacleShortcutUpArrowGlyph = 0x2191
-};
-
-enum {
-  SpectacleShortcutAlternateCarbonKeyMask = 1 << 11,
-  SpectacleShortcutCommandCarbonKeyMask = 1 << 8,
-  SpectacleShortcutControlCarbonKeyMask = 1 << 12,
-  SpectacleShortcutShiftCarbonKeyMask = 1 << 9,
-  SpectacleShortcutFunctionCarbonKeyMask = 1 << 17
-};
-
 @interface SpectacleShortcutTranslator ()
 
 @property (nonatomic) NSDictionary *specialShortcutTranslations;
@@ -77,23 +51,19 @@ enum {
   NSUInteger convertedModifiers = 0;
 
   if (modifiers & NSControlKeyMask) {
-    convertedModifiers |= SpectacleShortcutControlCarbonKeyMask;
+    convertedModifiers |= controlKey;
   }
 
   if (modifiers & NSAlternateKeyMask) {
-    convertedModifiers |= SpectacleShortcutAlternateCarbonKeyMask;
+    convertedModifiers |= optionKey;
   }
 
   if (modifiers & NSShiftKeyMask) {
-    convertedModifiers |= SpectacleShortcutShiftCarbonKeyMask;
+    convertedModifiers |= shiftKey;
   }
 
   if (modifiers & NSCommandKeyMask) {
-    convertedModifiers |= SpectacleShortcutCommandCarbonKeyMask;
-  }
-
-  if (modifiers & NSFunctionKeyMask) {
-    convertedModifiers |= SpectacleShortcutFunctionCarbonKeyMask;
+    convertedModifiers |= cmdKey;
   }
 
   return convertedModifiers;
@@ -103,24 +73,20 @@ enum {
 {
   NSUInteger convertedModifiers = 0;
 
-  if (modifiers & SpectacleShortcutControlCarbonKeyMask) {
+  if (modifiers & controlKey) {
     convertedModifiers |= NSControlKeyMask;
   }
 
-  if (modifiers & SpectacleShortcutAlternateCarbonKeyMask) {
+  if (modifiers & optionKey) {
     convertedModifiers |= NSAlternateKeyMask;
   }
 
-  if (modifiers & SpectacleShortcutShiftCarbonKeyMask) {
+  if (modifiers & shiftKey) {
     convertedModifiers |= NSShiftKeyMask;
   }
 
-  if (modifiers & SpectacleShortcutCommandCarbonKeyMask) {
+  if (modifiers & cmdKey) {
     convertedModifiers |= NSCommandKeyMask;
-  }
-
-  if (modifiers & SpectacleShortcutFunctionCarbonKeyMask) {
-    convertedModifiers |= NSFunctionKeyMask;
   }
 
   return convertedModifiers;
@@ -133,19 +99,19 @@ enum {
   NSString *modifierGlyphs = @"";
 
   if (modifiers & NSControlKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutControlGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kControlUnicode];
   }
 
   if (modifiers & NSAlternateKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutAlternateGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kOptionUnicode];
   }
 
   if (modifiers & NSShiftKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutShiftGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kShiftUnicode];
   }
 
   if (modifiers & NSCommandKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)SpectacleShortcutCommandGlyph];
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kCommandUnicode];
   }
 
   return modifierGlyphs;
