@@ -1,22 +1,22 @@
 #import <Foundation/Foundation.h>
 
-@class ZKAccessibilityElement;
+@class SpectacleAccessibilityElement;
 
 @interface SpectacleHistoryItem : NSObject
 
-@property (nonatomic) ZKAccessibilityElement *accessibilityElement;
+@property (nonatomic) SpectacleAccessibilityElement *accessibilityElement;
 @property (nonatomic) CGRect windowRect;
 @property (nonatomic) SpectacleHistoryItem *nextHistoryItem;
 @property (nonatomic) SpectacleHistoryItem *previousHistoryItem;
 
 #pragma mark -
 
-- (instancetype)initWithAccessibilityElement:(ZKAccessibilityElement *)accessibilityElement
+- (instancetype)initWithAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                   windowRect:(CGRect)windowRect NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 
-+ (SpectacleHistoryItem *)historyItemFromAccessibilityElement:(ZKAccessibilityElement *)accessibilityElement
++ (SpectacleHistoryItem *)historyItemFromAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                                    windowRect:(CGRect)windowRect;
 
 @end

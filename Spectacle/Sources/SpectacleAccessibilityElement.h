@@ -2,19 +2,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZKAccessibilityElement : NSObject
+@interface SpectacleAccessibilityElement : NSObject
 
-+ (ZKAccessibilityElement *)systemWideElement;
++ (SpectacleAccessibilityElement *)systemWideElement;
 
 #pragma mark -
 
-+ (ZKAccessibilityElement *)frontMostWindowElement;
++ (SpectacleAccessibilityElement *)frontMostWindowElement;
 
 + (NSString *)frontMostApplicationName;
 
 #pragma mark -
 
-- (ZKAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute;
+- (SpectacleAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute;
 
 #pragma mark -
 

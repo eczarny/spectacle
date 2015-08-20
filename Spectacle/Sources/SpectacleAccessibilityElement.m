@@ -1,6 +1,6 @@
-#import "ZKAccessibilityElement.h"
+#import "SpectacleAccessibilityElement.h"
 
-@interface ZKAccessibilityElement ()
+@interface SpectacleAccessibilityElement ()
 
 @property (nonatomic) AXUIElementRef element;
 
@@ -8,7 +8,7 @@
 
 #pragma mark -
 
-@implementation ZKAccessibilityElement
+@implementation SpectacleAccessibilityElement
 
 - (instancetype)init
 {
@@ -21,9 +21,9 @@
 
 #pragma mark -
 
-+ (ZKAccessibilityElement *)systemWideElement
++ (SpectacleAccessibilityElement *)systemWideElement
 {
-  ZKAccessibilityElement *newElement = [ZKAccessibilityElement new];
+  SpectacleAccessibilityElement *newElement = [SpectacleAccessibilityElement new];
   AXUIElementRef systemWideElement = AXUIElementCreateSystemWide();
 
   newElement.element = systemWideElement;
@@ -35,11 +35,11 @@
 
 #pragma mark -
 
-+ (ZKAccessibilityElement *)frontMostWindowElement
++ (SpectacleAccessibilityElement *)frontMostWindowElement
 {
-  ZKAccessibilityElement *systemWideElement = ZKAccessibilityElement.systemWideElement;
-  ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
-  ZKAccessibilityElement *frontMostWindowElement = nil;
+  SpectacleAccessibilityElement *systemWideElement = SpectacleAccessibilityElement.systemWideElement;
+  SpectacleAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
+  SpectacleAccessibilityElement *frontMostWindowElement = nil;
 
   if (applicationWithFocusElement) {
     frontMostWindowElement = [applicationWithFocusElement elementWithAttribute:kAXFocusedWindowAttribute];
@@ -56,24 +56,24 @@
 
 + (NSString *)frontMostApplicationName
 {
-  ZKAccessibilityElement *systemWideElement = ZKAccessibilityElement.systemWideElement;
-  ZKAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
+  SpectacleAccessibilityElement *systemWideElement = SpectacleAccessibilityElement.systemWideElement;
+  SpectacleAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
 
   return [applicationWithFocusElement stringValueOfAttribute:kAXTitleAttribute];
 }
 
 #pragma mark -
 
-- (ZKAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute
+- (SpectacleAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute
 {
-  ZKAccessibilityElement *newElement = nil;
+  SpectacleAccessibilityElement *newElement = nil;
   AXUIElementRef childElement;
   AXError result;
 
   result = AXUIElementCopyAttributeValue(self.element, attribute, (CFTypeRef *)&childElement);
 
   if (result == kAXErrorSuccess) {
-    newElement = [ZKAccessibilityElement new];
+    newElement = [SpectacleAccessibilityElement new];
 
     newElement.element = childElement;
 
@@ -143,7 +143,7 @@
 
 - (BOOL)isFullScreen
 {
-  ZKAccessibilityElement *fullScreenButtonElement = [self elementWithAttribute:kAXFullScreenButtonAttribute];
+  SpectacleAccessibilityElement *fullScreenButtonElement = [self elementWithAttribute:kAXFullScreenButtonAttribute];
 
   return [[fullScreenButtonElement stringValueOfAttribute:kAXSubroleAttribute] isEqualToString:(__bridge NSString *)kAXZoomButtonSubrole];
 }

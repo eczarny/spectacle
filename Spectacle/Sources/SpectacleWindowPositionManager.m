@@ -1,3 +1,4 @@
+#import "SpectacleAccessibilityElement.h"
 #import "SpectacleCalculationResult.h"
 #import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
@@ -6,7 +7,6 @@
 #import "SpectacleShortcut.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
-#import "ZKAccessibilityElement.h"
 
 #define RectFitsInRect(a, b) ((a.size.width <= b.size.width) && (a.size.height <= b.size.height))
 
@@ -59,7 +59,7 @@
 
 - (void)moveFrontMostWindowWithAction:(SpectacleWindowAction)action
 {
-  NSString *frontMostWindowName = ZKAccessibilityElement.frontMostApplicationName;
+  NSString *frontMostWindowName = SpectacleAccessibilityElement.frontMostApplicationName;
   NSString *spectacleWindowName = NSBundle.mainBundle.infoDictionary[@"CFBundleName"];
 
   if ([frontMostWindowName isEqualToString:spectacleWindowName]) {
@@ -68,7 +68,7 @@
     return;
   }
 
-  ZKAccessibilityElement *frontMostWindowElement = ZKAccessibilityElement.frontMostWindowElement;
+  SpectacleAccessibilityElement *frontMostWindowElement = SpectacleAccessibilityElement.frontMostWindowElement;
   CGRect frontMostWindowRect = [self rectOfWindowWithAccessibilityElement:frontMostWindowElement];
   CGRect previousFrontMostWindowRect = CGRectNull;
 
@@ -217,7 +217,7 @@ frontMostWindowElement:frontMostWindowElement
 
 #pragma mark -
 
-- (CGRect)rectOfWindowWithAccessibilityElement:(ZKAccessibilityElement *)accessibilityElement
+- (CGRect)rectOfWindowWithAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
 {
   CGRect result = CGRectNull;
 
@@ -246,10 +246,10 @@ frontMostWindowElement:frontMostWindowElement
 - (void)moveWindowRect:(CGRect)windowRect
          frameOfScreen:(CGRect)frameOfScreen
   visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
+frontMostWindowElement:(SpectacleAccessibilityElement *)frontMostWindowElement
                 action:(SpectacleWindowAction)action
 {
-  NSString *frontMostApplicationName = ZKAccessibilityElement.frontMostApplicationName;
+  NSString *frontMostApplicationName = SpectacleAccessibilityElement.frontMostApplicationName;
 
   if ([self.blacklistedApplications containsObject:frontMostApplicationName]) {
     NSBeep();
@@ -287,7 +287,7 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
   }
 }
 
-- (void)moveWindowRect:(CGRect)windowRect frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
+- (void)moveWindowRect:(CGRect)windowRect frontMostWindowElement:(SpectacleAccessibilityElement *)frontMostWindowElement
 {
   AXValueRef windowRectPositionRef = AXValueCreate(kAXValueCGPointType, (const void *)&windowRect.origin);
   AXValueRef windowRectSizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&windowRect.size);
@@ -302,7 +302,7 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
 
 - (CGRect)makeMovedWindowRect:(CGRect)movedWindowRect
                 fitWindowRect:(CGRect)windowRect
-       frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
+       frontMostWindowElement:(SpectacleAccessibilityElement *)frontMostWindowElement
 {
   CGRect adjustedWindowRect = windowRect;
 
@@ -335,7 +335,7 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
 - (CGRect)makeMovedWindowRect:(CGRect)movedWindowRect
       fitVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                 frameOfScreen:(CGRect)frameOfScreen
-       frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
+       frontMostWindowElement:(SpectacleAccessibilityElement *)frontMostWindowElement
 {
   CGRect previouslyMovedWindowRect = movedWindowRect;
 
@@ -368,7 +368,7 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
 
 - (SpectacleHistory *)historyForCurrentApplication
 {
-  NSString *applicationName = ZKAccessibilityElement.frontMostApplicationName;
+  NSString *applicationName = SpectacleAccessibilityElement.frontMostApplicationName;
 
   if (!applicationName) {
     return nil;
@@ -407,7 +407,7 @@ frontMostWindowElement:(ZKAccessibilityElement *)frontMostWindowElement
      visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
            action:(SpectacleWindowAction)action
 {
-  ZKAccessibilityElement *frontMostWindowElement = historyItem.accessibilityElement;
+  SpectacleAccessibilityElement *frontMostWindowElement = historyItem.accessibilityElement;
   CGRect windowRect = historyItem.windowRect;
 
   if (!historyItem || !frontMostWindowElement || CGRectIsNull(windowRect)) {

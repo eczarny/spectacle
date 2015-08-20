@@ -13,7 +13,7 @@
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
 		2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */; };
-		2D3A050D194956E100CD96E7 /* ZKAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A04FD194956E100CD96E7 /* ZKAccessibilityElement.m */; };
+		2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */; };
 		2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */; };
 		2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0502194956E100CD96E7 /* SpectacleShortcutRecorder.m */; };
 		2D3A0510194956E100CD96E7 /* SpectacleShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */; };
@@ -86,8 +86,8 @@
 		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleHistory.m; path = Spectacle/Sources/SpectacleHistory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowPositionCalculator.h; path = Spectacle/Sources/SpectacleWindowPositionCalculator.h; sourceTree = "<group>"; };
 		2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowPositionCalculator.m; path = Spectacle/Sources/SpectacleWindowPositionCalculator.m; sourceTree = "<group>"; };
-		2D3A04FC194956E100CD96E7 /* ZKAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKAccessibilityElement.h; path = Spectacle/Sources/ZKAccessibilityElement.h; sourceTree = "<group>"; };
-		2D3A04FD194956E100CD96E7 /* ZKAccessibilityElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKAccessibilityElement.m; path = Spectacle/Sources/ZKAccessibilityElement.m; sourceTree = "<group>"; };
+		2D3A04FC194956E100CD96E7 /* SpectacleAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleAccessibilityElement.h; path = Spectacle/Sources/SpectacleAccessibilityElement.h; sourceTree = "<group>"; };
+		2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleAccessibilityElement.m; path = Spectacle/Sources/SpectacleAccessibilityElement.m; sourceTree = "<group>"; };
 		2D3A04FF194956E100CD96E7 /* SpectacleShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcut.h; path = Spectacle/Sources/SpectacleShortcut.h; sourceTree = "<group>"; };
 		2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcut.m; path = Spectacle/Sources/SpectacleShortcut.m; sourceTree = "<group>"; };
 		2D3A0501194956E100CD96E7 /* SpectacleShortcutRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutRecorder.h; path = Spectacle/Sources/SpectacleShortcutRecorder.h; sourceTree = "<group>"; };
@@ -175,8 +175,8 @@
 		0747DAE91183AAC100F75DD2 /* Accessibility API */ = {
 			isa = PBXGroup;
 			children = (
-				2D3A04FC194956E100CD96E7 /* ZKAccessibilityElement.h */,
-				2D3A04FD194956E100CD96E7 /* ZKAccessibilityElement.m */,
+				2D3A04FC194956E100CD96E7 /* SpectacleAccessibilityElement.h */,
+				2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */,
 			);
 			name = "Accessibility API";
 			sourceTree = "<group>";
@@ -587,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
+				2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */,
 				2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */,
 				2D7F52421A0A9C750082D7C8 /* SpectacleConstants.m in Sources */,
@@ -605,7 +606,6 @@
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
 				2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
-				2D3A050D194956E100CD96E7 /* ZKAccessibilityElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
