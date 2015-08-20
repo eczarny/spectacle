@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
@@ -37,29 +38,6 @@
             </connections>
         </customObject>
         <customObject id="qZ6-IG-VBZ" customClass="SUUpdater"/>
-        <menu title="Main Menu" systemMenu="main" id="TBx-GG-kxl">
-            <items>
-                <menuItem title="Spectacle" id="fgu-Hn-eAb">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Spectacle" systemMenu="apple" id="fdW-QX-uuu">
-                        <items>
-                            <menuItem title="About Spectacle" id="deh-t8-Hdl">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="orderFrontStandardAboutPanel:" target="-2" id="c4H-sH-heI"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="8E0-eJ-ccF"/>
-                            <menuItem title="Quit Spectacle" keyEquivalent="q" id="RYX-Nr-D5P">
-                                <connections>
-                                    <action selector="terminate:" target="-1" id="Xq4-tq-2x5"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-            </items>
-        </menu>
         <menu title="Spectacle Status Item" id="KsA-8w-wcl">
             <items>
                 <menuItem title="About Spectacle" tag="-1" id="EA9-dx-Qfg">

@@ -114,8 +114,7 @@
   return ((modifiers & NSAlternateKeyMask)
           || (modifiers & NSCommandKeyMask)
           || (modifiers & NSControlKeyMask)
-          || (modifiers & NSShiftKeyMask)
-          || (modifiers & NSFunctionKeyMask));
+          || (modifiers & NSShiftKeyMask));
 }
 
 #pragma mark -

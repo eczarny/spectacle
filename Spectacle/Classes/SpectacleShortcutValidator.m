@@ -54,7 +54,7 @@
       return NO;
     }
   }
-  
+
   return [self isShortcut:shortcut availableInMenu:[[NSApplication sharedApplication] mainMenu] error:error];
 }
 

@@ -61,16 +61,25 @@
 - (BOOL)performKeyEquivalent:(NSEvent *)event
 {
   NSInteger keyCode = event.keyCode;
-  NSUInteger newModifierFlags = self.modifierFlags | event.modifierFlags;
+  NSUInteger newModifierFlags = (self.modifierFlags | event.modifierFlags) & NSDeviceIndependentModifierFlagsMask;
+  BOOL functionKey = ((keyCode == kVK_F1)  || (keyCode == kVK_F2)  || (keyCode == kVK_F3)  || (keyCode == kVK_F4)  ||
+                      (keyCode == kVK_F5)  || (keyCode == kVK_F6)  || (keyCode == kVK_F7)  || (keyCode == kVK_F8)  ||
+                      (keyCode == kVK_F9)  || (keyCode == kVK_F10) || (keyCode == kVK_F11) || (keyCode == kVK_F12) ||
+                      (keyCode == kVK_F13) || (keyCode == kVK_F14) || (keyCode == kVK_F15) || (keyCode == kVK_F16) ||
+                      (keyCode == kVK_F17) || (keyCode == kVK_F18) || (keyCode == kVK_F19) || (keyCode == kVK_F20));
 
-  if (self.isRecording && [SpectacleShortcut validCocoaModifiers:newModifierFlags]) {
+  if (self.isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:newModifierFlags])) {
     NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
 
     if (characters.length) {
-      SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutCode:keyCode shortcutModifiers:newModifierFlags];
+      SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutCode:keyCode
+                                                                     shortcutModifiers:newModifierFlags];
       NSError *error = nil;
+      BOOL isShortcutValid = [SpectacleShortcutValidator isShortcutValid:newShortcut
+                                                          withValidators:self.additionalShortcutValidators
+                                                                   error:&error];
 
-      if (![SpectacleShortcutValidator isShortcutValid:newShortcut withValidators:self.additionalShortcutValidators error:&error]) {
+      if (!isShortcutValid) {
         [[NSAlert alertWithError:error] runModal];
       } else {
         newShortcut.shortcutName = self.shortcutName;
@@ -101,10 +110,6 @@
 {
   if (self.isRecording) {
     self.modifierFlags = event.modifierFlags;
-
-    if (self.modifierFlags == 256) {
-      self.modifierFlags = 0;
-    }
 
     [self.controlView setNeedsDisplay:YES];
   }
