@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 #pragma mark -
 
-- (void)moveFrontMostWindowWithAction:(SpectacleWindowAction)action;
+- (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action;
 
 #pragma mark -
 

@@ -5,6 +5,7 @@
 #import "SpectaclePreferencesController.h"
 #import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutUserDefaultsStorage.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
 
@@ -83,7 +84,7 @@
   BOOL statusItemEnabled = [userDefaults boolForKey:SpectacleStatusItemEnabledPreference];
 
   if (statusItemEnabled) {
-    [self createStatusItem];
+    [self enableStatusItem];
   }
 
   [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
@@ -117,94 +118,94 @@
 
 - (IBAction)moveFrontMostWindowToFullscreen:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionFullscreen];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionFullscreen];
 }
 
 - (IBAction)moveFrontMostWindowToCenter:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionCenter];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToLeftHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLeftHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLeftHalf];
 }
 
 - (IBAction)moveFrontMostWindowToRightHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionRightHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionRightHalf];
 }
 
 - (IBAction)moveFrontMostWindowToTopHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionTopHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionTopHalf];
 }
 
 - (IBAction)moveFrontMostWindowToBottomHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionBottomHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToUpperLeft:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperLeft];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperLeft];
 }
 
 - (IBAction)moveFrontMostWindowToLowerLeft:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerLeft];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToUpperRight:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionUpperRight];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperRight];
 }
 
 - (IBAction)moveFrontMostWindowToLowerRight:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLowerRight];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerRight];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToNextDisplay:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextDisplay];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextDisplay];
 }
 
 - (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousDisplay];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousDisplay];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToNextThird:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionNextThird];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextThird];
 }
 
 - (IBAction)moveFrontMostWindowToPreviousThird:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionPreviousThird];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousThird];
 }
 
 #pragma mark -
 
 - (IBAction)makeFrontMostWindowLarger:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionLarger];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLarger];
 }
 
 - (IBAction)makeFrontMostWindowSmaller:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithAction:SpectacleWindowActionSmaller];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionSmaller];
 }
 
 #pragma mark -
@@ -223,13 +224,17 @@
 
 - (IBAction)restoreDefaults:(id)sender
 {
-  [SpectacleUtilities displayRestoreDefaultsAlertWithCallback:^(BOOL isConfirmed) {
-    if (isConfirmed) {
-      [SpectacleUtilities restoreDefaultShortcuts];
+  [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
+    NSArray *shortcuts = [SpectacleShortcutUserDefaultsStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+      SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
-      [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultShortcutsNotification
-                                                        object:self];
-    }
+      [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+    }];
+
+    [self.shortcutManager registerShortcuts:shortcuts];
+
+    [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultShortcutsNotification
+                                                      object:self];
   }];
 }
 
@@ -255,24 +260,18 @@
 
 - (void)registerShortcuts
 {
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-  NSMutableDictionary *shortcutsFromUserDefaults = [NSMutableDictionary new];
+  NSArray *shortcuts = [SpectacleShortcutUserDefaultsStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+    SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
-  for (NSString *shortcutName in SpectacleUtilities.shortcutNames) {
-    shortcutsFromUserDefaults[shortcutName] = [userDefaults dataForKey:shortcutName];
-  }
+    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+  }];
 
-  NSArray *shortcuts = [SpectacleUtilities shortcutsFromDictionary:shortcutsFromUserDefaults
-                                                            action:^(SpectacleShortcut *shortcut) {
-                                                              [self.windowPositionManager moveFrontMostWindowWithAction:[_windowPositionManager windowActionForShortcut:shortcut]];
-                                                            }];
-  
   [self.shortcutManager registerShortcuts:shortcuts];
 }
 
 #pragma mark -
 
-- (void)createStatusItem
+- (void)enableStatusItem
 {
   self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
@@ -287,7 +286,7 @@
   [self.statusItem setMenu:self.statusItemMenu];
 }
 
-- (void)destroyStatusItem
+- (void)disableStatusItem
 {
   [NSStatusBar.systemStatusBar removeStatusItem:self.statusItem];
 }
@@ -296,12 +295,11 @@
 
 - (void)updateShortcutMenuItems
 {
-  SpectacleShortcutManager *shortcutManager = SpectacleShortcutManager.sharedManager;
   SpectacleShortcutTranslator *shortcutTranslator = SpectacleShortcutTranslator.sharedTranslator;
 
   for (NSString *shortcutName in self.shortcutMenuItems.allKeys) {
     NSMenuItem *shortcutMenuItem = self.shortcutMenuItems[shortcutName];
-    SpectacleShortcut *shortcut = [shortcutManager registeredShortcutForName:shortcutName];
+    SpectacleShortcut *shortcut = [self.shortcutManager registeredShortcutForName:shortcutName];
 
     if (shortcut) {
       shortcutMenuItem.keyEquivalent = [[shortcutTranslator translateKeyCode:shortcut.shortcutCode] lowercaseString];
@@ -311,18 +309,6 @@
       shortcutMenuItem.keyEquivalentModifierMask = 0;
     }
   }
-}
-
-#pragma mark -
-
-- (void)enableStatusItem
-{
-  [self createStatusItem];
-}
-
-- (void)disableStatusItem
-{
-  [self destroyStatusItem];
 }
 
 #pragma mark -

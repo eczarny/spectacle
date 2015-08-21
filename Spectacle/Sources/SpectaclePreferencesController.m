@@ -2,6 +2,7 @@
 #import "SpectacleLoginItemHelper.h"
 #import "SpectaclePreferencesController.h"
 #import "SpectacleRegisteredShortcutValidator.h"
+#import "SpectacleShortcut.h"
 #import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleUtilities.h"
@@ -79,7 +80,7 @@
   SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
   
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
-    [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForShortcut:shortcut]];
+    [windowPositionManager moveFrontMostWindowWithWindowAction:[windowPositionManager windowActionForShortcut:shortcut]];
   }];
 
   [self.shortcutManager registerShortcut:shortcut];

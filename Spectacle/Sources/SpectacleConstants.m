@@ -20,7 +20,6 @@ const NSInteger SpectacleMenuItemActivateIgnoringOtherApps = -1;
 NSString *const SpectaclePropertyListFileExtension = @"plist";
 
 NSString *const SpectacleDefaultPreferencesPropertyListFile = @"Defaults";
-NSString *const SpectacleShortcutNamesPropertyListFile = @"ShortcutNames";
 NSString *const SpectacleBlacklistedApplicationsPropertyListFile = @"BlacklistedApplications";
 
 #pragma mark -

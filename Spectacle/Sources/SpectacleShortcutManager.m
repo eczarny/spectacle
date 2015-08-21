@@ -2,6 +2,7 @@
 
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutManager.h"
+#import "SpectacleShortcutUserDefaultsStorage.h"
 
 static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data);
 
@@ -170,16 +171,7 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)updateUserDefaults
 {
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-
-  for (SpectacleShortcut *shortcut in self.registeredShortcuts) {
-    NSData *shortcutData = [NSKeyedArchiver archivedDataWithRootObject:shortcut];
-    NSString *shortcutName = shortcut.shortcutName;
-
-    if (![shortcutData isEqualToData:[userDefaults dataForKey:shortcutName]]) {
-      [userDefaults setObject:shortcutData forKey:shortcutName];
-    }
-  }
+  [SpectacleShortcutUserDefaultsStorage storeShortcuts:self.registeredShortcuts];
 }
 
 #pragma mark -

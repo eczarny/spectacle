@@ -1,6 +1,4 @@
-#import <Foundation/Foundation.h>
-
-#import "SpectacleShortcut.h"
+#import <Cocoa/Cocoa.h>
 
 @interface SpectacleUtilities : NSObject
 
@@ -14,19 +12,7 @@
 
 + (void)displayRunningInBackgroundAlertWithCallback:(void (^)(BOOL, BOOL))callback;
 
-+ (void)displayRestoreDefaultsAlertWithCallback:(void (^)(BOOL))callback;
-
-#pragma mark -
-
-+ (NSArray *)shortcutNames;
-
-#pragma mark -
-
-+ (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action;
-
-#pragma mark -
-
-+ (void)restoreDefaultShortcuts;
++ (void)displayRestoreDefaultsAlertWithConfirmationCallback:(void (^)())callback;
 
 #pragma mark -
 

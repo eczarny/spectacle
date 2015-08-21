@@ -57,7 +57,7 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowWithAction:(SpectacleWindowAction)action
+- (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action
 {
   NSString *frontMostWindowName = SpectacleAccessibilityElement.frontMostApplicationName;
   NSString *spectacleWindowName = NSBundle.mainBundle.infoDictionary[@"CFBundleName"];
@@ -159,12 +159,12 @@ frontMostWindowElement:frontMostWindowElement
 
 - (void)undoLastWindowAction
 {
-  [self moveFrontMostWindowWithAction:SpectacleWindowActionUndo];
+  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionUndo];
 }
 
 - (void)redoLastWindowAction
 {
-  [self moveFrontMostWindowWithAction:SpectacleWindowActionRedo];
+  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionRedo];
 }
 
 #pragma mark -

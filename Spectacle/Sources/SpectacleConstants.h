@@ -20,7 +20,6 @@ extern const NSInteger SpectacleMenuItemActivateIgnoringOtherApps;
 extern NSString *const SpectaclePropertyListFileExtension;
 
 extern NSString *const SpectacleDefaultPreferencesPropertyListFile;
-extern NSString *const SpectacleShortcutNamesPropertyListFile;
 extern NSString *const SpectacleBlacklistedApplicationsPropertyListFile;
 
 #pragma mark -

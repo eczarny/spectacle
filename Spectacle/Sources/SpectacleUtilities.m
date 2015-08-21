@@ -1,13 +1,5 @@
 #import "SpectacleConstants.h"
-#import "SpectacleShortcutManager.h"
 #import "SpectacleUtilities.h"
-#import "SpectacleWindowPositionManager.h"
-
-@interface ZKHotKey : SpectacleShortcut
-
-@end
-
-#pragma mark -
 
 @implementation SpectacleUtilities
 
@@ -28,10 +20,10 @@
 + (void)registerDefaultsForBundle:(NSBundle *)bundle
 {
   NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-  NSDictionary *applicationDefaults = [[NSDictionary alloc] initWithContentsOfFile:path];
+  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile
+                                    ofType:SpectaclePropertyListFileExtension];
 
-  [defaults registerDefaults:applicationDefaults];
+  [defaults registerDefaults:[[NSDictionary alloc] initWithContentsOfFile:path]];
 }
 
 #pragma mark -
@@ -65,7 +57,7 @@
   }
 }
 
-+ (void)displayRestoreDefaultsAlertWithCallback:(void (^)(BOOL))callback
++ (void)displayRestoreDefaultsAlertWithConfirmationCallback:(void (^)())callback
 {
   NSAlert *alert = [NSAlert new];
 
@@ -79,112 +71,14 @@
 
   switch (response) {
     case NSAlertFirstButtonReturn:
-      callback(YES);
+      callback();
 
       break;
     case NSAlertSecondButtonReturn:
-      callback(NO);
-
       break;
     default:
       break;
   }
-}
-
-#pragma mark -
-
-+ (NSArray *)shortcutNames
-{
-  NSBundle *bundle = NSBundle.mainBundle;
-  NSString *path = [bundle pathForResource:SpectacleShortcutNamesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-  NSArray *shortcutNames = [NSArray arrayWithContentsOfFile:path];
-  
-  return shortcutNames;
-}
-
-#pragma mark -
-
-+ (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action
-{
-  NSDictionary *defaultShortcuts = [SpectacleUtilities defaultShortcutsWithNames:dictionary.allKeys];
-  NSMutableArray *shortcuts = [NSMutableArray new];
-  
-  [NSKeyedUnarchiver setClass:ZKHotKey.class forClassName:@"SpectacleShortcut"];
-  
-  for (NSData *shortcutData in dictionary.allValues) {
-    SpectacleShortcut *shortcut = [NSKeyedUnarchiver unarchiveObjectWithData:shortcutData];
-    
-    if (![shortcut isClearedShortcut]) {
-      NSString *shortcutName = shortcut.shortcutName;
-      
-      shortcut.shortcutAction = action;
-      
-      [SpectacleUtilities updateShortcut:shortcut withPotentiallyNewDefaultShortcut:defaultShortcuts[shortcutName]];
-      
-      [shortcuts addObject:shortcut];
-    }
-  }
-  
-  return shortcuts;
-}
-
-#pragma mark -
-
-+ (void)restoreDefaultShortcuts
-{
-  SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
-  SpectacleShortcutManager *shortcutManager = SpectacleShortcutManager.sharedManager;
-  NSDictionary *defaultShortcuts = [SpectacleUtilities defaultShortcutsWithNames:SpectacleUtilities.shortcutNames];
-
-  for (NSString *shortcutName in defaultShortcuts) {
-    SpectacleShortcut *defaultShortcut = defaultShortcuts[shortcutName];
-
-    defaultShortcut.shortcutAction = ^(SpectacleShortcut *shortcut) {
-      [windowPositionManager moveFrontMostWindowWithAction:[windowPositionManager windowActionForShortcut:shortcut]];
-    };
-
-    [shortcutManager registerShortcut:defaultShortcut];
-  }
-}
-
-#pragma mark -
-
-+ (void)updateShortcut:(SpectacleShortcut *)shortcut withPotentiallyNewDefaultShortcut:(SpectacleShortcut *)defaultShortcut
-{
-  NSString *shortcutName = shortcut.shortcutName;
-  NSInteger defaultShortcutCode;
-  
-  if (![shortcutName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
-    && ![shortcutName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
-    return;
-  }
-  
-  defaultShortcutCode = defaultShortcut.shortcutCode;
-  
-  if ((shortcut.shortcutCode == defaultShortcutCode) && (shortcut.shortcutModifiers == 768)) {
-    shortcut.shortcutCode = defaultShortcutCode;
-    
-    shortcut.shortcutModifiers = defaultShortcut.shortcutModifiers;
-  }
-}
-
-#pragma mark -
-
-+ (NSDictionary *)defaultShortcutsWithNames:(NSArray *)names
-{
-  NSBundle *bundle = NSBundle.mainBundle;
-  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile ofType:SpectaclePropertyListFileExtension];
-  NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
-  NSMutableDictionary *defaultShortcuts = [NSMutableDictionary new];
-  
-  for (NSString *shortcutName in names) {
-    NSData *defaultShortcutData = applicationDefaults[shortcutName];
-    SpectacleShortcut *defaultShortcut = [NSKeyedUnarchiver unarchiveObjectWithData:defaultShortcutData];
-    
-    defaultShortcuts[shortcutName] = defaultShortcut;
-  }
-  
-  return defaultShortcuts;
 }
 
 #pragma mark -
@@ -215,11 +109,5 @@
 
   return preferencePanePath;
 }
-
-@end
-
-#pragma mark -
-
-@implementation ZKHotKey
 
 @end
