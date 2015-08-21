@@ -55,7 +55,7 @@
     }
   }
 
-  return [self isShortcut:shortcut availableInMenu:[[NSApplication sharedApplication] mainMenu] error:error];
+  return YES;
 }
 
 #pragma mark -
@@ -103,38 +103,6 @@
   userInfo[NSLocalizedRecoveryOptionsErrorKey] = @[NSLocalizedString(@"OK", @"OK")];
   
   return [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:userInfo];
-}
-
-#pragma mark -
-
-+ (BOOL)isShortcut:(SpectacleShortcut *)shortcut availableInMenu:(NSMenu *)menu error:(NSError **)error
-{
-  for (NSMenuItem *menuItem in menu.itemArray) {
-    if ([menuItem hasSubmenu] && ![self isShortcut:shortcut availableInMenu:menuItem.submenu error:error]) {
-      return NO;
-    }
-    
-    NSString *keyEquivalent = menuItem.keyEquivalent;
-    
-    if (!keyEquivalent || [keyEquivalent isEqualToString:@""]) {
-      continue;
-    }
-    
-    NSString *keyCode = [SpectacleShortcutTranslator.sharedTranslator translateKeyCode:shortcut.shortcutCode];
-    
-    if ([[keyEquivalent uppercaseString] isEqualToString:keyCode]
-        && [SpectacleShortcutValidator shortcut:shortcut containsModifiers:menuItem.keyEquivalentModifierMask]) {
-      if (error) {
-        *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                                   description:@"Shortcut %@ already in use."
-                                            recoverySuggestion:@"The shortcut \"%@\" is already used in the menu."];
-      }
-      
-      return NO;
-    }
-  }
-  
-  return YES;
 }
 
 @end
