@@ -98,7 +98,7 @@
     return;
   }
   
-  if (event.keyCode == SpectacleEscapeKey) {
+  if (event.keyCode == kVK_Escape) {
     [MyCell resignFirstResponder];
   } else {
     [super keyDown:event];

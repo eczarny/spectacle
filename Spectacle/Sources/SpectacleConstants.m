@@ -56,12 +56,8 @@ const NSInteger SpectacleWindowActionHistorySize = 50;
 
 #pragma mark -
 
-const NSInteger SpectacleEscapeKey = 53;
-
-#pragma mark -
-
 const CGFloat SpectacleWindowSizeOffset = 30.0f;
-
+const CGFloat SpectacleMaximumGapNeededToStickToEdge = 5.0f;
 const CGFloat SpectacleMinimumWindowSizeRatio = 4.0f;
 
 #pragma mark -

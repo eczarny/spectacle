@@ -10,10 +10,12 @@
 
 #pragma mark -
 
-#define AgainstTheLeftEdgeOfScreen(a, b) (a.origin.x <= b.origin.x)
-#define AgainstTheRightEdgeOfScreen(a, b) (CGRectGetMaxX(a) >= CGRectGetMaxX(b))
-#define AgainstTheTopEdgeOfScreen(a, b) (CGRectGetMaxY(a) >= CGRectGetMaxY(b))
-#define AgainstTheBottomEdgeOfScreen(a, b) (a.origin.y <= b.origin.y)
+#define AgainstEdgeOfScreen(gap) (gap <= SpectacleMaximumGapNeededToStickToEdge)
+
+#define AgainstTheLeftEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(a.origin.x - b.origin.x))
+#define AgainstTheRightEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(CGRectGetMaxX(a) - CGRectGetMaxX(b)))
+#define AgainstTheTopEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(CGRectGetMaxY(a) - CGRectGetMaxY(b)))
+#define AgainstTheBottomEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(a.origin.y - b.origin.y))
 
 #pragma mark -
 

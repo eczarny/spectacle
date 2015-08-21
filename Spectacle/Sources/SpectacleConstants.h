@@ -56,18 +56,13 @@ extern const NSInteger SpectacleWindowActionHistorySize;
 
 #pragma mark -
 
-extern const NSInteger SpectacleEscapeKey;
-
-#pragma mark -
-
 extern const CGFloat SpectacleWindowSizeOffset;
-
+extern const CGFloat SpectacleMaximumGapNeededToStickToEdge;
 extern const CGFloat SpectacleMinimumWindowSizeRatio;
 
 #pragma mark -
 
 extern NSString *const SpectacleStatusItemIcon;
-extern NSString *const SpectacleAlternateStatusItemIcon;
 
 #pragma mark -
 

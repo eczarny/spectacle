@@ -1,3 +1,5 @@
+#import <Carbon/Carbon.h>
+
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcutRecorderDelegate.h"
