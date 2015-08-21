@@ -5,12 +5,20 @@
 
 @implementation SpectacleShortcutValidator
 
-+ (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut error:(NSError **)error
++ (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut
+        shortcutManager:(SpectacleShortcutManager *)shortcutManager
+                  error:(NSError **)error
 {
-  return [SpectacleShortcutValidator isShortcutValid:shortcut withValidators:@[] error:error];
+  return [SpectacleShortcutValidator isShortcutValid:shortcut
+                                     shortcutManager:shortcutManager
+                                      withValidators:@[]
+                                               error:error];
 }
 
-+ (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut withValidators:(NSArray *)validators error:(NSError **)error
++ (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut
+        shortcutManager:(SpectacleShortcutManager *)shortcutManager
+         withValidators:(NSArray *)validators
+                  error:(NSError **)error
 {
   CFArrayRef shortcuts = NULL;
   
@@ -44,7 +52,8 @@
   }
   
   for (id<SpectacleShortcutValidatorProtocol> validator in validators) {
-    if ([validator conformsToProtocol:@protocol(SpectacleShortcutValidatorProtocol)] && ![validator isShortcutValid:shortcut]) {
+    if ([validator conformsToProtocol:@protocol(SpectacleShortcutValidatorProtocol)]
+        && ![validator isShortcutValid:shortcut shortcutManager:shortcutManager]) {
       if (error) {
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
                                                    description:@"Shortcut %@ already in use."

@@ -1,10 +1,12 @@
 #import <Foundation/Foundation.h>
 
+#import "SpectacleShortcutStorageProtocol.h"
+
 @class SpectacleShortcut;
 
 @interface SpectacleShortcutManager : NSObject
 
-+ (SpectacleShortcutManager *)sharedManager;
+- (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage;
 
 #pragma mark -
 

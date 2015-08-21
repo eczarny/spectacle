@@ -2,14 +2,19 @@
 
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutManager.h"
-#import "SpectacleShortcutUserDefaultsStorage.h"
 
 static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data);
+
+static EventHotKeyID currentShortcutID = {
+  .signature = 'ZERO',
+  .id = 0
+};
 
 #pragma mark -
 
 @interface SpectacleShortcutManager ()
 
+@property (nonatomic) id<SpectacleShortcutStorageProtocol> shortcutStorage;
 @property (nonatomic) NSMutableDictionary *registeredShortcutsByName;
 @property (nonatomic) BOOL isShortcutHandlerInstalled;
 
@@ -19,33 +24,15 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 
 @implementation SpectacleShortcutManager
 
-static EventHotKeyID currentShortcutID = {
-  .signature = 'ZERO',
-  .id = 0
-};
-
-- (instancetype)init
+- (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
 {
-  if ((self = [super init])) {
+  if (self = [super init]) {
+    _shortcutStorage = shortcutStorage;
     _registeredShortcutsByName = [NSMutableDictionary new];
     _isShortcutHandlerInstalled = NO;
   }
 
   return self;
-}
-
-#pragma mark -
-
-+ (SpectacleShortcutManager *)sharedManager
-{
-  static SpectacleShortcutManager *sharedInstance = nil;
-  static dispatch_once_t predicate;
-
-  dispatch_once(&predicate, ^{
-    sharedInstance = [self new];
-  });
-
-  return sharedInstance;
 }
 
 #pragma mark -
@@ -171,7 +158,7 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)updateUserDefaults
 {
-  [SpectacleShortcutUserDefaultsStorage storeShortcuts:self.registeredShortcuts];
+  [self.shortcutStorage storeShortcuts:self.registeredShortcuts];
 }
 
 #pragma mark -
@@ -184,7 +171,7 @@ static EventHotKeyID currentShortcutID = {
     typeSpec.eventClass = kEventClassKeyboard;
     typeSpec.eventKind = kEventHotKeyPressed;
 
-    InstallApplicationEventHandler(&hotKeyEventHandler, 1, &typeSpec, NULL, NULL);
+    InstallApplicationEventHandler(&hotKeyEventHandler, 1, &typeSpec, (__bridge void*)self, NULL);
 
     self.isShortcutHandlerInstalled = YES;
   }
@@ -241,9 +228,9 @@ static EventHotKeyID currentShortcutID = {
 
 #pragma mark -
 
-static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data)
+static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *shortcutManager)
 {
-  return [SpectacleShortcutManager.sharedManager handleHotKeyEvent:event];
+  return [(__bridge SpectacleShortcutManager *)shortcutManager handleHotKeyEvent:event];
 }
 
 @end

@@ -9,7 +9,7 @@
 
 @implementation SpectacleShortcutUserDefaultsStorage
 
-+ (NSArray *)loadShortcutsWithAction:(SpectacleShortcutAction)action
+- (NSArray *)loadShortcutsWithAction:(SpectacleShortcutAction)action
 {
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
   NSMutableDictionary *shortcutsFromUserDefaults = [NSMutableDictionary new];
@@ -21,7 +21,7 @@
   return [self shortcutsFromDictionary:shortcutsFromUserDefaults action:action];
 }
 
-+ (NSArray *)defaultShortcutsWithAction:(SpectacleShortcutAction)action
+- (NSArray *)defaultShortcutsWithAction:(SpectacleShortcutAction)action
 {
   NSDictionary *defaultShortcuts = [self defaultShortcutsWithNames:self.shortcutNames];
   NSMutableArray *shortcuts = [NSMutableArray new];
@@ -39,7 +39,7 @@
 
 #pragma mark -
 
-+ (void)storeShortcuts: (NSArray *)shortcuts
+- (void)storeShortcuts: (NSArray *)shortcuts
 {
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
 
@@ -55,7 +55,7 @@
 
 #pragma mark -
 
-+ (NSArray *)shortcutNames
+- (NSArray *)shortcutNames
 {
   return @[SpectacleWindowActionMoveToCenter,
            SpectacleWindowActionMoveToFullscreen,
@@ -79,7 +79,7 @@
 
 #pragma mark -
 
-+ (NSDictionary *)defaultShortcutsWithNames:(NSArray *)names
+- (NSDictionary *)defaultShortcutsWithNames:(NSArray *)names
 {
   NSBundle *bundle = NSBundle.mainBundle;
   NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile
@@ -100,7 +100,7 @@
 
 #pragma mark -
 
-+ (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action
+- (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action
 {
   NSDictionary *defaultShortcuts = [self defaultShortcutsWithNames:dictionary.allKeys];
   NSMutableArray *shortcuts = [NSMutableArray new];
@@ -126,7 +126,7 @@
 
 #pragma mark -
 
-+ (void)updateShortcut:(SpectacleShortcut *)shortcut withPotentiallyNewDefault:(SpectacleShortcut *)defaultShortcut
+- (void)updateShortcut:(SpectacleShortcut *)shortcut withPotentiallyNewDefault:(SpectacleShortcut *)defaultShortcut
 {
   NSString *shortcutName = shortcut.shortcutName;
   NSInteger defaultShortcutCode;

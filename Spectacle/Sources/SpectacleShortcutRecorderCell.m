@@ -76,6 +76,7 @@
                                                                      shortcutModifiers:newModifierFlags];
       NSError *error = nil;
       BOOL isShortcutValid = [SpectacleShortcutValidator isShortcutValid:newShortcut
+                                                         shortcutManager:self.shortcutManager
                                                           withValidators:self.additionalShortcutValidators
                                                                    error:&error];
 

@@ -2,7 +2,7 @@
 
 #import "SpectacleShortcutRecorderDelegate.h"
 
-@class SpectacleShortcutManager, SpectacleAppDelegate, SpectacleShortcutRecorder;
+@class SpectacleAppDelegate, SpectacleShortcutManager, SpectacleShortcutRecorder, SpectacleWindowPositionManager;
 
 @interface SpectaclePreferencesController : NSWindowController<SpectacleShortcutRecorderDelegate>
 
@@ -26,6 +26,11 @@
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *redoLastMoveShortcutRecorder;
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
+
+#pragma mark -
+
+- (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
+                  windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager;
 
 #pragma mark -
 

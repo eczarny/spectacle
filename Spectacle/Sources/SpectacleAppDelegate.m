@@ -12,10 +12,11 @@
 @interface SpectacleAppDelegate ()
 
 @property (nonatomic) NSDictionary *shortcutMenuItems;
-@property (nonatomic) SpectaclePreferencesController *preferencesController;
-@property (nonatomic) SpectacleWindowPositionManager *windowPositionManager;
-@property (nonatomic) SpectacleShortcutManager *shortcutManager;
 @property (nonatomic) NSStatusItem *statusItem;
+@property (nonatomic) id<SpectacleShortcutStorageProtocol> shortcutStorage;
+@property (nonatomic) SpectacleShortcutManager *shortcutManager;
+@property (nonatomic) SpectacleWindowPositionManager *windowPositionManager;
+@property (nonatomic) SpectaclePreferencesController *preferencesController;
 
 @end
 
@@ -73,9 +74,11 @@
                              SpectacleWindowActionUndoLastMove: _undoLastMoveShortcutMenuItem,
                              SpectacleWindowActionRedoLastMove: _redoLastMoveShortcutMenuItem};
 
-  self.preferencesController = [SpectaclePreferencesController new];
-  self.windowPositionManager = SpectacleWindowPositionManager.sharedManager;
-  self.shortcutManager = SpectacleShortcutManager.sharedManager;
+  self.shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
+  self.shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:self.shortcutStorage];
+  self.windowPositionManager = [SpectacleWindowPositionManager new];
+  self.preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:self.shortcutManager
+                                                                         windowPositionManager:self.windowPositionManager];
 
   [self registerShortcuts];
 
@@ -225,7 +228,7 @@
 - (IBAction)restoreDefaults:(id)sender
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
-    NSArray *shortcuts = [SpectacleShortcutUserDefaultsStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+    NSArray *shortcuts = [self.shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
       SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
       [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
@@ -260,7 +263,7 @@
 
 - (void)registerShortcuts
 {
-  NSArray *shortcuts = [SpectacleShortcutUserDefaultsStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+  NSArray *shortcuts = [self.shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
     [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];

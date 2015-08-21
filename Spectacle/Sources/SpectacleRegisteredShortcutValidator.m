@@ -3,9 +3,9 @@
 
 @implementation SpectacleRegisteredShortcutValidator
 
-- (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut
+- (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut shortcutManager:(SpectacleShortcutManager *)shortcutManager
 {
-  return ![SpectacleShortcutManager.sharedManager isShortcutRegistered:shortcut];
+  return ![shortcutManager isShortcutRegistered:shortcut];
 }
 
 @end

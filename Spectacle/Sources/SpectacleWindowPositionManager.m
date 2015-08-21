@@ -43,20 +43,6 @@
 
 #pragma mark -
 
-+ (SpectacleWindowPositionManager *)sharedManager
-{
-  static SpectacleWindowPositionManager *sharedInstance = nil;
-  static dispatch_once_t predicate;
-
-  dispatch_once(&predicate, ^{
-    sharedInstance = [self new];
-  });
-
-  return sharedInstance;
-}
-
-#pragma mark -
-
 - (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action
 {
   NSString *frontMostWindowName = SpectacleAccessibilityElement.frontMostApplicationName;

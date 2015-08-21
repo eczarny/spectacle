@@ -11,6 +11,7 @@
 @interface SpectaclePreferencesController ()
 
 @property (nonatomic, weak) SpectacleShortcutManager *shortcutManager;
+@property (nonatomic, weak) SpectacleWindowPositionManager *windowPositionManager;
 @property (nonatomic) NSDictionary *shortcutRecorders;
 
 @end
@@ -19,10 +20,12 @@
 
 @implementation SpectaclePreferencesController
 
-- (instancetype)init
+- (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
+                  windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
 {
   if ((self = [super initWithWindowNibName:SpectaclePreferencesWindowNibName])) {
-    _shortcutManager = SpectacleShortcutManager.sharedManager;
+    _shortcutManager = shortcutManager;
+    _windowPositionManager = windowPositionManager;
   }
   
   return self;
@@ -75,12 +78,13 @@
 
 #pragma mark -
 
-- (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder didReceiveNewShortcut:(SpectacleShortcut *)shortcut
+- (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder
+   didReceiveNewShortcut:(SpectacleShortcut *)shortcut
 {
-  SpectacleWindowPositionManager *windowPositionManager = SpectacleWindowPositionManager.sharedManager;
-  
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
-    [windowPositionManager moveFrontMostWindowWithWindowAction:[windowPositionManager windowActionForShortcut:shortcut]];
+    SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
+
+    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
   }];
 
   [self.shortcutManager registerShortcut:shortcut];
@@ -88,7 +92,8 @@
   [NSNotificationCenter.defaultCenter postNotificationName:SpectacleShortcutChangedNotification object:self];
 }
 
-- (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder didClearExistingShortcut:(SpectacleShortcut *)shortcut
+- (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder
+didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
   [self.shortcutManager unregisterShortcutForName:shortcut.shortcutName];
 
@@ -161,7 +166,7 @@
     
     shortcutRecorder.delegate = self;
     
-    shortcutRecorder.additionalShortcutValidators = @[shortcutValidator];
+    [shortcutRecorder setAdditionalShortcutValidators:@[shortcutValidator] shortcutManager:self.shortcutManager];
   }
   
   

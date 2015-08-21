@@ -2,7 +2,7 @@
 
 #import "SpectacleShortcutRecorderDelegate.h"
 
-@class SpectacleShortcutRecorder, SpectacleShortcut;
+@class SpectacleShortcutManager;
 
 @interface SpectacleShortcutRecorderCell : NSCell
 
@@ -11,6 +11,7 @@
 @property (nonatomic) SpectacleShortcut *shortcut;
 @property (nonatomic, assign) id<SpectacleShortcutRecorderDelegate> delegate;
 @property (nonatomic) NSArray *additionalShortcutValidators;
+@property (nonatomic) SpectacleShortcutManager *shortcutManager;
 
 #pragma mark -
 

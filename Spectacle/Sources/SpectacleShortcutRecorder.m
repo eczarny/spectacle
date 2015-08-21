@@ -1,4 +1,5 @@
 #import "SpectacleConstants.h"
+#import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleShortcutRecorderCell.h"
 
@@ -65,8 +66,10 @@
 #pragma mark -
 
 - (void)setAdditionalShortcutValidators:(NSArray *)additionalShortcutValidators
+                        shortcutManager:(SpectacleShortcutManager *)shortcutManager
 {
   [MyCell setAdditionalShortcutValidators:additionalShortcutValidators];
+  [MyCell setShortcutManager:shortcutManager];
 }
 
 #pragma mark -

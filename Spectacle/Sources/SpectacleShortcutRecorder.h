@@ -4,7 +4,7 @@
 
 #import "SpectacleShortcutRecorderDelegate.h"
 
-@class SpectacleShortcut;
+@class SpectacleShortcutManager;
 
 @interface SpectacleShortcutRecorder : NSControl
 
@@ -26,6 +26,7 @@
 
 #pragma mark -
 
-- (void)setAdditionalShortcutValidators:(NSArray *)additionalShortcutValidators;
+- (void)setAdditionalShortcutValidators:(NSArray *)additionalShortcutValidators
+                        shortcutManager:(SpectacleShortcutManager *)shortcutManager;
 
 @end

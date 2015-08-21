@@ -56,10 +56,6 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 @interface SpectacleWindowPositionManager : NSObject
 
-+ (SpectacleWindowPositionManager *)sharedManager;
-
-#pragma mark -
-
 - (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action;
 
 #pragma mark -
