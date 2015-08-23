@@ -8,7 +8,7 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 
 @interface SpectacleShortcut : NSObject<NSCoding>
 
-@property (nonatomic) NSInteger handle;
+@property (nonatomic) EventHotKeyID shortcutID;
 @property (nonatomic) NSString *shortcutName;
 @property (nonatomic, copy) SpectacleShortcutAction shortcutAction;
 @property (nonatomic) NSInteger shortcutCode;

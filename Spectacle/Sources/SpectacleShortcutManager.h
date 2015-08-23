@@ -10,13 +10,11 @@
 
 #pragma mark -
 
-- (NSInteger)registerShortcut:(SpectacleShortcut *)shortcut;
-
-- (void)registerShortcuts:(NSArray *)shortcuts;
-
-#pragma mark -
+- (void)registerShortcut:(SpectacleShortcut *)shortcut;
 
 - (void)unregisterShortcutForName:(NSString *)name;
+
+- (void)registerShortcuts:(NSArray *)shortcuts;
 
 - (void)unregisterShortcuts;
 
@@ -29,5 +27,11 @@
 #pragma mark -
 
 - (BOOL)isShortcutRegistered:(SpectacleShortcut *)shortcut;
+
+#pragma mark -
+
+- (void)enableShortcuts;
+
+- (void)disableShortcuts;
 
 @end

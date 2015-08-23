@@ -6,12 +6,8 @@
 - (instancetype)initWithShortcutCode:(NSInteger)shortcutCode shortcutModifiers:(NSUInteger)shortcutModifiers
 {
   if (self = [super init]) {
-    _handle = -1;
-    _shortcutName = nil;
-    _shortcutAction = nil;
     _shortcutCode = shortcutCode;
     _shortcutModifiers = [SpectacleShortcutTranslator convertModifiersToCarbonIfNecessary:shortcutModifiers];
-    _ref = NULL;
   }
 
   return self;

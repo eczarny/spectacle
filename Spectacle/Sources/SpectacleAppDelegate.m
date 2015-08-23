@@ -17,6 +17,7 @@
 @property (nonatomic) SpectacleShortcutManager *shortcutManager;
 @property (nonatomic) SpectacleWindowPositionManager *windowPositionManager;
 @property (nonatomic) SpectaclePreferencesController *preferencesController;
+@property (nonatomic) NSTimer *disableShortcutsForAnHourTimer;
 
 @end
 
@@ -221,6 +222,41 @@
 - (IBAction)redoLastWindowAction:(id)sender
 {
   [self.windowPositionManager redoLastWindowAction];
+}
+
+#pragma mark -
+
+- (IBAction)disableOrEnableShortcutsForAnHour:(id)sender
+{
+  NSInteger newMenuItemState = NSMixedState;
+
+  switch (self.disableShortcutsForAnHourMenuItem.state) {
+    case NSOnState:
+      [self.shortcutManager enableShortcuts];
+
+      [self.disableShortcutsForAnHourTimer invalidate];
+
+      newMenuItemState = NSOffState;
+      break;
+    case NSOffState:
+      [self.shortcutManager disableShortcuts];
+
+      SEL selector = @selector(disableOrEnableShortcutsForAnHour:);
+
+      self.disableShortcutsForAnHourTimer = [NSTimer scheduledTimerWithTimeInterval:3600
+                                                                             target:self
+                                                                           selector:selector
+                                                                           userInfo:nil
+                                                                            repeats:NO];
+
+      newMenuItemState = NSOnState;
+
+      break;
+    default:
+      break;
+  }
+
+  self.disableShortcutsForAnHourMenuItem.state = newMenuItemState;
 }
 
 #pragma mark -

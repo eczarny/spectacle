@@ -16,6 +16,7 @@
         <customObject id="tMJ-JP-XRD" customClass="SpectacleAppDelegate">
             <connections>
                 <outlet property="accessiblityAccessDialogWindow" destination="aH5-eW-ySa" id="u6t-Fq-cCp"/>
+                <outlet property="disableShortcutsForAnHourMenuItem" destination="qpo-5w-ZIY" id="9Bo-Nc-w85"/>
                 <outlet property="makeLargerShortcutMenuItem" destination="Yun-AA-OVD" id="7P4-V3-6Yd"/>
                 <outlet property="makeSmallerShortcutMenuItem" destination="gTe-ym-DB0" id="Qj6-FS-ebO"/>
                 <outlet property="moveToBottomShortcutMenuItem" destination="huV-Gw-lbX" id="R2l-hx-4hT"/>
@@ -175,6 +176,20 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="b3s-Pm-hAJ"/>
+                <menuItem title="Disable" id="eZT-Mm-qSc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Disable" id="flL-B2-XIP">
+                        <items>
+                            <menuItem title="for an hour" id="qpo-5w-ZIY">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="disableOrEnableShortcutsForAnHour:" target="tMJ-JP-XRD" id="tWY-vQ-3Ub"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="hm8-dp-GoL"/>
                 <menuItem title="Restore Defaults..." id="aFM-wq-kOy">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

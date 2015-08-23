@@ -16,7 +16,7 @@ static EventHotKeyID currentShortcutID = {
 
 @property (nonatomic) id<SpectacleShortcutStorageProtocol> shortcutStorage;
 @property (nonatomic) NSMutableDictionary *registeredShortcutsByName;
-@property (nonatomic) BOOL isShortcutHandlerInstalled;
+@property (nonatomic) BOOL areShorcutsEnabled;
 
 @end
 
@@ -29,7 +29,9 @@ static EventHotKeyID currentShortcutID = {
   if (self = [super init]) {
     _shortcutStorage = shortcutStorage;
     _registeredShortcutsByName = [NSMutableDictionary new];
-    _isShortcutHandlerInstalled = NO;
+    _areShorcutsEnabled = YES;
+
+    [self installApplicationEventHandler];
   }
 
   return self;
@@ -37,13 +39,10 @@ static EventHotKeyID currentShortcutID = {
 
 #pragma mark -
 
-- (NSInteger)registerShortcut:(SpectacleShortcut *)shortcut
+- (void)registerShortcut:(SpectacleShortcut *)shortcut
 {
   NSString *shortcutName = shortcut.shortcutName;
   SpectacleShortcut *existingShortcut = [self registeredShortcutForName:shortcutName];
-  EventHotKeyRef shortcutRef;
-  EventTargetRef eventTarget = GetEventDispatcherTarget();
-  OSStatus err;
 
   if (existingShortcut) {
     [shortcut setShortcutAction:existingShortcut.shortcutAction];
@@ -51,47 +50,18 @@ static EventHotKeyID currentShortcutID = {
     [self unregisterShortcutForName:shortcutName];
   }
 
-  currentShortcutID.id = ++currentShortcutID.id;
-
-  err = RegisterEventHotKey((unsigned int)shortcut.shortcutCode,
-                            (unsigned int)shortcut.shortcutModifiers,
-                            currentShortcutID,
-                            eventTarget,
-                            0,
-                            &shortcutRef);
-
-  if (err) {
-    NSLog(@"There was a problem registering shortcut %@.", shortcutName);
-
-    return -1;
+  if (self.areShorcutsEnabled) {
+    [self registerEventHotKey:shortcut];
   }
-
-  shortcut.handle = currentShortcutID.id;
-  shortcut.ref = shortcutRef;
 
   self.registeredShortcutsByName[shortcutName] = shortcut;
 
-  [self updateUserDefaults];
-
-  [self installHotKeyEventHandler];
-
-  return shortcut.handle;
+  [self storeRegisteredShortcuts];
 }
-
-- (void)registerShortcuts:(NSArray *)shortcuts
-{
-  for (SpectacleShortcut *shortcut in shortcuts) {
-    [self registerShortcut:shortcut];
-  }
-}
-
-#pragma mark -
 
 - (void)unregisterShortcutForName:(NSString *)name
 {
   SpectacleShortcut *shortcut = [self registeredShortcutForName:name];
-  EventHotKeyRef shortcutRef;
-  OSStatus err;
 
   if (!shortcut) {
     NSLog(@"The specified shortcut has not been registered.");
@@ -99,20 +69,25 @@ static EventHotKeyID currentShortcutID = {
     return;
   }
 
-  shortcutRef = shortcut.ref;
+  BOOL eventHotKeyUnregistered = NO;
 
-  if (shortcutRef) {
-    err = UnregisterEventHotKey(shortcutRef);
+  if (self.areShorcutsEnabled) {
+    eventHotKeyUnregistered = [self unregisterEventHotKey:shortcut];
+  }
 
-    if (err) {
-      NSLog(@"Receiving the following error code when unregistering shortcut %@: %d", name, err);
-    }
+  self.registeredShortcutsByName[name] = [SpectacleShortcut clearedShortcutWithName:name];
 
-    self.registeredShortcutsByName[name] = [SpectacleShortcut clearedShortcutWithName:name];
+  if (self.areShorcutsEnabled && !eventHotKeyUnregistered) {
+    self.registeredShortcutsByName[name] = shortcut;
+  }
 
-    [self updateUserDefaults];
-  } else {
-    NSLog(@"Unable to unregister shortcut %@, no ref appears to exist.", name);
+  [self storeRegisteredShortcuts];
+}
+
+- (void)registerShortcuts:(NSArray *)shortcuts
+{
+  for (SpectacleShortcut *shortcut in shortcuts) {
+    [self registerShortcut:shortcut];
   }
 }
 
@@ -156,38 +131,109 @@ static EventHotKeyID currentShortcutID = {
 
 #pragma mark -
 
-- (void)updateUserDefaults
+- (void)enableShortcuts
+{
+  if (self.areShorcutsEnabled) return;
+
+  for (SpectacleShortcut *shortcut in self.registeredShortcuts) {
+    [self registerEventHotKey:shortcut];
+  }
+
+  self.areShorcutsEnabled = YES;
+}
+
+- (void)disableShortcuts
+{
+  if (!self.areShorcutsEnabled) return;
+
+  for (SpectacleShortcut *shortcut in self.registeredShortcuts) {
+    [self unregisterEventHotKey:shortcut];
+  }
+
+  self.areShorcutsEnabled = NO;
+}
+
+#pragma mark -
+
+- (void)installApplicationEventHandler
+{
+  EventTypeSpec typeSpec;
+
+  typeSpec.eventClass = kEventClassKeyboard;
+  typeSpec.eventKind = kEventHotKeyPressed;
+
+  InstallApplicationEventHandler(&hotKeyEventHandler, 1, &typeSpec, (__bridge void*)self, NULL);
+}
+
+#pragma mark -
+
+- (void)storeRegisteredShortcuts
 {
   [self.shortcutStorage storeShortcuts:self.registeredShortcuts];
 }
 
 #pragma mark -
 
-- (void)installHotKeyEventHandler
-{
-  if ((self.registeredShortcutsByName.count > 0) && !self.isShortcutHandlerInstalled) {
-    EventTypeSpec typeSpec;
-
-    typeSpec.eventClass = kEventClassKeyboard;
-    typeSpec.eventKind = kEventHotKeyPressed;
-
-    InstallApplicationEventHandler(&hotKeyEventHandler, 1, &typeSpec, (__bridge void*)self, NULL);
-
-    self.isShortcutHandlerInstalled = YES;
-  }
-}
-
-#pragma mark -
-
-- (SpectacleShortcut *)registeredShortcutForHandle:(NSInteger)handle
+- (SpectacleShortcut *)registeredShortcutForShortcutID:(EventHotKeyID)shortcutID
 {
   for (SpectacleShortcut *shortcut in self.registeredShortcuts) {
-    if (shortcut.handle == handle) {
+    if (shortcut.shortcutID.id == shortcutID.id) {
       return shortcut;
     }
   }
 
   return nil;
+}
+
+#pragma mark -
+
+- (void)registerEventHotKey:(SpectacleShortcut *)shortcut
+{
+  EventHotKeyRef shortcutRef;
+  EventTargetRef eventTarget = GetApplicationEventTarget();
+  OSStatus err;
+
+  currentShortcutID.id = ++currentShortcutID.id;
+
+  err = RegisterEventHotKey((unsigned int)shortcut.shortcutCode,
+                            (unsigned int)shortcut.shortcutModifiers,
+                            currentShortcutID,
+                            eventTarget,
+                            0,
+                            &shortcutRef);
+
+  if (err) {
+    NSLog(@"There was a problem registering shortcut %@.", shortcut.shortcutName);
+
+    return;
+  }
+
+  shortcut.shortcutID = currentShortcutID;
+  shortcut.ref = shortcutRef;
+}
+
+- (BOOL)unregisterEventHotKey:(SpectacleShortcut *)shortcut
+{
+  EventHotKeyRef shortcutRef;
+  OSStatus err;
+
+  shortcutRef = shortcut.ref;
+
+  if (shortcutRef) {
+    err = UnregisterEventHotKey(shortcutRef);
+
+    if (err) {
+      NSLog(@"Receiving the following error code when unregistering shortcut %@: %d", shortcut.shortcutName, err);
+
+      return NO;
+    }
+  } else {
+    NSLog(@"Unable to unregister shortcut %@, no ref appears to exist.", shortcut.shortcutName);
+
+    return NO;
+  }
+
+  return YES;
 }
 
 #pragma mark -
@@ -208,7 +254,7 @@ static EventHotKeyID currentShortcutID = {
     return err;
   }
 
-  shortcut = [self registeredShortcutForHandle:shortcutID.id];
+  shortcut = [self registeredShortcutForShortcutID:shortcutID];
 
   if (!shortcut) {
     NSLog(@"Unable to handle event for shortcut with handle %d, the registered shortcut does not exist.", shortcutID.id);
@@ -223,8 +269,10 @@ static EventHotKeyID currentShortcutID = {
       break;
   }
 
-  return 0;
+  return noErr;
 }
+
+@end
 
 #pragma mark -
 
@@ -232,5 +280,3 @@ static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef eve
 {
   return [(__bridge SpectacleShortcutManager *)shortcutManager handleHotKeyEvent:event];
 }
-
-@end

@@ -24,6 +24,7 @@
 @property (nonatomic) IBOutlet NSMenuItem *makeSmallerShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *undoLastMoveShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *redoLastMoveShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *disableShortcutsForAnHourMenuItem;
 
 # pragma mark -
 
@@ -80,6 +81,10 @@
 - (IBAction)undoLastWindowAction:(id)sender;
 
 - (IBAction)redoLastWindowAction:(id)sender;
+
+#pragma mark -
+
+- (IBAction)disableOrEnableShortcutsForAnHour:(id)sender;
 
 # pragma mark -
 
