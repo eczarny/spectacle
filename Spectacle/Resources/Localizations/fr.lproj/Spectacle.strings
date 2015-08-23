@@ -80,6 +80,14 @@
 
 /* --- */
 
+/* Class = "NSMenuItem"; title = "Disable"; ObjectID = "eZT-Mm-qSc"; */
+"eZT-Mm-qSc.title" = "Disable";
+
+/* Class = "NSMenuItem"; title = "for an hour"; ObjectID = "qpo-5w-ZIY"; */
+"qpo-5w-ZIY.title" = "for an hour";
+
+/* --- */
+
 /* Class = "NSMenuItem"; title = "Restore Defaults..."; ObjectID = "aFM-wq-kOy"; */
 "aFM-wq-kOy.title" = "Rétablir par défaut...";
 
