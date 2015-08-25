@@ -24,6 +24,11 @@
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *makeSmallerShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *undoLastMoveShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *redoLastMoveShortcutRecorder;
+
+@property (nonatomic) IBOutlet NSView *footerView;
+@property (nonatomic) IBOutlet NSView *shortcutModifierLegendFooterView;
+@property (nonatomic) IBOutlet NSView *optionsFooterView;
+
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
 
@@ -31,6 +36,10 @@
 
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager;
+
+#pragma mark -
+
+- (IBAction)swapFooterViews:(id)sender;
 
 #pragma mark -
 

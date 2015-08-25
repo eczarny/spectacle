@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -7,7 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SpectaclePreferencesController">
             <connections>
-                <outlet property="loginItemEnabled" destination="Rrq-0h-p8v" id="epA-8y-ZhO"/>
+                <outlet property="footerView" destination="wNg-Ru-1aI" id="a3s-Yg-9AT"/>
+                <outlet property="loginItemEnabled" destination="P6j-bi-KoE" id="Bfa-gg-4G7"/>
                 <outlet property="makeLargerShortcutRecorder" destination="iwx-0m-WUf" id="lUC-P6-Vv0"/>
                 <outlet property="makeSmallerShortcutRecorder" destination="0jH-Zh-PgG" id="KIO-62-XGL"/>
                 <outlet property="moveToBottomShortcutRecorder" destination="hzO-eo-G8F" id="DJU-MT-61C"/>
@@ -24,8 +25,10 @@
                 <outlet property="moveToTopShortcutRecorder" destination="rN1-zt-f9E" id="Mw9-c9-b8O"/>
                 <outlet property="moveToUpperLeftShortcutRecorder" destination="wLj-pQ-b7w" id="fvL-bO-rKZ"/>
                 <outlet property="moveToUpperRightShortcutRecorder" destination="44s-Ps-tmn" id="Kbc-Pj-hti"/>
+                <outlet property="optionsFooterView" destination="tke-O4-mlo" id="WfN-Qq-nH6"/>
                 <outlet property="redoLastMoveShortcutRecorder" destination="pPP-7U-GSg" id="AYn-wB-Yo2"/>
-                <outlet property="statusItemEnabled" destination="oe0-cf-jea" id="qu5-ae-zvE"/>
+                <outlet property="shortcutModifierLegendFooterView" destination="t2T-pB-nn6" id="WSX-7H-Osj"/>
+                <outlet property="statusItemEnabled" destination="cf8-TV-Yjp" id="0xU-vc-q02"/>
                 <outlet property="undoLastMoveShortcutRecorder" destination="au4-Gr-KF9" id="ecz-fA-ywO"/>
                 <outlet property="window" destination="JW4-q9-L7q" id="3he-NT-S7L"/>
             </connections>
@@ -34,14 +37,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Spectacle X.Y.Z" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="JW4-q9-L7q">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="283" y="311" width="616" height="467"/>
+            <rect key="contentRect" x="283" y="311" width="616" height="488"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="ry3-8n-Juf">
-                <rect key="frame" x="0.0" y="0.0" width="616" height="467"/>
+                <rect key="frame" x="0.0" y="5" width="616" height="488"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="Nwx-2P-V9U">
-                        <rect key="frame" x="18" y="405" width="117" height="17"/>
+                        <rect key="frame" x="18" y="426" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Center:" id="oqf-7z-BFa">
                             <font key="font" metaFont="system"/>
@@ -50,11 +53,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="mbr-Cs-whm" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="403" width="140" height="21"/>
+                        <rect key="frame" x="140" y="424" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="guf-X1-Beb">
-                        <rect key="frame" x="18" y="376" width="117" height="17"/>
+                        <rect key="frame" x="18" y="397" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Fullscreen:" id="tKr-XE-DEU">
                             <font key="font" metaFont="system"/>
@@ -63,11 +66,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="Wxa-6e-lyM" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="374" width="140" height="21"/>
+                        <rect key="frame" x="140" y="395" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="uY3-hc-TbA">
-                        <rect key="frame" x="18" y="318" width="117" height="17"/>
+                        <rect key="frame" x="18" y="339" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Left Half:" id="IWj-rc-Kvi">
                             <font key="font" metaFont="system"/>
@@ -76,11 +79,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="4na-E1-mUM" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="316" width="140" height="21"/>
+                        <rect key="frame" x="140" y="337" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Gsd-o4-KTI">
-                        <rect key="frame" x="18" y="289" width="117" height="17"/>
+                        <rect key="frame" x="18" y="310" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Right Half:" id="WeK-fS-mRh">
                             <font key="font" metaFont="system"/>
@@ -89,11 +92,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="eCb-ZU-egY" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="287" width="140" height="21"/>
+                        <rect key="frame" x="140" y="308" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="edj-pC-f1Z">
-                        <rect key="frame" x="17" y="260" width="117" height="17"/>
+                        <rect key="frame" x="17" y="281" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Top Half:" id="AnP-Lv-Hbd">
                             <font key="font" metaFont="system"/>
@@ -102,11 +105,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="rN1-zt-f9E" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="258" width="140" height="21"/>
+                        <rect key="frame" x="140" y="279" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Dcf-0q-9fG">
-                        <rect key="frame" x="18" y="231" width="117" height="17"/>
+                        <rect key="frame" x="18" y="252" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Bottom Half:" id="Awn-mO-sht">
                             <font key="font" metaFont="system"/>
@@ -115,11 +118,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="hzO-eo-G8F" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="229" width="140" height="21"/>
+                        <rect key="frame" x="140" y="250" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="jQx-Df-xE5">
-                        <rect key="frame" x="18" y="173" width="117" height="17"/>
+                        <rect key="frame" x="18" y="194" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Upper Left:" id="ldH-1E-mKW">
                             <font key="font" metaFont="system"/>
@@ -128,11 +131,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="wLj-pQ-b7w" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="171" width="140" height="21"/>
+                        <rect key="frame" x="140" y="192" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="b4f-8J-iOX">
-                        <rect key="frame" x="18" y="144" width="117" height="17"/>
+                        <rect key="frame" x="18" y="165" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lower Left:" id="dQP-TR-GMx">
                             <font key="font" metaFont="system"/>
@@ -141,11 +144,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="u0O-yW-0g8" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="142" width="140" height="21"/>
+                        <rect key="frame" x="140" y="163" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Q8S-XZ-uUw">
-                        <rect key="frame" x="18" y="115" width="117" height="17"/>
+                        <rect key="frame" x="18" y="136" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Upper Right:" id="gSY-Au-xOH">
                             <font key="font" metaFont="system"/>
@@ -154,11 +157,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="44s-Ps-tmn" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="113" width="140" height="21"/>
+                        <rect key="frame" x="140" y="134" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="NRc-if-7b9">
-                        <rect key="frame" x="18" y="86" width="117" height="17"/>
+                        <rect key="frame" x="18" y="107" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lower Right:" id="Vul-FT-BbB">
                             <font key="font" metaFont="system"/>
@@ -167,11 +170,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="lJh-dh-K7C" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="84" width="140" height="21"/>
+                        <rect key="frame" x="140" y="105" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="4P4-9k-sEd">
-                        <rect key="frame" x="286" y="405" width="131" height="17"/>
+                        <rect key="frame" x="286" y="426" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Next Display:" id="lw7-Ap-kJO">
                             <font key="font" metaFont="system"/>
@@ -180,11 +183,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="lLw-FX-nqn" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="403" width="140" height="21"/>
+                        <rect key="frame" x="422" y="424" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="aQq-n4-9FK">
-                        <rect key="frame" x="286" y="376" width="131" height="17"/>
+                        <rect key="frame" x="286" y="397" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Previous Display:" id="hmL-EC-pro">
                             <font key="font" metaFont="system"/>
@@ -193,11 +196,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="OsP-Gv-gJI" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="374" width="140" height="21"/>
+                        <rect key="frame" x="422" y="395" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="sBC-FW-cjv">
-                        <rect key="frame" x="286" y="318" width="131" height="17"/>
+                        <rect key="frame" x="286" y="339" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Next Third:" id="Tze-mR-IV4">
                             <font key="font" metaFont="system"/>
@@ -206,11 +209,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="kGL-qW-2Cn" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="316" width="140" height="21"/>
+                        <rect key="frame" x="422" y="337" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="FjH-Ke-3MT">
-                        <rect key="frame" x="286" y="289" width="131" height="17"/>
+                        <rect key="frame" x="286" y="310" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Previous Third:" id="s3E-Lp-mJ4">
                             <font key="font" metaFont="system"/>
@@ -219,11 +222,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="NdL-ul-8LW" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="287" width="140" height="21"/>
+                        <rect key="frame" x="422" y="308" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="sIx-hc-eUS">
-                        <rect key="frame" x="286" y="231" width="131" height="17"/>
+                        <rect key="frame" x="286" y="252" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Make Larger:" id="0f9-kj-bro">
                             <font key="font" metaFont="system"/>
@@ -232,11 +235,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="iwx-0m-WUf" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="229" width="140" height="21"/>
+                        <rect key="frame" x="422" y="250" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Iw5-TM-YRu">
-                        <rect key="frame" x="286" y="202" width="131" height="17"/>
+                        <rect key="frame" x="286" y="223" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Make Smaller:" id="SDM-U5-yUR">
                             <font key="font" metaFont="system"/>
@@ -245,11 +248,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="0jH-Zh-PgG" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="200" width="140" height="21"/>
+                        <rect key="frame" x="422" y="221" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="lYA-bE-Cvq">
-                        <rect key="frame" x="286" y="144" width="131" height="17"/>
+                        <rect key="frame" x="286" y="165" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Undo:" id="CJs-az-eG7">
                             <font key="font" metaFont="system"/>
@@ -258,11 +261,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="au4-Gr-KF9" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="142" width="140" height="21"/>
+                        <rect key="frame" x="422" y="163" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="paN-Mc-McA">
-                        <rect key="frame" x="286" y="115" width="131" height="17"/>
+                        <rect key="frame" x="286" y="136" width="131" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Redo:" id="y7M-cR-DF2">
                             <font key="font" metaFont="system"/>
@@ -271,64 +274,177 @@
                         </textFieldCell>
                     </textField>
                     <customView id="pPP-7U-GSg" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="422" y="113" width="140" height="21"/>
+                        <rect key="frame" x="422" y="134" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <box autoresizesSubviews="NO" borderType="line" titlePosition="noTitle" id="zJZ-6v-kv2">
-                        <rect key="frame" x="-6" y="-6" width="628" height="50"/>
+                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="vWw-ws-BgW">
+                        <rect key="frame" x="0.0" y="60" width="616" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="626" height="48"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <button id="Rrq-0h-p8v">
-                                    <rect key="frame" x="16.000001892176481" y="16" width="224" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Launch Spectacle at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="GuZ-nQ-vcf">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="toggleLoginItem:" target="-2" id="6p0-ga-GOZ"/>
-                                    </connections>
-                                </button>
-                                <textField verticalHuggingPriority="750" id="jaJ-OW-nr4">
-                                    <rect key="frame" x="243" y="18" width="139" height="17"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Run..." id="bGs-Hm-E7b">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <popUpButton verticalHuggingPriority="750" id="oe0-cf-jea">
-                                    <rect key="frame" x="383" y="12" width="227" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="in the status menu" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Ijc-HH-ajr" id="S4M-eI-ufs">
-                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="menu"/>
-                                        <menu key="menu" title="OtherViews" id="U8H-lR-Gvz">
-                                            <items>
-                                                <menuItem title="in the status menu" state="on" id="Ijc-HH-ajr">
-                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                </menuItem>
-                                                <menuItem title="as a background application" tag="1" id="TT0-db-TBT">
-                                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                                </menuItem>
-                                            </items>
-                                        </menu>
-                                    </popUpButtonCell>
-                                    <connections>
-                                        <action selector="toggleStatusItem:" target="-2" id="9le-sI-QaX"/>
-                                    </connections>
-                                </popUpButton>
-                            </subviews>
-                        </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
                     </box>
+                    <customView id="wNg-Ru-1aI" userLabel="Footer View">
+                        <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <customView id="t2T-pB-nn6" userLabel="Shortcut Modifer Legend Footer View">
+                                <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="t8o-hT-IQi">
+                                        <rect key="frame" x="191" y="25" width="28" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="⌃" id="806-S1-nYH">
+                                            <font key="font" metaFont="system" size="24"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dj1-Cv-cGv">
+                                        <rect key="frame" x="174" y="9" width="63" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Control" id="7Fe-Da-fYB">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="l4c-Va-boE">
+                                        <rect key="frame" x="258" y="25" width="32" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="⌥" id="YQm-Kc-fYF">
+                                            <font key="font" metaFont="system" size="24"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="T1t-0q-VR1">
+                                        <rect key="frame" x="243" y="9" width="63" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Option" id="U0H-hG-KAQ">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dWs-aZ-UsN">
+                                        <rect key="frame" x="325" y="25" width="32" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="⇧" id="Ir0-AJ-ldj">
+                                            <font key="font" metaFont="system" size="24"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="T2K-sG-8h4">
+                                        <rect key="frame" x="310" y="9" width="63" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Shift" id="dww-8Q-sa1">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ePN-Nc-cy9">
+                                        <rect key="frame" x="394" y="25" width="32" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="⌘" id="SQM-4e-yFd">
+                                            <font key="font" metaFont="system" size="24"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Xwv-Yf-TxZ">
+                                        <rect key="frame" x="379" y="9" width="63" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Command" id="jdf-Yu-zrq">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button id="iUO-l8-726" userLabel="Next Button">
+                                        <rect key="frame" x="575" y="9" width="32" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoRightTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="iYb-kS-yHQ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="swapFooterViews:" target="-2" id="JNg-Dc-I7P"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </customView>
+                        </subviews>
+                    </customView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
         </window>
+        <customView id="tke-O4-mlo" userLabel="Options Footer View">
+            <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button id="g4V-DY-GoG" userLabel="Previous Button">
+                    <rect key="frame" x="9" y="9" width="32" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSGoLeftTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="0vX-x3-M6H">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="swapFooterViews:" target="-2" id="U7e-9q-8hA"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" id="U91-cx-ccf">
+                    <rect key="frame" x="288" y="23" width="83" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Run..." id="eYU-TH-wcO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="cf8-TV-Yjp">
+                    <rect key="frame" x="372" y="17" width="227" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="in the status menu" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="in4-v8-tIm" id="6fN-BB-g3d">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="W2t-KP-bYJ">
+                            <items>
+                                <menuItem title="in the status menu" state="on" id="in4-v8-tIm">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="as a background application" tag="1" id="aWf-FC-J1j">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <action selector="toggleStatusItem:" target="-2" id="UbE-2H-Bsc"/>
+                    </connections>
+                </popUpButton>
+                <button id="P6j-bi-KoE">
+                    <rect key="frame" x="47" y="23" width="224" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="check" title="Launch Spectacle at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cEj-mH-kie">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleLoginItem:" target="-2" id="pwr-Q6-dvi"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </customView>
     </objects>
+    <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+    </resources>
 </document>

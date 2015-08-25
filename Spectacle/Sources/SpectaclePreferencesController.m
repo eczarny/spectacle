@@ -1,3 +1,5 @@
+#import <QuartzCore/QuartzCore.h>
+
 #import "SpectacleConstants.h"
 #import "SpectacleLoginItemHelper.h"
 #import "SpectaclePreferencesController.h"
@@ -73,7 +75,9 @@
   
   [self.statusItemEnabled selectItemWithTag:isStatusItemEnabled ? 0 : 1];
 
-  [self.window setTitle:[NSString stringWithFormat:@"Spectacle %@", SpectacleUtilities.applicationVersion]];
+  self.window.title = [@"Spectacle " stringByAppendingString:SpectacleUtilities.applicationVersion];
+
+  self.footerView.wantsLayer = YES;
 }
 
 #pragma mark -
@@ -98,6 +102,32 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
   [self.shortcutManager unregisterShortcutForName:shortcut.shortcutName];
 
   [NSNotificationCenter.defaultCenter postNotificationName:SpectacleShortcutChangedNotification object:self];
+}
+
+#pragma mark -
+
+- (IBAction)swapFooterViews:(id)sender
+{
+  CATransition *transition = [CATransition animation];
+  NSView *currentFooterView = self.footerView.subviews[0];
+  NSView *nextFooterView = nil;
+
+  transition.type = kCATransitionPush;
+
+  if (currentFooterView == self.shortcutModifierLegendFooterView) {
+    nextFooterView = self.optionsFooterView;
+
+    transition.subtype = kCATransitionFromRight;
+  } else {
+    nextFooterView = self.shortcutModifierLegendFooterView;
+
+    transition.subtype = kCATransitionFromLeft;
+  }
+
+  self.footerView.animations = @{@"subviews": transition};
+
+  [self.footerView.animator replaceSubview:currentFooterView
+                                      with:nextFooterView];
 }
 
 #pragma mark -
