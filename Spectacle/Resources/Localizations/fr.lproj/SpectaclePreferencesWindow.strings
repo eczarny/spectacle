@@ -67,6 +67,25 @@
 
 /* --- */
 
+/* Class = "NSButtonCell"; title = "Restore Defaults..."; ObjectID = "NT7-Sd-Ofw"; */
+"NT7-Sd-Ofw.title" = "Rétablir par défaut...";
+
+/* --- */
+
+/* Class = "NSTextFieldCell"; title = "Control"; ObjectID = "7Fe-Da-fYB"; */
+"7Fe-Da-fYB.title" = "Control";
+
+/* Class = "NSTextFieldCell"; title = "Option"; ObjectID = "U0H-hG-KAQ"; */
+"U0H-hG-KAQ.title" = "Option";
+
+/* Class = "NSTextFieldCell"; title = "Shift"; ObjectID = "dww-8Q-sa1"; */
+"dww-8Q-sa1.title" = "Shift";
+
+/* Class = "NSTextFieldCell"; title = "Command"; ObjectID = "jdf-Yu-zrq"; */
+"jdf-Yu-zrq.title" = "Command";
+
+/* --- */
+
 /* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "GuZ-nQ-vcf"; */
 "GuZ-nQ-vcf.title" = "Ouvrir Spectacle au démarrage";
 

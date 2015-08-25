@@ -1,6 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcutRecorderDelegate.h"
+#import "SpectacleShortcutStorageProtocol.h"
 
 @class SpectacleAppDelegate, SpectacleShortcutManager, SpectacleShortcutRecorder, SpectacleWindowPositionManager;
 
@@ -35,11 +36,16 @@
 #pragma mark -
 
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
-                  windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager;
+                  windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
+                        shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage;
 
 #pragma mark -
 
 - (IBAction)swapFooterViews:(id)sender;
+
+#pragma mark -
+
+- (IBAction)restoreDefaults:(id)sender;
 
 #pragma mark -
 

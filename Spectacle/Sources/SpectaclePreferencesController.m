@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) SpectacleShortcutManager *shortcutManager;
 @property (nonatomic, weak) SpectacleWindowPositionManager *windowPositionManager;
+@property (nonatomic, weak) id<SpectacleShortcutStorageProtocol> shortcutStorage;
+
 @property (nonatomic) NSDictionary *shortcutRecorders;
 
 @end
@@ -24,10 +26,12 @@
 
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
+                        shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
 {
   if ((self = [super initWithWindowNibName:SpectaclePreferencesWindowNibName])) {
     _shortcutManager = shortcutManager;
     _windowPositionManager = windowPositionManager;
+    _shortcutStorage = shortcutStorage;
   }
   
   return self;
@@ -128,6 +132,24 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 
   [self.footerView.animator replaceSubview:currentFooterView
                                       with:nextFooterView];
+}
+
+#pragma mark -
+
+- (IBAction)restoreDefaults:(id)sender
+{
+  [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
+    NSArray *shortcuts = [self.shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+      SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
+
+      [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+    }];
+
+    [self.shortcutManager registerShortcuts:shortcuts];
+
+    [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultShortcutsNotification
+                                                      object:self];
+  }];
 }
 
 #pragma mark -

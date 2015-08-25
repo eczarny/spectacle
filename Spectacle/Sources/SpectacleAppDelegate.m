@@ -78,8 +78,10 @@
   self.shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
   self.shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:self.shortcutStorage];
   self.windowPositionManager = [SpectacleWindowPositionManager new];
+
   self.preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:self.shortcutManager
-                                                                         windowPositionManager:self.windowPositionManager];
+                                                                         windowPositionManager:self.windowPositionManager
+                                                                               shortcutStorage:self.shortcutStorage];
 
   [self registerShortcuts];
 
@@ -257,24 +259,6 @@
   }
 
   self.disableShortcutsForAnHourMenuItem.state = newMenuItemState;
-}
-
-#pragma mark -
-
-- (IBAction)restoreDefaults:(id)sender
-{
-  [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
-    NSArray *shortcuts = [self.shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
-      SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
-
-      [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
-    }];
-
-    [self.shortcutManager registerShortcuts:shortcuts];
-
-    [NSNotificationCenter.defaultCenter postNotificationName:SpectacleRestoreDefaultShortcutsNotification
-                                                      object:self];
-  }];
 }
 
 #pragma mark -

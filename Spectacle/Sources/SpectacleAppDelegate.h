@@ -88,10 +88,6 @@
 
 # pragma mark -
 
-- (IBAction)restoreDefaults:(id)sender;
-
-# pragma mark -
-
 - (IBAction)openSystemPreferences:(id)sender;
 
 @end

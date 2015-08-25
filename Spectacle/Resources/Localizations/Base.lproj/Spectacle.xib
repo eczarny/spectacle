@@ -189,13 +189,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="hm8-dp-GoL"/>
-                <menuItem title="Restore Defaults..." id="aFM-wq-kOy">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="restoreDefaults:" target="tMJ-JP-XRD" id="Ned-c9-wTG"/>
-                    </connections>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="OfT-IK-7NI"/>
                 <menuItem title="Quit Spectacle" id="Isn-Og-AEv">
                     <modifierMask key="keyEquivalentModifierMask"/>
