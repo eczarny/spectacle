@@ -392,7 +392,6 @@
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
         </window>
         <customView id="tke-O4-mlo" userLabel="Options Footer View">
             <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
@@ -451,7 +450,6 @@
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
         </customView>
     </objects>
     <resources>

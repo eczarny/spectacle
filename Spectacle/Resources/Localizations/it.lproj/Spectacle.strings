@@ -7,6 +7,14 @@
 
 /* --- */
 
+/* Class = "NSMenuItem"; title = "Disable"; ObjectID = "eZT-Mm-qSc"; */
+"eZT-Mm-qSc.title" = "Disable";
+
+/* Class = "NSMenuItem"; title = "for an hour"; ObjectID = "qpo-5w-ZIY"; */
+"qpo-5w-ZIY.title" = "for an hour";
+
+/* --- */
+
 /* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "ME4-Br-HLT"; */
 "ME4-Br-HLT.title" = "Preferences...";
 
@@ -77,14 +85,6 @@
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "187-7k-0Ct"; */
 "187-7k-0Ct.title" = "Redo";
-
-/* --- */
-
-/* Class = "NSMenuItem"; title = "Disable"; ObjectID = "eZT-Mm-qSc"; */
-"eZT-Mm-qSc.title" = "Disable";
-
-/* Class = "NSMenuItem"; title = "for an hour"; ObjectID = "qpo-5w-ZIY"; */
-"qpo-5w-ZIY.title" = "for an hour";
 
 /* --- */
 

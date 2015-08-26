@@ -54,6 +54,20 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="880"/>
+                <menuItem title="Disable" id="eZT-Mm-qSc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Disable" id="flL-B2-XIP">
+                        <items>
+                            <menuItem title="for an hour" id="qpo-5w-ZIY">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="disableOrEnableShortcutsForAnHour:" target="tMJ-JP-XRD" id="tWY-vQ-3Ub"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="b3s-Pm-hAJ"/>
                 <menuItem title="Preferences..." tag="-1" id="ME4-Br-HLT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -174,20 +188,6 @@
                     <connections>
                         <action selector="redoLastWindowAction:" target="tMJ-JP-XRD" id="WIv-TD-23d"/>
                     </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="b3s-Pm-hAJ"/>
-                <menuItem title="Disable" id="eZT-Mm-qSc">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Disable" id="flL-B2-XIP">
-                        <items>
-                            <menuItem title="for an hour" id="qpo-5w-ZIY">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="disableOrEnableShortcutsForAnHour:" target="tMJ-JP-XRD" id="tWY-vQ-3Ub"/>
-                                </connections>
-                            </menuItem>
-                        </items>
-                    </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="OfT-IK-7NI"/>
                 <menuItem title="Quit Spectacle" id="Isn-Og-AEv">
