@@ -6,11 +6,7 @@
 
 + (SpectacleAccessibilityElement *)systemWideElement;
 
-#pragma mark -
-
-+ (SpectacleAccessibilityElement *)frontMostWindowElement;
-
-+ (NSString *)frontMostApplicationName;
++ (SpectacleAccessibilityElement *)frontmostWindowElement;
 
 #pragma mark -
 
@@ -31,5 +27,7 @@
 - (BOOL)isSheet;
 
 - (BOOL)isFullScreen;
+
+- (BOOL)isSystemDialog;
 
 @end

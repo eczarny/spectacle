@@ -2,7 +2,7 @@
 
 @interface SpectacleAccessibilityElement ()
 
-@property (nonatomic) AXUIElementRef element;
+@property (nonatomic) AXUIElementRef underlyingElement;
 
 @end
 
@@ -13,7 +13,7 @@
 - (instancetype)init
 {
   if (self = [super init]) {
-    _element = NULL;
+    _underlyingElement = NULL;
   }
 
   return self;
@@ -23,43 +23,38 @@
 
 + (SpectacleAccessibilityElement *)systemWideElement
 {
-  SpectacleAccessibilityElement *newElement = [SpectacleAccessibilityElement new];
-  AXUIElementRef systemWideElement = AXUIElementCreateSystemWide();
+  static SpectacleAccessibilityElement *systemWideElement = nil;
+  static dispatch_once_t predicate;
 
-  newElement.element = systemWideElement;
+  dispatch_once(&predicate, ^{
+    AXUIElementRef underlyingElement = AXUIElementCreateSystemWide();
 
-  CFRelease(systemWideElement);
+    systemWideElement = [SpectacleAccessibilityElement new];
+    systemWideElement.underlyingElement = underlyingElement;
 
-  return newElement;
+    CFRelease(underlyingElement);
+  });
+
+  return systemWideElement;
 }
 
-#pragma mark -
-
-+ (SpectacleAccessibilityElement *)frontMostWindowElement
++ (SpectacleAccessibilityElement *)frontmostWindowElement
 {
   SpectacleAccessibilityElement *systemWideElement = SpectacleAccessibilityElement.systemWideElement;
   SpectacleAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
-  SpectacleAccessibilityElement *frontMostWindowElement = nil;
+  SpectacleAccessibilityElement *frontmostWindowElement = nil;
 
   if (applicationWithFocusElement) {
-    frontMostWindowElement = [applicationWithFocusElement elementWithAttribute:kAXFocusedWindowAttribute];
+    frontmostWindowElement = [applicationWithFocusElement elementWithAttribute:kAXFocusedWindowAttribute];
 
-    if (!frontMostWindowElement) {
+    if (!frontmostWindowElement) {
       NSLog(@"Invalid accessibility element provided, unable to determine the size and position of the window.");
     }
   } else {
     NSLog(@"Failed to find the application that currently has focus.");
   }
 
-  return frontMostWindowElement;
-}
-
-+ (NSString *)frontMostApplicationName
-{
-  SpectacleAccessibilityElement *systemWideElement = SpectacleAccessibilityElement.systemWideElement;
-  SpectacleAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
-
-  return [applicationWithFocusElement stringValueOfAttribute:kAXTitleAttribute];
+  return frontmostWindowElement;
 }
 
 #pragma mark -
@@ -67,17 +62,17 @@
 - (SpectacleAccessibilityElement *)elementWithAttribute:(CFStringRef)attribute
 {
   SpectacleAccessibilityElement *newElement = nil;
-  AXUIElementRef childElement;
+  AXUIElementRef underlyingElement;
   AXError result;
 
-  result = AXUIElementCopyAttributeValue(self.element, attribute, (CFTypeRef *)&childElement);
+  result = AXUIElementCopyAttributeValue(self.underlyingElement, attribute, (CFTypeRef *)&underlyingElement);
 
   if (result == kAXErrorSuccess) {
     newElement = [SpectacleAccessibilityElement new];
 
-    newElement.element = childElement;
+    newElement.underlyingElement = underlyingElement;
 
-    CFRelease(childElement);
+    CFRelease(underlyingElement);
   } else {
     NSLog(@"Unable to obtain the accessibility element with the specified attribute: %@ (error code %d)", attribute, result);
   }
@@ -89,11 +84,11 @@
 
 - (NSString *)stringValueOfAttribute:(CFStringRef)attribute
 {
-  if (CFGetTypeID(self.element) == AXUIElementGetTypeID()) {
+  if (CFGetTypeID(self.underlyingElement) == AXUIElementGetTypeID()) {
     CFTypeRef value;
     AXError result;
 
-    result = AXUIElementCopyAttributeValue(self.element, attribute, &value);
+    result = AXUIElementCopyAttributeValue(self.underlyingElement, attribute, &value);
 
     if (result == kAXErrorSuccess) {
       return CFBridgingRelease(value);
@@ -107,11 +102,11 @@
 
 - (AXValueRef)valueOfAttribute:(CFStringRef)attribute type:(AXValueType)type
 {
-  if (CFGetTypeID(self.element) == AXUIElementGetTypeID()) {
+  if (CFGetTypeID(self.underlyingElement) == AXUIElementGetTypeID()) {
     CFTypeRef value;
     AXError result;
 
-    result = AXUIElementCopyAttributeValue(self.element, attribute, (CFTypeRef *)&value);
+    result = AXUIElementCopyAttributeValue(self.underlyingElement, attribute, (CFTypeRef *)&value);
 
     if ((result == kAXErrorSuccess) && (AXValueGetType(value) == type)) {
       return value;
@@ -127,7 +122,7 @@
 
 - (void)setValue:(AXValueRef)value forAttribute:(CFStringRef)attribute
 {
-  AXError result = AXUIElementSetAttributeValue(self.element, attribute, (CFTypeRef *)value);
+  AXError result = AXUIElementSetAttributeValue(self.underlyingElement, attribute, (CFTypeRef *)value);
 
   if (result != kAXErrorSuccess) {
     NSLog(@"There was a problem setting the value of the specified attribute: %@ (error code %d)", attribute, result);
@@ -148,24 +143,29 @@
   return [[fullScreenButtonElement stringValueOfAttribute:kAXSubroleAttribute] isEqualToString:(__bridge NSString *)kAXZoomButtonSubrole];
 }
 
+- (BOOL)isSystemDialog
+{
+  return [[self stringValueOfAttribute:kAXSubroleAttribute] isEqualToString:(__bridge NSString *)kAXSystemDialogSubrole];
+}
+
 #pragma mark -
 
 - (void)dealloc
 {
-  if (_element != NULL) {
-    CFRelease(_element);
+  if (_underlyingElement != NULL) {
+    CFRelease(_underlyingElement);
   }
 }
 
 #pragma mark -
 
-- (void)setElement:(AXUIElementRef)element
+- (void)setUnderlyingElement:(AXUIElementRef)underlyingElement
 {
-  if (_element != NULL) {
-    CFRelease(_element);
+  if (_underlyingElement != NULL) {
+    CFRelease(_underlyingElement);
   }
 
-  _element = CFRetain(element);
+  _underlyingElement = CFRetain(underlyingElement);
 }
 
 @end
