@@ -70,10 +70,7 @@ extern NSString *const SpectaclePreferencePaneExtension;
 extern NSString *const SpectacleStatusItemEnabledPreference;
 extern NSString *const SpectacleAutomaticUpdateCheckEnabledPreference;
 extern NSString *const SpectacleBackgroundAlertSuppressedPreference;
-
-#pragma mark -
-
-extern NSString *const SpectacleBlacklistedWindowRectsPreference;
+extern NSString *const SpectacleDisabledApplicationsPreference;
 
 #pragma mark -
 

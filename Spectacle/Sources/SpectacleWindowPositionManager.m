@@ -20,7 +20,7 @@
 @interface SpectacleWindowPositionManager ()
 
 @property (nonatomic) NSMutableDictionary *applicationHistories;
-@property (nonatomic) NSMutableSet *blacklistedApplications;
+@property (nonatomic) NSSet *blacklistedApplications;
 
 @end
 
@@ -28,14 +28,11 @@
 
 @implementation SpectacleWindowPositionManager
 
-- (instancetype)init
+- (instancetype)initWithBlacklistedApplications:(NSSet *)blacklistedApplications;
 {
   if ((self = [super init])) {
-    NSString *path = [NSBundle.mainBundle pathForResource:SpectacleBlacklistedApplicationsPropertyListFile
-                                                   ofType:SpectaclePropertyListFileExtension];
-
     _applicationHistories = [NSMutableDictionary new];
-    _blacklistedApplications = [NSMutableSet setWithArray:[NSArray arrayWithContentsOfFile:path]];
+    _blacklistedApplications = blacklistedApplications;
   }
 
   return self;
@@ -44,6 +41,7 @@
 #pragma mark -
 
 - (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action
+                       disabledApplications:(NSSet *)disabledApplications
 {
   SpectacleAccessibilityElement *frontmostWindowElement = SpectacleAccessibilityElement.frontmostWindowElement;
   CGRect frontmostWindowRect = [self rectOfWindowWithAccessibilityElement:frontmostWindowElement];
@@ -71,6 +69,15 @@
       || CGRectIsNull(frontmostWindowRect)
       || CGRectIsNull(frameOfScreen)
       || CGRectIsNull(visibleFrameOfScreen)) {
+    NSBeep();
+
+    return;
+  }
+
+  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
+
+  if ([self.blacklistedApplications containsObject:frontmostApplicationBundleIdentifier]
+      || [disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
     NSBeep();
 
     return;
@@ -137,12 +144,12 @@ frontmostWindowElement:frontmostWindowElement
 
 - (void)undoLastWindowAction
 {
-  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionUndo];
+  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionUndo disabledApplications:nil];
 }
 
 - (void)redoLastWindowAction
 {
-  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionRedo];
+  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionRedo disabledApplications:nil];
 }
 
 #pragma mark -
@@ -227,14 +234,6 @@ frontmostWindowElement:frontmostWindowElement
 frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                 action:(SpectacleWindowAction)action
 {
-  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
-
-  if ([self.blacklistedApplications containsObject:frontmostApplicationBundleIdentifier]) {
-    NSBeep();
-
-    return;
-  }
-
   CGRect previousWindowRect = [self rectOfWindowWithAccessibilityElement:frontmostWindowElement];
 
   if (CGRectIsNull(previousWindowRect)) {

@@ -2,7 +2,7 @@
 
 @class SpectaclePreferencesController;
 
-@interface SpectacleAppDelegate : NSObject
+@interface SpectacleAppDelegate : NSObject<NSApplicationDelegate, NSMenuDelegate>
 
 @property (nonatomic) IBOutlet NSMenu *statusItemMenu;
 @property (nonatomic) IBOutlet NSWindow *accessiblityAccessDialogWindow;
@@ -25,6 +25,7 @@
 @property (nonatomic) IBOutlet NSMenuItem *undoLastMoveShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *redoLastMoveShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *disableShortcutsForAnHourMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *disableShortcutsForApplicationMenuItem;
 
 # pragma mark -
 
@@ -85,6 +86,8 @@
 #pragma mark -
 
 - (IBAction)disableOrEnableShortcutsForAnHour:(id)sender;
+
+- (IBAction)disableOrEnableShortcutsForApplication:(id)sender;
 
 # pragma mark -
 

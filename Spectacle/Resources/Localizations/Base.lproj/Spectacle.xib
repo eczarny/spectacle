@@ -17,6 +17,7 @@
             <connections>
                 <outlet property="accessiblityAccessDialogWindow" destination="aH5-eW-ySa" id="u6t-Fq-cCp"/>
                 <outlet property="disableShortcutsForAnHourMenuItem" destination="qpo-5w-ZIY" id="9Bo-Nc-w85"/>
+                <outlet property="disableShortcutsForApplicationMenuItem" destination="msZ-id-Pvw" id="4dY-PO-sgY"/>
                 <outlet property="makeLargerShortcutMenuItem" destination="Yun-AA-OVD" id="7P4-V3-6Yd"/>
                 <outlet property="makeSmallerShortcutMenuItem" destination="gTe-ym-DB0" id="Qj6-FS-ebO"/>
                 <outlet property="moveToBottomShortcutMenuItem" destination="huV-Gw-lbX" id="R2l-hx-4hT"/>
@@ -62,6 +63,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="disableOrEnableShortcutsForAnHour:" target="tMJ-JP-XRD" id="tWY-vQ-3Ub"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="for APPLICATION" id="msZ-id-Pvw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="disableOrEnableShortcutsForApplication:" target="tMJ-JP-XRD" id="0P1-RI-4Px"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -197,6 +204,9 @@
                     </connections>
                 </menuItem>
             </items>
+            <connections>
+                <outlet property="delegate" destination="tMJ-JP-XRD" id="eao-lV-3w3"/>
+            </connections>
         </menu>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aH5-eW-ySa">
             <rect key="contentRect" x="422" y="199" width="780" height="360"/>

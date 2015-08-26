@@ -18,6 +18,7 @@
 @property (nonatomic) SpectacleWindowPositionManager *windowPositionManager;
 @property (nonatomic) SpectaclePreferencesController *preferencesController;
 @property (nonatomic) NSTimer *disableShortcutsForAnHourTimer;
+@property (nonatomic) NSMutableSet *disabledApplications;
 
 @end
 
@@ -77,15 +78,27 @@
 
   self.shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
   self.shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:self.shortcutStorage];
-  self.windowPositionManager = [SpectacleWindowPositionManager new];
+
+  NSString *blacklistedApplicationsPath = [NSBundle.mainBundle pathForResource:SpectacleBlacklistedApplicationsPropertyListFile
+                                                                        ofType:SpectaclePropertyListFileExtension];
+
+  NSSet *blacklistedApplications = [NSSet setWithArray:[NSArray arrayWithContentsOfFile:blacklistedApplicationsPath]];
+
+  self.windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithBlacklistedApplications:blacklistedApplications];
+
+  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+
+  NSArray *disabledApplicationsArray = [userDefaults objectForKey:SpectacleDisabledApplicationsPreference];
+
+  self.disabledApplications = [NSMutableSet setWithArray:disabledApplicationsArray];
 
   self.preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:self.shortcutManager
                                                                          windowPositionManager:self.windowPositionManager
-                                                                               shortcutStorage:self.shortcutStorage];
+                                                                               shortcutStorage:self.shortcutStorage
+                                                                          disabledApplications:self.disabledApplications];
 
   [self registerShortcuts];
 
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
   BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:SpectacleAutomaticUpdateCheckEnabledPreference];
   BOOL statusItemEnabled = [userDefaults boolForKey:SpectacleStatusItemEnabledPreference];
 
@@ -100,8 +113,6 @@
   if (!AXIsProcessTrustedWithOptions(NULL)) {
     [[NSApplication sharedApplication] runModalForWindow:self.accessiblityAccessDialogWindow];
   }
-
-  [userDefaults removeObjectForKey:SpectacleBlacklistedWindowRectsPreference];
 }
 
 #pragma mark -
@@ -124,94 +135,110 @@
 
 - (IBAction)moveFrontMostWindowToFullscreen:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionFullscreen];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionFullscreen
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToCenter:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionCenter];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionCenter
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToLeftHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLeftHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLeftHalf
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToRightHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionRightHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionRightHalf
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToTopHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionTopHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionTopHalf
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToBottomHalf:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionBottomHalf];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionBottomHalf
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToUpperLeft:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperLeft];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperLeft
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToLowerLeft:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerLeft];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerLeft
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToUpperRight:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperRight];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperRight
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToLowerRight:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerRight];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerRight
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToNextDisplay:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextDisplay];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextDisplay
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousDisplay];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousDisplay
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
 
 - (IBAction)moveFrontMostWindowToNextThird:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextThird];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextThird
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)moveFrontMostWindowToPreviousThird:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousThird];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousThird
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
 
 - (IBAction)makeFrontMostWindowLarger:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLarger];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLarger
+                                             disabledApplications:self.disabledApplications];
 }
 
 - (IBAction)makeFrontMostWindowSmaller:(id)sender
 {
-  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionSmaller];
+  [self.windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionSmaller
+                                             disabledApplications:self.disabledApplications];
 }
 
 #pragma mark -
@@ -261,6 +288,24 @@
   self.disableShortcutsForAnHourMenuItem.state = newMenuItemState;
 }
 
+- (IBAction)disableOrEnableShortcutsForApplication:(id)sender
+{
+  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
+  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+
+  if ([self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
+    [self.disabledApplications removeObject:frontmostApplicationBundleIdentifier];
+
+    self.disableShortcutsForApplicationMenuItem.state = NSOffState;
+  } else {
+    [self.disabledApplications addObject:frontmostApplicationBundleIdentifier];
+
+    self.disableShortcutsForApplicationMenuItem.state = NSOnState;
+  }
+
+  [userDefaults setObject:[self.disabledApplications allObjects] forKey:SpectacleDisabledApplicationsPreference];
+}
+
 #pragma mark -
 
 - (IBAction)openSystemPreferences:(id)sender
@@ -286,7 +331,8 @@
   NSArray *shortcuts = [self.shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
-    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction
+                                               disabledApplications:self.disabledApplications];
   }];
 
   [self.shortcutManager registerShortcuts:shortcuts];
@@ -302,11 +348,10 @@
 
   [statusImage setTemplate:YES];
 
-  self.statusItem.image = statusImage;
   self.statusItem.highlightMode = YES;
-  self.statusItem.toolTip = [NSString stringWithFormat:@"Spectacle %@", SpectacleUtilities.applicationVersion];
-
-  [self.statusItem setMenu:self.statusItemMenu];
+  self.statusItem.image = statusImage;
+  self.statusItem.menu = self.statusItemMenu;
+  self.statusItem.toolTip = [@"Spectacle " stringByAppendingString:SpectacleUtilities.applicationVersion];
 }
 
 - (void)disableStatusItem
@@ -335,6 +380,26 @@
 }
 
 #pragma mark -
+
+- (void)menuWillOpen:(NSMenu *)menu
+{
+  NSString *frontmostApplicationLocalizedName = NSWorkspace.sharedWorkspace.frontmostApplication.localizedName;
+  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
+
+  self.disableShortcutsForApplicationMenuItem.hidden = NO;
+
+  if (!frontmostApplicationLocalizedName) {
+    self.disableShortcutsForApplicationMenuItem.hidden = YES;
+  } else {
+    self.disableShortcutsForApplicationMenuItem.title = [@"for " stringByAppendingString:frontmostApplicationLocalizedName];
+  }
+
+  if ([self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
+    self.disableShortcutsForApplicationMenuItem.state = NSOnState;
+  } else {
+    self.disableShortcutsForApplicationMenuItem.state = NSOffState;
+  }
+}
 
 - (void)menuDidSendAction:(NSNotification *)notification
 {

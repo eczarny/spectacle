@@ -6,7 +6,7 @@
 
 @interface SpectacleShortcutManager : NSObject
 
-- (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage;
+- (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 

@@ -70,10 +70,7 @@ NSString *const SpectaclePreferencePaneExtension = @"prefPane";
 NSString *const SpectacleStatusItemEnabledPreference = @"StatusItemEnabled";
 NSString *const SpectacleAutomaticUpdateCheckEnabledPreference = @"AutomaticUpdateCheckEnabled";
 NSString *const SpectacleBackgroundAlertSuppressedPreference = @"BackgroundAlertSuppressed";
-
-#pragma mark -
-
-NSString *const SpectacleBlacklistedWindowRectsPreference = @"BlacklistedWindowRects";
+NSString *const SpectacleDisabledApplicationsPreference = @"DisabledApplications";
 
 #pragma mark -
 
