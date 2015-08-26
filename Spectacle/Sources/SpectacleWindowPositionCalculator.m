@@ -10,7 +10,7 @@
 
 #pragma mark -
 
-#define AgainstEdgeOfScreen(gap) (gap <= SpectacleMaximumGapNeededToStickToEdge)
+#define AgainstEdgeOfScreen(gap) (gap <= kMaximumGapNeededToStickToEdge)
 
 #define AgainstTheLeftEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(a.origin.x - b.origin.x))
 #define AgainstTheRightEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(CGRectGetMaxX(a) - CGRectGetMaxX(b)))
@@ -197,8 +197,8 @@
 
 + (BOOL)isWindowRect:(CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 {
-  CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / SpectacleMinimumWindowSizeRatio);
-  CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / SpectacleMinimumWindowSizeRatio);
+  CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / kMinimumWindowSizeRatio);
+  CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / kMinimumWindowSizeRatio);
 
   return (windowRect.size.width <= minimumWindowRectWidth) || (windowRect.size.height <= minimumWindowRectHeight);
 }

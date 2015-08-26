@@ -5,11 +5,11 @@
 
 + (NSString *)applicationVersion
 {
-  NSBundle *bundle = NSBundle.mainBundle;
-  NSString *bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+  NSBundle *mainBundle = NSBundle.mainBundle;
+  NSString *bundleVersion = mainBundle.infoDictionary[kCFBundleShortVersionString];
 
   if (!bundleVersion) {
-    bundleVersion = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+    bundleVersion = mainBundle.infoDictionary[kCFBundleVersion];
   }
 
   return bundleVersion;
@@ -20,8 +20,8 @@
 + (void)registerDefaultsForBundle:(NSBundle *)bundle
 {
   NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile
-                                    ofType:SpectaclePropertyListFileExtension];
+  NSString *path = [bundle pathForResource:kDefaultPreferencesPropertyListFile
+                                    ofType:kPropertyListFileExtension];
 
   [defaults registerDefaults:[[NSDictionary alloc] initWithContentsOfFile:path]];
 }
@@ -90,7 +90,7 @@
   NSString *preferencePanePath = nil;
 
   if (preferencePaneName) {
-    preferencePaneName = [preferencePaneName stringByAppendingFormat:@".%@", SpectaclePreferencePaneExtension];
+    preferencePaneName = [preferencePaneName stringByAppendingFormat:@".%@", kPreferencePaneExtension];
 
     for (__strong NSString *path in paths) {
       path = [path stringByAppendingPathComponent:preferencePaneName];

@@ -1,91 +1,96 @@
 #import "SpectacleConstants.h"
 
-NSString *const SpectaclePreferencesWindowNibName = @"SpectaclePreferencesWindow";
+NSString *const kPreferencesWindowNibName = @"SpectaclePreferencesWindow";
 
 #pragma mark -
 
-NSString *const SpectacleStatusItemEnabledNotification = @"SpectacleStatusItemEnabledNotification";
-NSString *const SpectacleStatusItemDisabledNotification = @"SpectacleStatusItemDisabledNotification";
-
-NSString *const SpectacleShortcutChangedNotification = @"SpectacleShortcutChangedNotification";
-
-NSString *const SpectacleRestoreDefaultShortcutsNotification = @"SpectacleRestoreDefaultShortcutsNotification";
+NSString *const kCFBundleShortVersionString = @"CFBundleShortVersionString";
+NSString *const kCFBundleVersion = @"CFBundleVersion";
 
 #pragma mark -
 
-const NSInteger SpectacleMenuItemActivateIgnoringOtherApps = -1;
+NSString *const kStatusItemEnabledNotification = @"SpectacleStatusItemEnabledNotification";
+NSString *const kStatusItemDisabledNotification = @"SpectacleStatusItemDisabledNotification";
+
+NSString *const kShortcutChangedNotification = @"SpectacleShortcutChangedNotification";
+
+NSString *const kRestoreDefaultShortcutsNotification = @"SpectacleRestoreDefaultShortcutsNotification";
 
 #pragma mark -
 
-NSString *const SpectaclePropertyListFileExtension = @"plist";
-
-NSString *const SpectacleDefaultPreferencesPropertyListFile = @"Defaults";
-NSString *const SpectacleBlacklistedApplicationsPropertyListFile = @"BlacklistedApplications";
+const NSInteger kMenuItemActivateIgnoringOtherApps = -1;
 
 #pragma mark -
 
-NSString *const SpectacleWindowActionMoveToCenter = @"MoveToCenter";
-NSString *const SpectacleWindowActionMoveToFullscreen = @"MoveToFullscreen";
+NSString *const kPropertyListFileExtension = @"plist";
 
-NSString *const SpectacleWindowActionMoveToLeftHalf = @"MoveToLeftHalf";
-NSString *const SpectacleWindowActionMoveToRightHalf = @"MoveToRightHalf";
-NSString *const SpectacleWindowActionMoveToTopHalf = @"MoveToTopHalf";
-NSString *const SpectacleWindowActionMoveToBottomHalf = @"MoveToBottomHalf";
-
-NSString *const SpectacleWindowActionMoveToUpperLeft = @"MoveToUpperLeft";
-NSString *const SpectacleWindowActionMoveToLowerLeft = @"MoveToLowerLeft";
-NSString *const SpectacleWindowActionMoveToUpperRight = @"MoveToUpperRight";
-NSString *const SpectacleWindowActionMoveToLowerRight = @"MoveToLowerRight";
-
-NSString *const SpectacleWindowActionMoveToNextDisplay = @"MoveToNextDisplay";
-NSString *const SpectacleWindowActionMoveToPreviousDisplay = @"MoveToPreviousDisplay";
-
-NSString *const SpectacleWindowActionMoveToNextThird = @"MoveToNextThird";
-NSString *const SpectacleWindowActionMoveToPreviousThird = @"MoveToPreviousThird";
-
-NSString *const SpectacleWindowActionMakeLarger = @"MakeLarger";
-NSString *const SpectacleWindowActionMakeSmaller = @"MakeSmaller";
-
-NSString *const SpectacleWindowActionUndoLastMove = @"UndoLastMove";
-NSString *const SpectacleWindowActionRedoLastMove = @"RedoLastMove";
+NSString *const kDefaultPreferencesPropertyListFile = @"Defaults";
+NSString *const kBlacklistedApplicationsPropertyListFile = @"BlacklistedApplications";
 
 #pragma mark -
 
-const NSInteger SpectacleWindowActionHistorySize = 50;
+NSString *const kWindowActionMoveToCenter = @"MoveToCenter";
+NSString *const kWindowActionMoveToFullscreen = @"MoveToFullscreen";
+
+NSString *const kWindowActionMoveToLeftHalf = @"MoveToLeftHalf";
+NSString *const kWindowActionMoveToRightHalf = @"MoveToRightHalf";
+NSString *const kWindowActionMoveToTopHalf = @"MoveToTopHalf";
+NSString *const kWindowActionMoveToBottomHalf = @"MoveToBottomHalf";
+
+NSString *const kWindowActionMoveToUpperLeft = @"MoveToUpperLeft";
+NSString *const kWindowActionMoveToLowerLeft = @"MoveToLowerLeft";
+NSString *const kWindowActionMoveToUpperRight = @"MoveToUpperRight";
+NSString *const kWindowActionMoveToLowerRight = @"MoveToLowerRight";
+
+NSString *const kWindowActionMoveToNextDisplay = @"MoveToNextDisplay";
+NSString *const kWindowActionMoveToPreviousDisplay = @"MoveToPreviousDisplay";
+
+NSString *const kWindowActionMoveToNextThird = @"MoveToNextThird";
+NSString *const kWindowActionMoveToPreviousThird = @"MoveToPreviousThird";
+
+NSString *const kWindowActionMakeLarger = @"MakeLarger";
+NSString *const kWindowActionMakeSmaller = @"MakeSmaller";
+
+NSString *const kWindowActionUndoLastMove = @"UndoLastMove";
+NSString *const kWindowActionRedoLastMove = @"RedoLastMove";
 
 #pragma mark -
 
-const CGFloat SpectacleWindowSizeOffset = 30.0f;
-const CGFloat SpectacleMaximumGapNeededToStickToEdge = 5.0f;
-const CGFloat SpectacleMinimumWindowSizeRatio = 4.0f;
+const NSInteger kWindowActionHistorySize = 50;
 
 #pragma mark -
 
-NSString *const SpectacleStatusItemIcon = @"Spectacle Status Item";
+const CGFloat kWindowSizeOffset = 30.0f;
+const CGFloat kMaximumGapNeededToStickToEdge = 5.0f;
+const CGFloat kMinimumWindowSizeRatio = 4.0f;
 
 #pragma mark -
 
-NSString *const SpectaclePreferencePaneExtension = @"prefPane";
-
-NSString *const SpectacleStatusItemEnabledPreference = @"StatusItemEnabled";
-NSString *const SpectacleAutomaticUpdateCheckEnabledPreference = @"AutomaticUpdateCheckEnabled";
-NSString *const SpectacleBackgroundAlertSuppressedPreference = @"BackgroundAlertSuppressed";
-NSString *const SpectacleDisabledApplicationsPreference = @"DisabledApplications";
+NSString *const kStatusItemIcon = @"Spectacle Status Item";
 
 #pragma mark -
 
-NSString *const SpectacleSecurityPreferencePaneName = @"Security";
+NSString *const kPreferencePaneExtension = @"prefPane";
+
+NSString *const kStatusItemEnabledPreference = @"StatusItemEnabled";
+NSString *const kAutomaticUpdateCheckEnabledPreference = @"AutomaticUpdateCheckEnabled";
+NSString *const kBackgroundAlertSuppressedPreference = @"BackgroundAlertSuppressed";
+NSString *const kDisabledApplicationsPreference = @"DisabledApplications";
 
 #pragma mark -
 
-NSString *const SpectacleSecurityAndPrivacyPreferencesScriptName = @"Security & Privacy System Preferences";
-
-NSString *const SpectacleAppleScriptFileExtension = @"scpt";
+NSString *const kSecurityPreferencePaneName = @"Security";
 
 #pragma mark -
 
-NSString *const SpectacleShortcutTranslationsPropertyListFile = @"ShortcutTranslations";
+NSString *const kSecurityAndPrivacyPreferencesScriptName = @"Security & Privacy System Preferences";
 
-NSString *const SpectacleShortcutTranslationsKey = @"ShortcutTranslations";
-NSString *const SpectacleShortcutGlyphTranslationsKey = @"ShortcutGlyphTranslations";
+NSString *const kAppleScriptFileExtension = @"scpt";
+
+#pragma mark -
+
+NSString *const kShortcutTranslationsPropertyListFile = @"ShortcutTranslations";
+
+NSString *const kShortcutTranslationsKey = @"ShortcutTranslations";
+NSString *const kShortcutGlyphTranslationsKey = @"ShortcutGlyphTranslations";
 

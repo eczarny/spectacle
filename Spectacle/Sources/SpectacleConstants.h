@@ -1,90 +1,95 @@
 #import <Foundation/Foundation.h>
 
-extern NSString *const SpectaclePreferencesWindowNibName;
+extern NSString *const kPreferencesWindowNibName;
 
 #pragma mark -
 
-extern NSString *const SpectacleStatusItemEnabledNotification;
-extern NSString *const SpectacleStatusItemDisabledNotification;
-
-extern NSString *const SpectacleShortcutChangedNotification;
-
-extern NSString *const SpectacleRestoreDefaultShortcutsNotification;
+extern NSString *const kCFBundleShortVersionString;
+extern NSString *const kCFBundleVersion;
 
 #pragma mark -
 
-extern const NSInteger SpectacleMenuItemActivateIgnoringOtherApps;
+extern NSString *const kStatusItemEnabledNotification;
+extern NSString *const kStatusItemDisabledNotification;
+
+extern NSString *const kShortcutChangedNotification;
+
+extern NSString *const kRestoreDefaultShortcutsNotification;
 
 #pragma mark -
 
-extern NSString *const SpectaclePropertyListFileExtension;
-
-extern NSString *const SpectacleDefaultPreferencesPropertyListFile;
-extern NSString *const SpectacleBlacklistedApplicationsPropertyListFile;
+extern const NSInteger kMenuItemActivateIgnoringOtherApps;
 
 #pragma mark -
 
-extern NSString *const SpectacleWindowActionMoveToCenter;
-extern NSString *const SpectacleWindowActionMoveToFullscreen;
+extern NSString *const kPropertyListFileExtension;
 
-extern NSString *const SpectacleWindowActionMoveToLeftHalf;
-extern NSString *const SpectacleWindowActionMoveToRightHalf;
-extern NSString *const SpectacleWindowActionMoveToTopHalf;
-extern NSString *const SpectacleWindowActionMoveToBottomHalf;
-
-extern NSString *const SpectacleWindowActionMoveToUpperLeft;
-extern NSString *const SpectacleWindowActionMoveToLowerLeft;
-extern NSString *const SpectacleWindowActionMoveToUpperRight;
-extern NSString *const SpectacleWindowActionMoveToLowerRight;
-
-extern NSString *const SpectacleWindowActionMoveToNextDisplay;
-extern NSString *const SpectacleWindowActionMoveToPreviousDisplay;
-
-extern NSString *const SpectacleWindowActionMoveToNextThird;
-extern NSString *const SpectacleWindowActionMoveToPreviousThird;
-
-extern NSString *const SpectacleWindowActionMakeLarger;
-extern NSString *const SpectacleWindowActionMakeSmaller;
-
-extern NSString *const SpectacleWindowActionUndoLastMove;
-extern NSString *const SpectacleWindowActionRedoLastMove;
+extern NSString *const kDefaultPreferencesPropertyListFile;
+extern NSString *const kBlacklistedApplicationsPropertyListFile;
 
 #pragma mark -
 
-extern const NSInteger SpectacleWindowActionHistorySize;
+extern NSString *const kWindowActionMoveToCenter;
+extern NSString *const kWindowActionMoveToFullscreen;
+
+extern NSString *const kWindowActionMoveToLeftHalf;
+extern NSString *const kWindowActionMoveToRightHalf;
+extern NSString *const kWindowActionMoveToTopHalf;
+extern NSString *const kWindowActionMoveToBottomHalf;
+
+extern NSString *const kWindowActionMoveToUpperLeft;
+extern NSString *const kWindowActionMoveToLowerLeft;
+extern NSString *const kWindowActionMoveToUpperRight;
+extern NSString *const kWindowActionMoveToLowerRight;
+
+extern NSString *const kWindowActionMoveToNextDisplay;
+extern NSString *const kWindowActionMoveToPreviousDisplay;
+
+extern NSString *const kWindowActionMoveToNextThird;
+extern NSString *const kWindowActionMoveToPreviousThird;
+
+extern NSString *const kWindowActionMakeLarger;
+extern NSString *const kWindowActionMakeSmaller;
+
+extern NSString *const kWindowActionUndoLastMove;
+extern NSString *const kWindowActionRedoLastMove;
 
 #pragma mark -
 
-extern const CGFloat SpectacleWindowSizeOffset;
-extern const CGFloat SpectacleMaximumGapNeededToStickToEdge;
-extern const CGFloat SpectacleMinimumWindowSizeRatio;
+extern const NSInteger kWindowActionHistorySize;
 
 #pragma mark -
 
-extern NSString *const SpectacleStatusItemIcon;
+extern const CGFloat kWindowSizeOffset;
+extern const CGFloat kMaximumGapNeededToStickToEdge;
+extern const CGFloat kMinimumWindowSizeRatio;
 
 #pragma mark -
 
-extern NSString *const SpectaclePreferencePaneExtension;
-
-extern NSString *const SpectacleStatusItemEnabledPreference;
-extern NSString *const SpectacleAutomaticUpdateCheckEnabledPreference;
-extern NSString *const SpectacleBackgroundAlertSuppressedPreference;
-extern NSString *const SpectacleDisabledApplicationsPreference;
+extern NSString *const kStatusItemIcon;
 
 #pragma mark -
 
-extern NSString *const SpectacleSecurityPreferencePaneName;
+extern NSString *const kPreferencePaneExtension;
+
+extern NSString *const kStatusItemEnabledPreference;
+extern NSString *const kAutomaticUpdateCheckEnabledPreference;
+extern NSString *const kBackgroundAlertSuppressedPreference;
+extern NSString *const kDisabledApplicationsPreference;
 
 #pragma mark -
 
-extern NSString *const SpectacleSecurityAndPrivacyPreferencesScriptName;
-
-extern NSString *const SpectacleAppleScriptFileExtension;
+extern NSString *const kSecurityPreferencePaneName;
 
 #pragma mark -
 
-extern NSString *const SpectacleShortcutTranslationsPropertyListFile;
+extern NSString *const kSecurityAndPrivacyPreferencesScriptName;
 
-extern NSString *const SpectacleShortcutTranslationsKey;
-extern NSString *const SpectacleShortcutGlyphTranslationsKey;
+extern NSString *const kAppleScriptFileExtension;
+
+#pragma mark -
+
+extern NSString *const kShortcutTranslationsPropertyListFile;
+
+extern NSString *const kShortcutTranslationsKey;
+extern NSString *const kShortcutGlyphTranslationsKey;

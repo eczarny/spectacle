@@ -57,24 +57,24 @@
 
 - (NSArray *)shortcutNames
 {
-  return @[SpectacleWindowActionMoveToCenter,
-           SpectacleWindowActionMoveToFullscreen,
-           SpectacleWindowActionMoveToLeftHalf,
-           SpectacleWindowActionMoveToRightHalf,
-           SpectacleWindowActionMoveToTopHalf,
-           SpectacleWindowActionMoveToBottomHalf,
-           SpectacleWindowActionMoveToUpperLeft,
-           SpectacleWindowActionMoveToLowerLeft,
-           SpectacleWindowActionMoveToUpperRight,
-           SpectacleWindowActionMoveToLowerRight,
-           SpectacleWindowActionMoveToNextDisplay,
-           SpectacleWindowActionMoveToPreviousDisplay,
-           SpectacleWindowActionMoveToNextThird,
-           SpectacleWindowActionMoveToPreviousThird,
-           SpectacleWindowActionMakeLarger,
-           SpectacleWindowActionMakeSmaller,
-           SpectacleWindowActionUndoLastMove,
-           SpectacleWindowActionRedoLastMove];
+  return @[kWindowActionMoveToCenter,
+           kWindowActionMoveToFullscreen,
+           kWindowActionMoveToLeftHalf,
+           kWindowActionMoveToRightHalf,
+           kWindowActionMoveToTopHalf,
+           kWindowActionMoveToBottomHalf,
+           kWindowActionMoveToUpperLeft,
+           kWindowActionMoveToLowerLeft,
+           kWindowActionMoveToUpperRight,
+           kWindowActionMoveToLowerRight,
+           kWindowActionMoveToNextDisplay,
+           kWindowActionMoveToPreviousDisplay,
+           kWindowActionMoveToNextThird,
+           kWindowActionMoveToPreviousThird,
+           kWindowActionMakeLarger,
+           kWindowActionMakeSmaller,
+           kWindowActionUndoLastMove,
+           kWindowActionRedoLastMove];
 }
 
 #pragma mark -
@@ -82,8 +82,8 @@
 - (NSDictionary *)defaultShortcutsWithNames:(NSArray *)names
 {
   NSBundle *bundle = NSBundle.mainBundle;
-  NSString *path = [bundle pathForResource:SpectacleDefaultPreferencesPropertyListFile
-                                    ofType:SpectaclePropertyListFileExtension];
+  NSString *path = [bundle pathForResource:kDefaultPreferencesPropertyListFile
+                                    ofType:kPropertyListFileExtension];
 
   NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
   NSMutableDictionary *defaultShortcuts = [NSMutableDictionary new];
@@ -131,8 +131,8 @@
   NSString *shortcutName = shortcut.shortcutName;
   NSInteger defaultShortcutCode;
 
-  if (![shortcutName isEqualToString:SpectacleWindowActionMoveToLowerLeft]
-      && ![shortcutName isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
+  if (![shortcutName isEqualToString:kWindowActionMoveToLowerLeft]
+      && ![shortcutName isEqualToString:kWindowActionMoveToLowerRight]) {
     return;
   }
 

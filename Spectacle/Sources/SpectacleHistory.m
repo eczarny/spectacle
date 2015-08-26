@@ -52,7 +52,7 @@
     self.currentHistoryItem = historyItem;
   }
 
-  if (++_size >= SpectacleWindowActionHistorySize) {
+  if (++_size >= kWindowActionHistorySize) {
     self.lastHistoryItem.nextHistoryItem.previousHistoryItem = self.lastHistoryItem.previousHistoryItem;
 
     self.lastHistoryItem = self.lastHistoryItem.nextHistoryItem;

@@ -124,12 +124,12 @@
 
   [self buildKeyCodeConvertorDictionary];
 
-  keyCodeTranslations = self.specialShortcutTranslations[SpectacleShortcutTranslationsKey];
+  keyCodeTranslations = self.specialShortcutTranslations[kShortcutTranslationsKey];
 
   result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
 
   if (result) {
-    NSDictionary *glyphTranslations = self.specialShortcutTranslations[SpectacleShortcutGlyphTranslationsKey];
+    NSDictionary *glyphTranslations = self.specialShortcutTranslations[kShortcutGlyphTranslationsKey];
     id translatedGlyph = glyphTranslations[result];
 
     if (translatedGlyph) {
@@ -194,8 +194,8 @@
 {
   if (!self.specialShortcutTranslations) {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:SpectacleShortcutTranslationsPropertyListFile
-                                      ofType:SpectaclePropertyListFileExtension];
+    NSString *path = [bundle pathForResource:kShortcutTranslationsPropertyListFile
+                                      ofType:kPropertyListFileExtension];
 
     self.specialShortcutTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
   }

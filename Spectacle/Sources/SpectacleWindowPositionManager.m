@@ -105,7 +105,7 @@
   previousFrontMostWindowRect = frontmostWindowRect;
 
   if (Resizing(action)) {
-    CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * SpectacleWindowSizeOffset;
+    CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * kWindowSizeOffset;
 
     calculationResult = [SpectacleWindowPositionCalculator calculateResizedWindowRect:frontmostWindowRect
                                                                  visibleFrameOfScreen:visibleFrameOfScreen
@@ -159,41 +159,41 @@ frontmostWindowElement:frontmostWindowElement
   NSString *name = shortcut.shortcutName;
   SpectacleWindowAction windowAction = SpectacleWindowActionNone;
 
-  if ([name isEqualToString:SpectacleWindowActionMoveToCenter]) {
+  if ([name isEqualToString:kWindowActionMoveToCenter]) {
     windowAction = SpectacleWindowActionCenter;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToFullscreen]) {
+  } else if ([name isEqualToString:kWindowActionMoveToFullscreen]) {
     windowAction = SpectacleWindowActionFullscreen;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToLeftHalf]) {
+  } else if ([name isEqualToString:kWindowActionMoveToLeftHalf]) {
     windowAction = SpectacleWindowActionLeftHalf;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToRightHalf]) {
+  } else if ([name isEqualToString:kWindowActionMoveToRightHalf]) {
     windowAction = SpectacleWindowActionRightHalf;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToTopHalf]) {
+  } else if ([name isEqualToString:kWindowActionMoveToTopHalf]) {
     windowAction = SpectacleWindowActionTopHalf;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToBottomHalf]) {
+  } else if ([name isEqualToString:kWindowActionMoveToBottomHalf]) {
     windowAction = SpectacleWindowActionBottomHalf;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToUpperLeft]) {
+  } else if ([name isEqualToString:kWindowActionMoveToUpperLeft]) {
     windowAction = SpectacleWindowActionUpperLeft;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToLowerLeft]) {
+  } else if ([name isEqualToString:kWindowActionMoveToLowerLeft]) {
     windowAction = SpectacleWindowActionLowerLeft;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToUpperRight]) {
+  } else if ([name isEqualToString:kWindowActionMoveToUpperRight]) {
     windowAction = SpectacleWindowActionUpperRight;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToLowerRight]) {
+  } else if ([name isEqualToString:kWindowActionMoveToLowerRight]) {
     windowAction = SpectacleWindowActionLowerRight;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToNextDisplay]) {
+  } else if ([name isEqualToString:kWindowActionMoveToNextDisplay]) {
     windowAction = SpectacleWindowActionNextDisplay;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToPreviousDisplay]) {
+  } else if ([name isEqualToString:kWindowActionMoveToPreviousDisplay]) {
     windowAction = SpectacleWindowActionPreviousDisplay;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToNextThird]) {
+  } else if ([name isEqualToString:kWindowActionMoveToNextThird]) {
     windowAction = SpectacleWindowActionNextThird;
-  } else if ([name isEqualToString:SpectacleWindowActionMoveToPreviousThird]) {
+  } else if ([name isEqualToString:kWindowActionMoveToPreviousThird]) {
     windowAction = SpectacleWindowActionPreviousThird;
-  } else if ([name isEqualToString:SpectacleWindowActionMakeLarger]) {
+  } else if ([name isEqualToString:kWindowActionMakeLarger]) {
     windowAction = SpectacleWindowActionLarger;
-  } else if ([name isEqualToString:SpectacleWindowActionMakeSmaller]) {
+  } else if ([name isEqualToString:kWindowActionMakeSmaller]) {
     windowAction = SpectacleWindowActionSmaller;
-  } else if ([name isEqualToString:SpectacleWindowActionUndoLastMove]) {
+  } else if ([name isEqualToString:kWindowActionUndoLastMove]) {
     windowAction = SpectacleWindowActionUndo;
-  } else if ([name isEqualToString:SpectacleWindowActionRedoLastMove]) {
+  } else if ([name isEqualToString:kWindowActionRedoLastMove]) {
     windowAction = SpectacleWindowActionRedo;
   }
 
