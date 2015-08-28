@@ -189,6 +189,8 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)registerEventHotKey:(SpectacleShortcut *)shortcut
 {
+  if (shortcut.isClearedShortcut) return;
+
   EventHotKeyRef shortcutRef;
   EventTargetRef eventTarget = GetApplicationEventTarget();
   OSStatus err;
