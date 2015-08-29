@@ -86,16 +86,16 @@
 
 /* --- */
 
-/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "GuZ-nQ-vcf"; */
-"GuZ-nQ-vcf.title" = "Launch Spectacle at login";
+/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "cEj-mH-kie"; */
+"cEj-mH-kie.title" = "Launch Spectacle at login";
 
 /* --- */
 
-/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "jaJ-OW-nr4"; */
-"jaJ-OW-nr4.title" = "Run...";
+/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "eYU-TH-wcO"; */
+"eYU-TH-wcO.title" = "Run...";
 
-/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "Ijc-HH-ajr"; */
-"Ijc-HH-ajr.title" = "in the status menu";
+/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "in4-v8-tIm"; */
+"in4-v8-tIm.title" = "in the status menu";
 
-/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "TT0-db-TBT"; */
-"TT0-db-TBT.title" = "as a background application";
+/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "aWf-FC-J1j"; */
+"aWf-FC-J1j.title" = "as a background application";

@@ -86,16 +86,16 @@
 
 /* --- */
 
-/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "GuZ-nQ-vcf"; */
-"GuZ-nQ-vcf.title" = "Ouvrir Spectacle au démarrage";
+/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "cEj-mH-kie"; */
+"cEj-mH-kie.title" = "Ouvrir Spectacle au démarrage";
 
 /* --- */
 
-/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "jaJ-OW-nr4"; */
-"jaJ-OW-nr4.title" = "Lancer...";
+/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "eYU-TH-wcO"; */
+"eYU-TH-wcO.title" = "Lancer...";
 
-/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "Ijc-HH-ajr"; */
-"Ijc-HH-ajr.title" = "dans la barre d'état";
+/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "in4-v8-tIm"; */
+"in4-v8-tIm.title" = "dans la barre d'état";
 
-/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "TT0-db-TBT"; */
-"TT0-db-TBT.title" = "comme une application d'arrière-plan";
+/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "aWf-FC-J1j"; */
+"aWf-FC-J1j.title" = "comme une application d'arrière-plan";

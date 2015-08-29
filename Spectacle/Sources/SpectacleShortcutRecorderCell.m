@@ -377,15 +377,15 @@
   NSColor *foregroundColor = NSColor.blackColor;
 
   if (self.isRecording && !self.isMouseAboveBadge) {
-    label = NSLocalizedString(@"Enter shortcut", @"Enter shortcut");
+    label = NSLocalizedString(@"ShortcutRecorderLabelEnterShortcut", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut");
   } else if (self.isRecording && self.isMouseAboveBadge && !self.shortcut) {
-    label = NSLocalizedString(@"Stop recording", @"Stop recording");
+    label = NSLocalizedString(@"ShortcutRecorderLabelStopRecording", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does not have a previously recorded shortcut");
   } else if (self.isRecording && self.isMouseAboveBadge) {
-    label = NSLocalizedString(@"Use existing", "Use existing");
+    label = NSLocalizedString(@"ShortcutRecorderLabelUseExisting", "The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does have a previously recorded shortcut");
   } else if (self.shortcut) {
     label = self.shortcut.displayString;
   } else {
-    label = NSLocalizedString(@"Click to record", @"Click to record");
+    label = NSLocalizedString(@"ShortcutRecorderLabelClickToRecord", @"The shortcut recorder label displayed when the shorcut recorder is cleared and ready to record a new shortcut");
   }
 
   // Recording is in progress and modifier flags have already been set, display them.

@@ -40,7 +40,7 @@
             </connections>
         </customObject>
         <customObject id="qZ6-IG-VBZ" customClass="SUUpdater"/>
-        <menu title="Spectacle Status Item" id="KsA-8w-wcl">
+        <menu title="Spectacle Status Item" id="KsA-8w-wcl" propertyAccessControl="all">
             <items>
                 <menuItem title="About Spectacle" tag="-1" id="EA9-dx-Qfg">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -208,7 +208,7 @@
                 <outlet property="delegate" destination="tMJ-JP-XRD" id="eao-lV-3w3"/>
             </connections>
         </menu>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aH5-eW-ySa">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aH5-eW-ySa" propertyAccessControl="all">
             <rect key="contentRect" x="422" y="199" width="780" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <value key="minSize" type="size" width="780" height="414"/>

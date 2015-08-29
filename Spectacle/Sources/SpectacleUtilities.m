@@ -34,11 +34,11 @@
   
   alert.alertStyle = NSInformationalAlertStyle;
   alert.showsSuppressionButton = YES;
-  alert.messageText = NSLocalizedString(@"This will cause Spectacle to run in the background", @"This will cause Spectacle to run in the background");
-  alert.informativeText = NSLocalizedString(@"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.", @"Run Spectacle in the background without a menu in the status bar.\n\nTo access Spectacle's preferences click on Spectacle in Launchpad, or open Spectacle in Finder.");
+  alert.messageText = NSLocalizedString(@"AlertMessageTextRunningInBackground", @"The message text of the alert displayed when prompting to run Spectacle in the background");
+  alert.informativeText = NSLocalizedString(@"AlertInformativeTextRunningInBackground", @"The informative text of the alert displayed when prompting to run Spectacle in the background");
   
-  [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
-  [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"Cancel")];
+  [alert addButtonWithTitle:NSLocalizedString(@"ButtonLabelAffirmative", @"The button label used in the affirmative")];
+  [alert addButtonWithTitle:NSLocalizedString(@"ButtonLabelNegative", @"The button label used in the negative")];
   
   NSInteger response = [alert runModal];
   BOOL isAlertSuppressed = [alert.suppressionButton state] == NSOnState;
@@ -61,11 +61,11 @@
 {
   NSAlert *alert = [NSAlert new];
 
-  alert.messageText = NSLocalizedString(@"This will restore Spectacle's default shortcuts", @"This will restore Spectacle's default shortcuts");
-  alert.informativeText = NSLocalizedString(@"Would you like to restore the default shortcuts? Any custom shortcuts will be lost.", @"Would you like to restore the default shortcuts? Any custom shortcuts will be lost.");
+  alert.messageText = NSLocalizedString(@"AlertMessageTextRestoreDefaults", @"The message text of the alert displayed when prompting to restore Spectacle's default shortcuts");
+  alert.informativeText = NSLocalizedString(@"AlertInformativeTextRestoreDefaults", @"The informative text of the alert displayed when prompting to restore Spectacle's default shortcuts");
 
-  [alert addButtonWithTitle:NSLocalizedString(@"OK", @"OK")];
-  [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"OK")];
+  [alert addButtonWithTitle:NSLocalizedString(@"ButtonLabelAffirmative", @"The button label used in the affirmative")];
+  [alert addButtonWithTitle:NSLocalizedString(@"ButtonLabelNegative", @"The button label used in the negative")];
 
   NSInteger response = [alert runModal];
 

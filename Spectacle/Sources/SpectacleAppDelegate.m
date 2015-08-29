@@ -441,7 +441,7 @@
     self.disableShortcutsForApplicationMenuItem.hidden = YES;
   } else {
     self.disableShortcutsForApplicationMenuItem.title =
-      [NSString stringWithFormat:NSLocalizedString(@"for %@", @"for %@"), frontmostApplication.localizedName];
+      [NSString stringWithFormat:NSLocalizedString(@"MenuItemTitleDisableShortcutsForApplication", @"The menu item title that displays the application to disable shortcuts for"), frontmostApplication.localizedName];
   }
 
   if ([self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {

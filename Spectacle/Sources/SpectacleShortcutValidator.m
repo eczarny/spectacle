@@ -42,9 +42,12 @@
     
     if (([shortcut shortcutCode] == keyCode) && [SpectacleShortcutValidator shortcut:shortcut containsModifiers:modifiers]) {
       if (error) {
+        NSString *description = NSLocalizedString(@"AlertMessageTextShortcutValidationError", @"The message text of the alert displayed when a shortcut is invalid");
+        NSString *recoverySuggestion = NSLocalizedString(@"AlertInformativeTextSystemWideShortcutAlreadyUsed", @"The informative text of the alert displayed when a system-wide shortcut is already in use");
+
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                                   description:@"Shortcut %@ already in use."
-                                            recoverySuggestion:@"The shortcut \"%@\" is already used by a system-wide keyboard shortcut.\n\nTo use this shortcut change the existing shortcut in the Keyboard preference pane under System Preferences."];
+                                                   description:description
+                                            recoverySuggestion:recoverySuggestion];
       }
       
       return NO;
@@ -55,9 +58,12 @@
     if ([validator conformsToProtocol:@protocol(SpectacleShortcutValidatorProtocol)]
         && ![validator isShortcutValid:shortcut shortcutManager:shortcutManager]) {
       if (error) {
+        NSString *description = NSLocalizedString(@"AlertMessageTextShortcutValidationError", @"The message text of the alert displayed when a shortcut is invalid");
+        NSString *recoverySuggestion = NSLocalizedString(@"AlertInformativeTextShortcutAlreadyInUse", @"The informative text of the alert displayed when a shortcut is already in use");
+
         *error = [SpectacleShortcutValidator errorWithShortcut:shortcut
-                                                   description:@"Shortcut %@ already in use."
-                                            recoverySuggestion:@"The shortcut \"%@\" is already in use. Please select a new shortcut."];
+                                                   description:description
+                                            recoverySuggestion:recoverySuggestion];
       }
       
       return NO;
@@ -103,15 +109,14 @@
             recoverySuggestion:(NSString *)recoverySuggestion
 {
   NSString *shortcutString = [SpectacleShortcutTranslator.sharedTranslator translateShortcut:shortcut];
-  NSMutableDictionary *userInfo = [NSMutableDictionary new];
-  
-  userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:NSLocalizedString(description, description), shortcutString];
-  
-  userInfo[NSLocalizedRecoverySuggestionErrorKey] = [NSString stringWithFormat:NSLocalizedString(recoverySuggestion, recoverySuggestion), shortcutString];
-  
-  userInfo[NSLocalizedRecoveryOptionsErrorKey] = @[NSLocalizedString(@"OK", @"OK")];
-  
-  return [NSError errorWithDomain:NSCocoaErrorDomain code:0 userInfo:userInfo];
+
+  return [NSError errorWithDomain:NSCocoaErrorDomain
+                             code:0
+                         userInfo:@{
+                                    NSLocalizedDescriptionKey: [NSString stringWithFormat:description, shortcutString],
+                                    NSLocalizedRecoverySuggestionErrorKey: [NSString stringWithFormat:recoverySuggestion, shortcutString],
+                                    NSLocalizedRecoveryOptionsErrorKey: @[NSLocalizedString(@"ButtonLabelAffirmative", @"The button label used in the affirmative")]
+                                    }];
 }
 
 @end
