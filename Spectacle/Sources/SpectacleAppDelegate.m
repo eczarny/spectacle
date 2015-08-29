@@ -441,7 +441,7 @@
     self.disableShortcutsForApplicationMenuItem.hidden = YES;
   } else {
     self.disableShortcutsForApplicationMenuItem.title =
-      [NSString stringWithFormat:@"for %@", frontmostApplication.localizedName];
+      [NSString stringWithFormat:NSLocalizedString(@"for %@", @"for %@"), frontmostApplication.localizedName];
   }
 
   if ([self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
