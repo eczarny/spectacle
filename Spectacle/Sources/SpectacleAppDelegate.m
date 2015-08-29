@@ -20,6 +20,7 @@
 @property (nonatomic) NSTimer *disableShortcutsForAnHourTimer;
 @property (nonatomic) NSSet *blacklistedApplications;
 @property (nonatomic) NSMutableSet *disabledApplications;
+@property (nonatomic) BOOL shortcutsAreDisabledForAnHour;
 
 @end
 
@@ -91,11 +92,8 @@
 
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
 
-  NSArray *blacklistedApplicationsArray = [userDefaults objectForKey:kBlacklistedApplicationsPreference];
-  self.blacklistedApplications = [NSSet setWithArray:blacklistedApplicationsArray];
-
-  NSArray *disabledApplicationsArray = [userDefaults objectForKey:kDisabledApplicationsPreference];
-  self.disabledApplications = [NSMutableSet setWithArray:disabledApplicationsArray];
+  self.blacklistedApplications = [NSSet setWithArray:[userDefaults objectForKey:kBlacklistedApplicationsPreference]];
+  self.disabledApplications = [NSMutableSet setWithArray:[userDefaults objectForKey:kDisabledApplicationsPreference]];
 
   self.shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
 
@@ -109,7 +107,11 @@
                                                                          windowPositionManager:self.windowPositionManager
                                                                                shortcutStorage:self.shortcutStorage];
 
+  self.shortcutsAreDisabledForAnHour = NO;
+
   [self registerShortcuts];
+
+  [self disableShortcutsIfFrontmostApplicationIsBlacklistedOrDisabled];
 
   BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:kAutomaticUpdateCheckEnabledPreference];
   BOOL statusItemEnabled = [userDefaults boolForKey:kStatusItemEnabledPreference];
@@ -255,31 +257,26 @@
 {
   NSInteger newMenuItemState = NSMixedState;
 
-  switch (self.disableShortcutsForAnHourMenuItem.state) {
-    case NSOnState:
-      [self.disableShortcutsForAnHourTimer invalidate];
+  if (self.shortcutsAreDisabledForAnHour) {
+    self.shortcutsAreDisabledForAnHour = NO;
 
-      if (self.disableShortcutsForApplicationMenuItem.state == NSOffState) {
-        [self.shortcutManager enableShortcuts];
-      }
+    [self.disableShortcutsForAnHourTimer invalidate];
 
-      newMenuItemState = NSOffState;
+    [self enableShortcutsIfPermitted];
 
-      break;
-    case NSOffState:
-      self.disableShortcutsForAnHourTimer = [NSTimer scheduledTimerWithTimeInterval:3600
-                                                                             target:self
-                                                                           selector:@selector(disableOrEnableShortcutsForAnHour:)
-                                                                           userInfo:nil
-                                                                            repeats:NO];
+    newMenuItemState = NSOffState;
+  } else {
+    self.shortcutsAreDisabledForAnHour = YES;
 
-      [self.shortcutManager disableShortcuts];
+    self.disableShortcutsForAnHourTimer = [NSTimer scheduledTimerWithTimeInterval:3600
+                                                                           target:self
+                                                                         selector:@selector(disableOrEnableShortcutsForAnHour:)
+                                                                         userInfo:nil
+                                                                          repeats:NO];
 
-      newMenuItemState = NSOnState;
+    [self.shortcutManager disableShortcuts];
 
-      break;
-    default:
-      break;
+    newMenuItemState = NSOnState;
   }
 
   self.disableShortcutsForAnHourMenuItem.state = newMenuItemState;
@@ -287,26 +284,24 @@
 
 - (IBAction)disableOrEnableShortcutsForApplication:(id)sender
 {
-  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
 
-  if ([self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
-    [self.disabledApplications removeObject:frontmostApplicationBundleIdentifier];
+  if ([self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
+    [self.disabledApplications removeObject:frontmostApplication.bundleIdentifier];
 
-    if (self.disableShortcutsForAnHourMenuItem.state == NSOffState) {
-      [self.shortcutManager enableShortcuts];
-    }
+    [self enableShortcutsIfPermitted];
 
     self.disableShortcutsForApplicationMenuItem.state = NSOffState;
   } else {
-    [self.disabledApplications addObject:frontmostApplicationBundleIdentifier];
+    [self.disabledApplications addObject:frontmostApplication.bundleIdentifier];
 
     [self.shortcutManager disableShortcuts];
 
     self.disableShortcutsForApplicationMenuItem.state = NSOnState;
   }
 
-  [userDefaults setObject:[self.disabledApplications allObjects] forKey:kDisabledApplicationsPreference];
+  [NSUserDefaults.standardUserDefaults setObject:self.disabledApplications.allObjects
+                                          forKey:kDisabledApplicationsPreference];
 }
 
 #pragma mark -
@@ -383,6 +378,37 @@
 
 #pragma mark -
 
+- (void)enableShortcutsIfPermitted
+{
+  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
+
+  // Do not enable shortcuts if they should remain disabled for an hour.
+  if (self.shortcutsAreDisabledForAnHour) return;
+
+  // Do not enable shortcuts if the application is blacklisted or disabled.
+  if ([self.blacklistedApplications containsObject:frontmostApplication.bundleIdentifier]
+      || [self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
+    return;
+  }
+
+  [self.shortcutManager enableShortcuts];
+}
+
+- (void)disableShortcutsIfFrontmostApplicationIsBlacklistedOrDisabled
+{
+  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
+
+  // Do not disable shortcuts if the application is not blacklisted or disabled.
+  if (![self.blacklistedApplications containsObject:frontmostApplication.bundleIdentifier]
+      && ![self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
+    return;
+  }
+
+  [self.shortcutManager disableShortcuts];
+}
+
+#pragma mark -
+
 - (void)applicationDidActivate:(NSNotification *)notification
 {
   NSRunningApplication *application = notification.userInfo[NSWorkspaceApplicationKey];
@@ -397,11 +423,9 @@
 {
   NSRunningApplication *application = notification.userInfo[NSWorkspaceApplicationKey];
 
-  if (self.disableShortcutsForAnHourMenuItem.state == NSOnState) return;
-
   if ([self.blacklistedApplications containsObject:application.bundleIdentifier]
       || [self.disabledApplications containsObject:application.bundleIdentifier]) {
-    [self.shortcutManager enableShortcuts];
+    [self enableShortcutsIfPermitted];
   }
 }
 
@@ -409,18 +433,18 @@
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-  NSString *frontmostApplicationLocalizedName = NSWorkspace.sharedWorkspace.frontmostApplication.localizedName;
-  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
+  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
 
   self.disableShortcutsForApplicationMenuItem.hidden = NO;
 
-  if (!frontmostApplicationLocalizedName || [self.blacklistedApplications containsObject:frontmostApplicationBundleIdentifier]) {
+  if ([self.blacklistedApplications containsObject:frontmostApplication.bundleIdentifier]) {
     self.disableShortcutsForApplicationMenuItem.hidden = YES;
   } else {
-    self.disableShortcutsForApplicationMenuItem.title = [@"for " stringByAppendingString:frontmostApplicationLocalizedName];
+    self.disableShortcutsForApplicationMenuItem.title =
+      [NSString stringWithFormat:@"for %@", frontmostApplication.localizedName];
   }
 
-  if ([self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
+  if ([self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
     self.disableShortcutsForApplicationMenuItem.state = NSOnState;
   } else {
     self.disableShortcutsForApplicationMenuItem.state = NSOffState;
