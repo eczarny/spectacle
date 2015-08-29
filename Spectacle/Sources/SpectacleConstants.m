@@ -25,7 +25,6 @@ const NSInteger kMenuItemActivateIgnoringOtherApps = -1;
 NSString *const kPropertyListFileExtension = @"plist";
 
 NSString *const kDefaultPreferencesPropertyListFile = @"Defaults";
-NSString *const kBlacklistedApplicationsPropertyListFile = @"BlacklistedApplications";
 
 #pragma mark -
 
@@ -72,10 +71,11 @@ NSString *const kStatusItemIcon = @"Spectacle Status Item";
 
 NSString *const kPreferencePaneExtension = @"prefPane";
 
-NSString *const kStatusItemEnabledPreference = @"StatusItemEnabled";
 NSString *const kAutomaticUpdateCheckEnabledPreference = @"AutomaticUpdateCheckEnabled";
 NSString *const kBackgroundAlertSuppressedPreference = @"BackgroundAlertSuppressed";
+NSString *const kBlacklistedApplicationsPreference = @"BlacklistedApplications";
 NSString *const kDisabledApplicationsPreference = @"DisabledApplications";
+NSString *const kStatusItemEnabledPreference = @"StatusItemEnabled";
 
 #pragma mark -
 

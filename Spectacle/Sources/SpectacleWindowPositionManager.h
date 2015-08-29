@@ -56,12 +56,7 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 @interface SpectacleWindowPositionManager : NSObject
 
-- (instancetype)initWithBlacklistedApplications:(NSSet *)blacklistedApplications NS_DESIGNATED_INITIALIZER;
-
-#pragma mark -
-
-- (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action
-                       disabledApplications:(NSSet *)disabledApplications;
+- (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action;
 
 #pragma mark -
 

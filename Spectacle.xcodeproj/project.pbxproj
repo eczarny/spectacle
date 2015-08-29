@@ -37,7 +37,6 @@
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */; };
 		2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA23EFB1B7D736100C9E8EF /* Images.xcassets */; };
-		2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */; };
 		2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CA1AD84E5C0022ABF0 /* Credits.rtf */; };
 		2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CC1AD84E5C0022ABF0 /* InfoPlist.strings */; };
 		2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */; };
@@ -126,7 +125,6 @@
 		2DA23F091B8109D900C9E8EF /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Spectacle/Resources/Localizations/it.lproj/SpectaclePreferencesWindow.strings; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
-		2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BlacklistedApplications.plist; path = "Spectacle/Resources/Property Lists/BlacklistedApplications.plist"; sourceTree = "<group>"; };
 		2DC4E3CB1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Spectacle/Resources/Localizations/en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2DC4E3CD1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DC4E3CF1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 		0747DAEB1183AAE700F75DD2 /* Property Lists */ = {
 			isa = PBXGroup;
 			children = (
-				2DA85CA216B47F540057CEAA /* BlacklistedApplications.plist */,
 				0706C0431191092B0068F04B /* Defaults.plist */,
 				2D3A05141949573D00CD96E7 /* ShortcutTranslations.plist */,
 			);
@@ -492,7 +489,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DA85CA316B47F540057CEAA /* BlacklistedApplications.plist in Resources */,
 				2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */,
 				2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */,
 				2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */,

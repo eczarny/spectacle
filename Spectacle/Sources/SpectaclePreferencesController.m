@@ -15,7 +15,6 @@
 @property (nonatomic, weak) SpectacleShortcutManager *shortcutManager;
 @property (nonatomic, weak) SpectacleWindowPositionManager *windowPositionManager;
 @property (nonatomic, weak) id<SpectacleShortcutStorageProtocol> shortcutStorage;
-@property (nonatomic) NSSet *disabledApplications;
 
 @property (nonatomic) NSDictionary *shortcutRecorders;
 
@@ -28,13 +27,11 @@
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
                         shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
-                   disabledApplications:(NSSet *)disabledApplications
 {
   if ((self = [super initWithWindowNibName:kPreferencesWindowNibName])) {
     _shortcutManager = shortcutManager;
     _windowPositionManager = windowPositionManager;
     _shortcutStorage = shortcutStorage;
-    _disabledApplications = disabledApplications;
   }
   
   return self;
@@ -95,8 +92,7 @@
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
-    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction
-                                               disabledApplications:self.disabledApplications];
+    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
   }];
 
   [self.shortcutManager registerShortcut:shortcut];
@@ -146,8 +142,7 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
     NSArray *shortcuts = [self.shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
       SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
 
-      [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction
-                                                 disabledApplications:self.disabledApplications];
+      [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
     }];
 
     [self.shortcutManager registerShortcuts:shortcuts];

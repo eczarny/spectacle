@@ -37,8 +37,7 @@
 
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
-                        shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
-                   disabledApplications:(NSSet *)disabledApplications;
+                        shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage;
 
 #pragma mark -
 

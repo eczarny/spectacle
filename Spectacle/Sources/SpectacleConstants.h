@@ -25,7 +25,6 @@ extern const NSInteger kMenuItemActivateIgnoringOtherApps;
 extern NSString *const kPropertyListFileExtension;
 
 extern NSString *const kDefaultPreferencesPropertyListFile;
-extern NSString *const kBlacklistedApplicationsPropertyListFile;
 
 #pragma mark -
 
@@ -72,10 +71,11 @@ extern NSString *const kStatusItemIcon;
 
 extern NSString *const kPreferencePaneExtension;
 
-extern NSString *const kStatusItemEnabledPreference;
 extern NSString *const kAutomaticUpdateCheckEnabledPreference;
 extern NSString *const kBackgroundAlertSuppressedPreference;
+extern NSString *const kBlacklistedApplicationsPreference;
 extern NSString *const kDisabledApplicationsPreference;
+extern NSString *const kStatusItemEnabledPreference;
 
 #pragma mark -
 

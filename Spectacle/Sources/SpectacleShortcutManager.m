@@ -15,6 +15,8 @@ static EventHotKeyID currentShortcutID = {
 @interface SpectacleShortcutManager ()
 
 @property (nonatomic) id<SpectacleShortcutStorageProtocol> shortcutStorage;
+@property (nonatomic) NSSet *blacklistedApplications;
+@property (nonatomic) NSSet *disabledApplications;
 @property (nonatomic) NSMutableDictionary *registeredShortcutsByName;
 @property (nonatomic) BOOL areShorcutsEnabled;
 
@@ -25,9 +27,13 @@ static EventHotKeyID currentShortcutID = {
 @implementation SpectacleShortcutManager
 
 - (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
+                blacklistedApplications:(NSSet *)blacklistedApplications
+                   disabledApplications:(NSSet *)disabledApplications
 {
   if (self = [super init]) {
     _shortcutStorage = shortcutStorage;
+    _blacklistedApplications = blacklistedApplications;
+    _disabledApplications = disabledApplications;
     _registeredShortcutsByName = [NSMutableDictionary new];
     _areShorcutsEnabled = YES;
 
@@ -242,6 +248,15 @@ static EventHotKeyID currentShortcutID = {
 
 - (OSStatus)handleHotKeyEvent:(EventRef)event
 {
+  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
+
+  if ([self.blacklistedApplications containsObject:frontmostApplicationBundleIdentifier]
+      || [self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
+    NSBeep();
+
+    return eventNotHandledErr;
+  }
+
   SpectacleShortcut *shortcut;
   EventHotKeyID shortcutID;
   OSStatus err = GetEventParameter(event,
