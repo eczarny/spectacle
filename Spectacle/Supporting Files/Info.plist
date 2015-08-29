@@ -35,7 +35,7 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://spectacleapp.com/updates/appcast.xml</string>
+	<string>https://spectacleapp.com/updates/appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_public.pem</string>
 </dict>
