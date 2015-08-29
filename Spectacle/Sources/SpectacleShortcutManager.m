@@ -3,7 +3,7 @@
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutManager.h"
 
-static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *data);
+static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *shortcutManager);
 
 static EventHotKeyID currentShortcutID = {
   .signature = 'ZERO',
@@ -293,7 +293,7 @@ static EventHotKeyID currentShortcutID = {
 
 #pragma mark -
 
-static OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *shortcutManager)
+OSStatus hotKeyEventHandler(EventHandlerCallRef handlerCall, EventRef event, void *shortcutManager)
 {
   return [(__bridge SpectacleShortcutManager *)shortcutManager handleHotKeyEvent:event];
 }

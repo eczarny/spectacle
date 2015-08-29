@@ -56,6 +56,18 @@
                              name:NSMenuDidSendActionNotification
                            object:nil];
 
+  NSNotificationCenter *workspaceNotificationCenter = NSWorkspace.sharedWorkspace.notificationCenter;
+
+  [workspaceNotificationCenter addObserver:self
+                                  selector:@selector(applicationDidActivate:)
+                                      name:NSWorkspaceDidActivateApplicationNotification
+                                    object:nil];
+
+  [workspaceNotificationCenter addObserver:self
+                                  selector:@selector(applicationDidDeactivate:)
+                                      name:NSWorkspaceDidDeactivateApplicationNotification
+                                    object:nil];
+
   [SpectacleUtilities registerDefaultsForBundle:NSBundle.mainBundle];
 
   self.shortcutMenuItems = @{kWindowActionMoveToCenter: _moveToCenterShortcutMenuItem,
@@ -278,10 +290,14 @@
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
 
   if ([self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
+    [self.shortcutManager enableShortcuts];
+
     [self.disabledApplications removeObject:frontmostApplicationBundleIdentifier];
 
     self.disableShortcutsForApplicationMenuItem.state = NSOffState;
   } else {
+    [self.shortcutManager disableShortcuts];
+
     [self.disabledApplications addObject:frontmostApplicationBundleIdentifier];
 
     self.disableShortcutsForApplicationMenuItem.state = NSOnState;
@@ -364,6 +380,28 @@
 
 #pragma mark -
 
+- (void)applicationDidActivate:(NSNotification *)notification
+{
+  NSRunningApplication *application = notification.userInfo[NSWorkspaceApplicationKey];
+
+  if ([self.blacklistedApplications containsObject:application.bundleIdentifier]
+      || [self.disabledApplications containsObject:application.bundleIdentifier]) {
+    [self.shortcutManager disableShortcuts];
+  }
+}
+
+- (void)applicationDidDeactivate:(NSNotification *)notification
+{
+  NSRunningApplication *application = notification.userInfo[NSWorkspaceApplicationKey];
+
+  if ([self.blacklistedApplications containsObject:application.bundleIdentifier]
+      || [self.disabledApplications containsObject:application.bundleIdentifier]) {
+    [self.shortcutManager enableShortcuts];
+  }
+}
+
+#pragma mark -
+
 - (void)menuWillOpen:(NSMenu *)menu
 {
   NSString *frontmostApplicationLocalizedName = NSWorkspace.sharedWorkspace.frontmostApplication.localizedName;
@@ -386,7 +424,7 @@
 
 - (void)menuDidSendAction:(NSNotification *)notification
 {
-  NSMenuItem *menuItem = (notification.userInfo)[@"MenuItem"];
+  NSMenuItem *menuItem = notification.userInfo[@"MenuItem"];
 
   if (menuItem.tag == kMenuItemActivateIgnoringOtherApps) {
     [NSApplication.sharedApplication activateIgnoringOtherApps:YES];
