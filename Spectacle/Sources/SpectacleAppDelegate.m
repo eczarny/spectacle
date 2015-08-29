@@ -257,22 +257,23 @@
 
   switch (self.disableShortcutsForAnHourMenuItem.state) {
     case NSOnState:
-      [self.shortcutManager enableShortcuts];
-
       [self.disableShortcutsForAnHourTimer invalidate];
 
+      if (self.disableShortcutsForApplicationMenuItem.state == NSOffState) {
+        [self.shortcutManager enableShortcuts];
+      }
+
       newMenuItemState = NSOffState;
+
       break;
     case NSOffState:
-      [self.shortcutManager disableShortcuts];
-
-      SEL selector = @selector(disableOrEnableShortcutsForAnHour:);
-
       self.disableShortcutsForAnHourTimer = [NSTimer scheduledTimerWithTimeInterval:3600
                                                                              target:self
-                                                                           selector:selector
+                                                                           selector:@selector(disableOrEnableShortcutsForAnHour:)
                                                                            userInfo:nil
                                                                             repeats:NO];
+
+      [self.shortcutManager disableShortcuts];
 
       newMenuItemState = NSOnState;
 
@@ -290,15 +291,17 @@
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
 
   if ([self.disabledApplications containsObject:frontmostApplicationBundleIdentifier]) {
-    [self.shortcutManager enableShortcuts];
-
     [self.disabledApplications removeObject:frontmostApplicationBundleIdentifier];
+
+    if (self.disableShortcutsForAnHourMenuItem.state == NSOffState) {
+      [self.shortcutManager enableShortcuts];
+    }
 
     self.disableShortcutsForApplicationMenuItem.state = NSOffState;
   } else {
-    [self.shortcutManager disableShortcuts];
-
     [self.disabledApplications addObject:frontmostApplicationBundleIdentifier];
+
+    [self.shortcutManager disableShortcuts];
 
     self.disableShortcutsForApplicationMenuItem.state = NSOnState;
   }
@@ -393,6 +396,8 @@
 - (void)applicationDidDeactivate:(NSNotification *)notification
 {
   NSRunningApplication *application = notification.userInfo[NSWorkspaceApplicationKey];
+
+  if (self.disableShortcutsForAnHourMenuItem.state == NSOnState) return;
 
   if ([self.blacklistedApplications containsObject:application.bundleIdentifier]
       || [self.disabledApplications containsObject:application.bundleIdentifier]) {
