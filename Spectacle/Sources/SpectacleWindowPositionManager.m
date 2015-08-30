@@ -58,7 +58,7 @@
 
   if (screenOfDisplay) {
     frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
-    visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
+    visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
   }
 
   if (frontmostWindowElement.isSheet
@@ -361,7 +361,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
   CGRect visibleFrameOfScreen = CGRectNull;
 
   if (screenOfDisplay) {
-    visibleFrameOfScreen = NSRectToCGRect(screenOfDisplay.visibleFrame);
+    visibleFrameOfScreen = NSRectToCGRect(screenOfDisplay.frame);
   }
 
   if (![self moveWithHistoryItem:historyItem visibleFrameOfScreen:visibleFrameOfScreen action:action]) {
