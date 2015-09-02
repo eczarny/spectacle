@@ -73,16 +73,16 @@
 /* --- */
 
 /* Class = "NSTextFieldCell"; title = "Control"; ObjectID = "7Fe-Da-fYB"; */
-"7Fe-Da-fYB.title" = "Control";
+"7Fe-Da-fYB.title" = "Contrôle";
 
 /* Class = "NSTextFieldCell"; title = "Option"; ObjectID = "U0H-hG-KAQ"; */
 "U0H-hG-KAQ.title" = "Option";
 
 /* Class = "NSTextFieldCell"; title = "Shift"; ObjectID = "dww-8Q-sa1"; */
-"dww-8Q-sa1.title" = "Shift";
+"dww-8Q-sa1.title" = "Maj";
 
 /* Class = "NSTextFieldCell"; title = "Command"; ObjectID = "jdf-Yu-zrq"; */
-"jdf-Yu-zrq.title" = "Command";
+"jdf-Yu-zrq.title" = "Commande";
 
 /* --- */
 
