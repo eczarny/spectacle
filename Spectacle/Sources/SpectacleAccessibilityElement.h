@@ -26,8 +26,6 @@
 
 - (BOOL)isSheet;
 
-- (BOOL)isFullScreen;
-
 - (BOOL)isSystemDialog;
 
 @end

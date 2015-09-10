@@ -136,13 +136,6 @@
   return [[self stringValueOfAttribute:kAXRoleAttribute] isEqualToString:(__bridge NSString *)kAXSheetRole];
 }
 
-- (BOOL)isFullScreen
-{
-  SpectacleAccessibilityElement *fullScreenButtonElement = [self elementWithAttribute:kAXFullScreenButtonAttribute];
-
-  return [[fullScreenButtonElement stringValueOfAttribute:kAXSubroleAttribute] isEqualToString:(__bridge NSString *)kAXZoomButtonSubrole];
-}
-
 - (BOOL)isSystemDialog
 {
   return [[self stringValueOfAttribute:kAXSubroleAttribute] isEqualToString:(__bridge NSString *)kAXSystemDialogSubrole];

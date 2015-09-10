@@ -62,7 +62,6 @@
   }
 
   if (frontmostWindowElement.isSheet
-      || frontmostWindowElement.isFullScreen
       || frontmostWindowElement.isSystemDialog
       || CGRectIsNull(frontmostWindowRect)
       || CGRectIsNull(frameOfScreen)
