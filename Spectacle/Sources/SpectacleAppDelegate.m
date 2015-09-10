@@ -96,13 +96,8 @@
   self.disabledApplications = [NSMutableSet setWithArray:[userDefaults objectForKey:kDisabledApplicationsPreference]];
 
   self.shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
-
-  self.shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:self.shortcutStorage
-                                                           blacklistedApplications:self.blacklistedApplications
-                                                              disabledApplications:self.disabledApplications];
-
+  self.shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:self.shortcutStorage];
   self.windowPositionManager = [SpectacleWindowPositionManager new];
-
   self.preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:self.shortcutManager
                                                                          windowPositionManager:self.windowPositionManager
                                                                                shortcutStorage:self.shortcutStorage];
