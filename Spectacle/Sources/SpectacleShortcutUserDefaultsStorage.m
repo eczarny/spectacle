@@ -1,13 +1,16 @@
 #import "SpectacleConstants.h"
 #import "SpectacleShortcutUserDefaultsStorage.h"
 
-@interface ZKHotKey : SpectacleShortcut
+@implementation SpectacleShortcutUserDefaultsStorage
 
-@end
++ (void)initialize
+{
+  [NSKeyedUnarchiver setClass:[SpectacleShortcut class] forClassName:@"SpectacleHotKey"];
+  [NSKeyedUnarchiver setClass:[SpectacleShortcut class] forClassName:@"ZeroKitHotKey"];
+  [NSKeyedUnarchiver setClass:[SpectacleShortcut class] forClassName:@"ZKHotKey"];
+}
 
 #pragma mark -
-
-@implementation SpectacleShortcutUserDefaultsStorage
 
 - (NSArray *)loadShortcutsWithAction:(SpectacleShortcutAction)action
 {
@@ -105,8 +108,6 @@
   NSDictionary *defaultShortcuts = [self defaultShortcutsWithNames:dictionary.allKeys];
   NSMutableArray *shortcuts = [NSMutableArray new];
 
-  [NSKeyedUnarchiver setClass:ZKHotKey.class forClassName:@"SpectacleShortcut"];
-
   for (NSData *shortcutData in dictionary.allValues) {
     SpectacleShortcut *shortcut = [NSKeyedUnarchiver unarchiveObjectWithData:shortcutData];
 
@@ -144,11 +145,5 @@
     shortcut.shortcutModifiers = defaultShortcut.shortcutModifiers;
   }
 }
-
-@end
-
-#pragma mark -
-
-@implementation ZKHotKey
 
 @end

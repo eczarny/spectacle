@@ -21,16 +21,9 @@
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
   if (self = [super init]) {
-    if ([coder allowsKeyedCoding]) {
-      _shortcutName = [coder decodeObjectForKey:@"name"];
-      _shortcutCode = [coder decodeIntegerForKey:@"keyCode"];
-      _shortcutModifiers = [coder decodeIntegerForKey:@"modifiers"];
-    } else {
-      _shortcutName = [coder decodeObject];
-
-      [coder decodeValueOfObjCType:@encode(NSInteger) at:&_shortcutCode];
-      [coder decodeValueOfObjCType:@encode(NSUInteger) at:&_shortcutModifiers];
-    }
+    _shortcutName = [coder decodeObjectForKey:@"name"];
+    _shortcutCode = [coder decodeIntegerForKey:@"keyCode"];
+    _shortcutModifiers = [coder decodeIntegerForKey:@"modifiers"];
   }
 
   return self;
@@ -42,15 +35,9 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-  if ([coder allowsKeyedCoding]) {
-    [coder encodeObject:self.shortcutName forKey:@"name"];
-    [coder encodeInteger:self.shortcutCode forKey:@"keyCode"];
-    [coder encodeInteger:self.shortcutModifiers forKey:@"modifiers"];
-  } else {
-    [coder encodeObject:self.shortcutName];
-    [coder encodeValueOfObjCType:@encode(NSInteger) at:&_shortcutCode];
-    [coder encodeValueOfObjCType:@encode(NSUInteger) at:&_shortcutModifiers];
-  }
+  [coder encodeObject:self.shortcutName forKey:@"name"];
+  [coder encodeInteger:self.shortcutCode forKey:@"keyCode"];
+  [coder encodeInteger:self.shortcutModifiers forKey:@"modifiers"];
 }
 
 #pragma mark -
