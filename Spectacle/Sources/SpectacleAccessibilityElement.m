@@ -21,31 +21,27 @@
 
 #pragma mark -
 
-+ (SpectacleAccessibilityElement *)systemWideElement
++ (SpectacleAccessibilityElement *)frontmostApplicationElement
 {
-  static SpectacleAccessibilityElement *systemWideElement = nil;
-  static dispatch_once_t predicate;
+  NSRunningApplication *frontmostApplication = [NSWorkspace sharedWorkspace].frontmostApplication;
+  SpectacleAccessibilityElement *frontmostApplicationElement = [SpectacleAccessibilityElement new];
 
-  dispatch_once(&predicate, ^{
-    AXUIElementRef underlyingElement = AXUIElementCreateSystemWide();
+  AXUIElementRef underlyingElement = AXUIElementCreateApplication(frontmostApplication.processIdentifier);
 
-    systemWideElement = [SpectacleAccessibilityElement new];
-    systemWideElement.underlyingElement = underlyingElement;
+  frontmostApplicationElement.underlyingElement = underlyingElement;
 
-    CFRelease(underlyingElement);
-  });
+  CFRelease(underlyingElement);
 
-  return systemWideElement;
+  return frontmostApplicationElement;
 }
 
 + (SpectacleAccessibilityElement *)frontmostWindowElement
 {
-  SpectacleAccessibilityElement *systemWideElement = SpectacleAccessibilityElement.systemWideElement;
-  SpectacleAccessibilityElement *applicationWithFocusElement = [systemWideElement elementWithAttribute:kAXFocusedApplicationAttribute];
+  SpectacleAccessibilityElement *frontmostApplicationElement = [SpectacleAccessibilityElement frontmostApplicationElement];
   SpectacleAccessibilityElement *frontmostWindowElement = nil;
 
-  if (applicationWithFocusElement) {
-    frontmostWindowElement = [applicationWithFocusElement elementWithAttribute:kAXFocusedWindowAttribute];
+  if (frontmostApplicationElement) {
+    frontmostWindowElement = [frontmostApplicationElement elementWithAttribute:kAXFocusedWindowAttribute];
 
     if (!frontmostWindowElement) {
       NSLog(@"Invalid accessibility element provided, unable to determine the size and position of the window.");

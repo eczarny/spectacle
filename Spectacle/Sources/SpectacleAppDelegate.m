@@ -57,7 +57,7 @@
                              name:NSMenuDidSendActionNotification
                            object:nil];
 
-  NSNotificationCenter *workspaceNotificationCenter = NSWorkspace.sharedWorkspace.notificationCenter;
+  NSNotificationCenter *workspaceNotificationCenter = [NSWorkspace sharedWorkspace].notificationCenter;
 
   [workspaceNotificationCenter addObserver:self
                                   selector:@selector(applicationDidActivate:)
@@ -115,7 +115,7 @@
     [self enableStatusItem];
   }
 
-  [SUUpdater.sharedUpdater setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
+  [[SUUpdater sharedUpdater] setAutomaticallyChecksForUpdates:automaticallyChecksForUpdates];
 
   [self updateShortcutMenuItems];
 
@@ -279,7 +279,7 @@
 
 - (IBAction)disableOrEnableShortcutsForApplication:(id)sender
 {
-  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
+  NSRunningApplication *frontmostApplication = [NSWorkspace sharedWorkspace].frontmostApplication;
 
   if ([self.disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
     [self.disabledApplications removeObject:frontmostApplication.bundleIdentifier];
@@ -308,12 +308,12 @@
   NSURL *scriptURL = [applicationBundle URLForResource:kSecurityAndPrivacyPreferencesScriptName
                                          withExtension:kAppleScriptFileExtension];
 
-  [NSApplication.sharedApplication stopModal];
+  [[NSApplication sharedApplication] stopModal];
 
   [self.accessiblityAccessDialogWindow orderOut:self];
 
   if (![[[NSAppleScript alloc] initWithContentsOfURL:scriptURL error:nil] executeAndReturnError:nil]) {
-    [NSWorkspace.sharedWorkspace openURL:preferencePaneURL];
+    [[NSWorkspace sharedWorkspace] openURL:preferencePaneURL];
   }
 }
 
@@ -355,7 +355,7 @@
 
 - (void)updateShortcutMenuItems
 {
-  SpectacleShortcutTranslator *shortcutTranslator = SpectacleShortcutTranslator.sharedTranslator;
+  SpectacleShortcutTranslator *shortcutTranslator = [SpectacleShortcutTranslator sharedTranslator];
 
   for (NSString *shortcutName in self.shortcutMenuItems.allKeys) {
     NSMenuItem *shortcutMenuItem = self.shortcutMenuItems[shortcutName];
@@ -375,7 +375,7 @@
 
 - (void)enableShortcutsIfPermitted
 {
-  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
+  NSRunningApplication *frontmostApplication = [NSWorkspace sharedWorkspace].frontmostApplication;
 
   // Do not enable shortcuts if they should remain disabled for an hour.
   if (self.shortcutsAreDisabledForAnHour) return;
@@ -391,7 +391,7 @@
 
 - (void)disableShortcutsIfFrontmostApplicationIsBlacklistedOrDisabled
 {
-  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
+  NSRunningApplication *frontmostApplication = [NSWorkspace sharedWorkspace].frontmostApplication;
 
   // Do not disable shortcuts if the application is not blacklisted or disabled.
   if (![self.blacklistedApplications containsObject:frontmostApplication.bundleIdentifier]
@@ -428,7 +428,7 @@
 
 - (void)menuWillOpen:(NSMenu *)menu
 {
-  NSRunningApplication *frontmostApplication = NSWorkspace.sharedWorkspace.frontmostApplication;
+  NSRunningApplication *frontmostApplication = [NSWorkspace sharedWorkspace].frontmostApplication;
 
   self.disableShortcutsForApplicationMenuItem.hidden = NO;
 
@@ -451,7 +451,7 @@
   NSMenuItem *menuItem = notification.userInfo[@"MenuItem"];
 
   if (menuItem.tag == kMenuItemActivateIgnoringOtherApps) {
-    [NSApplication.sharedApplication activateIgnoringOtherApps:YES];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
   }
 }
 

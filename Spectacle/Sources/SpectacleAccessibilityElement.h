@@ -1,10 +1,10 @@
-#import <Carbon/Carbon.h>
+#import <AppKit/Appkit.h>
 
-#import <Foundation/Foundation.h>
+#import <Carbon/Carbon.h>
 
 @interface SpectacleAccessibilityElement : NSObject
 
-+ (SpectacleAccessibilityElement *)systemWideElement;
++ (SpectacleAccessibilityElement *)frontmostApplicationElement;
 
 + (SpectacleAccessibilityElement *)frontmostWindowElement;
 

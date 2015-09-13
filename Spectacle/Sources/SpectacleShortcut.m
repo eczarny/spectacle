@@ -87,7 +87,7 @@
 
 - (NSString *)displayString
 {
-  return [SpectacleShortcutTranslator.sharedTranslator translateShortcut:self];
+  return [[SpectacleShortcutTranslator sharedTranslator] translateShortcut:self];
 }
 
 #pragma mark -

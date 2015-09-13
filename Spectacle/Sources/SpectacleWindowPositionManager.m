@@ -333,7 +333,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
 
 - (SpectacleHistory *)historyForCurrentApplication
 {
-  NSString *frontmostApplicationBundleIdentifier = NSWorkspace.sharedWorkspace.frontmostApplication.bundleIdentifier;
+  NSString *frontmostApplicationBundleIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
 
   if (!frontmostApplicationBundleIdentifier) {
     return nil;
