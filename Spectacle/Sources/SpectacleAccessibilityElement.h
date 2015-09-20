@@ -24,6 +24,14 @@
 
 #pragma mark -
 
+- (CGRect)rectOfElement;
+
+#pragma mark -
+
+- (void)setRectOfElement:(CGRect)rect;
+
+#pragma mark -
+
 - (BOOL)isSheet;
 
 - (BOOL)isSystemDialog;

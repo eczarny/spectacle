@@ -127,6 +127,45 @@
 
 #pragma mark -
 
+- (CGRect)rectOfElement
+{
+  CGRect result = CGRectNull;
+
+  CFTypeRef positionValue = [self valueOfAttribute:kAXPositionAttribute type:kAXValueCGPointType];
+  CFTypeRef sizeValue = [self valueOfAttribute:kAXSizeAttribute type:kAXValueCGSizeType];
+  CGPoint position;
+  CGSize size;
+
+  AXValueGetValue(positionValue, kAXValueCGPointType, (void *)&position);
+  AXValueGetValue(sizeValue, kAXValueCGSizeType, (void *)&size);
+
+  if ((positionValue != NULL) && (sizeValue != NULL)) {
+    CFRelease(positionValue);
+    CFRelease(sizeValue);
+
+    result = CGRectMake(position.x, position.y, size.width, size.height);
+  }
+
+  return result;
+}
+
+#pragma mark -
+
+- (void)setRectOfElement:(CGRect)rect
+{
+  AXValueRef positionRef = AXValueCreate(kAXValueCGPointType, (const void *)&rect.origin);
+  AXValueRef sizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&rect.size);
+
+  [self setValue:sizeRef forAttribute:kAXSizeAttribute];
+  [self setValue:positionRef forAttribute:kAXPositionAttribute];
+  [self setValue:sizeRef forAttribute:kAXSizeAttribute];
+
+  CFRelease(positionRef);
+  CFRelease(sizeRef);
+}
+
+#pragma mark -
+
 - (BOOL)isSheet
 {
   return [[self stringValueOfAttribute:kAXRoleAttribute] isEqualToString:(__bridge NSString *)kAXSheetRole];
