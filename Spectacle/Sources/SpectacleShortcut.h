@@ -17,6 +17,8 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 
 #pragma mark -
 
+- (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithShortcutCode:(NSInteger)shortcutCode
                    shortcutModifiers:(NSUInteger)shortcutModifiers NS_DESIGNATED_INITIALIZER;
 

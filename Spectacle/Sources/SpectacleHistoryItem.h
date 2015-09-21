@@ -11,6 +11,8 @@
 
 #pragma mark -
 
+- (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                   windowRect:(CGRect)windowRect NS_DESIGNATED_INITIALIZER;
 
