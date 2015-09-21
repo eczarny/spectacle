@@ -1,14 +1,9 @@
 #import "SpectacleAccessibilityElement.h"
 
-@interface SpectacleAccessibilityElement ()
-
-@property (nonatomic) AXUIElementRef underlyingElement;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleAccessibilityElement
+{
+  AXUIElementRef _underlyingElement;
+}
 
 - (instancetype)init
 {
@@ -61,7 +56,7 @@
   AXUIElementRef underlyingElement;
   AXError result;
 
-  result = AXUIElementCopyAttributeValue(self.underlyingElement, attribute, (CFTypeRef *)&underlyingElement);
+  result = AXUIElementCopyAttributeValue(_underlyingElement, attribute, (CFTypeRef *)&underlyingElement);
 
   if (result == kAXErrorSuccess) {
     newElement = [SpectacleAccessibilityElement new];
@@ -80,11 +75,11 @@
 
 - (NSString *)stringValueOfAttribute:(CFStringRef)attribute
 {
-  if (CFGetTypeID(self.underlyingElement) == AXUIElementGetTypeID()) {
+  if (CFGetTypeID(_underlyingElement) == AXUIElementGetTypeID()) {
     CFTypeRef value;
     AXError result;
 
-    result = AXUIElementCopyAttributeValue(self.underlyingElement, attribute, &value);
+    result = AXUIElementCopyAttributeValue(_underlyingElement, attribute, &value);
 
     if (result == kAXErrorSuccess) {
       return CFBridgingRelease(value);
@@ -98,11 +93,11 @@
 
 - (AXValueRef)valueOfAttribute:(CFStringRef)attribute type:(AXValueType)type
 {
-  if (CFGetTypeID(self.underlyingElement) == AXUIElementGetTypeID()) {
+  if (CFGetTypeID(_underlyingElement) == AXUIElementGetTypeID()) {
     CFTypeRef value;
     AXError result;
 
-    result = AXUIElementCopyAttributeValue(self.underlyingElement, attribute, (CFTypeRef *)&value);
+    result = AXUIElementCopyAttributeValue(_underlyingElement, attribute, (CFTypeRef *)&value);
 
     if ((result == kAXErrorSuccess) && (AXValueGetType(value) == type)) {
       return value;
@@ -118,7 +113,7 @@
 
 - (void)setValue:(AXValueRef)value forAttribute:(CFStringRef)attribute
 {
-  AXError result = AXUIElementSetAttributeValue(self.underlyingElement, attribute, (CFTypeRef *)value);
+  AXError result = AXUIElementSetAttributeValue(_underlyingElement, attribute, (CFTypeRef *)value);
 
   if (result != kAXErrorSuccess) {
     NSLog(@"There was a problem setting the value of the specified attribute: %@ (error code %d)", attribute, result);

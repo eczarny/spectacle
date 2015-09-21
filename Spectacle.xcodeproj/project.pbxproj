@@ -21,7 +21,7 @@
 		2D3A0512194956E100CD96E7 /* SpectacleShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0509194956E100CD96E7 /* SpectacleShortcutValidator.m */; };
 		2D3A05151949573D00CD96E7 /* ShortcutTranslations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D3A05141949573D00CD96E7 /* ShortcutTranslations.plist */; };
 		2D3E08021AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3E08011AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m */; };
-		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */; };
+		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */; };
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
 		2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */; };
@@ -100,8 +100,8 @@
 		2D3A050A194956E100CD96E7 /* SpectacleShortcutValidatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutValidatorProtocol.h; path = Spectacle/Sources/SpectacleShortcutValidatorProtocol.h; sourceTree = "<group>"; };
 		2D3A05141949573D00CD96E7 /* ShortcutTranslations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ShortcutTranslations.plist; path = "Spectacle/Resources/Property Lists/ShortcutTranslations.plist"; sourceTree = "<group>"; };
 		2D3E08011AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowPositionCalculatorSpec.m; path = Sources/SpectacleWindowPositionCalculatorSpec.m; sourceTree = "<group>"; };
-		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleScreenDetection.h; path = Spectacle/Sources/SpectacleScreenDetection.h; sourceTree = "<group>"; };
-		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetection.m; path = Spectacle/Sources/SpectacleScreenDetection.m; sourceTree = "<group>"; };
+		2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleScreenDetector.h; path = Spectacle/Sources/SpectacleScreenDetector.h; sourceTree = "<group>"; };
+		2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetector.m; path = Spectacle/Sources/SpectacleScreenDetector.m; sourceTree = "<group>"; };
 		2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Security & Privacy System Preferences.scpt"; path = "Spectacle/Resources/Scripts/Security & Privacy System Preferences.scpt"; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Spectacle/Resources/Certificates/dsa_public.pem; sourceTree = "<group>"; };
 		2D768E8B147ED51A00901E76 /* SpectacleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleAppDelegate.h; path = Spectacle/Sources/SpectacleAppDelegate.h; sourceTree = "<group>"; };
@@ -377,8 +377,8 @@
 				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
 				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
 				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
-				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetection.h */,
-				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetection.m */,
+				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetector.h */,
+				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */,
 				2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */,
 				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
@@ -603,7 +603,7 @@
 				2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */,
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */,
-				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetection.m in Sources */,
+				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */,
 				2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleShortcutManager.m in Sources */,
 				2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */,

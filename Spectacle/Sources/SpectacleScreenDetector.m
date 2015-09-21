@@ -1,17 +1,17 @@
-#import "SpectacleScreenDetection.h"
+#import "SpectacleScreenDetector.h"
 
 #define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
 
 #pragma mark -
 
-@implementation SpectacleScreenDetection
+@implementation SpectacleScreenDetector
 
-+ (NSScreen *)screenWithAction:(SpectacleWindowAction)action
+- (NSScreen *)screenWithAction:(SpectacleWindowAction)action
                        andRect:(CGRect)rect
                        screens:(NSArray *)screens
                     mainScreen:(NSScreen *)mainScreen
 {
-  NSArray *screensInConsistentOrder = [SpectacleScreenDetection screensInConsistentOrder:screens];
+  NSArray *screensInConsistentOrder = [self screensInConsistentOrder:screens];
   NSScreen *result = [self screenContainingRect:rect screens:screensInConsistentOrder mainScreen:mainScreen];
   
   if (MovingToNextOrPreviousDisplay(action)) {
@@ -25,7 +25,7 @@
 
 #pragma mark -
 
-+ (NSScreen *)screenContainingRect:(CGRect)rect screens:(NSArray *)screens mainScreen:(NSScreen *)mainScreen
+- (NSScreen *)screenContainingRect:(CGRect)rect screens:(NSArray *)screens mainScreen:(NSScreen *)mainScreen
 {
   CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
   NSScreen *result = mainScreen;
@@ -58,7 +58,7 @@
 
 #pragma mark -
 
-+ (CGFloat)percentageOfRect:(CGRect)rect withinFrameOfScreen:(CGRect)frameOfScreen
+- (CGFloat)percentageOfRect:(CGRect)rect withinFrameOfScreen:(CGRect)frameOfScreen
 {
   CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
   CGFloat result = 0.0f;
@@ -72,7 +72,7 @@
 
 #pragma mark -
 
-+ (NSScreen *)nextOrPreviousScreenToFrameOfScreen:(CGRect)frameOfScreen
+- (NSScreen *)nextOrPreviousScreenToFrameOfScreen:(CGRect)frameOfScreen
                               inDirectionOfAction:(SpectacleWindowAction)action
                                           screens:(NSArray *)screens
 {
@@ -113,7 +113,7 @@
 
 # pragma mark -
 
-+ (NSArray *)screensInConsistentOrder:(NSArray *)screens
+- (NSArray *)screensInConsistentOrder:(NSArray *)screens
 {
   NSArray *result = [[screens sortedArrayWithOptions:NSSortStable usingComparator:^(NSScreen *screenOne, NSScreen *screenTwo) {
     if (CGPointEqualToPoint(screenOne.frame.origin, CGPointMake(0, 0))) {

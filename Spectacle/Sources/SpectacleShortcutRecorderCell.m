@@ -8,20 +8,15 @@
 
 #pragma mark -
 
-@interface SpectacleShortcutRecorderCell ()
-
-@property (nonatomic) NSUInteger modifierFlags;
-@property (nonatomic) BOOL isRecording;
-@property (nonatomic) NSTrackingArea *trackingArea;
-@property (nonatomic) BOOL isMouseAboveBadge;
-@property (nonatomic) BOOL isMouseDown;
-@property (nonatomic) void *shortcutMode;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleShortcutRecorderCell
+{
+  NSUInteger _modifierFlags;
+  BOOL _isRecording;
+  NSTrackingArea *_trackingArea;
+  BOOL _isMouseAboveBadge;
+  BOOL _isMouseDown;
+  void *_shortcutMode;
+}
 
 - (instancetype)init
 {
@@ -45,10 +40,10 @@
 
 - (BOOL)resignFirstResponder
 {
-  if (self.isRecording) {
-    PopSymbolicHotKeyMode(self.shortcutMode);
+  if (_isRecording) {
+    PopSymbolicHotKeyMode(_shortcutMode);
 
-    self.isRecording = NO;
+    _isRecording = NO;
 
     [self.controlView setNeedsDisplay:YES];
   }
@@ -61,14 +56,14 @@
 - (BOOL)performKeyEquivalent:(NSEvent *)event
 {
   NSInteger keyCode = event.keyCode;
-  NSUInteger newModifierFlags = (self.modifierFlags | event.modifierFlags) & NSDeviceIndependentModifierFlagsMask;
+  NSUInteger newModifierFlags = (_modifierFlags | event.modifierFlags) & NSDeviceIndependentModifierFlagsMask;
   BOOL functionKey = ((keyCode == kVK_F1)  || (keyCode == kVK_F2)  || (keyCode == kVK_F3)  || (keyCode == kVK_F4)  ||
                       (keyCode == kVK_F5)  || (keyCode == kVK_F6)  || (keyCode == kVK_F7)  || (keyCode == kVK_F8)  ||
                       (keyCode == kVK_F9)  || (keyCode == kVK_F10) || (keyCode == kVK_F11) || (keyCode == kVK_F12) ||
                       (keyCode == kVK_F13) || (keyCode == kVK_F14) || (keyCode == kVK_F15) || (keyCode == kVK_F16) ||
                       (keyCode == kVK_F17) || (keyCode == kVK_F18) || (keyCode == kVK_F19) || (keyCode == kVK_F20));
 
-  if (self.isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:newModifierFlags])) {
+  if (_isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:newModifierFlags])) {
     NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
 
     if (characters.length) {
@@ -93,11 +88,11 @@
       NSBeep();
     }
 
-    self.modifierFlags = 0;
+    _modifierFlags = 0;
 
-    PopSymbolicHotKeyMode(self.shortcutMode);
+    PopSymbolicHotKeyMode(_shortcutMode);
 
-    self.isRecording = NO;
+    _isRecording = NO;
 
     [self.controlView setNeedsDisplay:YES];
 
@@ -109,8 +104,8 @@
 
 - (void)flagsChanged:(NSEvent *)event
 {
-  if (self.isRecording) {
-    self.modifierFlags = event.modifierFlags;
+  if (_isRecording) {
+    _modifierFlags = event.modifierFlags;
 
     [self.controlView setNeedsDisplay:YES];
   }
@@ -127,43 +122,43 @@
 
     switch ([currentEvent type]) {
       case NSLeftMouseDown:
-        self.isMouseDown = YES;
+        _isMouseDown = YES;
 
         [view setNeedsDisplay:YES];
 
         break;
       case NSLeftMouseDragged:
         if ([view mouse:mouseLocation inRect:rect]) {
-          self.isMouseDown = YES;
+          _isMouseDown = YES;
         } else {
-          self.isMouseDown = NO;
+          _isMouseDown = NO;
         }
 
-        if (self.isMouseAboveBadge && [view mouse:mouseLocation inRect:self.trackingArea.rect]) {
-          self.isMouseDown = YES;
-          self.isMouseAboveBadge = YES;
+        if (_isMouseAboveBadge && [view mouse:mouseLocation inRect:_trackingArea.rect]) {
+          _isMouseDown = YES;
+          _isMouseAboveBadge = YES;
         } else {
-          self.isMouseDown = NO;
-          self.isMouseAboveBadge = NO;
+          _isMouseDown = NO;
+          _isMouseAboveBadge = NO;
         }
 
         [view setNeedsDisplay:YES];
 
         break;
       default:
-        self.isMouseDown = NO;
+        _isMouseDown = NO;
 
-        if ([view mouse:mouseLocation inRect:rect] && !self.isRecording && !self.isMouseAboveBadge) {
-          self.isRecording = YES;
+        if ([view mouse:mouseLocation inRect:rect] && !_isRecording && !_isMouseAboveBadge) {
+          _isRecording = YES;
 
-          self.shortcutMode = PushSymbolicHotKeyMode(kHIHotKeyModeAllDisabled);
+          _shortcutMode = PushSymbolicHotKeyMode(kHIHotKeyModeAllDisabled);
 
           [view.window makeFirstResponder:view];
-        } else if (self.isRecording && self.isMouseAboveBadge) {
-          PopSymbolicHotKeyMode(self.shortcutMode);
+        } else if (_isRecording && _isMouseAboveBadge) {
+          PopSymbolicHotKeyMode(_shortcutMode);
 
-          self.isRecording = NO;
-        } else if (!self.isRecording && self.shortcut && self.isMouseAboveBadge) {
+          _isRecording = NO;
+        } else if (!_isRecording && self.shortcut && _isMouseAboveBadge) {
           [self.delegate shortcutRecorder:self.shortcutRecorder didClearExistingShortcut:self.shortcut];
 
           self.shortcut = nil;
@@ -185,14 +180,14 @@
 
 - (void)mouseEntered:(NSEvent *)event
 {
-  self.isMouseAboveBadge = YES;
+  _isMouseAboveBadge = YES;
 
   [self.controlView setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)event
 {
-  self.isMouseAboveBadge = NO;
+  _isMouseAboveBadge = NO;
 
   [self.controlView setNeedsDisplay:YES];
 }
@@ -247,7 +242,7 @@
 
   [roundedPath addClip];
 
-  if (self.isRecording) {
+  if (_isRecording) {
     gradientStartingColor = [NSColor colorWithDeviceRed:0.784f green:0.953f blue:1.0f alpha:1.0f];
     gradientEndingColor = [NSColor colorWithDeviceRed:0.694f green:0.859f blue:1.0f alpha:1.0f];
   } else {
@@ -255,7 +250,7 @@
     gradientEndingColor = [[NSColor.whiteColor highlightWithLevel:0.2f] colorWithAlphaComponent:0.9f];
   }
 
-  if (!self.isRecording && self.isMouseDown && !self.isMouseAboveBadge) {
+  if (!_isRecording && _isMouseDown && !_isMouseAboveBadge) {
     gradient = [[NSGradient alloc] initWithStartingColor:gradientEndingColor endingColor:gradientStartingColor];
   } else {
     gradient = [[NSGradient alloc] initWithStartingColor:gradientStartingColor endingColor:gradientEndingColor];
@@ -280,25 +275,25 @@
   badgeRect.origin = NSMakePoint(NSMaxX(rect) - badgeSize.width - 4.0f, floor((NSMaxY(rect) - badgeSize.height) / 2.0f));
   badgeRect.size = badgeSize;
 
-  if (self.isRecording && !self.shortcut) {
+  if (_isRecording && !self.shortcut) {
     [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.25f];
-  } else if (self.isRecording) {
+  } else if (_isRecording) {
     [self drawRevertShortcutBadgeInRect:badgeRect];
   } else if (self.shortcut) {
     [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.25f];
   }
 
-  if (((self.shortcut && !self.isRecording) || (!self.shortcut && self.isRecording)) && self.isMouseAboveBadge && self.isMouseDown) {
+  if (((self.shortcut && !_isRecording) || (!self.shortcut && _isRecording)) && _isMouseAboveBadge && _isMouseDown) {
     [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.50f];
   }
 
-  if (!self.trackingArea) {
-    self.trackingArea = [[NSTrackingArea alloc] initWithRect:badgeRect
+  if (!_trackingArea) {
+    _trackingArea = [[NSTrackingArea alloc] initWithRect:badgeRect
                                                      options:(NSTrackingActiveInKeyWindow | NSTrackingMouseEnteredAndExited)
                                                        owner:self
                                                     userInfo:nil];
 
-    [self.controlView addTrackingArea:self.trackingArea];
+    [self.controlView addTrackingArea:_trackingArea];
   }
 }
 
@@ -376,11 +371,11 @@
   NSString *label = nil;
   NSColor *foregroundColor = NSColor.blackColor;
 
-  if (self.isRecording && !self.isMouseAboveBadge) {
+  if (_isRecording && !_isMouseAboveBadge) {
     label = NSLocalizedString(@"ShortcutRecorderLabelEnterShortcut", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut");
-  } else if (self.isRecording && self.isMouseAboveBadge && !self.shortcut) {
+  } else if (_isRecording && _isMouseAboveBadge && !self.shortcut) {
     label = NSLocalizedString(@"ShortcutRecorderLabelStopRecording", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does not have a previously recorded shortcut");
-  } else if (self.isRecording && self.isMouseAboveBadge) {
+  } else if (_isRecording && _isMouseAboveBadge) {
     label = NSLocalizedString(@"ShortcutRecorderLabelUseExisting", "The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does have a previously recorded shortcut");
   } else if (self.shortcut) {
     label = self.shortcut.displayString;
@@ -389,15 +384,15 @@
   }
 
   // Recording is in progress and modifier flags have already been set, display them.
-  if (self.isRecording && (self.modifierFlags > 0)) {
-    label = [SpectacleShortcutTranslator translateCocoaModifiers:self.modifierFlags];
+  if (_isRecording && (_modifierFlags > 0)) {
+    label = [SpectacleShortcutTranslator translateCocoaModifiers:_modifierFlags];
   }
 
   if (!self.isEnabled) {
     foregroundColor = NSColor.disabledControlTextColor;
   }
 
-  if (self.isRecording) {
+  if (_isRecording) {
     [self drawString:label withForegroundColor:foregroundColor inRect:rect];
   } else {
     [self drawString:label withForegroundColor:foregroundColor inRect:rect];

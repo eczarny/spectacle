@@ -2,15 +2,10 @@
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslator.h"
 
-@interface SpectacleShortcutTranslator ()
-
-@property (nonatomic) NSDictionary *specialShortcutTranslations;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleShortcutTranslator
+{
+  NSDictionary *_specialShortcutTranslations;
+}
 
 + (SpectacleShortcutTranslator *)sharedTranslator
 {
@@ -124,12 +119,12 @@
 
   [self buildKeyCodeConvertorDictionary];
 
-  keyCodeTranslations = self.specialShortcutTranslations[kShortcutTranslationsKey];
+  keyCodeTranslations = _specialShortcutTranslations[kShortcutTranslationsKey];
 
   result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
 
   if (result) {
-    NSDictionary *glyphTranslations = self.specialShortcutTranslations[kShortcutGlyphTranslationsKey];
+    NSDictionary *glyphTranslations = _specialShortcutTranslations[kShortcutGlyphTranslationsKey];
     id translatedGlyph = glyphTranslations[result];
 
     if (translatedGlyph) {
@@ -192,12 +187,12 @@
 
 - (void)buildKeyCodeConvertorDictionary
 {
-  if (!self.specialShortcutTranslations) {
+  if (!_specialShortcutTranslations) {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString *path = [bundle pathForResource:kShortcutTranslationsPropertyListFile
                                       ofType:kPropertyListFileExtension];
 
-    self.specialShortcutTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
+    _specialShortcutTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
   }
 }
 

@@ -12,17 +12,12 @@ static EventHotKeyID currentShortcutID = {
 
 #pragma mark -
 
-@interface SpectacleShortcutManager ()
-
-@property (nonatomic) id<SpectacleShortcutStorageProtocol> shortcutStorage;
-@property (nonatomic) NSMutableDictionary *registeredShortcutsByName;
-@property (nonatomic) BOOL areShorcutsEnabled;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleShortcutManager
+{
+  id<SpectacleShortcutStorageProtocol> _shortcutStorage;
+  NSMutableDictionary *_registeredShortcutsByName;
+  BOOL _areShorcutsEnabled;
+}
 
 - (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
 {
@@ -50,11 +45,11 @@ static EventHotKeyID currentShortcutID = {
     [self unregisterShortcutForName:shortcutName];
   }
 
-  if (self.areShorcutsEnabled) {
+  if (_areShorcutsEnabled) {
     [self registerEventHotKey:shortcut];
   }
 
-  self.registeredShortcutsByName[shortcutName] = shortcut;
+  _registeredShortcutsByName[shortcutName] = shortcut;
 
   [self storeRegisteredShortcuts];
 }
@@ -71,14 +66,14 @@ static EventHotKeyID currentShortcutID = {
 
   BOOL eventHotKeyUnregistered = NO;
 
-  if (self.areShorcutsEnabled) {
+  if (_areShorcutsEnabled) {
     eventHotKeyUnregistered = [self unregisterEventHotKey:shortcut];
   }
 
-  self.registeredShortcutsByName[name] = [SpectacleShortcut clearedShortcutWithName:name];
+  _registeredShortcutsByName[name] = [SpectacleShortcut clearedShortcutWithName:name];
 
-  if (self.areShorcutsEnabled && !eventHotKeyUnregistered) {
-    self.registeredShortcutsByName[name] = shortcut;
+  if (_areShorcutsEnabled && !eventHotKeyUnregistered) {
+    _registeredShortcutsByName[name] = shortcut;
   }
 
   [self storeRegisteredShortcuts];
@@ -102,12 +97,12 @@ static EventHotKeyID currentShortcutID = {
 
 - (NSArray *)registeredShortcuts
 {
-  return self.registeredShortcutsByName.allValues;
+  return _registeredShortcutsByName.allValues;
 }
 
 - (SpectacleShortcut *)registeredShortcutForName:(NSString *)name
 {
-  SpectacleShortcut *shortcut = self.registeredShortcutsByName[name];
+  SpectacleShortcut *shortcut = _registeredShortcutsByName[name];
 
   if (shortcut.isClearedShortcut) {
     shortcut = nil;
@@ -133,24 +128,24 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)enableShortcuts
 {
-  if (self.areShorcutsEnabled) return;
+  if (_areShorcutsEnabled) return;
 
   for (SpectacleShortcut *shortcut in self.registeredShortcuts) {
     [self registerEventHotKey:shortcut];
   }
 
-  self.areShorcutsEnabled = YES;
+  _areShorcutsEnabled = YES;
 }
 
 - (void)disableShortcuts
 {
-  if (!self.areShorcutsEnabled) return;
+  if (!_areShorcutsEnabled) return;
 
   for (SpectacleShortcut *shortcut in self.registeredShortcuts) {
     [self unregisterEventHotKey:shortcut];
   }
 
-  self.areShorcutsEnabled = NO;
+  _areShorcutsEnabled = NO;
 }
 
 #pragma mark -
@@ -169,7 +164,7 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)storeRegisteredShortcuts
 {
-  [self.shortcutStorage storeShortcuts:self.registeredShortcuts];
+  [_shortcutStorage storeShortcuts:self.registeredShortcuts];
 }
 
 #pragma mark -

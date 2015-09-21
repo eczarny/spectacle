@@ -2,9 +2,9 @@
 
 #import "SpectacleWindowPositionManager.h"
 
-@interface SpectacleScreenDetection : NSObject
+@interface SpectacleScreenDetector : NSObject
 
-+ (NSScreen *)screenWithAction:(SpectacleWindowAction)action
+- (NSScreen *)screenWithAction:(SpectacleWindowAction)action
                        andRect:(CGRect)rect
                        screens:(NSArray *)screens
                     mainScreen:(NSScreen *)mainScreen;

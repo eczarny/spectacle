@@ -52,9 +52,15 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
   SpectacleWindowActionPreviousThird
 };
 
-@class SpectacleShortcut;
+@class SpectacleScreenDetector, SpectacleShortcut;
 
 @interface SpectacleWindowPositionManager : NSObject
+
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithScreenDetection:(SpectacleScreenDetector *)screenDetection NS_DESIGNATED_INITIALIZER;
+
+#pragma mark -
 
 - (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action;
 

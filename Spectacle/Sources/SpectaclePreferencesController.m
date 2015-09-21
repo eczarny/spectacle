@@ -10,25 +10,19 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
 
-@interface SpectaclePreferencesController ()
-
-@property (nonatomic, weak) SpectacleShortcutManager *shortcutManager;
-@property (nonatomic, weak) SpectacleWindowPositionManager *windowPositionManager;
-@property (nonatomic, weak) id<SpectacleShortcutStorageProtocol> shortcutStorage;
-
-@property (nonatomic) NSDictionary *shortcutRecorders;
-
-@end
-
-#pragma mark -
-
 @implementation SpectaclePreferencesController
+{
+  SpectacleShortcutManager *_shortcutManager;
+  SpectacleWindowPositionManager *_windowPositionManager;
+  id<SpectacleShortcutStorageProtocol> _shortcutStorage;
+  NSDictionary *_shortcutRecorders;
+}
 
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
                         shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage
 {
-  if ((self = [super initWithWindowNibName:kPreferencesWindowNibName])) {
+  if (self = [super initWithWindowNibName:kPreferencesWindowNibName]) {
     _shortcutManager = shortcutManager;
     _windowPositionManager = windowPositionManager;
     _shortcutStorage = shortcutStorage;
@@ -45,25 +39,25 @@
   NSInteger loginItemEnabledState = NSOffState;
   BOOL isStatusItemEnabled = [NSUserDefaults.standardUserDefaults boolForKey:kStatusItemEnabledPreference];
 
-  self.shortcutRecorders = @{kWindowActionMoveToCenter: _moveToCenterShortcutRecorder,
-                             kWindowActionMoveToFullscreen: _moveToFullscreenShortcutRecorder,
-                             kWindowActionMoveToLeftHalf: _moveToLeftShortcutRecorder,
-                             kWindowActionMoveToRightHalf: _moveToRightShortcutRecorder,
-                             kWindowActionMoveToTopHalf: _moveToTopShortcutRecorder,
-                             kWindowActionMoveToBottomHalf: _moveToBottomShortcutRecorder,
-                             kWindowActionMoveToUpperLeft: _moveToUpperLeftShortcutRecorder,
-                             kWindowActionMoveToLowerLeft: _moveToLowerLeftShortcutRecorder,
-                             kWindowActionMoveToUpperRight: _moveToUpperRightShortcutRecorder,
-                             kWindowActionMoveToLowerRight: _moveToLowerRightShortcutRecorder,
-                             kWindowActionMoveToNextDisplay: _moveToNextDisplayShortcutRecorder,
-                             kWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayShortcutRecorder,
-                             kWindowActionMoveToNextThird: _moveToNextThirdShortcutRecorder,
-                             kWindowActionMoveToPreviousThird: _moveToPreviousThirdShortcutRecorder,
-                             kWindowActionMakeLarger: _makeLargerShortcutRecorder,
-                             kWindowActionMakeSmaller: _makeSmallerShortcutRecorder,
-                             kWindowActionUndoLastMove: _undoLastMoveShortcutRecorder,
-                             kWindowActionRedoLastMove: _redoLastMoveShortcutRecorder};
-  
+  _shortcutRecorders = @{kWindowActionMoveToCenter: _moveToCenterShortcutRecorder,
+                         kWindowActionMoveToFullscreen: _moveToFullscreenShortcutRecorder,
+                         kWindowActionMoveToLeftHalf: _moveToLeftShortcutRecorder,
+                         kWindowActionMoveToRightHalf: _moveToRightShortcutRecorder,
+                         kWindowActionMoveToTopHalf: _moveToTopShortcutRecorder,
+                         kWindowActionMoveToBottomHalf: _moveToBottomShortcutRecorder,
+                         kWindowActionMoveToUpperLeft: _moveToUpperLeftShortcutRecorder,
+                         kWindowActionMoveToLowerLeft: _moveToLowerLeftShortcutRecorder,
+                         kWindowActionMoveToUpperRight: _moveToUpperRightShortcutRecorder,
+                         kWindowActionMoveToLowerRight: _moveToLowerRightShortcutRecorder,
+                         kWindowActionMoveToNextDisplay: _moveToNextDisplayShortcutRecorder,
+                         kWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayShortcutRecorder,
+                         kWindowActionMoveToNextThird: _moveToNextThirdShortcutRecorder,
+                         kWindowActionMoveToPreviousThird: _moveToPreviousThirdShortcutRecorder,
+                         kWindowActionMakeLarger: _makeLargerShortcutRecorder,
+                         kWindowActionMakeSmaller: _makeSmallerShortcutRecorder,
+                         kWindowActionUndoLastMove: _undoLastMoveShortcutRecorder,
+                         kWindowActionRedoLastMove: _redoLastMoveShortcutRecorder};
+
   [self loadRegisteredShortcuts];
 
   [notificationCenter addObserver:self
@@ -90,12 +84,12 @@
    didReceiveNewShortcut:(SpectacleShortcut *)shortcut
 {
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
-    SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
+    SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
-    [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+    [_windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
   }];
 
-  [self.shortcutManager registerShortcut:shortcut];
+  [_shortcutManager registerShortcut:shortcut];
 
   [NSNotificationCenter.defaultCenter postNotificationName:kShortcutChangedNotification object:self];
 }
@@ -103,7 +97,7 @@
 - (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder
 didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
-  [self.shortcutManager unregisterShortcutForName:shortcut.shortcutName];
+  [_shortcutManager unregisterShortcutForName:shortcut.shortcutName];
 
   [NSNotificationCenter.defaultCenter postNotificationName:kShortcutChangedNotification object:self];
 }
@@ -139,13 +133,13 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 - (IBAction)restoreDefaults:(id)sender
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
-    NSArray *shortcuts = [self.shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
-      SpectacleWindowAction windowAction = [self.windowPositionManager windowActionForShortcut:shortcut];
+    NSArray *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+      SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
-      [self.windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+      [_windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
     }];
 
-    [self.shortcutManager registerShortcuts:shortcuts];
+    [_shortcutManager registerShortcuts:shortcuts];
 
     [NSNotificationCenter.defaultCenter postNotificationName:kRestoreDefaultShortcutsNotification
                                                       object:self];
@@ -206,9 +200,9 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
   SpectacleRegisteredShortcutValidator *shortcutValidator = [SpectacleRegisteredShortcutValidator new];
 
-  for (NSString *shortcutName in self.shortcutRecorders.allKeys) {
-    SpectacleShortcutRecorder *shortcutRecorder = self.shortcutRecorders[shortcutName];
-    SpectacleShortcut *shortcut = [self.shortcutManager registeredShortcutForName:shortcutName];
+  for (NSString *shortcutName in _shortcutRecorders.allKeys) {
+    SpectacleShortcutRecorder *shortcutRecorder = _shortcutRecorders[shortcutName];
+    SpectacleShortcut *shortcut = [_shortcutManager registeredShortcutForName:shortcutName];
     
     shortcutRecorder.shortcutName = shortcutName;
     
@@ -218,7 +212,7 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
     
     shortcutRecorder.delegate = self;
     
-    [shortcutRecorder setAdditionalShortcutValidators:@[shortcutValidator] shortcutManager:self.shortcutManager];
+    [shortcutRecorder setAdditionalShortcutValidators:@[shortcutValidator] shortcutManager:_shortcutManager];
   }
   
   
@@ -229,7 +223,7 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 
 - (void)enableShortcutRecorders:(BOOL)enabled
 {
-  for (SpectacleShortcutRecorder *shortcutRecorder in self.shortcutRecorders.allValues) {
+  for (SpectacleShortcutRecorder *shortcutRecorder in _shortcutRecorders.allValues) {
     if (!enabled) {
       shortcutRecorder.shortcut = nil;
     }

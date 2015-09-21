@@ -3,7 +3,7 @@
 #import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
-#import "SpectacleScreenDetection.h"
+#import "SpectacleScreenDetector.h"
 #import "SpectacleShortcut.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
@@ -17,21 +17,17 @@
 
 #pragma mark -
 
-@interface SpectacleWindowPositionManager ()
-
-@property (nonatomic) NSMutableDictionary *applicationHistories;
-@property (nonatomic) NSSet *blacklistedApplications;
-
-@end
-
-#pragma mark -
-
 @implementation SpectacleWindowPositionManager
-
-- (instancetype)init
 {
-  if ((self = [super init])) {
+  NSMutableDictionary *_applicationHistories;
+  SpectacleScreenDetector *_screenDetection;
+}
+
+- (instancetype)initWithScreenDetection:(SpectacleScreenDetector *)screenDetection
+{
+  if (self = [super init]) {
     _applicationHistories = [NSMutableDictionary new];
+    _screenDetection = screenDetection;
   }
 
   return self;
@@ -45,10 +41,10 @@
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontMostWindowRect = CGRectNull;
 
-  NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction:action
-                                                                 andRect:frontmostWindowRect
-                                                                 screens:NSScreen.screens
-                                                              mainScreen:NSScreen.mainScreen];
+  NSScreen *screenOfDisplay = [_screenDetection screenWithAction:action
+                                                         andRect:frontmostWindowRect
+                                                         screens:NSScreen.screens
+                                                      mainScreen:NSScreen.mainScreen];
 
   CGRect frameOfScreen = CGRectNull;
   CGRect visibleFrameOfScreen = CGRectNull;
@@ -302,11 +298,11 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
     return nil;
   }
 
-  if (!self.applicationHistories[frontmostApplicationBundleIdentifier]) {
-    self.applicationHistories[frontmostApplicationBundleIdentifier] = [SpectacleHistory new];
+  if (!_applicationHistories[frontmostApplicationBundleIdentifier]) {
+    _applicationHistories[frontmostApplicationBundleIdentifier] = [SpectacleHistory new];
   }
 
-  return self.applicationHistories[frontmostApplicationBundleIdentifier];
+  return _applicationHistories[frontmostApplicationBundleIdentifier];
 }
 
 #pragma mark -
@@ -315,10 +311,10 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
 {
   SpectacleHistory *history = [self historyForCurrentApplication];
   SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? history.previousHistoryItem : history.nextHistoryItem;
-  NSScreen *screenOfDisplay = [SpectacleScreenDetection screenWithAction:action
-                                                                 andRect:historyItem.windowRect
-                                                                 screens:NSScreen.screens
-                                                              mainScreen:NSScreen.mainScreen];
+  NSScreen *screenOfDisplay = [_screenDetection screenWithAction:action
+                                                         andRect:historyItem.windowRect
+                                                         screens:NSScreen.screens
+                                                      mainScreen:NSScreen.mainScreen];
 
   CGRect visibleFrameOfScreen = CGRectNull;
 
