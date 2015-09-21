@@ -35,11 +35,11 @@
 
 #pragma mark -
 
-- (void)moveFrontMostWindowWithWindowAction:(SpectacleWindowAction)action
+- (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                            action:(SpectacleWindowAction)action
 {
-  SpectacleAccessibilityElement *frontmostWindowElement = SpectacleAccessibilityElement.frontmostWindowElement;
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
-  CGRect previousFrontMostWindowRect = CGRectNull;
+  CGRect previousFrontmostWindowRect = CGRectNull;
 
   NSScreen *screenOfDisplay = [_screenDetection screenWithAction:action
                                                          andRect:frontmostWindowRect
@@ -86,7 +86,7 @@
     action = SpectacleWindowActionCenter;
   }
 
-  previousFrontMostWindowRect = frontmostWindowRect;
+  previousFrontmostWindowRect = frontmostWindowRect;
 
   if (Resizing(action)) {
     CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * kWindowSizeOffset;
@@ -104,7 +104,7 @@
   action = calculationResult.action;
   frontmostWindowRect = calculationResult.windowRect;
 
-  if (CGRectEqualToRect(previousFrontMostWindowRect, frontmostWindowRect)) {
+  if (CGRectEqualToRect(previousFrontmostWindowRect, frontmostWindowRect)) {
     NSBeep();
 
     return;
@@ -128,12 +128,14 @@ frontmostWindowElement:frontmostWindowElement
 
 - (void)undoLastWindowAction
 {
-  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionUndo];
+  [self moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                            action:SpectacleWindowActionUndo];
 }
 
 - (void)redoLastWindowAction
 {
-  [self moveFrontMostWindowWithWindowAction:SpectacleWindowActionRedo];
+  [self moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                            action:SpectacleWindowActionRedo];
 }
 
 #pragma mark -

@@ -1,5 +1,6 @@
 #import <Sparkle/Sparkle.h>
 
+#import "SpectacleAccessibilityElement.h"
 #import "SpectacleAppDelegate.h"
 #import "SpectacleConstants.h"
 #import "SpectaclePreferencesController.h"
@@ -138,96 +139,109 @@
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToFullscreen:(id)sender
+- (IBAction)moveFrontmostWindowToFullscreen:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionFullscreen];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionFullscreen];
 }
 
-- (IBAction)moveFrontMostWindowToCenter:(id)sender
+- (IBAction)moveFrontmostWindowToCenter:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionCenter];
-}
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToLeftHalf:(id)sender
-{
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLeftHalf];
-}
-
-- (IBAction)moveFrontMostWindowToRightHalf:(id)sender
-{
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionRightHalf];
-}
-
-- (IBAction)moveFrontMostWindowToTopHalf:(id)sender
-{
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionTopHalf];
-}
-
-- (IBAction)moveFrontMostWindowToBottomHalf:(id)sender
-{
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionBottomHalf];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionCenter];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToUpperLeft:(id)sender
+- (IBAction)moveFrontmostWindowToLeftHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperLeft];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionLeftHalf];
 }
 
-- (IBAction)moveFrontMostWindowToLowerLeft:(id)sender
+- (IBAction)moveFrontmostWindowToRightHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerLeft];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionRightHalf];
 }
 
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToUpperRight:(id)sender
+- (IBAction)moveFrontmostWindowToTopHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionUpperRight];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionTopHalf];
 }
 
-- (IBAction)moveFrontMostWindowToLowerRight:(id)sender
+- (IBAction)moveFrontmostWindowToBottomHalf:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLowerRight];
-}
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToNextDisplay:(id)sender
-{
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextDisplay];
-}
-
-- (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender
-{
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousDisplay];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionBottomHalf];
 }
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToNextThird:(id)sender
+- (IBAction)moveFrontmostWindowToUpperLeft:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionNextThird];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionUpperLeft];
 }
 
-- (IBAction)moveFrontMostWindowToPreviousThird:(id)sender
+- (IBAction)moveFrontmostWindowToLowerLeft:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionPreviousThird];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionLowerLeft];
 }
 
 #pragma mark -
 
-- (IBAction)makeFrontMostWindowLarger:(id)sender
+- (IBAction)moveFrontmostWindowToUpperRight:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionLarger];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionUpperRight];
 }
 
-- (IBAction)makeFrontMostWindowSmaller:(id)sender
+- (IBAction)moveFrontmostWindowToLowerRight:(id)sender
 {
-  [_windowPositionManager moveFrontMostWindowWithWindowAction:SpectacleWindowActionSmaller];
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionLowerRight];
+}
+
+#pragma mark -
+
+- (IBAction)moveFrontmostWindowToNextDisplay:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionNextDisplay];
+}
+
+- (IBAction)moveFrontmostWindowToPreviousDisplay:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionPreviousDisplay];
+}
+
+#pragma mark -
+
+- (IBAction)moveFrontmostWindowToNextThird:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionNextThird];
+}
+
+- (IBAction)moveFrontmostWindowToPreviousThird:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement] action:SpectacleWindowActionPreviousThird];
+}
+
+#pragma mark -
+
+- (IBAction)makeFrontmostWindowLarger:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement] action:SpectacleWindowActionLarger];
+}
+
+- (IBAction)makeFrontmostWindowSmaller:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement] action:SpectacleWindowActionSmaller];
 }
 
 #pragma mark -
@@ -320,7 +334,7 @@
   NSArray *shortcuts = [_shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
-    [_windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement] action:windowAction];
   }];
 
   [_shortcutManager registerShortcuts:shortcuts];

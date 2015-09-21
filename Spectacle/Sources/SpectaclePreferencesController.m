@@ -1,5 +1,6 @@
 #import <QuartzCore/QuartzCore.h>
 
+#import "SpectacleAccessibilityElement.h"
 #import "SpectacleConstants.h"
 #import "SpectacleLoginItemHelper.h"
 #import "SpectaclePreferencesController.h"
@@ -86,7 +87,8 @@
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
-    [_windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:windowAction];
   }];
 
   [_shortcutManager registerShortcut:shortcut];
@@ -136,7 +138,8 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
     NSArray *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
       SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
-      [_windowPositionManager moveFrontMostWindowWithWindowAction:windowAction];
+      [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                  action:windowAction];
     }];
 
     [_shortcutManager registerShortcuts:shortcuts];

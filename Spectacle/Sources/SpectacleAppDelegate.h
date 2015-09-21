@@ -33,49 +33,49 @@
 
 # pragma mark -
 
-- (IBAction)moveFrontMostWindowToFullscreen:(id)sender;
+- (IBAction)moveFrontmostWindowToFullscreen:(id)sender;
 
-- (IBAction)moveFrontMostWindowToCenter:(id)sender;
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToLeftHalf:(id)sender;
-
-- (IBAction)moveFrontMostWindowToRightHalf:(id)sender;
-
-- (IBAction)moveFrontMostWindowToTopHalf:(id)sender;
-
-- (IBAction)moveFrontMostWindowToBottomHalf:(id)sender;
+- (IBAction)moveFrontmostWindowToCenter:(id)sender;
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToUpperLeft:(id)sender;
+- (IBAction)moveFrontmostWindowToLeftHalf:(id)sender;
 
-- (IBAction)moveFrontMostWindowToLowerLeft:(id)sender;
+- (IBAction)moveFrontmostWindowToRightHalf:(id)sender;
 
-#pragma mark -
+- (IBAction)moveFrontmostWindowToTopHalf:(id)sender;
 
-- (IBAction)moveFrontMostWindowToUpperRight:(id)sender;
-
-- (IBAction)moveFrontMostWindowToLowerRight:(id)sender;
+- (IBAction)moveFrontmostWindowToBottomHalf:(id)sender;
 
 #pragma mark -
 
-- (IBAction)moveFrontMostWindowToNextDisplay:(id)sender;
+- (IBAction)moveFrontmostWindowToUpperLeft:(id)sender;
 
-- (IBAction)moveFrontMostWindowToPreviousDisplay:(id)sender;
-
-#pragma mark -
-
-- (IBAction)moveFrontMostWindowToNextThird:(id)sender;
-
-- (IBAction)moveFrontMostWindowToPreviousThird:(id)sender;
+- (IBAction)moveFrontmostWindowToLowerLeft:(id)sender;
 
 #pragma mark -
 
-- (IBAction)makeFrontMostWindowLarger:(id)sender;
+- (IBAction)moveFrontmostWindowToUpperRight:(id)sender;
 
-- (IBAction)makeFrontMostWindowSmaller:(id)sender;
+- (IBAction)moveFrontmostWindowToLowerRight:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontmostWindowToNextDisplay:(id)sender;
+
+- (IBAction)moveFrontmostWindowToPreviousDisplay:(id)sender;
+
+#pragma mark -
+
+- (IBAction)moveFrontmostWindowToNextThird:(id)sender;
+
+- (IBAction)moveFrontmostWindowToPreviousThird:(id)sender;
+
+#pragma mark -
+
+- (IBAction)makeFrontmostWindowLarger:(id)sender;
+
+- (IBAction)makeFrontmostWindowSmaller:(id)sender;
 
 #pragma mark -
 

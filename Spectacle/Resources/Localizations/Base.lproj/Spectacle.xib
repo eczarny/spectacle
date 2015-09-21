@@ -85,102 +85,102 @@
                 <menuItem title="Center" id="xJu-Uo-nZw">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToCenter:" target="tMJ-JP-XRD" id="8bQ-2O-zty"/>
+                        <action selector="moveFrontmostWindowToCenter:" target="tMJ-JP-XRD" id="8bQ-2O-zty"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Fullscreen" id="dwQ-Bl-nEL">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToFullscreen:" target="tMJ-JP-XRD" id="P6T-cu-7lj"/>
+                        <action selector="moveFrontmostWindowToFullscreen:" target="tMJ-JP-XRD" id="P6T-cu-7lj"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="Nmj-XX-uaG"/>
                 <menuItem title="Left Half" id="Jae-vx-7ZC">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToLeftHalf:" target="tMJ-JP-XRD" id="Jyu-pQ-sNE"/>
+                        <action selector="moveFrontmostWindowToLeftHalf:" target="tMJ-JP-XRD" id="Jyu-pQ-sNE"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Right Half" id="cae-26-Oab">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToRightHalf:" target="tMJ-JP-XRD" id="jr6-2X-ZAa"/>
+                        <action selector="moveFrontmostWindowToRightHalf:" target="tMJ-JP-XRD" id="jr6-2X-ZAa"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Top Half" id="yh0-ik-weD">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToTopHalf:" target="tMJ-JP-XRD" id="dG6-Fy-O40"/>
+                        <action selector="moveFrontmostWindowToTopHalf:" target="tMJ-JP-XRD" id="dG6-Fy-O40"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Bottom Half" id="huV-Gw-lbX">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToBottomHalf:" target="tMJ-JP-XRD" id="7i6-Gr-Jug"/>
+                        <action selector="moveFrontmostWindowToBottomHalf:" target="tMJ-JP-XRD" id="7i6-Gr-Jug"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="gbv-tO-TvK"/>
                 <menuItem title="Upper Left" id="ldc-QO-Cq6">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToUpperLeft:" target="tMJ-JP-XRD" id="XAq-dc-yRG"/>
+                        <action selector="moveFrontmostWindowToUpperLeft:" target="tMJ-JP-XRD" id="XAq-dc-yRG"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Lower Left" id="eN5-A6-iho">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToLowerLeft:" target="tMJ-JP-XRD" id="e4K-PQ-wlb"/>
+                        <action selector="moveFrontmostWindowToLowerLeft:" target="tMJ-JP-XRD" id="e4K-PQ-wlb"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Upper Right" id="C7t-Sf-kOI">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToUpperRight:" target="tMJ-JP-XRD" id="3W6-0L-5h1"/>
+                        <action selector="moveFrontmostWindowToUpperRight:" target="tMJ-JP-XRD" id="3W6-0L-5h1"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Lower Right" id="oDU-J0-NkJ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToLowerRight:" target="tMJ-JP-XRD" id="mBh-Kx-JVT"/>
+                        <action selector="moveFrontmostWindowToLowerRight:" target="tMJ-JP-XRD" id="mBh-Kx-JVT"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="0li-21-m4g"/>
                 <menuItem title="Next Display" id="I4U-jL-hXq">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToNextDisplay:" target="tMJ-JP-XRD" id="8Jf-bY-L7R"/>
+                        <action selector="moveFrontmostWindowToNextDisplay:" target="tMJ-JP-XRD" id="8Jf-bY-L7R"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Previous Display" id="aPo-Rp-A1X">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToPreviousDisplay:" target="tMJ-JP-XRD" id="wjA-mg-3rC"/>
+                        <action selector="moveFrontmostWindowToPreviousDisplay:" target="tMJ-JP-XRD" id="wjA-mg-3rC"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="2VE-eu-Tv6"/>
                 <menuItem title="Next Third" id="7HO-L3-O6Q">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToNextThird:" target="tMJ-JP-XRD" id="tOU-2B-5ca"/>
+                        <action selector="moveFrontmostWindowToNextThird:" target="tMJ-JP-XRD" id="tOU-2B-5ca"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Previous Third" id="bV9-Ga-jDG">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="moveFrontMostWindowToPreviousThird:" target="tMJ-JP-XRD" id="8oD-A9-mUX"/>
+                        <action selector="moveFrontmostWindowToPreviousThird:" target="tMJ-JP-XRD" id="8oD-A9-mUX"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="dDR-EJ-dud"/>
                 <menuItem title="Make Larger" id="Yun-AA-OVD">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="makeFrontMostWindowLarger:" target="tMJ-JP-XRD" id="twG-Hu-ZQM"/>
+                        <action selector="makeFrontmostWindowLarger:" target="tMJ-JP-XRD" id="twG-Hu-ZQM"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Make Smaller" id="gTe-ym-DB0">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="makeFrontMostWindowSmaller:" target="tMJ-JP-XRD" id="6lw-fW-wPN"/>
+                        <action selector="makeFrontmostWindowSmaller:" target="tMJ-JP-XRD" id="6lw-fW-wPN"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="nH8-Kx-TCA"/>
