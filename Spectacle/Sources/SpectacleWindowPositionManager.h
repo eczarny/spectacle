@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 #define FlipVerticalOriginOfRectInRect(a, b) \
   (b.size.height - (a.origin.y + a.size.height) + ([[[NSScreen screens] objectAtIndex:0] frame].size.height - b.size.height))
@@ -58,7 +58,8 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
+                       sharedWorkspace:(NSWorkspace *)sharedWorkspace NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 

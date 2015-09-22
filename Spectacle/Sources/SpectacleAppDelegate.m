@@ -27,7 +27,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-  NSNotificationCenter *notificationCenter = NSNotificationCenter.defaultCenter;
+  NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 
   [notificationCenter addObserver:self
                          selector:@selector(enableStatusItem)
@@ -66,7 +66,7 @@
                                       name:NSWorkspaceDidDeactivateApplicationNotification
                                     object:nil];
 
-  [SpectacleUtilities registerDefaultsForBundle:NSBundle.mainBundle];
+  [SpectacleUtilities registerDefaultsForBundle:[NSBundle mainBundle]];
 
   _shortcutMenuItems = @{kWindowActionMoveToCenter: _moveToCenterShortcutMenuItem,
                          kWindowActionMoveToFullscreen: _moveToFullscreenShortcutMenuItem,
@@ -87,14 +87,17 @@
                          kWindowActionUndoLastMove: _undoLastMoveShortcutMenuItem,
                          kWindowActionRedoLastMove: _redoLastMoveShortcutMenuItem};
 
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
   _blacklistedApplications = [NSSet setWithArray:[userDefaults objectForKey:kBlacklistedApplicationsPreference]];
   _disabledApplications = [NSMutableSet setWithArray:[userDefaults objectForKey:kDisabledApplicationsPreference]];
 
   _shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
   _shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:_shortcutStorage];
-  _windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithScreenDetector:[SpectacleScreenDetector new]];
+
+  _windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithScreenDetector:[SpectacleScreenDetector new]
+                                                                          sharedWorkspace:[NSWorkspace sharedWorkspace]];
+
   _preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:_shortcutManager
                                                                      windowPositionManager:_windowPositionManager
                                                                            shortcutStorage:_shortcutStorage];

@@ -21,13 +21,16 @@
 {
   NSMutableDictionary *_applicationHistories;
   SpectacleScreenDetector *_screenDetector;
+  NSWorkspace *_sharedWorkspace;
 }
 
 - (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
+                       sharedWorkspace:(NSWorkspace *)sharedWorkspace
 {
   if (self = [super init]) {
     _applicationHistories = [NSMutableDictionary new];
     _screenDetector = screenDetector;
+    _sharedWorkspace = sharedWorkspace;
   }
 
   return self;
@@ -307,7 +310,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
 
 - (SpectacleHistory *)historyForCurrentApplication
 {
-  NSString *frontmostApplicationBundleIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
+  NSString *frontmostApplicationBundleIdentifier = _sharedWorkspace.frontmostApplication.bundleIdentifier;
 
   if (!frontmostApplicationBundleIdentifier) {
     return nil;
