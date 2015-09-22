@@ -9,6 +9,7 @@
 #import "SpectacleShortcutTranslator.h"
 #import "SpectacleShortcutUserDefaultsStorage.h"
 #import "SpectacleUtilities.h"
+#import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
 
 @implementation SpectacleAppDelegate
@@ -96,6 +97,7 @@
   _shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:_shortcutStorage];
 
   _windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithScreenDetector:[SpectacleScreenDetector new]
+                                                                 windowPositionCalculator:[SpectacleWindowPositionCalculator new]
                                                                           sharedWorkspace:[NSWorkspace sharedWorkspace]];
 
   _preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:_shortcutManager
@@ -337,7 +339,8 @@
   NSArray *shortcuts = [_shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
-    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement] action:windowAction];
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:windowAction];
   }];
 
   [_shortcutManager registerShortcuts:shortcuts];

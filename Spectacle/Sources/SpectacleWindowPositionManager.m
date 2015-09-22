@@ -21,19 +21,37 @@
 {
   NSMutableDictionary *_applicationHistories;
   SpectacleScreenDetector *_screenDetector;
+  SpectacleWindowPositionCalculator *_windowPositionCalculator;
   NSWorkspace *_sharedWorkspace;
+  SpectacleFailureFeedback _failureFeedback;
 }
 
 - (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
+              windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
                        sharedWorkspace:(NSWorkspace *)sharedWorkspace
+                       failureFeedback:(SpectacleFailureFeedback)failureFeedback
 {
   if (self = [super init]) {
     _applicationHistories = [NSMutableDictionary new];
     _screenDetector = screenDetector;
+    _windowPositionCalculator = windowPositionCalculator;
     _sharedWorkspace = sharedWorkspace;
+    _failureFeedback = failureFeedback;
   }
 
   return self;
+}
+
+- (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
+              windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
+                       sharedWorkspace:(NSWorkspace *)sharedWorkspace
+{
+  return [self initWithScreenDetector:screenDetector
+             windowPositionCalculator:windowPositionCalculator
+                      sharedWorkspace:sharedWorkspace
+                      failureFeedback:^() {
+    NSBeep();
+  }];
 }
 
 #pragma mark -
@@ -67,7 +85,7 @@
       || CGRectIsNull(frontmostWindowRect)
       || CGRectIsNull(frameOfScreen)
       || CGRectIsNull(visibleFrameOfScreen)) {
-    NSBeep();
+    _failureFeedback();
 
     return;
   }
@@ -98,21 +116,21 @@
   if (Resizing(action)) {
     CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * kWindowSizeOffset;
 
-    calculationResult = [SpectacleWindowPositionCalculator calculateResizedWindowRect:frontmostWindowRect
-                                                                 visibleFrameOfScreen:visibleFrameOfScreen
-                                                                           sizeOffset:sizeOffset
-                                                                               action:action];
+    calculationResult = [_windowPositionCalculator calculateResizedWindowRect:frontmostWindowRect
+                                                         visibleFrameOfScreen:visibleFrameOfScreen
+                                                                   sizeOffset:sizeOffset
+                                                                       action:action];
   } else {
-    calculationResult = [SpectacleWindowPositionCalculator calculateWindowRect:frontmostWindowRect
-                                                          visibleFrameOfScreen:visibleFrameOfScreen
-                                                                        action:action];
+    calculationResult = [_windowPositionCalculator calculateWindowRect:frontmostWindowRect
+                                                  visibleFrameOfScreen:visibleFrameOfScreen
+                                                                action:action];
   }
 
   action = calculationResult.action;
   frontmostWindowRect = calculationResult.windowRect;
 
   if (CGRectEqualToRect(previousFrontmostWindowRect, frontmostWindowRect)) {
-    NSBeep();
+    _failureFeedback();
 
     return;
   }
@@ -213,7 +231,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
   CGRect previousWindowRect = [frontmostWindowElement rectOfElement];
 
   if (CGRectIsNull(previousWindowRect)) {
-    NSBeep();
+    _failureFeedback();
 
     return;
   }
@@ -234,7 +252,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                        frontmostWindowElement:frontmostWindowElement];
 
   if (MovingToThirdOfDisplay(action) && !CGRectContainsRect(windowRect, movedWindowRect)) {
-    NSBeep();
+    _failureFeedback();
 
     [frontmostWindowElement setRectOfElement:previousWindowRect];
   }
@@ -343,7 +361,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
   }
 
   if (![self moveWithHistoryItem:historyItem visibleFrameOfScreen:visibleFrameOfScreen action:action]) {
-    NSBeep();
+    _failureFeedback();
   }
 }
 

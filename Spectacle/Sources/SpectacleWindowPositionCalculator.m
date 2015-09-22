@@ -21,7 +21,7 @@
 
 @implementation SpectacleWindowPositionCalculator
 
-+ (SpectacleCalculationResult *)calculateWindowRect:(CGRect)windowRect
+- (SpectacleCalculationResult *)calculateWindowRect:(CGRect)windowRect
                                visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                                              action:(SpectacleWindowAction)action
 {
@@ -44,13 +44,13 @@
   }
 
   if ((action == SpectacleWindowActionLeftHalf) || (action == SpectacleWindowActionRightHalf)) {
-    return [SpectacleWindowPositionCalculator calculateLeftOrRightHalfRect:windowRect
-                                                      visibleFrameOfScreen:visibleFrameOfScreen
-                                                                withAction:action];
+    return [self calculateLeftOrRightHalfRect:windowRect
+                         visibleFrameOfScreen:visibleFrameOfScreen
+                                   withAction:action];
   } else if ((action == SpectacleWindowActionTopHalf) || (action == SpectacleWindowActionBottomHalf)) {
-    return [SpectacleWindowPositionCalculator calculateTopOrBottomHalfRect:windowRect
-                                                      visibleFrameOfScreen:visibleFrameOfScreen
-                                                                withAction:action];
+    return [self calculateTopOrBottomHalfRect:windowRect
+                         visibleFrameOfScreen:visibleFrameOfScreen
+                                   withAction:action];
   } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)) {
     calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
     calculatedWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
@@ -60,15 +60,15 @@
   }
 
   if (MovingToThirdOfDisplay(action)) {
-    calculatedWindowRect = [SpectacleWindowPositionCalculator findThirdForWindowRect:calculatedWindowRect
-                                                                visibleFrameOfScreen:visibleFrameOfScreen
-                                                                          withAction:action];
+    calculatedWindowRect = [self findThirdForWindowRect:calculatedWindowRect
+                                   visibleFrameOfScreen:visibleFrameOfScreen
+                                             withAction:action];
   }
 
   return [SpectacleCalculationResult resultWithAction:action windowRect:calculatedWindowRect];
 }
 
-+ (SpectacleCalculationResult *)calculateResizedWindowRect:(CGRect)windowRect
+- (SpectacleCalculationResult *)calculateResizedWindowRect:(CGRect)windowRect
                                       visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                                                 sizeOffset:(CGFloat)sizeOffset
                                                     action:(SpectacleWindowAction)action
@@ -122,8 +122,7 @@
     calculatedWindowRect.origin.y = windowRect.origin.y - floor(sizeOffset / 2.0f);
   }
 
-  BOOL isWindowRectTooSmall = [SpectacleWindowPositionCalculator isWindowRect:calculatedWindowRect
-                                       tooSmallRelativeToVisibleFrameOfScreen:visibleFrameOfScreen];
+  BOOL isWindowRectTooSmall = [self isWindowRect:calculatedWindowRect tooSmallRelativeToVisibleFrameOfScreen:visibleFrameOfScreen];
 
   if (isWindowRectTooSmall) {
     calculatedWindowRect = windowRect;
@@ -134,7 +133,7 @@
 
 #pragma mark -
 
-+ (NSArray *)thirdsFromVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+- (NSArray *)thirdsFromVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 {
   NSMutableArray *result = [NSMutableArray new];
   NSInteger i = 0;
@@ -160,11 +159,11 @@
   return result;
 }
 
-+ (CGRect)findThirdForWindowRect:(CGRect)windowRect
+- (CGRect)findThirdForWindowRect:(CGRect)windowRect
             visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                       withAction:(SpectacleWindowAction)action
 {
-  NSArray *thirds = [SpectacleWindowPositionCalculator thirdsFromVisibleFrameOfScreen:visibleFrameOfScreen];
+  NSArray *thirds = [self thirdsFromVisibleFrameOfScreen:visibleFrameOfScreen];
   CGRect result = [thirds[0] windowRect];
   NSInteger i = 0;
 
@@ -195,7 +194,7 @@
 
 #pragma mark -
 
-+ (BOOL)isWindowRect:(CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+- (BOOL)isWindowRect:(CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 {
   CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / kMinimumWindowSizeRatio);
   CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / kMinimumWindowSizeRatio);
@@ -205,7 +204,7 @@
 
 #pragma mark -
 
-+ (SpectacleCalculationResult *)calculateLeftOrRightHalfRect:(CGRect)windowRect
+- (SpectacleCalculationResult *)calculateLeftOrRightHalfRect:(CGRect)windowRect
                                         visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                                                   withAction:(SpectacleWindowAction)action
 {
@@ -248,7 +247,7 @@
 
 #pragma mark -
 
-+ (SpectacleCalculationResult *)calculateTopOrBottomHalfRect:(CGRect)windowRect
+- (SpectacleCalculationResult *)calculateTopOrBottomHalfRect:(CGRect)windowRect
                                         visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                                                   withAction:(SpectacleWindowAction)action
 {

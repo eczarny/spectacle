@@ -52,14 +52,22 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
   SpectacleWindowActionPreviousThird
 };
 
-@class SpectacleAccessibilityElement, SpectacleScreenDetector, SpectacleShortcut;
+typedef void (^SpectacleFailureFeedback)();
+
+@class SpectacleAccessibilityElement, SpectacleScreenDetector, SpectacleShortcut, SpectacleWindowPositionCalculator;
 
 @interface SpectacleWindowPositionManager : NSObject
 
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
-                       sharedWorkspace:(NSWorkspace *)sharedWorkspace NS_DESIGNATED_INITIALIZER;
+              windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
+                       sharedWorkspace:(NSWorkspace *)sharedWorkspace
+                       failureFeedback:(SpectacleFailureFeedback)failureFeedback NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
+              windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
+                       sharedWorkspace:(NSWorkspace *)sharedWorkspace;
 
 #pragma mark -
 
