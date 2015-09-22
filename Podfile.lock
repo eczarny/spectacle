@@ -1,15 +1,21 @@
 PODS:
-  - Expecta (1.0.2)
+  - Expecta (1.0.3)
+  - OCHamcrest (4.2.0)
+  - OCMockito (1.4.0):
+    - OCHamcrest (~> 4.0)
   - Sparkle (1.11.0)
   - Specta (1.0.3)
 
 DEPENDENCIES:
-  - Expecta (~> 1.0.2)
+  - Expecta (~> 1.0.3)
+  - OCMockito (~> 1.4.0)
   - Sparkle (~> 1.11)
   - Specta (~> 1.0.3)
 
 SPEC CHECKSUMS:
-  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
+  OCHamcrest: c14c0b3f4c4e99363e5b87d97bae38c4438b6d5d
+  OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   Sparkle: cf10103ef35fd89caa35373bfd772c5d6f9c7d73
   Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 

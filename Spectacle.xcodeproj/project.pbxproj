@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */; };
 		2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */; };
+		2D1C781F1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C781E1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m */; settings = {ASSET_TAGS = (); }; };
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
@@ -78,6 +79,7 @@
 		29B4A4B112B8B8C547E42E66 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2D1AE52315D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SpectacleRegisteredShortcutValidator.h; path = Spectacle/Sources/SpectacleRegisteredShortcutValidator.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleRegisteredShortcutValidator.m; path = Spectacle/Sources/SpectacleRegisteredShortcutValidator.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2D1C781E1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowPositionManagerSpec.m; path = Sources/SpectacleWindowPositionManagerSpec.m; sourceTree = "<group>"; };
 		2D1E1AB0147E06AD0021D73D /* Spectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1E1AD2147E07E50021D73D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Spectacle/Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHistory.h; path = Spectacle/Sources/SpectacleHistory.h; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				2D3E08011AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m */,
+				2D1C781E1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3E08021AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m in Sources */,
+				2D1C781F1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
