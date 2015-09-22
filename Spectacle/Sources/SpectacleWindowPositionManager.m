@@ -37,14 +37,16 @@
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction)action
+                           screens:(NSArray *)screens
+                        mainScreen:(NSScreen *)mainScreen
 {
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
 
   NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
                                                         andRect:frontmostWindowRect
-                                                        screens:NSScreen.screens
-                                                     mainScreen:NSScreen.mainScreen];
+                                                        screens:screens
+                                                     mainScreen:mainScreen];
 
   CGRect frameOfScreen = CGRectNull;
   CGRect visibleFrameOfScreen = CGRectNull;
@@ -68,7 +70,9 @@
   }
 
   if (UndoOrRedo(action)) {
-    [self undoOrRedoHistoryWithAction:action];
+    [self undoOrRedoHistoryWithAction:action
+                              screens:screens
+                           mainScreen:mainScreen];
 
     return;
   }
@@ -122,6 +126,15 @@
   visibleFrameOfScreen:visibleFrameOfScreen
 frontmostWindowElement:frontmostWindowElement
                 action:action];
+}
+
+- (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                            action:(SpectacleWindowAction)action
+{
+  [self moveFrontmostWindowElement:frontmostWindowElement
+                            action:action
+                           screens:[NSScreen screens]
+                        mainScreen:[NSScreen mainScreen]];
 }
 
 #pragma mark -
@@ -310,13 +323,15 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
 #pragma mark -
 
 - (void)undoOrRedoHistoryWithAction:(SpectacleWindowAction)action
+                            screens:(NSArray *)screens
+                         mainScreen:(NSScreen *)mainScreen
 {
   SpectacleHistory *history = [self historyForCurrentApplication];
   SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? history.previousHistoryItem : history.nextHistoryItem;
   NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
                                                         andRect:historyItem.windowRect
-                                                        screens:NSScreen.screens
-                                                     mainScreen:NSScreen.mainScreen];
+                                                        screens:screens
+                                                     mainScreen:mainScreen];
 
   CGRect visibleFrameOfScreen = CGRectNull;
 

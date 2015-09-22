@@ -63,6 +63,11 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 #pragma mark -
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                            action:(SpectacleWindowAction)action
+                           screens:(NSArray *)screens
+                        mainScreen:(NSScreen *)mainScreen;
+
+- (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction)action;
 
 #pragma mark -
