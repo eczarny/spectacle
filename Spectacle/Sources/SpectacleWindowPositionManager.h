@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithScreenDetection:(SpectacleScreenDetector *)screenDetection NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector NS_DESIGNATED_INITIALIZER;
 
 #pragma mark -
 

@@ -20,14 +20,14 @@
 @implementation SpectacleWindowPositionManager
 {
   NSMutableDictionary *_applicationHistories;
-  SpectacleScreenDetector *_screenDetection;
+  SpectacleScreenDetector *_screenDetector;
 }
 
-- (instancetype)initWithScreenDetection:(SpectacleScreenDetector *)screenDetection
+- (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
 {
   if (self = [super init]) {
     _applicationHistories = [NSMutableDictionary new];
-    _screenDetection = screenDetection;
+    _screenDetector = screenDetector;
   }
 
   return self;
@@ -41,14 +41,14 @@
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
 
-  NSScreen *screenOfDisplay = [_screenDetection screenWithAction:action
-                                                         andRect:frontmostWindowRect
-                                                         screens:NSScreen.screens
-                                                      mainScreen:NSScreen.mainScreen];
+  NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
+                                                        andRect:frontmostWindowRect
+                                                        screens:NSScreen.screens
+                                                     mainScreen:NSScreen.mainScreen];
 
   CGRect frameOfScreen = CGRectNull;
   CGRect visibleFrameOfScreen = CGRectNull;
-  SpectacleHistory *history = self.historyForCurrentApplication;
+  SpectacleHistory *history = [self historyForCurrentApplication];
   SpectacleHistoryItem *historyItem = nil;
   SpectacleCalculationResult *calculationResult = nil;
 
@@ -57,8 +57,8 @@
     visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
   }
 
-  if (frontmostWindowElement.isSheet
-      || frontmostWindowElement.isSystemDialog
+  if ([frontmostWindowElement isSheet]
+      || [frontmostWindowElement isSystemDialog]
       || CGRectIsNull(frontmostWindowRect)
       || CGRectIsNull(frameOfScreen)
       || CGRectIsNull(visibleFrameOfScreen)) {
@@ -313,10 +313,10 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
 {
   SpectacleHistory *history = [self historyForCurrentApplication];
   SpectacleHistoryItem *historyItem = (action == SpectacleWindowActionUndo) ? history.previousHistoryItem : history.nextHistoryItem;
-  NSScreen *screenOfDisplay = [_screenDetection screenWithAction:action
-                                                         andRect:historyItem.windowRect
-                                                         screens:NSScreen.screens
-                                                      mainScreen:NSScreen.mainScreen];
+  NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
+                                                        andRect:historyItem.windowRect
+                                                        screens:NSScreen.screens
+                                                     mainScreen:NSScreen.mainScreen];
 
   CGRect visibleFrameOfScreen = CGRectNull;
 

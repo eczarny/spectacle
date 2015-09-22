@@ -94,7 +94,7 @@
 
   _shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
   _shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:_shortcutStorage];
-  _windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithScreenDetection:[SpectacleScreenDetector new]];
+  _windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithScreenDetector:[SpectacleScreenDetector new]];
   _preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:_shortcutManager
                                                                      windowPositionManager:_windowPositionManager
                                                                            shortcutStorage:_shortcutStorage];
