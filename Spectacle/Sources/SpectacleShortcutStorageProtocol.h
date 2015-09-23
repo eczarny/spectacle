@@ -2,7 +2,7 @@
 
 #import "SpectacleShortcut.h"
 
-@protocol SpectacleShortcutStorageProtocol<NSObject>
+@protocol SpectacleShortcutStorageProtocol <NSObject>
 
 - (NSArray *)loadShortcutsWithAction:(SpectacleShortcutAction)action;
 

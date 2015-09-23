@@ -122,7 +122,7 @@
 
 #pragma mark -
 
-- (CGRect)rectOfElement
+- (CGRect)rectOfElementWithFrameOfScreen:(CGRect)frameOfScreen
 {
   CGRect result = CGRectNull;
 
@@ -141,15 +141,20 @@
     result = CGRectMake(position.x, position.y, size.width, size.height);
   }
 
-  return result;
+  return [self normalizeCoordinatesOfRect:result frameOfScreen:frameOfScreen];
 }
 
 #pragma mark -
 
-- (void)setRectOfElement:(CGRect)rect
+- (void)setRectOfElement:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen
 {
-  AXValueRef positionRef = AXValueCreate(kAXValueCGPointType, (const void *)&rect.origin);
-  AXValueRef sizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&rect.size);
+  AXValueRef positionRef;
+  AXValueRef sizeRef;
+
+  rect = [self normalizeCoordinatesOfRect:rect frameOfScreen:frameOfScreen];
+
+  positionRef = AXValueCreate(kAXValueCGPointType, (const void *)&rect.origin);
+  sizeRef = AXValueCreate(kAXValueCGSizeType, (const void *)&rect.size);
 
   [self setValue:sizeRef forAttribute:kAXSizeAttribute];
   [self setValue:positionRef forAttribute:kAXPositionAttribute];
@@ -189,6 +194,17 @@
   }
 
   _underlyingElement = CFRetain(underlyingElement);
+}
+
+#pragma mark -
+
+- (CGRect)normalizeCoordinatesOfRect:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen
+{
+  CGRect frameOfScreenWithMenuBar = [[[NSScreen screens] objectAtIndex:0] frame];
+
+  rect.origin.y = frameOfScreen.size.height - NSMaxY(rect) + (frameOfScreenWithMenuBar.size.height - frameOfScreen.size.height);
+
+  return rect;
 }
 
 @end

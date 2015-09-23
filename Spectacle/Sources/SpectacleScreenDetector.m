@@ -1,3 +1,4 @@
+#import "SpectacleAccessibilityElement.h"
 #import "SpectacleScreenDetector.h"
 
 #define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
@@ -7,48 +8,49 @@
 @implementation SpectacleScreenDetector
 
 - (NSScreen *)screenWithAction:(SpectacleWindowAction)action
-                       andRect:(CGRect)rect
+        frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                        screens:(NSArray *)screens
                     mainScreen:(NSScreen *)mainScreen
 {
   NSArray *screensInConsistentOrder = [self screensInConsistentOrder:screens];
-  NSScreen *result = [self screenContainingRect:rect screens:screensInConsistentOrder mainScreen:mainScreen];
-  
-  if (MovingToNextOrPreviousDisplay(action)) {
+  NSScreen *result = [self screenContainingFrontmostWindowElement:frontmostWindowElement
+                                                          screens:screensInConsistentOrder
+                                                       mainScreen:mainScreen];
+
+  if ((action == SpectacleWindowActionNextDisplay) || (action == SpectacleWindowActionPreviousDisplay)) {
     result = [self nextOrPreviousScreenToFrameOfScreen:NSRectToCGRect([result frame])
                                    inDirectionOfAction:action
                                                screens:screensInConsistentOrder];
   }
-  
+
   return result;
 }
 
 #pragma mark -
 
-- (NSScreen *)screenContainingRect:(CGRect)rect screens:(NSArray *)screens mainScreen:(NSScreen *)mainScreen
+- (NSScreen *)screenContainingFrontmostWindowElement:(SpectacleAccessibilityElement*)frontmostWindowElement
+                                             screens:(NSArray *)screens
+                                          mainScreen:(NSScreen *)mainScreen
 {
   CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
   NSScreen *result = mainScreen;
-  
+
   for (NSScreen *currentScreen in screens) {
     CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
-    CGRect flippedRect = rect;
-    CGFloat percentageOfRectWithinCurrentFrameOfScreen = 0.0f;
+    CGRect frontmostWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:currentFrameOfScreen];
 
-    flippedRect.origin.y = FlipVerticalOriginOfRectInRect(flippedRect, currentFrameOfScreen);
-    
-    if (CGRectContainsRect(currentFrameOfScreen, flippedRect)) {
+    if (CGRectContainsRect(currentFrameOfScreen, frontmostWindowRect)) {
       result = currentScreen;
-      
+
       break;
     }
-    
-    percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect:flippedRect
-                                                    withinFrameOfScreen:currentFrameOfScreen];
-    
+
+    CGFloat percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect:frontmostWindowRect
+                                                            withinFrameOfScreen:currentFrameOfScreen];
+
     if (percentageOfRectWithinCurrentFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {
       largestPercentageOfRectWithinFrameOfScreen = percentageOfRectWithinCurrentFrameOfScreen;
-      
+
       result = currentScreen;
     }
   }

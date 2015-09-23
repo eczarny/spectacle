@@ -38,6 +38,10 @@
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */; };
 		2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA23EFB1B7D736100C9E8EF /* Images.xcassets */; };
+		2DAC59ED1BB237B300C660ED /* SpectacleWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59EC1BB237B300C660ED /* SpectacleWindowMover.m */; settings = {ASSET_TAGS = (); }; };
+		2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59EF1BB238D900C660ED /* SpectacleQuantizedWindowMover.m */; settings = {ASSET_TAGS = (); }; };
+		2DAC59F31BB23BE200C660ED /* SpectacleBestEffortWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59F21BB23BE200C660ED /* SpectacleBestEffortWindowMover.m */; settings = {ASSET_TAGS = (); }; };
+		2DAC59FB1BB248CB00C660ED /* SpectacleNOOPWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59FA1BB248CB00C660ED /* SpectacleNOOPWindowMover.m */; settings = {ASSET_TAGS = (); }; };
 		2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CA1AD84E5C0022ABF0 /* Credits.rtf */; };
 		2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CC1AD84E5C0022ABF0 /* InfoPlist.strings */; };
 		2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */; };
@@ -127,6 +131,16 @@
 		2DA23F091B8109D900C9E8EF /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = Spectacle/Resources/Localizations/it.lproj/SpectaclePreferencesWindow.strings; sourceTree = "<group>"; };
 		2DA5B7C619F8BA79007EDE8E /* SpectacleSpecs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectacleSpecs.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA5B7C919F8BA79007EDE8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
+		2DAC59E81BB234F500C660ED /* SpectacleWindowMoverProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowMoverProtocol.h; path = Spectacle/Sources/SpectacleWindowMoverProtocol.h; sourceTree = "<group>"; };
+		2DAC59EB1BB237B300C660ED /* SpectacleWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowMover.h; path = Spectacle/Sources/SpectacleWindowMover.h; sourceTree = "<group>"; };
+		2DAC59EC1BB237B300C660ED /* SpectacleWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowMover.m; path = Spectacle/Sources/SpectacleWindowMover.m; sourceTree = "<group>"; };
+		2DAC59EE1BB238D900C660ED /* SpectacleQuantizedWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleQuantizedWindowMover.h; path = Spectacle/Sources/SpectacleQuantizedWindowMover.h; sourceTree = "<group>"; };
+		2DAC59EF1BB238D900C660ED /* SpectacleQuantizedWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleQuantizedWindowMover.m; path = Spectacle/Sources/SpectacleQuantizedWindowMover.m; sourceTree = "<group>"; };
+		2DAC59F11BB23BE200C660ED /* SpectacleBestEffortWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleBestEffortWindowMover.h; path = Spectacle/Sources/SpectacleBestEffortWindowMover.h; sourceTree = "<group>"; };
+		2DAC59F21BB23BE200C660ED /* SpectacleBestEffortWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleBestEffortWindowMover.m; path = Spectacle/Sources/SpectacleBestEffortWindowMover.m; sourceTree = "<group>"; };
+		2DAC59F51BB241DE00C660ED /* SpectacleWindowAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowAction.h; path = Spectacle/Sources/SpectacleWindowAction.h; sourceTree = "<group>"; };
+		2DAC59F91BB248CB00C660ED /* SpectacleNOOPWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleNOOPWindowMover.h; path = Spectacle/Sources/SpectacleNOOPWindowMover.h; sourceTree = "<group>"; };
+		2DAC59FA1BB248CB00C660ED /* SpectacleNOOPWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleNOOPWindowMover.m; path = Spectacle/Sources/SpectacleNOOPWindowMover.m; sourceTree = "<group>"; };
 		2DC4E3CB1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Spectacle/Resources/Localizations/en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2DC4E3CD1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DC4E3CF1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -322,6 +336,44 @@
 			path = SpectacleSpecs;
 			sourceTree = "<group>";
 		};
+		2DAC59E91BB2357400C660ED /* Window Position Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */,
+				2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */,
+				2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */,
+				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
+			);
+			name = "Window Position Calculator";
+			sourceTree = "<group>";
+		};
+		2DAC59EA1BB2364700C660ED /* Window Movement History */ = {
+			isa = PBXGroup;
+			children = (
+				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
+				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
+				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
+				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
+			);
+			name = "Window Movement History";
+			sourceTree = "<group>";
+		};
+		2DAC59F41BB23DAD00C660ED /* Window Movers */ = {
+			isa = PBXGroup;
+			children = (
+				2DAC59F11BB23BE200C660ED /* SpectacleBestEffortWindowMover.h */,
+				2DAC59F21BB23BE200C660ED /* SpectacleBestEffortWindowMover.m */,
+				2DAC59EE1BB238D900C660ED /* SpectacleQuantizedWindowMover.h */,
+				2DAC59EF1BB238D900C660ED /* SpectacleQuantizedWindowMover.m */,
+				2DAC59F91BB248CB00C660ED /* SpectacleNOOPWindowMover.h */,
+				2DAC59FA1BB248CB00C660ED /* SpectacleNOOPWindowMover.m */,
+				2DAC59E81BB234F500C660ED /* SpectacleWindowMoverProtocol.h */,
+				2DAC59EB1BB237B300C660ED /* SpectacleWindowMover.h */,
+				2DAC59EC1BB237B300C660ED /* SpectacleWindowMover.m */,
+			);
+			name = "Window Movers";
+			sourceTree = "<group>";
+		};
 		2DB2DC22181ECFCF0008A192 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,16 +426,12 @@
 			isa = PBXGroup;
 			children = (
 				0747DAE91183AAC100F75DD2 /* Accessibility API */,
-				2D98D72F1AE064B7007AD995 /* SpectacleCalculationResult.h */,
-				2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */,
-				2D279ED216BB4A7800F6894A /* SpectacleHistory.h */,
-				2D279ED316BB4A7800F6894A /* SpectacleHistory.m */,
-				079CDA0D1221BAFF0099612C /* SpectacleHistoryItem.h */,
-				079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */,
+				2DAC59EA1BB2364700C660ED /* Window Movement History */,
+				2DAC59F41BB23DAD00C660ED /* Window Movers */,
+				2DAC59E91BB2357400C660ED /* Window Position Calculator */,
 				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetector.h */,
 				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */,
-				2D279EDF16BCB85100F6894A /* SpectacleWindowPositionCalculator.h */,
-				2D279EE016BCB85100F6894A /* SpectacleWindowPositionCalculator.m */,
+				2DAC59F51BB241DE00C660ED /* SpectacleWindowAction.h */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
 				072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */,
 			);
@@ -599,12 +647,15 @@
 				2D8DA05E147E113D003BE1D3 /* main.m in Sources */,
 				2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */,
+				2DAC59F31BB23BE200C660ED /* SpectacleBestEffortWindowMover.m in Sources */,
 				2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */,
 				2D7F52421A0A9C750082D7C8 /* SpectacleConstants.m in Sources */,
 				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */,
+				2DAC59FB1BB248CB00C660ED /* SpectacleNOOPWindowMover.m in Sources */,
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
+				2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */,
 				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */,
 				2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */,
@@ -615,6 +666,7 @@
 				2D7C114A1B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.m in Sources */,
 				2D3A0512194956E100CD96E7 /* SpectacleShortcutValidator.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
+				2DAC59ED1BB237B300C660ED /* SpectacleWindowMover.m in Sources */,
 				2D279EE116BCB85100F6894A /* SpectacleWindowPositionCalculator.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
 			);

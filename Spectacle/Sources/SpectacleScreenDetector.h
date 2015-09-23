@@ -2,10 +2,12 @@
 
 #import "SpectacleWindowPositionManager.h"
 
+@class SpectacleAccessibilityElement;
+
 @interface SpectacleScreenDetector : NSObject
 
 - (NSScreen *)screenWithAction:(SpectacleWindowAction)action
-                       andRect:(CGRect)rect
+        frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                        screens:(NSArray *)screens
                     mainScreen:(NSScreen *)mainScreen;
 

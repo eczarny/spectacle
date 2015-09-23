@@ -2,7 +2,7 @@
 
 @class SpectacleShortcut, SpectacleShortcutRecorder;
 
-@protocol SpectacleShortcutRecorderDelegate<NSObject>
+@protocol SpectacleShortcutRecorderDelegate <NSObject>
 
 - (void)shortcutRecorder:(SpectacleShortcutRecorder *)shortcutRecorder
    didReceiveNewShortcut:(SpectacleShortcut *)shortcut;
