@@ -6,10 +6,14 @@
 
 @protocol SpectacleWindowMoverProtocol <NSObject>
 
-- (CGRect)moveWindowRect:(CGRect)windowRect
-           frameOfScreen:(CGRect)frameOfScreen
-    visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-  frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                  action:(SpectacleWindowAction)action;
+- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover;
+
++ (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover;
+
+- (void)moveWindowRect:(CGRect)windowRect
+         frameOfScreen:(CGRect)frameOfScreen
+  visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                action:(SpectacleWindowAction)action;
 
 @end

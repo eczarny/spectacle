@@ -4,11 +4,10 @@
 #import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
-#import "SpectacleNOOPWindowMover.h"
 #import "SpectacleQuantizedWindowMover.h"
 #import "SpectacleScreenDetector.h"
 #import "SpectacleShortcut.h"
-#import "SpectacleWindowMover.h"
+#import "SpectacleStandardWindowMover.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
 
@@ -53,16 +52,13 @@
               windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
                        sharedWorkspace:(NSWorkspace *)sharedWorkspace
 {
-  id<SpectacleWindowMoverProtocol> windowMover = [SpectacleWindowMover newWithInnerWindowMover:
-                                                  [SpectacleQuantizedWindowMover newWithInnerWindowMover:
-                                                   [SpectacleBestEffortWindowMover newWithInnerWindowMover:
-                                                    [SpectacleNOOPWindowMover new]]]];
-
   return [self initWithScreenDetector:screenDetector
              windowPositionCalculator:windowPositionCalculator
                       sharedWorkspace:sharedWorkspace
                       failureFeedback:^() { NSBeep(); }
-                          windowMover:windowMover];
+                          windowMover:[SpectacleStandardWindowMover newWithInnerWindowMover:
+                                       [SpectacleQuantizedWindowMover newWithInnerWindowMover:
+                                        [SpectacleBestEffortWindowMover new]]]];
 }
 
 #pragma mark -

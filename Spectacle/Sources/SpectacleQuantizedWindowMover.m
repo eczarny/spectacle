@@ -15,6 +15,11 @@
   return self;
 }
 
+- (instancetype)init
+{
+  return [self initWithInnerWindowMover:nil];
+}
+
 + (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover
 {
   return [[self alloc] initWithInnerWindowMover:innerWindowMover];
@@ -22,20 +27,22 @@
 
 #pragma mark -
 
-- (CGRect)moveWindowRect:(CGRect)windowRect
-           frameOfScreen:(CGRect)frameOfScreen
-    visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-  frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                  action:(SpectacleWindowAction)action
+- (void)moveWindowRect:(CGRect)windowRect
+         frameOfScreen:(CGRect)frameOfScreen
+  visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                action:(SpectacleWindowAction)action
 {
-  CGRect movedWindowRect = [_innerWindowMover moveWindowRect:windowRect
-                                               frameOfScreen:frameOfScreen
-                                        visibleFrameOfScreen:visibleFrameOfScreen
-                                      frontmostWindowElement:frontmostWindowElement
-                                                      action:action];
+  [_innerWindowMover moveWindowRect:windowRect
+                      frameOfScreen:frameOfScreen
+               visibleFrameOfScreen:visibleFrameOfScreen
+             frontmostWindowElement:frontmostWindowElement
+                             action:action];
+
+  CGRect movedWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
 
   if (CGRectEqualToRect(movedWindowRect, windowRect)) {
-    return movedWindowRect;
+    return;
   }
 
   CGRect adjustedWindowRect = windowRect;
@@ -62,8 +69,6 @@
   adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
 
   [frontmostWindowElement setRectOfElement:adjustedWindowRect frameOfScreen:frameOfScreen];
-
-  return [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
 }
 
 @end

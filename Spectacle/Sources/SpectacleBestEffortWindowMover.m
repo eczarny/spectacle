@@ -15,6 +15,11 @@
   return self;
 }
 
+- (instancetype)init
+{
+  return [self initWithInnerWindowMover:nil];
+}
+
 + (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover
 {
   return [[self alloc] initWithInnerWindowMover:innerWindowMover];
@@ -22,17 +27,19 @@
 
 #pragma mark -
 
-- (CGRect)moveWindowRect:(CGRect)windowRect
-           frameOfScreen:(CGRect)frameOfScreen
-    visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-  frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                  action:(SpectacleWindowAction)action
+- (void)moveWindowRect:(CGRect)windowRect
+         frameOfScreen:(CGRect)frameOfScreen
+  visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                action:(SpectacleWindowAction)action
 {
-  CGRect movedWindowRect = [_innerWindowMover moveWindowRect:windowRect
-                                               frameOfScreen:frameOfScreen
-                                        visibleFrameOfScreen:visibleFrameOfScreen
-                                      frontmostWindowElement:frontmostWindowElement
-                                                      action:action];
+  [_innerWindowMover moveWindowRect:windowRect
+                      frameOfScreen:frameOfScreen
+               visibleFrameOfScreen:visibleFrameOfScreen
+             frontmostWindowElement:frontmostWindowElement
+                             action:action];
+
+  CGRect movedWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
 
   CGRect previouslyMovedWindowRect = movedWindowRect;
 
@@ -50,11 +57,7 @@
 
   if (!CGRectEqualToRect(movedWindowRect, previouslyMovedWindowRect)) {
     [frontmostWindowElement setRectOfElement:movedWindowRect frameOfScreen:frameOfScreen];
-
-    movedWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
   }
-
-  return movedWindowRect;
 }
 
 @end
