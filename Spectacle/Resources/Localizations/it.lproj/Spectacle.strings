@@ -88,11 +88,6 @@
 
 /* --- */
 
-/* Class = "NSMenuItem"; title = "Restore Defaults..."; ObjectID = "aFM-wq-kOy"; */
-"aFM-wq-kOy.title" = "Ripristina predefiniti...";
-
-/* --- */
-
 /* Class = "NSMenuItem"; title = "Quit Spectacle"; ObjectID = "Isn-Og-AEv"; */
 "Isn-Og-AEv.title" = "Chiudi Spectacle";
 
