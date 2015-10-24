@@ -1,111 +1,106 @@
 
 /* Class = "NSMenuItem"; title = "About Spectacle"; ObjectID = "EA9-dx-Qfg"; */
-"EA9-dx-Qfg.title" = "About Spectacle";
+"EA9-dx-Qfg.title" = "Informazioni su Spectacle";
 
 /* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "2sj-vF-eSL"; */
-"2sj-vF-eSL.title" = "Check for Updates...";
+"2sj-vF-eSL.title" = "Controlla per aggiornamenti...";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Disable"; ObjectID = "eZT-Mm-qSc"; */
-"eZT-Mm-qSc.title" = "Disable";
+"eZT-Mm-qSc.title" = "Disattiva";
 
 /* Class = "NSMenuItem"; title = "for an hour"; ObjectID = "qpo-5w-ZIY"; */
-"qpo-5w-ZIY.title" = "for an hour";
+"qpo-5w-ZIY.title" = "per un'ora";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "ME4-Br-HLT"; */
-"ME4-Br-HLT.title" = "Preferences...";
+"ME4-Br-HLT.title" = "Preferenze...";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Center"; ObjectID = "xJu-Uo-nZw"; */
-"xJu-Uo-nZw.title" = "Center";
+"xJu-Uo-nZw.title" = "Centro";
 
 /* Class = "NSMenuItem"; title = "Fullscreen"; ObjectID = "dwQ-Bl-nEL"; */
-"dwQ-Bl-nEL.title" = "Fullscreen";
+"dwQ-Bl-nEL.title" = "Intero schermo";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Left Half"; ObjectID = "Jae-vx-7ZC"; */
-"Jae-vx-7ZC.title" = "Left Half";
+"Jae-vx-7ZC.title" = "Metà sinistra";
 
 /* Class = "NSMenuItem"; title = "Right Half"; ObjectID = "cae-26-Oab"; */
-"cae-26-Oab.title" = "Right Half";
+"cae-26-Oab.title" = "Metà destra";
 
 /* Class = "NSMenuItem"; title = "Top Half"; ObjectID = "yh0-ik-weD"; */
-"yh0-ik-weD.title" = "Top Half";
+"yh0-ik-weD.title" = "Metà alta";
 
 /* Class = "NSMenuItem"; title = "Bottom Half"; ObjectID = "huV-Gw-lbX"; */
-"huV-Gw-lbX.title" = "Bottom Half";
+"huV-Gw-lbX.title" = "Metà bassa";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Upper Left"; ObjectID = "ldc-QO-Cq6"; */
-"ldc-QO-Cq6.title" = "Upper Left";
+"ldc-QO-Cq6.title" = "In alto a sinistra";
 
 /* Class = "NSMenuItem"; title = "Lower Left"; ObjectID = "eN5-A6-iho"; */
-"eN5-A6-iho.title" = "Lower Left";
+"eN5-A6-iho.title" = "In basso a sinistra";
 
 /* Class = "NSMenuItem"; title = "Upper Right"; ObjectID = "C7t-Sf-kOI"; */
-"C7t-Sf-kOI.title" = "Upper Right";
+"C7t-Sf-kOI.title" = "In alto a destra";
 
 /* Class = "NSMenuItem"; title = "Lower Right"; ObjectID = "oDU-J0-NkJ"; */
-"oDU-J0-NkJ.title" = "Lower Right";
+"oDU-J0-NkJ.title" = "In basso a destra";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Next Display"; ObjectID = "I4U-jL-hXq"; */
-"I4U-jL-hXq.title" = "Next Display";
+"I4U-jL-hXq.title" = "Schermata Successiva";
 
 /* Class = "NSMenuItem"; title = "Previous Display"; ObjectID = "aPo-Rp-A1X"; */
-"aPo-Rp-A1X.title" = "Previous Display";
+"aPo-Rp-A1X.title" = "Schermata Precedente";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Next Third"; ObjectID = "7HO-L3-O6Q"; */
-"7HO-L3-O6Q.title" = "Next Third";
+"7HO-L3-O6Q.title" = "Terza Successiva";
 
 /* Class = "NSMenuItem"; title = "Previous Third"; ObjectID = "bV9-Ga-jDG"; */
-"bV9-Ga-jDG.title" = "Previous Third";
+"bV9-Ga-jDG.title" = "Terza Precedente";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Make Larger"; ObjectID = "Yun-AA-OVD"; */
-"Yun-AA-OVD.title" = "Make Larger";
+"Yun-AA-OVD.title" = "Ingrandisci";
 
 /* Class = "NSMenuItem"; title = "Make Smaller"; ObjectID = "gTe-ym-DB0"; */
-"gTe-ym-DB0.title" = "Make Smaller";
+"gTe-ym-DB0.title" = "Riduci";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "l9O-0B-fjp"; */
-"l9O-0B-fjp.title" = "Undo";
+"l9O-0B-fjp.title" = "Annulla";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "187-7k-0Ct"; */
-"187-7k-0Ct.title" = "Redo";
-
-/* --- */
-
-/* Class = "NSMenuItem"; title = "Restore Defaults..."; ObjectID = "aFM-wq-kOy"; */
-"aFM-wq-kOy.title" = "Restore Defaults...";
+"187-7k-0Ct.title" = "Ripristina";
 
 /* --- */
 
 /* Class = "NSMenuItem"; title = "Quit Spectacle"; ObjectID = "Isn-Og-AEv"; */
-"Isn-Og-AEv.title" = "Quit Spectacle";
+"Isn-Og-AEv.title" = "Chiudi Spectacle";
 
 /* --- */
 
 /* Class = "NSTextFieldCell"; title = "Spectacle would like to control your windows using accessibility features."; ObjectID = "HRo-tn-M1V"; */
-"HRo-tn-M1V.title" = "Spectacle would like to control your windows using accessibility features.";
+"HRo-tn-M1V.title" = "Spectacle vorrebbe controllare le tue finestre usando le funzioni di accessibilità.";
 
 /* Class = "NSTextFieldCell"; title = "Grant access to this application in System Preferences."; ObjectID = "ruu-yJ-Q1F"; */
-"ruu-yJ-Q1F.title" = "Grant access to this application in System Preferences.";
+"ruu-yJ-Q1F.title" = "Concedere l'accesso a questa applicazione nelle Preferenze di Sistema.";
 
 /* Class = "NSButtonCell"; title = "Open System Preferences"; ObjectID = "iPl-AT-Pei"; */
-"iPl-AT-Pei.title" = "Open System Preferences";
+"iPl-AT-Pei.title" = "Apri Preferenze di Sistema";
 
 /* Class = "NSButtonCell"; title = "Quit Spectacle"; ObjectID = "gMV-vD-CUe"; */
-"gMV-vD-CUe.title" = "Quit Spectacle";
+"gMV-vD-CUe.title" = "Chiudi Spectacle";
