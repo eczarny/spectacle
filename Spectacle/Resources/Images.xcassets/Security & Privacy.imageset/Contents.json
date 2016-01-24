@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "mac",
-      "scale" : "1x",
-      "filename" : "Security & Privacy.png"
+      "filename" : "Security & Privacy.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "scale" : "2x",
-      "filename" : "Security & Privacy@2x.png"
+      "filename" : "Security & Privacy@2x.png",
+      "scale" : "2x"
     }
   ],
   "info" : {
