@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */; };
 		2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */; };
-		2D1C781F1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C781E1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m */; settings = {ASSET_TAGS = (); }; };
+		2D1C781F1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C781E1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m */; };
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
@@ -24,7 +24,7 @@
 		2D3E08021AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3E08011AE35EAF00AB22C5 /* SpectacleWindowPositionCalculatorSpec.m */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */; };
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
-		2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */; settings = {ASSET_TAGS = (); }; };
+		2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
 		2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */; };
 		2D7752101B83E94C00C022EE /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D01AD84E5C0022ABF0 /* Spectacle.xib */; };
@@ -39,8 +39,8 @@
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
 		2D98D7311AE064B7007AD995 /* SpectacleCalculationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98D7301AE064B7007AD995 /* SpectacleCalculationResult.m */; };
 		2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA23EFB1B7D736100C9E8EF /* Images.xcassets */; };
-		2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59EF1BB238D900C660ED /* SpectacleQuantizedWindowMover.m */; settings = {ASSET_TAGS = (); }; };
-		2DAC59F31BB23BE200C660ED /* SpectacleBestEffortWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59F21BB23BE200C660ED /* SpectacleBestEffortWindowMover.m */; settings = {ASSET_TAGS = (); }; };
+		2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59EF1BB238D900C660ED /* SpectacleQuantizedWindowMover.m */; };
+		2DAC59F31BB23BE200C660ED /* SpectacleBestEffortWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59F21BB23BE200C660ED /* SpectacleBestEffortWindowMover.m */; };
 		2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CA1AD84E5C0022ABF0 /* Credits.rtf */; };
 		2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CC1AD84E5C0022ABF0 /* InfoPlist.strings */; };
 		2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */; };
@@ -147,6 +147,11 @@
 		2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleLoginItemHelper.m; path = Spectacle/Sources/SpectacleLoginItemHelper.m; sourceTree = "<group>"; };
 		2DDEB84919F9EDF6007D2BA2 /* SpectacleSpecs.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleSpecs.pch; path = "Supporting Files/SpectacleSpecs.pch"; sourceTree = "<group>"; };
 		4E39F28AA9996E070256C000 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		574F6A1A1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Spectacle.strings; sourceTree = "<group>"; };
+		574F6A1B1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/SpectaclePreferencesWindow.strings; sourceTree = "<group>"; };
+		574F6A1C1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Credits.rtf; sourceTree = "<group>"; };
+		574F6A1D1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		574F6A1E1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.debug.xcconfig"; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02FBB6DFA9570FE6D1A7E16 /* Pods-SpectacleSpecs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.release.xcconfig"; sourceTree = "<group>"; };
@@ -519,6 +524,7 @@
 				it,
 				fr,
 				Base,
+				pt,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* Spectacle */;
 			projectDirPath = "";
@@ -692,6 +698,7 @@
 				2DC4E3CB1AD84E5C0022ABF0 /* en */,
 				2D98D72E1ADDBBF6007AD995 /* fr */,
 				2DC4E3DA1AD84E7F0022ABF0 /* it */,
+				574F6A1C1C57BE40001A5679 /* pt */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -702,6 +709,7 @@
 				2DC4E3CD1AD84E5C0022ABF0 /* en */,
 				2D98D72C1ADDBBF6007AD995 /* fr */,
 				2DA23EFD1B80FB6400C9E8EF /* it */,
+				574F6A1D1C57BE40001A5679 /* pt */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -712,6 +720,7 @@
 				2DC4E3CF1AD84E5C0022ABF0 /* en */,
 				2D98D72D1ADDBBF6007AD995 /* fr */,
 				2DC4E3D91AD84E7F0022ABF0 /* it */,
+				574F6A1E1C57BE40001A5679 /* pt */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -722,6 +731,7 @@
 				2DA23EFE1B80FF6F00C9E8EF /* Base */,
 				2DA23F031B81016B00C9E8EF /* fr */,
 				2DA23F071B8109D400C9E8EF /* it */,
+				574F6A1A1C57BE40001A5679 /* pt */,
 			);
 			name = Spectacle.xib;
 			sourceTree = "<group>";
@@ -732,6 +742,7 @@
 				2DA23EFF1B80FF6F00C9E8EF /* Base */,
 				2DA23F051B81017000C9E8EF /* fr */,
 				2DA23F091B8109D900C9E8EF /* it */,
+				574F6A1B1C57BE40001A5679 /* pt */,
 			);
 			name = SpectaclePreferencesWindow.xib;
 			sourceTree = "<group>";
