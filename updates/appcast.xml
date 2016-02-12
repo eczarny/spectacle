@@ -110,5 +110,12 @@
       <pubDate>Thu, 10 Sep 2015 20:25:00 EDT</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.0.1.zip" sparkle:shortVersionString="1.0.1" sparkle:version="509" sparkle:dsaSignature="MCwCFEiEoIIYLMC7mOO1ZWT1LZmGxtToAhQqSIqdGPT+h05CWoZaIajDWLltOA==" length="2810264" type="application/octet-stream" />
     </item>
+    <item>
+      <title>Spectacle 1.0.2</title>
+      <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.0.2.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
+      <pubDate>Thu, 11 Feb 2015 21:35:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.0.2.zip" sparkle:shortVersionString="1.0.2" sparkle:version="536" sparkle:dsaSignature="MCwCFDZdAWQpjMhj4YXA0vdB1ymc7Mx5AhQoEl17havasubjIqxVGeJWPGkq0Q==" length="2870189" type="application/octet-stream" />
+    </item>
   </channel>
 </rss>
