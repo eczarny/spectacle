@@ -471,6 +471,7 @@
 				2D1E1AAE147E06AD0021D73D /* Resources */,
 				2DC25F9D19FF3F93009591A9 /* Update CFBundleVersion */,
 				F1EA1F8459FB4A1D9574B6AD /* Copy Pods Resources */,
+				135C5189D007D775679EF438 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -490,6 +491,7 @@
 				2DA5B7C319F8BA79007EDE8E /* Frameworks */,
 				2DA5B7C419F8BA79007EDE8E /* Resources */,
 				01C4CC4AFA78DA7E35178A73 /* Copy Pods Resources */,
+				C54BBCDB79E3581793989ECC /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -579,6 +581,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		135C5189D007D775679EF438 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2DC25F9D19FF3F93009591A9 /* Update CFBundleVersion */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -606,6 +623,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C54BBCDB79E3581793989ECC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1EA1F8459FB4A1D9574B6AD /* Copy Pods Resources */ = {
@@ -830,7 +862,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = Spectacle;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spectacle/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.divisiblebyzero.Spectacle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -843,7 +875,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = Spectacle;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spectacle/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.divisiblebyzero.Spectacle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
