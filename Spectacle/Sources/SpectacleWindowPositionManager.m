@@ -147,10 +147,16 @@
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction)action
 {
-  [self moveFrontmostWindowElement:frontmostWindowElement
-                            action:action
-                           screens:[NSScreen screens]
-                        mainScreen:[NSScreen mainScreen]];
+  if (action == SpectacleWindowActionUndo) {
+    [self undoLastWindowAction];
+  } else if (action == SpectacleWindowActionRedo) {
+    [self redoLastWindowAction];
+  } else {
+    [self moveFrontmostWindowElement:frontmostWindowElement
+                              action:action
+                             screens:[NSScreen screens]
+                          mainScreen:[NSScreen mainScreen]];
+  }
 }
 
 #pragma mark -
