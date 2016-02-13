@@ -15,7 +15,7 @@ static EventHotKeyID currentShortcutID = {
 @implementation SpectacleShortcutManager
 {
   id<SpectacleShortcutStorageProtocol> _shortcutStorage;
-  NSMutableDictionary *_registeredShortcutsByName;
+  NSMutableDictionary<NSString *, SpectacleShortcut *> *_registeredShortcutsByName;
   BOOL _areShorcutsEnabled;
 }
 
@@ -79,7 +79,7 @@ static EventHotKeyID currentShortcutID = {
   [self storeRegisteredShortcuts];
 }
 
-- (void)registerShortcuts:(NSArray *)shortcuts
+- (void)registerShortcuts:(NSArray<SpectacleShortcut *> *)shortcuts
 {
   for (SpectacleShortcut *shortcut in shortcuts) {
     [self registerShortcut:shortcut];
@@ -95,7 +95,7 @@ static EventHotKeyID currentShortcutID = {
 
 #pragma mark -
 
-- (NSArray *)registeredShortcuts
+- (NSArray<SpectacleShortcut *> *)registeredShortcuts
 {
   return _registeredShortcutsByName.allValues;
 }

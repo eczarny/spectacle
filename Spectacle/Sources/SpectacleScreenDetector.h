@@ -8,7 +8,7 @@
 
 - (NSScreen *)screenWithAction:(SpectacleWindowAction)action
         frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                       screens:(NSArray *)screens
+                       screens:(NSArray<NSScreen *> *)screens
                     mainScreen:(NSScreen *)mainScreen;
 
 @end

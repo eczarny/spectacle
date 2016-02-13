@@ -17,7 +17,7 @@
 
 + (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut
         shortcutManager:(SpectacleShortcutManager *)shortcutManager
-         withValidators:(NSArray *)validators
+         withValidators:(NSArray<id<SpectacleShortcutValidatorProtocol>> *)validators
                   error:(NSError **)error
 {
   CFArrayRef shortcuts = NULL;

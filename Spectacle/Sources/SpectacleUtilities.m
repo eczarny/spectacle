@@ -85,7 +85,7 @@
 
 + (NSString *)pathForPreferencePaneNamed:(NSString *)preferencePaneName
 {
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSAllDomainsMask, YES);
+  NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSPreferencePanesDirectory, NSAllDomainsMask, YES);
   NSFileManager *fileManager = NSFileManager.defaultManager;
   NSString *preferencePanePath = nil;
 

@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
-@class SpectacleShortcut, SpectacleShortcutManager;
+@class SpectacleShortcut;
+@class SpectacleShortcutManager;
 
 @protocol SpectacleShortcutValidatorProtocol <NSObject>
 

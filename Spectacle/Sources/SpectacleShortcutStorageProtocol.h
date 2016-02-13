@@ -4,12 +4,12 @@
 
 @protocol SpectacleShortcutStorageProtocol <NSObject>
 
-- (NSArray *)loadShortcutsWithAction:(SpectacleShortcutAction)action;
+- (NSArray<SpectacleShortcut *> *)loadShortcutsWithAction:(SpectacleShortcutAction)action;
 
-- (NSArray *)defaultShortcutsWithAction:(SpectacleShortcutAction)action;
+- (NSArray<SpectacleShortcut *> *)defaultShortcutsWithAction:(SpectacleShortcutAction)action;
 
 #pragma mark -
 
-- (void)storeShortcuts: (NSArray *)shortcuts;
+- (void)storeShortcuts: (NSArray<SpectacleShortcut *> *)shortcuts;
 
 @end

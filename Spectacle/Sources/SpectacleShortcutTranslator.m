@@ -4,7 +4,7 @@
 
 @implementation SpectacleShortcutTranslator
 {
-  NSDictionary *_specialShortcutTranslations;
+  NSDictionary<NSString *, NSDictionary *> *_specialShortcutTranslations;
 }
 
 + (SpectacleShortcutTranslator *)sharedTranslator
@@ -114,7 +114,7 @@
 
 - (NSString *)translateKeyCode:(NSInteger)keyCode
 {
-  NSDictionary *keyCodeTranslations = nil;
+  NSDictionary<NSString *, NSString *> *keyCodeTranslations = nil;
   NSString *result;
 
   [self buildKeyCodeConvertorDictionary];
@@ -124,8 +124,8 @@
   result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
 
   if (result) {
-    NSDictionary *glyphTranslations = _specialShortcutTranslations[kShortcutGlyphTranslationsKey];
-    id translatedGlyph = glyphTranslations[result];
+    NSDictionary<NSString *, NSNumber *> *glyphTranslations = _specialShortcutTranslations[kShortcutGlyphTranslationsKey];
+    NSNumber *translatedGlyph = glyphTranslations[result];
 
     if (translatedGlyph) {
       result = [NSString stringWithFormat:@"%C", (UInt16)[translatedGlyph integerValue]];

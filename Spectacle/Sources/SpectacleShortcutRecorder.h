@@ -6,6 +6,8 @@
 
 @class SpectacleShortcutManager;
 
+@protocol SpectacleShortcutValidatorProtocol;
+
 @interface SpectacleShortcutRecorder : NSControl
 
 - (NSString *)shortcutName;
@@ -26,7 +28,7 @@
 
 #pragma mark -
 
-- (void)setAdditionalShortcutValidators:(NSArray *)additionalShortcutValidators
+- (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidatorProtocol>> *)additionalShortcutValidators
                         shortcutManager:(SpectacleShortcutManager *)shortcutManager;
 
 @end

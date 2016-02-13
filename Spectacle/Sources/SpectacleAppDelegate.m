@@ -14,15 +14,15 @@
 
 @implementation SpectacleAppDelegate
 {
-  NSDictionary *_shortcutMenuItems;
+  NSDictionary<NSString *, NSMenuItem *> *_shortcutMenuItems;
   NSStatusItem *_statusItem;
   id<SpectacleShortcutStorageProtocol> _shortcutStorage;
   SpectacleShortcutManager *_shortcutManager;
   SpectacleWindowPositionManager *_windowPositionManager;
   SpectaclePreferencesController *_preferencesController;
   NSTimer *_disableShortcutsForAnHourTimer;
-  NSSet *_blacklistedApplications;
-  NSMutableSet *_disabledApplications;
+  NSSet<NSString *> *_blacklistedApplications;
+  NSMutableSet<NSString *> *_disabledApplications;
   BOOL _shortcutsAreDisabledForAnHour;
 }
 
@@ -336,7 +336,7 @@
 
 - (void)registerShortcuts
 {
-  NSArray *shortcuts = [_shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+  NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
     SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
     [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]

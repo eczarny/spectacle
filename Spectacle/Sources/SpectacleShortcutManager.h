@@ -16,13 +16,13 @@
 
 - (void)unregisterShortcutForName:(NSString *)name;
 
-- (void)registerShortcuts:(NSArray *)shortcuts;
+- (void)registerShortcuts:(NSArray<SpectacleShortcut *> *)shortcuts;
 
 - (void)unregisterShortcuts;
 
 #pragma mark -
 
-- (NSArray *)registeredShortcuts;
+- (NSArray<SpectacleShortcut *> *)registeredShortcuts;
 
 - (SpectacleShortcut *)registeredShortcutForName:(NSString *)name;
 

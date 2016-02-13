@@ -403,7 +403,7 @@
 
 - (void)drawString:(NSString *)string withForegroundColor:(NSColor *)foregroundColor inRect:(NSRect)rect
 {
-  NSMutableDictionary *attributes = [self stringAttributesWithShadow];
+  NSMutableDictionary<NSString *, id> *attributes = [self stringAttributesWithShadow];
   NSRect labelRect = rect;
 
   attributes[NSFontAttributeName] = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
@@ -416,11 +416,11 @@
 
 #pragma mark -
 
-- (NSMutableDictionary *)stringAttributesWithShadow
+- (NSMutableDictionary<NSString *, id> *)stringAttributesWithShadow
 {
   NSMutableParagraphStyle *paragraphStyle = NSParagraphStyle.defaultParagraphStyle.mutableCopy;
   NSShadow *textShadow = [NSShadow new];
-  NSMutableDictionary *stringAttributes = [NSMutableDictionary new];
+  NSMutableDictionary<NSString *, id> *stringAttributes = [NSMutableDictionary new];
 
   paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
   paragraphStyle.alignment = NSCenterTextAlignment;

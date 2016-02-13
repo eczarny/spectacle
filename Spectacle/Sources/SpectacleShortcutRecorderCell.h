@@ -4,13 +4,15 @@
 
 @class SpectacleShortcutManager;
 
+@protocol SpectacleShortcutValidatorProtocol;
+
 @interface SpectacleShortcutRecorderCell : NSCell
 
 @property (nonatomic) SpectacleShortcutRecorder *shortcutRecorder;
 @property (nonatomic) NSString *shortcutName;
 @property (nonatomic) SpectacleShortcut *shortcut;
 @property (nonatomic, assign) id<SpectacleShortcutRecorderDelegate> delegate;
-@property (nonatomic) NSArray *additionalShortcutValidators;
+@property (nonatomic) NSArray<id<SpectacleShortcutValidatorProtocol>> *additionalShortcutValidators;
 @property (nonatomic) SpectacleShortcutManager *shortcutManager;
 
 #pragma mark -

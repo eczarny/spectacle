@@ -65,7 +65,7 @@
 
 #pragma mark -
 
-- (void)setAdditionalShortcutValidators:(NSArray *)additionalShortcutValidators
+- (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidatorProtocol>> *)additionalShortcutValidators
                         shortcutManager:(SpectacleShortcutManager *)shortcutManager
 {
   [MyCell setAdditionalShortcutValidators:additionalShortcutValidators];

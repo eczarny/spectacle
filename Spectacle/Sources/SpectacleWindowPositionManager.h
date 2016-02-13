@@ -5,7 +5,10 @@
 
 typedef void (^SpectacleFailureFeedback)();
 
-@class SpectacleAccessibilityElement, SpectacleScreenDetector, SpectacleShortcut, SpectacleWindowPositionCalculator;
+@class SpectacleAccessibilityElement;
+@class SpectacleScreenDetector;
+@class SpectacleShortcut;
+@class SpectacleWindowPositionCalculator;
 
 @interface SpectacleWindowPositionManager : NSObject
 
@@ -25,7 +28,7 @@ typedef void (^SpectacleFailureFeedback)();
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction)action
-                           screens:(NSArray *)screens
+                           screens:(NSArray<NSScreen *> *)screens
                         mainScreen:(NSScreen *)mainScreen;
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement

@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
-@class SpectacleShortcut, SpectacleShortcutRecorder;
+@class SpectacleShortcut;
+@class SpectacleShortcutRecorder;
 
 @protocol SpectacleShortcutRecorderDelegate <NSObject>
 

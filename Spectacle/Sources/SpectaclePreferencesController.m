@@ -16,7 +16,7 @@
   SpectacleShortcutManager *_shortcutManager;
   SpectacleWindowPositionManager *_windowPositionManager;
   id<SpectacleShortcutStorageProtocol> _shortcutStorage;
-  NSDictionary *_shortcutRecorders;
+  NSDictionary<NSString *, SpectacleShortcutRecorder *> *_shortcutRecorders;
 }
 
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
@@ -135,7 +135,7 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 - (IBAction)restoreDefaults:(id)sender
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
-    NSArray *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+    NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
       SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
       [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]

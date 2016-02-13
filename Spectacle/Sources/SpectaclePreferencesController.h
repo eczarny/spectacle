@@ -3,7 +3,10 @@
 #import "SpectacleShortcutRecorderDelegate.h"
 #import "SpectacleShortcutStorageProtocol.h"
 
-@class SpectacleAppDelegate, SpectacleShortcutManager, SpectacleShortcutRecorder, SpectacleWindowPositionManager;
+@class SpectacleAppDelegate;
+@class SpectacleShortcutManager;
+@class SpectacleShortcutRecorder;
+@class SpectacleWindowPositionManager;
 
 @interface SpectaclePreferencesController : NSWindowController<SpectacleShortcutRecorderDelegate>
 

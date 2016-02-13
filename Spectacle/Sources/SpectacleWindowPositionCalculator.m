@@ -133,9 +133,9 @@
 
 #pragma mark -
 
-- (NSArray *)thirdsFromVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+- (NSArray<SpectacleHistoryItem *> *)thirdsFromVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 {
-  NSMutableArray *result = [NSMutableArray new];
+  NSMutableArray<SpectacleHistoryItem *> *result = [NSMutableArray new];
   NSInteger i = 0;
 
   for (i = 0; i < 3; i++) {
@@ -163,12 +163,12 @@
             visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
                       withAction:(SpectacleWindowAction)action
 {
-  NSArray *thirds = [self thirdsFromVisibleFrameOfScreen:visibleFrameOfScreen];
-  CGRect result = [thirds[0] windowRect];
+  NSArray<SpectacleHistoryItem *> *thirds = [self thirdsFromVisibleFrameOfScreen:visibleFrameOfScreen];
+  CGRect result = thirds[0].windowRect;
   NSInteger i = 0;
 
   for (i = 0; i < thirds.count; i++) {
-    CGRect currentWindowRect = [thirds[i] windowRect];
+    CGRect currentWindowRect = thirds[i].windowRect;
 
     if (RectCenteredWithinRect(currentWindowRect, windowRect)) {
       NSInteger j = i;
@@ -183,7 +183,7 @@
         }
       }
 
-      result = [thirds[j] windowRect];
+      result = thirds[j].windowRect;
 
       break;
     }

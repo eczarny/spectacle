@@ -22,7 +22,7 @@
 
 @implementation SpectacleWindowPositionManager
 {
-  NSMutableDictionary *_applicationHistories;
+  NSMutableDictionary<NSString *, SpectacleHistory *> *_applicationHistories;
   SpectacleScreenDetector *_screenDetector;
   SpectacleWindowPositionCalculator *_windowPositionCalculator;
   NSWorkspace *_sharedWorkspace;
@@ -65,7 +65,7 @@
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction)action
-                           screens:(NSArray *)screens
+                           screens:(NSArray<NSScreen *> *)screens
                         mainScreen:(NSScreen *)mainScreen
 {
   NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
@@ -246,7 +246,7 @@
 
 - (void)moveWithHistoryItem:(SpectacleHistoryItem *)historyItem
                      action:(SpectacleWindowAction)action
-                    screens:(NSArray *)screens
+                    screens:(NSArray<NSScreen *> *)screens
                  mainScreen:(NSScreen *)mainScreen
 {
   NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action

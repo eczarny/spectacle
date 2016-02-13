@@ -12,10 +12,10 @@
 
 #pragma mark -
 
-- (NSArray *)loadShortcutsWithAction:(SpectacleShortcutAction)action
+- (NSArray<SpectacleShortcut *> *)loadShortcutsWithAction:(SpectacleShortcutAction)action
 {
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-  NSMutableDictionary *shortcutsFromUserDefaults = [NSMutableDictionary new];
+  NSMutableDictionary<NSString *, NSData *> *shortcutsFromUserDefaults = [NSMutableDictionary new];
 
   for (NSString *shortcutName in self.shortcutNames) {
     shortcutsFromUserDefaults[shortcutName] = [userDefaults dataForKey:shortcutName];
@@ -24,10 +24,10 @@
   return [self shortcutsFromDictionary:shortcutsFromUserDefaults action:action];
 }
 
-- (NSArray *)defaultShortcutsWithAction:(SpectacleShortcutAction)action
+- (NSArray<SpectacleShortcut *> *)defaultShortcutsWithAction:(SpectacleShortcutAction)action
 {
-  NSDictionary *defaultShortcuts = [self defaultShortcutsWithNames:self.shortcutNames];
-  NSMutableArray *shortcuts = [NSMutableArray new];
+  NSDictionary<NSString *, SpectacleShortcut *> *defaultShortcuts = [self defaultShortcutsWithNames:self.shortcutNames];
+  NSMutableArray<SpectacleShortcut *> *shortcuts = [NSMutableArray new];
 
   for (NSString *shortcutName in defaultShortcuts) {
     SpectacleShortcut *defaultShortcut = defaultShortcuts[shortcutName];
@@ -42,7 +42,7 @@
 
 #pragma mark -
 
-- (void)storeShortcuts: (NSArray *)shortcuts
+- (void)storeShortcuts: (NSArray<SpectacleShortcut *> *)shortcuts
 {
   NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
 
@@ -58,7 +58,7 @@
 
 #pragma mark -
 
-- (NSArray *)shortcutNames
+- (NSArray<NSString *> *)shortcutNames
 {
   return @[kWindowActionMoveToCenter,
            kWindowActionMoveToFullscreen,
@@ -82,14 +82,14 @@
 
 #pragma mark -
 
-- (NSDictionary *)defaultShortcutsWithNames:(NSArray *)names
+- (NSDictionary<NSString *, SpectacleShortcut *> *)defaultShortcutsWithNames:(NSArray<NSString *> *)names
 {
   NSBundle *bundle = NSBundle.mainBundle;
   NSString *path = [bundle pathForResource:kDefaultPreferencesPropertyListFile
                                     ofType:kPropertyListFileExtension];
 
   NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
-  NSMutableDictionary *defaultShortcuts = [NSMutableDictionary new];
+  NSMutableDictionary<NSString *, SpectacleShortcut *> *defaultShortcuts = [NSMutableDictionary new];
 
   for (NSString *shortcutName in names) {
     NSData *defaultShortcutData = applicationDefaults[shortcutName];
@@ -103,10 +103,11 @@
 
 #pragma mark -
 
-- (NSArray *)shortcutsFromDictionary:(NSDictionary *)dictionary action:(SpectacleShortcutAction)action
+- (NSArray<SpectacleShortcut *> *)shortcutsFromDictionary:(NSDictionary<NSString *, NSData *> *)dictionary
+                                                   action:(SpectacleShortcutAction)action
 {
-  NSDictionary *defaultShortcuts = [self defaultShortcutsWithNames:dictionary.allKeys];
-  NSMutableArray *shortcuts = [NSMutableArray new];
+  NSDictionary<NSString *, SpectacleShortcut *> *defaultShortcuts = [self defaultShortcutsWithNames:dictionary.allKeys];
+  NSMutableArray<SpectacleShortcut *> *shortcuts = [NSMutableArray new];
 
   for (NSData *shortcutData in dictionary.allValues) {
     SpectacleShortcut *shortcut = [NSKeyedUnarchiver unarchiveObjectWithData:shortcutData];
