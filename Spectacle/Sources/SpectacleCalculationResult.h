@@ -4,8 +4,8 @@
 
 @interface SpectacleCalculationResult : NSObject
 
-@property (nonatomic) SpectacleWindowAction action;
-@property (nonatomic) CGRect windowRect;
+@property (nonatomic, readonly) SpectacleWindowAction action;
+@property (nonatomic, readonly) CGRect windowRect;
 
 #pragma mark -
 
