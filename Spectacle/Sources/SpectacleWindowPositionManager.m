@@ -104,6 +104,9 @@
     [history addHistoryItem:historyItem];
   }
 
+  frontmostWindowRect = [SpectacleWindowPositionManager normalizeCoordinatesOfRect:frontmostWindowRect
+                                                                     frameOfScreen:frameOfScreen];
+
   if (MovingToNextOrPreviousDisplay(action) && RectFitsInRect(frontmostWindowRect, visibleFrameOfScreen)) {
     action = SpectacleWindowActionCenter;
   }
@@ -131,6 +134,9 @@
 
     return;
   }
+
+  frontmostWindowRect = [SpectacleWindowPositionManager normalizeCoordinatesOfRect:frontmostWindowRect
+                                                                     frameOfScreen:frameOfScreen];
 
   historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement:frontmostWindowElement
                                                                windowRect:frontmostWindowRect];
@@ -223,6 +229,17 @@
   }
 
   return windowAction;
+}
+
+#pragma mark -
+
++ (CGRect)normalizeCoordinatesOfRect:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen
+{
+  CGRect frameOfScreenWithMenuBar = [[[NSScreen screens] objectAtIndex:0] frame];
+
+  rect.origin.y = frameOfScreen.size.height - NSMaxY(rect) + (frameOfScreenWithMenuBar.size.height - frameOfScreen.size.height);
+
+  return rect;
 }
 
 #pragma mark -

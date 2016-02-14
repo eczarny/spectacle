@@ -44,4 +44,8 @@ typedef void (^SpectacleFailureFeedback)();
 
 - (SpectacleWindowAction)windowActionForShortcut:(SpectacleShortcut *)shortcut;
 
+#pragma mark -
+
++ (CGRect)normalizeCoordinatesOfRect:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen;
+
 @end
