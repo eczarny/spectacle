@@ -7,8 +7,8 @@
 #import <Specta/Specta.h>
 
 #import "SpectacleAccessibilityElement.h"
-#import "SpectacleCalculationResult.h"
 #import "SpectacleScreenDetector.h"
+#import "SpectacleWindowPositionCalculationResult.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
 
@@ -24,7 +24,7 @@ SpecBegin(SpectacleWindowPositionManager)
     __block NSWorkspace *mockSharedWorkspace;
     __block NSRunningApplication *mockFrontmostApplication;
     __block SpectacleWindowPositionManager *windowPositionManager;
-    __block SpectacleCalculationResult *mockCalculationResult;
+    __block SpectacleWindowPositionCalculationResult *mockWindowPositionCalculationResult;
 
     beforeEach(^{
       mockMainScreen = mock([NSScreen class]);
@@ -32,7 +32,7 @@ SpecBegin(SpectacleWindowPositionManager)
       mockWindowPositionCalculator = mock([SpectacleWindowPositionCalculator class]);
       mockSharedWorkspace = mock([NSWorkspace class]);
       mockFrontmostApplication = mock([NSRunningApplication class]);
-      mockCalculationResult = mock([SpectacleCalculationResult class]);
+      mockWindowPositionCalculationResult = mock([SpectacleWindowPositionCalculationResult class]);
 
       [given([mockMainScreen frame]) willReturnStruct:&frameOfScreen objCType:@encode(NSRect)];
       [given([mockMainScreen visibleFrame]) willReturnStruct:&visibleFrameOfScreen objCType:@encode(NSRect)];
@@ -51,7 +51,7 @@ SpecBegin(SpectacleWindowPositionManager)
       ongoingWindowPositionCalculatorStubbing = [ongoingWindowPositionCalculatorStubbing withMatcher:anything()
                                                                                          forArgument:2];
 
-      [ongoingWindowPositionCalculatorStubbing willReturn:mockCalculationResult];
+      [ongoingWindowPositionCalculatorStubbing willReturn:mockWindowPositionCalculationResult];
 
       MKTOngoingStubbing *ongoingScreenDetectorStubbing =
         given([mockScreenDetector screenWithAction:SpectacleWindowActionNone
@@ -174,19 +174,19 @@ SpecBegin(SpectacleWindowPositionManager)
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:NO];
 
-      [given([mockCalculationResult action]) willReturnInteger:SpectacleWindowActionCenter];
+      [given([mockWindowPositionCalculationResult action]) willReturnInteger:SpectacleWindowActionCenter];
 
       CGRect flippedFrontmostWindowRect = frontmostWindowRect;
 
-      [given([mockCalculationResult windowRect]) willReturnStruct:&flippedFrontmostWindowRect objCType:@encode(CGRect)];
+      [given([mockWindowPositionCalculationResult windowRect]) willReturnStruct:&flippedFrontmostWindowRect objCType:@encode(CGRect)];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
                                                  action:SpectacleWindowActionCenter
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
-      [(SpectacleCalculationResult *)verify(mockCalculationResult) action];
-      [verify(mockCalculationResult) windowRect];
+      [(SpectacleWindowPositionCalculationResult *)verify(mockWindowPositionCalculationResult) action];
+      [verify(mockWindowPositionCalculationResult) windowRect];
 
       [[verifyCount(mockAccessibilityElemenet, never()) withMatcher:anything()] setRectOfElement:CGRectNull];
     });

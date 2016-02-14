@@ -1,6 +1,9 @@
-#import "SpectacleCalculationResult.h"
+#import "SpectacleWindowPositionCalculationResult.h"
 
-@implementation SpectacleCalculationResult
+@implementation SpectacleWindowPositionCalculationResult
+
+@synthesize action = _action;
+@synthesize windowRect = _windowRect;
 
 - (instancetype)initWithAction:(SpectacleWindowAction)action windowRect:(CGRect)windowRect
 {
@@ -14,7 +17,7 @@
 
 + (instancetype)resultWithAction:(SpectacleWindowAction)action windowRect:(CGRect)windowRect
 {
-  return [[SpectacleCalculationResult alloc] initWithAction:action windowRect:windowRect];
+  return [[SpectacleWindowPositionCalculationResult alloc] initWithAction:action windowRect:windowRect];
 }
 
 @end

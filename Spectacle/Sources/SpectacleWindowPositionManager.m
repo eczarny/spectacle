@@ -1,12 +1,12 @@
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleBestEffortWindowMover.h"
-#import "SpectacleCalculationResult.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleQuantizedWindowMover.h"
 #import "SpectacleScreenDetector.h"
 #import "SpectacleShortcut.h"
 #import "SpectacleStandardWindowMover.h"
+#import "SpectacleWindowPositionCalculationResult.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
 
@@ -76,7 +76,7 @@
   CGRect visibleFrameOfScreen = CGRectNull;
   SpectacleHistory *history = [self historyForCurrentApplication];
   SpectacleHistoryItem *historyItem = nil;
-  SpectacleCalculationResult *calculationResult = nil;
+  SpectacleWindowPositionCalculationResult *windowPositionCalculationResult = nil;
 
   if (screenOfDisplay) {
     frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
@@ -112,21 +112,18 @@
 
   previousFrontmostWindowRect = frontmostWindowRect;
 
-  if (Resizing(action)) {
-    CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * 30.0f;
+  windowPositionCalculationResult = [_windowPositionCalculator calculateWindowRect:frontmostWindowRect
+                                                              visibleFrameOfScreen:visibleFrameOfScreen
+                                                                            action:action];
 
-    calculationResult = [_windowPositionCalculator calculateResizedWindowRect:frontmostWindowRect
-                                                         visibleFrameOfScreen:visibleFrameOfScreen
-                                                                   sizeOffset:sizeOffset
-                                                                       action:action];
-  } else {
-    calculationResult = [_windowPositionCalculator calculateWindowRect:frontmostWindowRect
-                                                  visibleFrameOfScreen:visibleFrameOfScreen
-                                                                action:action];
+  if (!windowPositionCalculationResult) {
+    _failureFeedback();
+
+    return;
   }
 
-  action = calculationResult.action;
-  frontmostWindowRect = calculationResult.windowRect;
+  action = windowPositionCalculationResult.action;
+  frontmostWindowRect = windowPositionCalculationResult.windowRect;
 
   if (CGRectEqualToRect(previousFrontmostWindowRect, frontmostWindowRect)) {
     _failureFeedback();
