@@ -1,4 +1,3 @@
-#import "SpectacleConstants.h"
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslator.h"
 
@@ -119,12 +118,12 @@
 
   [self buildKeyCodeConvertorDictionary];
 
-  keyCodeTranslations = _specialShortcutTranslations[kShortcutTranslationsKey];
+  keyCodeTranslations = _specialShortcutTranslations[@"ShortcutTranslations"];
 
   result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
 
   if (result) {
-    NSDictionary<NSString *, NSNumber *> *glyphTranslations = _specialShortcutTranslations[kShortcutGlyphTranslationsKey];
+    NSDictionary<NSString *, NSNumber *> *glyphTranslations = _specialShortcutTranslations[@"ShortcutGlyphTranslations"];
     NSNumber *translatedGlyph = glyphTranslations[result];
 
     if (translatedGlyph) {
@@ -189,8 +188,7 @@
 {
   if (!_specialShortcutTranslations) {
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:kShortcutTranslationsPropertyListFile
-                                      ofType:kPropertyListFileExtension];
+    NSString *path = [bundle pathForResource:@"ShortcutTranslations" ofType:@"plist"];
 
     _specialShortcutTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
   }

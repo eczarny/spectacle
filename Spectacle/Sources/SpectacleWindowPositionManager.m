@@ -1,7 +1,6 @@
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleBestEffortWindowMover.h"
 #import "SpectacleCalculationResult.h"
-#import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleQuantizedWindowMover.h"
@@ -114,7 +113,7 @@
   previousFrontmostWindowRect = frontmostWindowRect;
 
   if (Resizing(action)) {
-    CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * kWindowSizeOffset;
+    CGFloat sizeOffset = ((action == SpectacleWindowActionLarger) ? 1.0 : -1.0) * 30.0f;
 
     calculationResult = [_windowPositionCalculator calculateResizedWindowRect:frontmostWindowRect
                                                          visibleFrameOfScreen:visibleFrameOfScreen
@@ -190,41 +189,41 @@
   NSString *name = shortcut.shortcutName;
   SpectacleWindowAction windowAction = SpectacleWindowActionNone;
 
-  if ([name isEqualToString:kWindowActionMoveToCenter]) {
+  if ([name isEqualToString:@"MoveToCenter"]) {
     windowAction = SpectacleWindowActionCenter;
-  } else if ([name isEqualToString:kWindowActionMoveToFullscreen]) {
+  } else if ([name isEqualToString:@"MoveToFullscreen"]) {
     windowAction = SpectacleWindowActionFullscreen;
-  } else if ([name isEqualToString:kWindowActionMoveToLeftHalf]) {
+  } else if ([name isEqualToString:@"MoveToLeftHalf"]) {
     windowAction = SpectacleWindowActionLeftHalf;
-  } else if ([name isEqualToString:kWindowActionMoveToRightHalf]) {
+  } else if ([name isEqualToString:@"MoveToRightHalf"]) {
     windowAction = SpectacleWindowActionRightHalf;
-  } else if ([name isEqualToString:kWindowActionMoveToTopHalf]) {
+  } else if ([name isEqualToString:@"MoveToTopHalf"]) {
     windowAction = SpectacleWindowActionTopHalf;
-  } else if ([name isEqualToString:kWindowActionMoveToBottomHalf]) {
+  } else if ([name isEqualToString:@"MoveToBottomHalf"]) {
     windowAction = SpectacleWindowActionBottomHalf;
-  } else if ([name isEqualToString:kWindowActionMoveToUpperLeft]) {
+  } else if ([name isEqualToString:@"MoveToUpperLeft"]) {
     windowAction = SpectacleWindowActionUpperLeft;
-  } else if ([name isEqualToString:kWindowActionMoveToLowerLeft]) {
+  } else if ([name isEqualToString:@"MoveToLowerLeft"]) {
     windowAction = SpectacleWindowActionLowerLeft;
-  } else if ([name isEqualToString:kWindowActionMoveToUpperRight]) {
+  } else if ([name isEqualToString:@"MoveToUpperRight"]) {
     windowAction = SpectacleWindowActionUpperRight;
-  } else if ([name isEqualToString:kWindowActionMoveToLowerRight]) {
+  } else if ([name isEqualToString:@"MoveToLowerRight"]) {
     windowAction = SpectacleWindowActionLowerRight;
-  } else if ([name isEqualToString:kWindowActionMoveToNextDisplay]) {
+  } else if ([name isEqualToString:@"MoveToNextDisplay"]) {
     windowAction = SpectacleWindowActionNextDisplay;
-  } else if ([name isEqualToString:kWindowActionMoveToPreviousDisplay]) {
+  } else if ([name isEqualToString:@"MoveToPreviousDisplay"]) {
     windowAction = SpectacleWindowActionPreviousDisplay;
-  } else if ([name isEqualToString:kWindowActionMoveToNextThird]) {
+  } else if ([name isEqualToString:@"MoveToNextThird"]) {
     windowAction = SpectacleWindowActionNextThird;
-  } else if ([name isEqualToString:kWindowActionMoveToPreviousThird]) {
+  } else if ([name isEqualToString:@"MoveToPreviousThird"]) {
     windowAction = SpectacleWindowActionPreviousThird;
-  } else if ([name isEqualToString:kWindowActionMakeLarger]) {
+  } else if ([name isEqualToString:@"MakeLarger"]) {
     windowAction = SpectacleWindowActionLarger;
-  } else if ([name isEqualToString:kWindowActionMakeSmaller]) {
+  } else if ([name isEqualToString:@"MakeSmaller"]) {
     windowAction = SpectacleWindowActionSmaller;
-  } else if ([name isEqualToString:kWindowActionUndoLastMove]) {
+  } else if ([name isEqualToString:@"UndoLastMove"]) {
     windowAction = SpectacleWindowActionUndo;
-  } else if ([name isEqualToString:kWindowActionRedoLastMove]) {
+  } else if ([name isEqualToString:@"RedoLastMove"]) {
     windowAction = SpectacleWindowActionRedo;
   }
 

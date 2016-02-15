@@ -1,4 +1,3 @@
-#import "SpectacleConstants.h"
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
 
@@ -47,7 +46,7 @@
     _currentHistoryItem = historyItem;
   }
 
-  if (++_size >= kWindowActionHistorySize) {
+  if (++_size >= 50) {
     _lastHistoryItem.nextHistoryItem.previousHistoryItem = _lastHistoryItem.previousHistoryItem;
 
     _lastHistoryItem = _lastHistoryItem.nextHistoryItem;

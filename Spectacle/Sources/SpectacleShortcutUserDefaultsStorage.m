@@ -1,4 +1,3 @@
-#import "SpectacleConstants.h"
 #import "SpectacleShortcutUserDefaultsStorage.h"
 
 @implementation SpectacleShortcutUserDefaultsStorage
@@ -60,24 +59,24 @@
 
 - (NSArray<NSString *> *)shortcutNames
 {
-  return @[kWindowActionMoveToCenter,
-           kWindowActionMoveToFullscreen,
-           kWindowActionMoveToLeftHalf,
-           kWindowActionMoveToRightHalf,
-           kWindowActionMoveToTopHalf,
-           kWindowActionMoveToBottomHalf,
-           kWindowActionMoveToUpperLeft,
-           kWindowActionMoveToLowerLeft,
-           kWindowActionMoveToUpperRight,
-           kWindowActionMoveToLowerRight,
-           kWindowActionMoveToNextDisplay,
-           kWindowActionMoveToPreviousDisplay,
-           kWindowActionMoveToNextThird,
-           kWindowActionMoveToPreviousThird,
-           kWindowActionMakeLarger,
-           kWindowActionMakeSmaller,
-           kWindowActionUndoLastMove,
-           kWindowActionRedoLastMove];
+  return @[@"MoveToCenter",
+           @"MoveToFullscreen",
+           @"MoveToLeftHalf",
+           @"MoveToRightHalf",
+           @"MoveToTopHalf",
+           @"MoveToBottomHalf",
+           @"MoveToUpperLeft",
+           @"MoveToLowerLeft",
+           @"MoveToUpperRight",
+           @"MoveToLowerRight",
+           @"MoveToNextDisplay",
+           @"MoveToPreviousDisplay",
+           @"MoveToNextThird",
+           @"MoveToPreviousThird",
+           @"MakeLarger",
+           @"MakeSmaller",
+           @"UndoLastMove",
+           @"RedoLastMove"];
 }
 
 #pragma mark -
@@ -85,8 +84,7 @@
 - (NSDictionary<NSString *, SpectacleShortcut *> *)defaultShortcutsWithNames:(NSArray<NSString *> *)names
 {
   NSBundle *bundle = NSBundle.mainBundle;
-  NSString *path = [bundle pathForResource:kDefaultPreferencesPropertyListFile
-                                    ofType:kPropertyListFileExtension];
+  NSString *path = [bundle pathForResource:@"Defaults" ofType:@"plist"];
 
   NSDictionary *applicationDefaults = [NSDictionary dictionaryWithContentsOfFile:path];
   NSMutableDictionary<NSString *, SpectacleShortcut *> *defaultShortcuts = [NSMutableDictionary new];
@@ -133,8 +131,7 @@
   NSString *shortcutName = shortcut.shortcutName;
   NSInteger defaultShortcutCode;
 
-  if (![shortcutName isEqualToString:kWindowActionMoveToLowerLeft]
-      && ![shortcutName isEqualToString:kWindowActionMoveToLowerRight]) {
+  if (![shortcutName isEqualToString:@"MoveToLowerLeft"] && ![shortcutName isEqualToString:@"MoveToLowerRight"]) {
     return;
   }
 

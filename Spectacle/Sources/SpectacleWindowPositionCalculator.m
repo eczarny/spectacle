@@ -1,5 +1,4 @@
 #import "SpectacleCalculationResult.h"
-#import "SpectacleConstants.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleWindowPositionCalculator.h"
 
@@ -10,7 +9,7 @@
 
 #pragma mark -
 
-#define AgainstEdgeOfScreen(gap) (gap <= kMaximumGapNeededToStickToEdge)
+#define AgainstEdgeOfScreen(gap) (gap <= 5.0f)
 
 #define AgainstTheLeftEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(a.origin.x - b.origin.x))
 #define AgainstTheRightEdgeOfScreen(a, b) AgainstEdgeOfScreen(fabs(CGRectGetMaxX(a) - CGRectGetMaxX(b)))
@@ -196,8 +195,8 @@
 
 - (BOOL)isWindowRect:(CGRect)windowRect tooSmallRelativeToVisibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 {
-  CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / kMinimumWindowSizeRatio);
-  CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / kMinimumWindowSizeRatio);
+  CGFloat minimumWindowRectWidth = floor(visibleFrameOfScreen.size.width / 4.0f);
+  CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / 4.0f);
 
   return (windowRect.size.width <= minimumWindowRectWidth) || (windowRect.size.height <= minimumWindowRectHeight);
 }

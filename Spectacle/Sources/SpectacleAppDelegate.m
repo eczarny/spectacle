@@ -2,7 +2,6 @@
 
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleAppDelegate.h"
-#import "SpectacleConstants.h"
 #import "SpectaclePreferencesController.h"
 #import "SpectacleScreenDetector.h"
 #import "SpectacleShortcutManager.h"
@@ -32,22 +31,22 @@
 
   [notificationCenter addObserver:self
                          selector:@selector(enableStatusItem)
-                             name:kStatusItemEnabledNotification
+                             name:@"SpectacleStatusItemEnabledNotification"
                            object:nil];
 
   [notificationCenter addObserver:self
                          selector:@selector(disableStatusItem)
-                             name:kStatusItemDisabledNotification
+                             name:@"SpectacleStatusItemDisabledNotification"
                            object:nil];
 
   [notificationCenter addObserver:self
                          selector:@selector(updateShortcutMenuItems)
-                             name:kShortcutChangedNotification
+                             name:@"SpectacleShortcutChangedNotification"
                            object:nil];
 
   [notificationCenter addObserver:self
                          selector:@selector(updateShortcutMenuItems)
-                             name:kRestoreDefaultShortcutsNotification
+                             name:@"SpectacleRestoreDefaultShortcutsNotification"
                            object:nil];
 
   [notificationCenter addObserver:self
@@ -69,29 +68,29 @@
 
   [SpectacleUtilities registerDefaultsForBundle:[NSBundle mainBundle]];
 
-  _shortcutMenuItems = @{kWindowActionMoveToCenter: _moveToCenterShortcutMenuItem,
-                         kWindowActionMoveToFullscreen: _moveToFullscreenShortcutMenuItem,
-                         kWindowActionMoveToLeftHalf: _moveToLeftShortcutMenuItem,
-                         kWindowActionMoveToRightHalf: _moveToRightShortcutMenuItem,
-                         kWindowActionMoveToTopHalf: _moveToTopShortcutMenuItem,
-                         kWindowActionMoveToBottomHalf: _moveToBottomShortcutMenuItem,
-                         kWindowActionMoveToUpperLeft: _moveToUpperLeftShortcutMenuItem,
-                         kWindowActionMoveToLowerLeft: _moveToLowerLeftShortcutMenuItem,
-                         kWindowActionMoveToUpperRight: _moveToUpperRightShortcutMenuItem,
-                         kWindowActionMoveToLowerRight: _moveToLowerRightShortcutMenuItem,
-                         kWindowActionMoveToNextDisplay: _moveToNextDisplayShortcutMenuItem,
-                         kWindowActionMoveToPreviousDisplay: _moveToPreviousDisplayShortcutMenuItem,
-                         kWindowActionMoveToNextThird: _moveToNextThirdShortcutMenuItem,
-                         kWindowActionMoveToPreviousThird: _moveToPreviousThirdShortcutMenuItem,
-                         kWindowActionMakeLarger: _makeLargerShortcutMenuItem,
-                         kWindowActionMakeSmaller: _makeSmallerShortcutMenuItem,
-                         kWindowActionUndoLastMove: _undoLastMoveShortcutMenuItem,
-                         kWindowActionRedoLastMove: _redoLastMoveShortcutMenuItem};
+  _shortcutMenuItems = @{@"MoveToCenter": _moveToCenterShortcutMenuItem,
+                         @"MoveToFullscreen": _moveToFullscreenShortcutMenuItem,
+                         @"MoveToLeftHalf": _moveToLeftShortcutMenuItem,
+                         @"MoveToRightHalf": _moveToRightShortcutMenuItem,
+                         @"MoveToTopHalf": _moveToTopShortcutMenuItem,
+                         @"MoveToBottomHalf": _moveToBottomShortcutMenuItem,
+                         @"MoveToUpperLeft": _moveToUpperLeftShortcutMenuItem,
+                         @"MoveToLowerLeft": _moveToLowerLeftShortcutMenuItem,
+                         @"MoveToUpperRight": _moveToUpperRightShortcutMenuItem,
+                         @"MoveToLowerRight": _moveToLowerRightShortcutMenuItem,
+                         @"MoveToNextDisplay": _moveToNextDisplayShortcutMenuItem,
+                         @"MoveToPreviousDisplay": _moveToPreviousDisplayShortcutMenuItem,
+                         @"MoveToNextThird": _moveToNextThirdShortcutMenuItem,
+                         @"MoveToPreviousThird": _moveToPreviousThirdShortcutMenuItem,
+                         @"MakeLarger": _makeLargerShortcutMenuItem,
+                         @"MakeSmaller": _makeSmallerShortcutMenuItem,
+                         @"UndoLastMove": _undoLastMoveShortcutMenuItem,
+                         @"RedoLastMove": _redoLastMoveShortcutMenuItem};
 
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-  _blacklistedApplications = [NSSet setWithArray:[userDefaults objectForKey:kBlacklistedApplicationsPreference]];
-  _disabledApplications = [NSMutableSet setWithArray:[userDefaults objectForKey:kDisabledApplicationsPreference]];
+  _blacklistedApplications = [NSSet setWithArray:[userDefaults objectForKey:@"BlacklistedApplications"]];
+  _disabledApplications = [NSMutableSet setWithArray:[userDefaults objectForKey:@"DisabledApplications"]];
 
   _shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
   _shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:_shortcutStorage];
@@ -110,8 +109,8 @@
 
   [self disableShortcutsIfFrontmostApplicationIsBlacklistedOrDisabled];
 
-  BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:kAutomaticUpdateCheckEnabledPreference];
-  BOOL statusItemEnabled = [userDefaults boolForKey:kStatusItemEnabledPreference];
+  BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:@"AutomaticUpdateCheckEnabled"];
+  BOOL statusItemEnabled = [userDefaults boolForKey:@"StatusItemEnabled"];
 
   if (statusItemEnabled) {
     [self enableStatusItem];
@@ -310,18 +309,16 @@
     self.disableShortcutsForApplicationMenuItem.state = NSOnState;
   }
 
-  [NSUserDefaults.standardUserDefaults setObject:_disabledApplications.allObjects
-                                          forKey:kDisabledApplicationsPreference];
+  [NSUserDefaults.standardUserDefaults setObject:_disabledApplications.allObjects forKey:@"DisabledApplications"];
 }
 
 #pragma mark -
 
 - (IBAction)openSystemPreferences:(id)sender
 {
-  NSURL *preferencePaneURL = [NSURL fileURLWithPath:[SpectacleUtilities pathForPreferencePaneNamed:kSecurityPreferencePaneName]];
+  NSURL *preferencePaneURL = [NSURL fileURLWithPath:[SpectacleUtilities pathForPreferencePaneNamed:@"Security"]];
   NSBundle *applicationBundle = NSBundle.mainBundle;
-  NSURL *scriptURL = [applicationBundle URLForResource:kSecurityAndPrivacyPreferencesScriptName
-                                         withExtension:kAppleScriptFileExtension];
+  NSURL *scriptURL = [applicationBundle URLForResource:@"Security & Privacy System Preferences" withExtension:@"scpt"];
 
   [[NSApplication sharedApplication] stopModal];
 
@@ -352,7 +349,7 @@
 {
   _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 
-  NSImage *statusImage = [NSBundle.mainBundle imageForResource:kStatusItemIcon];
+  NSImage *statusImage = [NSBundle.mainBundle imageForResource:@"Spectacle Status Item"];
 
   [statusImage setTemplate:YES];
 
@@ -466,7 +463,7 @@
 {
   NSMenuItem *menuItem = notification.userInfo[@"MenuItem"];
 
-  if (menuItem.tag == kMenuItemActivateIgnoringOtherApps) {
+  if (menuItem.tag == -1) {
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
   }
 }
