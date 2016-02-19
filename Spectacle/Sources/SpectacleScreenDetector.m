@@ -39,6 +39,9 @@
     CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
     CGRect frontmostWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:currentFrameOfScreen];
 
+    frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
+                                                                      frameOfScreen:currentFrameOfScreen];
+
     if (CGRectContainsRect(currentFrameOfScreen, frontmostWindowRect)) {
       result = currentScreen;
 

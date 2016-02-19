@@ -32,6 +32,10 @@
 
 #pragma mark -
 
++ (CGRect)normalizeCoordinatesOfRect:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen;
+
+#pragma mark -
+
 - (BOOL)isSheet;
 
 - (BOOL)isSystemDialog;

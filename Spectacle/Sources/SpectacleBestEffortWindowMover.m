@@ -50,8 +50,8 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
     movedWindowRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - movedWindowRect.size.width;
   }
 
-  movedWindowRect = [SpectacleWindowPositionManager normalizeCoordinatesOfRect:movedWindowRect
-                                                                 frameOfScreen:frameOfScreen];
+  movedWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:movedWindowRect
+                                                                frameOfScreen:frameOfScreen];
 
   if (movedWindowRect.origin.y < visibleFrameOfScreen.origin.y) {
     movedWindowRect.origin.y = visibleFrameOfScreen.origin.y;
@@ -59,8 +59,8 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
     movedWindowRect.origin.y = visibleFrameOfScreen.origin.y + visibleFrameOfScreen.size.height - movedWindowRect.size.height;
   }
 
-  movedWindowRect = [SpectacleWindowPositionManager normalizeCoordinatesOfRect:movedWindowRect
-                                                                 frameOfScreen:frameOfScreen];
+  movedWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:movedWindowRect
+                                                                frameOfScreen:frameOfScreen];
 
   if (!CGRectEqualToRect(movedWindowRect, previouslyMovedWindowRect)) {
     [frontmostWindowElement setRectOfElement:movedWindowRect frameOfScreen:frameOfScreen];
