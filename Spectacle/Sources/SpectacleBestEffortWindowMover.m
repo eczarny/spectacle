@@ -40,7 +40,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
              frontmostWindowElement:frontmostWindowElement
                              action:action];
 
-  CGRect movedWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
+  CGRect movedWindowRect = [frontmostWindowElement rectOfElement];
 
   CGRect previouslyMovedWindowRect = movedWindowRect;
 
@@ -63,7 +63,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                                                                 frameOfScreen:frameOfScreen];
 
   if (!CGRectEqualToRect(movedWindowRect, previouslyMovedWindowRect)) {
-    [frontmostWindowElement setRectOfElement:movedWindowRect frameOfScreen:frameOfScreen];
+    [frontmostWindowElement setRectOfElement:movedWindowRect];
   }
 }
 

@@ -122,7 +122,7 @@
 
 #pragma mark -
 
-- (CGRect)rectOfElementWithFrameOfScreen:(CGRect)frameOfScreen
+- (CGRect)rectOfElement
 {
   CGRect result = CGRectNull;
 
@@ -146,7 +146,7 @@
 
 #pragma mark -
 
-- (void)setRectOfElement:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen
+- (void)setRectOfElement:(CGRect)rect
 {
   AXValueRef positionRef;
   AXValueRef sizeRef;

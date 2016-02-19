@@ -24,11 +24,11 @@
 
 #pragma mark -
 
-- (CGRect)rectOfElementWithFrameOfScreen:(CGRect)frameOfScreen;
+- (CGRect)rectOfElement;
 
 #pragma mark -
 
-- (void)setRectOfElement:(CGRect)rect frameOfScreen:(CGRect)frameOfScreen;
+- (void)setRectOfElement:(CGRect)rect;
 
 #pragma mark -
 

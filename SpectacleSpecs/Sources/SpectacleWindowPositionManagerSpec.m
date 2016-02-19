@@ -73,7 +73,7 @@ SpecBegin(SpectacleWindowPositionManager)
     it(@"should do nothing if the frontmost window is a sheet", ^{
       SpectacleAccessibilityElement *mockAccessibilityElemenet = mock([SpectacleAccessibilityElement class]);
 
-      [given([mockAccessibilityElemenet rectOfElementWithFrameOfScreen:frameOfScreen]) willReturnStruct:&frontmostWindowRect objCType:@encode(CGRect)];
+      [given([mockAccessibilityElemenet rectOfElement]) willReturnStruct:&frontmostWindowRect objCType:@encode(CGRect)];
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:YES];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
@@ -81,7 +81,7 @@ SpecBegin(SpectacleWindowPositionManager)
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
-      [verify(mockAccessibilityElemenet) rectOfElementWithFrameOfScreen:frameOfScreen];
+      [verify(mockAccessibilityElemenet) rectOfElement];
       [verify(mockAccessibilityElemenet) isSheet];
       [verifyCount(mockAccessibilityElemenet, never()) isSystemDialog];
 
@@ -93,7 +93,7 @@ SpecBegin(SpectacleWindowPositionManager)
     it(@"should do nothing if the frontmost window is a system dialog", ^{
       SpectacleAccessibilityElement *mockAccessibilityElemenet = mock([SpectacleAccessibilityElement class]);
 
-      [given([mockAccessibilityElemenet rectOfElementWithFrameOfScreen:frameOfScreen]) willReturnStruct:&frontmostWindowRect objCType:@encode(CGRect)];
+      [given([mockAccessibilityElemenet rectOfElement]) willReturnStruct:&frontmostWindowRect objCType:@encode(CGRect)];
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:YES];
 
@@ -102,7 +102,7 @@ SpecBegin(SpectacleWindowPositionManager)
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
-      [verify(mockAccessibilityElemenet) rectOfElementWithFrameOfScreen:frameOfScreen];
+      [verify(mockAccessibilityElemenet) rectOfElement];
       [verify(mockAccessibilityElemenet) isSheet];
       [verify(mockAccessibilityElemenet) isSystemDialog];
 
@@ -114,7 +114,7 @@ SpecBegin(SpectacleWindowPositionManager)
     it(@"should do nothing if the frontmost window rect is unavailable", ^{
       SpectacleAccessibilityElement *mockAccessibilityElemenet = mock([SpectacleAccessibilityElement class]);
 
-      [given([mockAccessibilityElemenet rectOfElementWithFrameOfScreen:frameOfScreen]) willReturnStruct:&CGRectNull objCType:@encode(CGRect)];
+      [given([mockAccessibilityElemenet rectOfElement]) willReturnStruct:&CGRectNull objCType:@encode(CGRect)];
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:YES];
 
@@ -123,7 +123,7 @@ SpecBegin(SpectacleWindowPositionManager)
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
-      [verify(mockAccessibilityElemenet) rectOfElementWithFrameOfScreen:frameOfScreen];
+      [verify(mockAccessibilityElemenet) rectOfElement];
       [verify(mockAccessibilityElemenet) isSheet];
       [verify(mockAccessibilityElemenet) isSystemDialog];
 
@@ -135,7 +135,7 @@ SpecBegin(SpectacleWindowPositionManager)
     it(@"should do nothing if screen detection fails", ^{
       SpectacleAccessibilityElement *mockAccessibilityElemenet = mock([SpectacleAccessibilityElement class]);
 
-      [given([mockAccessibilityElemenet rectOfElementWithFrameOfScreen:frameOfScreen]) willReturnStruct:&frontmostWindowRect
+      [given([mockAccessibilityElemenet rectOfElement]) willReturnStruct:&frontmostWindowRect
                                                                                                objCType:@encode(CGRect)];
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:YES];
@@ -150,7 +150,7 @@ SpecBegin(SpectacleWindowPositionManager)
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
-      [verify(mockAccessibilityElemenet) rectOfElementWithFrameOfScreen:frameOfScreen];
+      [verify(mockAccessibilityElemenet) rectOfElement];
       [verify(mockAccessibilityElemenet) isSheet];
       [verify(mockAccessibilityElemenet) isSystemDialog];
 
@@ -162,7 +162,7 @@ SpecBegin(SpectacleWindowPositionManager)
     it(@"should do nothing if the window position calculation returns the same results", ^{
       SpectacleAccessibilityElement *mockAccessibilityElemenet = mock([SpectacleAccessibilityElement class]);
 
-      [given([mockAccessibilityElemenet rectOfElementWithFrameOfScreen:frameOfScreen]) willReturnStruct:&frontmostWindowRect objCType:@encode(CGRect)];
+      [given([mockAccessibilityElemenet rectOfElement]) willReturnStruct:&frontmostWindowRect objCType:@encode(CGRect)];
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:NO];
 
@@ -180,8 +180,7 @@ SpecBegin(SpectacleWindowPositionManager)
       [(SpectacleCalculationResult *)verify(mockCalculationResult) action];
       [verify(mockCalculationResult) windowRect];
 
-      [[verifyCount(mockAccessibilityElemenet, never()) withMatcher:anything()] setRectOfElement:CGRectNull
-                                                                                   frameOfScreen:CGRectNull];
+      [[verifyCount(mockAccessibilityElemenet, never()) withMatcher:anything()] setRectOfElement:CGRectNull];
     });
   });
 SpecEnd

@@ -13,9 +13,9 @@
                     mainScreen:(NSScreen *)mainScreen
 {
   NSArray<NSScreen *> *screensInConsistentOrder = [self screensInConsistentOrder:screens];
-  NSScreen *result = [self screenContainingFrontmostWindowElement:frontmostWindowElement
-                                                          screens:screensInConsistentOrder
-                                                       mainScreen:mainScreen];
+  NSScreen *result = [self screenContainingRect:[frontmostWindowElement rectOfElement]
+                                        screens:screensInConsistentOrder
+                                     mainScreen:mainScreen];
 
   if ((action == SpectacleWindowActionNextDisplay) || (action == SpectacleWindowActionPreviousDisplay)) {
     result = [self nextOrPreviousScreenToFrameOfScreen:NSRectToCGRect([result frame])
@@ -28,27 +28,25 @@
 
 #pragma mark -
 
-- (NSScreen *)screenContainingFrontmostWindowElement:(SpectacleAccessibilityElement*)frontmostWindowElement
-                                             screens:(NSArray<NSScreen *> *)screens
-                                          mainScreen:(NSScreen *)mainScreen
+- (NSScreen *)screenContainingRect:(CGRect)rect
+                           screens:(NSArray<NSScreen *> *)screens
+                        mainScreen:(NSScreen *)mainScreen
 {
   CGFloat largestPercentageOfRectWithinFrameOfScreen = 0.0f;
   NSScreen *result = mainScreen;
 
   for (NSScreen *currentScreen in screens) {
     CGRect currentFrameOfScreen = NSRectToCGRect(currentScreen.frame);
-    CGRect frontmostWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:currentFrameOfScreen];
+    CGRect normalizedRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:rect
+                                                                        frameOfScreen:currentFrameOfScreen];
 
-    frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
-                                                                      frameOfScreen:currentFrameOfScreen];
-
-    if (CGRectContainsRect(currentFrameOfScreen, frontmostWindowRect)) {
+    if (CGRectContainsRect(currentFrameOfScreen, normalizedRect)) {
       result = currentScreen;
 
       break;
     }
 
-    CGFloat percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect:frontmostWindowRect
+    CGFloat percentageOfRectWithinCurrentFrameOfScreen = [self percentageOfRect:normalizedRect
                                                             withinFrameOfScreen:currentFrameOfScreen];
 
     if (percentageOfRectWithinCurrentFrameOfScreen > largestPercentageOfRectWithinFrameOfScreen) {

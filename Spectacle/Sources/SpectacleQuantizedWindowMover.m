@@ -33,7 +33,7 @@
 frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                 action:(SpectacleWindowAction)action
 {
-  CGRect movedWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
+  CGRect movedWindowRect = [frontmostWindowElement rectOfElement];
 
   if (!CGRectEqualToRect(movedWindowRect, windowRect)) {
     CGRect adjustedWindowRect = windowRect;
@@ -51,15 +51,15 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
         break;
       }
 
-      [frontmostWindowElement setRectOfElement:adjustedWindowRect frameOfScreen:frameOfScreen];
+      [frontmostWindowElement setRectOfElement:adjustedWindowRect];
 
-      movedWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
+      movedWindowRect = [frontmostWindowElement rectOfElement];
     }
 
     adjustedWindowRect.origin.x += floor((windowRect.size.width - movedWindowRect.size.width) / 2.0f);
     adjustedWindowRect.origin.y += floor((windowRect.size.height - movedWindowRect.size.height) / 2.0f);
 
-    [frontmostWindowElement setRectOfElement:adjustedWindowRect frameOfScreen:frameOfScreen];
+    [frontmostWindowElement setRectOfElement:adjustedWindowRect];
   }
 
   [_innerWindowMover moveWindowRect:windowRect

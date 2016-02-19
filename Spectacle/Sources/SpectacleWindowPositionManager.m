@@ -83,7 +83,7 @@
     visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
   }
 
-  CGRect frontmostWindowRect = [frontmostWindowElement rectOfElementWithFrameOfScreen:frameOfScreen];
+  CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
 
   if ([frontmostWindowElement isSheet]
