@@ -15,8 +15,6 @@ typedef SpectacleWindowPositionCalculationResult *(^SpectacleWindowPositionCalcu
 
 @interface SpectacleWindowPositionCalculationRegistry : NSObject<SpectacleWindowPositionCalculationRegistryExports>
 
-- (instancetype)initWithContext:(JSContext *)context NS_DESIGNATED_INITIALIZER;
-
-- (SpectacleWindowPositionCalculation)windowPositionCalculationWithAction:(SpectacleWindowAction)action;
+- (JSValue *)windowPositionCalculationWithAction:(SpectacleWindowAction)action;
 
 @end

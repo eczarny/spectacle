@@ -48,6 +48,7 @@
 		2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */; };
 		2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 079CDA0E1221BAFF0099612C /* SpectacleHistoryItem.m */; };
 		2D8DA05E147E113D003BE1D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 077938E51184FADB0013BC14 /* main.m */; };
+		2D8E2C641C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8E2C631C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.m */; };
 		2D98D7311AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D98D7301AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.m */; };
 		2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA23EFB1B7D736100C9E8EF /* Images.xcassets */; };
 		2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAC59EF1BB238D900C660ED /* SpectacleQuantizedWindowMover.m */; };
@@ -163,6 +164,8 @@
 		2D7C11491B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutUserDefaultsStorage.m; path = Spectacle/Sources/SpectacleShortcutUserDefaultsStorage.m; sourceTree = "<group>"; };
 		2D7CF9E91C6FED50004DC708 /* SpectacleWindowPositionCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowPositionCalculator.h; path = Spectacle/Sources/SpectacleWindowPositionCalculator.h; sourceTree = "<group>"; };
 		2D7CF9EA1C6FED50004DC708 /* SpectacleWindowPositionCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowPositionCalculator.m; path = Spectacle/Sources/SpectacleWindowPositionCalculator.m; sourceTree = "<group>"; };
+		2D8E2C621C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleJavaScriptEnvironment.h; path = Spectacle/Sources/SpectacleJavaScriptEnvironment.h; sourceTree = "<group>"; };
+		2D8E2C631C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleJavaScriptEnvironment.m; path = Spectacle/Sources/SpectacleJavaScriptEnvironment.m; sourceTree = "<group>"; };
 		2D98D72C1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Resources/Localizations/fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D98D72D1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = Spectacle/Resources/Localizations/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D98D72E1ADDBBF6007AD995 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fr; path = Spectacle/Resources/Localizations/fr.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 			isa = PBXGroup;
 			children = (
 				2D58CC381C7030B800E3DC74 /* Window Position Calculations */,
+				2D8E2C621C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.h */,
+				2D8E2C631C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.m */,
 				2D98D72F1AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.h */,
 				2D98D7301AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.m */,
 				2D7CF9E91C6FED50004DC708 /* SpectacleWindowPositionCalculator.h */,
@@ -624,10 +629,9 @@
 				2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */,
 				2DAC59F31BB23BE200C660ED /* SpectacleBestEffortWindowMover.m in Sources */,
-				2D98D7311AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.m in Sources */,
 				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
-				2D7CF9EB1C6FED50004DC708 /* SpectacleWindowPositionCalculator.m in Sources */,
+				2D8E2C641C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.m in Sources */,
 				2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */,
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 				2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */,
@@ -643,6 +647,8 @@
 				2D3A0512194956E100CD96E7 /* SpectacleShortcutValidator.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
 				2D0759A71C71746500A17E80 /* SpectacleWindowPositionCalculationRegistry.m in Sources */,
+				2D98D7311AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.m in Sources */,
+				2D7CF9EB1C6FED50004DC708 /* SpectacleWindowPositionCalculator.m in Sources */,
 				2D8DA058147E113D003BE1D3 /* SpectacleWindowPositionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

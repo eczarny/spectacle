@@ -95,8 +95,16 @@
   _shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
   _shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:_shortcutStorage];
 
+  SpectacleWindowPositionCalculator *windowPositionCalculator = [[SpectacleWindowPositionCalculator alloc] initWithErrorHandler:^(NSString *errorMessage) {
+    NSAlert *alert = [NSAlert new];
+    alert.alertStyle = NSWarningAlertStyle;
+    alert.messageText = @"Encountered an unexpected error";
+    alert.informativeText = errorMessage;
+    [alert runModal];
+  }];
+
   _windowPositionManager = [[SpectacleWindowPositionManager alloc] initWithScreenDetector:[SpectacleScreenDetector new]
-                                                                 windowPositionCalculator:[SpectacleWindowPositionCalculator new]
+                                                                 windowPositionCalculator:windowPositionCalculator
                                                                           sharedWorkspace:[NSWorkspace sharedWorkspace]];
 
   _preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:_shortcutManager
