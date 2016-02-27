@@ -105,6 +105,8 @@
   }
   
   if (action == SpectacleWindowActionSetDimensions) {
+    NSRunningApplication *currentApp = [NSWorkspace sharedWorkspace].frontmostApplication;
+
     SpectacleSetDimensionsController *_setDimensionsController = [[SpectacleSetDimensionsController alloc]
                                                                   initWithWindowNibName:@"SpectacleSetDimensionsWindow"
                                                                   dimensions:frontmostWindowRect];
@@ -112,12 +114,10 @@
     [NSApp runModalForWindow:_setDimensionsController.window];
     
     if ([_setDimensionsController isSuccess]) {
-      [_windowMover moveWindowRect:_setDimensionsController.dimensions
-                     frameOfScreen:frameOfScreen
-              visibleFrameOfScreen:visibleFrameOfScreen
-            frontmostWindowElement:frontmostWindowElement
-                            action:action];
+      [frontmostWindowElement setRectOfElement:_setDimensionsController.dimensions];
     }
+
+    [currentApp activateWithOptions:NSApplicationActivateAllWindows];
 
     return;
   }
