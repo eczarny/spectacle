@@ -155,6 +155,12 @@
                                               action:SpectacleWindowActionCenter];
 }
 
+- (IBAction)setDimensionsOfFrontmostWindow:(id)sender
+{
+  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                              action:SpectacleWindowActionSetDimensions];
+}
+
 #pragma mark -
 
 - (IBAction)moveFrontmostWindowToLeftHalf:(id)sender

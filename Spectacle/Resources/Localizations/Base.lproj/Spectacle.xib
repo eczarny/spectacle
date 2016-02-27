@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="localizable">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -40,7 +40,7 @@
             </connections>
         </customObject>
         <customObject id="qZ6-IG-VBZ" customClass="SUUpdater"/>
-        <menu title="Spectacle Status Item" id="KsA-8w-wcl" propertyAccessControl="localizable">
+        <menu title="Spectacle Status Item" id="KsA-8w-wcl">
             <items>
                 <menuItem title="About Spectacle" tag="-1" id="EA9-dx-Qfg">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -92,6 +92,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveFrontmostWindowToFullscreen:" target="tMJ-JP-XRD" id="P6T-cu-7lj"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Set Dimensions..." id="myg-LY-ewb" userLabel="Set Dimensions Shortcut Menu Item">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="setDimensionsOfFrontmostWindow:" target="tMJ-JP-XRD" id="hWK-2I-PXX"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="Nmj-XX-uaG"/>
@@ -208,7 +214,7 @@
                 <outlet property="delegate" destination="tMJ-JP-XRD" id="eao-lV-3w3"/>
             </connections>
         </menu>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aH5-eW-ySa" propertyAccessControl="localizable">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="aH5-eW-ySa">
             <rect key="contentRect" x="422" y="199" width="780" height="360"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <value key="minSize" type="size" width="780" height="360"/>

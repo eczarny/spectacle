@@ -9,6 +9,7 @@
 #import "SpectacleStandardWindowMover.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
+#import "SpectacleSetDimensionsController.h"
 
 #define RectFitsInRect(a, b) ((a.size.width <= b.size.width) && (a.size.height <= b.size.height))
 
@@ -101,6 +102,24 @@
                                                                  windowRect:frontmostWindowRect];
 
     [history addHistoryItem:historyItem];
+  }
+  
+  if (action == SpectacleWindowActionSetDimensions) {
+    SpectacleSetDimensionsController *_setDimensionsController = [[SpectacleSetDimensionsController alloc]
+                                                                  initWithWindowNibName:@"SpectacleSetDimensionsWindow"
+                                                                  dimensions:frontmostWindowRect];
+    [NSApp activateIgnoringOtherApps:YES];
+    [NSApp runModalForWindow:_setDimensionsController.window];
+    
+    if ([_setDimensionsController isSuccess]) {
+      [_windowMover moveWindowRect:_setDimensionsController.dimensions
+                     frameOfScreen:frameOfScreen
+              visibleFrameOfScreen:visibleFrameOfScreen
+            frontmostWindowElement:frontmostWindowElement
+                            action:action];
+    }
+
+    return;
   }
 
   frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
