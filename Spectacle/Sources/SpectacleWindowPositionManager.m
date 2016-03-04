@@ -214,6 +214,8 @@
     windowAction = SpectacleWindowActionCenter;
   } else if ([name isEqualToString:@"MoveToFullscreen"]) {
     windowAction = SpectacleWindowActionFullscreen;
+  } else if ([name isEqualToString:@"SetDimensions"]) {
+    windowAction = SpectacleWindowActionSetDimensions;
   } else if ([name isEqualToString:@"MoveToLeftHalf"]) {
     windowAction = SpectacleWindowActionLeftHalf;
   } else if ([name isEqualToString:@"MoveToRightHalf"]) {

@@ -41,6 +41,7 @@
 
   _shortcutRecorders = @{@"MoveToCenter": _moveToCenterShortcutRecorder,
                          @"MoveToFullscreen": _moveToFullscreenShortcutRecorder,
+                         @"SetDimensions": _setDimensionsShortcutRecorder,
                          @"MoveToLeftHalf": _moveToLeftShortcutRecorder,
                          @"MoveToRightHalf": _moveToRightShortcutRecorder,
                          @"MoveToTopHalf": _moveToTopShortcutRecorder,
