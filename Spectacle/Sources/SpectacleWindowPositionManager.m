@@ -72,7 +72,6 @@
                                          frontmostWindowElement:frontmostWindowElement
                                                         screens:screens
                                                      mainScreen:mainScreen];
-
   CGRect frameOfScreen = CGRectNull;
   CGRect visibleFrameOfScreen = CGRectNull;
   SpectacleHistory *history = [self historyForCurrentApplication];
@@ -87,7 +86,8 @@
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
 
-  if ([frontmostWindowElement isSheet]
+  if (frontmostWindowElement == nil
+      || [frontmostWindowElement isSheet]
       || [frontmostWindowElement isSystemDialog]
       || CGRectIsNull(frontmostWindowRect)
       || CGRectIsNull(frameOfScreen)
@@ -105,19 +105,21 @@
   }
   
   if (action == SpectacleWindowActionSetDimensions) {
-    NSRunningApplication *currentApp = [NSWorkspace sharedWorkspace].frontmostApplication;
+    NSRunningApplication *previousApp = [NSWorkspace sharedWorkspace].frontmostApplication;
 
     SpectacleSetDimensionsController *_setDimensionsController = [[SpectacleSetDimensionsController alloc]
                                                                   initWithWindowNibName:@"SpectacleSetDimensionsWindow"
                                                                   dimensions:frontmostWindowRect];
     [NSApp activateIgnoringOtherApps:YES];
+
+    [_setDimensionsController.window setLevel:NSScreenSaverWindowLevel];
     [NSApp runModalForWindow:_setDimensionsController.window];
     
     if ([_setDimensionsController isSuccess]) {
       [frontmostWindowElement setRectOfElement:_setDimensionsController.dimensions];
     }
 
-    [currentApp activateWithOptions:NSApplicationActivateAllWindows];
+    [previousApp activateWithOptions:NSApplicationActivateAllWindows];
 
     return;
   }

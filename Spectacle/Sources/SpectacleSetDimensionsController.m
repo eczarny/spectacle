@@ -20,10 +20,10 @@
 }
 
 - (void)awakeFromNib {
-  [_xCoordinate setStringValue:[NSString stringWithFormat:@"%.0f", _dimensions.origin.x]];
-  [_yCoordinate setStringValue:[NSString stringWithFormat:@"%.0f", _dimensions.origin.y]];
-  [_width setStringValue:[NSString stringWithFormat:@"%.0f", _dimensions.size.width]];
-  [_height setStringValue:[NSString stringWithFormat:@"%.0f", _dimensions.size.height]];
+  [_xCoordinate setIntegerValue:lroundf(_dimensions.origin.x)];
+  [_yCoordinate setIntegerValue:lroundf(_dimensions.origin.y)];
+  [_width setIntegerValue:lroundf(_dimensions.size.width)];
+  [_height setIntegerValue:lroundf(_dimensions.size.height)];
 }
 
 - (void)windowWillClose:(NSNotification*)notification {
@@ -39,10 +39,11 @@
 }
 
 - (CGRect)dimensions {
-  _dimensions.origin.x = [[_xCoordinate stringValue] doubleValue];
-  _dimensions.origin.y = [[_yCoordinate stringValue] doubleValue];
-  _dimensions.size.width = [[_width stringValue] doubleValue];
-  _dimensions.size.height = [[_height stringValue] doubleValue];
+  _dimensions.origin.x = [_xCoordinate integerValue];
+  _dimensions.origin.y = [_yCoordinate integerValue];
+  _dimensions.size.width = [_width integerValue];
+  _dimensions.size.height = [_height integerValue];
+  NSLog(@"(%f, %f), (%f, %f)", _dimensions.origin.x, _dimensions.origin.y, _dimensions.size.width, _dimensions.size.height);
   return _dimensions;
 }
 

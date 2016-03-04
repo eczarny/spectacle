@@ -27,6 +27,7 @@
                 <outlet property="moveToUpperRightShortcutRecorder" destination="44s-Ps-tmn" id="Kbc-Pj-hti"/>
                 <outlet property="optionsFooterView" destination="tke-O4-mlo" id="WfN-Qq-nH6"/>
                 <outlet property="redoLastMoveShortcutRecorder" destination="pPP-7U-GSg" id="AYn-wB-Yo2"/>
+                <outlet property="setDimensionsShortcutRecorder" destination="xNC-y8-Wb2" id="NwG-dG-vwk"/>
                 <outlet property="shortcutModifierLegendFooterView" destination="t2T-pB-nn6" id="WSX-7H-Osj"/>
                 <outlet property="statusItemEnabled" destination="cf8-TV-Yjp" id="0xU-vc-q02"/>
                 <outlet property="undoLastMoveShortcutRecorder" destination="au4-Gr-KF9" id="ecz-fA-ywO"/>
@@ -35,7 +36,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Spectacle X.Y.Z" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="JW4-q9-L7q" propertyAccessControl="localizable">
+        <window title="Spectacle X.Y.Z" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="JW4-q9-L7q">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="283" y="311" width="616" height="513"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -70,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="uY3-hc-TbA">
-                        <rect key="frame" x="18" y="364" width="117" height="17"/>
+                        <rect key="frame" x="18" y="335" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Left Half:" id="IWj-rc-Kvi">
                             <font key="font" metaFont="system"/>
@@ -79,11 +80,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="4na-E1-mUM" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="362" width="140" height="21"/>
+                        <rect key="frame" x="140" y="333" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Gsd-o4-KTI">
-                        <rect key="frame" x="18" y="335" width="117" height="17"/>
+                        <rect key="frame" x="18" y="306" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Right Half:" id="WeK-fS-mRh">
                             <font key="font" metaFont="system"/>
@@ -92,11 +93,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="eCb-ZU-egY" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="333" width="140" height="21"/>
+                        <rect key="frame" x="140" y="304" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="edj-pC-f1Z">
-                        <rect key="frame" x="17" y="306" width="117" height="17"/>
+                        <rect key="frame" x="17" y="277" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Top Half:" id="AnP-Lv-Hbd">
                             <font key="font" metaFont="system"/>
@@ -105,11 +106,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="rN1-zt-f9E" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="304" width="140" height="21"/>
+                        <rect key="frame" x="140" y="275" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Dcf-0q-9fG">
-                        <rect key="frame" x="18" y="277" width="117" height="17"/>
+                        <rect key="frame" x="18" y="248" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Bottom Half:" id="Awn-mO-sht">
                             <font key="font" metaFont="system"/>
@@ -118,11 +119,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="hzO-eo-G8F" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="275" width="140" height="21"/>
+                        <rect key="frame" x="140" y="246" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="jQx-Df-xE5">
-                        <rect key="frame" x="18" y="219" width="117" height="17"/>
+                        <rect key="frame" x="18" y="190" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Upper Left:" id="ldH-1E-mKW">
                             <font key="font" metaFont="system"/>
@@ -131,11 +132,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="wLj-pQ-b7w" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="217" width="140" height="21"/>
+                        <rect key="frame" x="140" y="188" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="b4f-8J-iOX">
-                        <rect key="frame" x="18" y="190" width="117" height="17"/>
+                        <rect key="frame" x="18" y="161" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lower Left:" id="dQP-TR-GMx">
                             <font key="font" metaFont="system"/>
@@ -144,11 +145,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="u0O-yW-0g8" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="188" width="140" height="21"/>
+                        <rect key="frame" x="140" y="159" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="Q8S-XZ-uUw">
-                        <rect key="frame" x="18" y="161" width="117" height="17"/>
+                        <rect key="frame" x="18" y="132" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Upper Right:" id="gSY-Au-xOH">
                             <font key="font" metaFont="system"/>
@@ -157,11 +158,11 @@
                         </textFieldCell>
                     </textField>
                     <customView id="44s-Ps-tmn" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="159" width="140" height="21"/>
+                        <rect key="frame" x="140" y="130" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="NRc-if-7b9">
-                        <rect key="frame" x="18" y="132" width="117" height="17"/>
+                        <rect key="frame" x="18" y="103" width="117" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lower Right:" id="Vul-FT-BbB">
                             <font key="font" metaFont="system"/>
@@ -170,7 +171,7 @@
                         </textFieldCell>
                     </textField>
                     <customView id="lJh-dh-K7C" customClass="SpectacleShortcutRecorder">
-                        <rect key="frame" x="140" y="130" width="140" height="21"/>
+                        <rect key="frame" x="140" y="101" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <textField verticalHuggingPriority="750" id="4P4-9k-sEd">
@@ -390,10 +391,24 @@
                             <action selector="restoreDefaults:" target="-2" id="6ui-XF-TPy"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" id="J30-By-2xb">
+                        <rect key="frame" x="18" y="393" width="117" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Set Dimensions:" id="0FV-s4-BP4">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <customView id="xNC-y8-Wb2" customClass="SpectacleShortcutRecorder">
+                        <rect key="frame" x="140" y="391" width="140" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="387" y="440.5"/>
         </window>
-        <customView id="tke-O4-mlo" userLabel="Options Footer View" propertyAccessControl="localizable">
+        <customView id="tke-O4-mlo" userLabel="Options Footer View">
             <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

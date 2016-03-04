@@ -45,8 +45,8 @@
 		2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */; };
 		2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */; };
 		6F10BDB719AD4A0E9E05A451 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3ED82115CF4D7AB8FC8947 /* libPods.a */; };
-		730AA8751C810E440053015D /* SpectacleSetDimensionsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730AA8741C810E440053015D /* SpectacleSetDimensionsWindow.xib */; };
 		730AA87C1C811F8A0053015D /* SpectacleSetDimensionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730AA87B1C811F8A0053015D /* SpectacleSetDimensionsController.m */; };
+		73715CD41C8A388400C0EE1D /* SpectacleSetDimensionsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73715CD61C8A388400C0EE1D /* SpectacleSetDimensionsWindow.xib */; };
 		B52965322B8BF99D575F9364 /* libPods-SpectacleSpecs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 067291DB4D1EA1EA8DF275FC /* libPods-SpectacleSpecs.a */; };
 /* End PBXBuildFile section */
 
@@ -157,9 +157,12 @@
 		574F6A1D1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		574F6A1E1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		61E57AAABB93B6B955978C1C /* Pods-SpectacleSpecs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.debug.xcconfig"; sourceTree = "<group>"; };
-		730AA8741C810E440053015D /* SpectacleSetDimensionsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpectacleSetDimensionsWindow.xib; sourceTree = "<group>"; };
 		730AA87A1C811F8A0053015D /* SpectacleSetDimensionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleSetDimensionsController.h; path = Spectacle/Sources/SpectacleSetDimensionsController.h; sourceTree = "<group>"; };
 		730AA87B1C811F8A0053015D /* SpectacleSetDimensionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleSetDimensionsController.m; path = Spectacle/Sources/SpectacleSetDimensionsController.m; sourceTree = "<group>"; };
+		73715CD71C8A388700C0EE1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SpectacleSetDimensionsWindow.xib; sourceTree = "<group>"; };
+		73715CD91C8A388E00C0EE1D /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/SpectacleSetDimensionsWindow.strings; sourceTree = "<group>"; };
+		73715CDB1C8A388E00C0EE1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SpectacleSetDimensionsWindow.strings; sourceTree = "<group>"; };
+		73715CDD1C8A388F00C0EE1D /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/SpectacleSetDimensionsWindow.strings; sourceTree = "<group>"; };
 		AD3ED82115CF4D7AB8FC8947 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C02FBB6DFA9570FE6D1A7E16 /* Pods-SpectacleSpecs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpectacleSpecs.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpectacleSpecs/Pods-SpectacleSpecs.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,7 +253,7 @@
 				2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */,
 				2DC4E3D01AD84E5C0022ABF0 /* Spectacle.xib */,
 				2DC4E3D21AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib */,
-				730AA8741C810E440053015D /* SpectacleSetDimensionsWindow.xib */,
+				73715CD61C8A388400C0EE1D /* SpectacleSetDimensionsWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -567,7 +570,7 @@
 				2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */,
 				2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */,
 				2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */,
-				730AA8751C810E440053015D /* SpectacleSetDimensionsWindow.xib in Resources */,
+				73715CD41C8A388400C0EE1D /* SpectacleSetDimensionsWindow.xib in Resources */,
 				2DC4E3D61AD84E5C0022ABF0 /* Localizable.strings in Resources */,
 				2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */,
 				2D7752101B83E94C00C022EE /* Spectacle.xib in Resources */,
@@ -802,6 +805,17 @@
 				2D2490E01C7A5BD900A4282B /* fi */,
 			);
 			name = SpectaclePreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
+		73715CD61C8A388400C0EE1D /* SpectacleSetDimensionsWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73715CD71C8A388700C0EE1D /* Base */,
+				73715CD91C8A388E00C0EE1D /* it */,
+				73715CDB1C8A388E00C0EE1D /* fr */,
+				73715CDD1C8A388F00C0EE1D /* pt */,
+			);
+			name = SpectacleSetDimensionsWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
