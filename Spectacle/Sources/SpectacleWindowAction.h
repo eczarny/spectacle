@@ -10,7 +10,7 @@
 #define MovingToUpperOrLowerLeftOfDisplay(action) \
   ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft))
 
-#define MovingToUpperOrLowerRightDisplay(action) \
+#define MovingToUpperOrLowerRightOfDisplay(action) \
   ((action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight))
 
 #pragma mark -
