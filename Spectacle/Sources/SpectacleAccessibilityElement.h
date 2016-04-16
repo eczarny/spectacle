@@ -1,4 +1,4 @@
-#import <AppKit/Appkit.h>
+#import <AppKit/AppKit.h>
 
 #import <Carbon/Carbon.h>
 
