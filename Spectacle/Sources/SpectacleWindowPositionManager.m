@@ -9,6 +9,7 @@
 #import "SpectacleStandardWindowMover.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
+#import "SpectacleSetDimensionsController.h"
 
 #define RectFitsInRect(a, b) ((a.size.width <= b.size.width) && (a.size.height <= b.size.height))
 
@@ -71,7 +72,6 @@
                                          frontmostWindowElement:frontmostWindowElement
                                                         screens:screens
                                                      mainScreen:mainScreen];
-
   CGRect frameOfScreen = CGRectNull;
   CGRect visibleFrameOfScreen = CGRectNull;
   SpectacleHistory *history = [self historyForCurrentApplication];
@@ -86,7 +86,8 @@
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
 
-  if ([frontmostWindowElement isSheet]
+  if (frontmostWindowElement == nil
+      || [frontmostWindowElement isSheet]
       || [frontmostWindowElement isSystemDialog]
       || CGRectIsNull(frontmostWindowRect)
       || CGRectIsNull(frameOfScreen)
@@ -101,6 +102,26 @@
                                                                  windowRect:frontmostWindowRect];
 
     [history addHistoryItem:historyItem];
+  }
+  
+  if (action == SpectacleWindowActionSetDimensions) {
+    NSRunningApplication *previousApp = [NSWorkspace sharedWorkspace].frontmostApplication;
+
+    SpectacleSetDimensionsController *_setDimensionsController = [[SpectacleSetDimensionsController alloc]
+                                                                  initWithWindowNibName:@"SpectacleSetDimensionsWindow"
+                                                                  dimensions:frontmostWindowRect];
+    [NSApp activateIgnoringOtherApps:YES];
+
+    [_setDimensionsController.window setLevel:NSScreenSaverWindowLevel];
+    [NSApp runModalForWindow:_setDimensionsController.window];
+    
+    if ([_setDimensionsController isSuccess]) {
+      [frontmostWindowElement setRectOfElement:_setDimensionsController.dimensions];
+    }
+
+    [previousApp activateWithOptions:NSApplicationActivateAllWindows];
+
+    return;
   }
 
   frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
@@ -193,6 +214,8 @@
     windowAction = SpectacleWindowActionCenter;
   } else if ([name isEqualToString:@"MoveToFullscreen"]) {
     windowAction = SpectacleWindowActionFullscreen;
+  } else if ([name isEqualToString:@"SetDimensions"]) {
+    windowAction = SpectacleWindowActionSetDimensions;
   } else if ([name isEqualToString:@"MoveToLeftHalf"]) {
     windowAction = SpectacleWindowActionLeftHalf;
   } else if ([name isEqualToString:@"MoveToRightHalf"]) {

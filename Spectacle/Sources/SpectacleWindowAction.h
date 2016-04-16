@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
   SpectacleWindowActionNone,
   SpectacleWindowActionCenter,
   SpectacleWindowActionFullscreen,
+  SpectacleWindowActionSetDimensions,
   SpectacleWindowActionLeftHalf,
   SpectacleWindowActionUpperLeft,
   SpectacleWindowActionLowerLeft,

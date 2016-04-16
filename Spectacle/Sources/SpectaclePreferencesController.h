@@ -12,6 +12,7 @@
 
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToCenterShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToFullscreenShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *setDimensionsShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLeftShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToRightShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToTopShortcutRecorder;

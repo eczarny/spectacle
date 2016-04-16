@@ -61,6 +61,7 @@
 {
   return @[@"MoveToCenter",
            @"MoveToFullscreen",
+           @"SetDimensions",
            @"MoveToLeftHalf",
            @"MoveToRightHalf",
            @"MoveToTopHalf",
