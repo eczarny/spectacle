@@ -40,8 +40,4 @@ typedef void (^SpectacleFailureFeedback)(void);
 
 - (void)redoLastWindowAction;
 
-#pragma mark -
-
-- (SpectacleWindowAction *)windowActionForShortcut:(SpectacleShortcut *)shortcut;
-
 @end

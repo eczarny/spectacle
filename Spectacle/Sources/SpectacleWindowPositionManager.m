@@ -176,54 +176,6 @@
 
 #pragma mark -
 
-- (SpectacleWindowAction *)windowActionForShortcut:(SpectacleShortcut *)shortcut
-{
-  NSString *name = shortcut.shortcutName;
-  SpectacleWindowAction *windowAction = kSpectacleWindowActionNone;
-
-  if ([name isEqualToString:@"MoveToCenter"]) {
-    windowAction = kSpectacleWindowActionCenter;
-  } else if ([name isEqualToString:@"MoveToFullscreen"]) {
-    windowAction = kSpectacleWindowActionFullscreen;
-  } else if ([name isEqualToString:@"MoveToLeftHalf"]) {
-    windowAction = kSpectacleWindowActionLeftHalf;
-  } else if ([name isEqualToString:@"MoveToRightHalf"]) {
-    windowAction = kSpectacleWindowActionRightHalf;
-  } else if ([name isEqualToString:@"MoveToTopHalf"]) {
-    windowAction = kSpectacleWindowActionTopHalf;
-  } else if ([name isEqualToString:@"MoveToBottomHalf"]) {
-    windowAction = kSpectacleWindowActionBottomHalf;
-  } else if ([name isEqualToString:@"MoveToUpperLeft"]) {
-    windowAction = kSpectacleWindowActionUpperLeft;
-  } else if ([name isEqualToString:@"MoveToLowerLeft"]) {
-    windowAction = kSpectacleWindowActionLowerLeft;
-  } else if ([name isEqualToString:@"MoveToUpperRight"]) {
-    windowAction = kSpectacleWindowActionUpperRight;
-  } else if ([name isEqualToString:@"MoveToLowerRight"]) {
-    windowAction = kSpectacleWindowActionLowerRight;
-  } else if ([name isEqualToString:@"MoveToNextDisplay"]) {
-    windowAction = kSpectacleWindowActionNextDisplay;
-  } else if ([name isEqualToString:@"MoveToPreviousDisplay"]) {
-    windowAction = kSpectacleWindowActionPreviousDisplay;
-  } else if ([name isEqualToString:@"MoveToNextThird"]) {
-    windowAction = kSpectacleWindowActionNextThird;
-  } else if ([name isEqualToString:@"MoveToPreviousThird"]) {
-    windowAction = kSpectacleWindowActionPreviousThird;
-  } else if ([name isEqualToString:@"MakeLarger"]) {
-    windowAction = kSpectacleWindowActionLarger;
-  } else if ([name isEqualToString:@"MakeSmaller"]) {
-    windowAction = kSpectacleWindowActionSmaller;
-  } else if ([name isEqualToString:@"UndoLastMove"]) {
-    windowAction = kSpectacleWindowActionUndo;
-  } else if ([name isEqualToString:@"RedoLastMove"]) {
-    windowAction = kSpectacleWindowActionRedo;
-  }
-
-  return windowAction;
-}
-
-#pragma mark -
-
 - (SpectacleHistory *)historyForCurrentApplication
 {
   NSString *frontmostApplicationBundleIdentifier = _sharedWorkspace.frontmostApplication.bundleIdentifier;

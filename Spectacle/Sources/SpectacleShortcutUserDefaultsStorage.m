@@ -76,7 +76,8 @@
            @"MakeLarger",
            @"MakeSmaller",
            @"UndoLastMove",
-           @"RedoLastMove"];
+           @"RedoLastMove",
+           ];
 }
 
 #pragma mark -

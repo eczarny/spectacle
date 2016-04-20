@@ -56,7 +56,8 @@
                          @"MakeLarger": _makeLargerShortcutRecorder,
                          @"MakeSmaller": _makeSmallerShortcutRecorder,
                          @"UndoLastMove": _undoLastMoveShortcutRecorder,
-                         @"RedoLastMove": _redoLastMoveShortcutRecorder};
+                         @"RedoLastMove": _redoLastMoveShortcutRecorder,
+                         };
 
   [self loadRegisteredShortcuts];
 
@@ -84,10 +85,8 @@
    didReceiveNewShortcut:(SpectacleShortcut *)shortcut
 {
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
-    SpectacleWindowAction *windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
-
     [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                                action:windowAction];
+                                                action:shortcut.windowAction];
   }];
 
   [_shortcutManager registerShortcut:shortcut];
@@ -135,10 +134,8 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
     NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
-      SpectacleWindowAction *windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
-
       [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                                  action:windowAction];
+                                                  action:shortcut.windowAction];
     }];
 
     [_shortcutManager registerShortcuts:shortcuts];

@@ -85,7 +85,8 @@
                          @"MakeLarger": _makeLargerShortcutMenuItem,
                          @"MakeSmaller": _makeSmallerShortcutMenuItem,
                          @"UndoLastMove": _undoLastMoveShortcutMenuItem,
-                         @"RedoLastMove": _redoLastMoveShortcutMenuItem};
+                         @"RedoLastMove": _redoLastMoveShortcutMenuItem,
+                         };
 
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
@@ -345,10 +346,8 @@
 - (void)registerShortcuts
 {
   NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
-    SpectacleWindowAction *windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
-
     [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                                action:windowAction];
+                                                action:shortcut.windowAction];
   }];
 
   [_shortcutManager registerShortcuts:shortcuts];

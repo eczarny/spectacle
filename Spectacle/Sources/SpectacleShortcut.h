@@ -1,6 +1,6 @@
 #import <Carbon/Carbon.h>
 
-#import <Cocoa/Cocoa.h>
+#import "SpectacleWindowAction.h"
 
 @class SpectacleShortcut;
 
@@ -8,12 +8,14 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 
 @interface SpectacleShortcut : NSObject<NSCoding>
 
-@property (nonatomic) EventHotKeyID shortcutID;
-@property (nonatomic) NSString *shortcutName;
-@property (nonatomic, copy) SpectacleShortcutAction shortcutAction;
-@property (nonatomic) NSInteger shortcutCode;
-@property (nonatomic) NSUInteger shortcutModifiers;
-@property (nonatomic) EventHotKeyRef ref;
+@property (nonatomic, readwrite) EventHotKeyID shortcutID;
+@property (nonatomic, readwrite) NSString *shortcutName;
+@property (nonatomic, readwrite) SpectacleShortcutAction shortcutAction;
+@property (nonatomic, readwrite) NSInteger shortcutCode;
+@property (nonatomic, readwrite) NSUInteger shortcutModifiers;
+@property (nonatomic, readwrite) EventHotKeyRef ref;
+
+@property (nonatomic, readonly) SpectacleWindowAction *windowAction;
 
 #pragma mark -
 

@@ -1,3 +1,5 @@
+#import <Cocoa/Cocoa.h>
+
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslator.h"
 
@@ -25,7 +27,6 @@
     _shortcutCode = [coder decodeIntegerForKey:@"keyCode"];
     _shortcutModifiers = [coder decodeIntegerForKey:@"modifiers"];
   }
-
   return self;
 }
 
@@ -35,9 +36,9 @@
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-  [coder encodeObject:self.shortcutName forKey:@"name"];
-  [coder encodeInteger:self.shortcutCode forKey:@"keyCode"];
-  [coder encodeInteger:self.shortcutModifiers forKey:@"modifiers"];
+  [coder encodeObject:_shortcutName forKey:@"name"];
+  [coder encodeInteger:_shortcutCode forKey:@"keyCode"];
+  [coder encodeInteger:_shortcutModifiers forKey:@"modifiers"];
 }
 
 #pragma mark -
@@ -47,7 +48,6 @@
   if (encoder.isBycopy) {
     return self;
   }
-
   return [super replacementObjectForPortCoder:encoder];
 }
 
@@ -69,10 +69,58 @@
 
 #pragma mark -
 
+- (SpectacleWindowAction *)windowAction
+{
+  NSString *name = _shortcutName;
+  SpectacleWindowAction *windowAction = kSpectacleWindowActionNone;
+
+  if ([name isEqualToString:@"MoveToCenter"]) {
+    windowAction = kSpectacleWindowActionCenter;
+  } else if ([name isEqualToString:@"MoveToFullscreen"]) {
+    windowAction = kSpectacleWindowActionFullscreen;
+  } else if ([name isEqualToString:@"MoveToLeftHalf"]) {
+    windowAction = kSpectacleWindowActionLeftHalf;
+  } else if ([name isEqualToString:@"MoveToRightHalf"]) {
+    windowAction = kSpectacleWindowActionRightHalf;
+  } else if ([name isEqualToString:@"MoveToTopHalf"]) {
+    windowAction = kSpectacleWindowActionTopHalf;
+  } else if ([name isEqualToString:@"MoveToBottomHalf"]) {
+    windowAction = kSpectacleWindowActionBottomHalf;
+  } else if ([name isEqualToString:@"MoveToUpperLeft"]) {
+    windowAction = kSpectacleWindowActionUpperLeft;
+  } else if ([name isEqualToString:@"MoveToLowerLeft"]) {
+    windowAction = kSpectacleWindowActionLowerLeft;
+  } else if ([name isEqualToString:@"MoveToUpperRight"]) {
+    windowAction = kSpectacleWindowActionUpperRight;
+  } else if ([name isEqualToString:@"MoveToLowerRight"]) {
+    windowAction = kSpectacleWindowActionLowerRight;
+  } else if ([name isEqualToString:@"MoveToNextDisplay"]) {
+    windowAction = kSpectacleWindowActionNextDisplay;
+  } else if ([name isEqualToString:@"MoveToPreviousDisplay"]) {
+    windowAction = kSpectacleWindowActionPreviousDisplay;
+  } else if ([name isEqualToString:@"MoveToNextThird"]) {
+    windowAction = kSpectacleWindowActionNextThird;
+  } else if ([name isEqualToString:@"MoveToPreviousThird"]) {
+    windowAction = kSpectacleWindowActionPreviousThird;
+  } else if ([name isEqualToString:@"MakeLarger"]) {
+    windowAction = kSpectacleWindowActionLarger;
+  } else if ([name isEqualToString:@"MakeSmaller"]) {
+    windowAction = kSpectacleWindowActionSmaller;
+  } else if ([name isEqualToString:@"UndoLastMove"]) {
+    windowAction = kSpectacleWindowActionUndo;
+  } else if ([name isEqualToString:@"RedoLastMove"]) {
+    windowAction = kSpectacleWindowActionRedo;
+  }
+
+  return windowAction;
+}
+
+#pragma mark -
+
 - (void)triggerShortcutAction
 {
-  if (self.shortcutAction) {
-    self.shortcutAction(self);
+  if (_shortcutAction) {
+    _shortcutAction(self);
   }
 }
 
@@ -80,7 +128,7 @@
 
 - (BOOL)isClearedShortcut
 {
-  return (self.shortcutCode == 0) && (self.shortcutModifiers == 0);
+  return (_shortcutCode == 0) && (_shortcutModifiers == 0);
 }
 
 #pragma mark -
@@ -107,11 +155,9 @@
   if (object == self) {
     return YES;
   }
-
   if (!object || ![object isKindOfClass:[self class]]) {
     return NO;
   }
-
   return [self isEqualToShortcut:object];
 }
 
@@ -120,15 +166,12 @@
   if (shortcut == self) {
     return YES;
   }
-
-  if (shortcut.shortcutCode != self.shortcutCode) {
+  if (shortcut.shortcutCode != _shortcutCode) {
     return NO;
   }
-
-  if (shortcut.shortcutModifiers != self.shortcutModifiers) {
+  if (shortcut.shortcutModifiers != _shortcutModifiers) {
     return NO;
   }
-
   return YES;
 }
 

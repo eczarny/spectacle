@@ -40,7 +40,7 @@ static EventHotKeyID currentShortcutID = {
   SpectacleShortcut *existingShortcut = [self registeredShortcutForName:shortcutName];
 
   if (existingShortcut) {
-    [shortcut setShortcutAction:existingShortcut.shortcutAction];
+    shortcut.shortcutAction = existingShortcut.shortcutAction;
 
     [self unregisterShortcutForName:shortcutName];
   }
