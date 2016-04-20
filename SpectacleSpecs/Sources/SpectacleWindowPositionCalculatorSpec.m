@@ -13,7 +13,9 @@ SpecBegin(windowPositionCalculator)
   describe(@"windowPositionCalculator", ^{
     CGRect visibleFrameScreen = CGRectMake(0.0f, 4.0f, 1440.0f, 873.0f);
     CGRect windowRect = CGRectMake(165.0f, 245.0f, 564.0f, 384.0f);
-    SpectacleWindowPositionCalculator *windowPositionCalculator = [SpectacleWindowPositionCalculator new];
+    SpectacleWindowPositionCalculator *windowPositionCalculator = [[SpectacleWindowPositionCalculator alloc] initWithErrorHandler:^(NSString *message) {
+      failure(message);
+    }];
 
     it(@"should calculate a centered window's CGRect", ^{
       SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
