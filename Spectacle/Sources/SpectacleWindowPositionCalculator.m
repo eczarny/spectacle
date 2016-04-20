@@ -21,7 +21,6 @@
         NSString *errorMessage = [exception[@"message"] toString];
         errorHandler([NSString stringWithFormat:@"%@\n%@", errorName, errorMessage]);
       };
-      context[@"SpectacleWindowPositionCalculationResult"] = [SpectacleWindowPositionCalculationResult class];
       context[@"windowPositionCalculationRegistry"] = _windowPositionCalculationRegistry;
     }];
   }
@@ -36,10 +35,10 @@
   if (!windowPositionCalculation) {
     return nil;
   }
-  NSArray<JSValue *> *arguments = @[[_javaScriptEnvironment valueWithRect:windowRect],
-                                    [_javaScriptEnvironment valueWithRect:visibleFrameOfScreen],];
-  JSValue *windowPositionCalculationResult = [windowPositionCalculation callWithArguments:arguments];
-  return [windowPositionCalculationResult toObjectOfClass:[SpectacleWindowPositionCalculationResult class]];
+  JSValue *result = [windowPositionCalculation callWithArguments:@[[_javaScriptEnvironment valueWithRect:windowRect],
+                                                                   [_javaScriptEnvironment valueWithRect:visibleFrameOfScreen],
+                                                                   ]];
+  return [SpectacleWindowPositionCalculationResult resultWithAction:action windowRect:[result toRect]];
 }
 
 @end

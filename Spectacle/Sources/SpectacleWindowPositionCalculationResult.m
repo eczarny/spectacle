@@ -11,7 +11,6 @@
     _action = action;
     _windowRect = windowRect;
   }
-
   return self;
 }
 

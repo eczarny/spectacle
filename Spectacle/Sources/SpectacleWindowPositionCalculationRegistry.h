@@ -5,7 +5,7 @@
 
 @class SpectacleWindowPositionCalculationResult;
 
-typedef SpectacleWindowPositionCalculationResult *(^SpectacleWindowPositionCalculation)(CGRect windowRect, CGRect visibleFrameOfScreen);
+typedef CGRect *(^SpectacleWindowPositionCalculation)(CGRect windowRect, CGRect visibleFrameOfScreen);
 
 @protocol SpectacleWindowPositionCalculationRegistryExports<JSExport>
 
