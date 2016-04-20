@@ -84,7 +84,7 @@
    didReceiveNewShortcut:(SpectacleShortcut *)shortcut
 {
   [shortcut setShortcutAction:^(SpectacleShortcut *shortcut) {
-    SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
+    SpectacleWindowAction *windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
     [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
                                                 action:windowAction];
@@ -135,7 +135,7 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
     NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
-      SpectacleWindowAction windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
+      SpectacleWindowAction *windowAction = [_windowPositionManager windowActionForShortcut:shortcut];
 
       [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
                                                   action:windowAction];

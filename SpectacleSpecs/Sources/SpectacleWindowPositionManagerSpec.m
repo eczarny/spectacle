@@ -40,7 +40,7 @@ SpecBegin(SpectacleWindowPositionManager)
       MKTOngoingStubbing *ongoingWindowPositionCalculatorStubbing =
         given([mockWindowPositionCalculator calculateWindowRect:CGRectNull
                                            visibleFrameOfScreen:CGRectNull
-                                                         action:SpectacleWindowActionNone]);
+                                                         action:kSpectacleWindowActionNone]);
 
       ongoingWindowPositionCalculatorStubbing = [ongoingWindowPositionCalculatorStubbing withMatcher:anything()
                                                                                          forArgument:0];
@@ -54,7 +54,7 @@ SpecBegin(SpectacleWindowPositionManager)
       [ongoingWindowPositionCalculatorStubbing willReturn:mockWindowPositionCalculationResult];
 
       MKTOngoingStubbing *ongoingScreenDetectorStubbing =
-        given([mockScreenDetector screenWithAction:SpectacleWindowActionNone
+        given([mockScreenDetector screenWithAction:kSpectacleWindowActionNone
                             frontmostWindowElement:anything()
                                            screens:anything()
                                         mainScreen:anything()]);
@@ -85,7 +85,7 @@ SpecBegin(SpectacleWindowPositionManager)
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:YES];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
-                                                 action:SpectacleWindowActionNone
+                                                 action:kSpectacleWindowActionNone
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
@@ -95,7 +95,7 @@ SpecBegin(SpectacleWindowPositionManager)
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
                                                          visibleFrameOfScreen:CGRectNull
-                                                                       action:SpectacleWindowActionNone];
+                                                                       action:kSpectacleWindowActionNone];
     });
 
     it(@"should do nothing if the frontmost window is a system dialog", ^{
@@ -106,7 +106,7 @@ SpecBegin(SpectacleWindowPositionManager)
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:YES];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
-                                                 action:SpectacleWindowActionNone
+                                                 action:kSpectacleWindowActionNone
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
@@ -116,7 +116,7 @@ SpecBegin(SpectacleWindowPositionManager)
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
                                                          visibleFrameOfScreen:CGRectNull
-                                                                       action:SpectacleWindowActionNone];
+                                                                       action:kSpectacleWindowActionNone];
     });
 
     it(@"should do nothing if the frontmost window rect is unavailable", ^{
@@ -127,7 +127,7 @@ SpecBegin(SpectacleWindowPositionManager)
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:YES];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
-                                                 action:SpectacleWindowActionNone
+                                                 action:kSpectacleWindowActionNone
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
@@ -137,7 +137,7 @@ SpecBegin(SpectacleWindowPositionManager)
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
                                                          visibleFrameOfScreen:CGRectNull
-                                                                       action:SpectacleWindowActionNone];
+                                                                       action:kSpectacleWindowActionNone];
     });
 
     it(@"should do nothing if screen detection fails", ^{
@@ -148,13 +148,13 @@ SpecBegin(SpectacleWindowPositionManager)
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:YES];
 
-      [given([mockScreenDetector screenWithAction:SpectacleWindowActionCenter
+      [given([mockScreenDetector screenWithAction:kSpectacleWindowActionCenter
                            frontmostWindowElement:anything()
                                           screens:anything()
                                        mainScreen:anything()]) willReturn:nil];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
-                                                 action:SpectacleWindowActionNone
+                                                 action:kSpectacleWindowActionNone
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 
@@ -164,7 +164,7 @@ SpecBegin(SpectacleWindowPositionManager)
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
                                                          visibleFrameOfScreen:CGRectNull
-                                                                       action:SpectacleWindowActionNone];
+                                                                       action:kSpectacleWindowActionNone];
     });
 
     it(@"should do nothing if the window position calculation returns the same results", ^{
@@ -174,14 +174,14 @@ SpecBegin(SpectacleWindowPositionManager)
       [given([mockAccessibilityElemenet isSheet]) willReturnBool:NO];
       [given([mockAccessibilityElemenet isSystemDialog]) willReturnBool:NO];
 
-      [given([mockWindowPositionCalculationResult action]) willReturnInteger:SpectacleWindowActionCenter];
+      [given([mockWindowPositionCalculationResult action]) willReturn:kSpectacleWindowActionCenter];
 
       CGRect flippedFrontmostWindowRect = frontmostWindowRect;
 
       [given([mockWindowPositionCalculationResult windowRect]) willReturnStruct:&flippedFrontmostWindowRect objCType:@encode(CGRect)];
 
       [windowPositionManager moveFrontmostWindowElement:mockAccessibilityElemenet
-                                                 action:SpectacleWindowActionCenter
+                                                 action:kSpectacleWindowActionCenter
                                                 screens:@[mockMainScreen]
                                              mainScreen:mockMainScreen];
 

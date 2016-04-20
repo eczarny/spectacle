@@ -31,7 +31,7 @@
          frameOfScreen:(CGRect)frameOfScreen
   visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                action:(SpectacleWindowAction)action
+                action:(SpectacleWindowAction *)action
 {
   CGRect movedWindowRect = [frontmostWindowElement rectOfElement];
 

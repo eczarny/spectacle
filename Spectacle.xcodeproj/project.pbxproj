@@ -14,6 +14,7 @@
 		2D1C781F1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1C781E1BB0D35D000BAB27 /* SpectacleWindowPositionManagerSpec.m */; };
 		2D1E1ACE147E07870021D73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E632151187AAD800451374 /* Carbon.framework */; };
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
+		2D24ACB41CC723F600AB3984 /* SpectacleWindowAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D24ACB31CC723F600AB3984 /* SpectacleWindowAction.m */; };
 		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
 		2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */; };
 		2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */; };
@@ -127,6 +128,7 @@
 		2D2490E11C7A5BD900A4282B /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = fi; path = Spectacle/Resources/Localizations/fi.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2D2490E21C7A5BD900A4282B /* fi */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fi; path = Spectacle/Resources/Localizations/fi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D2490E31C7A5BD900A4282B /* fi */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fi; path = Spectacle/Resources/Localizations/fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2D24ACB31CC723F600AB3984 /* SpectacleWindowAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowAction.m; path = Spectacle/Sources/SpectacleWindowAction.m; sourceTree = "<group>"; };
 		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHistory.h; path = Spectacle/Sources/SpectacleHistory.h; sourceTree = "<group>"; };
 		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleHistory.m; path = Spectacle/Sources/SpectacleHistory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D3A04FC194956E100CD96E7 /* SpectacleAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleAccessibilityElement.h; path = Spectacle/Sources/SpectacleAccessibilityElement.h; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetector.h */,
 				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */,
 				2DAC59F51BB241DE00C660ED /* SpectacleWindowAction.h */,
+				2D24ACB31CC723F600AB3984 /* SpectacleWindowAction.m */,
 				072EACFE118A4D5A0015FC8A /* SpectacleWindowPositionManager.h */,
 				072EACFF118A4D5A0015FC8A /* SpectacleWindowPositionManager.m */,
 			);
@@ -646,6 +649,7 @@
 				2D7C114A1B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.m in Sources */,
 				2D3A0512194956E100CD96E7 /* SpectacleShortcutValidator.m in Sources */,
 				2D8DA057147E113D003BE1D3 /* SpectacleUtilities.m in Sources */,
+				2D24ACB41CC723F600AB3984 /* SpectacleWindowAction.m in Sources */,
 				2D0759A71C71746500A17E80 /* SpectacleWindowPositionCalculationRegistry.m in Sources */,
 				2D98D7311AE064B7007AD995 /* SpectacleWindowPositionCalculationResult.m in Sources */,
 				2D7CF9EB1C6FED50004DC708 /* SpectacleWindowPositionCalculator.m in Sources */,

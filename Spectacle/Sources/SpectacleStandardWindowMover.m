@@ -11,7 +11,6 @@
   if (self = [super init]) {
     _innerWindowMover = innerWindowMover;
   }
-
   return self;
 }
 
@@ -31,7 +30,7 @@
          frameOfScreen:(CGRect)frameOfScreen
   visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
 frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                action:(SpectacleWindowAction)action
+                action:(SpectacleWindowAction *)action
 {
   CGRect previousWindowRect = [frontmostWindowElement rectOfElement];
 
@@ -49,7 +48,7 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
 
   CGRect movedWindowRect = [frontmostWindowElement rectOfElement];
 
-  if (MovingToThirdOfDisplay(action) && !CGRectContainsRect(windowRect, movedWindowRect)) {
+  if (!CGRectContainsRect(windowRect, movedWindowRect)) {
     [frontmostWindowElement setRectOfElement:previousWindowRect];
   }
 }

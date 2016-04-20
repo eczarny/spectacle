@@ -7,7 +7,7 @@
 
 @implementation SpectacleScreenDetector
 
-- (NSScreen *)screenWithAction:(SpectacleWindowAction)action
+- (NSScreen *)screenWithAction:(SpectacleWindowAction *)action
         frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                        screens:(NSArray<NSScreen *> *)screens
                     mainScreen:(NSScreen *)mainScreen
@@ -17,7 +17,7 @@
                                         screens:screensInConsistentOrder
                                      mainScreen:mainScreen];
 
-  if ((action == SpectacleWindowActionNextDisplay) || (action == SpectacleWindowActionPreviousDisplay)) {
+  if (SpectacleIsMovingToDisplayWindowAction(action)) {
     result = [self nextOrPreviousScreenToFrameOfScreen:NSRectToCGRect([result frame])
                                    inDirectionOfAction:action
                                                screens:screensInConsistentOrder];
@@ -76,7 +76,7 @@
 #pragma mark -
 
 - (NSScreen *)nextOrPreviousScreenToFrameOfScreen:(CGRect)frameOfScreen
-                              inDirectionOfAction:(SpectacleWindowAction)action
+                              inDirectionOfAction:(SpectacleWindowAction *)action
                                           screens:(NSArray<NSScreen *> *)screens
 {
   NSScreen *result = nil;
@@ -94,9 +94,9 @@
       continue;
     }
 
-    if (action == SpectacleWindowActionNextDisplay) {
+    if (SpectacleIsNextDisplayWindowAction(action)) {
       nextOrPreviousIndex++;
-    } else if (action == SpectacleWindowActionPreviousDisplay) {
+    } else if (SpectacleIsPreviousDisplayWindowAction(action)) {
       nextOrPreviousIndex--;
     }
 

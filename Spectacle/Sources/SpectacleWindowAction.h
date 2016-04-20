@@ -1,46 +1,31 @@
 #import <Foundation/Foundation.h>
 
-#define MovingToCenterRegionOfDisplay(action) (action == SpectacleWindowActionCenter)
+typedef NSString SpectacleWindowAction;
 
-#define MovingToTopRegionOfDisplay(action) \
-  ((action == SpectacleWindowActionTopHalf) \
-  || (action == SpectacleWindowActionUpperLeft) \
-  || (action == SpectacleWindowActionUpperRight))
+extern SpectacleWindowAction *const kSpectacleWindowActionUndo;
+extern SpectacleWindowAction *const kSpectacleWindowActionRedo;
+extern SpectacleWindowAction *const kSpectacleWindowActionLarger;
+extern SpectacleWindowAction *const kSpectacleWindowActionSmaller;
+extern SpectacleWindowAction *const kSpectacleWindowActionNone;
+extern SpectacleWindowAction *const kSpectacleWindowActionCenter;
+extern SpectacleWindowAction *const kSpectacleWindowActionFullscreen;
+extern SpectacleWindowAction *const kSpectacleWindowActionLeftHalf;
+extern SpectacleWindowAction *const kSpectacleWindowActionUpperLeft;
+extern SpectacleWindowAction *const kSpectacleWindowActionLowerLeft;
+extern SpectacleWindowAction *const kSpectacleWindowActionRightHalf;
+extern SpectacleWindowAction *const kSpectacleWindowActionUpperRight;
+extern SpectacleWindowAction *const kSpectacleWindowActionLowerRight;
+extern SpectacleWindowAction *const kSpectacleWindowActionTopHalf;
+extern SpectacleWindowAction *const kSpectacleWindowActionBottomHalf;
+extern SpectacleWindowAction *const kSpectacleWindowActionNextDisplay;
+extern SpectacleWindowAction *const kSpectacleWindowActionPreviousDisplay;
+extern SpectacleWindowAction *const kSpectacleWindowActionNextThird;
+extern SpectacleWindowAction *const kSpectacleWindowActionPreviousThird;
 
-#define MovingToUpperOrLowerLeftOfDisplay(action) \
-  ((action == SpectacleWindowActionUpperLeft) || (action == SpectacleWindowActionLowerLeft))
+extern BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action);
+extern BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action);
 
-#define MovingToUpperOrLowerRightDisplay(action) \
-  ((action == SpectacleWindowActionUpperRight) || (action == SpectacleWindowActionLowerRight))
+extern BOOL SpectacleIsNextDisplayWindowAction(SpectacleWindowAction *action);
+extern BOOL SpectacleIsPreviousDisplayWindowAction(SpectacleWindowAction *action);
 
-#pragma mark -
-
-#define MovingToNextOrPreviousDisplay(action) \
-  ((action == SpectacleWindowActionNextDisplay) || (action == SpectacleWindowActionPreviousDisplay))
-
-#pragma mark -
-
-#define MovingToThirdOfDisplay(action) \
-  ((action == SpectacleWindowActionNextThird) || (action == SpectacleWindowActionPreviousThird))
-
-typedef NS_ENUM(NSInteger, SpectacleWindowAction) {
-  SpectacleWindowActionUndo = -4,
-  SpectacleWindowActionRedo,
-  SpectacleWindowActionLarger,
-  SpectacleWindowActionSmaller,
-  SpectacleWindowActionNone,
-  SpectacleWindowActionCenter,
-  SpectacleWindowActionFullscreen,
-  SpectacleWindowActionLeftHalf,
-  SpectacleWindowActionUpperLeft,
-  SpectacleWindowActionLowerLeft,
-  SpectacleWindowActionRightHalf,
-  SpectacleWindowActionUpperRight,
-  SpectacleWindowActionLowerRight,
-  SpectacleWindowActionTopHalf,
-  SpectacleWindowActionBottomHalf,
-  SpectacleWindowActionNextDisplay,
-  SpectacleWindowActionPreviousDisplay,
-  SpectacleWindowActionNextThird,
-  SpectacleWindowActionPreviousThird
-};
+extern BOOL SpectacleIsMovingToDisplayWindowAction(SpectacleWindowAction *action);

@@ -6,7 +6,7 @@
 
 @interface SpectacleScreenDetector : NSObject
 
-- (NSScreen *)screenWithAction:(SpectacleWindowAction)action
+- (NSScreen *)screenWithAction:(SpectacleWindowAction *)action
         frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                        screens:(NSArray<NSScreen *> *)screens
                     mainScreen:(NSScreen *)mainScreen;

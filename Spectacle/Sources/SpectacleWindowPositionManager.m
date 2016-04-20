@@ -14,11 +14,6 @@
 
 #pragma mark -
 
-#define Resizing(action) ((action == SpectacleWindowActionLarger) || (action == SpectacleWindowActionSmaller))
-#define UndoOrRedo(action) ((action == SpectacleWindowActionUndo) || (action == SpectacleWindowActionRedo))
-
-#pragma mark -
-
 @implementation SpectacleWindowPositionManager
 {
   NSMutableDictionary<NSString *, SpectacleHistory *> *_applicationHistories;
@@ -63,7 +58,7 @@
 #pragma mark -
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                            action:(SpectacleWindowAction)action
+                            action:(SpectacleWindowAction *)action
                            screens:(NSArray<NSScreen *> *)screens
                         mainScreen:(NSScreen *)mainScreen
 {
@@ -106,8 +101,8 @@
   frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
                                                                     frameOfScreen:frameOfScreen];
 
-  if (MovingToNextOrPreviousDisplay(action) && RectFitsInRect(frontmostWindowRect, visibleFrameOfScreen)) {
-    action = SpectacleWindowActionCenter;
+  if (SpectacleIsMovingToDisplayWindowAction(action) && RectFitsInRect(frontmostWindowRect, visibleFrameOfScreen)) {
+    action = kSpectacleWindowActionCenter;
   }
 
   previousFrontmostWindowRect = frontmostWindowRect;
@@ -147,11 +142,11 @@
 }
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                            action:(SpectacleWindowAction)action
+                            action:(SpectacleWindowAction *)action
 {
-  if (action == SpectacleWindowActionUndo) {
+  if (SpectacleIsUndoWindowAction(action)) {
     [self undoLastWindowAction];
-  } else if (action == SpectacleWindowActionRedo) {
+  } else if (SpectacleIsRedoWindowAction(action)) {
     [self redoLastWindowAction];
   } else {
     [self moveFrontmostWindowElement:frontmostWindowElement
@@ -166,7 +161,7 @@
 - (void)undoLastWindowAction
 {
   [self moveWithHistoryItem:[self historyForCurrentApplication].previousHistoryItem
-                     action:SpectacleWindowActionUndo
+                     action:kSpectacleWindowActionUndo
                     screens:[NSScreen screens]
                  mainScreen:[NSScreen mainScreen]];
 }
@@ -174,54 +169,54 @@
 - (void)redoLastWindowAction
 {
   [self moveWithHistoryItem:[self historyForCurrentApplication].nextHistoryItem
-                     action:SpectacleWindowActionRedo
+                     action:kSpectacleWindowActionRedo
                     screens:[NSScreen screens]
                  mainScreen:[NSScreen mainScreen]];
 }
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForShortcut:(SpectacleShortcut *)shortcut
+- (SpectacleWindowAction *)windowActionForShortcut:(SpectacleShortcut *)shortcut
 {
   NSString *name = shortcut.shortcutName;
-  SpectacleWindowAction windowAction = SpectacleWindowActionNone;
+  SpectacleWindowAction *windowAction = kSpectacleWindowActionNone;
 
   if ([name isEqualToString:@"MoveToCenter"]) {
-    windowAction = SpectacleWindowActionCenter;
+    windowAction = kSpectacleWindowActionCenter;
   } else if ([name isEqualToString:@"MoveToFullscreen"]) {
-    windowAction = SpectacleWindowActionFullscreen;
+    windowAction = kSpectacleWindowActionFullscreen;
   } else if ([name isEqualToString:@"MoveToLeftHalf"]) {
-    windowAction = SpectacleWindowActionLeftHalf;
+    windowAction = kSpectacleWindowActionLeftHalf;
   } else if ([name isEqualToString:@"MoveToRightHalf"]) {
-    windowAction = SpectacleWindowActionRightHalf;
+    windowAction = kSpectacleWindowActionRightHalf;
   } else if ([name isEqualToString:@"MoveToTopHalf"]) {
-    windowAction = SpectacleWindowActionTopHalf;
+    windowAction = kSpectacleWindowActionTopHalf;
   } else if ([name isEqualToString:@"MoveToBottomHalf"]) {
-    windowAction = SpectacleWindowActionBottomHalf;
+    windowAction = kSpectacleWindowActionBottomHalf;
   } else if ([name isEqualToString:@"MoveToUpperLeft"]) {
-    windowAction = SpectacleWindowActionUpperLeft;
+    windowAction = kSpectacleWindowActionUpperLeft;
   } else if ([name isEqualToString:@"MoveToLowerLeft"]) {
-    windowAction = SpectacleWindowActionLowerLeft;
+    windowAction = kSpectacleWindowActionLowerLeft;
   } else if ([name isEqualToString:@"MoveToUpperRight"]) {
-    windowAction = SpectacleWindowActionUpperRight;
+    windowAction = kSpectacleWindowActionUpperRight;
   } else if ([name isEqualToString:@"MoveToLowerRight"]) {
-    windowAction = SpectacleWindowActionLowerRight;
+    windowAction = kSpectacleWindowActionLowerRight;
   } else if ([name isEqualToString:@"MoveToNextDisplay"]) {
-    windowAction = SpectacleWindowActionNextDisplay;
+    windowAction = kSpectacleWindowActionNextDisplay;
   } else if ([name isEqualToString:@"MoveToPreviousDisplay"]) {
-    windowAction = SpectacleWindowActionPreviousDisplay;
+    windowAction = kSpectacleWindowActionPreviousDisplay;
   } else if ([name isEqualToString:@"MoveToNextThird"]) {
-    windowAction = SpectacleWindowActionNextThird;
+    windowAction = kSpectacleWindowActionNextThird;
   } else if ([name isEqualToString:@"MoveToPreviousThird"]) {
-    windowAction = SpectacleWindowActionPreviousThird;
+    windowAction = kSpectacleWindowActionPreviousThird;
   } else if ([name isEqualToString:@"MakeLarger"]) {
-    windowAction = SpectacleWindowActionLarger;
+    windowAction = kSpectacleWindowActionLarger;
   } else if ([name isEqualToString:@"MakeSmaller"]) {
-    windowAction = SpectacleWindowActionSmaller;
+    windowAction = kSpectacleWindowActionSmaller;
   } else if ([name isEqualToString:@"UndoLastMove"]) {
-    windowAction = SpectacleWindowActionUndo;
+    windowAction = kSpectacleWindowActionUndo;
   } else if ([name isEqualToString:@"RedoLastMove"]) {
-    windowAction = SpectacleWindowActionRedo;
+    windowAction = kSpectacleWindowActionRedo;
   }
 
   return windowAction;
@@ -247,7 +242,7 @@
 #pragma mark -
 
 - (void)moveWithHistoryItem:(SpectacleHistoryItem *)historyItem
-                     action:(SpectacleWindowAction)action
+                     action:(SpectacleWindowAction *)action
                     screens:(NSArray<NSScreen *> *)screens
                  mainScreen:(NSScreen *)mainScreen
 {
@@ -269,7 +264,7 @@
 
 - (BOOL)moveWithHistoryItem:(SpectacleHistoryItem *)historyItem
        visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-                     action:(SpectacleWindowAction)action
+                     action:(SpectacleWindowAction *)action
 {
   SpectacleAccessibilityElement *frontmostWindowElement = historyItem.accessibilityElement;
   CGRect windowRect = historyItem.windowRect;

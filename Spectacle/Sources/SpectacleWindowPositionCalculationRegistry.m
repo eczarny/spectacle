@@ -10,7 +10,7 @@
 
 @implementation SpectacleWindowPositionCalculationRegistry
 {
-  NSMutableDictionary<NSNumber *, JSValue *> *_windowPositionCalculations;
+  NSMutableDictionary<SpectacleWindowAction *, JSValue *> *_windowPositionCalculations;
 }
 
 - (instancetype)init
@@ -21,14 +21,14 @@
   return self;
 }
 
-- (void)registerWindowPositionCalculation:(JSValue *)windowPositionCalculation withAction:(SpectacleWindowAction)action
+- (void)registerWindowPositionCalculation:(JSValue *)windowPositionCalculation withAction:(SpectacleWindowAction *)action
 {
-  _windowPositionCalculations[@(action)] = windowPositionCalculation;
+  _windowPositionCalculations[action] = windowPositionCalculation;
 }
 
-- (JSValue *)windowPositionCalculationWithAction:(SpectacleWindowAction)action
+- (JSValue *)windowPositionCalculationWithAction:(SpectacleWindowAction *)action
 {
-  return _windowPositionCalculations[@(action)];
+  return _windowPositionCalculations[action];
 }
 
 @end

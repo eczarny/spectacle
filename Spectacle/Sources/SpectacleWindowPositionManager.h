@@ -3,7 +3,7 @@
 #import "SpectacleWindowAction.h"
 #import "SpectacleWindowMoverProtocol.h"
 
-typedef void (^SpectacleFailureFeedback)();
+typedef void (^SpectacleFailureFeedback)(void);
 
 @class SpectacleAccessibilityElement;
 @class SpectacleScreenDetector;
@@ -27,12 +27,12 @@ typedef void (^SpectacleFailureFeedback)();
 #pragma mark -
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                            action:(SpectacleWindowAction)action
+                            action:(SpectacleWindowAction *)action
                            screens:(NSArray<NSScreen *> *)screens
                         mainScreen:(NSScreen *)mainScreen;
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                            action:(SpectacleWindowAction)action;
+                            action:(SpectacleWindowAction *)action;
 
 #pragma mark -
 
@@ -42,6 +42,6 @@ typedef void (^SpectacleFailureFeedback)();
 
 #pragma mark -
 
-- (SpectacleWindowAction)windowActionForShortcut:(SpectacleShortcut *)shortcut;
+- (SpectacleWindowAction *)windowActionForShortcut:(SpectacleShortcut *)shortcut;
 
 @end

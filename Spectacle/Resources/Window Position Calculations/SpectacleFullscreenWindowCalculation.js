@@ -5,4 +5,4 @@ windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(fu
     calculatedWindowRect.width = visibleFrameOfScreen.width;
     calculatedWindowRect.height = visibleFrameOfScreen.height;
     return calculatedWindowRect;
-}, 2 /*SpectacleWindowActionFullscreen*/);
+}, "SpectacleWindowActionFullscreen");

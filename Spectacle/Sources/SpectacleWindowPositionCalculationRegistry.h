@@ -9,12 +9,12 @@ typedef CGRect *(^SpectacleWindowPositionCalculation)(CGRect windowRect, CGRect 
 
 @protocol SpectacleWindowPositionCalculationRegistryExports<JSExport>
 
-- (void)registerWindowPositionCalculation:(JSValue *)windowPositionCalculation withAction:(SpectacleWindowAction)action;
+- (void)registerWindowPositionCalculation:(JSValue *)windowPositionCalculation withAction:(NSString *)action;
 
 @end
 
 @interface SpectacleWindowPositionCalculationRegistry : NSObject<SpectacleWindowPositionCalculationRegistryExports>
 
-- (JSValue *)windowPositionCalculationWithAction:(SpectacleWindowAction)action;
+- (JSValue *)windowPositionCalculationWithAction:(SpectacleWindowAction *)action;
 
 @end

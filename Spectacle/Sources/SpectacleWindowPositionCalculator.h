@@ -12,6 +12,6 @@
 
 - (SpectacleWindowPositionCalculationResult *)calculateWindowRect:(CGRect)windowRect
                                              visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-                                                           action:(SpectacleWindowAction)action;
+                                                           action:(SpectacleWindowAction *)action;
 
 @end

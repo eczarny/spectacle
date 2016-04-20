@@ -29,7 +29,7 @@
 
 - (SpectacleWindowPositionCalculationResult *)calculateWindowRect:(CGRect)windowRect
                                              visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-                                                           action:(SpectacleWindowAction)action
+                                                           action:(SpectacleWindowAction *)action
 {
   JSValue *windowPositionCalculation = [_windowPositionCalculationRegistry windowPositionCalculationWithAction:action];
   if (!windowPositionCalculation) {
