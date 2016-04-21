@@ -2,76 +2,53 @@
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleShortcutRecorderCell.h"
 
-#define MyCell (SpectacleShortcutRecorderCell *)[self cell]
-
-#pragma mark -
-
 @implementation SpectacleShortcutRecorder
 
 - (instancetype)initWithFrame:(NSRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    [MyCell setShortcutRecorder:self];
+    [self.shortcutRecorderCell setShortcutRecorder:self];
   }
-  
   return self;
 }
 
-#pragma mark -
-
-+ (Class)cellClass
-{
-  return SpectacleShortcutRecorderCell.class;
-}
-
-#pragma mark -
-
 - (NSString *)shortcutName
 {
-  return [MyCell shortcutName];
+  return [self.shortcutRecorderCell shortcutName];
 }
 
 - (void)setShortcutName:(NSString *)shortcutName
 {
-  [MyCell setShortcutName:shortcutName];
+  [self.shortcutRecorderCell setShortcutName:shortcutName];
 }
-
-#pragma mark -
 
 - (SpectacleShortcut *)shortcut
 {
-  return [MyCell shortcut];
+  return [self.shortcutRecorderCell shortcut];
 }
 
 - (void)setShortcut:(SpectacleShortcut *)shortcut
 {
-  [MyCell setShortcut:shortcut];
-  
-  [self updateCell:MyCell];
+  [self.shortcutRecorderCell setShortcut:shortcut];
+  [self updateCell:self.shortcutRecorderCell];
 }
-
-#pragma mark -
 
 - (id<SpectacleShortcutRecorderDelegate>)delegate
 {
-  return [MyCell delegate];
+  return [self.shortcutRecorderCell delegate];
 }
 
 - (void)setDelegate:(id<SpectacleShortcutRecorderDelegate>)delegate
 {
-  [MyCell setDelegate:delegate];
+  [self.shortcutRecorderCell setDelegate:delegate];
 }
 
-#pragma mark -
-
-- (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidatorProtocol>> *)additionalShortcutValidators
+- (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidator>> *)additionalShortcutValidators
                         shortcutManager:(SpectacleShortcutManager *)shortcutManager
 {
-  [MyCell setAdditionalShortcutValidators:additionalShortcutValidators];
-  [MyCell setShortcutManager:shortcutManager];
+  [self.shortcutRecorderCell setAdditionalShortcutValidators:additionalShortcutValidators];
+  [self.shortcutRecorderCell setShortcutManager:shortcutManager];
 }
-
-#pragma mark -
 
 - (BOOL)acceptsFirstResponder
 {
@@ -83,14 +60,11 @@
   return YES;
 }
 
-#pragma mark -
-
 - (BOOL)performKeyEquivalent:(NSEvent *)event
 {
   if ([self.window.firstResponder isEqualTo:self]) {
-    return [MyCell performKeyEquivalent:event];
+    return [self.shortcutRecorderCell performKeyEquivalent:event];
   }
-  
   return [super performKeyEquivalent:event];
 }
 
@@ -99,9 +73,8 @@
   if ([self performKeyEquivalent:event]) {
     return;
   }
-  
   if (event.keyCode == kVK_Escape) {
-    [MyCell resignFirstResponder];
+    [self.shortcutRecorderCell resignFirstResponder];
   } else {
     [super keyDown:event];
   }
@@ -109,14 +82,22 @@
 
 - (void)flagsChanged:(NSEvent *)event
 {
-  [MyCell flagsChanged:event];
+  [self.shortcutRecorderCell flagsChanged:event];
 }
-
-#pragma mark -
 
 - (BOOL)resignFirstResponder
 {
-  return [MyCell resignFirstResponder];
+  return [self.shortcutRecorderCell resignFirstResponder];
+}
+
++ (Class)cellClass
+{
+  return SpectacleShortcutRecorderCell.class;
+}
+
+- (SpectacleShortcutRecorderCell *)shortcutRecorderCell
+{
+  return (SpectacleShortcutRecorderCell *)[self cell];
 }
 
 @end

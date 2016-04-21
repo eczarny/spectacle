@@ -1,7 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleWindowAction.h"
-#import "SpectacleWindowMoverProtocol.h"
 
 typedef void (^SpectacleFailureFeedback)(void);
 
@@ -9,6 +8,8 @@ typedef void (^SpectacleFailureFeedback)(void);
 @class SpectacleScreenDetector;
 @class SpectacleShortcut;
 @class SpectacleWindowPositionCalculator;
+
+@protocol SpectacleWindowMover;
 
 @interface SpectacleWindowPositionManager : NSObject
 
@@ -18,13 +19,11 @@ typedef void (^SpectacleFailureFeedback)(void);
               windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
                        sharedWorkspace:(NSWorkspace *)sharedWorkspace
                        failureFeedback:(SpectacleFailureFeedback)failureFeedback
-                           windowMover:(id<SpectacleWindowMoverProtocol>)windowMover NS_DESIGNATED_INITIALIZER;
+                           windowMover:(id<SpectacleWindowMover>)windowMover NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
               windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
                        sharedWorkspace:(NSWorkspace *)sharedWorkspace;
-
-#pragma mark -
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction *)action
@@ -34,10 +33,7 @@ typedef void (^SpectacleFailureFeedback)(void);
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction *)action;
 
-#pragma mark -
-
 - (void)undoLastWindowAction;
-
 - (void)redoLastWindowAction;
 
 @end

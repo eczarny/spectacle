@@ -35,7 +35,8 @@
   if (!windowPositionCalculation) {
     return nil;
   }
-  JSValue *result = [windowPositionCalculation callWithArguments:@[[_javaScriptEnvironment valueWithRect:windowRect],
+  JSValue *result = [windowPositionCalculation callWithArguments:@[
+                                                                   [_javaScriptEnvironment valueWithRect:windowRect],
                                                                    [_javaScriptEnvironment valueWithRect:visibleFrameOfScreen],
                                                                    ]];
   return [SpectacleWindowPositionCalculationResult resultWithAction:action windowRect:[result toRect]];

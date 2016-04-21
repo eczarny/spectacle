@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "SpectacleShortcutValidatorProtocol.h"
+#import "SpectacleShortcutValidator.h"
 
-@interface SpectacleRegisteredShortcutValidator : NSObject<SpectacleShortcutValidatorProtocol>
-
+@interface SpectacleRegisteredShortcutValidator : NSObject <SpectacleShortcutValidator>
 @end

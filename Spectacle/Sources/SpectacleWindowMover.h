@@ -4,11 +4,11 @@
 
 @class SpectacleAccessibilityElement;
 
-@protocol SpectacleWindowMoverProtocol <NSObject>
+@protocol SpectacleWindowMover <NSObject>
 
-- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover;
+- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMover>)innerWindowMover;
 
-+ (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover;
++ (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMover>)innerWindowMover;
 
 - (void)moveWindowRect:(CGRect)windowRect
          frameOfScreen:(CGRect)frameOfScreen

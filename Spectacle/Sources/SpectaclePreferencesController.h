@@ -1,14 +1,15 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcutRecorderDelegate.h"
-#import "SpectacleShortcutStorageProtocol.h"
 
 @class SpectacleAppDelegate;
 @class SpectacleShortcutManager;
 @class SpectacleShortcutRecorder;
 @class SpectacleWindowPositionManager;
 
-@interface SpectaclePreferencesController : NSWindowController<SpectacleShortcutRecorderDelegate>
+@protocol SpectacleShortcutStorage;
+
+@interface SpectaclePreferencesController : NSWindowController <SpectacleShortcutRecorderDelegate>
 
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToCenterShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToFullscreenShortcutRecorder;
@@ -36,24 +37,15 @@
 @property (nonatomic) IBOutlet NSButton *loginItemEnabled;
 @property (nonatomic) IBOutlet NSPopUpButton *statusItemEnabled;
 
-#pragma mark -
-
 - (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
-                        shortcutStorage:(id<SpectacleShortcutStorageProtocol>)shortcutStorage;
-
-#pragma mark -
+                        shortcutStorage:(id<SpectacleShortcutStorage>)shortcutStorage;
 
 - (IBAction)swapFooterViews:(id)sender;
 
-#pragma mark -
-
 - (IBAction)restoreDefaults:(id)sender;
 
-#pragma mark -
-
 - (IBAction)toggleLoginItem:(id)sender;
-
 - (IBAction)toggleStatusItem:(id)sender;
 
 @end

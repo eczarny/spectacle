@@ -1,4 +1,4 @@
-#import <Carbon/Carbon.h>
+#import <Foundation/Foundation.h>
 
 #import "SpectacleWindowAction.h"
 
@@ -6,50 +6,36 @@
 
 typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 
-@interface SpectacleShortcut : NSObject<NSCoding>
+@interface SpectacleShortcut : NSObject <NSCoding>
 
-@property (nonatomic, readwrite) EventHotKeyID shortcutID;
-@property (nonatomic, readwrite) NSString *shortcutName;
-@property (nonatomic, readwrite) SpectacleShortcutAction shortcutAction;
-@property (nonatomic, readwrite) NSInteger shortcutCode;
-@property (nonatomic, readwrite) NSUInteger shortcutModifiers;
-@property (nonatomic, readwrite) EventHotKeyRef ref;
-
+@property (nonatomic, readonly) NSString *shortcutName;
+@property (nonatomic, readonly) NSInteger shortcutCode;
+@property (nonatomic, readonly) NSUInteger shortcutModifiers;
+@property (nonatomic, readonly) SpectacleShortcutAction shortcutAction;
 @property (nonatomic, readonly) SpectacleWindowAction *windowAction;
-
-#pragma mark -
 
 - (instancetype)init NS_UNAVAILABLE;
 
-- (instancetype)initWithShortcutCode:(NSInteger)shortcutCode
-                   shortcutModifiers:(NSUInteger)shortcutModifiers NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithShortcutName:(NSString *)shortcutName
+                        shortcutCode:(NSInteger)shortcutCode
+                   shortcutModifiers:(NSUInteger)shortcutModifiers;
 
-#pragma mark -
+- (instancetype)initWithShortcutName:(NSString *)shortcutName
+                        shortcutCode:(NSInteger)shortcutCode
+                   shortcutModifiers:(NSUInteger)shortcutModifiers
+                      shortcutAction:(SpectacleShortcutAction)shortcutAction NS_DESIGNATED_INITIALIZER;
 
-+ (SpectacleShortcut *)clearedShortcut;
-
-+ (SpectacleShortcut *)clearedShortcutWithName:(NSString *)name;
-
-#pragma mark -
+- (instancetype)copyWithShortcutAction:(SpectacleShortcutAction)shortcutAction;
 
 - (void)triggerShortcutAction;
 
-#pragma mark -
-
 - (BOOL)isClearedShortcut;
-
-#pragma mark -
 
 - (NSString *)displayString;
 
-#pragma mark -
-
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers;
 
-#pragma mark -
-
 - (BOOL)isEqual:(id)object;
-
 - (BOOL)isEqualToShortcut:(SpectacleShortcut *)shortcut;
 
 @end

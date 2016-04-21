@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-#import "SpectacleWindowPositionManager.h"
+#import "SpectacleWindowAction.h"
 
 @class SpectacleAccessibilityElement;
 

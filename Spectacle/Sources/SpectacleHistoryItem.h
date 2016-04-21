@@ -9,14 +9,10 @@
 @property (nonatomic) SpectacleHistoryItem *nextHistoryItem;
 @property (nonatomic) SpectacleHistoryItem *previousHistoryItem;
 
-#pragma mark -
-
 - (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                   windowRect:(CGRect)windowRect NS_DESIGNATED_INITIALIZER;
-
-#pragma mark -
 
 + (SpectacleHistoryItem *)historyItemFromAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                                    windowRect:(CGRect)windowRect;

@@ -7,13 +7,13 @@
 
 typedef CGRect *(^SpectacleWindowPositionCalculation)(CGRect windowRect, CGRect visibleFrameOfScreen);
 
-@protocol SpectacleWindowPositionCalculationRegistryExports<JSExport>
+@protocol SpectacleWindowPositionCalculationRegistryExports <JSExport>
 
 - (void)registerWindowPositionCalculation:(JSValue *)windowPositionCalculation withAction:(NSString *)action;
 
 @end
 
-@interface SpectacleWindowPositionCalculationRegistry : NSObject<SpectacleWindowPositionCalculationRegistryExports>
+@interface SpectacleWindowPositionCalculationRegistry : NSObject <SpectacleWindowPositionCalculationRegistryExports>
 
 - (JSValue *)windowPositionCalculationWithAction:(SpectacleWindowAction *)action;
 

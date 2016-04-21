@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "SpectacleShortcutStorageProtocol.h"
+#import "SpectacleShortcutStorage.h"
 
-@interface SpectacleShortcutUserDefaultsStorage : NSObject<SpectacleShortcutStorageProtocol>
-
+@interface SpectacleShortcutUserDefaultsStorage : NSObject <SpectacleShortcutStorage>
 @end

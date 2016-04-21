@@ -3,10 +3,10 @@
 
 @implementation SpectacleStandardWindowMover
 {
-  id<SpectacleWindowMoverProtocol> _innerWindowMover;
+  id<SpectacleWindowMover> _innerWindowMover;
 }
 
-- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover
+- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMover>)innerWindowMover
 {
   if (self = [super init]) {
     _innerWindowMover = innerWindowMover;
@@ -19,12 +19,10 @@
   return [self initWithInnerWindowMover:nil];
 }
 
-+ (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover
++ (instancetype)newWithInnerWindowMover:(id<SpectacleWindowMover>)innerWindowMover
 {
   return [[self alloc] initWithInnerWindowMover:innerWindowMover];
 }
-
-#pragma mark -
 
 - (void)moveWindowRect:(CGRect)windowRect
          frameOfScreen:(CGRect)frameOfScreen
@@ -33,21 +31,16 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                 action:(SpectacleWindowAction *)action
 {
   CGRect previousWindowRect = [frontmostWindowElement rectOfElement];
-
   if (CGRectIsNull(previousWindowRect)) {
     return;
   }
-
   [frontmostWindowElement setRectOfElement:windowRect];
-
   [_innerWindowMover moveWindowRect:windowRect
                       frameOfScreen:frameOfScreen
                visibleFrameOfScreen:visibleFrameOfScreen
              frontmostWindowElement:frontmostWindowElement
                              action:action];
-
   CGRect movedWindowRect = [frontmostWindowElement rectOfElement];
-
   if (!CGRectContainsRect(windowRect, movedWindowRect)) {
     [frontmostWindowElement setRectOfElement:previousWindowRect];
   }

@@ -5,34 +5,36 @@
 
 @implementation SpectacleShortcut
 
-- (instancetype)initWithShortcutCode:(NSInteger)shortcutCode shortcutModifiers:(NSUInteger)shortcutModifiers
+- (instancetype)initWithShortcutName:(NSString *)shortcutName
+                        shortcutCode:(NSInteger)shortcutCode
+                   shortcutModifiers:(NSUInteger)shortcutModifiers
 {
-  if (self = [super init]) {
-    _shortcutCode = shortcutCode;
-    _shortcutModifiers = [SpectacleShortcutTranslator convertModifiersToCarbonIfNecessary:shortcutModifiers];
-  }
-
-  return self;
+  return [self initWithShortcutName:shortcutName
+                       shortcutCode:shortcutCode
+                  shortcutModifiers:shortcutModifiers
+                     shortcutAction:nil];
 }
 
-#pragma mark -
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+- (instancetype)initWithShortcutName:(NSString *)shortcutName
+                        shortcutCode:(NSInteger)shortcutCode
+                   shortcutModifiers:(NSUInteger)shortcutModifiers
+                      shortcutAction:(SpectacleShortcutAction)shortcutAction
+{
+  if (self = [super init]) {
+    _shortcutName = shortcutName;
+    _shortcutCode = shortcutCode;
+    _shortcutModifiers = [SpectacleShortcutTranslator convertModifiersToCarbonIfNecessary:shortcutModifiers];
+    _shortcutAction = shortcutAction;
+  }
+  return self;
+}
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
-  if (self = [super init]) {
-    _shortcutName = [coder decodeObjectForKey:@"name"];
-    _shortcutCode = [coder decodeIntegerForKey:@"keyCode"];
-    _shortcutModifiers = [coder decodeIntegerForKey:@"modifiers"];
-  }
-  return self;
+  return [self initWithShortcutName:[coder decodeObjectForKey:@"name"]
+                       shortcutCode:[coder decodeIntegerForKey:@"keyCode"]
+                  shortcutModifiers:[coder decodeIntegerForKey:@"modifiers"]];
 }
-
-#pragma clang diagnostic pop
-
-#pragma mark -
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
@@ -40,34 +42,6 @@
   [coder encodeInteger:_shortcutCode forKey:@"keyCode"];
   [coder encodeInteger:_shortcutModifiers forKey:@"modifiers"];
 }
-
-#pragma mark -
-
-- (id)replacementObjectForPortCoder:(NSPortCoder *)encoder
-{
-  if (encoder.isBycopy) {
-    return self;
-  }
-  return [super replacementObjectForPortCoder:encoder];
-}
-
-#pragma mark -
-
-+ (SpectacleShortcut *)clearedShortcut
-{
-  return [[SpectacleShortcut alloc] initWithShortcutCode:0 shortcutModifiers:0];
-}
-
-+ (SpectacleShortcut *)clearedShortcutWithName:(NSString *)name
-{
-  SpectacleShortcut *shortcut = [[SpectacleShortcut alloc] initWithShortcutCode:0 shortcutModifiers:0];
-
-  shortcut.shortcutName = name;
-
-  return shortcut;
-}
-
-#pragma mark -
 
 - (SpectacleWindowAction *)windowAction
 {
@@ -115,7 +89,13 @@
   return windowAction;
 }
 
-#pragma mark -
+- (instancetype)copyWithShortcutAction:(SpectacleShortcutAction)shortcutAction
+{
+  return [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
+                                            shortcutCode:_shortcutCode
+                                       shortcutModifiers:_shortcutModifiers
+                                          shortcutAction:shortcutAction];
+}
 
 - (void)triggerShortcutAction
 {
@@ -124,21 +104,15 @@
   }
 }
 
-#pragma mark -
-
 - (BOOL)isClearedShortcut
 {
   return (_shortcutCode == 0) && (_shortcutModifiers == 0);
 }
 
-#pragma mark -
-
 - (NSString *)displayString
 {
   return [[SpectacleShortcutTranslator sharedTranslator] translateShortcut:self];
 }
-
-#pragma mark -
 
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers
 {
@@ -147,8 +121,6 @@
           || (modifiers & NSControlKeyMask)
           || (modifiers & NSShiftKeyMask));
 }
-
-#pragma mark -
 
 - (BOOL)isEqual:(id)object
 {

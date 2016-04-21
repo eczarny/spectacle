@@ -8,11 +8,8 @@
     _accessibilityElement = accessibilityElement;
     _windowRect = windowRect;
   }
-  
   return self;
 }
-
-#pragma mark -
 
 + (SpectacleHistoryItem *)historyItemFromAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                                    windowRect:(CGRect)windowRect

@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 
-#import "SpectacleWindowMoverProtocol.h"
+#import "SpectacleWindowMover.h"
 
-@interface SpectacleStandardWindowMover : NSObject<SpectacleWindowMoverProtocol>
+@interface SpectacleStandardWindowMover : NSObject <SpectacleWindowMover>
 
-- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMoverProtocol>)innerWindowMover NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithInnerWindowMover:(id<SpectacleWindowMover>)innerWindowMover NS_DESIGNATED_INITIALIZER;
 
 @end

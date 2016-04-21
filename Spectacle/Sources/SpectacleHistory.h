@@ -6,13 +6,8 @@
 
 - (void)addHistoryItem:(SpectacleHistoryItem *)historyItem;
 
-#pragma mark -
-
 - (SpectacleHistoryItem *)nextHistoryItem;
-
 - (SpectacleHistoryItem *)previousHistoryItem;
-
-#pragma mark -
 
 - (BOOL)isEmpty;
 
