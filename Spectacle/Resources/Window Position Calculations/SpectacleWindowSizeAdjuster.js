@@ -1,11 +1,6 @@
 var SpectacleWindowSizeAdjuster = (function () {
     var resizeWindowRect = function(windowRect, visibleFrameOfScreen, sizeOffset) {
-        var resizedWindowRect = {
-            x: windowRect.x,
-            y: windowRect.y,
-            width: windowRect.width,
-            height: windowRect.height,
-        };
+        var resizedWindowRect = SpectacleCalculationHelpers.copyRect(windowRect);
         resizedWindowRect.width = resizedWindowRect.width + sizeOffset;
         resizedWindowRect.x = resizedWindowRect.x - Math.floor(sizeOffset / 2.0);
         if (againstTheRightEdgeOfScreen(windowRect, visibleFrameOfScreen)) {

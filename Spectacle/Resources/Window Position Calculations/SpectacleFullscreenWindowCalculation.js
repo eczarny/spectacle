@@ -1,5 +1,5 @@
 windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfScreen) {
-    var calculatedWindowRect = windowRect;
+    var calculatedWindowRect = SpectacleCalculationHelpers.copyRect(windowRect);
     calculatedWindowRect.x = visibleFrameOfScreen.x;
     calculatedWindowRect.y = visibleFrameOfScreen.y;
     calculatedWindowRect.width = visibleFrameOfScreen.width;
