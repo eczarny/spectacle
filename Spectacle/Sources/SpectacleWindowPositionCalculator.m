@@ -22,6 +22,15 @@
         errorHandler([NSString stringWithFormat:@"%@\n%@", errorName, errorMessage]);
       };
       context[@"windowPositionCalculationRegistry"] = _windowPositionCalculationRegistry;
+      context[@"CGRectContainsRect"] = ^BOOL(CGRect rect1, CGRect rect2) {
+        return CGRectContainsRect(rect1, rect2);
+      };
+      context[@"CGRectGetMidX"] = ^CGFloat(CGRect rect) {
+        return CGRectGetMidX(rect);
+      };
+      context[@"CGRectGetMidY"] = ^CGFloat(CGRect rect) {
+        return CGRectGetMidY(rect);
+      };
     }];
   }
   return self;
