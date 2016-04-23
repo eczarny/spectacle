@@ -25,11 +25,20 @@
       context[@"CGRectContainsRect"] = ^BOOL(CGRect rect1, CGRect rect2) {
         return CGRectContainsRect(rect1, rect2);
       };
+      context[@"CGRectEqualToRect"] = ^BOOL(CGRect rect1, CGRect rect2) {
+        return CGRectEqualToRect(rect1, rect2);
+      };
       context[@"CGRectGetMidX"] = ^CGFloat(CGRect rect) {
         return CGRectGetMidX(rect);
       };
       context[@"CGRectGetMidY"] = ^CGFloat(CGRect rect) {
         return CGRectGetMidY(rect);
+      };
+      context[@"CGRectGetMaxX"] = ^CGFloat(CGRect rect) {
+        return CGRectGetMaxX(rect);
+      };
+      context[@"CGRectGetMaxY"] = ^CGFloat(CGRect rect) {
+        return CGRectGetMaxY(rect);
       };
     }];
   }
