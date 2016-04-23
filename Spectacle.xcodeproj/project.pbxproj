@@ -26,6 +26,15 @@
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
 		2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
+		2D7146541CCC12A6003B8292 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7146521CCC12A6003B8292 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D71466B1CCC1715003B8292 /* Expecta.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D7146671CCC1715003B8292 /* Expecta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D71466C1CCC1715003B8292 /* OCHamcrest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D7146681CCC1715003B8292 /* OCHamcrest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D71466D1CCC1715003B8292 /* OCMockito.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D7146691CCC1715003B8292 /* OCMockito.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D71466E1CCC1715003B8292 /* Specta.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D71466A1CCC1715003B8292 /* Specta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D71466F1CCC171F003B8292 /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7146671CCC1715003B8292 /* Expecta.framework */; };
+		2D7146701CCC171F003B8292 /* OCHamcrest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7146681CCC1715003B8292 /* OCHamcrest.framework */; };
+		2D7146711CCC171F003B8292 /* OCMockito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7146691CCC1715003B8292 /* OCMockito.framework */; };
+		2D7146721CCC171F003B8292 /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D71466A1CCC1715003B8292 /* Specta.framework */; };
 		2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */; };
 		2D7752101B83E94C00C022EE /* Spectacle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D01AD84E5C0022ABF0 /* Spectacle.xib */; };
 		2D7752111B83E95000C022EE /* SpectaclePreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC4E3D21AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib */; };
@@ -55,6 +64,33 @@
 			remoteInfo = Spectacle;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2D7146551CCC12A6003B8292 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D7146541CCC12A6003B8292 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D7146661CCC16FD003B8292 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D71466B1CCC1715003B8292 /* Expecta.framework in CopyFiles */,
+				2D71466C1CCC1715003B8292 /* OCHamcrest.framework in CopyFiles */,
+				2D71466D1CCC1715003B8292 /* OCMockito.framework in CopyFiles */,
+				2D71466E1CCC1715003B8292 /* Specta.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0706C0431191092B0068F04B /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Defaults.plist; path = "Spectacle/Resources/Property Lists/Defaults.plist"; sourceTree = "<group>"; };
@@ -110,6 +146,11 @@
 		2D5783EF1BB63BDD00695771 /* SpectacleStandardWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleStandardWindowMover.h; path = Spectacle/Sources/SpectacleStandardWindowMover.h; sourceTree = "<group>"; };
 		2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleStandardWindowMover.m; path = Spectacle/Sources/SpectacleStandardWindowMover.m; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Spectacle/Resources/Certificates/dsa_public.pem; sourceTree = "<group>"; };
+		2D7146521CCC12A6003B8292 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
+		2D7146671CCC1715003B8292 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Expecta.framework; path = ../Carthage/Build/Mac/Expecta.framework; sourceTree = "<group>"; };
+		2D7146681CCC1715003B8292 /* OCHamcrest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCHamcrest.framework; path = ../Carthage/Build/Mac/OCHamcrest.framework; sourceTree = "<group>"; };
+		2D7146691CCC1715003B8292 /* OCMockito.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMockito.framework; path = ../Carthage/Build/Mac/OCMockito.framework; sourceTree = "<group>"; };
+		2D71466A1CCC1715003B8292 /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Specta.framework; path = ../Carthage/Build/Mac/Specta.framework; sourceTree = "<group>"; };
 		2D768E8B147ED51A00901E76 /* SpectacleAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleAppDelegate.h; path = Spectacle/Sources/SpectacleAppDelegate.h; sourceTree = "<group>"; };
 		2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleAppDelegate.m; path = Spectacle/Sources/SpectacleAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D7C11471B86C63A00B81E11 /* SpectacleShortcutStorageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutStorageProtocol.h; path = Spectacle/Sources/SpectacleShortcutStorageProtocol.h; sourceTree = "<group>"; };
@@ -143,7 +184,6 @@
 		2DC4E3DA1AD84E7F0022ABF0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = it; path = Spectacle/Resources/Localizations/it.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2DC8A0151B85097900ABEBD5 /* SpectacleLoginItemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleLoginItemHelper.h; path = Spectacle/Sources/SpectacleLoginItemHelper.h; sourceTree = "<group>"; };
 		2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleLoginItemHelper.m; path = Spectacle/Sources/SpectacleLoginItemHelper.m; sourceTree = "<group>"; };
-		2DDEB84919F9EDF6007D2BA2 /* SpectacleSpecs.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleSpecs.pch; path = "Supporting Files/SpectacleSpecs.pch"; sourceTree = "<group>"; };
 		574F6A1A1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Spectacle.strings; sourceTree = "<group>"; };
 		574F6A1B1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/SpectaclePreferencesWindow.strings; sourceTree = "<group>"; };
 		574F6A1C1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -165,6 +205,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D71466F1CCC171F003B8292 /* Expecta.framework in Frameworks */,
+				2D7146701CCC171F003B8292 /* OCHamcrest.framework in Frameworks */,
+				2D7146711CCC171F003B8292 /* OCMockito.framework in Frameworks */,
+				2D7146721CCC171F003B8292 /* Specta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,8 +258,12 @@
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				089C167FFE841241C02AAC07 /* AppKit.framework */,
+				07E632151187AAD800451374 /* Carbon.framework */,
 				1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */,
-				1058C7AEFEA557BF11CA2CBB /* Other Frameworks */,
+				0766438911A212A800B7BFA3 /* CoreServices.framework */,
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+				2D7146521CCC12A6003B8292 /* Sparkle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,17 +298,6 @@
 			name = Sources;
 			sourceTree = "<group>";
 		};
-		1058C7AEFEA557BF11CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				089C167FFE841241C02AAC07 /* AppKit.framework */,
-				07E632151187AAD800451374 /* Carbon.framework */,
-				0766438911A212A800B7BFA3 /* CoreServices.framework */,
-				089C1672FE841209C02AAC07 /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FB8FE9D52D311CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +313,17 @@
 				2D5CCCE815E96F740009CC43 /* dsa_public.pem */,
 			);
 			name = Certificates;
+			sourceTree = "<group>";
+		};
+		2D7146611CCC1381003B8292 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D7146671CCC1715003B8292 /* Expecta.framework */,
+				2D7146681CCC1715003B8292 /* OCHamcrest.framework */,
+				2D7146691CCC1715003B8292 /* OCMockito.framework */,
+				2D71466A1CCC1715003B8292 /* Specta.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2D7C11441B86829300B81E11 /* Sources */ = {
@@ -311,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				2DA5B7C919F8BA79007EDE8E /* Info.plist */,
-				2DDEB84919F9EDF6007D2BA2 /* SpectacleSpecs.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -321,6 +368,7 @@
 			children = (
 				2D7C11441B86829300B81E11 /* Sources */,
 				2D89B5741B81340B00F9FC1C /* Supporting Files */,
+				2D7146611CCC1381003B8292 /* Frameworks */,
 			);
 			path = SpectacleSpecs;
 			sourceTree = "<group>";
@@ -445,6 +493,7 @@
 				2D1E1AAD147E06AD0021D73D /* Frameworks */,
 				2D1E1AAE147E06AD0021D73D /* Resources */,
 				2DC25F9D19FF3F93009591A9 /* Update CFBundleVersion */,
+				2D7146551CCC12A6003B8292 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -462,6 +511,7 @@
 				2DA5B7C219F8BA79007EDE8E /* Sources */,
 				2DA5B7C319F8BA79007EDE8E /* Frameworks */,
 				2DA5B7C419F8BA79007EDE8E /* Resources */,
+				2D7146661CCC16FD003B8292 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -745,8 +795,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Spectacle;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Spectacle/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.divisiblebyzero.Spectacle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -757,8 +811,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = Spectacle;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = "Spectacle/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.divisiblebyzero.Spectacle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -788,11 +846,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREFIX_HEADER = "SpectacleSpecs/Supporting Files/SpectacleSpecs.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -824,8 +882,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				GCC_PREFIX_HEADER = "SpectacleSpecs/Supporting Files/SpectacleSpecs.pch";
 				INFOPLIST_FILE = "SpectacleSpecs/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.divisiblebyzero.$(PRODUCT_NAME:rfc1034identifier)";

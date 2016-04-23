@@ -1,3 +1,11 @@
+#import <Expecta/Expecta.h>
+
+#import <OCHamcrest/OCHamcrest.h>
+
+#import <OCMockito/OCMockito.h>
+
+#import <Specta/Specta.h>
+
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleCalculationResult.h"
 #import "SpectacleScreenDetector.h"
