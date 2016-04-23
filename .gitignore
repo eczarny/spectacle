@@ -16,7 +16,3 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-
-# CocoaPods
-#
-Pods/

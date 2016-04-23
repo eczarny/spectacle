@@ -73,18 +73,6 @@ To work around the limitations imposed on Terminal windows Spectacle will first 
 
 Most applications built with the Cocoa frameworks can be readily manipulated via the _OS X Accessibility Protocol_; allowing Spectacle to interact with nearly every window it encounters. Unfortunately this is not always the case. Spectacle will be unable to manipulate the windows of applications that build their user interfaces in unexpected ways.
 
-## Building and running
-
-Spectacle uses [CocoaPods][5]. Before building Spectacle in Xcode run:
-
-    $ pod install
-
-Once CocoaPods pulls down Spectacle's dependencies open the Xcode workspace:
-
-    $ open Spectacle.xcworkspace
-
-After Xcode finishes loading the workspace press &#8984;R to run Spectacle.
-
 # License
 
 Copyright (c) 2016 Eric Czarny.
@@ -95,4 +83,3 @@ Spectacle should be accompanied by a LICENSE file containing the license relevan
 [2]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.7.zip
 [3]: http://support.apple.com/kb/ht1343
 [4]: https://developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXmodel.html
-[5]: http://cocoapods.org/
