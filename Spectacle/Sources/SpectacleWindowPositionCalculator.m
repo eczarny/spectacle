@@ -50,9 +50,10 @@
     return [self calculateTopOrBottomHalfRect:windowRect
                          visibleFrameOfScreen:visibleFrameOfScreen
                                    withAction:action];
-  } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightDisplay(action)) {
-    calculatedWindowRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
-    calculatedWindowRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
+  } else if (MovingToUpperOrLowerLeftOfDisplay(action) || MovingToUpperOrLowerRightOfDisplay(action)) {
+    return [self calculateCornerRect:windowRect
+                visibleFrameOfScreen:visibleFrameOfScreen
+                          withAction:action];
   } else if (!MovingToCenterRegionOfDisplay(action) && !MovingToThirdOfDisplay(action)) {
     calculatedWindowRect.size.width = visibleFrameOfScreen.size.width;
     calculatedWindowRect.size.height = visibleFrameOfScreen.size.height;
@@ -199,6 +200,54 @@
   CGFloat minimumWindowRectHeight = floor(visibleFrameOfScreen.size.height / 4.0f);
 
   return (windowRect.size.width <= minimumWindowRectWidth) || (windowRect.size.height <= minimumWindowRectHeight);
+}
+
+#pragma mark -
+
+- (SpectacleCalculationResult *)calculateCornerRect:(CGRect)windowRect
+                                            visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+                                                      withAction:(SpectacleWindowAction)action
+{
+    CGRect oneHalfRect = visibleFrameOfScreen;
+    
+    oneHalfRect.size.width = floor(visibleFrameOfScreen.size.width / 2.0f);
+    oneHalfRect.size.height = floor(visibleFrameOfScreen.size.height / 2.0f);
+    
+    if (MovingToUpperOrLowerRightOfDisplay(action)) {
+        oneHalfRect.origin.x += oneHalfRect.size.width + remainder(visibleFrameOfScreen.size.width, 2.0f);
+    }
+    
+    if (MovingToTopRegionOfDisplay(action)) {
+        oneHalfRect.origin.y += oneHalfRect.size.height + remainder(visibleFrameOfScreen.size.height, 2.0f);
+    }
+    
+    if (fabs(CGRectGetMidY(windowRect) - CGRectGetMidY(oneHalfRect)) <= 1.0f) {
+        CGRect twoThirdsRect = oneHalfRect;
+        
+        twoThirdsRect.size.width = floor(visibleFrameOfScreen.size.width * 2 / 3.0f);
+        
+        if (MovingToUpperOrLowerRightOfDisplay(action)) {
+            twoThirdsRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - twoThirdsRect.size.width;
+        }
+        
+        if (RectCenteredWithinRect(oneHalfRect, windowRect)) {
+            return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:twoThirdsRect];
+        }
+        
+        if (RectCenteredWithinRect(twoThirdsRect, windowRect)) {
+            CGRect oneThirdRect = oneHalfRect;
+            
+            oneThirdRect.size.width = floor(visibleFrameOfScreen.size.width / 3.0f);
+            
+            if (MovingToUpperOrLowerRightOfDisplay(action)) {
+                oneThirdRect.origin.x = visibleFrameOfScreen.origin.x + visibleFrameOfScreen.size.width - oneThirdRect.size.width;
+            }
+            
+            return [SpectacleCalculationResult resultWithAction:SpectacleWindowActionNextThird windowRect:oneThirdRect];
+        }
+    }
+    
+    return [SpectacleCalculationResult resultWithAction:action windowRect:oneHalfRect];
 }
 
 #pragma mark -

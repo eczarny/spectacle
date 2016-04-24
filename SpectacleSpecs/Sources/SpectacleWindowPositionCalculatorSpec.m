@@ -51,35 +51,36 @@ SpecBegin(windowPositionCalculator)
 
     it(@"should calculate a window's CGRect in the left 1/3 of the screen", ^{
       SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 4.0f, 960.0f, 873.0f)
-                                                                             visibleFrameOfScreen:visibleFrameScreen
-                                                                                           action:SpectacleWindowActionLeftHalf];
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionLeftHalf];
 
       expect(result.windowRect).to.equal(CGRectMake(0.0f, 4.0f, 480.0f, 873.0f));
     });
 
     it(@"should calculate a window's CGRect in the right half of the screen", ^{
       SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
-                                                                             visibleFrameOfScreen:visibleFrameScreen
-                                                                                           action:SpectacleWindowActionRightHalf];
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionRightHalf];
 
       expect(result.windowRect).to.equal(CGRectMake(720.0f, 4.0f, 720.0f, 873.0f));
     });
 
     it(@"should calculate a window's CGRect in the right 2/3 of the screen", ^{
       SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(720.0f, 4.0f, 720.0f, 873.0f)
-                                                                             visibleFrameOfScreen:visibleFrameScreen
-                                                                                           action:SpectacleWindowActionRightHalf];
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionRightHalf];
 
       expect(result.windowRect).to.equal(CGRectMake(480.0f, 4.0f, 960.0f, 873.0f));
     });
 
     it(@"should calculate a window's CGRect in the right 1/3 of the screen", ^{
       SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(480.0f, 4.0f, 960.0f, 873.0f)
-                                                                             visibleFrameOfScreen:visibleFrameScreen
-                                                                                           action:SpectacleWindowActionRightHalf];
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionRightHalf];
 
       expect(result.windowRect).to.equal(CGRectMake(960.0f, 4.0f, 480.0f, 873.0f));
     });
+      
 
     it(@"should calculate a window's CGRect in the top half of the screen", ^{
       SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
@@ -129,36 +130,100 @@ SpecBegin(windowPositionCalculator)
       expect(result.windowRect).to.equal(CGRectMake(0.0f, 4.0f, 1440.0f, 291.0f));
     });
 
-    it(@"should calculate a window's CGRect in the upper left corner of the screen", ^{
-      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
+    it(@"should calculate a window's CGRect in the upper left half of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)
                                                                     visibleFrameOfScreen:visibleFrameScreen
                                                                                   action:SpectacleWindowActionUpperLeft];
-
+      
       expect(result.windowRect).to.equal(CGRectMake(0.0f, 441.0f, 720.0f, 436.0f));
     });
 
-    it(@"should calculate a window's CGRect in the lower left corner of the screen", ^{
-      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
+    it(@"should calculate a window's CGRect in the upper left 2/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 441.0f, 720.0f, 436.0f)
                                                                     visibleFrameOfScreen:visibleFrameScreen
-                                                                                  action:SpectacleWindowActionLowerLeft];
-
-      expect(result.windowRect).to.equal(CGRectMake(0.0f, 4.0f, 720.0f, 436.0f));
+                                                                                  action:SpectacleWindowActionUpperLeft];
+      
+      expect(result.windowRect).to.equal(CGRectMake(0.0f, 441.0f, 960.0f, 436.0f));
     });
 
-    it(@"should calculate a window's CGRect in the upper right corner of the screen", ^{
-      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
+    it(@"should calculate a window's CGRect in the upper left 1/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 441.0f, 960.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionUpperLeft];
+      
+      expect(result.windowRect).to.equal(CGRectMake(0.0f, 441.0f, 480.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the upper right half of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)
                                                                     visibleFrameOfScreen:visibleFrameScreen
                                                                                   action:SpectacleWindowActionUpperRight];
-
+      
       expect(result.windowRect).to.equal(CGRectMake(720.0f, 441.0f, 720.0f, 436.0f));
     });
 
-    it(@"should calculate a window's CGRect in the lower right corner of the screen", ^{
-      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:windowRect
+    it(@"should calculate a window's CGRect in the upper right 2/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(720.0f, 441.0f, 720.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionUpperRight];
+      
+      expect(result.windowRect).to.equal(CGRectMake(480.0f, 441.0f, 960.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the upper right 1/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(480.0f, 441.0f, 960.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionUpperRight];
+      
+      expect(result.windowRect).to.equal(CGRectMake(960.0f, 441.0f, 480.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the lower left half of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionLowerLeft];
+      
+      expect(result.windowRect).to.equal(CGRectMake(0.0f, 4.0f, 720.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the lower left 2/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 4.0f, 720.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionLowerLeft];
+      
+      expect(result.windowRect).to.equal(CGRectMake(0.0f, 4.0f, 960.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the lower left 1/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 4.0f, 960.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionLowerLeft];
+      
+      expect(result.windowRect).to.equal(CGRectMake(0.0f, 4.0f, 480.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the lower right half of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)
                                                                     visibleFrameOfScreen:visibleFrameScreen
                                                                                   action:SpectacleWindowActionLowerRight];
-
+      
       expect(result.windowRect).to.equal(CGRectMake(720.0f, 4.0f, 720.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the lower right 2/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(720.0f, 4.0f, 720.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionLowerRight];
+      
+      expect(result.windowRect).to.equal(CGRectMake(480.0f, 4.0f, 960.0f, 436.0f));
+    });
+
+    it(@"should calculate a window's CGRect in the lower right 1/3 of the screen", ^{
+      SpectacleCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(480.0f, 4.0f, 960.0f, 436.0f)
+                                                                    visibleFrameOfScreen:visibleFrameScreen
+                                                                                  action:SpectacleWindowActionLowerRight];
+      
+      expect(result.windowRect).to.equal(CGRectMake(960.0f, 4.0f, 480.0f, 436.0f));
     });
 
     describe(@"next thirds", ^{
