@@ -16,6 +16,7 @@
 		2D1E1ACF147E078A0021D73D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		2D24ACB41CC723F600AB3984 /* SpectacleWindowAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D24ACB31CC723F600AB3984 /* SpectacleWindowAction.m */; };
 		2D24ACB71CC8728E00AB3984 /* SpectacleShortcutHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D24ACB61CC8728E00AB3984 /* SpectacleShortcutHolder.m */; };
+		2D2629461CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2629451CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m */; };
 		2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D279ED316BB4A7800F6894A /* SpectacleHistory.m */; };
 		2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */; };
 		2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */; };
@@ -132,6 +133,8 @@
 		2D24ACB31CC723F600AB3984 /* SpectacleWindowAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowAction.m; path = Spectacle/Sources/SpectacleWindowAction.m; sourceTree = "<group>"; };
 		2D24ACB51CC8728E00AB3984 /* SpectacleShortcutHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutHolder.h; path = Spectacle/Sources/SpectacleShortcutHolder.h; sourceTree = "<group>"; };
 		2D24ACB61CC8728E00AB3984 /* SpectacleShortcutHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutHolder.m; path = Spectacle/Sources/SpectacleShortcutHolder.m; sourceTree = "<group>"; };
+		2D2629441CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleScreenDetectionResult.h; path = Spectacle/Sources/SpectacleScreenDetectionResult.h; sourceTree = "<group>"; };
+		2D2629451CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetectionResult.m; path = Spectacle/Sources/SpectacleScreenDetectionResult.m; sourceTree = "<group>"; };
 		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHistory.h; path = Spectacle/Sources/SpectacleHistory.h; sourceTree = "<group>"; };
 		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleHistory.m; path = Spectacle/Sources/SpectacleHistory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D3A04FC194956E100CD96E7 /* SpectacleAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SpectacleAccessibilityElement.h; path = Spectacle/Sources/SpectacleAccessibilityElement.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -487,6 +490,8 @@
 				2DAC59EA1BB2364700C660ED /* Window Movement History */,
 				2DAC59F41BB23DAD00C660ED /* Window Movers */,
 				2D7CF9E81C6FEC2E004DC708 /* Window Position Calculator */,
+				2D2629441CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.h */,
+				2D2629451CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m */,
 				2D4F3ECE14A27B4500C29D11 /* SpectacleScreenDetector.h */,
 				2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */,
 				2DAC59F51BB241DE00C660ED /* SpectacleWindowAction.h */,
@@ -644,6 +649,7 @@
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 				2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */,
+				2D2629461CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m in Sources */,
 				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */,
 				2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */,
 				2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */,

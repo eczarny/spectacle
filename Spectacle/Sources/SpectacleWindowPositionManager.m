@@ -3,6 +3,7 @@
 #import "SpectacleHistory.h"
 #import "SpectacleHistoryItem.h"
 #import "SpectacleQuantizedWindowMover.h"
+#import "SpectacleScreenDetectionResult.h"
 #import "SpectacleScreenDetector.h"
 #import "SpectacleShortcut.h"
 #import "SpectacleStandardWindowMover.h"
@@ -57,26 +58,29 @@
                            screens:(NSArray<NSScreen *> *)screens
                         mainScreen:(NSScreen *)mainScreen
 {
-  NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
-                                         frontmostWindowElement:frontmostWindowElement
-                                                        screens:screens
-                                                     mainScreen:mainScreen];
-  CGRect frameOfScreen = CGRectNull;
-  CGRect visibleFrameOfScreen = CGRectNull;
+  SpectacleScreenDetectionResult *screenDetectionResult = [_screenDetector screenWithAction:action
+                                                                     frontmostWindowElement:frontmostWindowElement
+                                                                                    screens:screens
+                                                                                 mainScreen:mainScreen];
+  CGRect frameOfDestinationScreen = CGRectNull;
+  CGRect visibleFrameOfDestinationScreen = CGRectNull;
+  CGRect visibleFrameOfSourceScreen = CGRectNull;
   SpectacleHistory *history = [self historyForCurrentApplication];
   SpectacleHistoryItem *historyItem = nil;
   SpectacleWindowPositionCalculationResult *windowPositionCalculationResult = nil;
-  if (screenOfDisplay) {
-    frameOfScreen = NSRectToCGRect([screenOfDisplay frame]);
-    visibleFrameOfScreen = NSRectToCGRect([screenOfDisplay visibleFrame]);
+  if (screenDetectionResult.destinationScreen && screenDetectionResult.sourceScreen) {
+    frameOfDestinationScreen = NSRectToCGRect([screenDetectionResult.destinationScreen frame]);
+    visibleFrameOfDestinationScreen = NSRectToCGRect([screenDetectionResult.destinationScreen visibleFrame]);
+    visibleFrameOfSourceScreen = NSRectToCGRect([screenDetectionResult.sourceScreen visibleFrame]);
   }
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
   if ([frontmostWindowElement isSheet]
       || [frontmostWindowElement isSystemDialog]
       || CGRectIsNull(frontmostWindowRect)
-      || CGRectIsNull(frameOfScreen)
-      || CGRectIsNull(visibleFrameOfScreen)) {
+      || CGRectIsNull(frameOfDestinationScreen)
+      || CGRectIsNull(visibleFrameOfDestinationScreen)
+      || CGRectIsNull(visibleFrameOfSourceScreen)) {
     _failureFeedback();
     return;
   }
@@ -86,13 +90,14 @@
     [history addHistoryItem:historyItem];
   }
   frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
-                                                                    frameOfScreen:frameOfScreen];
-  if (SpectacleIsMovingToDisplayWindowAction(action) && RectFitsInRect(frontmostWindowRect, visibleFrameOfScreen)) {
+                                                                    frameOfScreen:frameOfDestinationScreen];
+  if (SpectacleIsMovingToDisplayWindowAction(action) && RectFitsInRect(frontmostWindowRect, visibleFrameOfDestinationScreen)) {
     action = kSpectacleWindowActionCenter;
   }
   previousFrontmostWindowRect = frontmostWindowRect;
   windowPositionCalculationResult = [_windowPositionCalculator calculateWindowRect:frontmostWindowRect
-                                                              visibleFrameOfScreen:visibleFrameOfScreen
+                                                   visibleFrameOfDestinationScreen:visibleFrameOfDestinationScreen
+                                                        visibleFrameOfSourceScreen:visibleFrameOfSourceScreen
                                                                             action:action];
   if (!windowPositionCalculationResult) {
     _failureFeedback();
@@ -105,13 +110,13 @@
     return;
   }
   frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
-                                                                    frameOfScreen:frameOfScreen];
+                                                                    frameOfScreen:frameOfDestinationScreen];
   historyItem = [SpectacleHistoryItem historyItemFromAccessibilityElement:frontmostWindowElement
                                                                windowRect:frontmostWindowRect];
   [history addHistoryItem:historyItem];
   [_windowMover moveWindowRect:frontmostWindowRect
-                 frameOfScreen:frameOfScreen
-          visibleFrameOfScreen:visibleFrameOfScreen
+                 frameOfScreen:frameOfDestinationScreen
+          visibleFrameOfScreen:visibleFrameOfDestinationScreen
         frontmostWindowElement:frontmostWindowElement
                         action:action];
 }
@@ -164,13 +169,13 @@
                     screens:(NSArray<NSScreen *> *)screens
                  mainScreen:(NSScreen *)mainScreen
 {
-  NSScreen *screenOfDisplay = [_screenDetector screenWithAction:action
-                                         frontmostWindowElement:historyItem.accessibilityElement
-                                                        screens:screens
-                                                     mainScreen:mainScreen];
+  SpectacleScreenDetectionResult *screenDetectionResult = [_screenDetector screenWithAction:action
+                                                                     frontmostWindowElement:historyItem.accessibilityElement
+                                                                                    screens:screens
+                                                                                 mainScreen:mainScreen];
   CGRect visibleFrameOfScreen = CGRectNull;
-  if (screenOfDisplay) {
-    visibleFrameOfScreen = NSRectToCGRect(screenOfDisplay.visibleFrame);
+  if (screenDetectionResult.destinationScreen) {
+    visibleFrameOfScreen = NSRectToCGRect(screenDetectionResult.destinationScreen.visibleFrame);
   }
   if (![self moveWithHistoryItem:historyItem visibleFrameOfScreen:visibleFrameOfScreen action:action]) {
     _failureFeedback();

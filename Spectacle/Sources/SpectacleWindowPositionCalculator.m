@@ -46,7 +46,8 @@
 }
 
 - (SpectacleWindowPositionCalculationResult *)calculateWindowRect:(CGRect)windowRect
-                                             visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
+                                  visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
+                                       visibleFrameOfSourceScreen:(CGRect)visibleFrameOfSourceScreen
                                                            action:(SpectacleWindowAction *)action
 {
   JSValue *windowPositionCalculation = [_windowPositionCalculationRegistry windowPositionCalculationWithAction:action];
@@ -55,7 +56,7 @@
   }
   JSValue *result = [windowPositionCalculation callWithArguments:@[
                                                                    [_javaScriptEnvironment valueWithRect:windowRect],
-                                                                   [_javaScriptEnvironment valueWithRect:visibleFrameOfScreen],
+                                                                   [_javaScriptEnvironment valueWithRect:visibleFrameOfDestinationScreen],
                                                                    ]];
   return [SpectacleWindowPositionCalculationResult resultWithAction:action windowRect:[result toRect]];
 }

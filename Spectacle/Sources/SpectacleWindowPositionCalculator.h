@@ -11,7 +11,8 @@
 - (instancetype)initWithErrorHandler:(void(^)(NSString *message))errorHandler NS_DESIGNATED_INITIALIZER;
 
 - (SpectacleWindowPositionCalculationResult *)calculateWindowRect:(CGRect)windowRect
-                                             visibleFrameOfScreen:(CGRect)visibleFrameOfScreen
-                                                           action:(SpectacleWindowAction *)action;
+                                  visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
+                                       visibleFrameOfSourceScreen:(CGRect)visibleFrameOfSourceScreen
+                                                            action:(SpectacleWindowAction *)action;
 
 @end

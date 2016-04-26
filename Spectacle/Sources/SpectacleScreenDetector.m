@@ -1,25 +1,27 @@
 #import "SpectacleAccessibilityElement.h"
+#import "SpectacleScreenDetectionResult.h"
 #import "SpectacleScreenDetector.h"
 
 #define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
 
 @implementation SpectacleScreenDetector
 
-- (NSScreen *)screenWithAction:(SpectacleWindowAction *)action
-        frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
-                       screens:(NSArray<NSScreen *> *)screens
-                    mainScreen:(NSScreen *)mainScreen
+- (SpectacleScreenDetectionResult *)screenWithAction:(SpectacleWindowAction *)action
+                              frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
+                                             screens:(NSArray<NSScreen *> *)screens
+                                          mainScreen:(NSScreen *)mainScreen
 {
   NSArray<NSScreen *> *screensInConsistentOrder = [self screensInConsistentOrder:screens];
-  NSScreen *result = [self screenContainingRect:[frontmostWindowElement rectOfElement]
-                                        screens:screensInConsistentOrder
-                                     mainScreen:mainScreen];
+  NSScreen *sourceScreen = [self screenContainingRect:[frontmostWindowElement rectOfElement]
+                                              screens:screensInConsistentOrder
+                                           mainScreen:mainScreen];
+  NSScreen *destinationScreen = sourceScreen;
   if (SpectacleIsMovingToDisplayWindowAction(action)) {
-    result = [self nextOrPreviousScreenToFrameOfScreen:NSRectToCGRect([result frame])
-                                   inDirectionOfAction:action
-                                               screens:screensInConsistentOrder];
+    destinationScreen = [self nextOrPreviousScreenToFrameOfScreen:NSRectToCGRect([sourceScreen frame])
+                                              inDirectionOfAction:action
+                                                          screens:screensInConsistentOrder];
   }
-  return result;
+  return [SpectacleScreenDetectionResult resultWithSourceScreen:sourceScreen destinationScreen:destinationScreen];
 }
 
 - (NSScreen *)screenContainingRect:(CGRect)rect
