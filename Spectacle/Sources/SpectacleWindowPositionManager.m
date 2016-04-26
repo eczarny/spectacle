@@ -11,8 +11,6 @@
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
 
-#define RectFitsInRect(a, b) ((a.size.width <= b.size.width) && (a.size.height <= b.size.height))
-
 @implementation SpectacleWindowPositionManager
 {
   NSMutableDictionary<NSString *, SpectacleHistory *> *_applicationHistories;
@@ -91,9 +89,6 @@
   }
   frontmostWindowRect = [SpectacleAccessibilityElement normalizeCoordinatesOfRect:frontmostWindowRect
                                                                     frameOfScreen:frameOfDestinationScreen];
-  if (SpectacleIsMovingToDisplayWindowAction(action) && RectFitsInRect(frontmostWindowRect, visibleFrameOfDestinationScreen)) {
-    action = kSpectacleWindowActionCenter;
-  }
   previousFrontmostWindowRect = frontmostWindowRect;
   windowPositionCalculationResult = [_windowPositionCalculator calculateWindowRect:frontmostWindowRect
                                                    visibleFrameOfDestinationScreen:visibleFrameOfDestinationScreen
