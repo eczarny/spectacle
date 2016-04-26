@@ -1,8 +1,3 @@
 windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfScreen) {
-    var calculatedWindowRect = SpectacleCalculationHelpers.copyRect(windowRect);
-    calculatedWindowRect.x = visibleFrameOfScreen.x;
-    calculatedWindowRect.y = visibleFrameOfScreen.y;
-    calculatedWindowRect.width = visibleFrameOfScreen.width;
-    calculatedWindowRect.height = visibleFrameOfScreen.height;
-    return calculatedWindowRect;
+    return visibleFrameOfScreen;
 }, "SpectacleWindowActionFullscreen");
