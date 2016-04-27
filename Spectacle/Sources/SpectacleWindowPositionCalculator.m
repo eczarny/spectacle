@@ -46,8 +46,8 @@
 }
 
 - (SpectacleWindowPositionCalculationResult *)calculateWindowRect:(CGRect)windowRect
-                                  visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
                                        visibleFrameOfSourceScreen:(CGRect)visibleFrameOfSourceScreen
+                                  visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
                                                            action:(SpectacleWindowAction *)action
 {
   JSValue *windowPositionCalculation = [_windowPositionCalculationRegistry windowPositionCalculationWithAction:action];

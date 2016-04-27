@@ -91,8 +91,8 @@
                                                                     frameOfScreen:frameOfDestinationScreen];
   previousFrontmostWindowRect = frontmostWindowRect;
   windowPositionCalculationResult = [_windowPositionCalculator calculateWindowRect:frontmostWindowRect
-                                                   visibleFrameOfDestinationScreen:visibleFrameOfDestinationScreen
                                                         visibleFrameOfSourceScreen:visibleFrameOfSourceScreen
+                                                   visibleFrameOfDestinationScreen:visibleFrameOfDestinationScreen
                                                                             action:action];
   if (!windowPositionCalculationResult) {
     _failureFeedback();

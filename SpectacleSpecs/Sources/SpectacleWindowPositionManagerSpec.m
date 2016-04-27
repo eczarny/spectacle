@@ -40,8 +40,8 @@ SpecBegin(SpectacleWindowPositionManager)
 
       MKTOngoingStubbing *ongoingWindowPositionCalculatorStubbing =
         given([mockWindowPositionCalculator calculateWindowRect:CGRectNull
-                                visibleFrameOfDestinationScreen:CGRectNull
                                      visibleFrameOfSourceScreen:CGRectNull
+                                visibleFrameOfDestinationScreen:CGRectNull
                                                          action:kSpectacleWindowActionNone]);
 
       ongoingWindowPositionCalculatorStubbing = [ongoingWindowPositionCalculatorStubbing withMatcher:anything()
@@ -100,8 +100,8 @@ SpecBegin(SpectacleWindowPositionManager)
       [verifyCount(mockAccessibilityElemenet, never()) isSystemDialog];
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
-                                              visibleFrameOfDestinationScreen:CGRectNull
                                                    visibleFrameOfSourceScreen:CGRectNull
+                                              visibleFrameOfDestinationScreen:CGRectNull
                                                                        action:kSpectacleWindowActionNone];
     });
 
@@ -122,8 +122,8 @@ SpecBegin(SpectacleWindowPositionManager)
       [verify(mockAccessibilityElemenet) isSystemDialog];
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
-                                              visibleFrameOfDestinationScreen:CGRectNull
                                                    visibleFrameOfSourceScreen:CGRectNull
+                                              visibleFrameOfDestinationScreen:CGRectNull
                                                                        action:kSpectacleWindowActionNone];
     });
 
@@ -144,8 +144,8 @@ SpecBegin(SpectacleWindowPositionManager)
       [verify(mockAccessibilityElemenet) isSystemDialog];
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
-                                              visibleFrameOfDestinationScreen:CGRectNull
                                                    visibleFrameOfSourceScreen:CGRectNull
+                                              visibleFrameOfDestinationScreen:CGRectNull
                                                                        action:kSpectacleWindowActionNone];
     });
 
@@ -172,8 +172,8 @@ SpecBegin(SpectacleWindowPositionManager)
       [verify(mockAccessibilityElemenet) isSystemDialog];
 
       [verifyCount(mockWindowPositionCalculator, never()) calculateWindowRect:CGRectNull
-                                              visibleFrameOfDestinationScreen:CGRectNull
                                                    visibleFrameOfSourceScreen:CGRectNull
+                                              visibleFrameOfDestinationScreen:CGRectNull
                                                                        action:kSpectacleWindowActionNone];
     });
 

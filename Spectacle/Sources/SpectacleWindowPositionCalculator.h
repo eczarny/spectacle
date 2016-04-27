@@ -10,9 +10,9 @@
 - (instancetype)initWithErrorHandler:(void(^)(NSString *message))errorHandler NS_DESIGNATED_INITIALIZER;
 
 - (SpectacleWindowPositionCalculationResult *)calculateWindowRect:(CGRect)windowRect
-                                  visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
                                        visibleFrameOfSourceScreen:(CGRect)visibleFrameOfSourceScreen
-                                                            action:(SpectacleWindowAction *)action;
+                                  visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
+                                                           action:(SpectacleWindowAction *)action;
 
 SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 
