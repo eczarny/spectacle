@@ -1,14 +1,16 @@
 #import <Foundation/Foundation.h>
 
+#import "SpectacleMacros.h"
+
 @class SpectacleShortcut;
 
 @protocol SpectacleShortcutStorage;
 
 @interface SpectacleShortcutManager : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-
 - (instancetype)initWithShortcutStorage:(id<SpectacleShortcutStorage>)shortcutStorage NS_DESIGNATED_INITIALIZER;
+
+SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 
 - (void)manageShortcuts:(NSArray<SpectacleShortcut *> *)shortcuts;
 

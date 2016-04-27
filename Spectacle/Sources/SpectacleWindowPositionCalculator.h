@@ -1,12 +1,11 @@
 #import <Foundation/Foundation.h>
 
+#import "SpectacleMacros.h"
 #import "SpectacleWindowAction.h"
 
 @class SpectacleWindowPositionCalculationResult;
 
 @interface SpectacleWindowPositionCalculator : NSObject
-
-- (instancetype)init NS_UNAVAILABLE;
 
 - (instancetype)initWithErrorHandler:(void(^)(NSString *message))errorHandler NS_DESIGNATED_INITIALIZER;
 
@@ -14,5 +13,7 @@
                                   visibleFrameOfDestinationScreen:(CGRect)visibleFrameOfDestinationScreen
                                        visibleFrameOfSourceScreen:(CGRect)visibleFrameOfSourceScreen
                                                             action:(SpectacleWindowAction *)action;
+
+SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 
 @end

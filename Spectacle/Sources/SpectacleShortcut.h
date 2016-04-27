@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 
+#import "SpectacleMacros.h"
 #import "SpectacleWindowAction.h"
 
 @class SpectacleShortcut;
@@ -14,8 +15,6 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 @property (nonatomic, readonly) SpectacleShortcutAction shortcutAction;
 @property (nonatomic, readonly) SpectacleWindowAction *windowAction;
 
-- (instancetype)init NS_UNAVAILABLE;
-
 - (instancetype)initWithShortcutName:(NSString *)shortcutName
                         shortcutCode:(NSInteger)shortcutCode
                    shortcutModifiers:(NSUInteger)shortcutModifiers;
@@ -24,6 +23,8 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
                         shortcutCode:(NSInteger)shortcutCode
                    shortcutModifiers:(NSUInteger)shortcutModifiers
                       shortcutAction:(SpectacleShortcutAction)shortcutAction NS_DESIGNATED_INITIALIZER;
+
+SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 
 - (instancetype)copyWithShortcutAction:(SpectacleShortcutAction)shortcutAction;
 

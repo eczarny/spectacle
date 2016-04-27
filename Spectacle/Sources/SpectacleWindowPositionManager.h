@@ -1,5 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
+#import "SpectacleMacros.h"
 #import "SpectacleWindowAction.h"
 
 typedef void (^SpectacleFailureFeedback)(void);
@@ -13,8 +14,6 @@ typedef void (^SpectacleFailureFeedback)(void);
 
 @interface SpectacleWindowPositionManager : NSObject
 
-- (instancetype)init NS_UNAVAILABLE;
-
 - (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
               windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
                        sharedWorkspace:(NSWorkspace *)sharedWorkspace
@@ -24,6 +23,8 @@ typedef void (^SpectacleFailureFeedback)(void);
 - (instancetype)initWithScreenDetector:(SpectacleScreenDetector *)screenDetector
               windowPositionCalculator:(SpectacleWindowPositionCalculator *)windowPositionCalculator
                        sharedWorkspace:(NSWorkspace *)sharedWorkspace;
+
+SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 
 - (void)moveFrontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                             action:(SpectacleWindowAction *)action

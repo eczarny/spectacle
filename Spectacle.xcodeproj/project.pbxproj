@@ -195,6 +195,7 @@
 		2DAC59F11BB23BE200C660ED /* SpectacleBestEffortWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleBestEffortWindowMover.h; path = Spectacle/Sources/SpectacleBestEffortWindowMover.h; sourceTree = "<group>"; };
 		2DAC59F21BB23BE200C660ED /* SpectacleBestEffortWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleBestEffortWindowMover.m; path = Spectacle/Sources/SpectacleBestEffortWindowMover.m; sourceTree = "<group>"; };
 		2DAC59F51BB241DE00C660ED /* SpectacleWindowAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowAction.h; path = Spectacle/Sources/SpectacleWindowAction.h; sourceTree = "<group>"; };
+		2DB075441CD041A5001CE204 /* SpectacleMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleMacros.h; path = Spectacle/Sources/SpectacleMacros.h; sourceTree = "<group>"; };
 		2DC4E3CB1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Spectacle/Resources/Localizations/en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2DC4E3CD1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DC4E3CF1AD84E5C0022ABF0 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = Spectacle/Resources/Localizations/en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -311,6 +312,7 @@
 				2DC8A0141B84E24500ABEBD5 /* Window Management */,
 				2D768E8B147ED51A00901E76 /* SpectacleAppDelegate.h */,
 				2D768E8C147ED51A00901E76 /* SpectacleAppDelegate.m */,
+				2DB075441CD041A5001CE204 /* SpectacleMacros.h */,
 				07BB542B1186662F0045663F /* SpectacleUtilities.h */,
 				07BB542C1186662F0045663F /* SpectacleUtilities.m */,
 			);
