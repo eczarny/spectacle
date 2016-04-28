@@ -1,3 +1,3 @@
-windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfScreen) {
-    return SpectacleNextOrPreviousDisplay.moveWindowRectToDisplay(windowRect, visibleFrameOfScreen);
+windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfSourceScreen, visibleFrameOfDestinationScreen) {
+    return SpectacleNextOrPreviousDisplay.moveWindowRectToDisplay(windowRect, visibleFrameOfDestinationScreen);
 }, "SpectacleWindowActionNextDisplay");

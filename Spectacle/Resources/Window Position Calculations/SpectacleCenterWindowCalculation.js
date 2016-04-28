@@ -1,6 +1,6 @@
-windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfScreen) {
+windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfSourceScreen, visibleFrameOfDestinationScreen) {
     var calculatedWindowRect = SpectacleCalculationHelpers.copyRect(windowRect);
-    calculatedWindowRect.x = Math.floor(visibleFrameOfScreen.width / 2.0) - Math.floor(calculatedWindowRect.width / 2.0) + visibleFrameOfScreen.x;
-    calculatedWindowRect.y = Math.floor(visibleFrameOfScreen.height / 2.0) - Math.floor(calculatedWindowRect.height / 2.0) + visibleFrameOfScreen.y;
+    calculatedWindowRect.x = Math.floor(visibleFrameOfDestinationScreen.width / 2.0) - Math.floor(calculatedWindowRect.width / 2.0) + visibleFrameOfDestinationScreen.x;
+    calculatedWindowRect.y = Math.floor(visibleFrameOfDestinationScreen.height / 2.0) - Math.floor(calculatedWindowRect.height / 2.0) + visibleFrameOfDestinationScreen.y;
     return calculatedWindowRect;
 }, "SpectacleWindowActionCenter");

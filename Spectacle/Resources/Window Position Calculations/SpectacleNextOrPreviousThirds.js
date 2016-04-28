@@ -1,6 +1,6 @@
 var SpectacleNextOrPreviousThirds = (function () {
-    var findNextThird = function(windowRect, visibleFrameOfScreen) {
-        var thirds = thirdsFromVisibleFrameOfScreen(visibleFrameOfScreen);
+    var findNextThird = function(windowRect, visibleFrameOfDestinationScreen) {
+        var thirds = thirdsFromVisibleFrameOfScreen(visibleFrameOfDestinationScreen);
         var result = thirds[0];
         for (var i = 0; i < thirds.length; i++) {
             var third = thirds[i];
@@ -15,8 +15,8 @@ var SpectacleNextOrPreviousThirds = (function () {
         }
         return result;
     };
-    var findPreviousThird = function(windowRect, visibleFrameOfScreen) {
-        var thirds = thirdsFromVisibleFrameOfScreen(visibleFrameOfScreen);
+    var findPreviousThird = function(windowRect, visibleFrameOfDestinationScreen) {
+        var thirds = thirdsFromVisibleFrameOfScreen(visibleFrameOfDestinationScreen);
         var result = thirds[0];
         for (var i = 0; i < thirds.length; i++) {
             var third = thirds[i];
@@ -31,18 +31,18 @@ var SpectacleNextOrPreviousThirds = (function () {
         }
         return result;
     };
-    var thirdsFromVisibleFrameOfScreen = function(visibleFrameOfScreen) {
+    var thirdsFromVisibleFrameOfScreen = function(visibleFrameOfDestinationScreen) {
         var thirds = [];
         for (var i = 0; i < 3; i++) {
-            var third = SpectacleCalculationHelpers.copyRect(visibleFrameOfScreen);
-            third.x = visibleFrameOfScreen.x + (Math.floor(visibleFrameOfScreen.width / 3.0) * i);
-            third.width = Math.floor(visibleFrameOfScreen.width / 3.0);
+            var third = SpectacleCalculationHelpers.copyRect(visibleFrameOfDestinationScreen);
+            third.x = visibleFrameOfDestinationScreen.x + (Math.floor(visibleFrameOfDestinationScreen.width / 3.0) * i);
+            third.width = Math.floor(visibleFrameOfDestinationScreen.width / 3.0);
             thirds.push(third);
         }
         for (var i = 0; i < 3; i++) {
-            var third = SpectacleCalculationHelpers.copyRect(visibleFrameOfScreen);
-            third.y = visibleFrameOfScreen.y + visibleFrameOfScreen.height - (Math.floor(visibleFrameOfScreen.height / 3.0) * (i + 1));
-            third.height = Math.floor(visibleFrameOfScreen.height / 3.0);
+            var third = SpectacleCalculationHelpers.copyRect(visibleFrameOfDestinationScreen);
+            third.y = visibleFrameOfDestinationScreen.y + visibleFrameOfDestinationScreen.height - (Math.floor(visibleFrameOfDestinationScreen.height / 3.0) * (i + 1));
+            third.height = Math.floor(visibleFrameOfDestinationScreen.height / 3.0);
             thirds.push(third);
         }
         return thirds;

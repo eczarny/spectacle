@@ -56,6 +56,7 @@
   }
   JSValue *result = [windowPositionCalculation callWithArguments:@[
                                                                    [_javaScriptEnvironment valueWithRect:windowRect],
+                                                                   [_javaScriptEnvironment valueWithRect:visibleFrameOfSourceScreen],
                                                                    [_javaScriptEnvironment valueWithRect:visibleFrameOfDestinationScreen],
                                                                    ]];
   return [SpectacleWindowPositionCalculationResult resultWithAction:action windowRect:[result toRect]];

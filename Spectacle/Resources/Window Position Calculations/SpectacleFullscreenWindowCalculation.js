@@ -1,3 +1,3 @@
-windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfScreen) {
-    return visibleFrameOfScreen;
+windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfSourceScreen, visibleFrameOfDestinationScreen) {
+    return visibleFrameOfDestinationScreen;
 }, "SpectacleWindowActionFullscreen");

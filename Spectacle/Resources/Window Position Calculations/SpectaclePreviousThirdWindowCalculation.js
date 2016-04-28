@@ -1,3 +1,3 @@
-windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfScreen) {
-    return SpectacleNextOrPreviousThirds.findPreviousThird(windowRect, visibleFrameOfScreen);
+windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(function (windowRect, visibleFrameOfSourceScreen, visibleFrameOfDestinationScreen) {
+    return SpectacleNextOrPreviousThirds.findPreviousThird(windowRect, visibleFrameOfDestinationScreen);
 }, "SpectacleWindowActionPreviousThird");
