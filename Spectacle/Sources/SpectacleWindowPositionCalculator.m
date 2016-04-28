@@ -28,6 +28,12 @@
       context[@"CGRectEqualToRect"] = ^BOOL(CGRect rect1, CGRect rect2) {
         return CGRectEqualToRect(rect1, rect2);
       };
+      context[@"CGRectGetMinX"] = ^CGFloat(CGRect rect) {
+        return CGRectGetMinX(rect);
+      };
+      context[@"CGRectGetMinY"] = ^CGFloat(CGRect rect) {
+        return CGRectGetMinY(rect);
+      };
       context[@"CGRectGetMidX"] = ^CGFloat(CGRect rect) {
         return CGRectGetMidX(rect);
       };
