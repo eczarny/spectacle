@@ -9,7 +9,6 @@
 	<key>BlacklistedApplications</key>
 	<array>
 		<string>com.adobe.Photoshop</string>
-		<string>com.adobe.Reader</string>
 		<string>com.divisiblebyzero.Spectacle</string>
 		<string>com.valvesoftware.steam</string>
 	</array>
