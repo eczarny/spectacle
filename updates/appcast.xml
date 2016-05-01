@@ -16,7 +16,7 @@
       <title>Spectacle 0.7</title>
       <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/0.7.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.6.0</sparkle:minimumSystemVersion>
-      <pubDate>Mon, 22 Oct 2012 10:48:00 EST</pubDate>
+      <pubDate>Mon, 22 Oct 2012 10:48:00 EDT</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.7.zip" sparkle:shortVersionString="0.7" sparkle:version="8" sparkle:dsaSignature="MCwCFHTj7nftHeZ5eI5fZ7fFcrDi4rzLAhRzpr+PemZ+WS517sdQUbH/k0+7Fg==" length="2670235" type="application/octet-stream" />
     </item>
     <item>
@@ -30,7 +30,7 @@
       <title>Spectacle 0.8.1</title>
       <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/0.8.1.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.7.0</sparkle:minimumSystemVersion>
-      <pubDate>Fri, 8 Feb 2013 19:53:00 EDT</pubDate>
+      <pubDate>Fri, 8 Feb 2013 19:53:00 EST</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.1.zip" sparkle:shortVersionString="0.8.1" sparkle:version="10" sparkle:dsaSignature="MC0CFHogmUZr/FmqHSEN3pt6a1/xZtIfAhUAiCMFDeI0NWRIzVbOp6luwajMTeQ=" length="2654321" type="application/octet-stream" />
     </item>
     <item>
@@ -114,15 +114,22 @@
       <title>Spectacle 1.0.2</title>
       <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.0.2.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
-      <pubDate>Thu, 11 Feb 2016 21:35:00 EDT</pubDate>
+      <pubDate>Thu, 11 Feb 2016 21:35:00 EST</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.0.2.zip" sparkle:shortVersionString="1.0.2" sparkle:version="536" sparkle:dsaSignature="MCwCFDZdAWQpjMhj4YXA0vdB1ymc7Mx5AhQoEl17havasubjIqxVGeJWPGkq0Q==" length="2870189" type="application/octet-stream" />
     </item>
     <item>
       <title>Spectacle 1.0.3</title>
       <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.0.3.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
-      <pubDate>Thu, 21 Feb 2016 15:31:00 EDT</pubDate>
+      <pubDate>Thu, 21 Feb 2016 15:31:00 EST</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.0.3.zip" sparkle:shortVersionString="1.0.3" sparkle:version="552" sparkle:dsaSignature="MC0CFCh11dY0ZGhIt4nY0tDnmknpEujfAhUAo05CYf9/ye57bm8xRyfyPPNvLVU=" length="2873102" type="application/octet-stream" />
+    </item>
+    <item>
+      <title>Spectacle 1.0.4</title>
+      <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.0.4.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
+      <pubDate>Sun, 1 May 2016 16:22:00 EDT</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.0.4.zip" sparkle:shortVersionString="1.0.4" sparkle:version="588" sparkle:dsaSignature="MCwCFDHUzcSAkWyJzcJdy7GHs8LyUVnoAhR+cdz6OVNSu9/6McXn1ZKGssDb5w==" length="2887802" type="application/octet-stream" />
     </item>
   </channel>
 </rss>
