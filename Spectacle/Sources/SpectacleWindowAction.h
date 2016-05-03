@@ -27,5 +27,4 @@ extern BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action);
 
 extern BOOL SpectacleIsNextDisplayWindowAction(SpectacleWindowAction *action);
 extern BOOL SpectacleIsPreviousDisplayWindowAction(SpectacleWindowAction *action);
-
 extern BOOL SpectacleIsMovingToDisplayWindowAction(SpectacleWindowAction *action);

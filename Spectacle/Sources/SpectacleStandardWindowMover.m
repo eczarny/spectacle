@@ -40,10 +40,6 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
                visibleFrameOfScreen:visibleFrameOfScreen
              frontmostWindowElement:frontmostWindowElement
                              action:action];
-  CGRect movedWindowRect = [frontmostWindowElement rectOfElement];
-  if (!CGRectContainsRect(windowRect, movedWindowRect)) {
-    [frontmostWindowElement setRectOfElement:previousWindowRect];
-  }
 }
 
 @end
