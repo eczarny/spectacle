@@ -6,7 +6,7 @@ xcode_scheme: Spectacle
 before_install:
   - brew update
   - brew outdated carthage || brew upgrade carthage
-  - carthage bootstrap
+  - carthage bootstrap --platform Mac
 
 script:
   - set -o pipefail && xcodebuild -project Spectacle.xcodeproj -scheme Spectacle test | xcpretty

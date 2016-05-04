@@ -77,7 +77,7 @@ Most applications built with the Cocoa frameworks can be readily manipulated via
 
 Spectacle uses [Carthage][5]. Before building Spectacle in Xcode run:
 
-    $ carthage bootstrap
+    $ carthage bootstrap --platform Mac
 
 Once Carthage builds Spectacle's dependencies open the Xcode project:
 
