@@ -299,7 +299,6 @@
 			children = (
 				2D89B5731B8133E900F9FC1C /* Spectacle */,
 				2DA5B7C719F8BA79007EDE8E /* SpectacleSpecs */,
-				089C1671FE841209C02AAC07 /* Frameworks */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
 			name = Spectacle;
@@ -433,6 +432,7 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				08FB77AFFE84173DC02AAC07 /* Sources */,
 				32DBCFA10370C40200C91783 /* Supporting Files */,
+				089C1671FE841209C02AAC07 /* Frameworks */,
 			);
 			name = Spectacle;
 			sourceTree = "<group>";
