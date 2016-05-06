@@ -2,8 +2,11 @@
 
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleAppDelegate.h"
+#import "SpectacleDefaultShortcutHelpers.h"
+#import "SpectacleMigratingShortcutStorage.h"
 #import "SpectaclePreferencesController.h"
 #import "SpectacleScreenDetector.h"
+#import "SpectacleShortcutJSONStorage.h"
 #import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutTranslator.h"
 #import "SpectacleShortcutUserDefaultsStorage.h"
@@ -81,7 +84,8 @@
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   _blacklistedApplications = [NSSet setWithArray:[userDefaults objectForKey:@"BlacklistedApplications"]];
   _disabledApplications = [NSMutableSet setWithArray:[userDefaults objectForKey:@"DisabledApplications"]];
-  _shortcutStorage = [SpectacleShortcutUserDefaultsStorage new];
+  _shortcutStorage = [[SpectacleMigratingShortcutStorage alloc] initWithShortcutStorage:[SpectacleShortcutUserDefaultsStorage new]
+                                                                   migrationDestination:[SpectacleShortcutJSONStorage new]];
   _shortcutManager = [[SpectacleShortcutManager alloc] initWithShortcutStorage:_shortcutStorage];
   SpectacleWindowPositionCalculator *windowPositionCalculator = [[SpectacleWindowPositionCalculator alloc] initWithErrorHandler:^(NSString *errorMessage) {
     NSAlert *alert = [NSAlert new];
@@ -279,11 +283,16 @@
 
 - (void)manageShortcuts
 {
-  NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage loadShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+  SpectacleShortcutAction action = ^(SpectacleShortcut *shortcut) {
     [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
                                                 action:shortcut.windowAction];
-  }];
-  [_shortcutManager manageShortcuts:shortcuts];
+  };
+  NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage loadShortcutsWithAction:action];
+  if (shortcuts.count != 0) {
+    [_shortcutManager manageShortcuts:shortcuts];
+  } else {
+    [_shortcutManager manageShortcuts:SpectacleDefaultShortcutsWithAction(action)];
+  }
 }
 
 - (void)enableStatusItem

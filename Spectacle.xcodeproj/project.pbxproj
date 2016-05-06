@@ -42,6 +42,9 @@
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
 		2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */; };
 		2D58CC391C7030B800E3DC74 /* Window Position Calculations in Resources */ = {isa = PBXBuildFile; fileRef = 2D58CC381C7030B800E3DC74 /* Window Position Calculations */; };
+		2D5A83051CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5A83041CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m */; };
+		2D5A83091CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5A83081CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m */; };
+		2D5A830F1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5A830E1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.m */; };
 		2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2D5CCCE815E96F740009CC43 /* dsa_public.pem */; };
 		2D7146541CCC12A6003B8292 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7146521CCC12A6003B8292 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D71466B1CCC1715003B8292 /* Expecta.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2D7146671CCC1715003B8292 /* Expecta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -180,6 +183,13 @@
 		2D5783EF1BB63BDD00695771 /* SpectacleStandardWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleStandardWindowMover.h; path = Spectacle/Sources/SpectacleStandardWindowMover.h; sourceTree = "<group>"; };
 		2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleStandardWindowMover.m; path = Spectacle/Sources/SpectacleStandardWindowMover.m; sourceTree = "<group>"; };
 		2D58CC381C7030B800E3DC74 /* Window Position Calculations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Window Position Calculations"; path = "Spectacle/Resources/Window Position Calculations"; sourceTree = "<group>"; };
+		2D5A83031CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutJSONStorage.h; path = Spectacle/Sources/SpectacleShortcutJSONStorage.h; sourceTree = "<group>"; };
+		2D5A83041CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutJSONStorage.m; path = Spectacle/Sources/SpectacleShortcutJSONStorage.m; sourceTree = "<group>"; };
+		2D5A83071CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleMigratingShortcutStorage.h; path = Spectacle/Sources/SpectacleMigratingShortcutStorage.h; sourceTree = "<group>"; };
+		2D5A83081CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleMigratingShortcutStorage.m; path = Spectacle/Sources/SpectacleMigratingShortcutStorage.m; sourceTree = "<group>"; };
+		2D5A830C1CDC363B00EBE80A /* SpectacleShortcutStorageMigrationDestination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutStorageMigrationDestination.h; path = Spectacle/Sources/SpectacleShortcutStorageMigrationDestination.h; sourceTree = "<group>"; };
+		2D5A830D1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleDefaultShortcutHelpers.h; path = Spectacle/Sources/SpectacleDefaultShortcutHelpers.h; sourceTree = "<group>"; };
+		2D5A830E1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleDefaultShortcutHelpers.m; path = Spectacle/Sources/SpectacleDefaultShortcutHelpers.m; sourceTree = "<group>"; };
 		2D5CCCE815E96F740009CC43 /* dsa_public.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_public.pem; path = Spectacle/Resources/Certificates/dsa_public.pem; sourceTree = "<group>"; };
 		2D7146521CCC12A6003B8292 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Carthage/Build/Mac/Sparkle.framework; sourceTree = "<group>"; };
 		2D7146671CCC1715003B8292 /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Expecta.framework; path = ../Carthage/Build/Mac/Expecta.framework; sourceTree = "<group>"; };
@@ -386,7 +396,12 @@
 		2D7C11461B86C61800B81E11 /* Shortcut Storage */ = {
 			isa = PBXGroup;
 			children = (
+				2D5A83071CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.h */,
+				2D5A83081CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m */,
 				2D7C11471B86C63A00B81E11 /* SpectacleShortcutStorage.h */,
+				2D5A830C1CDC363B00EBE80A /* SpectacleShortcutStorageMigrationDestination.h */,
+				2D5A83031CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.h */,
+				2D5A83041CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m */,
 				2D7C11481B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.h */,
 				2D7C11491B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.m */,
 			);
@@ -500,6 +515,8 @@
 				2DC8A0111B84E17400ABEBD5 /* Shortcut Management */,
 				2DC8A0121B84E18400ABEBD5 /* Shortcut Recorder */,
 				2D7C11461B86C61800B81E11 /* Shortcut Storage */,
+				2D5A830D1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.h */,
+				2D5A830E1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.m */,
 				2D3A04FF194956E100CD96E7 /* SpectacleShortcut.h */,
 				2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */,
 				2D24ACB51CC8728E00AB3984 /* SpectacleShortcutHolder.h */,
@@ -672,10 +689,12 @@
 				2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */,
 				2D768E8D147ED51A00901E76 /* SpectacleAppDelegate.m in Sources */,
 				2DAC59F31BB23BE200C660ED /* SpectacleBestEffortWindowMover.m in Sources */,
+				2D5A830F1CDC475B00EBE80A /* SpectacleDefaultShortcutHelpers.m in Sources */,
 				2D279ED416BB4A7800F6894A /* SpectacleHistory.m in Sources */,
 				2D8DA05D147E113D003BE1D3 /* SpectacleHistoryItem.m in Sources */,
 				2D8E2C641C7AAD5A0074129C /* SpectacleJavaScriptEnvironment.m in Sources */,
 				2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */,
+				2D5A83091CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m in Sources */,
 				07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */,
 				2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */,
@@ -684,6 +703,7 @@
 				2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */,
 				2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */,
 				2D24ACB71CC8728E00AB3984 /* SpectacleShortcutHolder.m in Sources */,
+				2D5A83051CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleShortcutManager.m in Sources */,
 				2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */,
 				2D3A0510194956E100CD96E7 /* SpectacleShortcutRecorderCell.m in Sources */,
@@ -827,6 +847,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -862,6 +883,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

@@ -1,6 +1,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SpectacleAccessibilityElement.h"
+#import "SpectacleDefaultShortcutHelpers.h"
 #import "SpectacleLoginItemHelper.h"
 #import "SpectaclePreferencesController.h"
 #import "SpectacleRegisteredShortcutValidator.h"
@@ -108,10 +109,10 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 - (IBAction)restoreDefaults:(id)sender
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
-    NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage defaultShortcutsWithAction:^(SpectacleShortcut *shortcut) {
+    NSArray<SpectacleShortcut *> *shortcuts = SpectacleDefaultShortcutsWithAction(^(SpectacleShortcut *shortcut) {
       [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
                                                   action:shortcut.windowAction];
-    }];
+    });
     [_shortcutManager updateShortcuts:shortcuts];
     [NSNotificationCenter.defaultCenter postNotificationName:@"SpectacleRestoreDefaultShortcutsNotification"
                                                       object:self];
