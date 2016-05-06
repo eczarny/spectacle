@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		07838603148BD517001E7BD7 /* SpectaclePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07838602148BD517001E7BD7 /* SpectaclePreferencesController.m */; };
 		2D0759A71C71746500A17E80 /* SpectacleWindowPositionCalculationRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0759A61C71746500A17E80 /* SpectacleWindowPositionCalculationRegistry.m */; };
-		2D09A0161C6FB3AF00DDE899 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D09A0151C6FB3AF00DDE899 /* JavaScriptCore.framework */; };
 		2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */; };
 		2D20F0181CD18ED7003DDA5B /* SpectacleBottomHalfWindowCalculationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F0081CD18ED7003DDA5B /* SpectacleBottomHalfWindowCalculationSpec.m */; };
 		2D20F0191CD18ED7003DDA5B /* SpectacleCenterWindowCalculationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D20F0091CD18ED7003DDA5B /* SpectacleCenterWindowCalculationSpec.m */; };
@@ -127,7 +126,6 @@
 		07BB542C1186662F0045663F /* SpectacleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleUtilities.m; path = Spectacle/Sources/SpectacleUtilities.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D0759A51C71746500A17E80 /* SpectacleWindowPositionCalculationRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleWindowPositionCalculationRegistry.h; path = Spectacle/Sources/SpectacleWindowPositionCalculationRegistry.h; sourceTree = "<group>"; };
 		2D0759A61C71746500A17E80 /* SpectacleWindowPositionCalculationRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleWindowPositionCalculationRegistry.m; path = Spectacle/Sources/SpectacleWindowPositionCalculationRegistry.m; sourceTree = "<group>"; };
-		2D09A0151C6FB3AF00DDE899 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		2D1AE52315D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SpectacleRegisteredShortcutValidator.h; path = Spectacle/Sources/SpectacleRegisteredShortcutValidator.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2D1AE52415D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleRegisteredShortcutValidator.m; path = Spectacle/Sources/SpectacleRegisteredShortcutValidator.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D1E1AB0147E06AD0021D73D /* Spectacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,7 +236,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D09A0161C6FB3AF00DDE899 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
