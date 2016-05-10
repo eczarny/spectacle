@@ -21,6 +21,12 @@
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLowerLeftShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToUpperRightShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLowerRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToUpperThirdRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToMiddleThirdRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLowerThirdRightShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToUpperThirdLeftShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToMiddleThirdLeftShortcutRecorder;
+@property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToLowerThirdLeftShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToNextDisplayShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToPreviousDisplayShortcutRecorder;
 @property (nonatomic) IBOutlet SpectacleShortcutRecorder *moveToNextThirdShortcutRecorder;

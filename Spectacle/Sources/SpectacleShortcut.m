@@ -68,6 +68,18 @@
     windowAction = kSpectacleWindowActionUpperRight;
   } else if ([name isEqualToString:@"MoveToLowerRight"]) {
     windowAction = kSpectacleWindowActionLowerRight;
+  } else if ([name isEqualToString:@"MoveToUpperThirdRight"]) {
+      windowAction = kSpectacleWindowActionUpperThirdRight;
+  } else if ([name isEqualToString:@"MoveToMiddleThirdRight"]) {
+      windowAction = kSpectacleWindowActionMiddleThirdRight;
+  } else if ([name isEqualToString:@"MoveToLowerThirdRight"]) {
+      windowAction = kSpectacleWindowActionLowerThirdRight;
+  } else if ([name isEqualToString:@"MoveToUpperThirdLeft"]) {
+      windowAction = kSpectacleWindowActionUpperThirdLeft;
+  } else if ([name isEqualToString:@"MoveToMiddleThirdLeft"]) {
+      windowAction = kSpectacleWindowActionMiddleThirdLeft;
+  } else if ([name isEqualToString:@"MoveToLowerThirdLeft"]) {
+      windowAction = kSpectacleWindowActionLowerThirdLeft;
   } else if ([name isEqualToString:@"MoveToNextDisplay"]) {
     windowAction = kSpectacleWindowActionNextDisplay;
   } else if ([name isEqualToString:@"MoveToPreviousDisplay"]) {

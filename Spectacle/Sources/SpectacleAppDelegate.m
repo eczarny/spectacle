@@ -69,6 +69,12 @@
                          @"MoveToLowerLeft": _moveToLowerLeftShortcutMenuItem,
                          @"MoveToUpperRight": _moveToUpperRightShortcutMenuItem,
                          @"MoveToLowerRight": _moveToLowerRightShortcutMenuItem,
+                         @"MoveToUpperThirdRight": _moveToUpperThirdRightShortcutMenuItem,
+                         @"MoveToMiddleThirdRight": _moveToMiddleThirdRightShortcutMenuItem,
+                         @"MoveToLowerThirdRight": _moveToLowerThirdRightShortcutMenuItem,
+                         @"MoveToUpperThirdLeft": _moveToUpperThirdLeftShortcutMenuItem,
+                         @"MoveToMiddleThirdLeft": _moveToMiddleThirdLeftShortcutMenuItem,
+                         @"MoveToLowerThirdLeft": _moveToLowerThirdLeftShortcutMenuItem,
                          @"MoveToNextDisplay": _moveToNextDisplayShortcutMenuItem,
                          @"MoveToPreviousDisplay": _moveToPreviousDisplayShortcutMenuItem,
                          @"MoveToNextThird": _moveToNextThirdShortcutMenuItem,
@@ -179,9 +185,43 @@
 
 - (IBAction)moveFrontmostWindowToLowerRight:(id)sender
 {
-  [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                              action:kSpectacleWindowActionLowerRight];
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionLowerRight];
 }
+
+// thirds
+- (IBAction)moveFrontmostWindowToUpperThirdRight:(id)sender
+{
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionUpperThirdRight];
+}
+- (IBAction)moveFrontmostWindowToMiddleThirdRight:(id)sender
+{
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionMiddleThirdRight];
+}
+- (IBAction)moveFrontmostWindowToLowerThirdRight:(id)sender
+{
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionLowerThirdRight];
+}
+- (IBAction)moveFrontmostWindowToUpperThirdLeft:(id)sender
+{
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionUpperThirdLeft];
+}
+- (IBAction)moveFrontmostWindowToMiddleThirdLeft:(id)sender
+{
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionMiddleThirdLeft];
+}
+- (IBAction)moveFrontmostWindowToLowerThirdLeft:(id)sender
+{
+    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                action:kSpectacleWindowActionLowerThirdLeft];
+}
+
+
 
 - (IBAction)moveFrontmostWindowToNextDisplay:(id)sender
 {

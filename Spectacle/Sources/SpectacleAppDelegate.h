@@ -16,6 +16,12 @@
 @property (nonatomic) IBOutlet NSMenuItem *moveToLowerLeftShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToUpperRightShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToLowerRightShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *moveToUpperThirdRightShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *moveToMiddleThirdRightShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *moveToLowerThirdRightShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *moveToUpperThirdLeftShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *moveToMiddleThirdLeftShortcutMenuItem;
+@property (nonatomic) IBOutlet NSMenuItem *moveToLowerThirdLeftShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToNextDisplayShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToPreviousDisplayShortcutMenuItem;
 @property (nonatomic) IBOutlet NSMenuItem *moveToNextThirdShortcutMenuItem;
@@ -39,6 +45,12 @@
 - (IBAction)moveFrontmostWindowToLowerLeft:(id)sender;
 - (IBAction)moveFrontmostWindowToUpperRight:(id)sender;
 - (IBAction)moveFrontmostWindowToLowerRight:(id)sender;
+- (IBAction)moveFrontmostWindowToUpperThirdRight:(id)sender;
+- (IBAction)moveFrontmostWindowToMiddleThirdRight:(id)sender;
+- (IBAction)moveFrontmostWindowToLowerThirdRight:(id)sender;
+- (IBAction)moveFrontmostWindowToUpperThirdLeft:(id)sender;
+- (IBAction)moveFrontmostWindowToMiddleThirdLeft:(id)sender;
+- (IBAction)moveFrontmostWindowToLowerThirdLeft:(id)sender;
 - (IBAction)moveFrontmostWindowToNextDisplay:(id)sender;
 - (IBAction)moveFrontmostWindowToPreviousDisplay:(id)sender;
 - (IBAction)moveFrontmostWindowToNextThird:(id)sender;

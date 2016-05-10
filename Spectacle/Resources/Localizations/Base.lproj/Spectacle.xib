@@ -26,6 +26,12 @@
                 <outlet property="moveToLeftShortcutMenuItem" destination="Jae-vx-7ZC" id="CBd-QJ-Ojw"/>
                 <outlet property="moveToLowerLeftShortcutMenuItem" destination="eN5-A6-iho" id="g7a-5S-hng"/>
                 <outlet property="moveToLowerRightShortcutMenuItem" destination="oDU-J0-NkJ" id="XpK-S2-fel"/>
+                <outlet property="moveToLowerThirdLeftShortcutMenuItem" destination="F05-od-rIq" id="jlf-jc-TPV"/>
+                <outlet property="moveToLowerThirdRightShortcutMenuItem" destination="NNa-CJ-Tb6" id="Oex-hx-v9Q"/>
+                <outlet property="moveToMiddleThirdLeftShortcutMenuItem" destination="JlQ-qQ-DTO" id="9x0-U3-jRQ"/>
+                <outlet property="moveToMiddleThirdRightShortcutMenuItem" destination="NG4-Yp-pu3" id="hxS-dd-3pc"/>
+                <outlet property="moveToUpperThirdLeftShortcutMenuItem" destination="nXH-rp-rol" id="hPh-Wv-rmW"/>
+                <outlet property="moveToUpperThirdRightShortcutMenuItem" destination="qgH-NZ-f27" id="gbZ-4Q-8fm"/>
                 <outlet property="moveToNextDisplayShortcutMenuItem" destination="I4U-jL-hXq" id="EBQ-xh-fXk"/>
                 <outlet property="moveToNextThirdShortcutMenuItem" destination="7HO-L3-O6Q" id="yrD-z7-Yzl"/>
                 <outlet property="moveToPreviousDisplayShortcutMenuItem" destination="aPo-Rp-A1X" id="LFz-As-pEk"/>
@@ -142,6 +148,43 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveFrontmostWindowToLowerRight:" target="tMJ-JP-XRD" id="mBh-Kx-JVT"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="EWl-T1-xh9"/>
+                <menuItem title="Upper Third Left" id="nXH-rp-rol">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontmostWindowToUpperThirdLeft:" target="tMJ-JP-XRD" id="f7q-TC-xb2"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Middle Third Left" id="JlQ-qQ-DTO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontmostWindowToMiddleThirdLeft:" target="tMJ-JP-XRD" id="sPO-G0-dL6"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Lower Third Left" id="F05-od-rIq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontmostWindowToLowerThirdLeft:" target="tMJ-JP-XRD" id="VRx-Bm-qda"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Upper Third Right" id="qgH-NZ-f27">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontmostWindowToUpperThirdRight:" target="tMJ-JP-XRD" id="oeP-5q-75u"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Middle Third Right" id="NG4-Yp-pu3">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontmostWindowToMiddleThirdRight:" target="tMJ-JP-XRD" id="Xj1-SA-gNS"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Lower Third Right" id="NNa-CJ-Tb6">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFrontmostWindowToLowerThirdRight:" target="tMJ-JP-XRD" id="us9-v8-aAc"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="0li-21-m4g"/>
