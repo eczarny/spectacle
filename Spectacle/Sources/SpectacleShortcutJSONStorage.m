@@ -20,7 +20,7 @@
     NSLog(@"Deserializing shortcuts failed: %@", error.localizedDescription);
     return nil;
   }
-  return shortcutsFromJsonObject(jsonArray);
+  return shortcutsFromJsonObject(jsonArray, action);
 }
 
 - (void)storeShortcuts:(NSArray<SpectacleShortcut *> *)shortcuts
@@ -89,7 +89,7 @@ static NSArray<NSDictionary *> *jsonObjectFromShortcuts(NSArray<SpectacleShortcu
   return jsonArray;
 }
 
-static NSArray<SpectacleShortcut *> *shortcutsFromJsonObject(NSArray<NSDictionary *> *jsonArray)
+static NSArray<SpectacleShortcut *> *shortcutsFromJsonObject(NSArray<NSDictionary *> *jsonArray, SpectacleShortcutAction action)
 {
   NSMutableArray<SpectacleShortcut *> *shortcuts = [NSMutableArray new];
   for (NSDictionary *jsonObject in jsonArray) {
@@ -98,7 +98,8 @@ static NSArray<SpectacleShortcut *> *shortcutsFromJsonObject(NSArray<NSDictionar
     NSNumber *shortcutModifiers = jsonObject[@"shortcut_modifiers"];
     [shortcuts addObject:[[SpectacleShortcut alloc] initWithShortcutName:shortcutName
                                                             shortcutCode:[shortcutCode integerValue]
-                                                       shortcutModifiers:[shortcutModifiers unsignedIntegerValue]]];
+                                                       shortcutModifiers:[shortcutModifiers unsignedIntegerValue]
+                                                          shortcutAction:action]];
   }
   return shortcuts;
 }
