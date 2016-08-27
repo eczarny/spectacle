@@ -39,12 +39,7 @@ static EventHotKeyID currentShortcutID = {
     }
     currentShortcutID.id = ++currentShortcutID.id;
     shortcutHolder = [[SpectacleShortcutHolder alloc] initWithShortcutID:currentShortcutID shortcut:shortcut];
-    SpectacleShortcutHolder *registeredShortcutHolder = _areShorcutsEnabled ? [self registerEventHotKey:shortcutHolder] : shortcutHolder;
-    _registeredShortcutsByName[shortcutName] = [registeredShortcutHolder
-                                                copyWithShortcut:
-                                                [shortcut
-                                                 copyWithShortcutAction:
-                                                 shortcutHolder.shortcut.shortcutAction]];
+    _registeredShortcutsByName[shortcutName] = _areShorcutsEnabled ? [self registerEventHotKey:shortcutHolder] : shortcutHolder;
   }
   [self storeShortcuts];
 }
@@ -66,7 +61,7 @@ static EventHotKeyID currentShortcutID = {
                                               copyWithShortcut:
                                               [shortcut
                                                copyWithShortcutAction:
-                                               shortcutHolder.shortcut.shortcutAction]];
+                                               shortcut.shortcutAction ?: shortcutHolder.shortcut.shortcutAction]];
   [self storeShortcuts];
 }
 
