@@ -9,11 +9,11 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 
 @interface SpectacleShortcut : NSObject <NSCoding>
 
-@property (nonatomic, readonly) NSString *shortcutName;
-@property (nonatomic, readonly) NSInteger shortcutCode;
-@property (nonatomic, readonly) NSUInteger shortcutModifiers;
-@property (nonatomic, readonly) SpectacleShortcutAction shortcutAction;
-@property (nonatomic, readonly) SpectacleWindowAction *windowAction;
+@property (nonatomic, copy, readonly) NSString *shortcutName;
+@property (nonatomic, assign, readonly) NSInteger shortcutCode;
+@property (nonatomic, assign, readonly) NSUInteger shortcutModifiers;
+@property (nonatomic, strong, readonly) SpectacleShortcutAction shortcutAction;
+@property (nonatomic, strong, readonly) SpectacleWindowAction *windowAction;
 
 - (instancetype)initWithShortcutName:(NSString *)shortcutName
                         shortcutCode:(NSInteger)shortcutCode

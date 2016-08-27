@@ -7,12 +7,12 @@
 
 @interface SpectacleShortcutRecorderCell : NSCell
 
-@property (nonatomic) SpectacleShortcutRecorder *shortcutRecorder;
-@property (nonatomic) NSString *shortcutName;
-@property (nonatomic) SpectacleShortcut *shortcut;
+@property (nonatomic, strong) SpectacleShortcutRecorder *shortcutRecorder;
+@property (nonatomic, copy) NSString *shortcutName;
+@property (nonatomic, strong) SpectacleShortcut *shortcut;
 @property (nonatomic, weak) id<SpectacleShortcutRecorderDelegate> delegate;
-@property (nonatomic) NSArray<id<SpectacleShortcutValidator>> *additionalShortcutValidators;
-@property (nonatomic) SpectacleShortcutManager *shortcutManager;
+@property (nonatomic, copy) NSArray<id<SpectacleShortcutValidator>> *additionalShortcutValidators;
+@property (nonatomic, strong) SpectacleShortcutManager *shortcutManager;
 
 - (BOOL)resignFirstResponder;
 

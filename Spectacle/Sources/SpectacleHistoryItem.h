@@ -6,10 +6,10 @@
 
 @interface SpectacleHistoryItem : NSObject
 
-@property (nonatomic) SpectacleAccessibilityElement *accessibilityElement;
-@property (nonatomic) CGRect windowRect;
-@property (nonatomic) SpectacleHistoryItem *nextHistoryItem;
-@property (nonatomic) SpectacleHistoryItem *previousHistoryItem;
+@property (nonatomic, strong) SpectacleAccessibilityElement *accessibilityElement;
+@property (nonatomic, assign) CGRect windowRect;
+@property (nonatomic, strong) SpectacleHistoryItem *nextHistoryItem;
+@property (nonatomic, strong) SpectacleHistoryItem *previousHistoryItem;
 
 - (instancetype)initWithAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                   windowRect:(CGRect)windowRect NS_DESIGNATED_INITIALIZER;

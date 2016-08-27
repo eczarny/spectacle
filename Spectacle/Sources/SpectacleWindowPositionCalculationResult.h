@@ -5,8 +5,8 @@
 
 @interface SpectacleWindowPositionCalculationResult : NSObject
 
-@property (nonatomic, readonly) SpectacleWindowAction *action;
-@property (nonatomic, readonly) CGRect windowRect;
+@property (nonatomic, strong, readonly) SpectacleWindowAction *action;
+@property (nonatomic, assign, readonly) CGRect windowRect;
 
 - (instancetype)initWithAction:(SpectacleWindowAction *)action windowRect:(CGRect)windowRect NS_DESIGNATED_INITIALIZER;
 

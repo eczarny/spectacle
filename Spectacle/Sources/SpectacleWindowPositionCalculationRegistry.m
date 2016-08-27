@@ -4,7 +4,7 @@
 
 @interface SpectacleWindowPositionCalculationRegistry ()
 
-@property (nonatomic, readonly) SpectacleJavaScriptEnvironment *javaScriptEnvironment;
+@property (nonatomic, strong, readonly) SpectacleJavaScriptEnvironment *javaScriptEnvironment;
 
 @end
 
