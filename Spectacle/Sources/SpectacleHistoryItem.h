@@ -9,7 +9,7 @@
 @property (nonatomic, strong) SpectacleAccessibilityElement *accessibilityElement;
 @property (nonatomic, assign) CGRect windowRect;
 @property (nonatomic, strong) SpectacleHistoryItem *nextHistoryItem;
-@property (nonatomic, strong) SpectacleHistoryItem *previousHistoryItem;
+@property (nonatomic, weak) SpectacleHistoryItem *previousHistoryItem;
 
 - (instancetype)initWithAccessibilityElement:(SpectacleAccessibilityElement *)accessibilityElement
                                   windowRect:(CGRect)windowRect NS_DESIGNATED_INITIALIZER;
