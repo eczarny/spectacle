@@ -3,20 +3,25 @@
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslator.h"
 
-@implementation SpectacleShortcutTranslator
+typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
 {
-  NSDictionary<NSString *, NSDictionary *> *_specialShortcutTranslations;
-}
+  SpectacleUnicodeGlyphDeleteLeft = 0x232B,     // ⌫
+  SpectacleUnicodeGlyphDeleteRight = 0x2326,    // ⌦
+  SpectacleUnicodeGlyphDownArrow = 0x2193,      // ↓
+  SpectacleUnicodeGlyphEscape = 0x241B,         // ␛
+  SpectacleUnicodeGlyphLeftArrow = 0x2190,      // ←
+  SpectacleUnicodeGlyphNorthwestArrow = 0x2196, // ↖
+  SpectacleUnicodeGlyphPageDown = 0x21DF,       // ⇟
+  SpectacleUnicodeGlyphPageUp = 0x21DE,         // ⇞
+  SpectacleUnicodeGlyphReturn = 0x21A9,         // ↩
+  SpectacleUnicodeGlyphRightArrow = 0x2192,     // →
+  SpectacleUnicodeGlyphSoutheastArrow = 0x2198, // ↘
+  SpectacleUnicodeGlyphSpace = 0x0020,          // ' '
+  SpectacleUnicodeGlyphTabRight = 0x21E5,       // ⇥
+  SpectacleUnicodeGlyphUpArrow = 0x2191,        // ↑
+};
 
-+ (SpectacleShortcutTranslator *)sharedTranslator
-{
-  static SpectacleShortcutTranslator *sharedInstance = nil;
-  static dispatch_once_t predicate;
-  dispatch_once(&predicate, ^{
-    sharedInstance = [self new];
-  });
-  return sharedInstance;
-}
+@implementation SpectacleShortcutTranslator
 
 + (NSUInteger)convertModifiersToCarbonIfNecessary:(NSUInteger)modifiers
 {
@@ -88,67 +93,104 @@
   return modifierGlyphs;
 }
 
-- (NSString *)translateKeyCode:(NSInteger)keyCode
++ (NSString *)translateKeyCode:(NSInteger)keyCode
 {
-  NSDictionary<NSString *, NSString *> *keyCodeTranslations = nil;
-  NSString *result;
-  [self buildKeyCodeConvertorDictionary];
-  keyCodeTranslations = _specialShortcutTranslations[@"ShortcutTranslations"];
-  result = keyCodeTranslations[[NSString stringWithFormat:@"%d", (UInt32)keyCode]];
-  if (result) {
-    NSDictionary<NSString *, NSNumber *> *glyphTranslations = _specialShortcutTranslations[@"ShortcutGlyphTranslations"];
-    NSNumber *translatedGlyph = glyphTranslations[result];
-    if (translatedGlyph) {
-      result = [NSString stringWithFormat:@"%C", (UInt16)[translatedGlyph integerValue]];
-    }
-  } else {
-    TISInputSourceRef inputSource = TISCopyCurrentASCIICapableKeyboardLayoutInputSource();
-    CFDataRef layoutData = (CFDataRef)TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData);
-    const UCKeyboardLayout *keyboardLayout = nil;
-    UInt32 keysDown = 0;
-    UniCharCount length = 4;
-    UniCharCount actualLength = 0;
-    UniChar chars[4];
-    if (inputSource != NULL) {
-      CFRelease(inputSource);
-    }
-    if (layoutData == NULL) {
-      NSLog(@"Unable to determine keyboard layout.");
-      return @"?";
-    }
-    keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
-    OSStatus err = UCKeyTranslate(keyboardLayout,
-                                  keyCode,
-                                  kUCKeyActionDisplay,
-                                  0,
-                                  LMGetKbdType(),
-                                  kUCKeyTranslateNoDeadKeysBit,
-                                  &keysDown,
-                                  length,
-                                  &actualLength,
-                                  chars);
-    if (err) {
-      NSLog(@"There was a problem translating the key code.");
-      return @"?";
-    }
-    result = [[NSString stringWithCharacters:chars length:1] uppercaseString];
+  NSString *translatedSpecialKeyCode = specialKeyCodeTranslations()[@(keyCode)];
+  if (translatedSpecialKeyCode) {
+    return translatedSpecialKeyCode;
   }
-  return result;
+  TISInputSourceRef inputSource = TISCopyCurrentKeyboardLayoutInputSource();
+  if (!inputSource) {
+    return @"?";
+  }
+  CFDataRef layoutData = (CFDataRef)TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData);
+  CFRelease(inputSource);
+  if (!layoutData) {
+    inputSource = TISCopyCurrentASCIICapableKeyboardLayoutInputSource();
+    if (!inputSource) {
+      return @"?";
+    }
+    layoutData = (CFDataRef)TISGetInputSourceProperty(inputSource, kTISPropertyUnicodeKeyLayoutData);
+    CFRelease(inputSource);
+    if (!layoutData) {
+      return @"?";
+    }
+  }
+  const UCKeyboardLayout *keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
+  UInt32 deadKeyState = 0;
+  UniCharCount maximumStringLength = 4;
+  UniCharCount actualStringLength = 0;
+  UniChar unicodeString[maximumStringLength];
+  OSStatus err = UCKeyTranslate(keyboardLayout,
+                                keyCode,
+                                kUCKeyActionDisplay,
+                                0,
+                                LMGetKbdType(),
+                                kUCKeyTranslateNoDeadKeysBit,
+                                &deadKeyState,
+                                maximumStringLength,
+                                &actualStringLength,
+                                unicodeString);
+  if (err != noErr) {
+    return @"?";
+  }
+  return [[NSString stringWithCharacters:unicodeString length:actualStringLength] uppercaseString];
 }
 
-- (NSString *)translateShortcut:(SpectacleShortcut *)shortcut
++ (NSString *)translateShortcut:(SpectacleShortcut *)shortcut
 {
   NSUInteger modifiers = [SpectacleShortcutTranslator convertCarbonModifiersToCocoa:[shortcut shortcutModifiers]];
   return [NSString stringWithFormat:@"%@%@", [SpectacleShortcutTranslator translateCocoaModifiers:modifiers], [self translateKeyCode:shortcut.shortcutCode]];
 }
 
-- (void)buildKeyCodeConvertorDictionary
+static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void)
 {
-  if (!_specialShortcutTranslations) {
-    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-    NSString *path = [bundle pathForResource:@"ShortcutTranslations" ofType:@"plist"];
-    _specialShortcutTranslations = [[NSDictionary alloc] initWithContentsOfFile:path];
-  }
+  static dispatch_once_t onceToken;
+  static NSDictionary<NSNumber *, NSString *> *result;
+  dispatch_once(&onceToken, ^{
+    result = @{
+               @(kVK_F1): @"F1",
+               @(kVK_F2): @"F2",
+               @(kVK_F3): @"F3",
+               @(kVK_F4): @"F4",
+               @(kVK_F5): @"F5",
+               @(kVK_F6): @"F6",
+               @(kVK_F7): @"F7",
+               @(kVK_F8): @"F8",
+               @(kVK_F9): @"F9",
+               @(kVK_F10): @"F10",
+               @(kVK_F11): @"F11",
+               @(kVK_F12): @"F12",
+               @(kVK_F13): @"F13",
+               @(kVK_F14): @"F14",
+               @(kVK_F15): @"F15",
+               @(kVK_F16): @"F16",
+               @(kVK_F17): @"F17",
+               @(kVK_F18): @"F18",
+               @(kVK_F19): @"F19",
+               @(kVK_F20): @"F20",
+               @(kVK_Delete): glyphForUnicodeChar(SpectacleUnicodeGlyphDeleteLeft),
+               @(kVK_DownArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphDownArrow),
+               @(kVK_End): glyphForUnicodeChar(SpectacleUnicodeGlyphSoutheastArrow),
+               @(kVK_Escape): glyphForUnicodeChar(SpectacleUnicodeGlyphEscape),
+               @(kVK_ForwardDelete): glyphForUnicodeChar(SpectacleUnicodeGlyphDeleteRight),
+               @(kVK_Home): glyphForUnicodeChar(SpectacleUnicodeGlyphNorthwestArrow),
+               @(kVK_LeftArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphLeftArrow),
+               @(kVK_PageDown): glyphForUnicodeChar(SpectacleUnicodeGlyphPageDown),
+               @(kVK_PageUp): glyphForUnicodeChar(SpectacleUnicodeGlyphPageUp),
+               @(kVK_Return): glyphForUnicodeChar(SpectacleUnicodeGlyphReturn),
+               @(kVK_RightArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphRightArrow),
+               @(kVK_Space): glyphForUnicodeChar(SpectacleUnicodeGlyphSpace),
+               @(kVK_Tab): glyphForUnicodeChar(SpectacleUnicodeGlyphTabRight),
+               @(kVK_UpArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphUpArrow),
+               };
+  });
+  return result;
+}
+
+static NSString *glyphForUnicodeChar(unichar unicodeChar)
+{
+  return [NSString stringWithFormat: @"%C", unicodeChar];
 }
 
 @end

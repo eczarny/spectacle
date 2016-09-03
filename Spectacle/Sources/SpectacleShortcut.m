@@ -111,7 +111,7 @@
 
 - (NSString *)displayString
 {
-  return [[SpectacleShortcutTranslator sharedTranslator] translateShortcut:self];
+  return [SpectacleShortcutTranslator translateShortcut:self];
 }
 
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers

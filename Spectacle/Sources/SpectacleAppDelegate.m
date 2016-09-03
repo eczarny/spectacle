@@ -313,12 +313,11 @@
 
 - (void)updateShortcutMenuItems
 {
-  SpectacleShortcutTranslator *shortcutTranslator = [SpectacleShortcutTranslator sharedTranslator];
   for (NSString *shortcutName in _shortcutMenuItems.allKeys) {
     NSMenuItem *shortcutMenuItem = _shortcutMenuItems[shortcutName];
     SpectacleShortcut *shortcut = [_shortcutManager shortcutForShortcutName:shortcutName];
     if (shortcut) {
-      shortcutMenuItem.keyEquivalent = [[shortcutTranslator translateKeyCode:shortcut.shortcutCode] lowercaseString];
+      shortcutMenuItem.keyEquivalent = [[SpectacleShortcutTranslator translateKeyCode:shortcut.shortcutCode] lowercaseString];
       shortcutMenuItem.keyEquivalentModifierMask = [SpectacleShortcutTranslator convertModifiersToCocoaIfNecessary:shortcut.shortcutModifiers];
     } else {
       shortcutMenuItem.keyEquivalent = @"";

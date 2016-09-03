@@ -86,7 +86,7 @@
                    description:(NSString *)description
             recoverySuggestion:(NSString *)recoverySuggestion
 {
-  NSString *shortcutString = [[SpectacleShortcutTranslator sharedTranslator] translateShortcut:shortcut];
+  NSString *shortcutString = [SpectacleShortcutTranslator translateShortcut:shortcut];
   return [NSError errorWithDomain:NSCocoaErrorDomain
                              code:0
                          userInfo:@{
