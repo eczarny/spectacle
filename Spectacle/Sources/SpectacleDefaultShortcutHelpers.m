@@ -4,7 +4,7 @@
 
 static NSArray<SpectacleShortcut *> *builtinDefaultShortcuts(void);
 
-extern NSArray<SpectacleShortcut *> *SpectacleDefaultShortcutsWithAction(SpectacleShortcutAction action)
+NSArray<SpectacleShortcut *> *SpectacleDefaultShortcutsWithAction(SpectacleShortcutAction action)
 {
   NSMutableArray<SpectacleShortcut *> *defaultShortcuts = [NSMutableArray new];
   for (SpectacleShortcut *defaultShortcut in builtinDefaultShortcuts()) {

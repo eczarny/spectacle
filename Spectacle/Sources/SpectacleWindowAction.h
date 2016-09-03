@@ -22,9 +22,9 @@ extern SpectacleWindowAction *const kSpectacleWindowActionPreviousDisplay;
 extern SpectacleWindowAction *const kSpectacleWindowActionNextThird;
 extern SpectacleWindowAction *const kSpectacleWindowActionPreviousThird;
 
-extern BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action);
-extern BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action);
+BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action);
+BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action);
 
-extern BOOL SpectacleIsNextDisplayWindowAction(SpectacleWindowAction *action);
-extern BOOL SpectacleIsPreviousDisplayWindowAction(SpectacleWindowAction *action);
-extern BOOL SpectacleIsMovingToDisplayWindowAction(SpectacleWindowAction *action);
+BOOL SpectacleIsNextDisplayWindowAction(SpectacleWindowAction *action);
+BOOL SpectacleIsPreviousDisplayWindowAction(SpectacleWindowAction *action);
+BOOL SpectacleIsMovingToDisplayWindowAction(SpectacleWindowAction *action);

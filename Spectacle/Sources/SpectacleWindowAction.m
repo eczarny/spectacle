@@ -20,12 +20,12 @@ SpectacleWindowAction *const kSpectacleWindowActionPreviousDisplay = @"Spectacle
 SpectacleWindowAction *const kSpectacleWindowActionNextThird = @"SpectacleWindowActionNextThird";
 SpectacleWindowAction *const kSpectacleWindowActionPreviousThird = @"SpectacleWindowActionPreviousThird";
 
-extern BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action)
+BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action)
 {
   return [action isEqualToString:kSpectacleWindowActionUndo];
 }
 
-extern BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action)
+BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action)
 {
   return [action isEqualToString:kSpectacleWindowActionRedo];
 }

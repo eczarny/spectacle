@@ -2,4 +2,4 @@
 
 #import "SpectacleShortcut.h"
 
-extern NSArray<SpectacleShortcut *> *SpectacleDefaultShortcutsWithAction(SpectacleShortcutAction action);
+NSArray<SpectacleShortcut *> *SpectacleDefaultShortcutsWithAction(SpectacleShortcutAction action);
