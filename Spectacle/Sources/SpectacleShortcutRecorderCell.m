@@ -2,7 +2,7 @@
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleShortcutRecorderCell.h"
 #import "SpectacleShortcutRecorderDelegate.h"
-#import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutValidation.h"
 
 #define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
@@ -275,7 +275,7 @@
   }
   // Recording is in progress and modifier flags have already been set, display them.
   if (_isRecording && (_modifierFlags > 0)) {
-    label = [SpectacleShortcutTranslator translateCocoaModifiers:_modifierFlags];
+    label = SpectacleTranslateCocoaModifiers(_modifierFlags);
   }
   if (!self.isEnabled) {
     foregroundColor = NSColor.disabledControlTextColor;

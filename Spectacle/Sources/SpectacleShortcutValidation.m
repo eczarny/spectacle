@@ -1,5 +1,5 @@
 #import "SpectacleShortcut.h"
-#import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutValidator.h"
 #import "SpectacleShortcutValidation.h"
 
@@ -79,14 +79,14 @@
 
 + (BOOL)shortcut:(SpectacleShortcut *)shortcut containsModifiers:(NSUInteger)modifiers
 {
-  return shortcut.shortcutModifiers == [SpectacleShortcutTranslator convertModifiersToCarbonIfNecessary:modifiers];
+  return shortcut.shortcutModifiers == SpectacleConvertModifiersToCarbonIfNecessary(modifiers);
 }
 
 + (NSError *)errorWithShortcut:(SpectacleShortcut *)shortcut
                    description:(NSString *)description
             recoverySuggestion:(NSString *)recoverySuggestion
 {
-  NSString *shortcutString = [SpectacleShortcutTranslator translateShortcut:shortcut];
+  NSString *shortcutString = SpectacleTranslateShortcut(shortcut);
   return [NSError errorWithDomain:NSCocoaErrorDomain
                              code:0
                          userInfo:@{

@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcut.h"
-#import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutTranslations.h"
 
 @implementation SpectacleShortcut
 
@@ -23,7 +23,7 @@
   if (self = [super init]) {
     _shortcutName = shortcutName;
     _shortcutCode = shortcutCode;
-    _shortcutModifiers = [SpectacleShortcutTranslator convertModifiersToCarbonIfNecessary:shortcutModifiers];
+    _shortcutModifiers = SpectacleConvertModifiersToCarbonIfNecessary(shortcutModifiers);
     _shortcutAction = shortcutAction;
   }
   return self;
@@ -111,7 +111,7 @@
 
 - (NSString *)displayString
 {
-  return [SpectacleShortcutTranslator translateShortcut:self];
+  return SpectacleTranslateShortcut(self);
 }
 
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers

@@ -8,7 +8,7 @@
 #import "SpectacleScreenDetector.h"
 #import "SpectacleShortcutJSONStorage.h"
 #import "SpectacleShortcutManager.h"
-#import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutUserDefaultsStorage.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionCalculator.h"
@@ -317,8 +317,8 @@
     NSMenuItem *shortcutMenuItem = _shortcutMenuItems[shortcutName];
     SpectacleShortcut *shortcut = [_shortcutManager shortcutForShortcutName:shortcutName];
     if (shortcut) {
-      shortcutMenuItem.keyEquivalent = [[SpectacleShortcutTranslator translateKeyCode:shortcut.shortcutCode] lowercaseString];
-      shortcutMenuItem.keyEquivalentModifierMask = [SpectacleShortcutTranslator convertModifiersToCocoaIfNecessary:shortcut.shortcutModifiers];
+      shortcutMenuItem.keyEquivalent = [SpectacleTranslateKeyCode(shortcut.shortcutCode) lowercaseString];
+      shortcutMenuItem.keyEquivalentModifierMask = SpectacleConvertModifiersToCocoaIfNecessary(shortcut.shortcutModifiers);
     } else {
       shortcutMenuItem.keyEquivalent = @"";
       shortcutMenuItem.keyEquivalentModifierMask = 0;

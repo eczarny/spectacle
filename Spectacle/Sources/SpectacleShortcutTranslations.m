@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcut.h"
-#import "SpectacleShortcutTranslator.h"
+#import "SpectacleShortcutTranslations.h"
 
 typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
 {
@@ -21,25 +21,26 @@ typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
   SpectacleUnicodeGlyphUpArrow = 0x2191,        // ↑
 };
 
-@implementation SpectacleShortcutTranslator
+static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void);
+static NSString *glyphForUnicodeChar(unichar unicodeChar);
 
-+ (NSUInteger)convertModifiersToCarbonIfNecessary:(NSUInteger)modifiers
+NSUInteger SpectacleConvertModifiersToCarbonIfNecessary(NSUInteger modifiers)
 {
   if ([SpectacleShortcut validCocoaModifiers:modifiers]) {
-    modifiers = [self convertCocoaModifiersToCarbon:modifiers];
+    modifiers = SpectacleConvertCocoaModifiersToCarbon(modifiers);
   }
   return modifiers;
 }
 
-+ (NSUInteger)convertModifiersToCocoaIfNecessary:(NSUInteger)modifiers
+NSUInteger SpectacleConvertModifiersToCocoaIfNecessary(NSUInteger modifiers)
 {
   if (![SpectacleShortcut validCocoaModifiers:modifiers]) {
-    modifiers = [self convertCarbonModifiersToCocoa:modifiers];
+    modifiers = SpectacleConvertCarbonModifiersToCocoa(modifiers);
   }
   return modifiers;
 }
 
-+ (NSUInteger)convertCocoaModifiersToCarbon:(NSUInteger)modifiers
+NSUInteger SpectacleConvertCocoaModifiersToCarbon(NSUInteger modifiers)
 {
   NSUInteger convertedModifiers = 0;
   if (modifiers & NSControlKeyMask) {
@@ -57,7 +58,7 @@ typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
   return convertedModifiers;
 }
 
-+ (NSUInteger)convertCarbonModifiersToCocoa:(NSUInteger)modifiers
+NSUInteger SpectacleConvertCarbonModifiersToCocoa(NSUInteger modifiers)
 {
   NSUInteger convertedModifiers = 0;
   if (modifiers & controlKey) {
@@ -75,7 +76,7 @@ typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
   return convertedModifiers;
 }
 
-+ (NSString *)translateCocoaModifiers:(NSUInteger)modifiers
+NSString *SpectacleTranslateCocoaModifiers(NSUInteger modifiers)
 {
   NSString *modifierGlyphs = @"";
   if (modifiers & NSControlKeyMask) {
@@ -93,7 +94,7 @@ typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
   return modifierGlyphs;
 }
 
-+ (NSString *)translateKeyCode:(NSInteger)keyCode
+NSString *SpectacleTranslateKeyCode(NSInteger keyCode)
 {
   NSString *translatedSpecialKeyCode = specialKeyCodeTranslations()[@(keyCode)];
   if (translatedSpecialKeyCode) {
@@ -137,10 +138,10 @@ typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
   return [[NSString stringWithCharacters:unicodeString length:actualStringLength] uppercaseString];
 }
 
-+ (NSString *)translateShortcut:(SpectacleShortcut *)shortcut
+NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut)
 {
-  NSUInteger modifiers = [SpectacleShortcutTranslator convertCarbonModifiersToCocoa:[shortcut shortcutModifiers]];
-  return [NSString stringWithFormat:@"%@%@", [SpectacleShortcutTranslator translateCocoaModifiers:modifiers], [self translateKeyCode:shortcut.shortcutCode]];
+  NSUInteger modifiers = SpectacleConvertCarbonModifiersToCocoa([shortcut shortcutModifiers]);
+  return [NSString stringWithFormat:@"%@%@", SpectacleTranslateCocoaModifiers(modifiers), SpectacleTranslateKeyCode(shortcut.shortcutCode)];
 }
 
 static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void)
@@ -193,4 +194,3 @@ static NSString *glyphForUnicodeChar(unichar unicodeChar)
   return [NSString stringWithFormat: @"%C", unicodeChar];
 }
 
-@end
