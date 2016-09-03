@@ -1,7 +1,8 @@
+#import "SpectacleShortcutTranslations.h"
+
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcut.h"
-#import "SpectacleShortcutTranslations.h"
 
 typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
 {

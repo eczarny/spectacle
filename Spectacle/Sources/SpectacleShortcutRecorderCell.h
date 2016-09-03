@@ -1,6 +1,8 @@
 #import <Cocoa/Cocoa.h>
 
+@class SpectacleShortcut;
 @class SpectacleShortcutManager;
+@class SpectacleShortcutRecorder;
 
 @protocol SpectacleShortcutRecorderDelegate;
 @protocol SpectacleShortcutValidator;

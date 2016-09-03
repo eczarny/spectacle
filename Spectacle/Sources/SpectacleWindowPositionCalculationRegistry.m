@@ -1,5 +1,6 @@
-#import "SpectacleJavaScriptEnvironment.h"
 #import "SpectacleWindowPositionCalculationRegistry.h"
+
+#import "SpectacleJavaScriptEnvironment.h"
 #import "SpectacleWindowPositionCalculationResult.h"
 
 @interface SpectacleWindowPositionCalculationRegistry ()

@@ -1,6 +1,7 @@
+#import "SpectacleShortcut.h"
+
 #import <Cocoa/Cocoa.h>
 
-#import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslations.h"
 
 @implementation SpectacleShortcut

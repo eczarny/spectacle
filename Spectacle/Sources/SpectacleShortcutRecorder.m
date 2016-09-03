@@ -1,5 +1,6 @@
-#import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutRecorder.h"
+
+#import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutRecorderCell.h"
 
 @implementation SpectacleShortcutRecorder

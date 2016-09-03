@@ -1,8 +1,9 @@
+#import "SpectacleShortcutManager.h"
+
 #import <Carbon/Carbon.h>
 
 #import "SpectacleShortcutHolder.h"
 #import "SpectacleShortcut.h"
-#import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutStorage.h"
 
 static EventHotKeyID currentShortcutID = {

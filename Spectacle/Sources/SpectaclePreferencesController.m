@@ -1,9 +1,10 @@
+#import "SpectaclePreferencesController.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleDefaultShortcutHelpers.h"
 #import "SpectacleLoginItemHelper.h"
-#import "SpectaclePreferencesController.h"
 #import "SpectacleRegisteredShortcutValidator.h"
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutManager.h"

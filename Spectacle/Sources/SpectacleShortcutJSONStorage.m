@@ -1,6 +1,6 @@
-#import <Cocoa/Cocoa.h>
-
 #import "SpectacleShortcutJSONStorage.h"
+
+#import <Cocoa/Cocoa.h>
 
 @implementation SpectacleShortcutJSONStorage
 

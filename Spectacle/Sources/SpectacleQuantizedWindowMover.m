@@ -1,5 +1,6 @@
-#import "SpectacleAccessibilityElement.h"
 #import "SpectacleQuantizedWindowMover.h"
+
+#import "SpectacleAccessibilityElement.h"
 
 @implementation SpectacleQuantizedWindowMover
 {

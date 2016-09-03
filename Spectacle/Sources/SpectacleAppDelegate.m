@@ -1,7 +1,8 @@
+#import "SpectacleAppDelegate.h"
+
 #import <Sparkle/Sparkle.h>
 
 #import "SpectacleAccessibilityElement.h"
-#import "SpectacleAppDelegate.h"
 #import "SpectacleDefaultShortcutHelpers.h"
 #import "SpectacleMigratingShortcutStorage.h"
 #import "SpectaclePreferencesController.h"

@@ -1,6 +1,6 @@
-#import <JavaScriptCore/JavaScriptCore.h>
-
 #import "SpectacleJavaScriptEnvironment.h"
+
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @implementation SpectacleJavaScriptEnvironment
 {

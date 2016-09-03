@@ -1,8 +1,7 @@
-#import "SpectacleAccessibilityElement.h"
-#import "SpectacleScreenDetectionResult.h"
 #import "SpectacleScreenDetector.h"
 
-#define AreaOfRect(a) (CGFloat)(a.size.width * a.size.height)
+#import "SpectacleAccessibilityElement.h"
+#import "SpectacleScreenDetectionResult.h"
 
 @implementation SpectacleScreenDetector
 
@@ -53,7 +52,7 @@
   CGRect intersectionOfRectAndFrameOfScreen = CGRectIntersection(rect, frameOfScreen);
   CGFloat result = 0.0f;
   if (!CGRectIsNull(intersectionOfRectAndFrameOfScreen)) {
-    result = AreaOfRect(intersectionOfRectAndFrameOfScreen) / AreaOfRect(rect);
+    result = computeAreaOfRect(intersectionOfRectAndFrameOfScreen) / computeAreaOfRect(rect);
   }
   return result;
 }
@@ -106,6 +105,11 @@
     }
     return (NSComparisonResult)(screenTwo.frame.origin.x - screenOne.frame.origin.x);
   }];
+}
+
+static CGFloat computeAreaOfRect(CGRect rect)
+{
+  return rect.size.width * rect.size.height;
 }
 
 @end

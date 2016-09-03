@@ -2,6 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SpectacleShortcut;
 @class SpectacleShortcutManager;
 
 @protocol SpectacleShortcutRecorderDelegate;

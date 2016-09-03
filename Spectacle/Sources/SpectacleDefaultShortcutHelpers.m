@@ -1,6 +1,6 @@
-#import <Cocoa/Cocoa.h>
-
 #import "SpectacleDefaultShortcutHelpers.h"
+
+#import <Cocoa/Cocoa.h>
 
 static NSArray<SpectacleShortcut *> *builtinDefaultShortcuts(void);
 

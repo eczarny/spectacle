@@ -1,7 +1,8 @@
+#import "SpectacleShortcutValidation.h"
+
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutValidator.h"
-#import "SpectacleShortcutValidation.h"
 
 @implementation SpectacleShortcutValidation
 

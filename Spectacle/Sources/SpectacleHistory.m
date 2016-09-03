@@ -1,4 +1,5 @@
 #import "SpectacleHistory.h"
+
 #import "SpectacleHistoryItem.h"
 
 @implementation SpectacleHistory

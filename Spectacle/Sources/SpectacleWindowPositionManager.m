@@ -1,3 +1,5 @@
+#import "SpectacleWindowPositionManager.h"
+
 #import "SpectacleAccessibilityElement.h"
 #import "SpectacleBestEffortWindowMover.h"
 #import "SpectacleHistory.h"
@@ -9,7 +11,6 @@
 #import "SpectacleStandardWindowMover.h"
 #import "SpectacleWindowPositionCalculationResult.h"
 #import "SpectacleWindowPositionCalculator.h"
-#import "SpectacleWindowPositionManager.h"
 
 @implementation SpectacleWindowPositionManager
 {

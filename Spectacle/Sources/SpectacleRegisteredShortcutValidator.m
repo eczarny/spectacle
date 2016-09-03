@@ -1,4 +1,5 @@
 #import "SpectacleRegisteredShortcutValidator.h"
+
 #import "SpectacleShortcutManager.h"
 
 @implementation SpectacleRegisteredShortcutValidator

@@ -1,11 +1,10 @@
+#import "SpectacleShortcutRecorderCell.h"
+
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutRecorder.h"
-#import "SpectacleShortcutRecorderCell.h"
 #import "SpectacleShortcutRecorderDelegate.h"
 #import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutValidation.h"
-
-#define MakeRelativePoint(a, b, c) NSMakePoint((a * horizontalScale) + c.origin.x, (b * verticalScale) + c.origin.y)
 
 @implementation SpectacleShortcutRecorderCell
 {
@@ -223,10 +222,10 @@
   [NSColor.whiteColor setStroke];
   NSBezierPath *cross = [NSBezierPath new];
   [cross setLineWidth:horizontalScale * 1.4f];
-  [cross moveToPoint:MakeRelativePoint(4.0f, 4.0f, rect)];
-  [cross lineToPoint:MakeRelativePoint(9.0f, 9.0f, rect)];
-  [cross moveToPoint:MakeRelativePoint(9.0f, 4.0f, rect)];
-  [cross lineToPoint:MakeRelativePoint(4.0f, 9.0f, rect)];
+  [cross moveToPoint:relativePointInRect(4.0f, 4.0f, rect, horizontalScale, verticalScale)];
+  [cross lineToPoint:relativePointInRect(9.0f, 9.0f, rect, horizontalScale, verticalScale)];
+  [cross moveToPoint:relativePointInRect(9.0f, 4.0f, rect, horizontalScale, verticalScale)];
+  [cross lineToPoint:relativePointInRect(4.0f, 9.0f, rect, horizontalScale, verticalScale)];
   [cross stroke];
   [NSGraphicsContext.currentContext restoreGraphicsState];
 }
@@ -238,22 +237,22 @@
   [NSGraphicsContext.currentContext saveGraphicsState];
   NSBezierPath *swoosh = [NSBezierPath new];
   [swoosh setLineWidth:horizontalScale];
-  [swoosh moveToPoint:MakeRelativePoint(0.0489685f, 0.6181513f, rect)];
-  [swoosh lineToPoint:MakeRelativePoint(0.4085750f, 0.9469318f, rect)];
-  [swoosh lineToPoint:MakeRelativePoint(0.4085750f, 0.7226146f, rect)];
-  [swoosh curveToPoint:MakeRelativePoint(0.8508247f, 0.4836237f, rect)
-         controlPoint1:MakeRelativePoint(0.4085750f, 0.7226146f, rect)
-         controlPoint2:MakeRelativePoint(0.8371143f, 0.7491841f, rect)];
-  [swoosh curveToPoint:MakeRelativePoint(0.5507195f, 0.0530682f, rect)
-         controlPoint1:MakeRelativePoint(0.8677834f, 0.1545071f, rect)
-         controlPoint2:MakeRelativePoint(0.5507195f, 0.0530682f, rect)];
-  [swoosh curveToPoint:MakeRelativePoint(0.7421721f, 0.3391942f, rect)
-         controlPoint1:MakeRelativePoint(0.5507195f, 0.0530682f, rect)
-         controlPoint2:MakeRelativePoint(0.7458685f, 0.1913146f, rect)];
-  [swoosh curveToPoint:MakeRelativePoint(0.4085750f, 0.5154130f, rect)
-         controlPoint1:MakeRelativePoint(0.7383412f, 0.4930328f, rect)
-         controlPoint2:MakeRelativePoint(0.4085750f, 0.5154130f, rect)];
-  [swoosh lineToPoint:MakeRelativePoint(0.4085750f, 0.2654000f, rect)];
+  [swoosh moveToPoint:relativePointInRect(0.0489685f, 0.6181513f, rect, horizontalScale, verticalScale)];
+  [swoosh lineToPoint:relativePointInRect(0.4085750f, 0.9469318f, rect, horizontalScale, verticalScale)];
+  [swoosh lineToPoint:relativePointInRect(0.4085750f, 0.7226146f, rect, horizontalScale, verticalScale)];
+  [swoosh curveToPoint:relativePointInRect(0.8508247f, 0.4836237f, rect, horizontalScale, verticalScale)
+         controlPoint1:relativePointInRect(0.4085750f, 0.7226146f, rect, horizontalScale, verticalScale)
+         controlPoint2:relativePointInRect(0.8371143f, 0.7491841f, rect, horizontalScale, verticalScale)];
+  [swoosh curveToPoint:relativePointInRect(0.5507195f, 0.0530682f, rect, horizontalScale, verticalScale)
+         controlPoint1:relativePointInRect(0.8677834f, 0.1545071f, rect, horizontalScale, verticalScale)
+         controlPoint2:relativePointInRect(0.5507195f, 0.0530682f, rect, horizontalScale, verticalScale)];
+  [swoosh curveToPoint:relativePointInRect(0.7421721f, 0.3391942f, rect, horizontalScale, verticalScale)
+         controlPoint1:relativePointInRect(0.5507195f, 0.0530682f, rect, horizontalScale, verticalScale)
+         controlPoint2:relativePointInRect(0.7458685f, 0.1913146f, rect, horizontalScale, verticalScale)];
+  [swoosh curveToPoint:relativePointInRect(0.4085750f, 0.5154130f, rect, horizontalScale, verticalScale)
+         controlPoint1:relativePointInRect(0.7383412f, 0.4930328f, rect, horizontalScale, verticalScale)
+         controlPoint2:relativePointInRect(0.4085750f, 0.5154130f, rect, horizontalScale, verticalScale)];
+  [swoosh lineToPoint:relativePointInRect(0.4085750f, 0.2654000f, rect, horizontalScale, verticalScale)];
   [swoosh fill];
   [NSGraphicsContext.currentContext restoreGraphicsState];
 }
@@ -310,6 +309,11 @@
   stringAttributes[NSParagraphStyleAttributeName] = paragraphStyle;
   stringAttributes[NSShadowAttributeName] = textShadow;
   return stringAttributes;
+}
+
+static NSPoint relativePointInRect(CGFloat x, CGFloat y, CGRect rect, CGFloat horizontalScale, CGFloat verticalScale)
+{
+  return NSMakePoint((x * horizontalScale) + rect.origin.x, (y * verticalScale) + rect.origin.y);
 }
 
 @end
