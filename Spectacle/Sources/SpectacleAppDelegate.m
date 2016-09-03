@@ -318,7 +318,7 @@
     NSMenuItem *shortcutMenuItem = _shortcutMenuItems[shortcutName];
     SpectacleShortcut *shortcut = [_shortcutManager shortcutForShortcutName:shortcutName];
     if (shortcut) {
-      shortcutMenuItem.keyEquivalent = [SpectacleTranslateKeyCode(shortcut.shortcutCode) lowercaseString];
+      shortcutMenuItem.keyEquivalent = [SpectacleTranslateKeyCode(shortcut.shortcutCode, shortcut.shortcutModifiers) lowercaseString];
       shortcutMenuItem.keyEquivalentModifierMask = SpectacleConvertModifiersToCocoaIfNecessary(shortcut.shortcutModifiers);
     } else {
       shortcutMenuItem.keyEquivalent = @"";

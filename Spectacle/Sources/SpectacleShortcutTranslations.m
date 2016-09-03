@@ -77,25 +77,7 @@ NSUInteger SpectacleConvertCarbonModifiersToCocoa(NSUInteger modifiers)
   return convertedModifiers;
 }
 
-NSString *SpectacleTranslateCocoaModifiers(NSUInteger modifiers)
-{
-  NSString *modifierGlyphs = @"";
-  if (modifiers & NSControlKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kControlUnicode];
-  }
-  if (modifiers & NSAlternateKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kOptionUnicode];
-  }
-  if (modifiers & NSShiftKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kShiftUnicode];
-  }
-  if (modifiers & NSCommandKeyMask) {
-    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kCommandUnicode];
-  }
-  return modifierGlyphs;
-}
-
-NSString *SpectacleTranslateKeyCode(NSInteger keyCode)
+NSString *SpectacleTranslateKeyCode(NSInteger keyCode, NSUInteger modifiers)
 {
   NSString *translatedSpecialKeyCode = specialKeyCodeTranslations()[@(keyCode)];
   if (translatedSpecialKeyCode) {
@@ -126,7 +108,7 @@ NSString *SpectacleTranslateKeyCode(NSInteger keyCode)
   OSStatus err = UCKeyTranslate(keyboardLayout,
                                 keyCode,
                                 kUCKeyActionDisplay,
-                                0,
+                                (SpectacleConvertModifiersToCocoaIfNecessary(modifiers) >> 8) & 0xFF,
                                 LMGetKbdType(),
                                 kUCKeyTranslateNoDeadKeysBit,
                                 &deadKeyState,
@@ -139,10 +121,30 @@ NSString *SpectacleTranslateKeyCode(NSInteger keyCode)
   return [[NSString stringWithCharacters:unicodeString length:actualStringLength] uppercaseString];
 }
 
+NSString *SpectacleTranslateModifiers(NSUInteger modifiers)
+{
+  NSString *modifierGlyphs = @"";
+  modifiers = SpectacleConvertModifiersToCocoaIfNecessary(modifiers);
+  if (modifiers & NSControlKeyMask) {
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kControlUnicode];
+  }
+  if (modifiers & NSAlternateKeyMask) {
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kOptionUnicode];
+  }
+  if (modifiers & NSShiftKeyMask) {
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kShiftUnicode];
+  }
+  if (modifiers & NSCommandKeyMask) {
+    modifierGlyphs = [modifierGlyphs stringByAppendingFormat:@"%C", (UInt16)kCommandUnicode];
+  }
+  return modifierGlyphs;
+}
+
 NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut)
 {
-  NSUInteger modifiers = SpectacleConvertCarbonModifiersToCocoa([shortcut shortcutModifiers]);
-  return [NSString stringWithFormat:@"%@%@", SpectacleTranslateCocoaModifiers(modifiers), SpectacleTranslateKeyCode(shortcut.shortcutCode)];
+  return [NSString stringWithFormat:@"%@%@",
+          SpectacleTranslateModifiers(shortcut.shortcutModifiers),
+          SpectacleTranslateKeyCode(shortcut.shortcutCode, shortcut.shortcutModifiers)];
 }
 
 static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void)

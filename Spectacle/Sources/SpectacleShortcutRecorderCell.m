@@ -274,7 +274,7 @@
   }
   // Recording is in progress and modifier flags have already been set, display them.
   if (_isRecording && (_modifierFlags > 0)) {
-    label = SpectacleTranslateCocoaModifiers(_modifierFlags);
+    label = SpectacleTranslateModifiers(_modifierFlags);
   }
   if (!self.isEnabled) {
     foregroundColor = NSColor.disabledControlTextColor;
