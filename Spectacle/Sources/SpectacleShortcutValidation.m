@@ -1,5 +1,7 @@
 #import "SpectacleShortcutValidation.h"
 
+#import <Carbon/Carbon.h>
+
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutValidator.h"

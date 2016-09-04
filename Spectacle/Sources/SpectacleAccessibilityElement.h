@@ -1,5 +1,3 @@
-#import <AppKit/AppKit.h>
-
 #import <Carbon/Carbon.h>
 
 @interface SpectacleAccessibilityElement : NSObject

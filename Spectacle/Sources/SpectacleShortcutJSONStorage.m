@@ -1,7 +1,5 @@
 #import "SpectacleShortcutJSONStorage.h"
 
-#import <Cocoa/Cocoa.h>
-
 @implementation SpectacleShortcutJSONStorage
 
 - (NSArray<SpectacleShortcut *> *)loadShortcutsWithAction:(SpectacleShortcutAction)action

@@ -1,5 +1,7 @@
 #import "SpectacleShortcutRecorderCell.h"
 
+#import <Carbon/Carbon.h>
+
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleShortcutRecorderDelegate.h"

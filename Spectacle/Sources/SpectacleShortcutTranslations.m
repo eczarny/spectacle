@@ -1,5 +1,6 @@
 #import "SpectacleShortcutTranslations.h"
 
+#import <Carbon/Carbon.h>
 #import <Cocoa/Cocoa.h>
 
 #import "SpectacleShortcut.h"
@@ -196,4 +197,3 @@ static NSString *glyphForUnicodeChar(unichar unicodeChar)
 {
   return [NSString stringWithFormat: @"%C", unicodeChar];
 }
-

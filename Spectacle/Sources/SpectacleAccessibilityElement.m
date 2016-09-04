@@ -1,5 +1,7 @@
 #import "SpectacleAccessibilityElement.h"
 
+#import <AppKit/AppKit.h>
+
 @implementation SpectacleAccessibilityElement
 {
   AXUIElementRef _underlyingElement;

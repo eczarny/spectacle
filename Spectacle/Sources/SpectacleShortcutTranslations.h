@@ -1,7 +1,3 @@
-#import <Carbon/Carbon.h>
-
-#import <CoreServices/CoreServices.h>
-
 #import <Foundation/Foundation.h>
 
 @class SpectacleShortcut;
