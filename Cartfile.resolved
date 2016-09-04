@@ -1,4 +1,4 @@
-github "hamcrest/OCHamcrest" "v5.4.0"
+github "hamcrest/OCHamcrest" "v5.3.0"
 github "sparkle-project/Sparkle" "1.14.0"
 github "specta/expecta" "v1.0.5"
 github "specta/specta" "v1.0.5"
