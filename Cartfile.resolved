@@ -1,5 +1,5 @@
-github "hamcrest/OCHamcrest" "v5.2.0"
+github "hamcrest/OCHamcrest" "v5.4.0"
 github "sparkle-project/Sparkle" "1.14.0"
 github "specta/expecta" "v1.0.5"
 github "specta/specta" "v1.0.5"
-github "jonreid/OCMockito" "d93701ae36d35f0b77587a2f82cf03199cd753ba"
+github "jonreid/OCMockito" "v3.0.2"
