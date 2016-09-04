@@ -7,76 +7,24 @@
 
 typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
 {
-  SpectacleUnicodeGlyphDeleteLeft = 0x232B,     // ⌫
-  SpectacleUnicodeGlyphDeleteRight = 0x2326,    // ⌦
-  SpectacleUnicodeGlyphDownArrow = 0x2193,      // ↓
-  SpectacleUnicodeGlyphEscape = 0x241B,         // ␛
-  SpectacleUnicodeGlyphLeftArrow = 0x2190,      // ←
+  SpectacleUnicodeGlyphDeleteLeft     = 0x232B, // ⌫
+  SpectacleUnicodeGlyphDeleteRight    = 0x2326, // ⌦
+  SpectacleUnicodeGlyphDownArrow      = 0x2193, // ↓
+  SpectacleUnicodeGlyphEscape         = 0x241B, // ␛
+  SpectacleUnicodeGlyphLeftArrow      = 0x2190, // ←
   SpectacleUnicodeGlyphNorthwestArrow = 0x2196, // ↖
-  SpectacleUnicodeGlyphPageDown = 0x21DF,       // ⇟
-  SpectacleUnicodeGlyphPageUp = 0x21DE,         // ⇞
-  SpectacleUnicodeGlyphReturn = 0x21A9,         // ↩
-  SpectacleUnicodeGlyphRightArrow = 0x2192,     // →
+  SpectacleUnicodeGlyphPageDown       = 0x21DF, // ⇟
+  SpectacleUnicodeGlyphPageUp         = 0x21DE, // ⇞
+  SpectacleUnicodeGlyphReturn         = 0x21A9, // ↩
+  SpectacleUnicodeGlyphRightArrow     = 0x2192, // →
   SpectacleUnicodeGlyphSoutheastArrow = 0x2198, // ↘
-  SpectacleUnicodeGlyphSpace = 0x0020,          // ' '
-  SpectacleUnicodeGlyphTabRight = 0x21E5,       // ⇥
-  SpectacleUnicodeGlyphUpArrow = 0x2191,        // ↑
+  SpectacleUnicodeGlyphSpace          = 0x0020, // ' '
+  SpectacleUnicodeGlyphTabRight       = 0x21E5, // ⇥
+  SpectacleUnicodeGlyphUpArrow        = 0x2191, // ↑
 };
 
 static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void);
 static NSString *glyphForUnicodeChar(unichar unicodeChar);
-
-NSUInteger SpectacleConvertModifiersToCarbonIfNecessary(NSUInteger modifiers)
-{
-  if ([SpectacleShortcut validCocoaModifiers:modifiers]) {
-    modifiers = SpectacleConvertCocoaModifiersToCarbon(modifiers);
-  }
-  return modifiers;
-}
-
-NSUInteger SpectacleConvertModifiersToCocoaIfNecessary(NSUInteger modifiers)
-{
-  if (![SpectacleShortcut validCocoaModifiers:modifiers]) {
-    modifiers = SpectacleConvertCarbonModifiersToCocoa(modifiers);
-  }
-  return modifiers;
-}
-
-NSUInteger SpectacleConvertCocoaModifiersToCarbon(NSUInteger modifiers)
-{
-  NSUInteger convertedModifiers = 0;
-  if (modifiers & NSControlKeyMask) {
-    convertedModifiers |= controlKey;
-  }
-  if (modifiers & NSAlternateKeyMask) {
-    convertedModifiers |= optionKey;
-  }
-  if (modifiers & NSShiftKeyMask) {
-    convertedModifiers |= shiftKey;
-  }
-  if (modifiers & NSCommandKeyMask) {
-    convertedModifiers |= cmdKey;
-  }
-  return convertedModifiers;
-}
-
-NSUInteger SpectacleConvertCarbonModifiersToCocoa(NSUInteger modifiers)
-{
-  NSUInteger convertedModifiers = 0;
-  if (modifiers & controlKey) {
-    convertedModifiers |= NSControlKeyMask;
-  }
-  if (modifiers & optionKey) {
-    convertedModifiers |= NSAlternateKeyMask;
-  }
-  if (modifiers & shiftKey) {
-    convertedModifiers |= NSShiftKeyMask;
-  }
-  if (modifiers & cmdKey) {
-    convertedModifiers |= NSCommandKeyMask;
-  }
-  return convertedModifiers;
-}
 
 NSString *SpectacleTranslateKeyCode(NSInteger keyCode, NSUInteger modifiers)
 {
@@ -148,49 +96,101 @@ NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut)
           SpectacleTranslateKeyCode(shortcut.shortcutCode, shortcut.shortcutModifiers)];
 }
 
+NSUInteger SpectacleConvertModifiersToCarbonIfNecessary(NSUInteger modifiers)
+{
+  if ([SpectacleShortcut validCocoaModifiers:modifiers]) {
+    modifiers = SpectacleConvertCocoaModifiersToCarbon(modifiers);
+  }
+  return modifiers;
+}
+
+NSUInteger SpectacleConvertModifiersToCocoaIfNecessary(NSUInteger modifiers)
+{
+  if (![SpectacleShortcut validCocoaModifiers:modifiers]) {
+    modifiers = SpectacleConvertCarbonModifiersToCocoa(modifiers);
+  }
+  return modifiers;
+}
+
+NSUInteger SpectacleConvertCocoaModifiersToCarbon(NSUInteger modifiers)
+{
+  NSUInteger convertedModifiers = 0;
+  if (modifiers & NSControlKeyMask) {
+    convertedModifiers |= controlKey;
+  }
+  if (modifiers & NSAlternateKeyMask) {
+    convertedModifiers |= optionKey;
+  }
+  if (modifiers & NSShiftKeyMask) {
+    convertedModifiers |= shiftKey;
+  }
+  if (modifiers & NSCommandKeyMask) {
+    convertedModifiers |= cmdKey;
+  }
+  return convertedModifiers;
+}
+
+NSUInteger SpectacleConvertCarbonModifiersToCocoa(NSUInteger modifiers)
+{
+  NSUInteger convertedModifiers = 0;
+  if (modifiers & controlKey) {
+    convertedModifiers |= NSControlKeyMask;
+  }
+  if (modifiers & optionKey) {
+    convertedModifiers |= NSAlternateKeyMask;
+  }
+  if (modifiers & shiftKey) {
+    convertedModifiers |= NSShiftKeyMask;
+  }
+  if (modifiers & cmdKey) {
+    convertedModifiers |= NSCommandKeyMask;
+  }
+  return convertedModifiers;
+}
+
 static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void)
 {
   static dispatch_once_t onceToken;
-  static NSDictionary<NSNumber *, NSString *> *result;
+  static NSDictionary<NSNumber *, NSString *> *translations;
   dispatch_once(&onceToken, ^{
-    result = @{
-               @(kVK_F1): @"F1",
-               @(kVK_F2): @"F2",
-               @(kVK_F3): @"F3",
-               @(kVK_F4): @"F4",
-               @(kVK_F5): @"F5",
-               @(kVK_F6): @"F6",
-               @(kVK_F7): @"F7",
-               @(kVK_F8): @"F8",
-               @(kVK_F9): @"F9",
-               @(kVK_F10): @"F10",
-               @(kVK_F11): @"F11",
-               @(kVK_F12): @"F12",
-               @(kVK_F13): @"F13",
-               @(kVK_F14): @"F14",
-               @(kVK_F15): @"F15",
-               @(kVK_F16): @"F16",
-               @(kVK_F17): @"F17",
-               @(kVK_F18): @"F18",
-               @(kVK_F19): @"F19",
-               @(kVK_F20): @"F20",
-               @(kVK_Delete): glyphForUnicodeChar(SpectacleUnicodeGlyphDeleteLeft),
-               @(kVK_DownArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphDownArrow),
-               @(kVK_End): glyphForUnicodeChar(SpectacleUnicodeGlyphSoutheastArrow),
-               @(kVK_Escape): glyphForUnicodeChar(SpectacleUnicodeGlyphEscape),
-               @(kVK_ForwardDelete): glyphForUnicodeChar(SpectacleUnicodeGlyphDeleteRight),
-               @(kVK_Home): glyphForUnicodeChar(SpectacleUnicodeGlyphNorthwestArrow),
-               @(kVK_LeftArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphLeftArrow),
-               @(kVK_PageDown): glyphForUnicodeChar(SpectacleUnicodeGlyphPageDown),
-               @(kVK_PageUp): glyphForUnicodeChar(SpectacleUnicodeGlyphPageUp),
-               @(kVK_Return): glyphForUnicodeChar(SpectacleUnicodeGlyphReturn),
-               @(kVK_RightArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphRightArrow),
-               @(kVK_Space): glyphForUnicodeChar(SpectacleUnicodeGlyphSpace),
-               @(kVK_Tab): glyphForUnicodeChar(SpectacleUnicodeGlyphTabRight),
-               @(kVK_UpArrow): glyphForUnicodeChar(SpectacleUnicodeGlyphUpArrow),
-               };
+    translations = @{
+                     @(kVK_F1):            @"F1",
+                     @(kVK_F2):            @"F2",
+                     @(kVK_F3):            @"F3",
+                     @(kVK_F4):            @"F4",
+                     @(kVK_F5):            @"F5",
+                     @(kVK_F6):            @"F6",
+                     @(kVK_F7):            @"F7",
+                     @(kVK_F8):            @"F8",
+                     @(kVK_F9):            @"F9",
+                     @(kVK_F10):           @"F10",
+                     @(kVK_F11):           @"F11",
+                     @(kVK_F12):           @"F12",
+                     @(kVK_F13):           @"F13",
+                     @(kVK_F14):           @"F14",
+                     @(kVK_F15):           @"F15",
+                     @(kVK_F16):           @"F16",
+                     @(kVK_F17):           @"F17",
+                     @(kVK_F18):           @"F18",
+                     @(kVK_F19):           @"F19",
+                     @(kVK_F20):           @"F20",
+                     @(kVK_Delete):        glyphForUnicodeChar(SpectacleUnicodeGlyphDeleteLeft),
+                     @(kVK_DownArrow):     glyphForUnicodeChar(SpectacleUnicodeGlyphDownArrow),
+                     @(kVK_End):           glyphForUnicodeChar(SpectacleUnicodeGlyphSoutheastArrow),
+                     @(kVK_Escape):        glyphForUnicodeChar(SpectacleUnicodeGlyphEscape),
+                     @(kVK_ForwardDelete): glyphForUnicodeChar(SpectacleUnicodeGlyphDeleteRight),
+                     @(kVK_Home):          glyphForUnicodeChar(SpectacleUnicodeGlyphNorthwestArrow),
+                     @(kVK_LeftArrow):     glyphForUnicodeChar(SpectacleUnicodeGlyphLeftArrow),
+                     @(kVK_PageDown):      glyphForUnicodeChar(SpectacleUnicodeGlyphPageDown),
+                     @(kVK_PageUp):        glyphForUnicodeChar(SpectacleUnicodeGlyphPageUp),
+                     @(kVK_Return):        glyphForUnicodeChar(SpectacleUnicodeGlyphReturn),
+                     @(kVK_RightArrow):    glyphForUnicodeChar(SpectacleUnicodeGlyphRightArrow),
+                     @(kVK_Space):         glyphForUnicodeChar(SpectacleUnicodeGlyphSpace),
+                     @(kVK_Tab):           glyphForUnicodeChar(SpectacleUnicodeGlyphTabRight),
+                     @(kVK_UpArrow):       glyphForUnicodeChar(SpectacleUnicodeGlyphUpArrow),
+                     };
   });
-  return result;
+  return translations;
 }
 
 static NSString *glyphForUnicodeChar(unichar unicodeChar)
