@@ -40,6 +40,7 @@
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */; };
 		2D5565B1181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */; };
 		2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */; };
+		2D58AE341D7D19AF00BFEEA2 /* SpectacleShortcutTranslationsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D58AE331D7D19AF00BFEEA2 /* SpectacleShortcutTranslationsSpec.m */; };
 		2D58CC391C7030B800E3DC74 /* Window Position Calculations in Resources */ = {isa = PBXBuildFile; fileRef = 2D58CC381C7030B800E3DC74 /* Window Position Calculations */; };
 		2D5A83051CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5A83041CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m */; };
 		2D5A83091CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5A83081CDB020A00EBE80A /* SpectacleMigratingShortcutStorage.m */; };
@@ -182,6 +183,7 @@
 		2D5565B0181EDB7F00EFB43A /* Security & Privacy System Preferences.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Security & Privacy System Preferences.scpt"; path = "Spectacle/Resources/Scripts/Security & Privacy System Preferences.scpt"; sourceTree = "<group>"; };
 		2D5783EF1BB63BDD00695771 /* SpectacleStandardWindowMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleStandardWindowMover.h; path = Spectacle/Sources/SpectacleStandardWindowMover.h; sourceTree = "<group>"; };
 		2D5783F01BB63BDD00695771 /* SpectacleStandardWindowMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleStandardWindowMover.m; path = Spectacle/Sources/SpectacleStandardWindowMover.m; sourceTree = "<group>"; };
+		2D58AE331D7D19AF00BFEEA2 /* SpectacleShortcutTranslationsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutTranslationsSpec.m; path = Sources/SpectacleShortcutTranslationsSpec.m; sourceTree = "<group>"; };
 		2D58CC381C7030B800E3DC74 /* Window Position Calculations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Window Position Calculations"; path = "Spectacle/Resources/Window Position Calculations"; sourceTree = "<group>"; };
 		2D5A83031CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutJSONStorage.h; path = Spectacle/Sources/SpectacleShortcutJSONStorage.h; sourceTree = "<group>"; };
 		2D5A83041CDAFDEB00EBE80A /* SpectacleShortcutJSONStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutJSONStorage.m; path = Spectacle/Sources/SpectacleShortcutJSONStorage.m; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				2D20F0121CD18ED7003DDA5B /* SpectaclePreviousThirdWindowCalculationSpec.m */,
 				2D20F0131CD18ED7003DDA5B /* SpectacleRightHalfWindowCalculationSpec.m */,
 				2DE03E471D7B8F5A004E80D6 /* SpectacleShortcutKeyBindingsSpec.m */,
+				2D58AE331D7D19AF00BFEEA2 /* SpectacleShortcutTranslationsSpec.m */,
 				2D20F0141CD18ED7003DDA5B /* SpectacleSmallerWindowCalculationSpec.m */,
 				2D20F0151CD18ED7003DDA5B /* SpectacleTopHalfWindowCalculationSpec.m */,
 				2D20F0161CD18ED7003DDA5B /* SpectacleUpperLeftWindowCalculationSpec.m */,
@@ -741,6 +744,7 @@
 				2D20F0221CD18ED7003DDA5B /* SpectaclePreviousThirdWindowCalculationSpec.m in Sources */,
 				2D20F0231CD18ED7003DDA5B /* SpectacleRightHalfWindowCalculationSpec.m in Sources */,
 				2DE03E481D7B8F5A004E80D6 /* SpectacleShortcutKeyBindingsSpec.m in Sources */,
+				2D58AE341D7D19AF00BFEEA2 /* SpectacleShortcutTranslationsSpec.m in Sources */,
 				2D20F0241CD18ED7003DDA5B /* SpectacleSmallerWindowCalculationSpec.m in Sources */,
 				2D20F0251CD18ED7003DDA5B /* SpectacleTopHalfWindowCalculationSpec.m in Sources */,
 				2D20F0261CD18ED7003DDA5B /* SpectacleUpperLeftWindowCalculationSpec.m in Sources */,

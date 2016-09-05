@@ -96,22 +96,6 @@ NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut)
           SpectacleTranslateKeyCode(shortcut.shortcutCode, shortcut.shortcutModifiers)];
 }
 
-NSUInteger SpectacleConvertModifiersToCarbonIfNecessary(NSUInteger modifiers)
-{
-  if ([SpectacleShortcut validCocoaModifiers:modifiers]) {
-    modifiers = SpectacleConvertCocoaModifiersToCarbon(modifiers);
-  }
-  return modifiers;
-}
-
-NSUInteger SpectacleConvertModifiersToCocoaIfNecessary(NSUInteger modifiers)
-{
-  if (![SpectacleShortcut validCocoaModifiers:modifiers]) {
-    modifiers = SpectacleConvertCarbonModifiersToCocoa(modifiers);
-  }
-  return modifiers;
-}
-
 NSUInteger SpectacleConvertCocoaModifiersToCarbon(NSUInteger modifiers)
 {
   NSUInteger convertedModifiers = 0;
@@ -146,6 +130,22 @@ NSUInteger SpectacleConvertCarbonModifiersToCocoa(NSUInteger modifiers)
     convertedModifiers |= NSCommandKeyMask;
   }
   return convertedModifiers;
+}
+
+NSUInteger SpectacleConvertModifiersToCarbonIfNecessary(NSUInteger modifiers)
+{
+  if ([SpectacleShortcut validCocoaModifiers:modifiers]) {
+    modifiers = SpectacleConvertCocoaModifiersToCarbon(modifiers);
+  }
+  return modifiers;
+}
+
+NSUInteger SpectacleConvertModifiersToCocoaIfNecessary(NSUInteger modifiers)
+{
+  if (![SpectacleShortcut validCocoaModifiers:modifiers]) {
+    modifiers = SpectacleConvertCarbonModifiersToCocoa(modifiers);
+  }
+  return modifiers;
 }
 
 static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void)

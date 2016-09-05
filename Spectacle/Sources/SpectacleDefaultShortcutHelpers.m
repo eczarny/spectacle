@@ -1,5 +1,6 @@
 #import "SpectacleDefaultShortcutHelpers.h"
 
+#import <Carbon/Carbon.h>
 #import <Cocoa/Cocoa.h>
 
 static NSArray<SpectacleShortcut *> *builtinDefaultShortcuts(void);
@@ -17,58 +18,58 @@ static NSArray<SpectacleShortcut *> *builtinDefaultShortcuts(void)
 {
   return @[
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToCenter"
-                                              shortcutCode:8 // "C"
+                                              shortcutCode:kVK_ANSI_C
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToFullscreen"
-                                              shortcutCode:3 // "F"
+                                              shortcutCode:kVK_ANSI_F
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLeftHalf"
-                                              shortcutCode:123 // "←"
+                                              shortcutCode:kVK_LeftArrow
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToRightHalf"
-                                              shortcutCode:124 // "→"
+                                              shortcutCode:kVK_RightArrow
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToTopHalf"
-                                              shortcutCode:126 // "↑"
+                                              shortcutCode:kVK_UpArrow
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToBottomHalf"
-                                              shortcutCode:125 // "↓"
+                                              shortcutCode:kVK_DownArrow
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToUpperLeft"
-                                              shortcutCode:123 // "←"
+                                              shortcutCode:kVK_LeftArrow
                                          shortcutModifiers:NSControlKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLowerLeft"
-                                              shortcutCode:123 // "←"
+                                              shortcutCode:kVK_LeftArrow
                                          shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToUpperRight"
-                                              shortcutCode:124 // "→"
+                                              shortcutCode:kVK_RightArrow
                                          shortcutModifiers:NSControlKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLowerRight"
-                                              shortcutCode:124 // "→"
+                                              shortcutCode:kVK_RightArrow
                                          shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToNextDisplay"
-                                              shortcutCode:124 // "→"
+                                              shortcutCode:kVK_RightArrow
                                          shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToPreviousDisplay"
-                                              shortcutCode:123 // "←"
+                                              shortcutCode:kVK_LeftArrow
                                          shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToNextThird"
-                                              shortcutCode:124 // "→"
+                                              shortcutCode:kVK_RightArrow
                                          shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToPreviousThird"
-                                              shortcutCode:123 // "←"
+                                              shortcutCode:kVK_LeftArrow
                                          shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MakeLarger"
-                                              shortcutCode:124 // "←"
-                                         shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSAlternateKeyMask],
+                                              shortcutCode:kVK_LeftArrow
+                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MakeSmaller"
-                                              shortcutCode:123 // "←"
-                                         shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSAlternateKeyMask],
+                                              shortcutCode:kVK_LeftArrow
+                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"UndoLastMove"
-                                              shortcutCode:6 // "Z"
+                                              shortcutCode:kVK_ANSI_Z
                                          shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"RedoLastMove"
-                                              shortcutCode:6 // "Z"
+                                              shortcutCode:kVK_ANSI_Z
                                          shortcutModifiers:NSAlternateKeyMask | NSShiftKeyMask | NSCommandKeyMask],
            ];
 }
