@@ -41,6 +41,8 @@
                   windowPositionManager:(SpectacleWindowPositionManager *)windowPositionManager
                         shortcutStorage:(id<SpectacleShortcutStorage>)shortcutStorage;
 
+- (void)loadRegisteredShortcuts;
+
 - (IBAction)swapFooterViews:(id)sender;
 
 - (IBAction)restoreDefaults:(id)sender;

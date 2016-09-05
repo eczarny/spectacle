@@ -53,6 +53,10 @@
                          selector:@selector(menuDidSendAction:)
                              name:NSMenuDidSendActionNotification
                            object:nil];
+  [notificationCenter addObserver:self
+                         selector:@selector(inputSourceSelectionDidChange)
+                             name:NSTextInputContextKeyboardSelectionDidChangeNotification
+                           object:nil];
   [workspaceNotificationCenter addObserver:self
                                   selector:@selector(applicationDidActivate:)
                                       name:NSWorkspaceDidActivateApplicationNotification
@@ -282,6 +286,11 @@
   }
 }
 
+- (void)dealloc
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)manageShortcuts
 {
   SpectacleShortcutAction action = ^(SpectacleShortcut *shortcut) {
@@ -392,6 +401,14 @@
   if (menuItem.tag == -1) {
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
   }
+}
+
+- (void)inputSourceSelectionDidChange
+{
+  [_shortcutManager unregisterShortcuts];
+  [_shortcutManager registerShortcuts];
+  [_preferencesController loadRegisteredShortcuts];
+  [self updateShortcutMenuItems];
 }
 
 @end

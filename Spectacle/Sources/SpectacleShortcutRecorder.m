@@ -10,47 +10,47 @@
 - (instancetype)initWithFrame:(NSRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    [self.shortcutRecorderCell setShortcutRecorder:self];
+    self.shortcutRecorderCell.shortcutRecorder = self;
   }
   return self;
 }
 
 - (NSString *)shortcutName
 {
-  return [self.shortcutRecorderCell shortcutName];
+  return self.shortcutRecorderCell.shortcutName;
 }
 
 - (void)setShortcutName:(NSString *)shortcutName
 {
-  [self.shortcutRecorderCell setShortcutName:shortcutName];
+  self.shortcutRecorderCell.shortcutName = shortcutName;
 }
 
 - (SpectacleShortcut *)shortcut
 {
-  return [self.shortcutRecorderCell shortcut];
+  return self.shortcutRecorderCell.shortcut;
 }
 
 - (void)setShortcut:(SpectacleShortcut *)shortcut
 {
-  [self.shortcutRecorderCell setShortcut:shortcut];
+  self.shortcutRecorderCell.shortcut = shortcut;
   [self updateCell:self.shortcutRecorderCell];
 }
 
 - (id<SpectacleShortcutRecorderDelegate>)delegate
 {
-  return [self.shortcutRecorderCell delegate];
+  return self.shortcutRecorderCell.delegate;
 }
 
 - (void)setDelegate:(id<SpectacleShortcutRecorderDelegate>)delegate
 {
-  [self.shortcutRecorderCell setDelegate:delegate];
+  self.shortcutRecorderCell.delegate = delegate;
 }
 
 - (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidator>> *)additionalShortcutValidators
                         shortcutManager:(SpectacleShortcutManager *)shortcutManager
 {
-  [self.shortcutRecorderCell setAdditionalShortcutValidators:additionalShortcutValidators];
-  [self.shortcutRecorderCell setShortcutManager:shortcutManager];
+  self.shortcutRecorderCell.additionalShortcutValidators = additionalShortcutValidators;
+  self.shortcutRecorderCell.shortcutManager = shortcutManager;
 }
 
 - (BOOL)acceptsFirstResponder
@@ -95,7 +95,7 @@
 
 + (Class)cellClass
 {
-  return SpectacleShortcutRecorderCell.class;
+  return [SpectacleShortcutRecorderCell class];
 }
 
 - (SpectacleShortcutRecorderCell *)shortcutRecorderCell
