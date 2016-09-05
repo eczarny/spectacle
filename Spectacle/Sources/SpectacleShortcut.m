@@ -16,8 +16,9 @@
                   shortcutKeyBinding:(NSString *)shortcutKeyBinding
                       shortcutAction:(SpectacleShortcutAction)shortcutAction
 {
+  NSNumber *shortcutKeyCode = SpectacleConvertShortcutKeyBindingToKeyCode(shortcutKeyBinding);
   return [self initWithShortcutName:shortcutName
-                    shortcutKeyCode:[SpectacleConvertShortcutKeyBindingToKeyCode(shortcutKeyBinding) integerValue]
+                    shortcutKeyCode:shortcutKeyCode ? [shortcutKeyCode integerValue] : -1
                   shortcutModifiers:[SpectacleConvertShortcutKeyBindingToModifiers(shortcutKeyBinding) unsignedIntegerValue]
                      shortcutAction:shortcutAction];
 }
@@ -128,7 +129,7 @@
 
 - (BOOL)isClearedShortcut
 {
-  return (_shortcutKeyCode == 0) && (_shortcutModifiers == 0);
+  return (_shortcutKeyCode == -1) && (_shortcutModifiers == 0);
 }
 
 - (NSString *)displayString

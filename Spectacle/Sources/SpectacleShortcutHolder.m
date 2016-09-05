@@ -44,7 +44,7 @@
 - (instancetype)copyWithClearedShortcut
 {
   SpectacleShortcut *clearedShortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcut.shortcutName
-                                                                       shortcutKeyCode:0
+                                                                       shortcutKeyCode:-1
                                                                      shortcutModifiers:0];
   return [[SpectacleShortcutHolder alloc] initWithShortcutID:_shortcutID
                                                     shortcut:clearedShortcut

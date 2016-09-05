@@ -296,6 +296,10 @@ describe(@"SpectacleShortcutKeyBindings", ^{
     expect(SpectacleConvertShortcutKeyBindingToKeyCode(@"control+option+shift+command+ESCAPE")).to.equal(kVK_Escape);
   });
 
+  it(@"should convert empty shortcuts to nil key bindings", ^{
+    expect(SpectacleConvertShortcutToKeyBinding(shortcutForKeyBinding(nil))).to.equal(nil);
+  });
+
   it(@"should convert shortcuts to key bindings", ^{
     expect(SpectacleConvertShortcutToKeyBinding(shortcutForKeyBinding(@"alt+cmd+c"))).to.equal(@"alt+cmd+c");
     expect(SpectacleConvertShortcutToKeyBinding(shortcutForKeyBinding(@"alt+cmd+f"))).to.equal(@"alt+cmd+f");

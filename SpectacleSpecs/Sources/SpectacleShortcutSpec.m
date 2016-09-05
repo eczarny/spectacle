@@ -38,10 +38,10 @@ describe(@"SpectacleShortcut", ^{
     expect([[[SpectacleShortcut alloc] initWithShortcutName:nil shortcutKeyBinding:nil] isClearedShortcut]).to.beTruthy;
     expect([[[SpectacleShortcut alloc] initWithShortcutName:nil shortcutKeyBinding:@""] isClearedShortcut]).to.beTruthy;
     expect([[[SpectacleShortcut alloc] initWithShortcutName:nil
-                                            shortcutKeyCode:0
+                                            shortcutKeyCode:-1
                                           shortcutModifiers:0] isClearedShortcut]).to.beTruthy;
     expect([[[SpectacleShortcut alloc] initWithShortcutName:@"MoveToCenter"
-                                            shortcutKeyCode:0
+                                            shortcutKeyCode:-1
                                           shortcutModifiers:0] isClearedShortcut]).to.beTruthy;
   });
 
@@ -70,7 +70,7 @@ describe(@"SpectacleShortcut", ^{
     expect(shortcut1).to.equal(shortcut2);
     expect(shortcut1).to.equal(shortcut3);
     expect(shortcut1).notTo.equal([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                  shortcutKeyCode:0
+                                                                  shortcutKeyCode:-1
                                                                 shortcutModifiers:0]);
   });
 });
