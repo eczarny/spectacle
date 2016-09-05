@@ -17,59 +17,23 @@ NSArray<SpectacleShortcut *> *SpectacleDefaultShortcutsWithAction(SpectacleShort
 static NSArray<SpectacleShortcut *> *builtinDefaultShortcuts(void)
 {
   return @[
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToCenter"
-                                           shortcutKeyCode:kVK_ANSI_C
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToFullscreen"
-                                           shortcutKeyCode:kVK_ANSI_F
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLeftHalf"
-                                           shortcutKeyCode:kVK_LeftArrow
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToRightHalf"
-                                           shortcutKeyCode:kVK_RightArrow
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToTopHalf"
-                                           shortcutKeyCode:kVK_UpArrow
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToBottomHalf"
-                                           shortcutKeyCode:kVK_DownArrow
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToUpperLeft"
-                                           shortcutKeyCode:kVK_LeftArrow
-                                         shortcutModifiers:NSControlKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLowerLeft"
-                                           shortcutKeyCode:kVK_LeftArrow
-                                         shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToUpperRight"
-                                           shortcutKeyCode:kVK_RightArrow
-                                         shortcutModifiers:NSControlKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLowerRight"
-                                           shortcutKeyCode:kVK_RightArrow
-                                         shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToNextDisplay"
-                                           shortcutKeyCode:kVK_RightArrow
-                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToPreviousDisplay"
-                                           shortcutKeyCode:kVK_LeftArrow
-                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToNextThird"
-                                           shortcutKeyCode:kVK_RightArrow
-                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToPreviousThird"
-                                           shortcutKeyCode:kVK_LeftArrow
-                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MakeLarger"
-                                           shortcutKeyCode:kVK_RightArrow
-                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"MakeSmaller"
-                                           shortcutKeyCode:kVK_LeftArrow
-                                         shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"UndoLastMove"
-                                           shortcutKeyCode:kVK_ANSI_Z
-                                         shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask],
-           [[SpectacleShortcut alloc] initWithShortcutName:@"RedoLastMove"
-                                           shortcutKeyCode:kVK_ANSI_Z
-                                         shortcutModifiers:NSAlternateKeyMask | NSShiftKeyMask | NSCommandKeyMask],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToCenter"          shortcutKeyBinding:@"alt+cmd+c"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToFullscreen"      shortcutKeyBinding:@"alt+cmd+f"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLeftHalf"        shortcutKeyBinding:@"alt+cmd+left"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToRightHalf"       shortcutKeyBinding:@"alt+cmd+right"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToTopHalf"         shortcutKeyBinding:@"alt+cmd+up"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToBottomHalf"      shortcutKeyBinding:@"alt+cmd+down"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToUpperLeft"       shortcutKeyBinding:@"ctrl+cmd+left"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLowerLeft"       shortcutKeyBinding:@"ctrl+shift+cmd+left"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToUpperRight"      shortcutKeyBinding:@"ctrl+cmd+right"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToLowerRight"      shortcutKeyBinding:@"ctrl+shift+cmd+right"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToNextDisplay"     shortcutKeyBinding:@"ctrl+alt+cmd+right"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToPreviousDisplay" shortcutKeyBinding:@"ctrl+alt+cmd+left"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToNextThird"       shortcutKeyBinding:@"ctrl+alt+right"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToPreviousThird"   shortcutKeyBinding:@"ctrl+alt+left"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MakeLarger"            shortcutKeyBinding:@"ctrl+alt+shift+right"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"MakeSmaller"           shortcutKeyBinding:@"ctrl+alt+shift+left"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"UndoLastMove"          shortcutKeyBinding:@"alt+cmd+z"],
+           [[SpectacleShortcut alloc] initWithShortcutName:@"RedoLastMove"          shortcutKeyBinding:@"alt+shift+cmd+z"],
            ];
 }
