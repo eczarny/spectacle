@@ -11,7 +11,7 @@
 
 - (NSArray<SpectacleShortcut *> *)loadShortcutsWithAction:(SpectacleShortcutAction)action
 {
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   NSMutableDictionary<NSString *, NSData *> *shortcutsFromUserDefaults = [NSMutableDictionary new];
   for (NSString *shortcutName in [self shortcutNames]) {
     shortcutsFromUserDefaults[shortcutName] = [userDefaults dataForKey:shortcutName];
@@ -21,7 +21,7 @@
 
 - (void)storeShortcuts:(NSArray<SpectacleShortcut *> *)shortcuts
 {
-  NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   for (SpectacleShortcut *shortcut in shortcuts) {
     NSData *shortcutData = [NSKeyedArchiver archivedDataWithRootObject:shortcut];
     NSString *shortcutName = shortcut.shortcutName;
