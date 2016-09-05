@@ -8,6 +8,11 @@
 #import "SpectacleShortcutTranslations.h"
 #import "SpectacleShortcutValidation.h"
 
+static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
+                                                             | NSAlternateKeyMask
+                                                             | NSShiftKeyMask
+                                                             | NSCommandKeyMask);
+
 @implementation SpectacleShortcutRecorderCell
 {
   NSUInteger _modifierFlags;
@@ -16,14 +21,6 @@
   BOOL _isMouseAboveBadge;
   BOOL _isMouseDown;
   void *_shortcutMode;
-}
-
-- (instancetype)init
-{
-  if (self = [super init]) {
-    _additionalShortcutValidators = [NSArray new];
-  }
-  return self;
 }
 
 - (BOOL)resignFirstResponder
@@ -39,28 +36,31 @@
 - (BOOL)performKeyEquivalent:(NSEvent *)event
 {
   NSInteger keyCode = event.keyCode;
-  NSUInteger newModifierFlags = (_modifierFlags | event.modifierFlags) & NSDeviceIndependentModifierFlagsMask;
+  NSUInteger newModifierFlags = (_modifierFlags | event.modifierFlags) & kCocoaModifierFlagsMask;
   BOOL functionKey = ((keyCode == kVK_F1)  || (keyCode == kVK_F2)  || (keyCode == kVK_F3)  || (keyCode == kVK_F4)  ||
                       (keyCode == kVK_F5)  || (keyCode == kVK_F6)  || (keyCode == kVK_F7)  || (keyCode == kVK_F8)  ||
                       (keyCode == kVK_F9)  || (keyCode == kVK_F10) || (keyCode == kVK_F11) || (keyCode == kVK_F12) ||
                       (keyCode == kVK_F13) || (keyCode == kVK_F14) || (keyCode == kVK_F15) || (keyCode == kVK_F16) ||
                       (keyCode == kVK_F17) || (keyCode == kVK_F18) || (keyCode == kVK_F19) || (keyCode == kVK_F20));
+  if (newModifierFlags == NSAlternateKeyMask) {
+    return NO;
+  }
   if (_isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:newModifierFlags])) {
     NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
     if (characters.length) {
-      SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:self.shortcutName
+      SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
                                                                        shortcutKeyCode:keyCode
                                                                      shortcutModifiers:newModifierFlags];
       NSError *error = nil;
       BOOL isShortcutValid = [SpectacleShortcutValidation isShortcutValid:newShortcut
-                                                         shortcutManager:self.shortcutManager
-                                                          withValidators:self.additionalShortcutValidators
-                                                                   error:&error];
+                                                          shortcutManager:_shortcutManager
+                                                           withValidators:_additionalShortcutValidators
+                                                                    error:&error];
       if (!isShortcutValid) {
         [[NSAlert alertWithError:error] runModal];
       } else {
-        self.shortcut = newShortcut;
-        [self.delegate shortcutRecorder:self.shortcutRecorder didReceiveNewShortcut:newShortcut];
+        _shortcut = newShortcut;
+        [_delegate shortcutRecorder:_shortcutRecorder didReceiveNewShortcut:newShortcut];
       }
     } else {
       NSBeep();
@@ -70,17 +70,14 @@
     _isRecording = NO;
     [self.controlView setNeedsDisplay:YES];
     return YES;
-  } else {
-    _modifierFlags = 0;
-    [self.controlView setNeedsDisplay:YES];
   }
   return NO;
 }
 
 - (void)flagsChanged:(NSEvent *)event
 {
-  if (_isRecording && [SpectacleShortcut validCocoaModifiers:event.modifierFlags]) {
-    _modifierFlags = event.modifierFlags;
+  if (_isRecording) {
+    _modifierFlags = event.modifierFlags & kCocoaModifierFlagsMask;
     [self.controlView setNeedsDisplay:YES];
   }
 }
@@ -119,9 +116,9 @@
         } else if (_isRecording && _isMouseAboveBadge) {
           PopSymbolicHotKeyMode(_shortcutMode);
           _isRecording = NO;
-        } else if (!_isRecording && self.shortcut && _isMouseAboveBadge) {
-          [self.delegate shortcutRecorder:self.shortcutRecorder didClearExistingShortcut:self.shortcut];
-          self.shortcut = nil;
+        } else if (!_isRecording && _shortcut && _isMouseAboveBadge) {
+          [_delegate shortcutRecorder:_shortcutRecorder didClearExistingShortcut:_shortcut];
+          _shortcut = nil;
         }
         [view setNeedsDisplay:YES];
         return YES;
@@ -198,14 +195,14 @@
   badgeSize.height = 13.0f;
   badgeRect.origin = NSMakePoint(NSMaxX(rect) - badgeSize.width - 4.0f, floor((NSMaxY(rect) - badgeSize.height) / 2.0f));
   badgeRect.size = badgeSize;
-  if (_isRecording && !self.shortcut) {
+  if (_isRecording && !_shortcut) {
     [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.25f];
   } else if (_isRecording) {
     [self drawRevertShortcutBadgeInRect:badgeRect];
-  } else if (self.shortcut) {
+  } else if (_shortcut) {
     [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.25f];
   }
-  if (((self.shortcut && !_isRecording) || (!self.shortcut && _isRecording)) && _isMouseAboveBadge && _isMouseDown) {
+  if (((_shortcut && !_isRecording) || (!_shortcut && _isRecording)) && _isMouseAboveBadge && _isMouseDown) {
     [self drawClearShortcutBadgeInRect:badgeRect withOpacity:0.50f];
   }
   if (!_trackingArea) {
@@ -268,12 +265,12 @@
   NSColor *foregroundColor = NSColor.blackColor;
   if (_isRecording && !_isMouseAboveBadge) {
     label = NSLocalizedString(@"ShortcutRecorderLabelEnterShortcut", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut");
-  } else if (_isRecording && _isMouseAboveBadge && !self.shortcut) {
+  } else if (_isRecording && _isMouseAboveBadge && !_shortcut) {
     label = NSLocalizedString(@"ShortcutRecorderLabelStopRecording", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does not have a previously recorded shortcut");
   } else if (_isRecording && _isMouseAboveBadge) {
     label = NSLocalizedString(@"ShortcutRecorderLabelUseExisting", "The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does have a previously recorded shortcut");
-  } else if (self.shortcut) {
-    label = self.shortcut.displayString;
+  } else if (_shortcut) {
+    label = _shortcut.displayString;
   } else {
     label = NSLocalizedString(@"ShortcutRecorderLabelClickToRecord", @"The shortcut recorder label displayed when the shorcut recorder is cleared and ready to record a new shortcut");
   }

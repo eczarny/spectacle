@@ -163,9 +163,6 @@
 
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers
 {
-  if (modifiers == NSAlternateKeyMask) {
-    return NO;
-  }
   return ((modifiers & NSAlternateKeyMask)
           || (modifiers & NSCommandKeyMask)
           || (modifiers & NSControlKeyMask)
