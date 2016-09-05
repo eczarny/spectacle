@@ -80,7 +80,7 @@ static NSArray<NSDictionary *> *jsonObjectFromShortcuts(NSArray<SpectacleShortcu
   for (SpectacleShortcut *shortcut in shortcuts) {
     [jsonArray addObject:@{
                            @"shortcut_name" : shortcut.shortcutName,
-                           @"shortcut_key_binding" : shortcut.shortcutKeyBinding,
+                           @"shortcut_key_binding" : shortcut.shortcutKeyBinding ?: [NSNull null],
                            }];
   }
   return jsonArray;
