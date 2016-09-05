@@ -2,7 +2,7 @@
 
 @class SpectacleShortcut;
 
-NSString *SpectacleTranslateKeyCode(NSInteger keyCode, NSUInteger modifiers);
+NSString *SpectacleTranslateKeyCode(NSInteger keyCode);
 NSString *SpectacleTranslateModifiers(NSUInteger modifiers);
 NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut);
 

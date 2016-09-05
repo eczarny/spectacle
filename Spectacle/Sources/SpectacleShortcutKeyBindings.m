@@ -245,7 +245,7 @@ static NSDictionary<NSString *, NSNumber *> *keyCodeComponentToKeyCodeConversion
 
 static NSString *keyCodeComponentForKeyCode(NSInteger keyCode)
 {
-  NSString *translatedKeyCode = keyCodeToNamedKeyCodeComponentConversionTable()[@(keyCode)] ?: SpectacleTranslateKeyCode(keyCode, 0);
+  NSString *translatedKeyCode = keyCodeToNamedKeyCodeComponentConversionTable()[@(keyCode)] ?: SpectacleTranslateKeyCode(keyCode);
   return (translatedKeyCode.length > 0) ? translatedKeyCode : layoutDependentKeyCodeConversionTable()[@(keyCode)];
 }
 

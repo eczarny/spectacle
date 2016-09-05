@@ -26,7 +26,7 @@ typedef NS_ENUM(unichar, SpectacleUnicodeGlyph)
 static NSDictionary<NSNumber *, NSString *> *specialKeyCodeTranslations(void);
 static NSString *glyphForUnicodeChar(unichar unicodeChar);
 
-NSString *SpectacleTranslateKeyCode(NSInteger keyCode, NSUInteger modifiers)
+NSString *SpectacleTranslateKeyCode(NSInteger keyCode)
 {
   NSString *translatedSpecialKeyCode = specialKeyCodeTranslations()[@(keyCode)];
   if (translatedSpecialKeyCode) {
@@ -57,7 +57,7 @@ NSString *SpectacleTranslateKeyCode(NSInteger keyCode, NSUInteger modifiers)
   OSStatus err = UCKeyTranslate(keyboardLayout,
                                 keyCode,
                                 kUCKeyActionDisplay,
-                                (SpectacleConvertModifiersToCocoaIfNecessary(modifiers) >> 8) & 0xFF,
+                                0,
                                 LMGetKbdType(),
                                 kUCKeyTranslateNoDeadKeysBit,
                                 &deadKeyState,
@@ -93,7 +93,7 @@ NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut)
 {
   return [NSString stringWithFormat:@"%@%@",
           SpectacleTranslateModifiers(shortcut.shortcutModifiers),
-          SpectacleTranslateKeyCode(shortcut.shortcutKeyCode, shortcut.shortcutModifiers)];
+          SpectacleTranslateKeyCode(shortcut.shortcutKeyCode)];
 }
 
 NSUInteger SpectacleConvertCocoaModifiersToCarbon(NSUInteger modifiers)
