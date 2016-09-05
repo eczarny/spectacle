@@ -16,10 +16,11 @@ static NSArray<NSString *> *modifierComponentsForModifiers(NSUInteger modifiers)
 NSNumber *SpectacleConvertShortcutKeyBindingToKeyCode(NSString *keyBinding)
 {
   NSString *keyCodeComponent = [[keyBinding componentsSeparatedByString:@"+"] lastObject];
-  if (keyCodeComponent.length == 0) {
+  NSString *sanitizedKeyCodeComponent = [keyCodeComponent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  if (sanitizedKeyCodeComponent.length == 0) {
     return nil;
   }
-  NSString *normalizedKeyCodeComponent = [keyCodeComponent uppercaseString];
+  NSString *normalizedKeyCodeComponent = [sanitizedKeyCodeComponent uppercaseString];
   NSNumber *namedBindingKeyCode = namedKeyCodeComponentToKeyCodeConversionTable()[normalizedKeyCodeComponent];
   if (namedBindingKeyCode) {
     return namedBindingKeyCode;
@@ -37,7 +38,8 @@ NSNumber *SpectacleConvertShortcutKeyBindingToModifiers(NSString *keyBinding)
   NSArray<NSString *> *modifierComponents = [keyBindingComponents subarrayWithRange:rangeOfModifierComponents];
   NSNumber *modifiers = @0;
   for (NSString *modifierComponent in modifierComponents) {
-    NSString *normalizedModifierComponent = [modifierComponent uppercaseString];
+    NSString *sanitizedModifierComponent = [modifierComponent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *normalizedModifierComponent = [sanitizedModifierComponent uppercaseString];
     NSNumber *modifier = modiferComponentToCarbonModifierConversionTable()[normalizedModifierComponent];
     if (modifier) {
       modifiers = @([modifiers unsignedIntegerValue] | [modifier unsignedIntegerValue]);

@@ -12,6 +12,7 @@ describe(@"SpectacleShortcutKeyBindings", ^{
   it(@"should convert an empty or nil key binding to nil modifiers", ^{
     expect(SpectacleConvertShortcutKeyBindingToModifiers(nil)).to.equal(nil);
     expect(SpectacleConvertShortcutKeyBindingToModifiers(@"")).to.equal(nil);
+    expect(SpectacleConvertShortcutKeyBindingToModifiers(@" ")).to.equal(nil);
   });
 
   it(@"should convert key bindings to modifiers", ^{
@@ -36,9 +37,14 @@ describe(@"SpectacleShortcutKeyBindings", ^{
     expect(SpectacleConvertShortcutKeyBindingToModifiers(@"CONTROL+OPTION+SHIFT+COMMAND+C")).to.equal(controlKey | optionKey | shiftKey | cmdKey);
   });
 
+  it(@"should convert key bindings with whitespace to modifiers", ^{
+    expect(SpectacleConvertShortcutKeyBindingToModifiers(@" alt  +   shift    +     cmd    +c")).to.equal(optionKey | shiftKey |cmdKey);
+  });
+
   it(@"should convert an empty or nil key binding to nil key codes", ^{
     expect(SpectacleConvertShortcutKeyBindingToKeyCode(nil)).to.equal(nil);
     expect(SpectacleConvertShortcutKeyBindingToKeyCode(@"")).to.equal(nil);
+    expect(SpectacleConvertShortcutKeyBindingToKeyCode(@" ")).to.equal(nil);
   });
 
   it(@"should convert lowercase alphabetical key bindings to key codes", ^{
@@ -121,6 +127,11 @@ describe(@"SpectacleShortcutKeyBindings", ^{
     expect(SpectacleConvertShortcutKeyBindingToKeyCode(@"shift+command+f")).to.equal(kVK_ANSI_F);
     expect(SpectacleConvertShortcutKeyBindingToKeyCode(@"option+shift+command+g")).to.equal(kVK_ANSI_G);
     expect(SpectacleConvertShortcutKeyBindingToKeyCode(@"control+option+shift+command+h")).to.equal(kVK_ANSI_H);
+  });
+
+  it(@"should convert alphanumeric key bindings with whitespace to key codes", ^{
+    expect(SpectacleConvertShortcutKeyBindingToKeyCode(@" cmd  +   a    ")).to.equal(kVK_ANSI_A);
+    expect(SpectacleConvertShortcutKeyBindingToKeyCode(@" shift  +   cmd    +     0      ")).to.equal(kVK_ANSI_0);
   });
 
   it(@"should convert named key bindings to key codes", ^{
