@@ -6,9 +6,9 @@
 
 @interface SpectacleShortcutHolder : NSObject
 
-@property (nonatomic, assign, readonly) EventHotKeyID shortcutID;
-@property (nonatomic, strong, readonly) SpectacleShortcut *shortcut;
-@property (nonatomic, assign, readonly) EventHotKeyRef shortcutRef;
+@property (nonatomic, readonly, assign) EventHotKeyID shortcutID;
+@property (nonatomic, readonly, strong) SpectacleShortcut *shortcut;
+@property (nonatomic, readonly, assign) EventHotKeyRef shortcutRef;
 
 - (instancetype)initWithShortcutID:(EventHotKeyID)shortcutID;
 

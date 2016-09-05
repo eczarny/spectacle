@@ -6,8 +6,8 @@
 
 @interface SpectacleScreenDetectionResult : NSObject
 
-@property (nonatomic, strong, readonly) NSScreen *sourceScreen;
-@property (nonatomic, strong, readonly) NSScreen *destinationScreen;
+@property (nonatomic, readonly, strong) NSScreen *sourceScreen;
+@property (nonatomic, readonly, strong) NSScreen *destinationScreen;
 
 - (instancetype)initWithSourceScreen:(NSScreen *)sourceScreen
                    destinationScreen:(NSScreen *)destinationScreen NS_DESIGNATED_INITIALIZER;

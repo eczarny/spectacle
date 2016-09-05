@@ -4,6 +4,6 @@
 
 @protocol SpectacleShortcutStorageMigrationDestination <SpectacleShortcutStorage>
 
-@property (nonatomic, readonly, getter=isMigrationNeeded) BOOL migrationNeeded;
+@property (nonatomic, readonly, assign, getter=isMigrationNeeded) BOOL migrationNeeded;
 
 @end
