@@ -169,7 +169,7 @@ static EventHotKeyID currentShortcutID = {
   EventHotKeyRef shortcutRef;
   EventTargetRef eventTarget = GetApplicationEventTarget();
   OSStatus err;
-  err = RegisterEventHotKey((unsigned int)shortcut.shortcutCode,
+  err = RegisterEventHotKey((unsigned int)shortcut.shortcutKeyCode,
                             (unsigned int)shortcut.shortcutModifiers,
                             shortcutHolder.shortcutID,
                             eventTarget,

@@ -93,7 +93,7 @@ NSString *SpectacleTranslateShortcut(SpectacleShortcut *shortcut)
 {
   return [NSString stringWithFormat:@"%@%@",
           SpectacleTranslateModifiers(shortcut.shortcutModifiers),
-          SpectacleTranslateKeyCode(shortcut.shortcutCode, shortcut.shortcutModifiers)];
+          SpectacleTranslateKeyCode(shortcut.shortcutKeyCode, shortcut.shortcutModifiers)];
 }
 
 NSUInteger SpectacleConvertCocoaModifiersToCarbon(NSUInteger modifiers)

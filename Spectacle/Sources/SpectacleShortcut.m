@@ -17,29 +17,29 @@
                       shortcutAction:(SpectacleShortcutAction)shortcutAction
 {
   return [self initWithShortcutName:shortcutName
-                       shortcutCode:[SpectacleConvertShortcutKeyBindingToKeyCode(shortcutKeyBinding) integerValue]
+                    shortcutKeyCode:[SpectacleConvertShortcutKeyBindingToKeyCode(shortcutKeyBinding) integerValue]
                   shortcutModifiers:[SpectacleConvertShortcutKeyBindingToModifiers(shortcutKeyBinding) unsignedIntegerValue]
                      shortcutAction:shortcutAction];
 }
 
 - (instancetype)initWithShortcutName:(NSString *)shortcutName
-                        shortcutCode:(NSInteger)shortcutCode
+                     shortcutKeyCode:(NSInteger)shortcutKeyCode
                    shortcutModifiers:(NSUInteger)shortcutModifiers
 {
   return [self initWithShortcutName:shortcutName
-                       shortcutCode:shortcutCode
+                    shortcutKeyCode:shortcutKeyCode
                   shortcutModifiers:shortcutModifiers
                      shortcutAction:nil];
 }
 
 - (instancetype)initWithShortcutName:(NSString *)shortcutName
-                        shortcutCode:(NSInteger)shortcutCode
+                     shortcutKeyCode:(NSInteger)shortcutKeyCode
                    shortcutModifiers:(NSUInteger)shortcutModifiers
                       shortcutAction:(SpectacleShortcutAction)shortcutAction
 {
   if (self = [super init]) {
     _shortcutName = shortcutName;
-    _shortcutCode = shortcutCode;
+    _shortcutKeyCode = shortcutKeyCode;
     _shortcutModifiers = SpectacleConvertModifiersToCarbonIfNecessary(shortcutModifiers);
     _shortcutAction = shortcutAction;
   }
@@ -49,7 +49,7 @@
 - (instancetype)copyWithShortcutAction:(SpectacleShortcutAction)shortcutAction
 {
   return [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
-                                            shortcutCode:_shortcutCode
+                                         shortcutKeyCode:_shortcutKeyCode
                                        shortcutModifiers:_shortcutModifiers
                                           shortcutAction:shortcutAction];
 }
@@ -57,14 +57,14 @@
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
   return [self initWithShortcutName:[coder decodeObjectForKey:@"name"]
-                       shortcutCode:[coder decodeIntegerForKey:@"keyCode"]
+                    shortcutKeyCode:[coder decodeIntegerForKey:@"keyCode"]
                   shortcutModifiers:[coder decodeIntegerForKey:@"modifiers"]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
   [coder encodeObject:_shortcutName forKey:@"name"];
-  [coder encodeInteger:_shortcutCode forKey:@"keyCode"];
+  [coder encodeInteger:_shortcutKeyCode forKey:@"keyCode"];
   [coder encodeInteger:_shortcutModifiers forKey:@"modifiers"];
 }
 
@@ -128,7 +128,7 @@
 
 - (BOOL)isClearedShortcut
 {
-  return (_shortcutCode == 0) && (_shortcutModifiers == 0);
+  return (_shortcutKeyCode == 0) && (_shortcutModifiers == 0);
 }
 
 - (NSString *)displayString
@@ -152,7 +152,7 @@
   if (shortcut == self) {
     return YES;
   }
-  if (shortcut.shortcutCode != _shortcutCode) {
+  if (shortcut.shortcutKeyCode != _shortcutKeyCode) {
     return NO;
   }
   if (shortcut.shortcutModifiers != _shortcutModifiers) {

@@ -49,7 +49,7 @@
     NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
     if (characters.length) {
       SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:self.shortcutName
-                                                                          shortcutCode:keyCode
+                                                                       shortcutKeyCode:keyCode
                                                                      shortcutModifiers:newModifierFlags];
       NSError *error = nil;
       BOOL isShortcutValid = [SpectacleShortcutValidation isShortcutValid:newShortcut

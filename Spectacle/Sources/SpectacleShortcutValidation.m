@@ -37,7 +37,7 @@
     }
     NSInteger keyCode = [SpectacleShortcutValidation keyCodeFromDictionary:shortcutDictionary];
     NSUInteger modifiers = [SpectacleShortcutValidation modifiersFromDictionary:shortcutDictionary];
-    if (([shortcut shortcutCode] == keyCode) && [SpectacleShortcutValidation shortcut:shortcut containsModifiers:modifiers]) {
+    if (([shortcut shortcutKeyCode] == keyCode) && [SpectacleShortcutValidation shortcut:shortcut containsModifiers:modifiers]) {
       if (error) {
         NSString *description = NSLocalizedString(@"AlertMessageTextShortcutValidationError", @"The message text of the alert displayed when a shortcut is invalid");
         NSString *recoverySuggestion = NSLocalizedString(@"AlertInformativeTextSystemWideShortcutAlreadyUsed", @"The informative text of the alert displayed when a system-wide shortcut is already in use");

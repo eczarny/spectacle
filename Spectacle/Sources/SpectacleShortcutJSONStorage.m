@@ -80,7 +80,7 @@ static NSArray<NSDictionary *> *jsonObjectFromShortcuts(NSArray<SpectacleShortcu
   for (SpectacleShortcut *shortcut in shortcuts) {
     [jsonArray addObject:@{
                            @"shortcut_name" : shortcut.shortcutName,
-                           @"shortcut_code" : @(shortcut.shortcutCode),
+                           @"shortcut_code" : @(shortcut.shortcutKeyCode),
                            @"shortcut_modifiers" : @(shortcut.shortcutModifiers),
                            }];
   }
@@ -92,10 +92,10 @@ static NSArray<SpectacleShortcut *> *shortcutsFromJsonObject(NSArray<NSDictionar
   NSMutableArray<SpectacleShortcut *> *shortcuts = [NSMutableArray new];
   for (NSDictionary *jsonObject in jsonArray) {
     NSString *shortcutName = jsonObject[@"shortcut_name"];
-    NSNumber *shortcutCode = jsonObject[@"shortcut_code"];
+    NSNumber *shortcutKeyCode = jsonObject[@"shortcut_code"];
     NSNumber *shortcutModifiers = jsonObject[@"shortcut_modifiers"];
     [shortcuts addObject:[[SpectacleShortcut alloc] initWithShortcutName:shortcutName
-                                                            shortcutCode:[shortcutCode integerValue]
+                                                         shortcutKeyCode:[shortcutKeyCode integerValue]
                                                        shortcutModifiers:[shortcutModifiers unsignedIntegerValue]
                                                           shortcutAction:action]];
   }

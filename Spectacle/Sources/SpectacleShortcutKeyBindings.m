@@ -48,7 +48,7 @@ NSNumber *SpectacleConvertShortcutKeyBindingToModifiers(NSString *keyBinding)
 
 NSString *SpectacleConvertShortcutToKeyBinding(SpectacleShortcut *shortcut)
 {
-  NSString *keyCodeComponent = [keyCodeComponentForKeyCode(shortcut.shortcutCode) lowercaseString];
+  NSString *keyCodeComponent = [keyCodeComponentForKeyCode(shortcut.shortcutKeyCode) lowercaseString];
   NSArray<NSString *> *modifierComponents = modifierComponentsForModifiers(shortcut.shortcutModifiers);
   if (!keyCodeComponent) {
     return nil;
