@@ -93,7 +93,7 @@ static NSArray<SpectacleShortcut *> *shortcutsFromJsonObject(NSArray<NSDictionar
     NSString *shortcutName = jsonObject[@"shortcut_name"];
     NSString *shortcutKeyBinding = jsonObject[@"shortcut_key_binding"];
     [shortcuts addObject:[[SpectacleShortcut alloc] initWithShortcutName:shortcutName
-                                                      shortcutKeyBinding:shortcutKeyBinding
+                                                      shortcutKeyBinding:[shortcutKeyBinding isKindOfClass:[NSNull class]] ? nil : shortcutKeyBinding
                                                           shortcutAction:action]];
   }
   return shortcuts;
