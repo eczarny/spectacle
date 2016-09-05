@@ -46,24 +46,19 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
     return NO;
   }
   if (_isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:newModifierFlags])) {
-    NSString *characters = event.charactersIgnoringModifiers.uppercaseString;
-    if (characters.length) {
-      SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
-                                                                       shortcutKeyCode:keyCode
-                                                                     shortcutModifiers:newModifierFlags];
-      NSError *error = nil;
-      BOOL isShortcutValid = [SpectacleShortcutValidation isShortcutValid:newShortcut
-                                                          shortcutManager:_shortcutManager
-                                                           withValidators:_additionalShortcutValidators
-                                                                    error:&error];
-      if (!isShortcutValid) {
-        [[NSAlert alertWithError:error] runModal];
-      } else {
-        _shortcut = newShortcut;
-        [_delegate shortcutRecorder:_shortcutRecorder didReceiveNewShortcut:newShortcut];
-      }
+    SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
+                                                                     shortcutKeyCode:keyCode
+                                                                   shortcutModifiers:newModifierFlags];
+    NSError *error = nil;
+    BOOL isShortcutValid = [SpectacleShortcutValidation isShortcutValid:newShortcut
+                                                        shortcutManager:_shortcutManager
+                                                         withValidators:_additionalShortcutValidators
+                                                                  error:&error];
+    if (!isShortcutValid) {
+      [[NSAlert alertWithError:error] runModal];
     } else {
-      NSBeep();
+      _shortcut = newShortcut;
+      [_delegate shortcutRecorder:_shortcutRecorder didReceiveNewShortcut:newShortcut];
     }
     _modifierFlags = 0;
     PopSymbolicHotKeyMode(_shortcutMode);
