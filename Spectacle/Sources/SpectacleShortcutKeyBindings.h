@@ -1,4 +1,8 @@
 #import <Foundation/Foundation.h>
 
-NSNumber *SpectacleConvertShortcutKeyBindingToModifiers(NSString *keyBinding);
+@class SpectacleShortcut;
+
 NSNumber *SpectacleConvertShortcutKeyBindingToKeyCode(NSString *keyBinding);
+NSNumber *SpectacleConvertShortcutKeyBindingToModifiers(NSString *keyBinding);
+
+NSString *SpectacleConvertShortcutToKeyBinding(SpectacleShortcut *shortcut);

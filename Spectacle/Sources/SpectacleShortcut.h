@@ -13,7 +13,14 @@ typedef void(^SpectacleShortcutAction)(SpectacleShortcut *);
 @property (nonatomic, readonly, assign) NSInteger shortcutCode;
 @property (nonatomic, readonly, assign) NSUInteger shortcutModifiers;
 @property (nonatomic, readonly, strong) SpectacleShortcutAction shortcutAction;
+@property (nonatomic, readonly, copy) NSString *shortcutKeyBinding;
 @property (nonatomic, readonly, strong) SpectacleWindowAction *windowAction;
+
+- (instancetype)initWithShortcutName:(NSString *)shortcutName shortcutKeyBinding:(NSString *)shortcutKeyBinding;
+
+- (instancetype)initWithShortcutName:(NSString *)shortcutName
+                  shortcutKeyBinding:(NSString *)shortcutKeyBinding
+                      shortcutAction:(SpectacleShortcutAction)shortcutAction;
 
 - (instancetype)initWithShortcutName:(NSString *)shortcutName
                         shortcutCode:(NSInteger)shortcutCode
@@ -34,9 +41,9 @@ SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 
 - (NSString *)displayString;
 
-+ (BOOL)validCocoaModifiers:(NSUInteger)modifiers;
-
 - (BOOL)isEqual:(id)object;
 - (BOOL)isEqualToShortcut:(SpectacleShortcut *)shortcut;
+
++ (BOOL)validCocoaModifiers:(NSUInteger)modifiers;
 
 @end

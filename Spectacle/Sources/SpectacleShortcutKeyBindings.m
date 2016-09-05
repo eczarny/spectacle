@@ -2,11 +2,30 @@
 
 #import <Carbon/Carbon.h>
 
+#import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslations.h"
 
-static NSDictionary<NSString *, NSNumber *> *modiferComponentToCarbonModifierConversionTable(void);
 static NSDictionary<NSString *, NSNumber *> *namedKeyCodeComponentToKeyCodeConversionTable(void);
+static NSDictionary<NSNumber *, NSString *> *keyCodeToNamedKeyCodeComponentConversionTable(void);
+static NSDictionary<NSNumber *, NSString *> *layoutDependentKeyCodeConversionTable(void);
+static NSDictionary<NSString *, NSNumber *> *modiferComponentToCarbonModifierConversionTable(void);
 static NSDictionary<NSString *, NSNumber *> *keyCodeComponentToKeyCodeConversionTable(void);
+static NSString *keyCodeComponentForKeyCode(NSInteger keyCode);
+static NSArray<NSString *> *modifierComponentsForModifiers(NSUInteger modifiers);
+
+NSNumber *SpectacleConvertShortcutKeyBindingToKeyCode(NSString *keyBinding)
+{
+  NSString *keyCodeComponent = [[keyBinding componentsSeparatedByString:@"+"] lastObject];
+  if (keyCodeComponent.length == 0) {
+    return nil;
+  }
+  NSString *normalizedKeyCodeComponent = [keyCodeComponent uppercaseString];
+  NSNumber *namedBindingKeyCode = namedKeyCodeComponentToKeyCodeConversionTable()[normalizedKeyCodeComponent];
+  if (namedBindingKeyCode) {
+    return namedBindingKeyCode;
+  }
+  return keyCodeComponentToKeyCodeConversionTable()[normalizedKeyCodeComponent];
+}
 
 NSNumber *SpectacleConvertShortcutKeyBindingToModifiers(NSString *keyBinding)
 {
@@ -27,36 +46,14 @@ NSNumber *SpectacleConvertShortcutKeyBindingToModifiers(NSString *keyBinding)
   return modifiers;
 }
 
-NSNumber *SpectacleConvertShortcutKeyBindingToKeyCode(NSString *keyBinding)
+NSString *SpectacleConvertShortcutToKeyBinding(SpectacleShortcut *shortcut)
 {
-  NSString *keyCodeComponent = [[keyBinding componentsSeparatedByString:@"+"] lastObject];
-  if (keyCodeComponent.length == 0) {
+  NSString *keyCodeComponent = [keyCodeComponentForKeyCode(shortcut.shortcutCode) lowercaseString];
+  NSArray<NSString *> *modifierComponents = modifierComponentsForModifiers(shortcut.shortcutModifiers);
+  if (!keyCodeComponent) {
     return nil;
   }
-  NSString *normalizedKeyCodeComponent = [keyCodeComponent uppercaseString];
-  NSNumber *namedBindingKeyCode = namedKeyCodeComponentToKeyCodeConversionTable()[normalizedKeyCodeComponent];
-  if (namedBindingKeyCode) {
-    return namedBindingKeyCode;
-  }
-  return keyCodeComponentToKeyCodeConversionTable()[normalizedKeyCodeComponent];
-}
-
-static NSDictionary<NSString *, NSNumber *> *modiferComponentToCarbonModifierConversionTable(void)
-{
-  static dispatch_once_t onceToken;
-  static NSDictionary<NSString *, NSNumber *> *conversionTable;
-  dispatch_once(&onceToken, ^{
-    conversionTable = @{
-                        @"CMD":     @(cmdKey),
-                        @"COMMAND": @(cmdKey),     // Alias for "CMD"
-                        @"SHIFT":   @(shiftKey),
-                        @"OPTION":  @(optionKey),
-                        @"ALT":     @(optionKey),  // Alias for "OPTION"
-                        @"CONTROL": @(controlKey),
-                        @"CTRL":    @(controlKey), // Alias for "CONTROL"
-                        };
-  });
-  return conversionTable;
+  return [[modifierComponents arrayByAddingObject:keyCodeComponent] componentsJoinedByString:@"+"];
 }
 
 static NSDictionary<NSString *, NSNumber *> *namedKeyCodeComponentToKeyCodeConversionTable(void)
@@ -106,7 +103,6 @@ static NSDictionary<NSString *, NSNumber *> *namedKeyCodeComponentToKeyCodeConve
                         @"KEYPAD9":        @(kVK_ANSI_Keypad9),
 
                         @"RETURN":         @(kVK_Return),
-                        @"ENTER":          @(kVK_Return),     // Alias for "RETURN"
                         @"TAB":            @(kVK_Tab),
                         @"SPACE":          @(kVK_Space),
                         @"DELETE":         @(kVK_Delete),
@@ -129,14 +125,103 @@ static NSDictionary<NSString *, NSNumber *> *namedKeyCodeComponentToKeyCodeConve
                         @"FORWARDDELETE":  @(kVK_ForwardDelete),
                         @"END":            @(kVK_End),
                         @"PAGEDOWN":       @(kVK_PageDown),
-                        @"LEFTARROW":      @(kVK_LeftArrow),
-                        @"LEFT":           @(kVK_LeftArrow),  // Alias for "LEFTARROW"
-                        @"RIGHTARROW":     @(kVK_RightArrow),
-                        @"RIGHT":          @(kVK_RightArrow), // Alias for "RIGHTARROW"
-                        @"DOWNARROW":      @(kVK_DownArrow),
-                        @"DOWN":           @(kVK_DownArrow),  // Alias for "DOWNARROW"
-                        @"UPARROW":        @(kVK_UpArrow),
-                        @"UP":             @(kVK_UpArrow),    // Alias for "UPARROW"
+                        @"LEFT":           @(kVK_LeftArrow),
+                        @"RIGHT":          @(kVK_RightArrow),
+                        @"DOWN":           @(kVK_DownArrow),
+                        @"UP":             @(kVK_UpArrow),
+                        };
+  });
+  return conversionTable;
+}
+
+static NSDictionary<NSNumber *, NSString *> *keyCodeToNamedKeyCodeComponentConversionTable(void)
+{
+  static dispatch_once_t onceToken;
+  static NSDictionary<NSNumber *, NSString *> *conversionTable;
+  dispatch_once(&onceToken, ^{
+    NSMutableDictionary<NSNumber *, NSString *> *generatedConversionTable = [NSMutableDictionary new];
+    for (NSString *namedKeyCodeComponent in [namedKeyCodeComponentToKeyCodeConversionTable() allKeys]) {
+      generatedConversionTable[namedKeyCodeComponentToKeyCodeConversionTable()[namedKeyCodeComponent]] = namedKeyCodeComponent;
+    }
+    conversionTable = generatedConversionTable;
+  });
+  return conversionTable;
+}
+
+static NSDictionary<NSNumber *, NSString *> *layoutDependentKeyCodeConversionTable(void)
+{
+  static dispatch_once_t onceToken;
+  static NSDictionary<NSNumber *, NSString *> *conversionTable;
+  dispatch_once(&onceToken, ^{
+    conversionTable = @{
+                        @(kVK_ANSI_0):            @"0",
+                        @(kVK_ANSI_1):            @"1",
+                        @(kVK_ANSI_2):            @"2",
+                        @(kVK_ANSI_3):            @"3",
+                        @(kVK_ANSI_4):            @"4",
+                        @(kVK_ANSI_5):            @"5",
+                        @(kVK_ANSI_6):            @"6",
+                        @(kVK_ANSI_7):            @"7",
+                        @(kVK_ANSI_8):            @"8",
+                        @(kVK_ANSI_9):            @"9",
+                        @(kVK_ANSI_A):            @"A",
+                        @(kVK_ANSI_B):            @"B",
+                        @(kVK_ANSI_C):            @"C",
+                        @(kVK_ANSI_D):            @"D",
+                        @(kVK_ANSI_E):            @"E",
+                        @(kVK_ANSI_F):            @"F",
+                        @(kVK_ANSI_G):            @"G",
+                        @(kVK_ANSI_H):            @"H",
+                        @(kVK_ANSI_I):            @"I",
+                        @(kVK_ANSI_J):            @"J",
+                        @(kVK_ANSI_K):            @"K",
+                        @(kVK_ANSI_L):            @"L",
+                        @(kVK_ANSI_M):            @"M",
+                        @(kVK_ANSI_N):            @"N",
+                        @(kVK_ANSI_O):            @"O",
+                        @(kVK_ANSI_P):            @"P",
+                        @(kVK_ANSI_Q):            @"Q",
+                        @(kVK_ANSI_R):            @"R",
+                        @(kVK_ANSI_S):            @"S",
+                        @(kVK_ANSI_T):            @"T",
+                        @(kVK_ANSI_U):            @"U",
+                        @(kVK_ANSI_V):            @"V",
+                        @(kVK_ANSI_W):            @"W",
+                        @(kVK_ANSI_X):            @"X",
+                        @(kVK_ANSI_Y):            @"Y",
+                        @(kVK_ANSI_Z):            @"Z",
+                        @(kVK_ANSI_Equal):        @"=",
+                        @(kVK_ANSI_Minus):        @"-",
+                        @(kVK_ANSI_RightBracket): @"]",
+                        @(kVK_ANSI_LeftBracket):  @"[",
+                        @(kVK_ANSI_Quote):        @"'",
+                        @(kVK_ANSI_Semicolon):    @";",
+                        @(kVK_ANSI_Backslash):    @"\\",
+                        @(kVK_ANSI_Comma):        @",",
+                        @(kVK_ANSI_Slash):        @"/",
+                        @(kVK_ANSI_Period):       @".",
+                        @(kVK_ANSI_Grave):        @"`",
+                        };
+  });
+  return conversionTable;
+}
+
+static NSDictionary<NSString *, NSNumber *> *modiferComponentToCarbonModifierConversionTable(void)
+{
+  static dispatch_once_t onceToken;
+  static NSDictionary<NSString *, NSNumber *> *conversionTable;
+  dispatch_once(&onceToken, ^{
+    conversionTable = @{
+                        @"COMMAND": @(cmdKey),
+                        @"CMD":     @(cmdKey),     // Alias for "COMMAND"
+
+                        @"SHIFT":   @(shiftKey),
+
+                        @"OPTION":  @(optionKey),
+                        @"ALT":     @(optionKey),  // Alias for "OPTION"
+
+                        @"CONTROL": @(controlKey),
+                        @"CTRL":    @(controlKey), // Alias for "CONTROL"
                         };
   });
   return conversionTable;
@@ -147,62 +232,35 @@ static NSDictionary<NSString *, NSNumber *> *keyCodeComponentToKeyCodeConversion
   static dispatch_once_t onceToken;
   static NSDictionary<NSString *, NSNumber *> *conversionTable;
   dispatch_once(&onceToken, ^{
-    NSDictionary<NSNumber *, NSString *> *layoutDependentKeyCodes = @{
-                                                                      @(kVK_ANSI_0):            @"0",
-                                                                      @(kVK_ANSI_1):            @"1",
-                                                                      @(kVK_ANSI_2):            @"2",
-                                                                      @(kVK_ANSI_3):            @"3",
-                                                                      @(kVK_ANSI_4):            @"4",
-                                                                      @(kVK_ANSI_5):            @"5",
-                                                                      @(kVK_ANSI_6):            @"6",
-                                                                      @(kVK_ANSI_7):            @"7",
-                                                                      @(kVK_ANSI_8):            @"8",
-                                                                      @(kVK_ANSI_9):            @"9",
-                                                                      @(kVK_ANSI_A):            @"A",
-                                                                      @(kVK_ANSI_B):            @"B",
-                                                                      @(kVK_ANSI_C):            @"C",
-                                                                      @(kVK_ANSI_D):            @"D",
-                                                                      @(kVK_ANSI_E):            @"E",
-                                                                      @(kVK_ANSI_F):            @"F",
-                                                                      @(kVK_ANSI_G):            @"G",
-                                                                      @(kVK_ANSI_H):            @"H",
-                                                                      @(kVK_ANSI_I):            @"I",
-                                                                      @(kVK_ANSI_J):            @"J",
-                                                                      @(kVK_ANSI_K):            @"K",
-                                                                      @(kVK_ANSI_L):            @"L",
-                                                                      @(kVK_ANSI_M):            @"M",
-                                                                      @(kVK_ANSI_N):            @"N",
-                                                                      @(kVK_ANSI_O):            @"O",
-                                                                      @(kVK_ANSI_P):            @"P",
-                                                                      @(kVK_ANSI_Q):            @"Q",
-                                                                      @(kVK_ANSI_R):            @"R",
-                                                                      @(kVK_ANSI_S):            @"S",
-                                                                      @(kVK_ANSI_T):            @"T",
-                                                                      @(kVK_ANSI_U):            @"U",
-                                                                      @(kVK_ANSI_V):            @"V",
-                                                                      @(kVK_ANSI_W):            @"W",
-                                                                      @(kVK_ANSI_X):            @"X",
-                                                                      @(kVK_ANSI_Y):            @"Y",
-                                                                      @(kVK_ANSI_Z):            @"Z",
-                                                                      @(kVK_ANSI_Equal):        @"=",
-                                                                      @(kVK_ANSI_Minus):        @"-",
-                                                                      @(kVK_ANSI_RightBracket): @"]",
-                                                                      @(kVK_ANSI_LeftBracket):  @"[",
-                                                                      @(kVK_ANSI_Quote):        @"'",
-                                                                      @(kVK_ANSI_Semicolon):    @";",
-                                                                      @(kVK_ANSI_Backslash):    @"\\",
-                                                                      @(kVK_ANSI_Comma):        @",",
-                                                                      @(kVK_ANSI_Slash):        @"/",
-                                                                      @(kVK_ANSI_Period):       @".",
-                                                                      @(kVK_ANSI_Grave):        @"`",
-                                                                      };
     NSMutableDictionary<NSString *, NSNumber *> *generatedConversionTable = [NSMutableDictionary new];
-    for (NSNumber *keyCode in [layoutDependentKeyCodes allKeys]) {
-      NSString *translatedKeyCode = SpectacleTranslateKeyCode([keyCode integerValue], 0);
-      NSString *keyCodeComponent = (translatedKeyCode.length > 0) ? translatedKeyCode : layoutDependentKeyCodes[keyCode];
-      generatedConversionTable[keyCodeComponent] = keyCode;
+    for (NSNumber *keyCode in [layoutDependentKeyCodeConversionTable() allKeys]) {
+      generatedConversionTable[keyCodeComponentForKeyCode([keyCode integerValue])] = keyCode;
     }
     conversionTable = generatedConversionTable;
   });
   return conversionTable;
+}
+
+static NSString *keyCodeComponentForKeyCode(NSInteger keyCode)
+{
+  NSString *translatedKeyCode = keyCodeToNamedKeyCodeComponentConversionTable()[@(keyCode)] ?: SpectacleTranslateKeyCode(keyCode, 0);
+  return (translatedKeyCode.length > 0) ? translatedKeyCode : layoutDependentKeyCodeConversionTable()[@(keyCode)];
+}
+
+static NSArray<NSString *> *modifierComponentsForModifiers(NSUInteger modifiers)
+{
+  NSMutableArray<NSString *> *modifierComponents = [NSMutableArray new];
+  if (modifiers & controlKey) {
+    [modifierComponents addObject:@"ctrl"];
+  }
+  if (modifiers & optionKey) {
+    [modifierComponents addObject:@"alt"];
+  }
+  if (modifiers & shiftKey) {
+    [modifierComponents addObject:@"shift"];
+  }
+  if (modifiers & cmdKey) {
+    [modifierComponents addObject:@"cmd"];
+  }
+  return modifierComponents;
 }

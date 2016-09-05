@@ -5,6 +5,8 @@
 #import "SpectacleShortcut.h"
 #import "SpectacleShortcutTranslations.h"
 
+static SpectacleShortcut *shortcutForKeyBinding(NSString *keyBinding);
+
 SpecBegin(SpectacleShortcutTranslations)
 describe(@"SpectacleShortcutTranslations", ^{
   it(@"should translate alphanumeric key codes", ^{
@@ -98,60 +100,24 @@ describe(@"SpectacleShortcutTranslations", ^{
   });
 
   it(@"should translate shortcuts", ^{
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_ANSI_C
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘C");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_ANSI_F
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘F");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘←");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_RightArrow
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘→");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_UpArrow
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘↑");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_DownArrow
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘↓");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSCommandKeyMask])).to.equal(@"⌃⌘←");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSCommandKeyMask])).to.equal(@"⌃⇧⌘←");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_RightArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSCommandKeyMask])).to.equal(@"⌃⌘→");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_RightArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSShiftKeyMask | NSCommandKeyMask])).to.equal(@"⌃⇧⌘→");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_RightArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌃⌥⌘→");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌃⌥⌘←");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_RightArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask])).to.equal(@"⌃⌥→");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask])).to.equal(@"⌃⌥←");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_RightArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask])).to.equal(@"⌃⌥⇧→");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask])).to.equal(@"⌃⌥⇧←");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_ANSI_Z
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask])).to.equal(@"⌥⌘Z");
-    expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_ANSI_Z
-                                                                    shortcutModifiers:NSAlternateKeyMask | NSShiftKeyMask | NSCommandKeyMask])).to.equal(@"⌥⇧⌘Z");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+c"))).to.equal(@"⌥⌘C");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+f"))).to.equal(@"⌥⌘F");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+left"))).to.equal(@"⌥⌘←");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+right"))).to.equal(@"⌥⌘→");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+up"))).to.equal(@"⌥⌘↑");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+down"))).to.equal(@"⌥⌘↓");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+command+left"))).to.equal(@"⌃⌘←");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+shift+command+left"))).to.equal(@"⌃⇧⌘←");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+command+right"))).to.equal(@"⌃⌘→");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+shift+command+right"))).to.equal(@"⌃⇧⌘→");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+option+command+right"))).to.equal(@"⌃⌥⌘→");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+option+command+left"))).to.equal(@"⌃⌥⌘←");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+option+right"))).to.equal(@"⌃⌥→");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+option+left"))).to.equal(@"⌃⌥←");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+option+shift+right"))).to.equal(@"⌃⌥⇧→");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"control+option+shift+left"))).to.equal(@"⌃⌥⇧←");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+command+z"))).to.equal(@"⌥⌘Z");
+    expect(SpectacleTranslateShortcut(shortcutForKeyBinding(@"option+shift+command+z"))).to.equal(@"⌥⇧⌘Z");
   });
 
   it(@"should convert empty modifiers", ^{
@@ -201,3 +167,8 @@ describe(@"SpectacleShortcutTranslations", ^{
   });
 });
 SpecEnd
+
+static SpectacleShortcut *shortcutForKeyBinding(NSString *keyBinding)
+{
+  return [[SpectacleShortcut alloc] initWithShortcutName:nil shortcutKeyBinding:keyBinding];
+}

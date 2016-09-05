@@ -2,9 +2,25 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "SpectacleShortcutKeyBindings.h"
 #import "SpectacleShortcutTranslations.h"
 
 @implementation SpectacleShortcut
+
+- (instancetype)initWithShortcutName:(NSString *)shortcutName shortcutKeyBinding:(NSString *)shortcutKeyBinding
+{
+  return [self initWithShortcutName:shortcutName shortcutKeyBinding:shortcutKeyBinding shortcutAction:nil];
+}
+
+- (instancetype)initWithShortcutName:(NSString *)shortcutName
+                  shortcutKeyBinding:(NSString *)shortcutKeyBinding
+                      shortcutAction:(SpectacleShortcutAction)shortcutAction
+{
+  return [self initWithShortcutName:shortcutName
+                       shortcutCode:[SpectacleConvertShortcutKeyBindingToKeyCode(shortcutKeyBinding) integerValue]
+                  shortcutModifiers:[SpectacleConvertShortcutKeyBindingToModifiers(shortcutKeyBinding) unsignedIntegerValue]
+                     shortcutAction:shortcutAction];
+}
 
 - (instancetype)initWithShortcutName:(NSString *)shortcutName
                         shortcutCode:(NSInteger)shortcutCode
@@ -30,6 +46,14 @@
   return self;
 }
 
+- (instancetype)copyWithShortcutAction:(SpectacleShortcutAction)shortcutAction
+{
+  return [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
+                                            shortcutCode:_shortcutCode
+                                       shortcutModifiers:_shortcutModifiers
+                                          shortcutAction:shortcutAction];
+}
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
   return [self initWithShortcutName:[coder decodeObjectForKey:@"name"]
@@ -42,6 +66,11 @@
   [coder encodeObject:_shortcutName forKey:@"name"];
   [coder encodeInteger:_shortcutCode forKey:@"keyCode"];
   [coder encodeInteger:_shortcutModifiers forKey:@"modifiers"];
+}
+
+- (NSString *)shortcutKeyBinding
+{
+  return SpectacleConvertShortcutToKeyBinding(self);
 }
 
 - (SpectacleWindowAction *)windowAction
@@ -90,14 +119,6 @@
   return windowAction;
 }
 
-- (instancetype)copyWithShortcutAction:(SpectacleShortcutAction)shortcutAction
-{
-  return [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
-                                            shortcutCode:_shortcutCode
-                                       shortcutModifiers:_shortcutModifiers
-                                          shortcutAction:shortcutAction];
-}
-
 - (void)triggerShortcutAction
 {
   if (_shortcutAction) {
@@ -113,14 +134,6 @@
 - (NSString *)displayString
 {
   return SpectacleTranslateShortcut(self);
-}
-
-+ (BOOL)validCocoaModifiers:(NSUInteger)modifiers
-{
-  return ((modifiers & NSAlternateKeyMask)
-          || (modifiers & NSCommandKeyMask)
-          || (modifiers & NSControlKeyMask)
-          || (modifiers & NSShiftKeyMask));
 }
 
 - (BOOL)isEqual:(id)object
@@ -146,6 +159,14 @@
     return NO;
   }
   return YES;
+}
+
++ (BOOL)validCocoaModifiers:(NSUInteger)modifiers
+{
+  return ((modifiers & NSAlternateKeyMask)
+          || (modifiers & NSCommandKeyMask)
+          || (modifiers & NSControlKeyMask)
+          || (modifiers & NSShiftKeyMask));
 }
 
 @end
