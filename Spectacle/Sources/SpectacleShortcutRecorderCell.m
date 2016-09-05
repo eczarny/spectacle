@@ -70,13 +70,16 @@
     _isRecording = NO;
     [self.controlView setNeedsDisplay:YES];
     return YES;
+  } else {
+    _modifierFlags = 0;
+    [self.controlView setNeedsDisplay:YES];
   }
   return NO;
 }
 
 - (void)flagsChanged:(NSEvent *)event
 {
-  if (_isRecording) {
+  if (_isRecording && [SpectacleShortcut validCocoaModifiers:event.modifierFlags]) {
     _modifierFlags = event.modifierFlags;
     [self.controlView setNeedsDisplay:YES];
   }
