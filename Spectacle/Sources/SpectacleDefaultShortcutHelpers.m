@@ -60,7 +60,7 @@ static NSArray<SpectacleShortcut *> *builtinDefaultShortcuts(void)
                                               shortcutCode:kVK_LeftArrow
                                          shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MakeLarger"
-                                              shortcutCode:kVK_LeftArrow
+                                              shortcutCode:kVK_RightArrow
                                          shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask],
            [[SpectacleShortcut alloc] initWithShortcutName:@"MakeSmaller"
                                               shortcutCode:kVK_LeftArrow

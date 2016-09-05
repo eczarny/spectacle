@@ -141,8 +141,8 @@ describe(@"SpectacleShortcutTranslations", ^{
                                                                          shortcutCode:kVK_LeftArrow
                                                                     shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask])).to.equal(@"⌃⌥←");
     expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
-                                                                         shortcutCode:kVK_LeftArrow
-                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask])).to.equal(@"⌃⌥⇧←");
+                                                                         shortcutCode:kVK_RightArrow
+                                                                    shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask])).to.equal(@"⌃⌥⇧→");
     expect(SpectacleTranslateShortcut([[SpectacleShortcut alloc] initWithShortcutName:nil
                                                                          shortcutCode:kVK_LeftArrow
                                                                     shortcutModifiers:NSControlKeyMask | NSAlternateKeyMask | NSShiftKeyMask])).to.equal(@"⌃⌥⇧←");
