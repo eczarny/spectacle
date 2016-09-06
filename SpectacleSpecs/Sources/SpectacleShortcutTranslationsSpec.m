@@ -49,7 +49,7 @@ describe(@"SpectacleShortcutTranslations", ^{
     expect(SpectacleTranslateKeyCode(kVK_ANSI_9)).to.equal(@"9");
   });
 
-  it(@"should translate special key codes", ^{
+  it(@"should translate keyboard layout independent key codes", ^{
     expect(SpectacleTranslateKeyCode(kVK_F1)).to.equal(@"F1");
     expect(SpectacleTranslateKeyCode(kVK_F2)).to.equal(@"F2");
     expect(SpectacleTranslateKeyCode(kVK_F3)).to.equal(@"F3");
@@ -71,19 +71,51 @@ describe(@"SpectacleShortcutTranslations", ^{
     expect(SpectacleTranslateKeyCode(kVK_F19)).to.equal(@"F19");
     expect(SpectacleTranslateKeyCode(kVK_F20)).to.equal(@"F20");
 
-    expect(SpectacleTranslateKeyCode(kVK_Delete)).to.equal(@"⌫");
-    expect(SpectacleTranslateKeyCode(kVK_DownArrow)).to.equal(@"↓");
-    expect(SpectacleTranslateKeyCode(kVK_End)).to.equal(@"↘");
-    expect(SpectacleTranslateKeyCode(kVK_Escape)).to.equal(@"␛");
-    expect(SpectacleTranslateKeyCode(kVK_ForwardDelete)).to.equal(@"⌦");
-    expect(SpectacleTranslateKeyCode(kVK_Home)).to.equal(@"↖");
-    expect(SpectacleTranslateKeyCode(kVK_LeftArrow)).to.equal(@"←");
-    expect(SpectacleTranslateKeyCode(kVK_PageDown)).to.equal(@"⇟");
-    expect(SpectacleTranslateKeyCode(kVK_PageUp)).to.equal(@"⇞");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadDecimal)).to.equal(@"."),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadMultiply)).to.equal(@"*"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadPlus)).to.equal(@"+"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadClear)).to.equal(@"⌧"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadDivide)).to.equal(@"/"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadEnter)).to.equal(@"⌤"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadMinus)).to.equal(@"-"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadEquals)).to.equal(@"="),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad0)).to.equal(@"0"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad1)).to.equal(@"1"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad2)).to.equal(@"2"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad3)).to.equal(@"3"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad4)).to.equal(@"4"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad5)).to.equal(@"5"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad6)).to.equal(@"6"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad7)).to.equal(@"7"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad8)).to.equal(@"8"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad9)).to.equal(@"9"),
+
     expect(SpectacleTranslateKeyCode(kVK_Return)).to.equal(@"↩");
-    expect(SpectacleTranslateKeyCode(kVK_RightArrow)).to.equal(@"→");
-    expect(SpectacleTranslateKeyCode(kVK_Space)).to.equal(@" ");
     expect(SpectacleTranslateKeyCode(kVK_Tab)).to.equal(@"⇥");
+    expect(SpectacleTranslateKeyCode(kVK_Space)).to.equal(@"␣");
+    expect(SpectacleTranslateKeyCode(kVK_Delete)).to.equal(@"⌫");
+    expect(SpectacleTranslateKeyCode(kVK_Escape)).to.equal(@"⎋");
+    expect(SpectacleTranslateKeyCode(kVK_Command)).to.equal(@"⌘");
+    expect(SpectacleTranslateKeyCode(kVK_Shift)).to.equal(@"⇧");
+    expect(SpectacleTranslateKeyCode(kVK_CapsLock)).to.equal(@"⇪");
+    expect(SpectacleTranslateKeyCode(kVK_Option)).to.equal(@"⌥");
+    expect(SpectacleTranslateKeyCode(kVK_Control)).to.equal(@"⌃");
+    expect(SpectacleTranslateKeyCode(kVK_RightShift)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_RightOption)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_RightControl)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_Function)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_VolumeUp)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_VolumeDown)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_Mute)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_Help)).to.equal(@"");
+    expect(SpectacleTranslateKeyCode(kVK_Home)).to.equal(@"↖");
+    expect(SpectacleTranslateKeyCode(kVK_PageUp)).to.equal(@"⇞");
+    expect(SpectacleTranslateKeyCode(kVK_ForwardDelete)).to.equal(@"⌦");
+    expect(SpectacleTranslateKeyCode(kVK_End)).to.equal(@"↘");
+    expect(SpectacleTranslateKeyCode(kVK_PageDown)).to.equal(@"⇟");
+    expect(SpectacleTranslateKeyCode(kVK_LeftArrow)).to.equal(@"←");
+    expect(SpectacleTranslateKeyCode(kVK_RightArrow)).to.equal(@"→");
+    expect(SpectacleTranslateKeyCode(kVK_DownArrow)).to.equal(@"↓");
     expect(SpectacleTranslateKeyCode(kVK_UpArrow)).to.equal(@"↑");
   });
 
