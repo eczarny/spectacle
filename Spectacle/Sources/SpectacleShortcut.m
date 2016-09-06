@@ -129,7 +129,7 @@
 
 - (BOOL)isClearedShortcut
 {
-  return (_shortcutKeyCode <= 0) && (_shortcutModifiers == 0);
+  return _shortcutKeyCode == -1 || (_shortcutKeyCode == 0 && _shortcutModifiers == 0);
 }
 
 - (NSString *)displayString
