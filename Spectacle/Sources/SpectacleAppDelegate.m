@@ -340,7 +340,9 @@
 {
   NSRunningApplication *frontmostApplication = [NSWorkspace sharedWorkspace].frontmostApplication;
   // Do not enable shortcuts if they should remain disabled for an hour.
-  if (_shortcutsAreDisabledForAnHour) return;
+  if (_shortcutsAreDisabledForAnHour) {
+    return;
+  }
   // Do not enable shortcuts if the application is blacklisted or disabled.
   if ([_blacklistedApplications containsObject:frontmostApplication.bundleIdentifier]
       || [_disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
@@ -405,8 +407,6 @@
 
 - (void)inputSourceSelectionDidChange
 {
-  [_shortcutManager unregisterShortcuts];
-  [_shortcutManager registerShortcuts];
   [_preferencesController loadRegisteredShortcuts];
   [self updateShortcutMenuItems];
 }

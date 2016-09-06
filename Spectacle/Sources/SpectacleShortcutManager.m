@@ -123,7 +123,9 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)registerShortcuts
 {
-  if (_areShorcutsEnabled) return;
+  if (_areShorcutsEnabled) {
+    return;
+  }
   for (SpectacleShortcutHolder *shortcutHolder in _registeredShortcutsByName.allValues) {
     _registeredShortcutsByName[shortcutHolder.shortcut.shortcutName] = [self registerEventHotKey:shortcutHolder];
   }
@@ -132,7 +134,9 @@ static EventHotKeyID currentShortcutID = {
 
 - (void)unregisterShortcuts
 {
-  if (!_areShorcutsEnabled) return;
+  if (!_areShorcutsEnabled) {
+    return;
+  }
   for (SpectacleShortcutHolder *shortcutHolder in _registeredShortcutsByName.allValues) {
     [self unregisterEventHotKey:shortcutHolder];
   }
@@ -165,7 +169,9 @@ static EventHotKeyID currentShortcutID = {
 - (SpectacleShortcutHolder *)registerEventHotKey:(SpectacleShortcutHolder *)shortcutHolder
 {
   SpectacleShortcut *shortcut = shortcutHolder.shortcut;
-  if (shortcut.isClearedShortcut) return shortcutHolder;
+  if (shortcut.isClearedShortcut) {
+    return shortcutHolder;
+  }
   EventHotKeyRef shortcutRef;
   EventTargetRef eventTarget = GetApplicationEventTarget();
   OSStatus err;
