@@ -42,6 +42,12 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   return self;
 }
 
+- (void)setShortcut:(SpectacleShortcut *)shortcut
+{
+  _shortcut = shortcut;
+  [self setNeedsDisplay:YES];
+}
+
 - (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidator>> *)additionalShortcutValidators
                         shortcutManager:(SpectacleShortcutManager *)shortcutManager
 {
