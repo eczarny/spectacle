@@ -106,7 +106,6 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
     shortcutRecorder.delegate = self;
     [shortcutRecorder setAdditionalShortcutValidators:@[shortcutValidator] shortcutManager:_shortcutManager];
   }
-  [self enableShortcutRecorders:YES];
 }
 
 - (IBAction)swapFooterViews:(id)sender
@@ -181,16 +180,6 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)enableShortcutRecorders:(BOOL)enabled
-{
-  for (SpectacleShortcutRecorder *shortcutRecorder in _shortcutRecorders.allValues) {
-    if (!enabled) {
-      shortcutRecorder.shortcut = nil;
-    }
-    shortcutRecorder.enabled = enabled;
-  }
 }
 
 @end

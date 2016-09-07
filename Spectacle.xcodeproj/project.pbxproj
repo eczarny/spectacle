@@ -34,7 +34,6 @@
 		2D3A050D194956E100CD96E7 /* SpectacleAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */; };
 		2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */; };
 		2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0502194956E100CD96E7 /* SpectacleShortcutRecorder.m */; };
-		2D3A0510194956E100CD96E7 /* SpectacleShortcutRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */; };
 		2D3A0511194956E100CD96E7 /* SpectacleShortcutTranslations.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0507194956E100CD96E7 /* SpectacleShortcutTranslations.m */; };
 		2D3A0512194956E100CD96E7 /* SpectacleShortcutValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3A0509194956E100CD96E7 /* SpectacleShortcutValidation.m */; };
 		2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4F3ECF14A27B4500C29D11 /* SpectacleScreenDetector.m */; };
@@ -171,8 +170,6 @@
 		2D3A0500194956E100CD96E7 /* SpectacleShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleShortcut.m; path = Spectacle/Sources/SpectacleShortcut.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D3A0501194956E100CD96E7 /* SpectacleShortcutRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutRecorder.h; path = Spectacle/Sources/SpectacleShortcutRecorder.h; sourceTree = "<group>"; };
 		2D3A0502194956E100CD96E7 /* SpectacleShortcutRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleShortcutRecorder.m; path = Spectacle/Sources/SpectacleShortcutRecorder.m; sourceTree = "<group>"; };
-		2D3A0503194956E100CD96E7 /* SpectacleShortcutRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutRecorderCell.h; path = Spectacle/Sources/SpectacleShortcutRecorderCell.h; sourceTree = "<group>"; };
-		2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleShortcutRecorderCell.m; path = Spectacle/Sources/SpectacleShortcutRecorderCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D3A0505194956E100CD96E7 /* SpectacleShortcutRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutRecorderDelegate.h; path = Spectacle/Sources/SpectacleShortcutRecorderDelegate.h; sourceTree = "<group>"; };
 		2D3A0506194956E100CD96E7 /* SpectacleShortcutTranslations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleShortcutTranslations.h; path = Spectacle/Sources/SpectacleShortcutTranslations.h; sourceTree = "<group>"; };
 		2D3A0507194956E100CD96E7 /* SpectacleShortcutTranslations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleShortcutTranslations.m; path = Spectacle/Sources/SpectacleShortcutTranslations.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -511,8 +508,6 @@
 			children = (
 				2D3A0501194956E100CD96E7 /* SpectacleShortcutRecorder.h */,
 				2D3A0502194956E100CD96E7 /* SpectacleShortcutRecorder.m */,
-				2D3A0503194956E100CD96E7 /* SpectacleShortcutRecorderCell.h */,
-				2D3A0504194956E100CD96E7 /* SpectacleShortcutRecorderCell.m */,
 				2D3A0505194956E100CD96E7 /* SpectacleShortcutRecorderDelegate.h */,
 			);
 			name = "Shortcut Recorder";
@@ -716,7 +711,6 @@
 				2DE03E4B1D7B98D6004E80D6 /* SpectacleShortcutKeyBindings.m in Sources */,
 				2D8DA056147E113D003BE1D3 /* SpectacleShortcutManager.m in Sources */,
 				2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */,
-				2D3A0510194956E100CD96E7 /* SpectacleShortcutRecorderCell.m in Sources */,
 				2D3A0511194956E100CD96E7 /* SpectacleShortcutTranslations.m in Sources */,
 				2D7C114A1B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.m in Sources */,
 				2D3A0512194956E100CD96E7 /* SpectacleShortcutValidation.m in Sources */,

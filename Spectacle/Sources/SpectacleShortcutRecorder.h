@@ -6,16 +6,11 @@
 @protocol SpectacleShortcutRecorderDelegate;
 @protocol SpectacleShortcutValidator;
 
-@interface SpectacleShortcutRecorder : NSControl
+@interface SpectacleShortcutRecorder : NSView
 
-- (NSString *)shortcutName;
-- (void)setShortcutName:(NSString *)shortcutName;
-
-- (SpectacleShortcut *)shortcut;
-- (void)setShortcut:(SpectacleShortcut *)shortcut;
-
-- (id<SpectacleShortcutRecorderDelegate>)delegate;
-- (void)setDelegate:(id<SpectacleShortcutRecorderDelegate>)delegate;
+@property (nonatomic, copy) NSString *shortcutName;
+@property (nonatomic, strong) SpectacleShortcut *shortcut;
+@property (nonatomic, weak) id<SpectacleShortcutRecorderDelegate> delegate;
 
 - (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidator>> *)additionalShortcutValidators
                         shortcutManager:(SpectacleShortcutManager *)shortcutManager;
