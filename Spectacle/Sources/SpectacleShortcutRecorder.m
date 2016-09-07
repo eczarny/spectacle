@@ -89,7 +89,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 {
   _isMouseDown = NO;
   NSPoint locationInView = [self convertPoint:event.locationInWindow fromView:nil];
-  if ([self mouse:locationInView inRect:badgeRectInBounds(self.bounds)] && _isMouseAboveBadge) {
+  if ([self mouse:locationInView inRect:badgeRectInBounds(self.bounds)]) {
     if (_isRecording) {
       [self _stopRecording];
     } else {
