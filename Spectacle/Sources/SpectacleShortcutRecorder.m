@@ -24,7 +24,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   BOOL _isRecording;
   BOOL _isMouseAboveBadge;
   BOOL _isMouseDown;
-  NSUInteger _modifierFlags;
   NSTrackingArea *_shortcutRecorderTrackingArea;
   NSTrackingArea *_badgeButtonTrackingArea;
   void *_shortcutMode;
@@ -122,7 +121,11 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   if (self.window.firstResponder != self) {
     return NO;
   }
-  if (event.keyCode == kVK_Escape && _modifierFlags == 0) {
+  NSEventModifierFlags modifierFlags = event.modifierFlags & kCocoaModifierFlagsMask;
+  if (modifierFlags == NSAlternateKeyMask) {
+    return NO;
+  }
+  if (event.keyCode == kVK_Escape && modifierFlags == 0) {
     [self _stopRecording];
     return YES;
   }
@@ -132,10 +135,10 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
                       (keyCode == kVK_F9)  || (keyCode == kVK_F10) || (keyCode == kVK_F11) || (keyCode == kVK_F12) ||
                       (keyCode == kVK_F13) || (keyCode == kVK_F14) || (keyCode == kVK_F15) || (keyCode == kVK_F16) ||
                       (keyCode == kVK_F17) || (keyCode == kVK_F18) || (keyCode == kVK_F19) || (keyCode == kVK_F20));
-  if (_isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:_modifierFlags])) {
+  if (_isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:modifierFlags])) {
     SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
                                                                      shortcutKeyCode:keyCode
-                                                                   shortcutModifiers:_modifierFlags];
+                                                                   shortcutModifiers:modifierFlags];
     NSError *error = nil;
     BOOL isShortcutValid = [SpectacleShortcutValidation isShortcutValid:newShortcut
                                                         shortcutManager:_shortcutManager
@@ -147,7 +150,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
       _shortcut = newShortcut;
       [_delegate shortcutRecorder:self didReceiveNewShortcut:newShortcut];
     }
-    _modifierFlags = 0;
     [self _stopRecording];
     return YES;
   }
@@ -162,7 +164,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   if ((event.modifierFlags & kCocoaModifierFlagsMask) == NSAlternateKeyMask) {
     return;
   }
-  _modifierFlags = event.modifierFlags & kCocoaModifierFlagsMask;
   [self setNeedsDisplay:YES];
 }
 
@@ -308,8 +309,9 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   } else {
     label = NSLocalizedString(@"ShortcutRecorderLabelClickToRecord", @"The shortcut recorder label displayed when the shorcut recorder is cleared and ready to record a new shortcut");
   }
-  if (_isRecording && (_modifierFlags > 0)) {
-    label = SpectacleTranslateModifiers(_modifierFlags);
+  NSEventModifierFlags modifierFlags = [NSEvent modifierFlags] & kCocoaModifierFlagsMask;
+  if (_isRecording && modifierFlags) {
+    label = SpectacleTranslateModifiers(modifierFlags);
   }
   if (_isRecording) {
     [self _drawString:label withForegroundColor:foregroundColor inRect:rect];
