@@ -198,7 +198,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   NSBezierPath *roundedPath = [NSBezierPath bezierPathWithRoundedRect:rect xRadius:radius yRadius:radius];
   [NSGraphicsContext.currentContext saveGraphicsState];
   [roundedPath addClip];
-  [NSColor.windowFrameColor set];
+  [[NSColor windowFrameColor] set];
   [NSBezierPath fillRect:rect];
   [NSGraphicsContext.currentContext restoreGraphicsState];
 }
@@ -217,8 +217,8 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
     gradientStartingColor = [NSColor colorWithDeviceRed:0.784f green:0.953f blue:1.0f alpha:1.0f];
     gradientEndingColor = [NSColor colorWithDeviceRed:0.694f green:0.859f blue:1.0f alpha:1.0f];
   } else {
-    gradientStartingColor = [[NSColor.whiteColor shadowWithLevel:0.2f] colorWithAlphaComponent:0.9f];
-    gradientEndingColor = [[NSColor.whiteColor highlightWithLevel:0.2f] colorWithAlphaComponent:0.9f];
+    gradientStartingColor = [[[NSColor whiteColor] shadowWithLevel:0.2f] colorWithAlphaComponent:0.9f];
+    gradientEndingColor = [[[NSColor whiteColor] highlightWithLevel:0.2f] colorWithAlphaComponent:0.9f];
   }
   if (!_isRecording && _isMouseDown && !_isMouseAboveBadge) {
     gradient = [[NSGradient alloc] initWithStartingColor:gradientEndingColor endingColor:gradientStartingColor];
@@ -249,7 +249,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   [NSGraphicsContext.currentContext saveGraphicsState];
   [[NSColor colorWithCalibratedWhite:0.0f alpha:opacity] setFill];
   [[NSBezierPath bezierPathWithOvalInRect:rect] fill];
-  [NSColor.whiteColor setStroke];
+  [[NSColor whiteColor] setStroke];
   NSBezierPath *cross = [NSBezierPath new];
   [cross setLineWidth:horizontalScale * 1.4f];
   [cross moveToPoint:relativePointInRect(4.0f, 4.0f, rect, horizontalScale, verticalScale)];
@@ -290,7 +290,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)_drawLabelInRect:(NSRect)rect
 {
   NSString *label = nil;
-  NSColor *foregroundColor = NSColor.blackColor;
+  NSColor *foregroundColor = [NSColor blackColor];
   if (_isRecording && !_isMouseAboveBadge) {
     label = NSLocalizedString(@"ShortcutRecorderLabelEnterShortcut", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut");
   } else if (_isRecording && _isMouseAboveBadge && !_shortcut) {
