@@ -19,8 +19,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 
 @implementation SpectacleShortcutRecorder
 {
-  NSArray<id<SpectacleShortcutValidator>> *_additionalShortcutValidators;
-  SpectacleShortcutManager *_shortcutManager;
   BOOL _isRecording;
   BOOL _isMouseAboveBadge;
   BOOL _isMouseDown;
@@ -45,13 +43,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 {
   _shortcut = shortcut;
   [self setNeedsDisplay:YES];
-}
-
-- (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidator>> *)additionalShortcutValidators
-                        shortcutManager:(SpectacleShortcutManager *)shortcutManager
-{
-  _additionalShortcutValidators = additionalShortcutValidators;
-  _shortcutManager = shortcutManager;
 }
 
 - (BOOL)acceptsFirstResponder
@@ -140,11 +131,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
                                                                      shortcutKeyCode:keyCode
                                                                    shortcutModifiers:modifierFlags];
     NSError *error = nil;
-    BOOL isShortcutValid = [SpectacleShortcutValidation isShortcutValid:newShortcut
-                                                        shortcutManager:_shortcutManager
-                                                         withValidators:_additionalShortcutValidators
-                                                                  error:&error];
-    if (!isShortcutValid) {
+    if (![_shortcutValidation isShortcutValid:newShortcut error:&error]) {
       [[NSAlert alertWithError:error] runModal];
     } else {
       _shortcut = newShortcut;

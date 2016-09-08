@@ -73,5 +73,14 @@ describe(@"SpectacleShortcut", ^{
                                                                   shortcutKeyCode:-1
                                                                 shortcutModifiers:0]);
   });
+
+  it(@"should determine if the shortcut is contains modifiers", ^{
+    SpectacleShortcut *shortcut = [[SpectacleShortcut alloc] initWithShortcutName:@"MoveToCenter"
+                                                                  shortcutKeyCode:kVK_ANSI_C
+                                                                shortcutModifiers:NSAlternateKeyMask | NSCommandKeyMask];
+    expect([shortcut containsModifiers:NSAlternateKeyMask]).to.beTruthy;
+    expect([shortcut containsModifiers:NSAlternateKeyMask | NSCommandKeyMask]).to.beTruthy;
+    expect([shortcut containsModifiers:NSControlKeyMask]).to.beFalsy;
+  });
 });
 SpecEnd

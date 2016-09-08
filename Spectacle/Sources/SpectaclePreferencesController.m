@@ -10,6 +10,7 @@
 #import "SpectacleShortcutManager.h"
 #import "SpectacleShortcutRecorder.h"
 #import "SpectacleShortcutStorage.h"
+#import "SpectacleShortcutValidation.h"
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionManager.h"
 
@@ -95,7 +96,6 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 
 - (void)loadRegisteredShortcuts
 {
-  SpectacleRegisteredShortcutValidator *shortcutValidator = [SpectacleRegisteredShortcutValidator new];
   for (NSString *shortcutName in _shortcutRecorders.allKeys) {
     SpectacleShortcutRecorder *shortcutRecorder = _shortcutRecorders[shortcutName];
     SpectacleShortcut *shortcut = [_shortcutManager shortcutForShortcutName:shortcutName];
@@ -104,7 +104,11 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
       shortcutRecorder.shortcut = shortcut;
     }
     shortcutRecorder.delegate = self;
-    [shortcutRecorder setAdditionalShortcutValidators:@[shortcutValidator] shortcutManager:_shortcutManager];
+    shortcutRecorder.shortcutValidation =
+    [[SpectacleShortcutValidation alloc] initWithShortcutManager:_shortcutManager
+                                                      validators:@[
+                                                                   [SpectacleRegisteredShortcutValidator new],
+                                                                   ]];
   }
 }
 

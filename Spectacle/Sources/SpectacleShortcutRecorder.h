@@ -1,18 +1,15 @@
 #import <Cocoa/Cocoa.h>
 
 @class SpectacleShortcut;
-@class SpectacleShortcutManager;
+@class SpectacleShortcutValidation;
 
 @protocol SpectacleShortcutRecorderDelegate;
-@protocol SpectacleShortcutValidator;
 
 @interface SpectacleShortcutRecorder : NSView
 
 @property (nonatomic, copy) NSString *shortcutName;
 @property (nonatomic, strong) SpectacleShortcut *shortcut;
+@property (nonatomic, strong) SpectacleShortcutValidation *shortcutValidation;
 @property (nonatomic, weak) id<SpectacleShortcutRecorderDelegate> delegate;
-
-- (void)setAdditionalShortcutValidators:(NSArray<id<SpectacleShortcutValidator>> *)additionalShortcutValidators
-                        shortcutManager:(SpectacleShortcutManager *)shortcutManager;
 
 @end

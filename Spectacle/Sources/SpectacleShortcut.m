@@ -162,6 +162,11 @@
   return YES;
 }
 
+- (BOOL)containsModifiers:(NSUInteger)modifiers
+{
+  return _shortcutModifiers == SpectacleConvertModifiersToCarbonIfNecessary(modifiers);
+}
+
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers
 {
   return ((modifiers & NSAlternateKeyMask)

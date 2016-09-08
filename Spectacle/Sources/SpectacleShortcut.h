@@ -44,6 +44,8 @@ SPECTACLE_INIT_AND_NEW_UNAVAILABLE
 - (BOOL)isEqual:(id)object;
 - (BOOL)isEqualToShortcut:(SpectacleShortcut *)shortcut;
 
+- (BOOL)containsModifiers:(NSUInteger)modifiers;
+
 + (BOOL)validCocoaModifiers:(NSUInteger)modifiers;
 
 @end

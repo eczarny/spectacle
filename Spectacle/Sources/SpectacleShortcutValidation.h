@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+#import "SpectacleMacros.h"
+
 @class SpectacleShortcut;
 @class SpectacleShortcutManager;
 
@@ -7,13 +9,11 @@
 
 @interface SpectacleShortcutValidation : NSObject
 
-+ (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut
-        shortcutManager:(SpectacleShortcutManager *)shortcutManager
-                  error:(NSError **)error;
+- (instancetype)initWithShortcutManager:(SpectacleShortcutManager *)shortcutManager
+                             validators:(NSArray<id<SpectacleShortcutValidator>> *)validators NS_DESIGNATED_INITIALIZER;
 
-+ (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut
-        shortcutManager:(SpectacleShortcutManager *)shortcutManager
-         withValidators:(NSArray<id<SpectacleShortcutValidator>> *)validators
-                  error:(NSError **)error;
+SPECTACLE_INIT_AND_NEW_UNAVAILABLE
+
+- (BOOL)isShortcutValid:(SpectacleShortcut *)shortcut error:(NSError **)error;
 
 @end
