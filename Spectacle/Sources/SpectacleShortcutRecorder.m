@@ -24,7 +24,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   BOOL _isMouseDown;
   NSTrackingArea *_shortcutRecorderTrackingArea;
   NSTrackingArea *_badgeButtonTrackingArea;
-  void *_shortcutMode;
 }
 
 - (instancetype)initWithFrame:(NSRect)frame
@@ -166,7 +165,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)_startRecording
 {
   _isRecording = YES;
-  _shortcutMode = PushSymbolicHotKeyMode(kHIHotKeyModeAllDisabled);
   [self setNeedsDisplay:YES];
 }
 
@@ -175,7 +173,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   if (!_isRecording) {
     return;
   }
-  PopSymbolicHotKeyMode(_shortcutMode);
   _isRecording = NO;
   [self setNeedsDisplay:YES];
 }
