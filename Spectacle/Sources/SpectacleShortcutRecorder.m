@@ -20,8 +20,8 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 @implementation SpectacleShortcutRecorder
 {
   BOOL _isRecording;
-  BOOL _isMouseAboveBadge;
   BOOL _isMouseDown;
+  BOOL _isMouseAboveBadge;
   NSTrackingArea *_shortcutRecorderTrackingArea;
   NSTrackingArea *_badgeButtonTrackingArea;
 }
@@ -60,14 +60,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   return YES;
 }
 
-- (void)mouseEntered:(NSEvent *)event
-{
-  if (event.trackingArea == _badgeButtonTrackingArea) {
-    _isMouseAboveBadge = YES;
-    [self setNeedsDisplay:YES];
-  }
-}
-
 - (void)mouseDown:(NSEvent *)event
 {
   _isMouseDown = YES;
@@ -76,7 +68,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 
 - (void)mouseUp:(NSEvent *)event
 {
-  _isMouseDown = NO;
   NSPoint locationInView = [self convertPoint:event.locationInWindow fromView:nil];
   if ([self mouse:locationInView inRect:badgeRectInBounds(self.bounds)]) {
     if (_isRecording) {
@@ -87,6 +78,15 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   } else if ([self mouse:locationInView inRect:self.bounds]) {
     [self _startRecording];
   } else if (!_isMouseAboveBadge) {
+    [self setNeedsDisplay:YES];
+  }
+  _isMouseDown = NO;
+}
+
+- (void)mouseEntered:(NSEvent *)event
+{
+  if (event.trackingArea == _badgeButtonTrackingArea) {
+    _isMouseAboveBadge = YES;
     [self setNeedsDisplay:YES];
   }
 }
@@ -224,16 +224,13 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 {
   NSRect badgeRect = badgeRectInBounds(rect);
   if ((_isRecording && !_shortcut) || (!_isRecording && _shortcut)) {
-    [self _drawClearShortcutBadgeInRect:badgeRect opacity:0.25f];
+    [self _drawCancelOrClearShortcutBadgeInRect:badgeRect opacity:(_isMouseAboveBadge && _isMouseDown) ? 0.50 : 0.25f];
   } else if (_isRecording) {
     [self _drawRevertShortcutBadgeInRect:badgeRect];
   }
-  if (((_shortcut && !_isRecording) || (!_shortcut && _isRecording)) && _isMouseAboveBadge && _isMouseDown) {
-    [self _drawClearShortcutBadgeInRect:badgeRect opacity:0.50f];
-  }
 }
 
-- (void)_drawClearShortcutBadgeInRect:(NSRect)rect opacity:(CGFloat)opacity
+- (void)_drawCancelOrClearShortcutBadgeInRect:(NSRect)rect opacity:(CGFloat)opacity
 {
   CGFloat horizontalScale = (rect.size.width / 13.0f);
   CGFloat verticalScale = (rect.size.height / 13.0f);
