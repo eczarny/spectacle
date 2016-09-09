@@ -28,11 +28,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (instancetype)initWithFrame:(NSRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    _badgeButtonTrackingArea = [[NSTrackingArea alloc] initWithRect:badgeRectInBounds(self.bounds)
-                                                            options:kTrackingAreaOptions
-                                                              owner:self
-                                                           userInfo:nil];
-    [self addTrackingArea:_badgeButtonTrackingArea];
+    [self _updateTrackingArea];
   }
   return self;
 }
@@ -40,6 +36,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)setShortcut:(SpectacleShortcut *)shortcut
 {
   _shortcut = shortcut;
+  [self _updateTrackingArea];
   [self setNeedsDisplay:YES];
 }
 
@@ -68,7 +65,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)mouseUp:(NSEvent *)event
 {
   NSPoint locationInView = [self convertPoint:event.locationInWindow fromView:nil];
-  if ([self mouse:locationInView inRect:badgeRectInBounds(self.bounds)]) {
+  if (_badgeButtonTrackingArea && [self mouse:locationInView inRect:badgeRectInBounds(self.bounds)]) {
     if (_isRecording) {
       [self _stopRecording];
     } else {
@@ -160,6 +157,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)_startRecording
 {
   _isRecording = YES;
+  [self _updateTrackingArea];
   [self setNeedsDisplay:YES];
 }
 
@@ -169,6 +167,8 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
     return;
   }
   _isRecording = NO;
+  _isMouseAboveBadge = NO;
+  [self _updateTrackingArea];
   [self setNeedsDisplay:YES];
 }
 
@@ -176,7 +176,24 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 {
   [_delegate shortcutRecorder:self didClearExistingShortcut:_shortcut];
   _shortcut = nil;
+  _isMouseAboveBadge = NO;
+  [self _updateTrackingArea];
   [self setNeedsDisplay:YES];
+}
+
+- (void)_updateTrackingArea
+{
+  if (_badgeButtonTrackingArea) {
+    [self removeTrackingArea: _badgeButtonTrackingArea];
+    _badgeButtonTrackingArea = nil;
+  }
+  if (_isRecording || _shortcut) {
+    _badgeButtonTrackingArea = [[NSTrackingArea alloc] initWithRect:badgeRectInBounds(self.bounds)
+                                                            options:kTrackingAreaOptions
+                                                              owner:self
+                                                           userInfo:nil];
+    [self addTrackingArea:_badgeButtonTrackingArea];
+  }
 }
 
 - (void)_drawBorderInRect:(NSRect)rect withRadius:(CGFloat)radius
