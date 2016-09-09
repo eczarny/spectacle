@@ -62,8 +62,8 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 
 - (void)mouseDown:(NSEvent *)event
 {
-  [self setNeedsDisplay:YES];
   _isMouseDown = YES;
+  [self setNeedsDisplay:YES];
 }
 
 - (void)mouseUp:(NSEvent *)event
@@ -85,14 +85,14 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 
 - (void)mouseEntered:(NSEvent *)event
 {
-  [self setNeedsDisplay:YES];
   _isMouseAboveBadge = event.trackingArea == _badgeButtonTrackingArea;
+  [self setNeedsDisplay:YES];
 }
 
 - (void)mouseExited:(NSEvent *)event
 {
-  [self setNeedsDisplay:YES];
   _isMouseAboveBadge = event.trackingArea != _badgeButtonTrackingArea;
+  [self setNeedsDisplay:YES];
 }
 
 - (void)keyDown:(NSEvent *)event
@@ -122,15 +122,15 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
                       (keyCode == kVK_F13) || (keyCode == kVK_F14) || (keyCode == kVK_F15) || (keyCode == kVK_F16) ||
                       (keyCode == kVK_F17) || (keyCode == kVK_F18) || (keyCode == kVK_F19) || (keyCode == kVK_F20));
   if (_isRecording && (functionKey || [SpectacleShortcut validCocoaModifiers:modifierFlags])) {
-    SpectacleShortcut *newShortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
-                                                                     shortcutKeyCode:keyCode
-                                                                   shortcutModifiers:modifierFlags];
+    SpectacleShortcut *shortcut = [[SpectacleShortcut alloc] initWithShortcutName:_shortcutName
+                                                                  shortcutKeyCode:keyCode
+                                                                shortcutModifiers:modifierFlags];
     NSError *error = nil;
-    if (![_shortcutValidation isShortcutValid:newShortcut error:&error]) {
-      [[NSAlert alertWithError:error] runModal];
+    if ([_shortcutValidation isShortcutValid:shortcut error:&error]) {
+      _shortcut = shortcut;
+      [_delegate shortcutRecorder:self didReceiveNewShortcut:shortcut];
     } else {
-      _shortcut = newShortcut;
-      [_delegate shortcutRecorder:self didReceiveNewShortcut:newShortcut];
+      [[NSAlert alertWithError:error] runModal];
     }
     [self _stopRecording];
     return YES;
