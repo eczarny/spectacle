@@ -22,7 +22,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   BOOL _isRecording;
   BOOL _isMouseDown;
   BOOL _isMouseAboveBadge;
-  NSTrackingArea *_shortcutRecorderTrackingArea;
   NSTrackingArea *_badgeButtonTrackingArea;
 }
 
