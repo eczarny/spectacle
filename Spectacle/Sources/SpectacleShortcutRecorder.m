@@ -274,7 +274,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)_drawLabelInRect:(NSRect)rect
 {
   NSString *label = nil;
-  NSColor *foregroundColor = [NSColor blackColor];
   if (_isRecording && !_isMouseAboveBadge) {
     label = NSLocalizedString(@"ShortcutRecorderLabelEnterShortcut", @"The shortcut recorder label displayed when the shorcut recorder is recording a shortcut");
   } else if (_isRecording && _isMouseAboveBadge && !_shortcut) {
@@ -290,19 +289,15 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   if (_isRecording && modifierFlags) {
     label = SpectacleTranslateModifiers(modifierFlags);
   }
-  if (_isRecording) {
-    [self _drawString:label withForegroundColor:foregroundColor inRect:rect];
-  } else {
-    [self _drawString:label withForegroundColor:foregroundColor inRect:rect];
-  }
+  [self _drawString:label inRect:rect];
 }
 
-- (void)_drawString:(NSString *)string withForegroundColor:(NSColor *)foregroundColor inRect:(NSRect)rect
+- (void)_drawString:(NSString *)string inRect:(NSRect)rect
 {
   NSMutableDictionary<NSString *, id> *attributes = stringAttributesWithShadow();
   NSRect labelRect = rect;
   attributes[NSFontAttributeName] = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
-  attributes[NSForegroundColorAttributeName] = foregroundColor;
+  attributes[NSForegroundColorAttributeName] = [NSColor blackColor];
   labelRect.origin.y = -(NSMidY(rect) - [string sizeWithAttributes:attributes].height / 2.0f);
   [string drawInRect:labelRect withAttributes:attributes];
 }
