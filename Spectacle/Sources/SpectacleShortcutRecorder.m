@@ -62,8 +62,8 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 
 - (void)mouseDown:(NSEvent *)event
 {
-  _isMouseDown = YES;
   [self setNeedsDisplay:YES];
+  _isMouseDown = YES;
 }
 
 - (void)mouseUp:(NSEvent *)event
@@ -77,7 +77,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
     }
   } else if ([self mouse:locationInView inRect:self.bounds]) {
     [self _startRecording];
-  } else if (!_isMouseAboveBadge) {
+  } else {
     [self setNeedsDisplay:YES];
   }
   _isMouseDown = NO;
@@ -85,18 +85,14 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 
 - (void)mouseEntered:(NSEvent *)event
 {
-  if (event.trackingArea == _badgeButtonTrackingArea) {
-    _isMouseAboveBadge = YES;
-    [self setNeedsDisplay:YES];
-  }
+  [self setNeedsDisplay:YES];
+  _isMouseAboveBadge = event.trackingArea == _badgeButtonTrackingArea;
 }
 
 - (void)mouseExited:(NSEvent *)event
 {
-  if (event.trackingArea == _badgeButtonTrackingArea) {
-    _isMouseAboveBadge = NO;
-    [self setNeedsDisplay:YES];
-  }
+  [self setNeedsDisplay:YES];
+  _isMouseAboveBadge = event.trackingArea != _badgeButtonTrackingArea;
 }
 
 - (void)keyDown:(NSEvent *)event
