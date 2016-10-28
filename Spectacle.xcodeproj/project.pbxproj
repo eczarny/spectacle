@@ -164,6 +164,11 @@
 		2D2629451CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleScreenDetectionResult.m; path = Spectacle/Sources/SpectacleScreenDetectionResult.m; sourceTree = "<group>"; };
 		2D279ED216BB4A7800F6894A /* SpectacleHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleHistory.h; path = Spectacle/Sources/SpectacleHistory.h; sourceTree = "<group>"; };
 		2D279ED316BB4A7800F6894A /* SpectacleHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleHistory.m; path = Spectacle/Sources/SpectacleHistory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		2D2A61A31DC2CD9C00D86193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Spectacle/Resources/Localizations/es.lproj/Spectacle.strings; sourceTree = "<group>"; };
+		2D2A61A41DC2CD9C00D86193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Spectacle/Resources/Localizations/es.lproj/SpectaclePreferencesWindow.strings; sourceTree = "<group>"; };
+		2D2A61A51DC2CD9C00D86193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = es; path = Spectacle/Resources/Localizations/es.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2D2A61A61DC2CD9C00D86193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Spectacle/Resources/Localizations/es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D2A61A71DC2CD9C00D86193 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Spectacle/Resources/Localizations/es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2D3A04FC194956E100CD96E7 /* SpectacleAccessibilityElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SpectacleAccessibilityElement.h; path = Spectacle/Sources/SpectacleAccessibilityElement.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2D3A04FD194956E100CD96E7 /* SpectacleAccessibilityElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SpectacleAccessibilityElement.m; path = Spectacle/Sources/SpectacleAccessibilityElement.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2D3A04FF194956E100CD96E7 /* SpectacleShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SpectacleShortcut.h; path = Spectacle/Sources/SpectacleShortcut.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -630,6 +635,7 @@
 				Base,
 				pt,
 				fi,
+				es,
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* Spectacle */;
 			projectDirPath = "";
@@ -770,6 +776,7 @@
 				2DC4E3DA1AD84E7F0022ABF0 /* it */,
 				574F6A1C1C57BE40001A5679 /* pt */,
 				2D2490E11C7A5BD900A4282B /* fi */,
+				2D2A61A51DC2CD9C00D86193 /* es */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -782,6 +789,7 @@
 				2DA23EFD1B80FB6400C9E8EF /* it */,
 				574F6A1D1C57BE40001A5679 /* pt */,
 				2D2490E21C7A5BD900A4282B /* fi */,
+				2D2A61A61DC2CD9C00D86193 /* es */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -794,6 +802,7 @@
 				2DC4E3D91AD84E7F0022ABF0 /* it */,
 				574F6A1E1C57BE40001A5679 /* pt */,
 				2D2490E31C7A5BD900A4282B /* fi */,
+				2D2A61A71DC2CD9C00D86193 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -806,6 +815,7 @@
 				2DA23F071B8109D400C9E8EF /* it */,
 				574F6A1A1C57BE40001A5679 /* pt */,
 				2D2490DF1C7A5BD900A4282B /* fi */,
+				2D2A61A31DC2CD9C00D86193 /* es */,
 			);
 			name = Spectacle.xib;
 			sourceTree = "<group>";
@@ -818,6 +828,7 @@
 				2DA23F091B8109D900C9E8EF /* it */,
 				574F6A1B1C57BE40001A5679 /* pt */,
 				2D2490E01C7A5BD900A4282B /* fi */,
+				2D2A61A41DC2CD9C00D86193 /* es */,
 			);
 			name = SpectaclePreferencesWindow.xib;
 			sourceTree = "<group>";
