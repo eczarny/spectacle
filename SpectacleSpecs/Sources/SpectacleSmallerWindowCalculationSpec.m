@@ -209,5 +209,24 @@ describe(@"SpectacleSmallerWindowCalculation", ^{
                                                     action:kSpectacleWindowActionSmaller];
     expect(result.windowRect).to.equal(CGRectMake(0.0f, 285.0f, 1440.0f, 446.0f));
   });
+
+  it(@"should calculate a window's smaller CGRect when against all edges of the screen", ^{
+    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 4.0f, 1440.0f, 873.0f)
+                                                                          visibleFrameOfSourceScreen:visibleFrameSourceScreen
+                                                                     visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
+                                                                                              action:kSpectacleWindowActionSmaller];
+    expect(result.windowRect).to.equal(CGRectMake(15.0f, 19.0f, 1410.0f, 843.0f));
+    result = [windowPositionCalculator calculateWindowRect:CGRectMake(15.0f, 19.0f, 1410.0f, 843.0f)
+                                visibleFrameOfSourceScreen:visibleFrameSourceScreen
+                           visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
+                                                    action:kSpectacleWindowActionSmaller];
+    expect(result.windowRect).to.equal(CGRectMake(30.0f, 34.0f, 1380.0f, 813.0f));
+    result = [windowPositionCalculator calculateWindowRect:CGRectMake(30.0f, 34.0f, 1380.0f, 813.0f)
+                                visibleFrameOfSourceScreen:visibleFrameSourceScreen
+                           visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
+                                                    action:kSpectacleWindowActionSmaller];
+    expect(result.windowRect).to.equal(CGRectMake(45.0f, 49.0f, 1350.0f, 783.0f));
+
+  });
 });
 SpecEnd
