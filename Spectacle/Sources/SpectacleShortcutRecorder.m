@@ -104,9 +104,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
     return NO;
   }
   NSEventModifierFlags modifierFlags = event.modifierFlags & kCocoaModifierFlagsMask;
-  if (modifierFlags == NSAlternateKeyMask) {
-    return NO;
-  }
   if (event.keyCode == kVK_Escape && modifierFlags == 0) {
     [self _stopRecording];
     return YES;
@@ -137,9 +134,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)flagsChanged:(NSEvent *)event
 {
   if (!_isRecording) {
-    return;
-  }
-  if ((event.modifierFlags & kCocoaModifierFlagsMask) == NSAlternateKeyMask) {
     return;
   }
   [self setNeedsDisplay:YES];
