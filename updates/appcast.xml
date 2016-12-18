@@ -152,12 +152,19 @@
       <pubDate>Mon, 12 Sep 2016 19:36:00 EDT</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.1.zip" sparkle:shortVersionString="1.1" sparkle:version="648" sparkle:dsaSignature="MCwCFHYwejIePRdJ3ApEA0E+MGDdNiSgAhR9e3SjHG3FkTXwkCe8YhhVyGqvnw==" length="2872151" type="application/octet-stream" />
     </item>
-    <!-- <item>
+    <item>
       <title>Spectacle 1.1.1</title>
       <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.1.1.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
       <pubDate>Sat, 17 Dec 2016 15:24:00 EST</pubDate>
       <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.1.1.zip" sparkle:shortVersionString="1.1.1" sparkle:version="657" sparkle:dsaSignature="MC0CFQCEmA2ENmmbbzgH+MESQKCaqyhukQIUGykXnSV6dDlGoTW9gQWWHMEg3aw=" length="2829667" type="application/octet-stream" />
-    </item> -->
+    </item>
+    <item>
+      <title>Spectacle 1.1.2</title>
+      <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.1.2.html</sparkle:releaseNotesLink>
+      <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
+      <pubDate>Sat, 18 Dec 2016 12:14:00 EST</pubDate>
+      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.1.2.zip" sparkle:shortVersionString="1.1.2" sparkle:version="659" sparkle:dsaSignature="MC0CFH3vhPpIRsdEa01bY4xjiEbRYTDDAhUAhSnOL/y296ASWFndSe9bK9Y/8HA=" length="2829338" type="application/octet-stream" />
+    </item>
   </channel>
 </rss>
