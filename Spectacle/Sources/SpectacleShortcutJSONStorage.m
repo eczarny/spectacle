@@ -5,22 +5,13 @@
 - (NSArray<SpectacleShortcut *> *)loadShortcutsWithAction:(SpectacleShortcutAction)action
 {
   NSError *error;
-  NSURL *shortcutsFileURL = findShortcutsFileURL(&error);
-  if (!shortcutsFileURL) {
+  NSURL *shortcutsURL = findShortcutsFileURL(&error);
+  if (!shortcutsURL) {
     NSLog(@"Unable to locate the shortcuts file: %@", error.localizedDescription);
     return nil;
   }
-  NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingFromURL:shortcutsFileURL error:&error];
-  if (!fileHandle) {
-    NSLog(@"Unable to read shortcuts file: %@", error.localizedDescription);
-    return nil;
-  }
-  NSData *contents = [fileHandle readDataToEndOfFile];
-  [fileHandle closeFile];
-  if (!contents.length) {
-    return nil;
-  }
-  NSArray<NSDictionary *> *jsonArray = [NSJSONSerialization JSONObjectWithData:contents
+  NSData *content = [NSData dataWithContentsOfURL:shortcutsURL];
+  NSArray<NSDictionary *> *jsonArray = [NSJSONSerialization JSONObjectWithData:content
                                                                        options:0
                                                                          error:&error];
   if (!jsonArray) {
@@ -33,48 +24,33 @@
 - (void)storeShortcuts:(NSArray<SpectacleShortcut *> *)shortcuts
 {
   NSError *error;
-  NSURL *shortcutsFileURL = findShortcutsFileURL(&error);
-  if (!shortcutsFileURL) {
+  NSURL *shortcutsURL = findShortcutsFileURL(&error);
+  if (!shortcutsURL) {
     NSLog(@"Unable to locate the shortcuts file: %@", error.localizedDescription);
     return;
   }
   NSData *contents = [NSJSONSerialization dataWithJSONObject:jsonObjectFromShortcuts(shortcuts)
                                                      options:NSJSONWritingPrettyPrinted
                                                        error:&error];
-  if (!contents) {
-    NSLog(@"Serializing shortcuts failed: %@", error.localizedDescription);
-    return;
+  if (![contents writeToURL:shortcutsURL atomically:YES]) {
+    NSLog(@"Unable to store shortcuts at location: %@", [shortcutsURL path]);
   }
-  NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingToURL:shortcutsFileURL error:&error];
-  if (!fileHandle) {
-    NSLog(@"Unable to write shortcuts file: %@", error.localizedDescription);
-    return;
-  }
-  [fileHandle writeData:contents];
-  [fileHandle closeFile];
 }
 
 - (BOOL)isMigrationNeeded
 {
   NSError *error;
-  NSURL *shortcutsFileURL = findShortcutsFileURL(&error);
-  if (!shortcutsFileURL) {
+  NSURL *shortcutsURL = findShortcutsFileURL(&error);
+  if (!shortcutsURL) {
     NSLog(@"Unable to locate the shortcuts file: %@", error.localizedDescription);
     return YES;
   }
-  return ![[NSFileManager defaultManager] fileExistsAtPath:[shortcutsFileURL path]];
+  return ![[NSFileManager defaultManager] fileExistsAtPath:[shortcutsURL path]];
 }
 
 static NSURL *findShortcutsFileURL(NSError **error)
 {
-  NSURL *shortcutsFileURL = [findOrCreateSpectacleDirectory(error) URLByAppendingPathComponent:@"Shortcuts.json"];
-  NSFileManager *fileManager = [NSFileManager defaultManager];
-  if (![fileManager fileExistsAtPath:[shortcutsFileURL path]]) {
-    [fileManager createFileAtPath:[shortcutsFileURL path]
-                         contents:nil
-                       attributes:nil];
-  }
-  return shortcutsFileURL;
+  return [findOrCreateSpectacleDirectory(error) URLByAppendingPathComponent:@"Shortcuts.json"];
 }
 
 static NSURL *findOrCreateSpectacleDirectory(NSError **error)
