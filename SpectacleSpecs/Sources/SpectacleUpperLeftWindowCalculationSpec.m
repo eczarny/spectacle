@@ -17,23 +17,23 @@ describe(@"SpectacleUpperLeftWindowCalculation", ^{
                                                                           visibleFrameOfSourceScreen:visibleFrameSourceScreen
                                                                      visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
                                                                                               action:kSpectacleWindowActionUpperLeft];
-    expect(result.windowRect).to.equal(CGRectMake(0.0f, 440.0f, 720.0f, 436.0f));
+    expect(result.windowRect).to.equal(CGRectMake(0.0f, 441.0f, 720.0f, 436.0f));
   });
   
   it(@"should calculate a window's CGRect in the left 2/3 of the screen", ^{
-    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 440.0f, 720.0f, 436.0f)
+    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 441.0f, 720.0f, 436.0f)
                                                                           visibleFrameOfSourceScreen:visibleFrameSourceScreen
                                                                      visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
                                                                                               action:kSpectacleWindowActionUpperLeft];
-    expect(result.windowRect).to.equal(CGRectMake(0.0f, 440.0f, 960.0f, 436.0f));
+    expect(result.windowRect).to.equal(CGRectMake(0.0f, 441.0f, 960.0f, 436.0f));
   });
   
   it(@"should calculate a window's CGRect in the left 1/3 of the screen", ^{
-    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 440.0f, 960.0f, 436.0f)
+    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(0.0f, 441.0f, 960.0f, 436.0f)
                                                                           visibleFrameOfSourceScreen:visibleFrameSourceScreen
                                                                      visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
                                                                                               action:kSpectacleWindowActionUpperLeft];
-    expect(result.windowRect).to.equal(CGRectMake(0.0f, 440.0f, 480.0f, 436.0f));
+    expect(result.windowRect).to.equal(CGRectMake(0.0f, 441.0f, 480.0f, 436.0f));
   });
 
   
