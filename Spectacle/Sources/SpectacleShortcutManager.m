@@ -178,7 +178,7 @@ static EventHotKeyID currentShortcutID = {
                             (unsigned int)shortcut.shortcutModifiers,
                             shortcutHolder.shortcutID,
                             GetEventDispatcherTarget(),
-                            kEventHotKeyExclusive,
+                            kEventHotKeyNoOptions,
                             &shortcutRef);
   if (err) {
     NSLog(@"There was a problem registering shortcut %@.", shortcut.shortcutName);
