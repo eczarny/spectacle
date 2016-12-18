@@ -2,7 +2,7 @@ windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(fu
     var oneQuarterRect = SpectacleCalculationHelpers.copyRect(visibleFrameOfDestinationScreen);
     oneQuarterRect.width = Math.floor(visibleFrameOfDestinationScreen.width / 2.0);
     oneQuarterRect.height = Math.floor(visibleFrameOfDestinationScreen.height / 2.0);
-    oneQuarterRect.y += oneQuarterRect.height;
+    oneQuarterRect.y = visibleFrameOfDestinationScreen.y + Math.floor(visibleFrameOfDestinationScreen.height / 2.0) + (visibleFrameOfDestinationScreen.height % 2.0);
     if (Math.abs(CGRectGetMidY(windowRect) - CGRectGetMidY(oneQuarterRect)) <= 1.0) {
         var twoThirdRect = SpectacleCalculationHelpers.copyRect(oneQuarterRect);
         twoThirdRect.width = Math.floor(visibleFrameOfDestinationScreen.width * 2 / 3.0);
