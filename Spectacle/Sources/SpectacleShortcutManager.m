@@ -182,7 +182,7 @@ static EventHotKeyID currentShortcutID = {
                             &shortcutRef);
   if (err) {
     NSLog(@"There was a problem registering shortcut %@.", shortcut.shortcutName);
-    return shortcutHolder;
+    return [shortcutHolder copyWithClearedShortcut];
   }
   return [shortcutHolder copyWithShortcutRef:shortcutRef];
 }

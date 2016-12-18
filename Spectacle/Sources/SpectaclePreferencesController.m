@@ -62,7 +62,7 @@
   [self loadRegisteredShortcuts];
   [notificationCenter addObserver:self
                          selector:@selector(loadRegisteredShortcuts)
-                             name:@"SpectacleRestoreDefaultShortcutsNotification"
+                             name:@"SpectacleShortcutChangedNotification"
                            object:nil];
   [notificationCenter addObserver:self
                          selector:@selector(loadRegisteredShortcuts)
@@ -100,9 +100,7 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
     SpectacleShortcutRecorder *shortcutRecorder = _shortcutRecorders[shortcutName];
     SpectacleShortcut *shortcut = [_shortcutManager shortcutForShortcutName:shortcutName];
     shortcutRecorder.shortcutName = shortcutName;
-    if (shortcut) {
-      shortcutRecorder.shortcut = shortcut;
-    }
+    shortcutRecorder.shortcut = shortcut;
     shortcutRecorder.delegate = self;
     shortcutRecorder.shortcutValidation =
     [[SpectacleShortcutValidation alloc] initWithShortcutManager:_shortcutManager
