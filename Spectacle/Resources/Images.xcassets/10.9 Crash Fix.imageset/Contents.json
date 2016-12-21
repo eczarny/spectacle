@@ -1,0 +1,368 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-1.png",
+      "language-direction" : "left-to-right",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-4.png",
+      "language-direction" : "right-to-left",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-7.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-10.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-2.png",
+      "language-direction" : "left-to-right",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-5.png",
+      "language-direction" : "right-to-left",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-8.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-11.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-3.png",
+      "language-direction" : "left-to-right",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-6.png",
+      "language-direction" : "right-to-left",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-9.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-12.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-13.png",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-16.png",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-19.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-22.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-14.png",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-17.png",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-20.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-23.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-15.png",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-18.png",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-21.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-24.png",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-25.png",
+      "width-class" : "regular",
+      "language-direction" : "left-to-right",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-28.png",
+      "width-class" : "regular",
+      "language-direction" : "right-to-left",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-31.png",
+      "width-class" : "regular",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-34.png",
+      "width-class" : "regular",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-26.png",
+      "width-class" : "regular",
+      "language-direction" : "left-to-right",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-29.png",
+      "width-class" : "regular",
+      "language-direction" : "right-to-left",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-32.png",
+      "width-class" : "regular",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-35.png",
+      "width-class" : "regular",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-27.png",
+      "width-class" : "regular",
+      "language-direction" : "left-to-right",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-30.png",
+      "width-class" : "regular",
+      "language-direction" : "right-to-left",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-33.png",
+      "width-class" : "regular",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "left-to-right",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-36.png",
+      "width-class" : "regular",
+      "graphics-feature-set" : "metal1v2",
+      "language-direction" : "right-to-left",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-37.png",
+      "width-class" : "regular",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-40.png",
+      "width-class" : "regular",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "language-direction" : "left-to-right",
+      "graphics-feature-set" : "metal1v2",
+      "idiom" : "universal",
+      "width-class" : "regular",
+      "filename" : "Spectacle-43.png",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "language-direction" : "right-to-left",
+      "graphics-feature-set" : "metal1v2",
+      "idiom" : "universal",
+      "width-class" : "regular",
+      "filename" : "Spectacle-46.png",
+      "height-class" : "regular",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-38.png",
+      "width-class" : "regular",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-41.png",
+      "width-class" : "regular",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "language-direction" : "left-to-right",
+      "graphics-feature-set" : "metal1v2",
+      "idiom" : "universal",
+      "width-class" : "regular",
+      "filename" : "Spectacle-44.png",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "language-direction" : "right-to-left",
+      "graphics-feature-set" : "metal1v2",
+      "idiom" : "universal",
+      "width-class" : "regular",
+      "filename" : "Spectacle-47.png",
+      "height-class" : "regular",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-39.png",
+      "width-class" : "regular",
+      "language-direction" : "left-to-right",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "Spectacle-42.png",
+      "width-class" : "regular",
+      "language-direction" : "right-to-left",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "language-direction" : "left-to-right",
+      "graphics-feature-set" : "metal1v2",
+      "idiom" : "universal",
+      "width-class" : "regular",
+      "filename" : "Spectacle-45.png",
+      "height-class" : "regular",
+      "scale" : "3x"
+    },
+    {
+      "language-direction" : "right-to-left",
+      "graphics-feature-set" : "metal1v2",
+      "idiom" : "universal",
+      "width-class" : "regular",
+      "filename" : "Spectacle-48.png",
+      "height-class" : "regular",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
