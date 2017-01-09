@@ -349,6 +349,7 @@
     return;
   }
   [_shortcutManager registerShortcuts];
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"SpectacleShortcutChangedNotification" object:self];
 }
 
 - (void)disableShortcutsIfFrontmostApplicationIsBlacklistedOrDisabled

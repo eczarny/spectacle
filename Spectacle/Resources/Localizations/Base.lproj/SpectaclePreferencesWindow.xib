@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="localizable">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SpectaclePreferencesController">
@@ -35,7 +36,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Spectacle X.Y.Z" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="JW4-q9-L7q" propertyAccessControl="localizable">
+        <window title="Spectacle X.Y.Z" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="JW4-q9-L7q">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="283" y="311" width="616" height="513"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -277,12 +278,9 @@
                         <rect key="frame" x="422" y="159" width="140" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="vWw-ws-BgW">
+                    <box verticalHuggingPriority="750" boxType="separator" id="vWw-ws-BgW">
                         <rect key="frame" x="0.0" y="60" width="616" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
                     </box>
                     <customView id="wNg-Ru-1aI" userLabel="Footer View">
                         <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
@@ -390,10 +388,21 @@
                             <action selector="restoreDefaults:" target="-2" id="6ui-XF-TPy"/>
                         </connections>
                     </button>
+                    <button misplaced="YES" id="P6j-bi-KoE">
+                        <rect key="frame" x="18" y="78" width="246" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="check" title="Launch Spectacle at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cEj-mH-kie">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleLoginItem:" target="-2" id="pwr-Q6-dvi"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
         </window>
-        <customView id="tke-O4-mlo" userLabel="Options Footer View" propertyAccessControl="localizable">
+        <customView id="tke-O4-mlo" userLabel="Options Footer View">
             <rect key="frame" x="0.0" y="0.0" width="616" height="63"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -438,17 +447,6 @@
                         <action selector="toggleStatusItem:" target="-2" id="UbE-2H-Bsc"/>
                     </connections>
                 </popUpButton>
-                <button id="P6j-bi-KoE">
-                    <rect key="frame" x="47" y="23" width="246" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="check" title="Launch Spectacle at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cEj-mH-kie">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggleLoginItem:" target="-2" id="pwr-Q6-dvi"/>
-                    </connections>
-                </button>
             </subviews>
         </customView>
     </objects>

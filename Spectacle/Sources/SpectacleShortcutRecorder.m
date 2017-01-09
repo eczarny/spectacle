@@ -23,6 +23,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   BOOL _isMouseDown;
   BOOL _isMouseAboveBadge;
   NSTrackingArea *_badgeButtonTrackingArea;
+  void *_shortcutMode;
 }
 
 - (instancetype)initWithFrame:(NSRect)frame
@@ -104,9 +105,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
     return NO;
   }
   NSEventModifierFlags modifierFlags = event.modifierFlags & kCocoaModifierFlagsMask;
-  if (modifierFlags == NSAlternateKeyMask) {
-    return NO;
-  }
   if (event.keyCode == kVK_Escape && modifierFlags == 0) {
     [self _stopRecording];
     return YES;
@@ -139,9 +137,6 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   if (!_isRecording) {
     return;
   }
-  if ((event.modifierFlags & kCocoaModifierFlagsMask) == NSAlternateKeyMask) {
-    return;
-  }
   [self setNeedsDisplay:YES];
 }
 
@@ -157,6 +152,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
 - (void)_startRecording
 {
   _isRecording = YES;
+  _shortcutMode = PushSymbolicHotKeyMode(kHIHotKeyModeAllDisabled);
   [self _updateTrackingArea];
   [self setNeedsDisplay:YES];
 }
@@ -166,6 +162,7 @@ static const NSEventModifierFlags kCocoaModifierFlagsMask = (NSControlKeyMask
   if (!_isRecording) {
     return;
   }
+  PopSymbolicHotKeyMode(_shortcutMode);
   _isRecording = NO;
   _isMouseAboveBadge = NO;
   [self _updateTrackingArea];

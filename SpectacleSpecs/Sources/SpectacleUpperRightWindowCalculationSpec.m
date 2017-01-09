@@ -19,5 +19,22 @@ describe(@"SpectacleUpperRightWindowCalculation", ^{
                                                                                               action:kSpectacleWindowActionUpperRight];
     expect(result.windowRect).to.equal(CGRectMake(720.0f, 441.0f, 720.0f, 436.0f));
   });
+  
+  it(@"should calculate a window's CGRect in the upper right 2/3 corner of the screen", ^{
+    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(720.0f, 441.0f, 720.0f, 436.0f)
+                                                                          visibleFrameOfSourceScreen:visibleFrameSourceScreen
+                                                                     visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
+                                                                                              action:kSpectacleWindowActionUpperRight];
+    expect(result.windowRect).to.equal(CGRectMake(480.0f, 441.0f, 960.0f, 436.0f));
+  });
+  
+  it(@"should calculate a window's CGRect in the upper right 1/3 corner of the screen", ^{
+    SpectacleWindowPositionCalculationResult *result = [windowPositionCalculator calculateWindowRect:CGRectMake(480.0f, 441.0f, 960.0f, 436.0f)
+                                                                          visibleFrameOfSourceScreen:visibleFrameSourceScreen
+                                                                     visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
+                                                                                              action:kSpectacleWindowActionUpperRight];
+    expect(result.windowRect).to.equal(CGRectMake(960.0f, 441.0f, 480.0f, 436.0f));
+  });
+
 });
 SpecEnd
