@@ -14,6 +14,7 @@
 #import "SpectacleUtilities.h"
 #import "SpectacleWindowPositionCalculator.h"
 #import "SpectacleWindowPositionManager.h"
+#import "SpectacleNotificationController.h"
 
 @implementation SpectacleAppDelegate
 {
@@ -23,11 +24,13 @@
   SpectacleShortcutManager *_shortcutManager;
   SpectacleWindowPositionManager *_windowPositionManager;
   SpectaclePreferencesController *_preferencesController;
+  SpectacleNotificationController *_notificationController;
   NSTimer *_disableShortcutsForAnHourTimer;
   NSSet<NSString *> *_blacklistedApplications;
   NSMutableSet<NSString *> *_disabledApplications;
   BOOL _shortcutsAreDisabledForAnHour;
 }
+
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
@@ -105,7 +108,14 @@
   _preferencesController = [[SpectaclePreferencesController alloc] initWithShortcutManager:_shortcutManager
                                                                      windowPositionManager:_windowPositionManager
                                                                            shortcutStorage:_shortcutStorage];
+  _notificationController = [[SpectacleNotificationController alloc] initWindow];
   _shortcutsAreDisabledForAnHour = NO;
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(handleWindowActionDidFinish:)
+                                               name:kSpectacleWindowActionDidFinishNotification
+                                             object:nil];
+  
   [self manageShortcuts];
   [self disableShortcutsIfFrontmostApplicationIsBlacklistedOrDisabled];
   BOOL automaticallyChecksForUpdates = [userDefaults boolForKey:@"AutomaticUpdateCheckEnabled"];
@@ -123,13 +133,17 @@
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)application hasVisibleWindows:(BOOL)visibleWindows
 {
   [self showPreferencesWindow:self];
-
+  
   return YES;
 }
 
 - (IBAction)showPreferencesWindow:(id)sender
 {
   [_preferencesController showWindow:sender];
+}
+
+- (void)showNotificationWindowWithType:(NSUInteger)notificationType {
+  [_notificationController showWindow:nil];
 }
 
 - (IBAction)moveFrontmostWindowToFullscreen:(id)sender
@@ -291,6 +305,11 @@
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)handleWindowActionDidFinish:(NSNotification*)notification {
+  SpectacleWindowAction* action = notification.object;
+  [_notificationController showWindowWithAction:action];
+}
+
 - (void)manageShortcuts
 {
   SpectacleShortcutAction action = ^(SpectacleShortcut *shortcut) {
@@ -389,7 +408,7 @@
     self.disableShortcutsForApplicationMenuItem.hidden = YES;
   } else {
     self.disableShortcutsForApplicationMenuItem.title =
-      [NSString stringWithFormat:NSLocalizedString(@"MenuItemTitleDisableShortcutsForApplication", @"The menu item title that displays the application to disable shortcuts for"), frontmostApplication.localizedName];
+    [NSString stringWithFormat:NSLocalizedString(@"MenuItemTitleDisableShortcutsForApplication", @"The menu item title that displays the application to disable shortcuts for"), frontmostApplication.localizedName];
   }
   if ([_disabledApplications containsObject:frontmostApplication.bundleIdentifier]) {
     self.disableShortcutsForApplicationMenuItem.state = NSOnState;

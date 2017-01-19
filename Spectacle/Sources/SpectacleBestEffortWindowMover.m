@@ -56,6 +56,8 @@ frontmostWindowElement:(SpectacleAccessibilityElement *)frontmostWindowElement
   if (!CGRectEqualToRect(movedWindowRect, previouslyMovedWindowRect)) {
     [frontmostWindowElement setRectOfElement:movedWindowRect];
   }
+  
+  [[NSNotificationCenter defaultCenter] postNotificationName:kSpectacleWindowActionDidFinishNotification object:action];
 }
 
 @end
