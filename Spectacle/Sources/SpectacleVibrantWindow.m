@@ -41,6 +41,7 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
     [self setOpaque:NO];
     [self setExcludedFromWindowsMenu:YES];
     [self setIgnoresMouseEvents:YES];
+    [self setCollectionBehavior:NSWindowCollectionBehaviorCanJoinAllSpaces];
   }
   
   return self;
@@ -80,6 +81,10 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
 
 - (BOOL)canBecomeMainWindow {
   return NO;
+}
+
+- (BOOL)canBeVisibleOnAllSpaces {
+  return YES;
 }
 
 @end
