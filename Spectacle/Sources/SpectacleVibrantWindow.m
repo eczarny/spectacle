@@ -13,6 +13,7 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
 
 @interface SpectacleVibrantWindow ()
 @property (nonatomic, strong, readonly) NSView *vibrantView;
+
 @end
 
 @implementation SpectacleVibrantWindow
@@ -30,12 +31,13 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
 {
   // account for the title bar
-  contentRect.origin.y += [SpectacleVibrantWindow titleBarHeightForFrame:contentRect];
+  CGFloat titleBarHeight = [SpectacleVibrantWindow titleBarHeightForFrame:contentRect];
+  contentRect.origin.y += titleBarHeight;
   
   if (self = [super initWithContentRect:contentRect
                               styleMask:NSBorderlessWindowMask
                                 backing:NSBackingStoreBuffered defer:flag]) {
-    self.backgroundColor = [NSColor clearColor];
+    [self setBackgroundColor:[NSColor clearColor]];
     [self setOpaque:NO];
     [self setExcludedFromWindowsMenu:YES];
     [self setIgnoresMouseEvents:YES];
@@ -49,9 +51,6 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
   
   [self tryVibrantView];
   self.contentView.wantsLayer = YES;
-  self.contentView.layer.cornerRadius = kDefaultCornerRadius;
-  self.contentView.layer.backgroundColor = [[NSColor blackColor] colorWithAlphaComponent:0.75f].CGColor;
-  self.contentView.layer.masksToBounds = YES;
 }
 
 - (void)tryVibrantView {
@@ -62,7 +61,16 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
     [vibrant setMaskImage:[SpectacleUtilities maskImageWithCornerRadius:kDefaultCornerRadius]];
     [vibrant setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
     [vibrant setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
+    
+    vibrant.material = NSVisualEffectMaterialDark;
+    if (NSAppKitVersionNumber >= NSAppKitVersionNumber10_11) {
+      vibrant.material = NSVisualEffectMaterialMenu;
+    }
     vibrant.state = NSVisualEffectStateActive;
+  } else {
+    self.contentView.layer.cornerRadius = kDefaultCornerRadius;
+    self.contentView.layer.backgroundColor = [NSColor colorWithWhite:0.2 alpha:.8f].CGColor;
+    self.contentView.layer.masksToBounds = YES;
   }
 }
 
