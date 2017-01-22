@@ -64,7 +64,7 @@ static const CGFloat kDefaultCornerRadius = 15.0f;
     [vibrant setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     
     vibrant.material = NSVisualEffectMaterialDark;
-    if (NSAppKitVersionNumber >= NSAppKitVersionNumber10_11) {
+    if (rint(NSAppKitVersionNumber) > NSAppKitVersionNumber10_10) {
       vibrant.material = NSVisualEffectMaterialMenu;
     }
     vibrant.state = NSVisualEffectStateActive;
