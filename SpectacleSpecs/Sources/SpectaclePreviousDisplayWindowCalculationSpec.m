@@ -17,7 +17,7 @@ describe(@"SpectaclePreviousDisplayWindowCalculation", ^{
                                                                           visibleFrameOfSourceScreen:visibleFrameSourceScreen
                                                                      visibleFrameOfDestinationScreen:visibleFrameDestinationScreen
                                                                                               action:kSpectacleWindowActionPreviousDisplay];
-    expect(result.windowRect).to.equal(CGRectMake(1878.0f, 248.0f, 564.0f, 384.0f));
+    expect(result.windowRect).to.equal(CGRectMake(1878.0f, 249.0f, 564.0f, 384.0f));
   });
 });
 SpecEnd
