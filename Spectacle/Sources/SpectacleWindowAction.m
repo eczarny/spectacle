@@ -20,6 +20,8 @@ SpectacleWindowAction *const kSpectacleWindowActionPreviousDisplay = @"Spectacle
 SpectacleWindowAction *const kSpectacleWindowActionNextThird = @"SpectacleWindowActionNextThird";
 SpectacleWindowAction *const kSpectacleWindowActionPreviousThird = @"SpectacleWindowActionPreviousThird";
 
+NSString *const kSpectacleWindowActionDidFinishNotification = @"SpectacleWindowActionDidFinishNotification";
+
 BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action)
 {
   return [action isEqualToString:kSpectacleWindowActionUndo];

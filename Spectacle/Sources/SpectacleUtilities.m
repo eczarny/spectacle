@@ -82,4 +82,23 @@
   return preferencePanePath;
 }
 
++ (NSImage *)maskImageWithCornerRadius:(CGFloat)cornerRadius
+{
+  CGFloat ledge = 2.0 * cornerRadius + 1.0;
+  CGRect bounds = CGRectMake(0, 0, ledge, ledge);
+  NSImage* image = [NSImage imageWithSize:bounds.size flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
+    
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:bounds xRadius:cornerRadius yRadius:cornerRadius];
+    
+    [path setLineJoinStyle:NSRoundLineJoinStyle];
+    [path fill];
+    
+    return YES;
+  }];
+  image.capInsets = NSEdgeInsetsMake(cornerRadius, cornerRadius, cornerRadius, cornerRadius);
+  image.resizingMode = NSImageResizingModeStretch;
+  
+  return image;
+}
+
 @end

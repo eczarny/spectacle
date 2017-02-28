@@ -11,4 +11,6 @@
 
 + (NSString *)pathForPreferencePaneNamed:(NSString *)preferencePaneName;
 
++ (NSImage *)maskImageWithCornerRadius:(CGFloat)cornerRadius;
+
 @end

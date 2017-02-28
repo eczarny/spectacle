@@ -22,6 +22,8 @@ extern SpectacleWindowAction *const kSpectacleWindowActionPreviousDisplay;
 extern SpectacleWindowAction *const kSpectacleWindowActionNextThird;
 extern SpectacleWindowAction *const kSpectacleWindowActionPreviousThird;
 
+extern NSString *const kSpectacleWindowActionDidFinishNotification;
+
 BOOL SpectacleIsUndoWindowAction(SpectacleWindowAction *action);
 BOOL SpectacleIsRedoWindowAction(SpectacleWindowAction *action);
 

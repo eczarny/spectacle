@@ -77,6 +77,9 @@
 		2DC8A0171B85097900ABEBD5 /* SpectacleLoginItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC8A0161B85097900ABEBD5 /* SpectacleLoginItemHelper.m */; };
 		2DE03E481D7B8F5A004E80D6 /* SpectacleShortcutKeyBindingsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE03E471D7B8F5A004E80D6 /* SpectacleShortcutKeyBindingsSpec.m */; };
 		2DE03E4B1D7B98D6004E80D6 /* SpectacleShortcutKeyBindings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE03E4A1D7B98D6004E80D6 /* SpectacleShortcutKeyBindings.m */; };
+		C511892F1E3125270037982B /* SpectacleVibrantWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C511892E1E3125270037982B /* SpectacleVibrantWindow.m */; };
+		C5CD73B61E2E4AC200093ED7 /* SpectacleNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CD73B41E2E4AC200093ED7 /* SpectacleNotificationController.m */; };
+		C5CD73B71E2E4AC200093ED7 /* SpectacleNotificationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5CD73B51E2E4AC200093ED7 /* SpectacleNotificationWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +251,11 @@
 		574F6A1C1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Credits.rtf; sourceTree = "<group>"; };
 		574F6A1D1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		574F6A1E1C57BE40001A5679 /* pt */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = pt; path = Spectacle/Resources/Localizations/pt.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C511892D1E3125270037982B /* SpectacleVibrantWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleVibrantWindow.h; path = Spectacle/Sources/SpectacleVibrantWindow.h; sourceTree = "<group>"; };
+		C511892E1E3125270037982B /* SpectacleVibrantWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleVibrantWindow.m; path = Spectacle/Sources/SpectacleVibrantWindow.m; sourceTree = "<group>"; };
+		C5CD73B31E2E4AC200093ED7 /* SpectacleNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpectacleNotificationController.h; path = Spectacle/Sources/SpectacleNotificationController.h; sourceTree = "<group>"; };
+		C5CD73B41E2E4AC200093ED7 /* SpectacleNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpectacleNotificationController.m; path = Spectacle/Sources/SpectacleNotificationController.m; sourceTree = "<group>"; };
+		C5CD73B51E2E4AC200093ED7 /* SpectacleNotificationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpectacleNotificationWindow.xib; path = Spectacle/Sources/SpectacleNotificationWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,8 +315,10 @@
 				2DA5B7C719F8BA79007EDE8E /* SpectacleSpecs */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 			);
+			indentWidth = 2;
 			name = Spectacle;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		089C1671FE841209C02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -330,6 +340,7 @@
 				2DC4E3CE1AD84E5C0022ABF0 /* Localizable.strings */,
 				2DC4E3D01AD84E5C0022ABF0 /* Spectacle.xib */,
 				2DC4E3D21AD84E5C0022ABF0 /* SpectaclePreferencesWindow.xib */,
+				C5CD73B51E2E4AC200093ED7 /* SpectacleNotificationWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -337,6 +348,7 @@
 		08FB77AFFE84173DC02AAC07 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C5CD73B21E2E4A7D00093ED7 /* Visual Feedback */,
 				0747DAE81183AABB00F75DD2 /* Preferences */,
 				2DC8A0131B84E1AF00ABEBD5 /* Shortcuts */,
 				2DC8A0141B84E24500ABEBD5 /* Window Management */,
@@ -438,9 +450,9 @@
 		2D89B5731B8133E900F9FC1C /* Spectacle */ = {
 			isa = PBXGroup;
 			children = (
-				089C167CFE841241C02AAC07 /* Resources */,
 				08FB77AFFE84173DC02AAC07 /* Sources */,
 				32DBCFA10370C40200C91783 /* Supporting Files */,
+				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks */,
 			);
 			name = Spectacle;
@@ -569,6 +581,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C5CD73B21E2E4A7D00093ED7 /* Visual Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				C5CD73B31E2E4AC200093ED7 /* SpectacleNotificationController.h */,
+				C5CD73B41E2E4AC200093ED7 /* SpectacleNotificationController.m */,
+				C511892D1E3125270037982B /* SpectacleVibrantWindow.h */,
+				C511892E1E3125270037982B /* SpectacleVibrantWindow.m */,
+			);
+			name = "Visual Feedback";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -654,6 +677,7 @@
 			files = (
 				2DC4E3D41AD84E5C0022ABF0 /* Credits.rtf in Resources */,
 				2D8DA04D147E0FA0003BE1D3 /* Defaults.plist in Resources */,
+				C5CD73B71E2E4AC200093ED7 /* SpectacleNotificationWindow.xib in Resources */,
 				2D5CCCE915E96F740009CC43 /* dsa_public.pem in Resources */,
 				2DA23EFC1B7D736100C9E8EF /* Images.xcassets in Resources */,
 				2DC4E3D51AD84E5C0022ABF0 /* InfoPlist.strings in Resources */,
@@ -710,6 +734,7 @@
 				2DAC59F01BB238D900C660ED /* SpectacleQuantizedWindowMover.m in Sources */,
 				2D1AE52515D715F400EAC5BD /* SpectacleRegisteredShortcutValidator.m in Sources */,
 				2D2629461CCECB9E009D1ED0 /* SpectacleScreenDetectionResult.m in Sources */,
+				C5CD73B61E2E4AC200093ED7 /* SpectacleNotificationController.m in Sources */,
 				2D4F3ED014A27B4500C29D11 /* SpectacleScreenDetector.m in Sources */,
 				2D3A050E194956E100CD96E7 /* SpectacleShortcut.m in Sources */,
 				2D24ACB71CC8728E00AB3984 /* SpectacleShortcutHolder.m in Sources */,
@@ -718,6 +743,7 @@
 				2D8DA056147E113D003BE1D3 /* SpectacleShortcutManager.m in Sources */,
 				2D3A050F194956E100CD96E7 /* SpectacleShortcutRecorder.m in Sources */,
 				2D3A0511194956E100CD96E7 /* SpectacleShortcutTranslations.m in Sources */,
+				C511892F1E3125270037982B /* SpectacleVibrantWindow.m in Sources */,
 				2D7C114A1B86C7CD00B81E11 /* SpectacleShortcutUserDefaultsStorage.m in Sources */,
 				2D3A0512194956E100CD96E7 /* SpectacleShortcutValidation.m in Sources */,
 				2D5783F11BB63BDD00695771 /* SpectacleStandardWindowMover.m in Sources */,
