@@ -6,7 +6,7 @@ Easily organize windows without using a mouse.
 
 ## System requirements
 
-Spectacle [0.8.6][1] is the last version to support Mac OS X 10.7; future releases will only support 10.9 or greater. Folks wishing to stay on 10.7 should download [0.8.6][1]. Those looking for a version of Spectacle that supports 10.6 can still download [0.7][2].
+Spectacle [1.1][1] is the last version to support Mac OS X 10.7; future releases will only support 10.9 or greater. Folks wishing to stay on 10.7 should download [0.8.6][1]. Those looking for a version of Spectacle that supports 10.6 can still download [0.7][2].
 
 ## Keyboard Shortcuts
 
@@ -93,7 +93,7 @@ Copyright (c) 2017 Eric Czarny.
 
 Spectacle should be accompanied by a LICENSE file containing the license relevant to this distribution.
 
-[1]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.8.6.zip
+[1]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.1.zip
 [2]: https://s3.amazonaws.com/spectacle/downloads/Spectacle+0.7.zip
 [3]: http://support.apple.com/kb/ht1343
 [4]: https://developer.apple.com/library/mac/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXmodel.html
