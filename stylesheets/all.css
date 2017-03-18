@@ -193,7 +193,7 @@ img {
 
 /* line 89, stylesheets/all.css.sass */
 .whole {
-  background-image: url(../images/whole.png);
+  background-image: url(../images/whole.jpg);
   background-size: inherit;
   -webkit-animation-name: fade;
   -moz-animation-name: fade;
@@ -201,7 +201,7 @@ img {
 
 /* line 94, stylesheets/all.css.sass */
 .center {
-  background-image: url(../images/center.png);
+  background-image: url(../images/center.jpg);
   -webkit-animation-name: fade2;
   -moz-animation-name: fade2;
   animation-name: fade2;
@@ -209,7 +209,7 @@ img {
 
 /* line 99, stylesheets/all.css.sass */
 .top {
-  background-image: url(../images/top.png);
+  background-image: url(../images/top.jpg);
   -webkit-animation-name: fade3;
   -moz-animation-name: fade3;
   animation-name: fade3;
@@ -217,7 +217,7 @@ img {
 
 /* line 104, stylesheets/all.css.sass */
 .bottom {
-  background-image: url(../images/bottom.png);
+  background-image: url(../images/bottom.jpg);
   -webkit-animation-name: fade4;
   -moz-animation-name: fade4;
   animation-name: fade4;
@@ -225,7 +225,7 @@ img {
 
 /* line 109, stylesheets/all.css.sass */
 .left {
-  background-image: url(../images/left.png);
+  background-image: url(../images/left.jpg);
   -webkit-animation-name: fade5;
   -moz-animation-name: fade5;
   animation-name: fade5;
@@ -233,7 +233,7 @@ img {
 
 /* line 114, stylesheets/all.css.sass */
 .right {
-  background-image: url(../images/right.png);
+  background-image: url(../images/right.jpg);
   -webkit-animation-name: fade6;
   -moz-animation-name: fade6;
   animation-name: fade6;
