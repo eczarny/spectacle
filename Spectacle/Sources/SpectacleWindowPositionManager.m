@@ -71,6 +71,13 @@
     frameOfDestinationScreen = NSRectToCGRect([screenDetectionResult.destinationScreen frame]);
     visibleFrameOfDestinationScreen = NSRectToCGRect([screenDetectionResult.destinationScreen visibleFrame]);
     visibleFrameOfSourceScreen = NSRectToCGRect([screenDetectionResult.sourceScreen visibleFrame]);
+      
+//      if (visibleFrameOfSourceScreen.origin.x == 0 && visibleFrameOfSourceScreen.origin.y == 0) {
+//          visibleFrameOfSourceScreen.size.height += 5;
+//          NSLog(@"Something To Print");
+//    }
+      
+//      NSLog(@".......");
 
     if (CoreDockGetAutoHideEnabled()) {
       CGFloat totalWidth = 0.0f;
@@ -85,6 +92,16 @@
           r->origin.x = 0;
         } else if (totalWidth - (r->origin.x + r->size.width) == 4) {
           r->size.width += 4;
+        }
+        
+        else if (r->origin.x == 0 && r->origin.y == 4) {
+            r->size.height += 4;
+            NSLog(@"consider it done");
+        }
+          
+        else {
+//            NSLog(@"%g", r->origin.x);
+            NSLog(@"%g", r->origin.y);
         }
       };
 

@@ -110,6 +110,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Spectacle &#x2014;&#xa0;JMO"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

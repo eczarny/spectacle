@@ -1,0 +1,102 @@
+
+/* Class = "NSTextFieldCell"; title = "Make Larger:"; ObjectID = "0f9-kj-bro"; */
+"0f9-kj-bro.title" = "Hacer más grande:";
+
+/* Class = "NSTextFieldCell"; title = "Control"; ObjectID = "7Fe-Da-fYB"; */
+"7Fe-Da-fYB.title" = "Control";
+
+/* Class = "NSTextFieldCell"; title = "⌃"; ObjectID = "806-S1-nYH"; */
+"806-S1-nYH.title" = "⌃";
+
+/* Class = "NSTextFieldCell"; title = "Top Half:"; ObjectID = "AnP-Lv-Hbd"; */
+"AnP-Lv-Hbd.title" = "Mitad superior:";
+
+/* Class = "NSTextFieldCell"; title = "Bottom Half:"; ObjectID = "Awn-mO-sht"; */
+"Awn-mO-sht.title" = "Mitad inferior:";
+
+/* Class = "NSTextFieldCell"; title = "Undo:"; ObjectID = "CJs-az-eG7"; */
+"CJs-az-eG7.title" = "Deshacer:";
+
+/* Class = "NSTextFieldCell"; title = "Left Half:"; ObjectID = "IWj-rc-Kvi"; */
+"IWj-rc-Kvi.title" = "Mitad izquierda:";
+
+/* Class = "NSTextFieldCell"; title = "⇧"; ObjectID = "Ir0-AJ-ldj"; */
+"Ir0-AJ-ldj.title" = "⇧";
+
+/* Class = "NSWindow"; title = "Spectacle X.Y.Z"; ObjectID = "JW4-q9-L7q"; */
+"JW4-q9-L7q.title" = "Spectacle X.Y.Z";
+
+/* Class = "NSButtonCell"; title = "Restore Defaults..."; ObjectID = "NT7-Sd-Ofw"; */
+"NT7-Sd-Ofw.title" = "Restaurar por defecto...";
+
+/* Class = "NSTextFieldCell"; title = "Make Smaller:"; ObjectID = "SDM-U5-yUR"; */
+"SDM-U5-yUR.title" = "Hacer más pequeño:";
+
+/* Class = "NSTextFieldCell"; title = "⌘"; ObjectID = "SQM-4e-yFd"; */
+"SQM-4e-yFd.title" = "⌘";
+
+/* Class = "NSTextFieldCell"; title = "Next Third:"; ObjectID = "Tze-mR-IV4"; */
+"Tze-mR-IV4.title" = "Siguiente tercero:";
+
+/* Class = "NSTextFieldCell"; title = "Option"; ObjectID = "U0H-hG-KAQ"; */
+"U0H-hG-KAQ.title" = "Opciones";
+
+/* Class = "NSTextFieldCell"; title = "Lower Right:"; ObjectID = "Vul-FT-BbB"; */
+"Vul-FT-BbB.title" = "Inferior derecho:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "W2t-KP-bYJ"; */
+"W2t-KP-bYJ.title" = "Otras vistas";
+
+/* Class = "NSTextFieldCell"; title = "Right Half:"; ObjectID = "WeK-fS-mRh"; */
+"WeK-fS-mRh.title" = "Mitad derecha:";
+
+/* Class = "NSTextFieldCell"; title = "⌥"; ObjectID = "YQm-Kc-fYF"; */
+"YQm-Kc-fYF.title" = "⌥";
+
+/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "aWf-FC-J1j"; */
+"aWf-FC-J1j.title" = "aplicación en segundo plano";
+
+/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "cEj-mH-kie"; */
+"cEj-mH-kie.title" = "Ejecutar Spectacle al iniciar";
+
+/* Class = "NSTextFieldCell"; title = "Lower Left:"; ObjectID = "dQP-TR-GMx"; */
+"dQP-TR-GMx.title" = "Abajo a la izquierda:";
+
+/* Class = "NSTextFieldCell"; title = "Shift"; ObjectID = "dww-8Q-sa1"; */
+"dww-8Q-sa1.title" = "Shift";
+
+/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "eYU-TH-wcO"; */
+"eYU-TH-wcO.title" = "Ejecutar...";
+
+/* Class = "NSTextFieldCell"; title = "Upper Right:"; ObjectID = "gSY-Au-xOH"; */
+"gSY-Au-xOH.title" = "Superior derecha:";
+
+/* Class = "NSTextFieldCell"; title = "Previous Display:"; ObjectID = "hmL-EC-pro"; */
+"hmL-EC-pro.title" = "Monitor anterior:";
+
+/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "in4-v8-tIm"; */
+"in4-v8-tIm.title" = "en menu de estado";
+
+/* Class = "NSTextFieldCell"; title = "Command"; ObjectID = "jdf-Yu-zrq"; */
+"jdf-Yu-zrq.title" = "Command";
+
+/* Class = "NSTextFieldCell"; title = "Upper Left:"; ObjectID = "ldH-1E-mKW"; */
+"ldH-1E-mKW.title" = "Superior izquierdo:";
+
+/* Class = "NSTextFieldCell"; title = "Next Display:"; ObjectID = "lw7-Ap-kJO"; */
+"lw7-Ap-kJO.title" = "Monitor siguiente:";
+
+/* Class = "NSTextFieldCell"; title = "Center:"; ObjectID = "oqf-7z-BFa"; */
+"oqf-7z-BFa.title" = "Centro:";
+
+/* Class = "NSTextFieldCell"; title = "Previous Third:"; ObjectID = "s3E-Lp-mJ4"; */
+"s3E-Lp-mJ4.title" = "Tercer anterior:";
+
+/* Class = "NSTextFieldCell"; title = "Fullscreen:"; ObjectID = "tKr-XE-DEU"; */
+"tKr-XE-DEU.title" = "Pantalla completa:";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "vWw-ws-BgW"; */
+"vWw-ws-BgW.title" = "Caja";
+
+/* Class = "NSTextFieldCell"; title = "Redo:"; ObjectID = "y7M-cR-DF2"; */
+"y7M-cR-DF2.title" = "Rehacer:";
