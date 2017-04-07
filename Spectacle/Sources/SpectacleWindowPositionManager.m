@@ -71,7 +71,45 @@
     frameOfDestinationScreen = NSRectToCGRect([screenDetectionResult.destinationScreen frame]);
     visibleFrameOfDestinationScreen = NSRectToCGRect([screenDetectionResult.destinationScreen visibleFrame]);
     visibleFrameOfSourceScreen = NSRectToCGRect([screenDetectionResult.sourceScreen visibleFrame]);
+      
+//      if (visibleFrameOfSourceScreen.origin.x == 0 && visibleFrameOfSourceScreen.origin.y == 0) {
+//          visibleFrameOfSourceScreen.size.height += 5;
+//          NSLog(@"Something To Print");
+//    }
+      
+//      NSLog(@".......");
+
+    if (CoreDockGetAutoHideEnabled()) {
+      CGFloat totalWidth = 0.0f;
+
+      for (id screen in screens) {
+        totalWidth += ((NSScreen*)screen).frame.size.width;
+      }
+
+      void (^removeGapFromLeft)(CGRect *) = ^(CGRect* r) {
+        if (r->origin.x == 4) {
+          r->size.width += r->origin.x;
+          r->origin.x = 0;
+        } else if (totalWidth - (r->origin.x + r->size.width) == 4) {
+          r->size.width += 4;
+        }
+        
+        else if (r->origin.x == 0 && r->origin.y == 4) {
+            r->size.height += 4;
+            NSLog(@"consider it done");
+        }
+          
+        else {
+//            NSLog(@"%g", r->origin.x);
+            NSLog(@"%g", r->origin.y);
+        }
+      };
+
+      removeGapFromLeft(&visibleFrameOfDestinationScreen);
+      removeGapFromLeft(&visibleFrameOfSourceScreen);
+    }
   }
+
   CGRect frontmostWindowRect = [frontmostWindowElement rectOfElement];
   CGRect previousFrontmostWindowRect = CGRectNull;
   if ([frontmostWindowElement isSheet]
@@ -125,10 +163,26 @@
   } else if (SpectacleIsRedoWindowAction(action)) {
     [self redoLastWindowAction];
   } else {
+    NSArray * screens = [NSScreen screens];
+      CoreDockOrientation orienation = 0;
+      CoreDockPinning pinning = 0;
+
+    if (CoreDockGetAutoHideEnabled()) {
+        CoreDockGetOrientationAndPinning(&orienation, &pinning);
+        if (orienation != kCoreDockOrientationLeft) {
+            CoreDockSetOrientationAndPinning(kCoreDockOrientationLeft, pinning);
+        }
+
+    }
+
     [self moveFrontmostWindowElement:frontmostWindowElement
                               action:action
-                             screens:[NSScreen screens]
+                             screens:screens
                           mainScreen:[NSScreen mainScreen]];
+
+      if (orienation && orienation != kCoreDockOrientationLeft) {
+          CoreDockSetOrientationAndPinning(orienation, pinning);
+      }
   }
 }
 

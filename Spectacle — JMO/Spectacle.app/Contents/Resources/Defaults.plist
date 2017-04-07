@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AutomaticUpdateCheckEnabled</key>
+	<true/>
+	<key>BackgroundAlertSuppressed</key>
+	<false/>
+	<key>BlacklistedApplications</key>
+	<array>
+		<string>com.adobe.Photoshop</string>
+		<string>com.divisiblebyzero.Spectacle</string>
+		<string>com.valvesoftware.steam</string>
+	</array>
+	<key>DisabledApplications</key>
+	<array/>
+	<key>StatusItemEnabled</key>
+	<true/>
+</dict>
+</plist>
