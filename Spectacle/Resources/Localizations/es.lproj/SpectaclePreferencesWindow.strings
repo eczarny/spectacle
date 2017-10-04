@@ -27,7 +27,7 @@
 "JW4-q9-L7q.title" = "Spectacle X.Y.Z";
 
 /* Class = "NSButtonCell"; title = "Restore Defaults..."; ObjectID = "NT7-Sd-Ofw"; */
-"NT7-Sd-Ofw.title" = "Restaurar por defecto...";
+"NT7-Sd-Ofw.title" = "Restaurar…";
 
 /* Class = "NSTextFieldCell"; title = "Make Smaller:"; ObjectID = "SDM-U5-yUR"; */
 "SDM-U5-yUR.title" = "Hacer más pequeño:";
@@ -36,13 +36,13 @@
 "SQM-4e-yFd.title" = "⌘";
 
 /* Class = "NSTextFieldCell"; title = "Next Third:"; ObjectID = "Tze-mR-IV4"; */
-"Tze-mR-IV4.title" = "Siguiente tercero:";
+"Tze-mR-IV4.title" = "Tercio siguiente:";
 
 /* Class = "NSTextFieldCell"; title = "Option"; ObjectID = "U0H-hG-KAQ"; */
-"U0H-hG-KAQ.title" = "Opciones";
+"U0H-hG-KAQ.title" = "Opción";
 
 /* Class = "NSTextFieldCell"; title = "Lower Right:"; ObjectID = "Vul-FT-BbB"; */
-"Vul-FT-BbB.title" = "Inferior derecho:";
+"Vul-FT-BbB.title" = "Inferior derecha:";
 
 /* Class = "NSMenu"; title = "OtherViews"; ObjectID = "W2t-KP-bYJ"; */
 "W2t-KP-bYJ.title" = "Otras vistas";
@@ -54,19 +54,19 @@
 "YQm-Kc-fYF.title" = "⌥";
 
 /* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "aWf-FC-J1j"; */
-"aWf-FC-J1j.title" = "aplicación en segundo plano";
+"aWf-FC-J1j.title" = "en segundo plano";
 
 /* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "cEj-mH-kie"; */
-"cEj-mH-kie.title" = "Ejecutar Spectacle al iniciar";
+"cEj-mH-kie.title" = "Abrir Spectacle al iniciar sesión";
 
 /* Class = "NSTextFieldCell"; title = "Lower Left:"; ObjectID = "dQP-TR-GMx"; */
-"dQP-TR-GMx.title" = "Abajo a la izquierda:";
+"dQP-TR-GMx.title" = "Inferior izquierda:";
 
 /* Class = "NSTextFieldCell"; title = "Shift"; ObjectID = "dww-8Q-sa1"; */
-"dww-8Q-sa1.title" = "Shift";
+"dww-8Q-sa1.title" = "Mayús.";
 
 /* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "eYU-TH-wcO"; */
-"eYU-TH-wcO.title" = "Ejecutar...";
+"eYU-TH-wcO.title" = "Ejecutar…";
 
 /* Class = "NSTextFieldCell"; title = "Upper Right:"; ObjectID = "gSY-Au-xOH"; */
 "gSY-Au-xOH.title" = "Superior derecha:";
@@ -78,10 +78,10 @@
 "in4-v8-tIm.title" = "en menu de estado";
 
 /* Class = "NSTextFieldCell"; title = "Command"; ObjectID = "jdf-Yu-zrq"; */
-"jdf-Yu-zrq.title" = "Command";
+"jdf-Yu-zrq.title" = "Comando";
 
 /* Class = "NSTextFieldCell"; title = "Upper Left:"; ObjectID = "ldH-1E-mKW"; */
-"ldH-1E-mKW.title" = "Superior izquierdo:";
+"ldH-1E-mKW.title" = "Superior izquierda:";
 
 /* Class = "NSTextFieldCell"; title = "Next Display:"; ObjectID = "lw7-Ap-kJO"; */
 "lw7-Ap-kJO.title" = "Monitor siguiente:";
@@ -90,7 +90,7 @@
 "oqf-7z-BFa.title" = "Centro:";
 
 /* Class = "NSTextFieldCell"; title = "Previous Third:"; ObjectID = "s3E-Lp-mJ4"; */
-"s3E-Lp-mJ4.title" = "Tercer anterior:";
+"s3E-Lp-mJ4.title" = "Tercio anterior:";
 
 /* Class = "NSTextFieldCell"; title = "Fullscreen:"; ObjectID = "tKr-XE-DEU"; */
 "tKr-XE-DEU.title" = "Pantalla completa:";
