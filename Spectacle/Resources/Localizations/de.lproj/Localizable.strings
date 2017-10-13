@@ -1,0 +1,39 @@
+/* The informative text of the alert displayed when prompting to restore Spectacle's default shortcuts */
+"AlertInformativeTextRestoreDefaults" = "Möchtest du die Standardtastenkombindationen wiederherstellen? Sämtliche eigenen Tastenkombinationen gehen dabei verloren.";
+
+/* The informative text of the alert displayed when a shortcut is already in use */
+"AlertInformativeTextShortcutAlreadyInUse" = "Die Tastenkombination \"%@\" wird bereits benutzt. Bitte wähle eine neue Tastenkombination.";
+
+/* The informative text of the alert displayed when a system-wide shortcut is already in use */
+"AlertInformativeTextSystemWideShortcutAlreadyUsed" = "Die Tastenkombination \"%@\" wird bereits benutzt. Bitte wähle eine neue Tastenkombination.\n        \n        Um diese Tastenkombination zu benutzen, ändere bitte die bestehende Kombination unter Tastatureinstellungen in den Systemeinstellungen";
+
+/* The message text of the alert displayed when prompting to restore Spectacle's default shortcuts */
+"AlertMessageTextRestoreDefaults" = "Dies wird die Standardtastenkombinationen wiederherstellen";
+
+/* The message text of the alert displayed when prompting to run Spectacle in the background */
+"AlertMessageTextRunningInBackground" = "Dies sorgt dafür das Spectacle im Hintergrund läuft.";
+
+/* The message text of the alert displayed when a shortcut is invalid */
+"AlertMessageTextShortcutValidationError" = "Die Tastenkombination %@ wird bereits benutzt.";
+
+/* The button label used in the affirmative */
+"ButtonLabelAffirmative" = "OK";
+
+/* The button label used in the negative */
+"ButtonLabelNegative" = "Abbrechen";
+
+/* The menu item title that displays the application to disable shortcuts for */
+"MenuItemTitleDisableShortcutsForApplication" = "für %@";
+
+/* The shortcut recorder label displayed when the shorcut recorder is cleared and ready to record a new shortcut */
+"ShortcutRecorderLabelClickToRecord" = "Klick um aufzunehmen";
+
+/* The shortcut recorder label displayed when the shorcut recorder is recording a shortcut */
+"ShortcutRecorderLabelEnterShortcut" = "Tastenkombination eingeben";
+
+/* The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does not have a previously recorded shortcut */
+"ShortcutRecorderLabelStopRecording" = "Aufnahme beenden";
+
+/* The shortcut recorder label displayed when the shorcut recorder is recording a shortcut and the shortcut recorder does have a previously recorded shortcut */
+"ShortcutRecorderLabelUseExisting" = "Bestehende benutzen";
+
