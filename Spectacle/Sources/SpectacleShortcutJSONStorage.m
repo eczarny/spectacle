@@ -84,7 +84,12 @@ static NSArray<NSDictionary *> *jsonObjectFromShortcuts(NSArray<SpectacleShortcu
                            @"shortcut_key_binding" : shortcut.shortcutKeyBinding ?: [NSNull null],
                            }];
   }
-  return jsonArray;
+
+  NSSortDescriptor *sortDescriptor;
+  sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"shortcut_name" ascending:YES];
+  NSArray *sortedJSONArray = [jsonArray sortedArrayUsingDescriptors:@[sortDescriptor]];
+
+  return sortedJSONArray;
 }
 
 static NSArray<SpectacleShortcut *> *shortcutsFromJsonObject(NSArray<NSDictionary *> *jsonArray, SpectacleShortcutAction action)
