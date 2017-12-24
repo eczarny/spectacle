@@ -89,7 +89,7 @@ After Xcode finishes loading the workspace press &#8984;R to run Spectacle.
 
 # License
 
-Copyright (c) 2017 Eric Czarny.
+Copyright (c) 2018 Eric Czarny.
 
 Spectacle should be accompanied by a LICENSE file containing the license relevant to this distribution.
 
