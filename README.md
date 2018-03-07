@@ -87,6 +87,10 @@ Once Carthage builds Spectacle's dependencies open the Xcode project:
 
 After Xcode finishes loading the workspace press &#8984;R to run Spectacle.
 
+## Exporting and importing settings
+
+Spectacle saves its settings in a JSON file located at `~/Library/Application Support/Spectacle/Shortcuts.json`. To import a previously saved settings file, save it to this path and restart Spectacle. 
+
 # License
 
 Copyright (c) 2017 Eric Czarny.
