@@ -1,6 +1,7 @@
 var SpectacleWindowSizeAdjuster = (function () {
     var resizeWindowRect = function(windowRect, visibleFrameOfDestinationScreen, sizeOffset) {
         var resizedWindowRect = SpectacleCalculationHelpers.copyRect(windowRect);
+        var sizeOffsetVertical = sizeOffset * (visibleFrameOfDestinationScreen.height / visibleFrameOfDestinationScreen.width)
         resizedWindowRect.width = resizedWindowRect.width + sizeOffset;
         resizedWindowRect.x = resizedWindowRect.x - Math.floor(sizeOffset / 2.0);
         resizedWindowRect = adjustedWindowRectAgainstLeftAndRightEdgesOfScreen(windowRect,
@@ -9,8 +10,8 @@ var SpectacleWindowSizeAdjuster = (function () {
         if (resizedWindowRect.width >= visibleFrameOfDestinationScreen.width) {
             resizedWindowRect.width = visibleFrameOfDestinationScreen.width;
         }
-        resizedWindowRect.height = resizedWindowRect.height + sizeOffset;
-        resizedWindowRect.y = resizedWindowRect.y - Math.floor(sizeOffset / 2.0);
+        resizedWindowRect.height = resizedWindowRect.height + sizeOffsetVertical;
+        resizedWindowRect.y = resizedWindowRect.y - Math.floor(sizeOffsetVertical / 2.0);
         resizedWindowRect = adjustedWindowRectAgainstTopAndBottomEdgesOfScreen(windowRect,
                                                                                resizedWindowRect,
                                                                                visibleFrameOfDestinationScreen);
@@ -21,8 +22,8 @@ var SpectacleWindowSizeAdjuster = (function () {
         if (againstAllEdgesOfScreen(windowRect, visibleFrameOfDestinationScreen) && (sizeOffset < 0)) {
             resizedWindowRect.width = windowRect.width + sizeOffset;
             resizedWindowRect.x = windowRect.x - Math.floor(sizeOffset / 2.0);
-            resizedWindowRect.height = windowRect.height + sizeOffset;
-            resizedWindowRect.y = windowRect.y - Math.floor(sizeOffset / 2.0);
+            resizedWindowRect.height = windowRect.height + sizeOffsetVertical;
+            resizedWindowRect.y = windowRect.y - Math.floor(sizeOffsetVertical / 2.0);
         }
         if (resizedWindowRectIsTooSmall(resizedWindowRect, visibleFrameOfDestinationScreen)) {
             resizedWindowRect = windowRect;
