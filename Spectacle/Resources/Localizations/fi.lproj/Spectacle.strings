@@ -18,7 +18,7 @@
 "HRo-tn-M1V.title" = "Spectacle haluaisi hallita ikkunoita käyttöaputoimintojen avulla.";
 
 /* Class = "NSMenuItem"; title = "Next Display"; ObjectID = "I4U-jL-hXq"; */
-"I4U-jL-hXq.title" = "Seuraava ikkuna";
+"I4U-jL-hXq.title" = "Seuraava näyttö";
 
 /* Class = "NSMenuItem"; title = "Quit Spectacle"; ObjectID = "Isn-Og-AEv"; */
 "Isn-Og-AEv.title" = "Sulje Spectacle";
