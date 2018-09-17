@@ -62,6 +62,9 @@ table {
 
 /* line 6, stylesheets/all.css.sass */
 body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   color: #333333;
   -webkit-animation: load 2s;
   -moz-animation: load 2s;
@@ -109,6 +112,7 @@ img {
 
 /* line 19, stylesheets/all.css.sass */
 .container {
+  flex: 1;
   width: 90%;
   max-width: 960px;
   margin: auto; }
