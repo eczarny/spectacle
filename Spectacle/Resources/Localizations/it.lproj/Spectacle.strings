@@ -21,7 +21,7 @@
 "I4U-jL-hXq.title" = "Monitor successivo";
 
 /* Class = "NSMenuItem"; title = "Quit Spectacle"; ObjectID = "Isn-Og-AEv"; */
-"Isn-Og-AEv.title" = "Esci da Spectacle";
+"Isn-Og-AEv.title" = "Chiudi Spectacle";
 
 /* Class = "NSMenuItem"; title = "Left Half"; ObjectID = "Jae-vx-7ZC"; */
 "Jae-vx-7ZC.title" = "Metà sinistra";
@@ -45,7 +45,7 @@
 "cae-26-Oab.title" = "Metà destra";
 
 /* Class = "NSMenuItem"; title = "Fullscreen"; ObjectID = "dwQ-Bl-nEL"; */
-"dwQ-Bl-nEL.title" = "A tutto schermo";
+"dwQ-Bl-nEL.title" = "Schermo intero";
 
 /* Class = "NSMenuItem"; title = "Lower Left"; ObjectID = "eN5-A6-iho"; */
 "eN5-A6-iho.title" = "In basso a sinistra";
@@ -84,7 +84,7 @@
 "qpo-5w-ZIY.title" = "per un'ora";
 
 /* Class = "NSTextFieldCell"; title = "Grant access to this application in System Preferences."; ObjectID = "ruu-yJ-Q1F"; */
-"ruu-yJ-Q1F.title" = "Concedere l'accesso a questa applicazione nelle Preferenze di Sistema.";
+"ruu-yJ-Q1F.title" = "Autorizza l'accesso a questa applicazione alle Preferenze di Sistema.";
 
 /* Class = "NSMenuItem"; title = "Center"; ObjectID = "xJu-Uo-nZw"; */
 "xJu-Uo-nZw.title" = "Centra";
