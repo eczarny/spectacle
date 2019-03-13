@@ -801,7 +801,7 @@ p {
 /* line 257, stylesheets/all.css.sass */
 .feature {
   width: 33%;
-  float: left;
+  margin: auto;
   padding: 0 2%; }
   @media (max-width: 620px) {
     /* line 257, stylesheets/all.css.sass */
