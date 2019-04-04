@@ -3,9 +3,13 @@ language: objective-c
 xcode_project: Spectacle.xcodeproj
 xcode_scheme: Spectacle
 
+addons:
+  homebrew:
+    update: true
+    packages:
+      - carthage
+
 before_install:
-  - brew update
-  - brew outdated carthage || brew upgrade carthage
   - carthage bootstrap --platform Mac
 
 script:
