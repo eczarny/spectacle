@@ -1,0 +1,95 @@
+/* 中文版汉化由辣椒面完成 博客地址：https://blog.45share.com */
+
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "187-7k-0Ct"; */
+"187-7k-0Ct.title" = "重做";
+
+/* Class = "NSMenuItem"; title = "Check for Updates..."; ObjectID = "2sj-vF-eSL"; */
+"2sj-vF-eSL.title" = "检查更新...";
+
+/* Class = "NSMenuItem"; title = "Next Third"; ObjectID = "7HO-L3-O6Q"; */
+"7HO-L3-O6Q.title" = "下三分之一";
+
+/* Class = "NSMenuItem"; title = "Upper Right"; ObjectID = "C7t-Sf-kOI"; */
+"C7t-Sf-kOI.title" = "右上角";
+
+/* Class = "NSMenuItem"; title = "About Spectacle"; ObjectID = "EA9-dx-Qfg"; */
+"EA9-dx-Qfg.title" = "软件介绍";
+
+/* Class = "NSTextFieldCell"; title = "Spectacle would like to control your windows using accessibility features."; ObjectID = "HRo-tn-M1V"; */
+"HRo-tn-M1V.title" = "Spectacle 希望使用辅助功能控制您的窗口.";
+
+/* Class = "NSMenuItem"; title = "Next Display"; ObjectID = "I4U-jL-hXq"; */
+"I4U-jL-hXq.title" = "下一个显示";
+
+/* Class = "NSMenuItem"; title = "Quit Spectacle"; ObjectID = "Isn-Og-AEv"; */
+"Isn-Og-AEv.title" = "退出";
+
+/* Class = "NSMenuItem"; title = "Left Half"; ObjectID = "Jae-vx-7ZC"; */
+"Jae-vx-7ZC.title" = "左半";
+
+/* Class = "NSMenu"; title = "Spectacle Status Item"; ObjectID = "KsA-8w-wcl"; */
+"KsA-8w-wcl.title" = "Spectacle 状态项";
+
+/* Class = "NSMenuItem"; title = "Preferences..."; ObjectID = "ME4-Br-HLT"; */
+"ME4-Br-HLT.title" = "偏好...";
+
+/* Class = "NSMenuItem"; title = "Make Larger"; ObjectID = "Yun-AA-OVD"; */
+"Yun-AA-OVD.title" = "放大";
+
+/* Class = "NSMenuItem"; title = "Previous Display"; ObjectID = "aPo-Rp-A1X"; */
+"aPo-Rp-A1X.title" = "上一个显示";
+
+/* Class = "NSMenuItem"; title = "Previous Third"; ObjectID = "bV9-Ga-jDG"; */
+"bV9-Ga-jDG.title" = "前三个";
+
+/* Class = "NSMenuItem"; title = "Right Half"; ObjectID = "cae-26-Oab"; */
+"cae-26-Oab.title" = "右半";
+
+/* Class = "NSMenuItem"; title = "Fullscreen"; ObjectID = "dwQ-Bl-nEL"; */
+"dwQ-Bl-nEL.title" = "全屏";
+
+/* Class = "NSMenuItem"; title = "Lower Left"; ObjectID = "eN5-A6-iho"; */
+"eN5-A6-iho.title" = "左下方";
+
+/* Class = "NSMenuItem"; title = "Disable"; ObjectID = "eZT-Mm-qSc"; */
+"eZT-Mm-qSc.title" = "禁用";
+
+/* Class = "NSMenu"; title = "Disable"; ObjectID = "flL-B2-XIP"; */
+"flL-B2-XIP.title" = "禁用";
+
+/* Class = "NSButtonCell"; title = "Quit Spectacle"; ObjectID = "gMV-vD-CUe"; */
+"gMV-vD-CUe.title" = "退出 Spectacle";
+
+/* Class = "NSMenuItem"; title = "Make Smaller"; ObjectID = "gTe-ym-DB0"; */
+"gTe-ym-DB0.title" = "缩小";
+
+/* Class = "NSMenuItem"; title = "Bottom Half"; ObjectID = "huV-Gw-lbX"; */
+"huV-Gw-lbX.title" = "下半部分";
+
+/* Class = "NSButtonCell"; title = "Open System Preferences"; ObjectID = "iPl-AT-Pei"; */
+"iPl-AT-Pei.title" = "打开系统首选项";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "l9O-0B-fjp"; */
+"l9O-0B-fjp.title" = "撤销";
+
+/* Class = "NSMenuItem"; title = "Upper Left"; ObjectID = "ldc-QO-Cq6"; */
+"ldc-QO-Cq6.title" = "左上角";
+
+/* Class = "NSMenuItem"; title = "for APPLICATION"; ObjectID = "msZ-id-Pvw"; */
+"msZ-id-Pvw.title" = "应用程序";
+
+/* Class = "NSMenuItem"; title = "Lower Right"; ObjectID = "oDU-J0-NkJ"; */
+"oDU-J0-NkJ.title" = "右下角";
+
+/* Class = "NSMenuItem"; title = "for an hour"; ObjectID = "qpo-5w-ZIY"; */
+"qpo-5w-ZIY.title" = "一个小时";
+
+/* Class = "NSTextFieldCell"; title = "Grant access to this application in System Preferences."; ObjectID = "ruu-yJ-Q1F"; */
+"ruu-yJ-Q1F.title" = "在系统首选项中授予对此应用程序的访问权限.";
+
+/* Class = "NSMenuItem"; title = "Center"; ObjectID = "xJu-Uo-nZw"; */
+"xJu-Uo-nZw.title" = "中心";
+
+/* Class = "NSMenuItem"; title = "Top Half"; ObjectID = "yh0-ik-weD"; */
+"yh0-ik-weD.title" = "上半部分";

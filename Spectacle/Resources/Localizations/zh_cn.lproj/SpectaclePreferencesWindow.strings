@@ -1,0 +1,103 @@
+/* 中文版汉化由辣椒面完成 博客地址：https://blog.45share.com */
+
+/* Class = "NSTextFieldCell"; title = "Make Larger:"; ObjectID = "0f9-kj-bro"; */
+"0f9-kj-bro.title" = "放大:";
+
+/* Class = "NSTextFieldCell"; title = "Control"; ObjectID = "7Fe-Da-fYB"; */
+"7Fe-Da-fYB.title" = "Control";
+
+/* Class = "NSTextFieldCell"; title = "⌃"; ObjectID = "806-S1-nYH"; */
+"806-S1-nYH.title" = "⌃";
+
+/* Class = "NSTextFieldCell"; title = "Top Half:"; ObjectID = "AnP-Lv-Hbd"; */
+"AnP-Lv-Hbd.title" = "上半部分:";
+
+/* Class = "NSTextFieldCell"; title = "Bottom Half:"; ObjectID = "Awn-mO-sht"; */
+"Awn-mO-sht.title" = "下半部分:";
+
+/* Class = "NSTextFieldCell"; title = "Undo:"; ObjectID = "CJs-az-eG7"; */
+"CJs-az-eG7.title" = "撤销:";
+
+/* Class = "NSTextFieldCell"; title = "Left Half:"; ObjectID = "IWj-rc-Kvi"; */
+"IWj-rc-Kvi.title" = "左半:";
+
+/* Class = "NSTextFieldCell"; title = "⇧"; ObjectID = "Ir0-AJ-ldj"; */
+"Ir0-AJ-ldj.title" = "⇧";
+
+/* Class = "NSWindow"; title = "Spectacle X.Y.Z"; ObjectID = "JW4-q9-L7q"; */
+"JW4-q9-L7q.title" = "Spectacle X.Y.Z";
+
+/* Class = "NSButtonCell"; title = "Restore Defaults..."; ObjectID = "NT7-Sd-Ofw"; */
+"NT7-Sd-Ofw.title" = "恢复默认设置...";
+
+/* Class = "NSTextFieldCell"; title = "Make Smaller:"; ObjectID = "SDM-U5-yUR"; */
+"SDM-U5-yUR.title" = "缩小:";
+
+/* Class = "NSTextFieldCell"; title = "⌘"; ObjectID = "SQM-4e-yFd"; */
+"SQM-4e-yFd.title" = "⌘";
+
+/* Class = "NSTextFieldCell"; title = "Next Third:"; ObjectID = "Tze-mR-IV4"; */
+"Tze-mR-IV4.title" = "下三分之一:";
+
+/* Class = "NSTextFieldCell"; title = "Option"; ObjectID = "U0H-hG-KAQ"; */
+"U0H-hG-KAQ.title" = "Option";
+
+/* Class = "NSTextFieldCell"; title = "Lower Right:"; ObjectID = "Vul-FT-BbB"; */
+"Vul-FT-BbB.title" = "右下角:";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "W2t-KP-bYJ"; */
+"W2t-KP-bYJ.title" = "其他视图";
+
+/* Class = "NSTextFieldCell"; title = "Right Half:"; ObjectID = "WeK-fS-mRh"; */
+"WeK-fS-mRh.title" = "右半:";
+
+/* Class = "NSTextFieldCell"; title = "⌥"; ObjectID = "YQm-Kc-fYF"; */
+"YQm-Kc-fYF.title" = "⌥";
+
+/* Class = "NSMenuItem"; title = "as a background application"; ObjectID = "aWf-FC-J1j"; */
+"aWf-FC-J1j.title" = "作为后台应用程序";
+
+/* Class = "NSButtonCell"; title = "Launch Spectacle at login"; ObjectID = "cEj-mH-kie"; */
+"cEj-mH-kie.title" = "开机时启动";
+
+/* Class = "NSTextFieldCell"; title = "Lower Left:"; ObjectID = "dQP-TR-GMx"; */
+"dQP-TR-GMx.title" = "左下方:";
+
+/* Class = "NSTextFieldCell"; title = "Shift"; ObjectID = "dww-8Q-sa1"; */
+"dww-8Q-sa1.title" = "Shift";
+
+/* Class = "NSTextFieldCell"; title = "Run..."; ObjectID = "eYU-TH-wcO"; */
+"eYU-TH-wcO.title" = "执行...";
+
+/* Class = "NSTextFieldCell"; title = "Upper Right:"; ObjectID = "gSY-Au-xOH"; */
+"gSY-Au-xOH.title" = "右上角:";
+
+/* Class = "NSTextFieldCell"; title = "Previous Display:"; ObjectID = "hmL-EC-pro"; */
+"hmL-EC-pro.title" = "上一个显示:";
+
+/* Class = "NSMenuItem"; title = "in the status menu"; ObjectID = "in4-v8-tIm"; */
+"in4-v8-tIm.title" = "在状态菜单中";
+
+/* Class = "NSTextFieldCell"; title = "Command"; ObjectID = "jdf-Yu-zrq"; */
+"jdf-Yu-zrq.title" = "Command";
+
+/* Class = "NSTextFieldCell"; title = "Upper Left:"; ObjectID = "ldH-1E-mKW"; */
+"ldH-1E-mKW.title" = "左上角:";
+
+/* Class = "NSTextFieldCell"; title = "Next Display:"; ObjectID = "lw7-Ap-kJO"; */
+"lw7-Ap-kJO.title" = "下一个显示:";
+
+/* Class = "NSTextFieldCell"; title = "Center:"; ObjectID = "oqf-7z-BFa"; */
+"oqf-7z-BFa.title" = "中心:";
+
+/* Class = "NSTextFieldCell"; title = "Previous Third:"; ObjectID = "s3E-Lp-mJ4"; */
+"s3E-Lp-mJ4.title" = "前三个:";
+
+/* Class = "NSTextFieldCell"; title = "Fullscreen:"; ObjectID = "tKr-XE-DEU"; */
+"tKr-XE-DEU.title" = "全屏显示:";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "vWw-ws-BgW"; */
+"vWw-ws-BgW.title" = "Box";
+
+/* Class = "NSTextFieldCell"; title = "Redo:"; ObjectID = "y7M-cR-DF2"; */
+"y7M-cR-DF2.title" = "重做:";
