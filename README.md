@@ -6,7 +6,7 @@ Easily organize windows without using a mouse.
 
 ## System requirements
 
-Spectacle [0.8.6][1] is the last version to support macOS 10.7; future releases will only support 10.9 or greater. Folks wishing to stay on 10.7 should download [0.8.6][1]. Those looking for a version of Spectacle that supports 10.6 can still download [0.7][2].
+Spectacle [0.8.6][1] is the last version to support Mac OS X 10.7; future releases will only support 10.9 or greater. Folks wishing to stay on 10.7 should download [0.8.6][1]. Those looking for a version of Spectacle that supports 10.6 can still download [0.7][2].
 
 ## Keyboard Shortcuts
 
@@ -73,7 +73,7 @@ To work around the limitations imposed on Terminal windows Spectacle will first 
 
 ### Spectacle does not work with all applications
 
-Most applications built with the Cocoa frameworks can be readily manipulated via the _macOS Accessibility Protocol_; allowing Spectacle to interact with nearly every window it encounters. Unfortunately this is not always the case. Spectacle will be unable to manipulate the windows of applications that build their user interfaces in unexpected ways.
+Most applications built with the Cocoa frameworks can be readily manipulated via the _OS X Accessibility Protocol_; allowing Spectacle to interact with nearly every window it encounters. Unfortunately this is not always the case. Spectacle will be unable to manipulate the windows of applications that build their user interfaces in unexpected ways.
 
 ## Building and running
 
