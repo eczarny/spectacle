@@ -8,7 +8,9 @@ Easily organize windows without using a mouse.
 
 **This project is not being actively maintained.** Unfortunately, after almost a decade of on-and-off development I can no longer dedicate the time needed to be a responsible maintainer of this project. Spectacle will remain available for download but please use at your own risk. The source code will continue to be free and open to anyone, so feel free to make Spectacle your own.
 
-Thanks to all the folks that have made Spectacle the first app they install a new Mac! I'm sorry I couldn't serve you better.
+Thanks to all the folks that have made Spectacle the first app they install a new Mac!
+
+_Spectacle users have recommended [Rectangle](https://github.com/rxhanson/Rectangle) as an opensource alternative that provides the same functionality as Spectacle does/did provide._
 
 ## System requirements
 
