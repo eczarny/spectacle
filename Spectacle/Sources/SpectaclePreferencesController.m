@@ -81,8 +81,8 @@
    didReceiveNewShortcut:(SpectacleShortcut *)shortcut
 {
   [_shortcutManager updateShortcut:[shortcut copyWithShortcutAction:^(SpectacleShortcut *shortcut) {
-    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                                action:shortcut.windowAction];
+    [self->_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                      action:shortcut.windowAction];
   }]];
   [[NSNotificationCenter defaultCenter] postNotificationName:@"SpectacleShortcutChangedNotification" object:self];
 }
@@ -132,10 +132,10 @@ didClearExistingShortcut:(SpectacleShortcut *)shortcut
 {
   [SpectacleUtilities displayRestoreDefaultsAlertWithConfirmationCallback:^() {
     NSArray<SpectacleShortcut *> *shortcuts = SpectacleDefaultShortcutsWithAction(^(SpectacleShortcut *shortcut) {
-      [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                                  action:shortcut.windowAction];
+      [self->_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                        action:shortcut.windowAction];
     });
-    [_shortcutManager updateShortcuts:shortcuts];
+    [self->_shortcutManager updateShortcuts:shortcuts];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SpectacleRestoreDefaultShortcutsNotification"
                                                         object:self];
   }];

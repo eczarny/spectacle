@@ -42,7 +42,7 @@
   }
 }
 
-+ (void)displayRestoreDefaultsAlertWithConfirmationCallback:(void (^)())callback
++ (void)displayRestoreDefaultsAlertWithConfirmationCallback:(void (^)(void))callback
 {
   NSAlert *alert = [NSAlert new];
   alert.messageText = NSLocalizedString(@"AlertMessageTextRestoreDefaults", @"The message text of the alert displayed when prompting to restore Spectacle's default shortcuts");

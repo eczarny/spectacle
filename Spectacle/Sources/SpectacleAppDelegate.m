@@ -294,8 +294,8 @@
 - (void)manageShortcuts
 {
   SpectacleShortcutAction action = ^(SpectacleShortcut *shortcut) {
-    [_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
-                                                action:shortcut.windowAction];
+    [self->_windowPositionManager moveFrontmostWindowElement:[SpectacleAccessibilityElement frontmostWindowElement]
+                                                      action:shortcut.windowAction];
   };
   NSArray<SpectacleShortcut *> *shortcuts = [_shortcutStorage loadShortcutsWithAction:action];
   if (shortcuts.count != 0) {

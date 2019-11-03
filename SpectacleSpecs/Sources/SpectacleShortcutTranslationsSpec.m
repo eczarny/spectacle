@@ -71,24 +71,24 @@ describe(@"SpectacleShortcutTranslations", ^{
     expect(SpectacleTranslateKeyCode(kVK_F19)).to.equal(@"F19");
     expect(SpectacleTranslateKeyCode(kVK_F20)).to.equal(@"F20");
 
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadDecimal)).to.equal(@"."),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadMultiply)).to.equal(@"*"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadPlus)).to.equal(@"+"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadClear)).to.equal(@"⌧"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadDivide)).to.equal(@"/"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadEnter)).to.equal(@"⌤"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadMinus)).to.equal(@"-"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadEquals)).to.equal(@"="),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad0)).to.equal(@"0"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad1)).to.equal(@"1"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad2)).to.equal(@"2"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad3)).to.equal(@"3"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad4)).to.equal(@"4"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad5)).to.equal(@"5"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad6)).to.equal(@"6"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad7)).to.equal(@"7"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad8)).to.equal(@"8"),
-    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad9)).to.equal(@"9"),
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadDecimal)).to.equal(@".");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadMultiply)).to.equal(@"*");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadPlus)).to.equal(@"+");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadClear)).to.equal(@"⌧");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadDivide)).to.equal(@"/");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadEnter)).to.equal(@"⌤");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadMinus)).to.equal(@"-");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_KeypadEquals)).to.equal(@"=");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad0)).to.equal(@"0");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad1)).to.equal(@"1");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad2)).to.equal(@"2");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad3)).to.equal(@"3");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad4)).to.equal(@"4");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad5)).to.equal(@"5");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad6)).to.equal(@"6");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad7)).to.equal(@"7");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad8)).to.equal(@"8");
+    expect(SpectacleTranslateKeyCode(kVK_ANSI_Keypad9)).to.equal(@"9");
 
     expect(SpectacleTranslateKeyCode(kVK_Return)).to.equal(@"↩");
     expect(SpectacleTranslateKeyCode(kVK_Tab)).to.equal(@"⇥");
