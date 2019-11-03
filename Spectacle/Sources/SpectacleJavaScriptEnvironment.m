@@ -29,7 +29,7 @@
   [scriptPaths enumerateObjectsUsingBlock:^(NSString *scriptPath, NSUInteger index, BOOL *stop) {
     NSString *script = loadScriptAtPath(scriptPath);
     if (script) {
-      [_context evaluateScript:script];
+      [self->_context evaluateScript:script];
     }
   }];
 }
