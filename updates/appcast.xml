@@ -171,7 +171,7 @@
       <sparkle:releaseNotesLink>https://spectacleapp.com/updates/changes/1.2.html</sparkle:releaseNotesLink>
       <sparkle:minimumSystemVersion>10.9.0</sparkle:minimumSystemVersion>
       <pubDate>Thu, 22 Dec 2016 9:14:00 EST</pubDate>
-      <enclosure url="https://s3.amazonaws.com/spectacle/downloads/Spectacle+1.2.zip" sparkle:shortVersionString="1.2" sparkle:version="672" sparkle:dsaSignature="MCwCFAnBeYfWcacq2FRxyg+00dUrfdWvAhQlF/zizPXopTTTQKInu4EPY1AViQ==" length="2833274" type="application/octet-stream" />
+      <enclosure url="https://github.com/eczarny/spectacle/releases/download/1.2/Spectacle+1.2.zip" sparkle:shortVersionString="1.2" sparkle:version="672" sparkle:dsaSignature="MCwCFAnBeYfWcacq2FRxyg+00dUrfdWvAhQlF/zizPXopTTTQKInu4EPY1AViQ==" length="2833274" type="application/octet-stream" />
     </item>
   </channel>
 </rss>
